@@ -1,0 +1,78 @@
+{
+  "mappings": {
+    "properties": {
+      "cafe_name": {
+        "type": "text",
+        "meta": {
+          "comment": "名称"
+        },
+        "analyzer": "standard",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "location": {
+        "type": "geo_point",
+        "meta": {
+          "comment": "经纬度"
+        }
+      },
+      "address": {
+        "type": "text",
+        "analyzer": "standard"
+      },
+      "menu_items": {
+        "type": "nested",
+        "properties": {
+          "category": {
+            "type": "keyword"
+          },
+          "items": {
+            "type": "nested",
+            "properties": {
+              "item_name": {
+                "type": "text",
+                "analyzer": "standard"
+              },
+              "price": {
+                "type": "float",
+                "meta": {
+                  "comment": "价格"
+                }
+              },
+              "size": {
+                "type": "keyword"
+              },
+              "ingredients": {
+                "type": "text",
+                "analyzer": "standard"
+              },
+              "available": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "average_rating": {
+        "type": "float"
+      },
+      "review_count": {
+        "type": "integer"
+      },
+      "phone_number": {
+        "type": "keyword"
+      },
+      "website": {
+        "type": "keyword"
+      },
+      "date_added": {
+        "type": "date",
+        "format": "yyyy-MM-dd"
+      }
+    }
+  }
+}

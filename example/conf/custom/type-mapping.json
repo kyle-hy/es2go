@@ -1,0 +1,11 @@
+{
+  "integer": "int64",
+  "float": "float64",
+  "boolean": "bool",
+  "text": "string",
+  "keyword": "string",
+  "date": "time.Time",
+  "geo_point": "[]float64",
+  "object": "map[string]any",
+  "nested": "[]any"
+}
