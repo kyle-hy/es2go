@@ -7,7 +7,7 @@ import "time"
 type CafeDocJson struct {
 	Address string `json:"address"`
 	AverageRating float64 `json:"average_rating"`
-	CafeName string `json:"cafe_name"` // 名称
+	CafeName string `json:"cafe_name" es:"keyword"` // 名称
 	DateAdded time.Time `json:"date_added"`
 	Location []float64 `json:"location"` // 经纬度
 	MenuItems *MenuItems `json:"menu_items"`

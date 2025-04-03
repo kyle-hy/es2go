@@ -60,10 +60,11 @@ type GeneratorOptions struct {
 
 // Field 字段的mapping
 type Field struct {
-	FieldName    string
-	FieldType    string
-	JSONName     string
-	FieldComment string
+	FieldName     string
+	FieldType     string
+	JSONName      string
+	FieldComment  string // 字段注释
+	FieldsKeyword string // text字段keyword子字段
 }
 
 // StructData 结构体数据
@@ -80,7 +81,7 @@ var (
 	FieldExceptions map[string]string
 	TypeExceptions  map[string]string
 	SkipFields      map[string]bool
-	FieldComments   map[string]string
+	FieldComments   map[string]string // 字段注释
 )
 
 // StructNameTracker to avoid generating duplicate struct names
@@ -206,14 +207,6 @@ func processFile(inputPath, outputPath, packageName, structName string, opts *Ge
 	return nil
 }
 
-// ExtractComment 提取注释信息
-func ExtractComment(properties map[string]Property) {
-	if FieldComments == nil {
-		FieldComments = make(map[string]string)
-	}
-
-}
-
 func generateStructDefinitions(structName string, properties map[string]Property) string {
 	var structDefs strings.Builder
 	generateStruct(&structDefs, structName, properties)
@@ -241,6 +234,7 @@ func generateStruct(structDefs *strings.Builder, structName string, properties m
 		fieldName := mapElasticsearchFieldToGoField(name)
 		var fieldType string
 		var fieldComment string
+		var fieldsKeyword string
 
 		if prop.Type == "object" || prop.Type == "nested" {
 			// check if the type has a custom exception
@@ -263,6 +257,7 @@ func generateStruct(structDefs *strings.Builder, structName string, properties m
 		} else {
 			fieldType = mapElasticsearchTypeToGoType(name, prop.Type)
 			fieldComment = prop.Meta.Comment
+			fieldsKeyword = prop.Fields.Keyword.Type
 		}
 
 		// 以配置文件为准
@@ -272,10 +267,11 @@ func generateStruct(structDefs *strings.Builder, structName string, properties m
 		}
 
 		fields = append(fields, Field{
-			FieldName:    fieldName,
-			FieldType:    fieldType,
-			JSONName:     name,
-			FieldComment: fieldComment,
+			FieldName:     fieldName,
+			FieldType:     fieldType,
+			JSONName:      name,
+			FieldComment:  fieldComment,
+			FieldsKeyword: fieldsKeyword,
 		})
 	}
 
@@ -288,9 +284,22 @@ func generateStruct(structDefs *strings.Builder, structName string, properties m
 	structDefs.WriteString(fmt.Sprintf("type %s struct {\n", structName))
 	for _, field := range fields {
 		if field.FieldComment != "" {
-			structDefs.WriteString(fmt.Sprintf("\t%s %s `json:\"%s\"` // %s\n", field.FieldName, field.FieldType, field.JSONName, field.FieldComment))
+			if field.FieldsKeyword != "" {
+				structDefs.WriteString(fmt.Sprintf("\t%s %s `json:\"%s\" es:\"%s\"` // %s\n",
+					field.FieldName, field.FieldType, field.JSONName, field.FieldsKeyword, field.FieldComment))
+			} else {
+				structDefs.WriteString(fmt.Sprintf("\t%s %s `json:\"%s\"` // %s\n",
+					field.FieldName, field.FieldType, field.JSONName, field.FieldComment))
+
+			}
 		} else {
-			structDefs.WriteString(fmt.Sprintf("\t%s %s `json:\"%s\"`\n", field.FieldName, field.FieldType, field.JSONName))
+			if field.FieldsKeyword != "" {
+				structDefs.WriteString(fmt.Sprintf("\t%s %s `json:\"%s\" es:\"%s\"`\n",
+					field.FieldName, field.FieldType, field.JSONName, field.FieldsKeyword))
+			} else {
+				structDefs.WriteString(fmt.Sprintf("\t%s %s `json:\"%s\"`\n",
+					field.FieldName, field.FieldType, field.JSONName))
+			}
 		}
 	}
 	structDefs.WriteString("}\n\n")
