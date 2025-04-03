@@ -5,27 +5,27 @@ package searchmodel
 import "time"
 
 type CafeDocJson struct {
-	Address string `json:"address"`
-	AverageRating float64 `json:"average_rating"`
-	CafeName string `json:"cafe_name" es:"keyword"` // 名称
-	DateAdded time.Time `json:"date_added"`
-	Location []float64 `json:"location"` // 经纬度
-	MenuItems *MenuItems `json:"menu_items"`
-	PhoneNumber string `json:"phone_number"`
-	ReviewCount int64 `json:"review_count"`
-	Website string `json:"website"`
+	Address string `json:"address" es:"type:text"`
+	AverageRating float64 `json:"average_rating" es:"type:float"`
+	CafeName string `json:"cafe_name" es:"type:text;keyword"` // 名称
+	DateAdded time.Time `json:"date_added" es:"type:date"`
+	Location []float64 `json:"location" es:"type:geo_point"` // 经纬度
+	MenuItems *MenuItems `json:"menu_items" es:"type:nested"`
+	PhoneNumber string `json:"phone_number" es:"type:keyword"`
+	ReviewCount int64 `json:"review_count" es:"type:integer"`
+	Website string `json:"website" es:"type:keyword"`
 }
 
 type MenuItems struct {
-	Category string `json:"category"`
-	Items *Items `json:"items"`
+	Category string `json:"category" es:"type:keyword"`
+	Items *Items `json:"items" es:"type:nested"`
 }
 
 type Items struct {
-	Available bool `json:"available"`
-	Ingredients string `json:"ingredients"`
-	ItemName string `json:"item_name"`
-	Price float64 `json:"price"` // 价格
-	Size string `json:"size"`
+	Available bool `json:"available" es:"type:boolean"`
+	Ingredients string `json:"ingredients" es:"type:text;keyword"`
+	ItemName string `json:"item_name" es:"type:text"`
+	Price float64 `json:"price" es:"type:float"` // 价格
+	Size string `json:"size" es:"type:keyword"`
 }
 

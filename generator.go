@@ -61,7 +61,8 @@ type GeneratorOptions struct {
 // Field 字段的mapping
 type Field struct {
 	FieldName     string
-	FieldType     string
+	FieldType     string // golang的字段类型
+	EsFieldType   string // es的mapping字段类型
 	JSONName      string
 	FieldComment  string // 字段注释
 	FieldsKeyword string // text字段keyword子字段
@@ -269,6 +270,7 @@ func generateStruct(structDefs *strings.Builder, structName string, properties m
 		fields = append(fields, Field{
 			FieldName:     fieldName,
 			FieldType:     fieldType,
+			EsFieldType:   prop.Type,
 			JSONName:      name,
 			FieldComment:  fieldComment,
 			FieldsKeyword: fieldsKeyword,
@@ -285,20 +287,20 @@ func generateStruct(structDefs *strings.Builder, structName string, properties m
 	for _, field := range fields {
 		if field.FieldComment != "" {
 			if field.FieldsKeyword != "" {
-				structDefs.WriteString(fmt.Sprintf("\t%s %s `json:\"%s\" es:\"%s\"` // %s\n",
-					field.FieldName, field.FieldType, field.JSONName, field.FieldsKeyword, field.FieldComment))
+				structDefs.WriteString(fmt.Sprintf("\t%s %s `json:\"%s\" es:\"type:%s;%s\"` // %s\n",
+					field.FieldName, field.FieldType, field.JSONName, field.EsFieldType, field.FieldsKeyword, field.FieldComment))
 			} else {
-				structDefs.WriteString(fmt.Sprintf("\t%s %s `json:\"%s\"` // %s\n",
-					field.FieldName, field.FieldType, field.JSONName, field.FieldComment))
+				structDefs.WriteString(fmt.Sprintf("\t%s %s `json:\"%s\" es:\"type:%s\"` // %s\n",
+					field.FieldName, field.FieldType, field.JSONName, field.EsFieldType, field.FieldComment))
 
 			}
 		} else {
 			if field.FieldsKeyword != "" {
-				structDefs.WriteString(fmt.Sprintf("\t%s %s `json:\"%s\" es:\"%s\"`\n",
-					field.FieldName, field.FieldType, field.JSONName, field.FieldsKeyword))
+				structDefs.WriteString(fmt.Sprintf("\t%s %s `json:\"%s\" es:\"type:%s;%s\"`\n",
+					field.FieldName, field.FieldType, field.JSONName, field.EsFieldType, field.FieldsKeyword))
 			} else {
-				structDefs.WriteString(fmt.Sprintf("\t%s %s `json:\"%s\"`\n",
-					field.FieldName, field.FieldType, field.JSONName))
+				structDefs.WriteString(fmt.Sprintf("\t%s %s `json:\"%s\" es:\"type:%s\"`\n",
+					field.FieldName, field.FieldType, field.JSONName, field.EsFieldType))
 			}
 		}
 	}
@@ -423,8 +425,8 @@ func ToPascalCase(s string) string {
 	return strings.Join(parts, "")
 }
 
-// GeoPoint struct for handling geo_point type in Elasticsearch
+// GeoPoint Elasticsearch的地理坐标
 type GeoPoint struct {
-	Lat float64 `json:"lat"`
-	Lon float64 `json:"lon"`
+	Lat float64 `json:"lat"` // 纬度
+	Lon float64 `json:"lon"` // 经度
 }
