@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"log"
+	"os/exec"
 
 	. "github.com/kyle-hy/es2go"
 )
@@ -46,6 +47,11 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to generate data model: %v", err)
 	}
+
+	// TODO 格式化代码
+	// 调用go格式化工具格式化代码
+	cmd := exec.Command("goimports", "-w", *outputPath)
+	cmd.Run()
 }
 
 // nullableString is a helper function to treat flag.String values as nullable.
