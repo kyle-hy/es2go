@@ -39,6 +39,7 @@ type Property struct {
 
 // Mappings .
 type Mappings struct {
+	Meta       Meta                `json:"meta,omitempty"` // 元数据，用于字段注释说明
 	Properties map[string]Property `json:"properties,omitempty"`
 }
 
@@ -179,7 +180,7 @@ func processFile(inputPath, outputPath, packageName, structName string, opts *Ge
 		return fmt.Errorf("Error unmarshalling JSON from file %s: %v", inputPath, err)
 	}
 
-	structDefinitions := generateStructDefinitions(structName, esMapping.Mappings.Properties)
+	structDefinitions := generateStructDefinitions(structName, esMapping.Mappings.Meta, esMapping.Mappings.Properties)
 
 	var initClassName string
 	if opts != nil && opts.InitClassName != nil {
@@ -208,13 +209,13 @@ func processFile(inputPath, outputPath, packageName, structName string, opts *Ge
 	return nil
 }
 
-func generateStructDefinitions(structName string, properties map[string]Property) string {
+func generateStructDefinitions(structName string, meta Meta, properties map[string]Property) string {
 	var structDefs strings.Builder
-	generateStruct(&structDefs, structName, properties)
+	generateStruct(&structDefs, structName, meta, properties)
 	return structDefs.String()
 }
 
-func generateStruct(structDefs *strings.Builder, structName string, properties map[string]Property) {
+func generateStruct(structDefs *strings.Builder, structName string, meta Meta, properties map[string]Property) {
 	// check if the struct has already been generated
 	if _, exists := StructNameTracker[structName]; exists {
 		return
@@ -234,8 +235,8 @@ func generateStruct(structDefs *strings.Builder, structName string, properties m
 
 		fieldName := mapElasticsearchFieldToGoField(name)
 		var fieldType string
-		var fieldComment string
 		var fieldsKeyword string
+		fieldComment := prop.Meta.Comment
 
 		if prop.Type == "object" || prop.Type == "nested" {
 			// check if the type has a custom exception
@@ -243,21 +244,21 @@ func generateStruct(structDefs *strings.Builder, structName string, properties m
 				var nestedStructName string
 				fieldType = customType
 				if strings.HasPrefix(fieldType, "*") {
-					nestedStructName = fieldType[1:] // "*" を取り除く
+					nestedStructName = fieldType[1:] + "Nested" // "*" 删除
 				} else if strings.HasPrefix(fieldType, "[]") {
-					nestedStructName = fieldType[2:] // "[]" を取り除く
+					nestedStructName = fieldType[2:] + "Nested" // "[]" 删除
 				} else {
-					nestedStructName = fieldType
+					nestedStructName = fieldType + "Nested"
 				}
-				nestedStructs = append(nestedStructs, generateStructDefinitions(nestedStructName, prop.Properties))
+				nestedStructs = append(nestedStructs, generateStructDefinitions(nestedStructName, prop.Meta, prop.Properties))
 			} else {
-				nestedStructName := ToPascalCase(name)
+				nestedStructName := ToPascalCase(name) + "Nested"
 				fieldType = "*" + nestedStructName
-				nestedStructs = append(nestedStructs, generateStructDefinitions(nestedStructName, prop.Properties))
+				fmt.Println(fieldType)
+				nestedStructs = append(nestedStructs, generateStructDefinitions(nestedStructName, prop.Meta, prop.Properties))
 			}
 		} else {
 			fieldType = mapElasticsearchTypeToGoType(name, prop.Type)
-			fieldComment = prop.Meta.Comment
 			fieldsKeyword = prop.Fields.Keyword.Type
 		}
 
@@ -283,6 +284,10 @@ func generateStruct(structDefs *strings.Builder, structName string, properties m
 	})
 
 	// generate struct definition
+	if meta.Comment == "" {
+		meta.Comment = "."
+	}
+	structDefs.WriteString(fmt.Sprintf("// %s %s\n", structName, meta.Comment))
 	structDefs.WriteString(fmt.Sprintf("type %s struct {\n", structName))
 	for _, field := range fields {
 		if field.FieldComment != "" {
@@ -320,7 +325,7 @@ func mapElasticsearchTypeToGoType(name, esType string) string {
 
 	goType, exists := GoTypeMap[esType]
 	if !exists {
-		goType = "interface{}"
+		goType = "any"
 	}
 
 	return goType

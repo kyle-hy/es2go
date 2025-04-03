@@ -1,5 +1,8 @@
 {
   "mappings": {
+    "meta": {
+      "comment": "咖啡表"
+    },
     "properties": {
       "cafe_name": {
         "type": "text",
@@ -25,6 +28,9 @@
         "analyzer": "standard"
       },
       "menu_items": {
+        "meta": {
+          "comment": "菜单列表"
+        },
         "type": "nested",
         "properties": {
           "category": {
