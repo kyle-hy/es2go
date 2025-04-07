@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 	"sort"
 	"strings"
 	"text/template"
@@ -116,6 +117,12 @@ func GenEsModel(inputPath, outputPath, packageName, structName string, opts *Gen
 	return processFile(inputPath, outputPath, packageName, structName, opts, tmpl)
 }
 
+// RemoveExt 删除文件的后缀名
+func RemoveExt(path string) string {
+	ext := filepath.Ext(path)
+	return path[:len(path)-len(ext)]
+}
+
 func processFile(inputPath, outputPath, packageName, structName string, opts *GenOptions, tmpl *template.Template) (*EsModelInfo, error) {
 	data, err := os.ReadFile(inputPath)
 	if err != nil {
@@ -128,7 +135,7 @@ func processFile(inputPath, outputPath, packageName, structName string, opts *Ge
 		return nil, fmt.Errorf("Error unmarshalling JSON from file %s: %v", inputPath, err)
 	}
 
-	fields, structDefinitions := generateStructDefinitions(structName, esMapping.Mappings.Meta, esMapping.Mappings.Properties)
+	fields, structDefinitions := generateStructDefinitions(structName, esMapping.Mappings.Meta, esMapping.Mappings.Properties, "")
 
 	var initClassName string
 	if opts != nil && opts.InitClassName != nil {
@@ -154,10 +161,16 @@ func processFile(inputPath, outputPath, packageName, structName string, opts *Ge
 	}
 
 	fmt.Printf("Generated Go struct for %s and saved to %s\n", inputPath, outputPath)
+
+	// 从mapping文件名提取es索引名称
+	indexName := RemoveExt(filepath.Base(inputPath))
+	indexName = strings.TrimSuffix(indexName, "_mapping") // 尝试删除索引文件添加的后缀
+	indexName = strings.TrimSuffix(indexName, "-mapping") // 尝试删除索引文件添加的后缀
 	esModelInfo := &EsModelInfo{
 		PackageName:   packageName,
 		InitClassName: initClassName,
 		StructName:    structName,
+		IndexName:     indexName,
 		StructComment: esMapping.Mappings.Meta.Comment,
 		Fields:        fields,
 	}
@@ -165,9 +178,12 @@ func processFile(inputPath, outputPath, packageName, structName string, opts *Ge
 }
 
 // generateStructDefinitions 生成模型结构体定义的字段信息
-func generateStructDefinitions(structName string, meta Meta, properties map[string]Property) ([]*FieldInfo, string) {
+func generateStructDefinitions(structName string, meta Meta, properties map[string]Property, nestedPath string) ([]*FieldInfo, string) {
 	var structDefs strings.Builder
 	fields := generateStruct(&structDefs, structName, meta, properties)
+	if nestedPath != "" {
+		AddNestedFilePath(nestedPath, fields)
+	}
 	return fields, structDefs.String()
 }
 
@@ -207,14 +223,20 @@ func generateStruct(structDefs *strings.Builder, structName string, meta Meta, p
 				} else {
 					nestedStructName = fieldType
 				}
-				nestedFields, structDefine := generateStructDefinitions(nestedStructName, prop.Meta, prop.Properties)
+
+				nestedFields, structDefine := generateStructDefinitions(nestedStructName, prop.Meta, prop.Properties, name)
 				nestedStructs = append(nestedStructs, structDefine)
+
+				// AddNestedFilePath(name, nestedFields)
 				allFields = append(allFields, nestedFields...)
 			} else {
 				nestedStructName := ToPascalCase(name)
 				fieldType = "*" + nestedStructName
-				nestedFields, structDefine := generateStructDefinitions(nestedStructName, prop.Meta, prop.Properties)
+
+				nestedFields, structDefine := generateStructDefinitions(nestedStructName, prop.Meta, prop.Properties, name)
 				nestedStructs = append(nestedStructs, structDefine)
+
+				// AddNestedFilePath(name, nestedFields)
 				allFields = append(allFields, nestedFields...)
 			}
 		} else {
@@ -232,6 +254,7 @@ func generateStruct(structDefs *strings.Builder, structName string, meta Meta, p
 			FieldName:     fieldName,
 			FieldType:     fieldType,
 			EsFieldType:   prop.Type,
+			EsFieldPath:   name,
 			JSONName:      name,
 			FieldComment:  fieldComment,
 			FieldsKeyword: fieldsKeyword,
@@ -296,6 +319,13 @@ func mapElasticsearchTypeToGoType(name, esType string) string {
 	}
 
 	return goType
+}
+
+// AddNestedFilePath 添加嵌套字段的访问路径
+func AddNestedFilePath(nestedName string, fields []*FieldInfo) {
+	for _, field := range fields {
+		field.EsFieldPath = fmt.Sprintf("%s.%s", nestedName, field.EsFieldPath)
+	}
 }
 
 func mapElasticsearchFieldToGoField(esFieldName string) string {

@@ -58,6 +58,7 @@ func main() {
 		log.Fatalf("Failed to generate data model: %v", err)
 	}
 
+	_ = esInfo
 	jd, _ := json.MarshalIndent(esInfo, "", "    ")
 	fmt.Printf("%+v\n", string(jd))
 

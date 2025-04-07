@@ -27,7 +27,7 @@ type Property struct {
 
 // Mappings .
 type Mappings struct {
-	Meta       Meta                `json:"meta"` // 元数据，用于字段注释说明
+	Meta       Meta                `json:"meta"` // 元数据，用于库表注释说明
 	Properties map[string]Property `json:"properties,omitempty"`
 }
 
@@ -40,20 +40,21 @@ type ElasticsearchMapping struct {
 
 // FieldInfo es的mapping字段信息
 type FieldInfo struct {
-	FieldName     string // golang的字段名称
-	FieldType     string // golang的字段类型
+	FieldName     string // go的字段名称
+	FieldType     string // go的字段类型
+	JSONName      string // go的字段json字段标签
+	FieldComment  string // go的字段注释
+	FieldsKeyword string // go的字段text子字段keyword
 	EsFieldType   string // es的mapping字段类型
-	EsNestedField string // es的嵌套字段的访问路径
-	JSONName      string // json字段标签
-	FieldComment  string // 字段注释
-	FieldsKeyword string // text字段keyword子字段
+	EsFieldPath   string // es的字段(嵌套)的访问路径
 }
 
 // EsModelInfo ES库表模型的信息
 type EsModelInfo struct {
-	PackageName   string       // 包名
-	InitClassName string       // 封装的类型名称
-	StructName    string       // 模型结构体名称
-	StructComment string       // 模型结构体注释
-	Fields        []*FieldInfo // 字段信息
+	PackageName   string       // go的包名
+	InitClassName string       // go自定义封装的类型名称
+	StructName    string       // go的模型结构体名称
+	StructComment string       // go的模型结构体注释
+	IndexName     string       // es的索引(表)名称
+	Fields        []*FieldInfo // es相关字段信息
 }
