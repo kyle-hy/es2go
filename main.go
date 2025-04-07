@@ -1,12 +1,22 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
+	"fmt"
 	"log"
 	"os/exec"
 
-	. "github.com/kyle-hy/es2go"
+	gen "github.com/kyle-hy/es2go/generator"
 )
+
+// GetOrDefault .
+func GetOrDefault[T any](ptr *T, defaultVal T) T {
+	if ptr != nil {
+		return *ptr
+	}
+	return defaultVal
+}
 
 func main() {
 	// required arguments
@@ -32,7 +42,7 @@ func main() {
 	}
 
 	// set up generator options
-	opts := &GeneratorOptions{
+	opts := &gen.GenOptions{
 		InitClassName:      nullableString(initClassName),
 		TypeMappingPath:    nullableString(typeMappingPath),
 		ExceptionFieldPath: nullableString(exceptionFieldPath),
@@ -43,12 +53,14 @@ func main() {
 	}
 
 	// generate datamodel
-	err := GenerateDataModel(*inputPath, *outputPath, *packageName, *structName, opts)
+	esInfo, err := gen.GenEsModel(*inputPath, *outputPath, *packageName, *structName, opts)
 	if err != nil {
 		log.Fatalf("Failed to generate data model: %v", err)
 	}
 
-	// TODO 格式化代码
+	jd, _ := json.MarshalIndent(esInfo, "", "    ")
+	fmt.Printf("%+v\n", string(jd))
+
 	// 调用go格式化工具格式化代码
 	cmd := exec.Command("goimports", "-w", *outputPath)
 	cmd.Run()

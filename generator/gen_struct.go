@@ -1,4 +1,4 @@
-package es2go
+package generator
 
 import (
 	"bytes"
@@ -14,42 +14,8 @@ import (
 	"golang.org/x/text/language"
 )
 
-// Keyword 属性的子类型
-type Keyword struct {
-	Type string `json:"type,omitempty"`
-}
-
-// Fields 属性子字段
-type Fields struct {
-	Keyword Keyword `json:"keyword,omitempty"`
-}
-
-// Meta 属性的注释说明
-type Meta struct {
-	Comment string `json:"comment,omitempty"`
-}
-
-// Property 字段属性
-type Property struct {
-	Type       string              `json:"type,omitempty"`
-	Meta       Meta                `json:"meta,omitempty"` // 元数据，用于字段注释说明
-	Fields     Fields              `json:"fields,omitempty"`
-	Properties map[string]Property `json:"properties,omitempty"`
-}
-
-// Mappings .
-type Mappings struct {
-	Meta       Meta                `json:"meta,omitempty"` // 元数据，用于字段注释说明
-	Properties map[string]Property `json:"properties,omitempty"`
-}
-
-// ElasticsearchMapping .
-type ElasticsearchMapping struct {
-	Mappings Mappings `json:"mappings,omitempty"`
-}
-
-// GeneratorOptions defines the optional parameters for the GenerateDatamodel function.
-type GeneratorOptions struct {
+// GenOptions defines the optional parameters for the GenerateDatamodel function.
+type GenOptions struct {
 	InitClassName      *string
 	TypeMappingPath    *string
 	ExceptionFieldPath *string
@@ -59,41 +25,23 @@ type GeneratorOptions struct {
 	TmplPath           *string
 }
 
-// Field 字段的mapping
-type Field struct {
-	FieldName     string
-	FieldType     string // golang的字段类型
-	EsFieldType   string // es的mapping字段类型
-	JSONName      string
-	FieldComment  string // 字段注释
-	FieldsKeyword string // text字段keyword子字段
-}
-
-// StructData 结构体数据
-type StructData struct {
-	PackageName       string
-	InitClassName     string
-	StructName        string
-	StructDefinitions string
-}
-
 // GoTypeMap holds the mapping from Elasticsearch types to Go types.
 var (
-	GoTypeMap       map[string]string
-	FieldExceptions map[string]string
-	TypeExceptions  map[string]string
-	SkipFields      map[string]bool
+	GoTypeMap       map[string]string // es字段与go字段的映射
+	FieldExceptions map[string]string // 异常字段
+	TypeExceptions  map[string]string // 异常类型
+	SkipFields      map[string]bool   // 忽略的字段
 	FieldComments   map[string]string // 字段注释
 )
 
-// StructNameTracker to avoid generating duplicate struct names
+// StructNameTracker 用于避免生成重复的结构体名称
 var StructNameTracker map[string]bool
 
-// GenerateDataModel 生成es数据的model
-func GenerateDataModel(inputPath, outputPath, packageName, structName string, opts *GeneratorOptions) error {
+// GenEsModel 生成es表属性的model
+func GenEsModel(inputPath, outputPath, packageName, structName string, opts *GenOptions) (*EsModelInfo, error) {
 	// check for required fields
 	if inputPath == "" || outputPath == "" || structName == "" || packageName == "" {
-		return fmt.Errorf("inputPath, outputPath, structName, and packageName must be specified")
+		return nil, fmt.Errorf("inputPath, outputPath, structName, and packageName must be specified")
 	}
 
 	// initialize StructNameTracker
@@ -151,43 +99,43 @@ func GenerateDataModel(inputPath, outputPath, packageName, structName string, op
 	if opts != nil && opts.TmplPath != nil && *opts.TmplPath != "" {
 		tmpl, err = template.ParseFiles(*opts.TmplPath)
 		if err != nil {
-			return fmt.Errorf("Failed to load template file %s: %v", *opts.TmplPath, err)
+			return nil, fmt.Errorf("Failed to load template file %s: %v", *opts.TmplPath, err)
 		}
 	} else {
 		// choose default template based on the presence of InitClassName
 		if opts != nil && opts.InitClassName != nil && *opts.InitClassName != "" {
-			tmpl, err = template.New("structWithWrapper").Parse(structTemplateWithWrapper)
+			tmpl, err = template.New("structWithWrapper").Parse(StructTplWithWrapper)
 		} else {
-			tmpl, err = template.New("structWithoutWrapper").Parse(structTemplateWithoutWrapper)
+			tmpl, err = template.New("structWithoutWrapper").Parse(StructTplWithoutWrapper)
 		}
 		if err != nil {
-			return fmt.Errorf("Error parsing template: %v", err)
+			return nil, fmt.Errorf("Error parsing template: %v", err)
 		}
 	}
 
 	return processFile(inputPath, outputPath, packageName, structName, opts, tmpl)
 }
 
-func processFile(inputPath, outputPath, packageName, structName string, opts *GeneratorOptions, tmpl *template.Template) error {
+func processFile(inputPath, outputPath, packageName, structName string, opts *GenOptions, tmpl *template.Template) (*EsModelInfo, error) {
 	data, err := os.ReadFile(inputPath)
 	if err != nil {
-		return fmt.Errorf("Failed to read file %s: %v", inputPath, err)
+		return nil, fmt.Errorf("Failed to read file %s: %v", inputPath, err)
 	}
 
 	var esMapping ElasticsearchMapping
 	err = json.Unmarshal(data, &esMapping)
 	if err != nil {
-		return fmt.Errorf("Error unmarshalling JSON from file %s: %v", inputPath, err)
+		return nil, fmt.Errorf("Error unmarshalling JSON from file %s: %v", inputPath, err)
 	}
 
-	structDefinitions := generateStructDefinitions(structName, esMapping.Mappings.Meta, esMapping.Mappings.Properties)
+	fields, structDefinitions := generateStructDefinitions(structName, esMapping.Mappings.Meta, esMapping.Mappings.Properties)
 
 	var initClassName string
 	if opts != nil && opts.InitClassName != nil {
 		initClassName = *opts.InitClassName
 	}
 
-	structData := StructData{
+	structData := StructTplData{
 		PackageName:       packageName,
 		InitClassName:     initClassName,
 		StructName:        structName,
@@ -197,34 +145,43 @@ func processFile(inputPath, outputPath, packageName, structName string, opts *Ge
 	var buf bytes.Buffer
 	err = tmpl.Execute(&buf, structData)
 	if err != nil {
-		return fmt.Errorf("Error executing template: %v", err)
+		return nil, fmt.Errorf("Error executing template: %v", err)
 	}
 
 	err = os.WriteFile(outputPath, buf.Bytes(), 0644)
 	if err != nil {
-		return fmt.Errorf("Failed to write output file %s: %v", outputPath, err)
+		return nil, fmt.Errorf("Failed to write output file %s: %v", outputPath, err)
 	}
 
 	fmt.Printf("Generated Go struct for %s and saved to %s\n", inputPath, outputPath)
-	return nil
+	esModelInfo := &EsModelInfo{
+		PackageName:   packageName,
+		InitClassName: initClassName,
+		StructName:    structName,
+		StructComment: esMapping.Mappings.Meta.Comment,
+		Fields:        fields,
+	}
+	return esModelInfo, nil
 }
 
-func generateStructDefinitions(structName string, meta Meta, properties map[string]Property) string {
+// generateStructDefinitions 生成模型结构体定义的字段信息
+func generateStructDefinitions(structName string, meta Meta, properties map[string]Property) ([]*FieldInfo, string) {
 	var structDefs strings.Builder
-	generateStruct(&structDefs, structName, meta, properties)
-	return structDefs.String()
+	fields := generateStruct(&structDefs, structName, meta, properties)
+	return fields, structDefs.String()
 }
 
-func generateStruct(structDefs *strings.Builder, structName string, meta Meta, properties map[string]Property) {
+func generateStruct(structDefs *strings.Builder, structName string, meta Meta, properties map[string]Property) []*FieldInfo {
 	// check if the struct has already been generated
 	if _, exists := StructNameTracker[structName]; exists {
-		return
+		return nil
 	}
 
 	// mark this struct as generated
 	StructNameTracker[structName] = true
 
-	fields := []Field{}
+	fields := []*FieldInfo{}
+	allFields := []*FieldInfo{}
 	nestedStructs := []string{}
 
 	for name, prop := range properties {
@@ -244,18 +201,21 @@ func generateStruct(structDefs *strings.Builder, structName string, meta Meta, p
 				var nestedStructName string
 				fieldType = customType
 				if strings.HasPrefix(fieldType, "*") {
-					nestedStructName = fieldType[1:] + "Nested" // "*" 删除
+					nestedStructName = fieldType[1:] // "*" 删除
 				} else if strings.HasPrefix(fieldType, "[]") {
-					nestedStructName = fieldType[2:] + "Nested" // "[]" 删除
+					nestedStructName = fieldType[2:] // "[]" 删除
 				} else {
-					nestedStructName = fieldType + "Nested"
+					nestedStructName = fieldType
 				}
-				nestedStructs = append(nestedStructs, generateStructDefinitions(nestedStructName, prop.Meta, prop.Properties))
+				nestedFields, structDefine := generateStructDefinitions(nestedStructName, prop.Meta, prop.Properties)
+				nestedStructs = append(nestedStructs, structDefine)
+				allFields = append(allFields, nestedFields...)
 			} else {
-				nestedStructName := ToPascalCase(name) + "Nested"
+				nestedStructName := ToPascalCase(name)
 				fieldType = "*" + nestedStructName
-				fmt.Println(fieldType)
-				nestedStructs = append(nestedStructs, generateStructDefinitions(nestedStructName, prop.Meta, prop.Properties))
+				nestedFields, structDefine := generateStructDefinitions(nestedStructName, prop.Meta, prop.Properties)
+				nestedStructs = append(nestedStructs, structDefine)
+				allFields = append(allFields, nestedFields...)
 			}
 		} else {
 			fieldType = mapElasticsearchTypeToGoType(name, prop.Type)
@@ -268,19 +228,24 @@ func generateStruct(structDefs *strings.Builder, structName string, meta Meta, p
 			fieldComment = comment
 		}
 
-		fields = append(fields, Field{
+		finfo := &FieldInfo{
 			FieldName:     fieldName,
 			FieldType:     fieldType,
 			EsFieldType:   prop.Type,
 			JSONName:      name,
 			FieldComment:  fieldComment,
 			FieldsKeyword: fieldsKeyword,
-		})
+		}
+		fields = append(fields, finfo)
+		allFields = append(allFields, finfo)
 	}
 
 	// sort fields alphabetically
 	sort.Slice(fields, func(i, j int) bool {
 		return fields[i].FieldName < fields[j].FieldName
+	})
+	sort.Slice(allFields, func(i, j int) bool {
+		return allFields[i].FieldName < allFields[j].FieldName
 	})
 
 	// generate struct definition
@@ -315,6 +280,8 @@ func generateStruct(structDefs *strings.Builder, structName string, meta Meta, p
 	for _, nestedStruct := range nestedStructs {
 		structDefs.WriteString(nestedStruct)
 	}
+
+	return allFields
 }
 
 func mapElasticsearchTypeToGoType(name, esType string) string {
@@ -435,3 +402,36 @@ type GeoPoint struct {
 	Lat float64 `json:"lat"` // 纬度
 	Lon float64 `json:"lon"` // 经度
 }
+
+/**************** 渲染相关 *************/
+
+// StructTplData 模板渲染传入的结构体数据
+type StructTplData struct {
+	PackageName       string // 包名
+	InitClassName     string // 封装的类型名称
+	StructName        string // 模型结构体名称
+	StructDefinitions string // 模型结构体定义，所有属性的渲染都已在go代码实现
+}
+
+// StructTplWithWrapper .
+const StructTplWithWrapper = `// Code generated by es2go. DO NOT EDIT.
+package {{.PackageName}}
+
+import "time"
+
+type {{.InitClassName}} struct {
+	{{.StructName}}
+}
+
+{{.StructDefinitions}}
+`
+
+// StructTplWithoutWrapper .
+const StructTplWithoutWrapper = `// Code generated by es2go. DO NOT EDIT.
+
+package {{.PackageName}}
+
+import "time"
+
+{{.StructDefinitions}}
+`
