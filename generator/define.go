@@ -27,7 +27,7 @@ type Property struct {
 
 // Mappings .
 type Mappings struct {
-	Meta       Meta                `json:"meta"` // 元数据，用于库表注释说明
+	Meta       Meta                `json:"_meta"` // 使用保留字段，用于库表注释说明
 	Properties map[string]Property `json:"properties,omitempty"`
 }
 

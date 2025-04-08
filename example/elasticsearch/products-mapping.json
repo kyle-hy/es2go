@@ -1,0 +1,42 @@
+{
+    "mappings": {
+        "_meta": {
+            "comment": "商品表"
+        },
+        "properties": {
+            "created_at": {
+                "type": "date",
+                "meta": {
+                    "comment": "商品创建时间，存储为日期格式。"
+                }
+            },
+            "description": {
+                "type": "text",
+                "meta": {
+                    "comment": "商品描述，支持全文搜索。分析器会进行标准分词。"
+                },
+                "analyzer": "standard"
+            },
+            "name": {
+                "type": "text",
+                "meta": {
+                    "comment": "商品名称，支持模糊查询。使用标准分析器进行分词处理。"
+                },
+                "analyzer": "standard"
+            },
+            "price": {
+                "type": "float",
+                "meta": {
+                    "comment": "商品价格，存储为浮动数值，支持范围查询和排序。"
+                }
+            },
+            "region": {
+                "type": "text",
+                "meta": {
+                    "comment": "商品所在的地区名称，支持模糊查询。"
+                },
+                "analyzer": "standard"
+            }
+        }
+    }
+}
