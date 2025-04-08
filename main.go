@@ -58,8 +58,12 @@ func main() {
 		log.Fatalf("Failed to generate data model: %v", err)
 	}
 
-	_ = esInfo
-	jd, _ := json.MarshalIndent(esInfo, "", "    ")
+	// fieldsArr := utils.Combinations(esInfo.Fields, 5)
+	// jd, _ := json.MarshalIndent(fieldsArr, "", "    ")
+	// fmt.Printf("%+v\n", string(jd))
+
+	tm := gen.GroupFieldsByType(esInfo.Fields)
+	jd, _ := json.MarshalIndent(tm, "", "    ")
 	fmt.Printf("%+v\n", string(jd))
 
 	// 调用go格式化工具格式化代码

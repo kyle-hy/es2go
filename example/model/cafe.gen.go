@@ -4,7 +4,7 @@ package model
 
 import "time"
 
-// CafeDocJson 咖啡表
+// CafeDocJson .
 type CafeDocJson struct {
 	Address       string     `json:"address" es:"type:text"`
 	AverageRating float64    `json:"average_rating" es:"type:float"`
