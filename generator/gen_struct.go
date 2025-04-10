@@ -6,13 +6,13 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"sort"
 	"strings"
 	"text/template"
 
-	"golang.org/x/text/cases"
-	"golang.org/x/text/language"
+	"github.com/kyle-hy/es2go/utils"
 )
 
 // GenOptions defines the optional parameters for the GenerateDatamodel function.
@@ -160,6 +160,10 @@ func processFile(inputPath, outputPath, packageName, structName string, opts *Ge
 		return nil, fmt.Errorf("Failed to write output file %s: %v", outputPath, err)
 	}
 
+	// 调用go格式化工具格式化代码
+	cmd := exec.Command("goimports", "-w", outputPath)
+	cmd.Run()
+
 	fmt.Printf("Generated Go struct for %s and saved to %s\n", inputPath, outputPath)
 
 	// 从mapping文件名提取es索引名称
@@ -173,6 +177,9 @@ func processFile(inputPath, outputPath, packageName, structName string, opts *Ge
 		IndexName:     indexName,
 		StructComment: esMapping.Mappings.Meta.Comment,
 		Fields:        fields,
+	}
+	if esModelInfo.StructComment == "" {
+		esModelInfo.StructComment = indexName
 	}
 	return esModelInfo, nil
 }
@@ -230,7 +237,7 @@ func generateStruct(structDefs *strings.Builder, structName string, meta Meta, p
 				// AddNestedFilePath(name, nestedFields)
 				allFields = append(allFields, nestedFields...)
 			} else {
-				nestedStructName := ToPascalCase(name)
+				nestedStructName := utils.ToPascalCase(name)
 				fieldType = "*" + nestedStructName
 
 				nestedFields, structDefine := generateStructDefinitions(nestedStructName, prop.Meta, prop.Properties, name)
@@ -248,6 +255,10 @@ func generateStruct(structDefs *strings.Builder, structName string, meta Meta, p
 		comment := mapElasticsearchFieldToComment(name)
 		if comment != "" {
 			fieldComment = comment
+		}
+
+		if fieldComment == "" {
+			fieldComment = name
 		}
 
 		finfo := &FieldInfo{
@@ -334,7 +345,7 @@ func mapElasticsearchFieldToGoField(esFieldName string) string {
 		return customFieldName
 	}
 
-	return ToPascalCase(esFieldName)
+	return utils.ToPascalCase(esFieldName)
 }
 
 func mapElasticsearchFieldToComment(esFieldName string) string {
@@ -404,27 +415,6 @@ func loadFieldComments(filePath string) {
 	if err != nil {
 		log.Fatalf("Error unmarshalling JSON from field comments file %s: %v", filePath, err)
 	}
-}
-
-// ToCamelCase 转驼峰模式
-func ToCamelCase(s string) string {
-	caser := cases.Title(language.Und) // or: `language.English`
-	parts := strings.Split(s, "_")
-	for i, part := range parts {
-		parts[i] = caser.String(part)
-	}
-	parts[0] = strings.ToLower(parts[0])
-	return strings.Join(parts, "")
-}
-
-// ToPascalCase .
-func ToPascalCase(s string) string {
-	caser := cases.Title(language.Und)
-	parts := strings.Split(s, "_")
-	for i, part := range parts {
-		parts[i] = caser.String(part)
-	}
-	return strings.Join(parts, "")
 }
 
 // GeoPoint Elasticsearch的地理坐标

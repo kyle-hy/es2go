@@ -1,6 +1,9 @@
 package generator
 
-import "fmt"
+// 全局常量
+const (
+	MaxCombine = 5
+)
 
 /***************** es mapping 相关 **************************/
 
@@ -65,61 +68,87 @@ type EsModelInfo struct {
 func GroupFieldsByType(fields []*FieldInfo) map[string][]*FieldInfo {
 	grouped := make(map[string][]*FieldInfo)
 	for _, f := range fields {
-		typ := TypeMapping(f)
-		grouped[typ] = append(grouped[typ], f)
+		types := TypeMapping(f)
+		for _, typ := range types {
+			grouped[typ] = append(grouped[typ], f)
+		}
 	}
 	return grouped
 }
 
+// 类型分组
+const (
+	TypeVector      = "vector"
+	TypeText        = "text"
+	TypeKeyword     = "keyword"
+	TypeTextKeyword = "text.keyword"
+	TypeNumber      = "number"
+	TypeDate        = "date"
+	TypeBoolean     = "boolean"
+	TypeRange       = "range"
+	TypeIP          = "ip"
+	TypeGeo         = "geo"
+	TypeObject      = "object"
+	TypeSpecial     = "special"
+	TypeOther       = "other"
+)
+
 // TypeMapping 类型映射
-func TypeMapping(field *FieldInfo) string {
+func TypeMapping(field *FieldInfo) []string {
+	types := []string{}
 	if field.EsFieldType == "text" && field.FieldsKeyword == "keyword" {
-		fmt.Println(field)
 		// 明确带 keyword 子字段
-		return "text.keyword"
+		types = append(types, TypeTextKeyword)
 	}
 
 	esType := field.EsFieldType
 	switch esType {
-	// 字符串类
-	case "text", "wildcard", "constant_keyword", "match_only_text":
-		return "text"
-	case "keyword":
-		return "keyword"
+	case "dense_vector", "sparse_vector": // 向量类
+		types = append(types, TypeVector)
+		return types
+	case "text", "wildcard", "constant_keyword", "match_only_text": // 字符串类
+		types = append(types, TypeText)
+		return types
+	case "keyword": // 不做分词的字符串
+		types = append(types, TypeKeyword)
+		return types
 
 	// 数值类
 	case "long", "integer", "short", "byte", "double", "float", "half_float", "scaled_float", "unsigned_long":
-		return "number"
+		types = append(types, TypeNumber)
+		return types
 
-	// 日期类
-	case "date", "date_nanos":
-		return "date"
+	case "date", "date_nanos": // 日期类
+		types = append(types, TypeDate)
+		return types
 
-	// 布尔类
-	case "boolean":
-		return "boolean"
+	case "boolean": // 布尔类
+		types = append(types, TypeBoolean)
+		return types
 
 	// 范围类（特殊处理）
 	case "integer_range", "float_range", "long_range", "double_range", "date_range":
-		return "range"
+		types = append(types, TypeRange)
+		return types
 
-	// IP 地址类
-	case "ip":
-		return "ip"
+	case "ip": // IP 地址类
+		types = append(types, TypeIP)
+		return types
 
-	// 地理类
-	case "geo_point", "geo_shape":
-		return "geo"
+	case "geo_point", "geo_shape": // 地理类
+		types = append(types, TypeGeo)
+		return types
 
-	// 嵌套结构类
-	case "object", "nested", "flattened", "join":
-		return "object"
+	case "object", "nested", "flattened", "join": // 嵌套结构类
+		types = append(types, TypeObject)
+		return types
 
-	// 特殊类
-	case "binary", "token_count", "murmur3", "version":
-		return "special"
+	case "binary", "token_count", "murmur3", "version": // 特殊类
+		types = append(types, TypeSpecial)
+		return types
 
 	default:
-		return "other"
+		types = append(types, TypeOther)
+		return types
 	}
 }

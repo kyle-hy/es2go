@@ -1,11 +1,8 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
-	"fmt"
 	"log"
-	"os/exec"
 
 	gen "github.com/kyle-hy/es2go/generator"
 )
@@ -52,23 +49,15 @@ func main() {
 		TmplPath:           nullableString(tmplPath),
 	}
 
-	// generate datamodel
+	// 生成struct结构体定义
 	esInfo, err := gen.GenEsModel(*inputPath, *outputPath, *packageName, *structName, opts)
 	if err != nil {
 		log.Fatalf("Failed to generate data model: %v", err)
 	}
 
-	// fieldsArr := utils.Combinations(esInfo.Fields, 5)
-	// jd, _ := json.MarshalIndent(fieldsArr, "", "    ")
-	// fmt.Printf("%+v\n", string(jd))
+	// 生成详情查询函数接口
+	gen.GenEsDetail(*outputPath, esInfo)
 
-	tm := gen.GroupFieldsByType(esInfo.Fields)
-	jd, _ := json.MarshalIndent(tm, "", "    ")
-	fmt.Printf("%+v\n", string(jd))
-
-	// 调用go格式化工具格式化代码
-	cmd := exec.Command("goimports", "-w", *outputPath)
-	cmd.Run()
 }
 
 // nullableString is a helper function to treat flag.String values as nullable.
