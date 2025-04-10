@@ -5,6 +5,24 @@ const (
 	MaxCombine = 5
 )
 
+// FuncTplData 预处理生产的函数模板需要的信息
+type FuncTplData struct {
+	Name    string // 函数名称
+	Comment string // 函数注释
+	Params  string // 参数列表
+	Query   string // 查询条件
+}
+
+// DetailTplData 生成详情的模板数据
+type DetailTplData struct {
+	PackageName   string         // 代码包名
+	StructName    string         // 模型结构体名称
+	StructComment string         // 模型结构体注释
+	IndexName     string         // es索引名称(表名)
+	Fields        []*FieldInfo   // es相关字段信息
+	FuncDatas     []*FuncTplData // 预处理生产的函数模板需要的信息
+}
+
 /***************** es mapping 相关 **************************/
 
 // Keyword 属性的子类型

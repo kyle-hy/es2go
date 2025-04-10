@@ -7,42 +7,34 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// QueryBooksByAuthor 根据author查询books的详细数据
+// QueryBooksByAuthor 对author进行检索查询books的详细数据
+// author string author
 func QueryBooksByAuthor(es *elasticsearch.Client, author string) ([]*Books, int, error) {
 	esQuery := eq.ESQuery{
 		Query: eq.Match("author", author),
 	}
 
-	l, t, err := eq.QueryList[Books](es, "books", esQuery)
-	if err != nil {
-		return nil, 0, err
-	}
-	return l, t, nil
+	return eq.QueryList[Books](es, "books", esQuery)
 }
 
-// QueryBooksByName 根据name查询books的详细数据
+// QueryBooksByName 对书名进行检索查询books的详细数据
+// name string 书名
 func QueryBooksByName(es *elasticsearch.Client, name string) ([]*Books, int, error) {
 	esQuery := eq.ESQuery{
 		Query: eq.Match("name", name),
 	}
 
-	l, t, err := eq.QueryList[Books](es, "books", esQuery)
-	if err != nil {
-		return nil, 0, err
-	}
-	return l, t, nil
+	return eq.QueryList[Books](es, "books", esQuery)
 }
 
-// QueryBooksByAuthorName 根据author、name查询books的详细数据
+// QueryBooksByAuthorName 对author、书名进行检索查询books的详细数据
+// author string author
+// name string 书名
 func QueryBooksByAuthorName(es *elasticsearch.Client, author string, name string) ([]*Books, int, error) {
-	queries := []eq.Map{
+	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
-	esQuery := eq.ESQuery{Query: eq.Bool(eq.WithMust(queries))}
-	l, t, err := eq.QueryList[Books](es, "books", esQuery)
-	if err != nil {
-		return nil, 0, err
-	}
-	return l, t, nil
+	esQuery := eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	return eq.QueryList[Books](es, "books", esQuery)
 }

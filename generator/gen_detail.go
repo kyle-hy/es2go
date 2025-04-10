@@ -11,66 +11,62 @@ import (
 	"github.com/kyle-hy/es2go/utils"
 )
 
-// DetailTplData 生成详情的模板数据
-type DetailTplData struct {
-	PackageName   string         // 代码包名
-	StructName    string         // 模型结构体名称
-	StructComment string         // 模型结构体注释
-	IndexName     string         // es索引名称(表名)
-	Fields        []*FieldInfo   // es相关字段信息
-	FuncDatas     []*FuncTplData // 预处理生产的函数模板需要的信息
-}
-
-// FuncTplData 预处理生产的函数模板需要的信息
-type FuncTplData struct {
-	Name    string // 函数名称
-	Comment string // 函数注释
-	Params  string // 参数列表
-	Query   string // 查询条件
-}
+// 生成对text字段检索的代码
 
 // PreDetailCond 使用go代码预处理渲染需要的一些逻辑，template脚本出来调试困难
 func PreDetailCond(esInfo *EsModelInfo) []*FuncTplData {
 	funcDatas := []*FuncTplData{}
+
+	// 按数据类型分组字段
 	grpFileds := GroupFieldsByType(esInfo.Fields)
+
+	// 提取目标字段
 	fields := grpFileds[TypeText]
+
+	// 字段随机组合
 	cmbFields := utils.Combinations(fields, MaxCombine)
 	for _, cfs := range cmbFields {
 		ftd := &FuncTplData{
-			Name:    GetFuncName(esInfo.StructName, cfs),
-			Comment: GetFuncComment(esInfo.StructComment, cfs),
-			Params:  GetFuncParams(cfs),
-			Query:   GetMatchQuery(cfs),
+			Name:    getDetailFuncName(esInfo.StructName, cfs),
+			Comment: getDetailFuncComment(esInfo.StructComment, cfs),
+			Params:  getDetailFuncParams(cfs),
+			Query:   getDetailMatchQuery(cfs),
 		}
 		funcDatas = append(funcDatas, ftd)
 	}
 
-	utils.JPrint(funcDatas)
 	return funcDatas
 }
 
-// GetFuncName 获取函数名称
-func GetFuncName(StructName string, fields []*FieldInfo) string {
-	fn := "Query" + StructName + "By"
+// getDetailFuncName 获取函数名称
+func getDetailFuncName(structName string, fields []*FieldInfo) string {
+	fn := "Query" + structName + "By"
 	for _, f := range fields {
 		fn += f.FieldName
 	}
 	return fn
 }
 
-// GetFuncComment 获取函数注释
-func GetFuncComment(StructComment string, fields []*FieldInfo) string {
-	cmt := "根据"
+// getDetailFuncComment 获取函数注释
+func getDetailFuncComment(structComment string, fields []*FieldInfo) string {
+	// 函数注释
+	cmt := "对"
 	for _, f := range fields {
 		cmt += f.FieldComment + "、"
 	}
 	cmt = strings.TrimSuffix(cmt, "、")
-	cmt += "查询" + StructComment + "的详细数据"
+	cmt += "进行检索查询" + structComment + "的详细数据"
+
+	// 参数注释
+	for _, f := range fields {
+		cmt += "\n// " + utils.ToFirstLower(f.FieldName) + " " + f.FieldType + " " + f.FieldComment
+	}
+
 	return cmt
 }
 
-// GetFuncParams 获取函数参数列表
-func GetFuncParams(fields []*FieldInfo) string {
+// getDetailFuncParams 获取函数参数列表
+func getDetailFuncParams(fields []*FieldInfo) string {
 	fp := ""
 	for _, f := range fields {
 		fp += utils.ToFirstLower(f.FieldName) + " " + f.FieldType + ", "
@@ -79,8 +75,8 @@ func GetFuncParams(fields []*FieldInfo) string {
 	return fp
 }
 
-// GetMatchQuery 获取函数的查询条件
-func GetMatchQuery(fields []*FieldInfo) string {
+// getDetailMatchQuery 获取函数的查询条件
+func getDetailMatchQuery(fields []*FieldInfo) string {
 	fq := ""
 	if len(fields) == 1 {
 		f := fields[0]
@@ -88,13 +84,13 @@ func GetMatchQuery(fields []*FieldInfo) string {
 		fq += fmt.Sprintf("		Query: eq.Match(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
 		fq += "	}\n"
 	} else {
-		fq = "queries := []eq.Map{\n"
+		fq = "matches := []eq.Map{\n"
 		for _, f := range fields {
 			fq += fmt.Sprintf("		eq.Match(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
 		}
 		fq += "	}\n"
 
-		fq += `	esQuery := eq.ESQuery{Query: eq.Bool(eq.WithMust(queries))}`
+		fq += `	esQuery := eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}`
 	}
 	return fq
 }
@@ -150,11 +146,7 @@ import (
 // {{.Name}} {{.Comment}}
 func {{.Name}}(es *elasticsearch.Client, {{.Params}}) ([]*{{$in.StructName}}, int, error) {
 	{{.Query}}
-	l, t, err := eq.QueryList[{{$in.StructName}}](es, "{{$in.IndexName}}", esQuery)
-	if err != nil {
-		return nil, 0, err
-	}
-	return l, t, nil
+	return eq.QueryList[{{$in.StructName}}](es, "{{$in.IndexName}}", esQuery)
 }
 {{end}}
 `

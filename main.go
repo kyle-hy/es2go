@@ -57,6 +57,7 @@ func main() {
 
 	// 生成详情查询函数接口
 	gen.GenEsDetail(*outputPath, esInfo)
+	gen.GenEsDetailFilter(*outputPath, esInfo)
 
 }
 

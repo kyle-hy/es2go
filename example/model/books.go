@@ -7,7 +7,9 @@ import "time"
 // Books .
 type Books struct {
 	Author      string    `json:"author" es:"type:text;keyword"` // author
-	Name        string    `json:"name" es:"type:text;keyword"`   // name
+	Class       string    `json:"class" es:"type:keyword"`       // class
+	Name        string    `json:"name" es:"type:text;keyword"`   // 书名
 	PageCount   any       `json:"page_count" es:"type:long"`     // page_count
 	ReleaseDate time.Time `json:"release_date" es:"type:date"`   // release_date
+	Seq         string    `json:"seq" es:"type:keyword"`         // seq
 }

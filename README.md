@@ -1,5 +1,7 @@
 # es2go
 
+> 注：Chat2BI的预设接口匹配，先通过LLM拆分任务描述，再按照接口注释的描述方式，对任务重新描述，最后作为匹配内容检索接口，最终再由大模型选择最合适的接口
+
 ## es的mapping生成go结构体struct的工具
 
 根据index的mapping生成结构体，index的注释使用_meta字段的comment存储；字段的注释使用meta字段存储。

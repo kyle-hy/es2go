@@ -12,12 +12,21 @@
             },
             "name": {
                 "type": "text",
+                "meta": {
+                    "comment": "书名"
+                },
                 "fields": {
                     "keyword": {
                         "type": "keyword",
                         "ignore_above": 256
                     }
                 }
+            },
+            "seq": {
+                "type": "keyword"
+            },
+            "class": {
+                "type": "keyword"
             },
             "page_count": {
                 "type": "long"
