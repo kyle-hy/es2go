@@ -7,9 +7,9 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// QueryBooksByPageCountGTE 查找page_count大于等于指定数值的Books详细数据
+// QueryBooksByPageCountGte 查找page_count大于等于指定数值的Books详细数据
 // pageCount int64 page_count
-func QueryBooksByPageCountGTE(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPageCountGte(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	esQuery := &eq.ESQuery{
 		Query: eq.Range("page_count", pageCount, nil, nil, nil),
 	}
@@ -17,9 +17,9 @@ func QueryBooksByPageCountGTE(es *elasticsearch.Client, pageCount int64) (*eq.Da
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByPageCountGT 查找page_count大于指定数值的Books详细数据
+// QueryBooksByPageCountGt 查找page_count大于指定数值的Books详细数据
 // pageCount int64 page_count
-func QueryBooksByPageCountGT(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPageCountGt(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	esQuery := &eq.ESQuery{
 		Query: eq.Range("page_count", nil, pageCount, nil, nil),
 	}
@@ -27,9 +27,9 @@ func QueryBooksByPageCountGT(es *elasticsearch.Client, pageCount int64) (*eq.Dat
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByPageCountLT 查找page_count小于指定数值的Books详细数据
+// QueryBooksByPageCountLt 查找page_count小于指定数值的Books详细数据
 // pageCount int64 page_count
-func QueryBooksByPageCountLT(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPageCountLt(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	esQuery := &eq.ESQuery{
 		Query: eq.Range("page_count", nil, nil, pageCount, nil),
 	}
@@ -37,9 +37,9 @@ func QueryBooksByPageCountLT(es *elasticsearch.Client, pageCount int64) (*eq.Dat
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByPageCountLTE 查找page_count小于等于指定数值的Books详细数据
+// QueryBooksByPageCountLte 查找page_count小于等于指定数值的Books详细数据
 // pageCount int64 page_count
-func QueryBooksByPageCountLTE(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPageCountLte(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	esQuery := &eq.ESQuery{
 		Query: eq.Range("page_count", nil, nil, nil, pageCount),
 	}
@@ -47,9 +47,9 @@ func QueryBooksByPageCountLTE(es *elasticsearch.Client, pageCount int64) (*eq.Da
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByPriceGTE 查找价格大于等于指定数值的Books详细数据
+// QueryBooksByPriceGte 查找价格大于等于指定数值的Books详细数据
 // price float64 价格
-func QueryBooksByPriceGTE(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPriceGte(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	esQuery := &eq.ESQuery{
 		Query: eq.Range("price", price, nil, nil, nil),
 	}
@@ -57,9 +57,9 @@ func QueryBooksByPriceGTE(es *elasticsearch.Client, price float64) (*eq.Data, *e
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByPriceGT 查找价格大于指定数值的Books详细数据
+// QueryBooksByPriceGt 查找价格大于指定数值的Books详细数据
 // price float64 价格
-func QueryBooksByPriceGT(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPriceGt(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	esQuery := &eq.ESQuery{
 		Query: eq.Range("price", nil, price, nil, nil),
 	}
@@ -67,9 +67,9 @@ func QueryBooksByPriceGT(es *elasticsearch.Client, price float64) (*eq.Data, *eq
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByPriceLT 查找价格小于指定数值的Books详细数据
+// QueryBooksByPriceLt 查找价格小于指定数值的Books详细数据
 // price float64 价格
-func QueryBooksByPriceLT(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPriceLt(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	esQuery := &eq.ESQuery{
 		Query: eq.Range("price", nil, nil, price, nil),
 	}
@@ -77,9 +77,9 @@ func QueryBooksByPriceLT(es *elasticsearch.Client, price float64) (*eq.Data, *eq
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByPriceLTE 查找价格小于等于指定数值的Books详细数据
+// QueryBooksByPriceLte 查找价格小于等于指定数值的Books详细数据
 // price float64 价格
-func QueryBooksByPriceLTE(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPriceLte(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	esQuery := &eq.ESQuery{
 		Query: eq.Range("price", nil, nil, nil, price),
 	}
@@ -87,10 +87,10 @@ func QueryBooksByPriceLTE(es *elasticsearch.Client, price float64) (*eq.Data, *e
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByPageCountGTEPriceLT 查找page_count大于等于、价格小于指定数值的Books详细数据
+// QueryBooksByPageCountGtePriceLt 查找page_count大于等于、价格小于指定数值的Books详细数据
 // pageCount int64 page_count
 // price float64 价格
-func QueryBooksByPageCountGTEPriceLT(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPageCountGtePriceLt(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Range("page_count", pageCount, nil, nil, nil),
 		eq.Range("price", nil, nil, price, nil),
@@ -99,10 +99,10 @@ func QueryBooksByPageCountGTEPriceLT(es *elasticsearch.Client, pageCount int64, 
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByPageCountGTEPriceLTE 查找page_count大于等于、价格小于等于指定数值的Books详细数据
+// QueryBooksByPageCountGtePriceLte 查找page_count大于等于、价格小于等于指定数值的Books详细数据
 // pageCount int64 page_count
 // price float64 价格
-func QueryBooksByPageCountGTEPriceLTE(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPageCountGtePriceLte(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Range("page_count", pageCount, nil, nil, nil),
 		eq.Range("price", nil, nil, nil, price),
@@ -111,10 +111,10 @@ func QueryBooksByPageCountGTEPriceLTE(es *elasticsearch.Client, pageCount int64,
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByPageCountGTPriceLT 查找page_count大于、价格小于指定数值的Books详细数据
+// QueryBooksByPageCountGtPriceLt 查找page_count大于、价格小于指定数值的Books详细数据
 // pageCount int64 page_count
 // price float64 价格
-func QueryBooksByPageCountGTPriceLT(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPageCountGtPriceLt(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Range("page_count", nil, pageCount, nil, nil),
 		eq.Range("price", nil, nil, price, nil),
@@ -123,10 +123,10 @@ func QueryBooksByPageCountGTPriceLT(es *elasticsearch.Client, pageCount int64, p
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByPageCountGTPriceLTE 查找page_count大于、价格小于等于指定数值的Books详细数据
+// QueryBooksByPageCountGtPriceLte 查找page_count大于、价格小于等于指定数值的Books详细数据
 // pageCount int64 page_count
 // price float64 价格
-func QueryBooksByPageCountGTPriceLTE(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPageCountGtPriceLte(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Range("page_count", nil, pageCount, nil, nil),
 		eq.Range("price", nil, nil, nil, price),
@@ -135,10 +135,10 @@ func QueryBooksByPageCountGTPriceLTE(es *elasticsearch.Client, pageCount int64, 
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByPageCountLTPriceGTE 查找page_count小于、价格大于等于指定数值的Books详细数据
+// QueryBooksByPageCountLtPriceGte 查找page_count小于、价格大于等于指定数值的Books详细数据
 // pageCount int64 page_count
 // price float64 价格
-func QueryBooksByPageCountLTPriceGTE(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPageCountLtPriceGte(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCount, nil),
 		eq.Range("price", price, nil, nil, nil),
@@ -147,10 +147,10 @@ func QueryBooksByPageCountLTPriceGTE(es *elasticsearch.Client, pageCount int64, 
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByPageCountLTEPriceGTE 查找page_count小于等于、价格大于等于指定数值的Books详细数据
+// QueryBooksByPageCountLtePriceGte 查找page_count小于等于、价格大于等于指定数值的Books详细数据
 // pageCount int64 page_count
 // price float64 价格
-func QueryBooksByPageCountLTEPriceGTE(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPageCountLtePriceGte(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCount),
 		eq.Range("price", price, nil, nil, nil),
@@ -159,10 +159,10 @@ func QueryBooksByPageCountLTEPriceGTE(es *elasticsearch.Client, pageCount int64,
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByPageCountLTPriceGT 查找page_count小于、价格大于指定数值的Books详细数据
+// QueryBooksByPageCountLtPriceGt 查找page_count小于、价格大于指定数值的Books详细数据
 // pageCount int64 page_count
 // price float64 价格
-func QueryBooksByPageCountLTPriceGT(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPageCountLtPriceGt(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCount, nil),
 		eq.Range("price", nil, price, nil, nil),
@@ -171,10 +171,10 @@ func QueryBooksByPageCountLTPriceGT(es *elasticsearch.Client, pageCount int64, p
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByPageCountLTEPriceGT 查找page_count小于等于、价格大于指定数值的Books详细数据
+// QueryBooksByPageCountLtePriceGt 查找page_count小于等于、价格大于指定数值的Books详细数据
 // pageCount int64 page_count
 // price float64 价格
-func QueryBooksByPageCountLTEPriceGT(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func QueryBooksByPageCountLtePriceGt(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCount),
 		eq.Range("price", nil, price, nil, nil),

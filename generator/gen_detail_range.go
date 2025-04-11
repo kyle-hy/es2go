@@ -45,17 +45,22 @@ func PreDetailRangeCond(esInfo *EsModelInfo) []*FuncTplData {
 	return funcDatas
 }
 
+// 数值比较操作
 var (
+	GTE     = "Gte"
+	GT      = "Gt"
+	LT      = "Lt"
+	LTE     = "Lte"
 	optList = [][]string{
-		{"GTE"}, {"GT"}, {"LT"}, {"LTE"},
-		{"GTE", "LT"}, {"GTE", "LTE"}, {"GT", "LT"}, {"GT", "LTE"},
-		{"LT", "GTE"}, {"LTE", "GTE"}, {"LT", "GT"}, {"LTE", "GT"},
+		{GTE}, {GT}, {LT}, {LTE},
+		{GTE, LT}, {GTE, LTE}, {GT, LT}, {GT, LTE},
+		{LT, GTE}, {LTE, GTE}, {LT, GT}, {LTE, GT},
 	}
 	optNames = map[string]string{
-		"GTE": "大于等于",
-		"GT":  "大于",
-		"LT":  "小于",
-		"LTE": "小于等于",
+		GTE: "大于等于",
+		GT:  "大于",
+		LT:  "小于",
+		LTE: "小于等于",
 	}
 )
 
@@ -120,13 +125,13 @@ func getDetailRangeMatchQuery(fields []*FieldInfo) []string {
 				opt := opts[0]
 				gte, gt, lt, lte := "nil", "nil", "nil", "nil"
 				switch opt {
-				case "GTE":
+				case GTE:
 					gte = utils.ToFirstLower(f.FieldName)
-				case "GT":
+				case GT:
 					gt = utils.ToFirstLower(f.FieldName)
-				case "LT":
+				case LT:
 					lt = utils.ToFirstLower(f.FieldName)
-				case "LTE":
+				case LTE:
 					lte = utils.ToFirstLower(f.FieldName)
 				}
 
@@ -140,13 +145,13 @@ func getDetailRangeMatchQuery(fields []*FieldInfo) []string {
 					f := fields[idx]
 					gte, gt, lt, lte := "nil", "nil", "nil", "nil"
 					switch opt {
-					case "GTE":
+					case GTE:
 						gte = utils.ToFirstLower(f.FieldName)
-					case "GT":
+					case GT:
 						gt = utils.ToFirstLower(f.FieldName)
-					case "LT":
+					case LT:
 						lt = utils.ToFirstLower(f.FieldName)
-					case "LTE":
+					case LTE:
 						lte = utils.ToFirstLower(f.FieldName)
 					}
 					fq += fmt.Sprintf("		eq.Range(\"%s\", %s, %s, %s, %s),\n", f.EsFieldPath, gte, gt, lt, lte)
