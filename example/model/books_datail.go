@@ -9,32 +9,53 @@ import (
 
 // QueryBooksByAuthor 对author进行检索查询books的详细数据
 // author string author
-func QueryBooksByAuthor(es *elasticsearch.Client, author string) ([]*Books, int, error) {
-	esQuery := eq.ESQuery{
+func QueryBooksByAuthor(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
+	esQuery := &eq.ESQuery{
 		Query: eq.Match("author", author),
 	}
 
-	return eq.QueryList[Books](es, "books", esQuery)
+	l, t, err := eq.QueryList[Books](es, "books", esQuery)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	data := &eq.Data{Detail: l, Total: t}
+	qinfo := &eq.Query{Index: "books", DSL: esQuery}
+	return data, qinfo, nil
 }
 
 // QueryBooksByName 对书名进行检索查询books的详细数据
 // name string 书名
-func QueryBooksByName(es *elasticsearch.Client, name string) ([]*Books, int, error) {
-	esQuery := eq.ESQuery{
+func QueryBooksByName(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
+	esQuery := &eq.ESQuery{
 		Query: eq.Match("name", name),
 	}
 
-	return eq.QueryList[Books](es, "books", esQuery)
+	l, t, err := eq.QueryList[Books](es, "books", esQuery)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	data := &eq.Data{Detail: l, Total: t}
+	qinfo := &eq.Query{Index: "books", DSL: esQuery}
+	return data, qinfo, nil
 }
 
 // QueryBooksByAuthorName 对author、书名进行检索查询books的详细数据
 // author string author
 // name string 书名
-func QueryBooksByAuthorName(es *elasticsearch.Client, author string, name string) ([]*Books, int, error) {
+func QueryBooksByAuthorName(es *elasticsearch.Client, author string, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
-	esQuery := eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
-	return eq.QueryList[Books](es, "books", esQuery)
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	l, t, err := eq.QueryList[Books](es, "books", esQuery)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	data := &eq.Data{Detail: l, Total: t}
+	qinfo := &eq.Query{Index: "books", DSL: esQuery}
+	return data, qinfo, nil
 }

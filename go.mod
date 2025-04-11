@@ -2,9 +2,11 @@ module github.com/kyle-hy/es2go
 
 go 1.24.0
 
+replace github.com/kyle-hy/esquery => /Users/huangzhongfu/Documents/work/gitlab/projects/aibi/esquery
+
 require (
 	github.com/elastic/go-elasticsearch/v8 v8.17.1
-	github.com/kyle-hy/esquery v1.0.1
+	github.com/kyle-hy/esquery v1.0.4
 	golang.org/x/text v0.23.0
 )
 

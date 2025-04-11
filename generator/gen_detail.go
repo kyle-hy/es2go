@@ -80,7 +80,7 @@ func getDetailMatchQuery(fields []*FieldInfo) string {
 	fq := ""
 	if len(fields) == 1 {
 		f := fields[0]
-		fq = "esQuery := eq.ESQuery{\n"
+		fq = "esQuery := &eq.ESQuery{\n"
 		fq += fmt.Sprintf("		Query: eq.Match(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
 		fq += "	}\n"
 	} else {
@@ -90,7 +90,7 @@ func getDetailMatchQuery(fields []*FieldInfo) string {
 		}
 		fq += "	}\n"
 
-		fq += `	esQuery := eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}`
+		fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}`
 	}
 	return fq
 }
@@ -144,9 +144,16 @@ import (
 {{$in := .}}
 {{range $in.FuncDatas}}
 // {{.Name}} {{.Comment}}
-func {{.Name}}(es *elasticsearch.Client, {{.Params}}) ([]*{{$in.StructName}}, int, error) {
+func {{.Name}}(es *elasticsearch.Client, {{.Params}}) (*eq.Data, *eq.Query, error) {
 	{{.Query}}
-	return eq.QueryList[{{$in.StructName}}](es, "{{$in.IndexName}}", esQuery)
+	l, t, err := eq.QueryList[{{$in.StructName}}](es, "{{$in.IndexName}}", esQuery)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	data := &eq.Data{Detail: l, Total: t}
+	qinfo := &eq.Query{Index: "{{$in.IndexName}}", DSL: esQuery}
+	return data, qinfo, nil
 }
 {{end}}
 `

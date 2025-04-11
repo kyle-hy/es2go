@@ -10,64 +10,92 @@ import (
 // QueryBooksByAuthorFilterClass 以class为过滤条件对author进行检索查询books的详细数据
 // class string class
 // author string author
-func QueryBooksByAuthorFilterClass(es *elasticsearch.Client, class string, author string) ([]*Books, int, error) {
+func QueryBooksByAuthorFilterClass(es *elasticsearch.Client, class string, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 	}
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
-	esQuery := eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
-	return eq.QueryList[Books](es, "books", esQuery)
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
+	l, t, err := eq.QueryList[Books](es, "books", esQuery)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	data := &eq.Data{Detail: l, Total: t}
+	qinfo := &eq.Query{Index: "books", DSL: esQuery}
+	return data, qinfo, nil
 }
 
 // QueryBooksByNameFilterClass 以class为过滤条件对书名进行检索查询books的详细数据
 // class string class
 // name string 书名
-func QueryBooksByNameFilterClass(es *elasticsearch.Client, class string, name string) ([]*Books, int, error) {
+func QueryBooksByNameFilterClass(es *elasticsearch.Client, class string, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 	}
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
-	esQuery := eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
-	return eq.QueryList[Books](es, "books", esQuery)
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
+	l, t, err := eq.QueryList[Books](es, "books", esQuery)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	data := &eq.Data{Detail: l, Total: t}
+	qinfo := &eq.Query{Index: "books", DSL: esQuery}
+	return data, qinfo, nil
 }
 
 // QueryBooksByAuthorFilterSeq 以seq为过滤条件对author进行检索查询books的详细数据
 // seq string seq
 // author string author
-func QueryBooksByAuthorFilterSeq(es *elasticsearch.Client, seq string, author string) ([]*Books, int, error) {
+func QueryBooksByAuthorFilterSeq(es *elasticsearch.Client, seq string, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 	}
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
-	esQuery := eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
-	return eq.QueryList[Books](es, "books", esQuery)
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
+	l, t, err := eq.QueryList[Books](es, "books", esQuery)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	data := &eq.Data{Detail: l, Total: t}
+	qinfo := &eq.Query{Index: "books", DSL: esQuery}
+	return data, qinfo, nil
 }
 
 // QueryBooksByNameFilterSeq 以seq为过滤条件对书名进行检索查询books的详细数据
 // seq string seq
 // name string 书名
-func QueryBooksByNameFilterSeq(es *elasticsearch.Client, seq string, name string) ([]*Books, int, error) {
+func QueryBooksByNameFilterSeq(es *elasticsearch.Client, seq string, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 	}
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
-	esQuery := eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
-	return eq.QueryList[Books](es, "books", esQuery)
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
+	l, t, err := eq.QueryList[Books](es, "books", esQuery)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	data := &eq.Data{Detail: l, Total: t}
+	qinfo := &eq.Query{Index: "books", DSL: esQuery}
+	return data, qinfo, nil
 }
 
 // QueryBooksByAuthorFilterClassSeq 以class、seq为过滤条件对author进行检索查询books的详细数据
 // class string class
 // seq string seq
 // author string author
-func QueryBooksByAuthorFilterClassSeq(es *elasticsearch.Client, class string, seq string, author string) ([]*Books, int, error) {
+func QueryBooksByAuthorFilterClassSeq(es *elasticsearch.Client, class string, seq string, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -75,15 +103,22 @@ func QueryBooksByAuthorFilterClassSeq(es *elasticsearch.Client, class string, se
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
-	esQuery := eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
-	return eq.QueryList[Books](es, "books", esQuery)
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
+	l, t, err := eq.QueryList[Books](es, "books", esQuery)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	data := &eq.Data{Detail: l, Total: t}
+	qinfo := &eq.Query{Index: "books", DSL: esQuery}
+	return data, qinfo, nil
 }
 
 // QueryBooksByNameFilterClassSeq 以class、seq为过滤条件对书名进行检索查询books的详细数据
 // class string class
 // seq string seq
 // name string 书名
-func QueryBooksByNameFilterClassSeq(es *elasticsearch.Client, class string, seq string, name string) ([]*Books, int, error) {
+func QueryBooksByNameFilterClassSeq(es *elasticsearch.Client, class string, seq string, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -91,6 +126,13 @@ func QueryBooksByNameFilterClassSeq(es *elasticsearch.Client, class string, seq 
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
-	esQuery := eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
-	return eq.QueryList[Books](es, "books", esQuery)
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
+	l, t, err := eq.QueryList[Books](es, "books", esQuery)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	data := &eq.Data{Detail: l, Total: t}
+	qinfo := &eq.Query{Index: "books", DSL: esQuery}
+	return data, qinfo, nil
 }

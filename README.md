@@ -8,16 +8,16 @@
 
 ## 根据mapping提取的信息生成查询
 
-- [ ] 对text字段做检索（多字段采用合并后的all_text字段来简化）
+- [x] 对text字段做match检索（多字段检索可采用合并后的all_text字段来简化）
 ```json
 {
   "match": { "description": "smartphone" }
 }
 
 ```
-- [ ] 对text字段做检索后的命中总数
+- [x] 对text字段做检索后的命中总数
 > 查询响应中的 hits.total.value 字段获取
-- [ ] 使用keyword字段随机组合作为过滤条件对text字段做检索
+- [x] 使用keyword字段随机组合作为过滤条件对text字段做检索
 ```json
 {
   "term": { "category": "electronics" }
