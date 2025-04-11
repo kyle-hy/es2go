@@ -14,14 +14,7 @@ func QueryBooksByAuthor(es *elasticsearch.Client, author string) (*eq.Data, *eq.
 		Query: eq.Match("author", author),
 	}
 
-	l, t, err := eq.QueryList[Books](es, "books", esQuery)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	data := &eq.Data{Detail: l, Total: t}
-	qinfo := &eq.Query{Index: "books", DSL: esQuery}
-	return data, qinfo, nil
+	return queryBooksList(es, esQuery)
 }
 
 // QueryBooksByName 对书名进行检索查询books的详细数据
@@ -31,14 +24,7 @@ func QueryBooksByName(es *elasticsearch.Client, name string) (*eq.Data, *eq.Quer
 		Query: eq.Match("name", name),
 	}
 
-	l, t, err := eq.QueryList[Books](es, "books", esQuery)
-	if err != nil {
-		return nil, nil, err
-	}
-
-	data := &eq.Data{Detail: l, Total: t}
-	qinfo := &eq.Query{Index: "books", DSL: esQuery}
-	return data, qinfo, nil
+	return queryBooksList(es, esQuery)
 }
 
 // QueryBooksByAuthorName 对author、书名进行检索查询books的详细数据
@@ -50,6 +36,11 @@ func QueryBooksByAuthorName(es *elasticsearch.Client, author string, name string
 		eq.Match("name", name),
 	}
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	return queryBooksList(es, esQuery)
+}
+
+// 根据query条件查询books详细数据列表
+func queryBooksList(es *elasticsearch.Client, esQuery *eq.ESQuery) (*eq.Data, *eq.Query, error) {
 	l, t, err := eq.QueryList[Books](es, "books", esQuery)
 	if err != nil {
 		return nil, nil, err

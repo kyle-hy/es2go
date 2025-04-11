@@ -23,12 +23,12 @@ func PreDetailFilterCond(esInfo *EsModelInfo) []*FuncTplData {
 	// 提取所需字段
 	textFields := grpFileds[TypeText]       // 文本字段
 	keywordFields := grpFileds[TypeKeyword] // keyword字段
+	keywordFields = append(keywordFields, grpFileds[TypeNumber]...)
 
 	// 随机组合条件
 	cmbTextFields := utils.Combinations(textFields, 1)                  // 组合text字段
 	cmbFeywordFields := utils.Combinations(keywordFields, MaxCombine-1) // 随机组合keyword过滤条件
-	utils.JPrint(grpFileds)
-	cmbFields := utils.CombineSlices(cmbFeywordFields, cmbTextFields) // filter和match条件组合
+	cmbFields := utils.CombineSlices(cmbFeywordFields, cmbTextFields)   // filter和match条件组合
 
 	for _, cfs := range cmbFields {
 		ftd := &FuncTplData{
@@ -40,7 +40,6 @@ func PreDetailFilterCond(esInfo *EsModelInfo) []*FuncTplData {
 		funcDatas = append(funcDatas, ftd)
 	}
 
-	utils.JPrint(funcDatas)
 	return funcDatas
 }
 
@@ -155,7 +154,7 @@ func GenEsDetailFilter(outputPath string, esInfo *EsModelInfo) error {
 	}
 
 	// 写入文件
-	outputPath = strings.Replace(outputPath, ".go", "_datail_filter.go", -1)
+	outputPath = strings.Replace(outputPath, ".go", "_detail_filter.go", -1)
 	err = os.WriteFile(outputPath, buf.Bytes(), 0644)
 	if err != nil {
 		return fmt.Errorf("Failed to write output file %s: %v", outputPath, err)

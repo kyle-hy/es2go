@@ -31,6 +31,12 @@
             "page_count": {
                 "type": "long"
             },
+            "price": {
+                "type": "float",
+                "meta": {
+                    "comment": "价格"
+                }
+            },
             "release_date": {
                 "type": "date"
             }

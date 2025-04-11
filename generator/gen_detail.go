@@ -108,7 +108,7 @@ func GenEsDetail(outputPath string, esInfo *EsModelInfo) error {
 	}
 
 	// 渲染
-	tmpl, err := template.New("structDatail").Parse(DetailTpl)
+	tmpl, err := template.New("structDatail").Parse(DetailTpl + DetailListTpl)
 	var buf bytes.Buffer
 	err = tmpl.Execute(&buf, detailData)
 	if err != nil {
@@ -117,7 +117,7 @@ func GenEsDetail(outputPath string, esInfo *EsModelInfo) error {
 	}
 
 	// 写入文件
-	outputPath = strings.Replace(outputPath, ".go", "_datail.go", -1)
+	outputPath = strings.Replace(outputPath, ".go", "_detail.go", -1)
 	err = os.WriteFile(outputPath, buf.Bytes(), 0644)
 	if err != nil {
 		return fmt.Errorf("Failed to write output file %s: %v", outputPath, err)
@@ -146,6 +146,15 @@ import (
 // {{.Name}} {{.Comment}}
 func {{.Name}}(es *elasticsearch.Client, {{.Params}}) (*eq.Data, *eq.Query, error) {
 	{{.Query}}
+	return queryBooksList(es, esQuery)
+}
+{{end}}
+`
+
+// DetailListTpl 检索详情列表通用代码模板
+const DetailListTpl = `
+// 根据query条件查询{{$in.IndexName}}详细数据列表
+func query{{$in.StructName}}List (es *elasticsearch.Client, esQuery *eq.ESQuery) (*eq.Data, *eq.Query, error) {
 	l, t, err := eq.QueryList[{{$in.StructName}}](es, "{{$in.IndexName}}", esQuery)
 	if err != nil {
 		return nil, nil, err
@@ -155,5 +164,4 @@ func {{.Name}}(es *elasticsearch.Client, {{.Params}}) (*eq.Data, *eq.Query, erro
 	qinfo := &eq.Query{Index: "{{$in.IndexName}}", DSL: esQuery}
 	return data, qinfo, nil
 }
-{{end}}
 `

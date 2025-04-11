@@ -55,6 +55,7 @@ func GenEsModel(inputPath, outputPath, packageName, structName string, opts *Gen
 		// default mapping
 		GoTypeMap = map[string]string{
 			"integer":   "int64",
+			"long":      "int64",
 			"float":     "float64",
 			"boolean":   "bool",
 			"text":      "string",
