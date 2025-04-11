@@ -128,7 +128,7 @@ func getDetailFilterMatchQuery(fields [][]*FieldInfo) string {
 	}
 	fq += "	}\n"
 
-	fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}`
+	fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters), eq.WithMust(matches))}`
 	return fq
 }
 

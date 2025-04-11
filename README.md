@@ -13,6 +13,23 @@
 {
   "match": { "description": "smartphone" }
 }
+或
+{
+    "bool": {
+        "must": [
+            {
+                "match": {
+                    "author": "Neal"
+                }
+            },
+            {
+                "match": {
+                    "name": "snow"
+                }
+            }
+        ]
+    }
+}
 
 ```
 - [x] 对text字段做检索后的命中总数
@@ -20,18 +37,30 @@
 - [x] 使用keyword字段随机组合作为过滤条件对text字段做检索
 ```json
 {
-  "term": { "category": "electronics" }
-}
-```
-```json
-{
-  "aggs": {
-    "by_category": {
-      "terms": { "field": "category" }
+    "query": {
+        "bool": {
+            "filter": [
+                {
+                    "term": {
+                        "class": "记录"
+                    }
+                },
+                {
+                    "term": {
+                        "seq": "编号"
+                    }
+                }
+            ],
+            "must": [
+                {
+                    "match": {
+                        "name": "snow"
+                    }
+                }
+            ]
+        }
     }
-  }
 }
-
 ```
 - [ ] 使用keyword字段随机组合作为过滤条件对text字段做检索后的聚合分析
 ```json

@@ -17,7 +17,7 @@ func QueryBooksByAuthorFilterClass(es *elasticsearch.Client, class string, autho
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters), eq.WithMust(matches))}
 	l, t, err := eq.QueryList[Books](es, "books", esQuery)
 	if err != nil {
 		return nil, nil, err
@@ -38,7 +38,7 @@ func QueryBooksByNameFilterClass(es *elasticsearch.Client, class string, name st
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters), eq.WithMust(matches))}
 	l, t, err := eq.QueryList[Books](es, "books", esQuery)
 	if err != nil {
 		return nil, nil, err
@@ -59,7 +59,7 @@ func QueryBooksByAuthorFilterSeq(es *elasticsearch.Client, seq string, author st
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters), eq.WithMust(matches))}
 	l, t, err := eq.QueryList[Books](es, "books", esQuery)
 	if err != nil {
 		return nil, nil, err
@@ -80,7 +80,7 @@ func QueryBooksByNameFilterSeq(es *elasticsearch.Client, seq string, name string
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters), eq.WithMust(matches))}
 	l, t, err := eq.QueryList[Books](es, "books", esQuery)
 	if err != nil {
 		return nil, nil, err
@@ -103,7 +103,7 @@ func QueryBooksByAuthorFilterClassSeq(es *elasticsearch.Client, class string, se
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters), eq.WithMust(matches))}
 	l, t, err := eq.QueryList[Books](es, "books", esQuery)
 	if err != nil {
 		return nil, nil, err
@@ -126,7 +126,7 @@ func QueryBooksByNameFilterClassSeq(es *elasticsearch.Client, class string, seq 
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(filters), eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters), eq.WithMust(matches))}
 	l, t, err := eq.QueryList[Books](es, "books", esQuery)
 	if err != nil {
 		return nil, nil, err
