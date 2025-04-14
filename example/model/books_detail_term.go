@@ -55,7 +55,7 @@ func TermBooksByClassSeq(es *elasticsearch.Client, class string, seq string) (*e
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -67,7 +67,7 @@ func TermBooksByClassPageCount(es *elasticsearch.Client, class string, pageCount
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -79,7 +79,7 @@ func TermBooksByClassPrice(es *elasticsearch.Client, class string, price float64
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -91,7 +91,7 @@ func TermBooksBySeqPageCount(es *elasticsearch.Client, seq string, pageCount int
 		eq.Term("seq", seq),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -103,7 +103,7 @@ func TermBooksBySeqPrice(es *elasticsearch.Client, seq string, price float64) (*
 		eq.Term("seq", seq),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -115,7 +115,7 @@ func TermBooksByPageCountPrice(es *elasticsearch.Client, pageCount int64, price 
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -129,7 +129,7 @@ func TermBooksByClassSeqPageCount(es *elasticsearch.Client, class string, seq st
 		eq.Term("seq", seq),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -143,7 +143,7 @@ func TermBooksByClassSeqPrice(es *elasticsearch.Client, class string, seq string
 		eq.Term("seq", seq),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -157,7 +157,7 @@ func TermBooksByClassPageCountPrice(es *elasticsearch.Client, class string, page
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -171,7 +171,7 @@ func TermBooksBySeqPageCountPrice(es *elasticsearch.Client, seq string, pageCoun
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -187,6 +187,6 @@ func TermBooksByClassSeqPageCountPrice(es *elasticsearch.Client, class string, s
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
 	return queryBooksList(es, esQuery)
 }

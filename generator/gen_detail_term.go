@@ -91,7 +91,7 @@ func getDetailTermMatchQuery(fields []*FieldInfo) string {
 		}
 		fq += "	}\n"
 
-		fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(terms))}`
+		fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}`
 	}
 	return fq
 }
