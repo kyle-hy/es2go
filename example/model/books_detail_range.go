@@ -91,11 +91,11 @@ func RangeBooksByPriceLte(es *elasticsearch.Client, price float64) (*eq.Data, *e
 // pageCount int64 page_count
 // price float64 价格
 func RangeBooksByPageCountGtePriceLt(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
+	ranges := []eq.Map{
 		eq.Range("page_count", pageCount, nil, nil, nil),
 		eq.Range("price", nil, nil, price, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(ranges))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -103,11 +103,11 @@ func RangeBooksByPageCountGtePriceLt(es *elasticsearch.Client, pageCount int64, 
 // pageCount int64 page_count
 // price float64 价格
 func RangeBooksByPageCountGtePriceLte(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
+	ranges := []eq.Map{
 		eq.Range("page_count", pageCount, nil, nil, nil),
 		eq.Range("price", nil, nil, nil, price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(ranges))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -115,11 +115,11 @@ func RangeBooksByPageCountGtePriceLte(es *elasticsearch.Client, pageCount int64,
 // pageCount int64 page_count
 // price float64 价格
 func RangeBooksByPageCountGtPriceLt(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
+	ranges := []eq.Map{
 		eq.Range("page_count", nil, pageCount, nil, nil),
 		eq.Range("price", nil, nil, price, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(ranges))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -127,11 +127,11 @@ func RangeBooksByPageCountGtPriceLt(es *elasticsearch.Client, pageCount int64, p
 // pageCount int64 page_count
 // price float64 价格
 func RangeBooksByPageCountGtPriceLte(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
+	ranges := []eq.Map{
 		eq.Range("page_count", nil, pageCount, nil, nil),
 		eq.Range("price", nil, nil, nil, price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(ranges))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -139,11 +139,11 @@ func RangeBooksByPageCountGtPriceLte(es *elasticsearch.Client, pageCount int64, 
 // pageCount int64 page_count
 // price float64 价格
 func RangeBooksByPageCountLtPriceGte(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
+	ranges := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCount, nil),
 		eq.Range("price", price, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(ranges))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -151,11 +151,11 @@ func RangeBooksByPageCountLtPriceGte(es *elasticsearch.Client, pageCount int64, 
 // pageCount int64 page_count
 // price float64 价格
 func RangeBooksByPageCountLtePriceGte(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
+	ranges := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCount),
 		eq.Range("price", price, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(ranges))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -163,11 +163,11 @@ func RangeBooksByPageCountLtePriceGte(es *elasticsearch.Client, pageCount int64,
 // pageCount int64 page_count
 // price float64 价格
 func RangeBooksByPageCountLtPriceGt(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
+	ranges := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCount, nil),
 		eq.Range("price", nil, price, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(ranges))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -175,10 +175,10 @@ func RangeBooksByPageCountLtPriceGt(es *elasticsearch.Client, pageCount int64, p
 // pageCount int64 page_count
 // price float64 价格
 func RangeBooksByPageCountLtePriceGt(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
+	ranges := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCount),
 		eq.Range("price", nil, price, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(ranges))}
 	return queryBooksList(es, esQuery)
 }

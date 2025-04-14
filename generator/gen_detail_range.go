@@ -140,7 +140,7 @@ func getDetailRangeMatchQuery(fields []*FieldInfo) []string {
 				fq += "	}\n"
 				fqs = append(fqs, fq)
 			} else { // 多条件查询
-				fq := "matches := []eq.Map{\n"
+				fq := "ranges := []eq.Map{\n"
 				for idx, opt := range opts {
 					f := fields[idx]
 					gte, gt, lt, lte := "nil", "nil", "nil", "nil"
@@ -158,7 +158,7 @@ func getDetailRangeMatchQuery(fields []*FieldInfo) []string {
 				}
 				fq += "	}\n"
 
-				fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}`
+				fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(ranges))}`
 				fqs = append(fqs, fq)
 			}
 		}
