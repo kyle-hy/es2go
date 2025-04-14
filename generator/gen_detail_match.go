@@ -13,8 +13,8 @@ import (
 
 // 生成对text字段检索的代码
 
-// PreDetailCond 使用go代码预处理渲染需要的一些逻辑，template脚本出来调试困难
-func PreDetailCond(esInfo *EsModelInfo) []*FuncTplData {
+// PreDetailMatchCond 使用go代码预处理渲染需要的一些逻辑，template脚本出来调试困难
+func PreDetailMatchCond(esInfo *EsModelInfo) []*FuncTplData {
 	funcDatas := []*FuncTplData{}
 
 	// 按数据类型分组字段
@@ -27,10 +27,10 @@ func PreDetailCond(esInfo *EsModelInfo) []*FuncTplData {
 	cmbFields := utils.Combinations(fields, MaxCombine)
 	for _, cfs := range cmbFields {
 		ftd := &FuncTplData{
-			Name:    getDetailFuncName(esInfo.StructName, cfs),
-			Comment: getDetailFuncComment(esInfo.StructComment, cfs),
-			Params:  getDetailFuncParams(cfs),
-			Query:   getDetailMatchQuery(cfs),
+			Name:    getDetailMatchFuncName(esInfo.StructName, cfs),
+			Comment: getDetailMatchFuncComment(esInfo.StructComment, cfs),
+			Params:  getDetailMatchFuncParams(cfs),
+			Query:   getDetailMatchMatchQuery(cfs),
 		}
 		funcDatas = append(funcDatas, ftd)
 	}
@@ -38,24 +38,24 @@ func PreDetailCond(esInfo *EsModelInfo) []*FuncTplData {
 	return funcDatas
 }
 
-// getDetailFuncName 获取函数名称
-func getDetailFuncName(structName string, fields []*FieldInfo) string {
-	fn := "Query" + structName + "By"
+// getDetailMatchFuncName 获取函数名称
+func getDetailMatchFuncName(structName string, fields []*FieldInfo) string {
+	fn := "Match" + structName + "By"
 	for _, f := range fields {
 		fn += f.FieldName
 	}
 	return fn
 }
 
-// getDetailFuncComment 获取函数注释
-func getDetailFuncComment(structComment string, fields []*FieldInfo) string {
+// getDetailMatchFuncComment 获取函数注释
+func getDetailMatchFuncComment(structComment string, fields []*FieldInfo) string {
 	// 函数注释
 	cmt := "对"
 	for _, f := range fields {
 		cmt += f.FieldComment + "、"
 	}
 	cmt = strings.TrimSuffix(cmt, "、")
-	cmt += "进行检索查询" + structComment + "的详细数据"
+	cmt += "进行检索查询" + structComment + "的详细数据列表和总数量"
 
 	// 参数注释
 	for _, f := range fields {
@@ -65,8 +65,8 @@ func getDetailFuncComment(structComment string, fields []*FieldInfo) string {
 	return cmt
 }
 
-// getDetailFuncParams 获取函数参数列表
-func getDetailFuncParams(fields []*FieldInfo) string {
+// getDetailMatchFuncParams 获取函数参数列表
+func getDetailMatchFuncParams(fields []*FieldInfo) string {
 	fp := ""
 	for _, f := range fields {
 		fp += utils.ToFirstLower(f.FieldName) + " " + f.FieldType + ", "
@@ -75,8 +75,8 @@ func getDetailFuncParams(fields []*FieldInfo) string {
 	return fp
 }
 
-// getDetailMatchQuery 获取函数的查询条件
-func getDetailMatchQuery(fields []*FieldInfo) string {
+// getDetailMatchMatchQuery 获取函数的查询条件
+func getDetailMatchMatchQuery(fields []*FieldInfo) string {
 	fq := ""
 	if len(fields) == 1 {
 		f := fields[0]
@@ -95,10 +95,10 @@ func getDetailMatchQuery(fields []*FieldInfo) string {
 	return fq
 }
 
-// GenEsDetail 生成es检索详情
-func GenEsDetail(outputPath string, esInfo *EsModelInfo) error {
+// GenEsDetailMatch 生成es检索详情
+func GenEsDetailMatch(outputPath string, esInfo *EsModelInfo) error {
 	// 预处理渲染所需的内容
-	funcData := PreDetailCond(esInfo)
+	funcData := PreDetailMatchCond(esInfo)
 	detailData := DetailTplData{
 		PackageName:   esInfo.PackageName,
 		StructName:    esInfo.StructName,
@@ -117,7 +117,7 @@ func GenEsDetail(outputPath string, esInfo *EsModelInfo) error {
 	}
 
 	// 写入文件
-	outputPath = strings.Replace(outputPath, ".go", "_detail.go", -1)
+	outputPath = strings.Replace(outputPath, ".go", "_detail_match.go", -1)
 	err = os.WriteFile(outputPath, buf.Bytes(), 0644)
 	if err != nil {
 		return fmt.Errorf("Failed to write output file %s: %v", outputPath, err)
@@ -153,7 +153,7 @@ func {{.Name}}(es *elasticsearch.Client, {{.Params}}) (*eq.Data, *eq.Query, erro
 
 // DetailListTpl 检索详情列表通用代码模板
 const DetailListTpl = `
-// 根据query条件查询{{$in.IndexName}}详细数据列表
+// 根据query条件查询{{$in.IndexName}}详细数据列表和总数量
 func query{{$in.StructName}}List (es *elasticsearch.Client, esQuery *eq.ESQuery) (*eq.Data, *eq.Query, error) {
 	l, t, err := eq.QueryList[{{$in.StructName}}](es, "{{$in.IndexName}}", esQuery)
 	if err != nil {

@@ -7,10 +7,10 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// QueryBooksByAuthorFilterClass 以class为过滤条件对author进行检索查询books的详细数据
+// MatchBooksByAuthorFilterClass 以class为过滤条件对author进行检索查询books的详细数据列表和总数量
 // class string class
 // author string author
-func QueryBooksByAuthorFilterClass(es *elasticsearch.Client, class string, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorFilterClass(es *elasticsearch.Client, class string, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 	}
@@ -21,10 +21,10 @@ func QueryBooksByAuthorFilterClass(es *elasticsearch.Client, class string, autho
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByNameFilterClass 以class为过滤条件对书名进行检索查询books的详细数据
+// MatchBooksByNameFilterClass 以class为过滤条件对书名进行检索查询books的详细数据列表和总数量
 // class string class
 // name string 书名
-func QueryBooksByNameFilterClass(es *elasticsearch.Client, class string, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameFilterClass(es *elasticsearch.Client, class string, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 	}
@@ -35,10 +35,10 @@ func QueryBooksByNameFilterClass(es *elasticsearch.Client, class string, name st
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByAuthorFilterSeq 以seq为过滤条件对author进行检索查询books的详细数据
+// MatchBooksByAuthorFilterSeq 以seq为过滤条件对author进行检索查询books的详细数据列表和总数量
 // seq string seq
 // author string author
-func QueryBooksByAuthorFilterSeq(es *elasticsearch.Client, seq string, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorFilterSeq(es *elasticsearch.Client, seq string, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 	}
@@ -49,10 +49,10 @@ func QueryBooksByAuthorFilterSeq(es *elasticsearch.Client, seq string, author st
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByNameFilterSeq 以seq为过滤条件对书名进行检索查询books的详细数据
+// MatchBooksByNameFilterSeq 以seq为过滤条件对书名进行检索查询books的详细数据列表和总数量
 // seq string seq
 // name string 书名
-func QueryBooksByNameFilterSeq(es *elasticsearch.Client, seq string, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameFilterSeq(es *elasticsearch.Client, seq string, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 	}
@@ -63,10 +63,10 @@ func QueryBooksByNameFilterSeq(es *elasticsearch.Client, seq string, name string
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByAuthorFilterPageCount 以page_count为过滤条件对author进行检索查询books的详细数据
+// MatchBooksByAuthorFilterPageCount 以page_count为过滤条件对author进行检索查询books的详细数据列表和总数量
 // pageCount int64 page_count
 // author string author
-func QueryBooksByAuthorFilterPageCount(es *elasticsearch.Client, pageCount int64, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorFilterPageCount(es *elasticsearch.Client, pageCount int64, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
@@ -77,10 +77,10 @@ func QueryBooksByAuthorFilterPageCount(es *elasticsearch.Client, pageCount int64
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByNameFilterPageCount 以page_count为过滤条件对书名进行检索查询books的详细数据
+// MatchBooksByNameFilterPageCount 以page_count为过滤条件对书名进行检索查询books的详细数据列表和总数量
 // pageCount int64 page_count
 // name string 书名
-func QueryBooksByNameFilterPageCount(es *elasticsearch.Client, pageCount int64, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameFilterPageCount(es *elasticsearch.Client, pageCount int64, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
@@ -91,10 +91,10 @@ func QueryBooksByNameFilterPageCount(es *elasticsearch.Client, pageCount int64, 
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByAuthorFilterPrice 以价格为过滤条件对author进行检索查询books的详细数据
+// MatchBooksByAuthorFilterPrice 以价格为过滤条件对author进行检索查询books的详细数据列表和总数量
 // price float64 价格
 // author string author
-func QueryBooksByAuthorFilterPrice(es *elasticsearch.Client, price float64, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorFilterPrice(es *elasticsearch.Client, price float64, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("price", price),
 	}
@@ -105,10 +105,10 @@ func QueryBooksByAuthorFilterPrice(es *elasticsearch.Client, price float64, auth
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByNameFilterPrice 以价格为过滤条件对书名进行检索查询books的详细数据
+// MatchBooksByNameFilterPrice 以价格为过滤条件对书名进行检索查询books的详细数据列表和总数量
 // price float64 价格
 // name string 书名
-func QueryBooksByNameFilterPrice(es *elasticsearch.Client, price float64, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameFilterPrice(es *elasticsearch.Client, price float64, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("price", price),
 	}
@@ -119,11 +119,11 @@ func QueryBooksByNameFilterPrice(es *elasticsearch.Client, price float64, name s
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByAuthorFilterClassSeq 以class、seq为过滤条件对author进行检索查询books的详细数据
+// MatchBooksByAuthorFilterClassSeq 以class、seq为过滤条件对author进行检索查询books的详细数据列表和总数量
 // class string class
 // seq string seq
 // author string author
-func QueryBooksByAuthorFilterClassSeq(es *elasticsearch.Client, class string, seq string, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorFilterClassSeq(es *elasticsearch.Client, class string, seq string, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -135,11 +135,11 @@ func QueryBooksByAuthorFilterClassSeq(es *elasticsearch.Client, class string, se
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByNameFilterClassSeq 以class、seq为过滤条件对书名进行检索查询books的详细数据
+// MatchBooksByNameFilterClassSeq 以class、seq为过滤条件对书名进行检索查询books的详细数据列表和总数量
 // class string class
 // seq string seq
 // name string 书名
-func QueryBooksByNameFilterClassSeq(es *elasticsearch.Client, class string, seq string, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameFilterClassSeq(es *elasticsearch.Client, class string, seq string, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -151,11 +151,11 @@ func QueryBooksByNameFilterClassSeq(es *elasticsearch.Client, class string, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByAuthorFilterClassPageCount 以class、page_count为过滤条件对author进行检索查询books的详细数据
+// MatchBooksByAuthorFilterClassPageCount 以class、page_count为过滤条件对author进行检索查询books的详细数据列表和总数量
 // class string class
 // pageCount int64 page_count
 // author string author
-func QueryBooksByAuthorFilterClassPageCount(es *elasticsearch.Client, class string, pageCount int64, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorFilterClassPageCount(es *elasticsearch.Client, class string, pageCount int64, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -167,11 +167,11 @@ func QueryBooksByAuthorFilterClassPageCount(es *elasticsearch.Client, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByNameFilterClassPageCount 以class、page_count为过滤条件对书名进行检索查询books的详细数据
+// MatchBooksByNameFilterClassPageCount 以class、page_count为过滤条件对书名进行检索查询books的详细数据列表和总数量
 // class string class
 // pageCount int64 page_count
 // name string 书名
-func QueryBooksByNameFilterClassPageCount(es *elasticsearch.Client, class string, pageCount int64, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameFilterClassPageCount(es *elasticsearch.Client, class string, pageCount int64, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -183,11 +183,11 @@ func QueryBooksByNameFilterClassPageCount(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByAuthorFilterClassPrice 以class、价格为过滤条件对author进行检索查询books的详细数据
+// MatchBooksByAuthorFilterClassPrice 以class、价格为过滤条件对author进行检索查询books的详细数据列表和总数量
 // class string class
 // price float64 价格
 // author string author
-func QueryBooksByAuthorFilterClassPrice(es *elasticsearch.Client, class string, price float64, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorFilterClassPrice(es *elasticsearch.Client, class string, price float64, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
@@ -199,11 +199,11 @@ func QueryBooksByAuthorFilterClassPrice(es *elasticsearch.Client, class string, 
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByNameFilterClassPrice 以class、价格为过滤条件对书名进行检索查询books的详细数据
+// MatchBooksByNameFilterClassPrice 以class、价格为过滤条件对书名进行检索查询books的详细数据列表和总数量
 // class string class
 // price float64 价格
 // name string 书名
-func QueryBooksByNameFilterClassPrice(es *elasticsearch.Client, class string, price float64, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameFilterClassPrice(es *elasticsearch.Client, class string, price float64, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
@@ -215,11 +215,11 @@ func QueryBooksByNameFilterClassPrice(es *elasticsearch.Client, class string, pr
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByAuthorFilterSeqPageCount 以seq、page_count为过滤条件对author进行检索查询books的详细数据
+// MatchBooksByAuthorFilterSeqPageCount 以seq、page_count为过滤条件对author进行检索查询books的详细数据列表和总数量
 // seq string seq
 // pageCount int64 page_count
 // author string author
-func QueryBooksByAuthorFilterSeqPageCount(es *elasticsearch.Client, seq string, pageCount int64, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorFilterSeqPageCount(es *elasticsearch.Client, seq string, pageCount int64, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Term("page_count", pageCount),
@@ -231,11 +231,11 @@ func QueryBooksByAuthorFilterSeqPageCount(es *elasticsearch.Client, seq string, 
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByNameFilterSeqPageCount 以seq、page_count为过滤条件对书名进行检索查询books的详细数据
+// MatchBooksByNameFilterSeqPageCount 以seq、page_count为过滤条件对书名进行检索查询books的详细数据列表和总数量
 // seq string seq
 // pageCount int64 page_count
 // name string 书名
-func QueryBooksByNameFilterSeqPageCount(es *elasticsearch.Client, seq string, pageCount int64, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameFilterSeqPageCount(es *elasticsearch.Client, seq string, pageCount int64, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Term("page_count", pageCount),
@@ -247,11 +247,11 @@ func QueryBooksByNameFilterSeqPageCount(es *elasticsearch.Client, seq string, pa
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByAuthorFilterSeqPrice 以seq、价格为过滤条件对author进行检索查询books的详细数据
+// MatchBooksByAuthorFilterSeqPrice 以seq、价格为过滤条件对author进行检索查询books的详细数据列表和总数量
 // seq string seq
 // price float64 价格
 // author string author
-func QueryBooksByAuthorFilterSeqPrice(es *elasticsearch.Client, seq string, price float64, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorFilterSeqPrice(es *elasticsearch.Client, seq string, price float64, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Term("price", price),
@@ -263,11 +263,11 @@ func QueryBooksByAuthorFilterSeqPrice(es *elasticsearch.Client, seq string, pric
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByNameFilterSeqPrice 以seq、价格为过滤条件对书名进行检索查询books的详细数据
+// MatchBooksByNameFilterSeqPrice 以seq、价格为过滤条件对书名进行检索查询books的详细数据列表和总数量
 // seq string seq
 // price float64 价格
 // name string 书名
-func QueryBooksByNameFilterSeqPrice(es *elasticsearch.Client, seq string, price float64, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameFilterSeqPrice(es *elasticsearch.Client, seq string, price float64, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Term("price", price),
@@ -279,11 +279,11 @@ func QueryBooksByNameFilterSeqPrice(es *elasticsearch.Client, seq string, price 
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByAuthorFilterPageCountPrice 以page_count、价格为过滤条件对author进行检索查询books的详细数据
+// MatchBooksByAuthorFilterPageCountPrice 以page_count、价格为过滤条件对author进行检索查询books的详细数据列表和总数量
 // pageCount int64 page_count
 // price float64 价格
 // author string author
-func QueryBooksByAuthorFilterPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorFilterPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
@@ -295,11 +295,11 @@ func QueryBooksByAuthorFilterPageCountPrice(es *elasticsearch.Client, pageCount 
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByNameFilterPageCountPrice 以page_count、价格为过滤条件对书名进行检索查询books的详细数据
+// MatchBooksByNameFilterPageCountPrice 以page_count、价格为过滤条件对书名进行检索查询books的详细数据列表和总数量
 // pageCount int64 page_count
 // price float64 价格
 // name string 书名
-func QueryBooksByNameFilterPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameFilterPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
@@ -311,12 +311,12 @@ func QueryBooksByNameFilterPageCountPrice(es *elasticsearch.Client, pageCount in
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByAuthorFilterClassSeqPageCount 以class、seq、page_count为过滤条件对author进行检索查询books的详细数据
+// MatchBooksByAuthorFilterClassSeqPageCount 以class、seq、page_count为过滤条件对author进行检索查询books的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCount int64 page_count
 // author string author
-func QueryBooksByAuthorFilterClassSeqPageCount(es *elasticsearch.Client, class string, seq string, pageCount int64, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorFilterClassSeqPageCount(es *elasticsearch.Client, class string, seq string, pageCount int64, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -329,12 +329,12 @@ func QueryBooksByAuthorFilterClassSeqPageCount(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByNameFilterClassSeqPageCount 以class、seq、page_count为过滤条件对书名进行检索查询books的详细数据
+// MatchBooksByNameFilterClassSeqPageCount 以class、seq、page_count为过滤条件对书名进行检索查询books的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCount int64 page_count
 // name string 书名
-func QueryBooksByNameFilterClassSeqPageCount(es *elasticsearch.Client, class string, seq string, pageCount int64, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameFilterClassSeqPageCount(es *elasticsearch.Client, class string, seq string, pageCount int64, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -347,12 +347,12 @@ func QueryBooksByNameFilterClassSeqPageCount(es *elasticsearch.Client, class str
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByAuthorFilterClassSeqPrice 以class、seq、价格为过滤条件对author进行检索查询books的详细数据
+// MatchBooksByAuthorFilterClassSeqPrice 以class、seq、价格为过滤条件对author进行检索查询books的详细数据列表和总数量
 // class string class
 // seq string seq
 // price float64 价格
 // author string author
-func QueryBooksByAuthorFilterClassSeqPrice(es *elasticsearch.Client, class string, seq string, price float64, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorFilterClassSeqPrice(es *elasticsearch.Client, class string, seq string, price float64, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -365,12 +365,12 @@ func QueryBooksByAuthorFilterClassSeqPrice(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByNameFilterClassSeqPrice 以class、seq、价格为过滤条件对书名进行检索查询books的详细数据
+// MatchBooksByNameFilterClassSeqPrice 以class、seq、价格为过滤条件对书名进行检索查询books的详细数据列表和总数量
 // class string class
 // seq string seq
 // price float64 价格
 // name string 书名
-func QueryBooksByNameFilterClassSeqPrice(es *elasticsearch.Client, class string, seq string, price float64, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameFilterClassSeqPrice(es *elasticsearch.Client, class string, seq string, price float64, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -383,12 +383,12 @@ func QueryBooksByNameFilterClassSeqPrice(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByAuthorFilterClassPageCountPrice 以class、page_count、价格为过滤条件对author进行检索查询books的详细数据
+// MatchBooksByAuthorFilterClassPageCountPrice 以class、page_count、价格为过滤条件对author进行检索查询books的详细数据列表和总数量
 // class string class
 // pageCount int64 page_count
 // price float64 价格
 // author string author
-func QueryBooksByAuthorFilterClassPageCountPrice(es *elasticsearch.Client, class string, pageCount int64, price float64, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorFilterClassPageCountPrice(es *elasticsearch.Client, class string, pageCount int64, price float64, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -401,12 +401,12 @@ func QueryBooksByAuthorFilterClassPageCountPrice(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByNameFilterClassPageCountPrice 以class、page_count、价格为过滤条件对书名进行检索查询books的详细数据
+// MatchBooksByNameFilterClassPageCountPrice 以class、page_count、价格为过滤条件对书名进行检索查询books的详细数据列表和总数量
 // class string class
 // pageCount int64 page_count
 // price float64 价格
 // name string 书名
-func QueryBooksByNameFilterClassPageCountPrice(es *elasticsearch.Client, class string, pageCount int64, price float64, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameFilterClassPageCountPrice(es *elasticsearch.Client, class string, pageCount int64, price float64, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -419,12 +419,12 @@ func QueryBooksByNameFilterClassPageCountPrice(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByAuthorFilterSeqPageCountPrice 以seq、page_count、价格为过滤条件对author进行检索查询books的详细数据
+// MatchBooksByAuthorFilterSeqPageCountPrice 以seq、page_count、价格为过滤条件对author进行检索查询books的详细数据列表和总数量
 // seq string seq
 // pageCount int64 page_count
 // price float64 价格
 // author string author
-func QueryBooksByAuthorFilterSeqPageCountPrice(es *elasticsearch.Client, seq string, pageCount int64, price float64, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorFilterSeqPageCountPrice(es *elasticsearch.Client, seq string, pageCount int64, price float64, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Term("page_count", pageCount),
@@ -437,12 +437,12 @@ func QueryBooksByAuthorFilterSeqPageCountPrice(es *elasticsearch.Client, seq str
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByNameFilterSeqPageCountPrice 以seq、page_count、价格为过滤条件对书名进行检索查询books的详细数据
+// MatchBooksByNameFilterSeqPageCountPrice 以seq、page_count、价格为过滤条件对书名进行检索查询books的详细数据列表和总数量
 // seq string seq
 // pageCount int64 page_count
 // price float64 价格
 // name string 书名
-func QueryBooksByNameFilterSeqPageCountPrice(es *elasticsearch.Client, seq string, pageCount int64, price float64, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameFilterSeqPageCountPrice(es *elasticsearch.Client, seq string, pageCount int64, price float64, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Term("page_count", pageCount),
@@ -455,13 +455,13 @@ func QueryBooksByNameFilterSeqPageCountPrice(es *elasticsearch.Client, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByAuthorFilterClassSeqPageCountPrice 以class、seq、page_count、价格为过滤条件对author进行检索查询books的详细数据
+// MatchBooksByAuthorFilterClassSeqPageCountPrice 以class、seq、page_count、价格为过滤条件对author进行检索查询books的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCount int64 page_count
 // price float64 价格
 // author string author
-func QueryBooksByAuthorFilterClassSeqPageCountPrice(es *elasticsearch.Client, class string, seq string, pageCount int64, price float64, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorFilterClassSeqPageCountPrice(es *elasticsearch.Client, class string, seq string, pageCount int64, price float64, author string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -475,13 +475,13 @@ func QueryBooksByAuthorFilterClassSeqPageCountPrice(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByNameFilterClassSeqPageCountPrice 以class、seq、page_count、价格为过滤条件对书名进行检索查询books的详细数据
+// MatchBooksByNameFilterClassSeqPageCountPrice 以class、seq、page_count、价格为过滤条件对书名进行检索查询books的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCount int64 page_count
 // price float64 价格
 // name string 书名
-func QueryBooksByNameFilterClassSeqPageCountPrice(es *elasticsearch.Client, class string, seq string, pageCount int64, price float64, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameFilterClassSeqPageCountPrice(es *elasticsearch.Client, class string, seq string, pageCount int64, price float64, name string) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),

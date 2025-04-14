@@ -7,9 +7,9 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// QueryBooksByAuthor 对author进行检索查询books的详细数据
+// MatchBooksByAuthor 对author进行检索查询books的详细数据列表和总数量
 // author string author
-func QueryBooksByAuthor(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthor(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
 	esQuery := &eq.ESQuery{
 		Query: eq.Match("author", author),
 	}
@@ -17,9 +17,9 @@ func QueryBooksByAuthor(es *elasticsearch.Client, author string) (*eq.Data, *eq.
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByName 对书名进行检索查询books的详细数据
+// MatchBooksByName 对书名进行检索查询books的详细数据列表和总数量
 // name string 书名
-func QueryBooksByName(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByName(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
 	esQuery := &eq.ESQuery{
 		Query: eq.Match("name", name),
 	}
@@ -27,10 +27,10 @@ func QueryBooksByName(es *elasticsearch.Client, name string) (*eq.Data, *eq.Quer
 	return queryBooksList(es, esQuery)
 }
 
-// QueryBooksByAuthorName 对author、书名进行检索查询books的详细数据
+// MatchBooksByAuthorName 对author、书名进行检索查询books的详细数据列表和总数量
 // author string author
 // name string 书名
-func QueryBooksByAuthorName(es *elasticsearch.Client, author string, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorName(es *elasticsearch.Client, author string, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -39,7 +39,7 @@ func QueryBooksByAuthorName(es *elasticsearch.Client, author string, name string
 	return queryBooksList(es, esQuery)
 }
 
-// 根据query条件查询books详细数据列表
+// 根据query条件查询books详细数据列表和总数量
 func queryBooksList(es *elasticsearch.Client, esQuery *eq.ESQuery) (*eq.Data, *eq.Query, error) {
 	l, t, err := eq.QueryList[Books](es, "books", esQuery)
 	if err != nil {

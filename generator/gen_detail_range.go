@@ -70,7 +70,7 @@ func getDetailRangeFuncName(structName string, fields []*FieldInfo) []string {
 	names := []string{}
 	for _, opts := range optList {
 		if len(fields) == len(opts) {
-			fn := "Query" + structName + "By"
+			fn := "Range" + structName + "By"
 			for idx, opt := range opts {
 				fn += fields[idx].FieldName + opt
 			}
@@ -92,7 +92,7 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo) []stri
 				cmt += fields[idx].FieldComment + optName + "、"
 			}
 			cmt = strings.TrimSuffix(cmt, "、")
-			cmt += "指定数值的" + structComment + "详细数据"
+			cmt += "指定数值的" + structComment + "的详细数据列表和总数量"
 
 			// 参数注释
 			for _, f := range fields {

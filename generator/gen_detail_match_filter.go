@@ -48,7 +48,7 @@ func getDetailFilterFuncName(structName string, fields [][]*FieldInfo) string {
 	filterFields := fields[0]
 	testFields := fields[1]
 
-	fn := "Query" + structName + "By"
+	fn := "Match" + structName + "By"
 	for _, f := range testFields {
 		fn += f.FieldName
 	}
@@ -77,7 +77,7 @@ func getDetailFilterFuncComment(structComment string, fields [][]*FieldInfo) str
 		cmt += f.FieldComment + "、"
 	}
 	cmt = strings.TrimSuffix(cmt, "、")
-	cmt += "进行检索查询" + structComment + "的详细数据"
+	cmt += "进行检索查询" + structComment + "的详细数据列表和总数量"
 
 	// 参数注释
 	for _, f := range filterFields {
@@ -154,7 +154,7 @@ func GenEsDetailFilter(outputPath string, esInfo *EsModelInfo) error {
 	}
 
 	// 写入文件
-	outputPath = strings.Replace(outputPath, ".go", "_detail_filter.go", -1)
+	outputPath = strings.Replace(outputPath, ".go", "_detail_match_filter.go", -1)
 	err = os.WriteFile(outputPath, buf.Bytes(), 0644)
 	if err != nil {
 		return fmt.Errorf("Failed to write output file %s: %v", outputPath, err)
