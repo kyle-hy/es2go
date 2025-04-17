@@ -1,5 +1,7 @@
 package utils
 
+import "strings"
+
 // FilterOut 从source中踢出exclude的元素
 func FilterOut[T comparable](source, exclude []T) []T {
 	toExclude := make(map[T]struct{})
@@ -57,4 +59,27 @@ func combinationsOf[T any](items []T, k int) [][]T {
 
 	dfs(0, []T{})
 	return res
+}
+
+// Cartesian 对data中的多个子切片进行两两组合（笛卡尔积）并拼接字符串
+func Cartesian(data [][]string) []string {
+	if len(data) == 0 {
+		return nil
+	}
+
+	var result []string
+	var backtrack func(index int, path []string)
+
+	backtrack = func(index int, path []string) {
+		if index == len(data) {
+			result = append(result, strings.Join(path, ""))
+			return
+		}
+		for _, val := range data[index] {
+			backtrack(index+1, append(path, val))
+		}
+	}
+
+	backtrack(0, []string{})
+	return result
 }

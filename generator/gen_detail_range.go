@@ -28,19 +28,18 @@ func PreDetailRangeCond(esInfo *EsModelInfo) []*FuncTplData {
 	for _, cfs := range cmbFields {
 		names := getDetailRangeFuncName(esInfo.StructName, cfs)
 		comments := getDetailRangeFuncComment(esInfo.StructName, cfs)
+		params := getDetailRangeFuncParams(cfs)
 		queries := getDetailRangeMatchQuery(cfs)
-		utils.JPrint(comments)
 		for idx := range len(names) {
 			ftd := &FuncTplData{
 				Name:    names[idx],
 				Comment: comments[idx],
-				Params:  getDetailRangeFuncParams(cfs),
+				Params:  params[idx],
 				Query:   queries[idx],
 			}
 			funcDatas = append(funcDatas, ftd)
 		}
 	}
-	utils.JPrint(funcDatas)
 
 	return funcDatas
 }
@@ -52,9 +51,10 @@ var (
 	LT      = "Lt"
 	LTE     = "Lte"
 	optList = [][]string{
+		// {GTE}, {LTE},
 		{GTE}, {GT}, {LT}, {LTE},
-		{GTE, LT}, {GTE, LTE}, {GT, LT}, {GT, LTE},
-		{LT, GTE}, {LTE, GTE}, {LT, GT}, {LTE, GT},
+		{GTE, LTE},
+		// {GTE, LT}, {GTE, LTE}, {GT, LT}, {GT, LTE},
 	}
 	optNames = map[string]string{
 		GTE: "大于等于",
@@ -65,105 +65,138 @@ var (
 )
 
 // getDetailRangeFuncName 获取函数名称
-// gte, gt, lt, lte
 func getDetailRangeFuncName(structName string, fields []*FieldInfo) []string {
-	names := []string{}
-	for _, opts := range optList {
-		if len(fields) == len(opts) {
-			fn := "Range" + structName + "By"
-			for idx, opt := range opts {
-				fn += fields[idx].FieldName + opt
+	fieldOpts := [][]string{}
+	for _, f := range fields {
+		tmps := []string{}
+		for _, opts := range optList {
+			tmp := f.FieldName
+			for _, opt := range opts {
+				tmp += opt
 			}
-			names = append(names, fn)
+			tmps = append(tmps, tmp)
 		}
+		fieldOpts = append(fieldOpts, tmps)
 	}
+
+	names := []string{}
+	fn := "Range" + structName + "By"
+	fopts := utils.Cartesian(fieldOpts)
+	for _, fopt := range fopts {
+		names = append(names, fn+fopt)
+	}
+	utils.JPrint(names)
 	return names
 }
 
 // getDetailRangeFuncComment 获取函数注释
 func getDetailRangeFuncComment(structComment string, fields []*FieldInfo) []string {
-	comments := []string{}
-	for _, opts := range optList {
-		if len(fields) == len(opts) {
-			// 函数注释
-			cmt := "查找"
-			for idx, opt := range opts {
-				optName := optNames[opt]
-				cmt += fields[idx].FieldComment + optName + "、"
+	// 函数注释部分
+	fieldCmts := [][]string{}
+	for _, f := range fields {
+		tmps := []string{}
+		for _, opts := range optList {
+			tmp := f.FieldComment
+			for _, opt := range opts {
+				tmp += optNames[opt]
 			}
-			cmt = strings.TrimSuffix(cmt, "、")
-			cmt += "指定数值的" + structComment + "的详细数据列表和总数量"
+			tmps = append(tmps, tmp)
+		}
+		fieldCmts = append(fieldCmts, tmps)
+	}
+	funcCmts := []string{}
+	fn := "从" + structComment + "查找"
+	fopts := utils.Cartesian(fieldCmts)
+	for _, fopt := range fopts {
+		funcCmts = append(funcCmts, fn+fopt+"指定数值的详细数据列表和总数量\n")
+	}
+	// utils.JPrint(funcCmts)
 
-			// 参数注释
-			for _, f := range fields {
-				cmt += "\n// " + utils.ToFirstLower(f.FieldName) + " " + f.FieldType + " " + f.FieldComment
+	// 参数注释部分
+	fieldParamCmts := [][]string{}
+	for _, f := range fields {
+		tmps := []string{}
+		for _, opts := range optList {
+			tmp := " "
+			for _, opt := range opts {
+				tmp += "// " + utils.ToFirstLower(f.FieldName) + opt + " " + f.FieldType + " " + f.FieldComment + optNames[opt] + "\n"
 			}
-			comments = append(comments, cmt)
+			tmps = append(tmps, tmp)
+		}
+		fieldParamCmts = append(fieldParamCmts, tmps)
+	}
+	paramOpts := utils.Cartesian(fieldParamCmts)
+
+	// 函数注释和参数注释合并
+	if len(funcCmts) == len(paramOpts) {
+		for idx, fc := range funcCmts {
+			funcCmts[idx] = fc + strings.TrimSuffix(paramOpts[idx], "\n")
 		}
 	}
 
-	return comments
+	utils.JPrint(funcCmts)
+
+	return funcCmts
 }
 
 // getDetailRangeFuncParams 获取函数参数列表
-func getDetailRangeFuncParams(fields []*FieldInfo) string {
-	fp := ""
+func getDetailRangeFuncParams(fields []*FieldInfo) []string {
+	params := [][]string{}
 	for _, f := range fields {
-		fp += utils.ToFirstLower(f.FieldName) + " " + f.FieldType + ", "
+		tmps := []string{}
+		for _, opts := range optList {
+			tmp := ""
+			for _, opt := range opts {
+				tmp += utils.ToFirstLower(f.FieldName) + opt + " " + f.FieldType + ", "
+			}
+			tmps = append(tmps, tmp)
+		}
+		params = append(params, tmps)
 	}
-	fp = strings.TrimSuffix(fp, ", ")
-	return fp
+
+	funcParams := utils.Cartesian(params)
+	for idx, fp := range funcParams {
+		funcParams[idx] = strings.TrimSuffix(fp, ", ")
+	}
+	utils.JPrint(funcParams)
+	return funcParams
 }
 
 // getDetailRangeMatchQuery 获取函数的查询条件
 func getDetailRangeMatchQuery(fields []*FieldInfo) []string {
-	fqs := []string{}
-	for _, opts := range optList {
-		if len(fields) == len(opts) {
-			if len(fields) == 1 { // 单条件查询
-				f := fields[0]
-				opt := opts[0]
-				gte, gt, lt, lte := "nil", "nil", "nil", "nil"
+	ranges := [][]string{}
+	for _, f := range fields {
+		tmps := []string{}
+		for _, opts := range optList {
+			tmp := ""
+			gte, gt, lt, lte := "nil", "nil", "nil", "nil"
+			for _, opt := range opts {
 				switch opt {
 				case GTE:
-					gte = utils.ToFirstLower(f.FieldName)
+					gte = utils.ToFirstLower(f.FieldName) + opt
 				case GT:
-					gt = utils.ToFirstLower(f.FieldName)
+					gt = utils.ToFirstLower(f.FieldName + opt)
 				case LT:
-					lt = utils.ToFirstLower(f.FieldName)
+					lt = utils.ToFirstLower(f.FieldName + opt)
 				case LTE:
-					lte = utils.ToFirstLower(f.FieldName)
+					lte = utils.ToFirstLower(f.FieldName + opt)
 				}
-
-				fq := "esQuery := &eq.ESQuery{\n"
-				fq += fmt.Sprintf("		Query: eq.Range(\"%s\", %s, %s, %s, %s),\n", f.EsFieldPath, gte, gt, lt, lte)
-				fq += "	}\n"
-				fqs = append(fqs, fq)
-			} else { // 多条件查询
-				fq := "ranges := []eq.Map{\n"
-				for idx, opt := range opts {
-					f := fields[idx]
-					gte, gt, lt, lte := "nil", "nil", "nil", "nil"
-					switch opt {
-					case GTE:
-						gte = utils.ToFirstLower(f.FieldName)
-					case GT:
-						gt = utils.ToFirstLower(f.FieldName)
-					case LT:
-						lt = utils.ToFirstLower(f.FieldName)
-					case LTE:
-						lte = utils.ToFirstLower(f.FieldName)
-					}
-					fq += fmt.Sprintf("		eq.Range(\"%s\", %s, %s, %s, %s),\n", f.EsFieldPath, gte, gt, lt, lte)
-				}
-				fq += "	}\n"
-
-				fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(ranges))}`
-				fqs = append(fqs, fq)
 			}
+			tmp += fmt.Sprintf("		eq.Range(\"%s\", %s, %s, %s, %s),\n", f.EsFieldPath, gte, gt, lt, lte)
+			tmps = append(tmps, tmp)
 		}
+		ranges = append(ranges, tmps)
 	}
-	return fqs
+
+	funcRanges := utils.Cartesian(ranges)
+	for idx, fq := range funcRanges {
+		fq := "ranges := []eq.Map{\n" + fq + "	}\n"
+		fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(ranges))}`
+		funcRanges[idx] = fq
+	}
+	utils.JPrint(funcRanges)
+
+	return funcRanges
 }
 
 // GenEsDetailRange 生成es检索详情
