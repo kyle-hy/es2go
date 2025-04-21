@@ -94,6 +94,58 @@ func GroupFieldsByType(fields []*FieldInfo) map[string][]*FieldInfo {
 	return grouped
 }
 
+// limitCombination 检查某个组合是否满足类型限制
+func limitCombination(comb []*FieldInfo, typeLimit map[string]int) bool {
+	count := make(map[string]int)
+	for _, item := range comb {
+		tm := getTypeMapping(item.FieldType)
+		count[tm]++
+		if count[tm] > typeLimit[tm] {
+			return false
+		}
+	}
+	return true
+}
+
+// LimitCombineFilter 过滤出满足类型组合限制的组合
+func LimitCombineFilter(combs [][]*FieldInfo, typeLimit map[string]int) [][]*FieldInfo {
+	filterout := [][]*FieldInfo{}
+	for _, comb := range combs {
+		if limitCombination(comb, typeLimit) {
+			filterout = append(filterout, comb)
+		}
+	}
+	return filterout
+}
+
+// mustCombination 检查是否包含必须的类型
+func mustCombination(comb []*FieldInfo, mustTypes []string) bool {
+	for _, t := range mustTypes {
+		found := false
+		for _, f := range comb {
+			if f.FieldType == t {
+				found = true
+				break
+			}
+		}
+		if !found {
+			return false
+		}
+	}
+	return true
+}
+
+// MustCombineFilter 过滤出满足必须包含类型的组合
+func MustCombineFilter(combs [][]*FieldInfo, mustTypes []string) [][]*FieldInfo {
+	filterout := [][]*FieldInfo{}
+	for _, comb := range combs {
+		if mustCombination(comb, mustTypes) {
+			filterout = append(filterout, comb)
+		}
+	}
+	return filterout
+}
+
 // 类型分组
 const (
 	TypeVector      = "vector"
@@ -111,6 +163,46 @@ const (
 	TypeOther       = "other"
 )
 
+func getTypeMapping(esType string) string {
+	switch esType {
+	case "dense_vector", "sparse_vector", "vector": // 向量类
+		return TypeVector
+	case "text", "wildcard", "constant_keyword", "match_only_text": // 字符串类
+		return TypeText
+	case "keyword": // 不做分词的字符串
+		return TypeKeyword
+
+	// 数值类
+	case "long", "integer", "short", "byte", "double", "float", "half_float", "scaled_float", "unsigned_long":
+		return TypeNumber
+
+	case "date", "date_nanos": // 日期类
+		return TypeDate
+
+	case "boolean": // 布尔类
+		return TypeBoolean
+
+	// 范围类（特殊处理）
+	case "integer_range", "float_range", "long_range", "double_range", "date_range":
+		return TypeRange
+
+	case "ip": // IP 地址类
+		return TypeIP
+
+	case "geo_point", "geo_shape": // 地理类
+		return TypeGeo
+
+	case "object", "nested", "flattened", "join": // 嵌套结构类
+		return TypeObject
+
+	case "binary", "token_count", "murmur3", "version": // 特殊类
+		return TypeSpecial
+
+	default:
+		return TypeOther
+	}
+}
+
 // TypeMapping 类型映射
 func TypeMapping(field *FieldInfo) []string {
 	types := []string{}
@@ -120,53 +212,6 @@ func TypeMapping(field *FieldInfo) []string {
 	}
 
 	esType := field.EsFieldType
-	switch esType {
-	case "dense_vector", "sparse_vector": // 向量类
-		types = append(types, TypeVector)
-		return types
-	case "text", "wildcard", "constant_keyword", "match_only_text": // 字符串类
-		types = append(types, TypeText)
-		return types
-	case "keyword": // 不做分词的字符串
-		types = append(types, TypeKeyword)
-		return types
-
-	// 数值类
-	case "long", "integer", "short", "byte", "double", "float", "half_float", "scaled_float", "unsigned_long":
-		types = append(types, TypeNumber)
-		return types
-
-	case "date", "date_nanos": // 日期类
-		types = append(types, TypeDate)
-		return types
-
-	case "boolean": // 布尔类
-		types = append(types, TypeBoolean)
-		return types
-
-	// 范围类（特殊处理）
-	case "integer_range", "float_range", "long_range", "double_range", "date_range":
-		types = append(types, TypeRange)
-		return types
-
-	case "ip": // IP 地址类
-		types = append(types, TypeIP)
-		return types
-
-	case "geo_point", "geo_shape": // 地理类
-		types = append(types, TypeGeo)
-		return types
-
-	case "object", "nested", "flattened", "join": // 嵌套结构类
-		types = append(types, TypeObject)
-		return types
-
-	case "binary", "token_count", "murmur3", "version": // 特殊类
-		types = append(types, TypeSpecial)
-		return types
-
-	default:
-		types = append(types, TypeOther)
-		return types
-	}
+	types = append(types, getTypeMapping(esType))
+	return types
 }
