@@ -1,0 +1,309 @@
+{
+    "mappings": {
+        "_meta": {
+            "comment": "公物仓资产卡片信息表"
+        },
+        "properties": {
+            "ac_power": {
+                "type": "text",
+                "meta": {
+                    "comment": "空调功率"
+                }
+            },
+            "ac_type": {
+                "type": "text",
+                "meta": {
+                    "comment": "空调种类"
+                }
+            },
+            "acquisition_date": {
+                "type": "date",
+                "meta": {
+                    "comment": "取得日期"
+                }
+            },
+            "acquisition_method": {
+                "type": "text",
+                "meta": {
+                    "comment": "取得方式"
+                }
+            },
+            "all_text": {
+                "type": "text",
+                "meta": {
+                    "comment": "合并了其他所有text和keyword字段的内容"
+                }
+            },
+            "applicable_area": {
+                "type": "text",
+                "meta": {
+                    "comment": "适用面积"
+                }
+            },
+            "asset_category": {
+                "type": "text",
+                "meta": {
+                    "comment": "资产分类"
+                }
+            },
+            "asset_id": {
+                "type": "text",
+                "meta": {
+                    "comment": "资产编号"
+                }
+            },
+            "asset_name": {
+                "type": "text",
+                "meta": {
+                    "comment": "资产名称"
+                }
+            },
+            "asset_status": {
+                "type": "text",
+                "meta": {
+                    "comment": "资产现状说明"
+                }
+            },
+            "asset_usage": {
+                "type": "text",
+                "meta": {
+                    "comment": "入仓资产用途"
+                }
+            },
+            "business_status": {
+                "type": "text",
+                "meta": {
+                    "comment": "业务状态"
+                }
+            },
+            "capacity_cubic_meters": {
+                "type": "float",
+                "meta": {
+                    "comment": "容量/立方米"
+                }
+            },
+            "color": {
+                "type": "text",
+                "meta": {
+                    "comment": "颜色"
+                }
+            },
+            "consumable_type": {
+                "type": "text",
+                "meta": {
+                    "comment": "耗材类型"
+                }
+            },
+            "contact_person": {
+                "type": "text",
+                "meta": {
+                    "comment": "联系人"
+                }
+            },
+            "contact_phone": {
+                "type": "text",
+                "meta": {
+                    "comment": "联系电话"
+                }
+            },
+            "cooling_heating_type": {
+                "type": "text",
+                "meta": {
+                    "comment": "空调冷暖方式"
+                }
+            },
+            "cooling_method": {
+                "type": "text",
+                "meta": {
+                    "comment": "制冷方式"
+                }
+            },
+            "cpu": {
+                "type": "text",
+                "meta": {
+                    "comment": "处理器"
+                }
+            },
+            "door_structure": {
+                "type": "text",
+                "meta": {
+                    "comment": "箱门结构"
+                }
+            },
+            "energy_efficiency": {
+                "type": "text",
+                "meta": {
+                    "comment": "能效等级"
+                }
+            },
+            "fiscal_division": {
+                "type": "text",
+                "meta": {
+                    "comment": "所属财政区划"
+                }
+            },
+            "floor": {
+                "type": "text",
+                "meta": {
+                    "comment": "楼层"
+                }
+            },
+            "gpu": {
+                "type": "text",
+                "meta": {
+                    "comment": "显卡"
+                }
+            },
+            "hard_drive": {
+                "type": "text",
+                "meta": {
+                    "comment": "硬盘"
+                }
+            },
+            "has_optical_drive": {
+                "type": "boolean",
+                "meta": {
+                    "comment": "是否有光驱"
+                }
+            },
+            "inspection_expiry": {
+                "type": "text",
+                "meta": {
+                    "comment": "年检到期日"
+                }
+            },
+            "lease_or_borrow_term": {
+                "type": "text",
+                "meta": {
+                    "comment": "出租/借期限"
+                }
+            },
+            "location": {
+                "type": "text",
+                "meta": {
+                    "comment": "坐落位置"
+                }
+            },
+            "main_functions": {
+                "type": "text",
+                "meta": {
+                    "comment": "主要包含功能"
+                }
+            },
+            "material_description": {
+                "type": "text",
+                "meta": {
+                    "comment": "材质描述"
+                }
+            },
+            "memory": {
+                "type": "text",
+                "meta": {
+                    "comment": "内存"
+                }
+            },
+            "mileage": {
+                "type": "float",
+                "meta": {
+                    "comment": "行驶里程"
+                }
+            },
+            "orientation": {
+                "type": "text",
+                "meta": {
+                    "comment": "朝向"
+                }
+            },
+            "original_value": {
+                "type": "float",
+                "meta": {
+                    "comment": "资产原值"
+                }
+            },
+            "owning_unit": {
+                "type": "text",
+                "meta": {
+                    "comment": "所属单位"
+                }
+            },
+            "owning_unit_name": {
+                "type": "text",
+                "meta": {
+                    "comment": "所属单位名称"
+                }
+            },
+            "parameter_description": {
+                "type": "text",
+                "meta": {
+                    "comment": "参数描述"
+                }
+            },
+            "renovation_status": {
+                "type": "text",
+                "meta": {
+                    "comment": "装修情况"
+                }
+            },
+            "room_condition": {
+                "type": "text",
+                "meta": {
+                    "comment": "房间情况"
+                }
+            },
+            "size_description": {
+                "type": "text",
+                "meta": {
+                    "comment": "尺寸描述"
+                }
+            },
+            "storage_area": {
+                "type": "float",
+                "meta": {
+                    "comment": "入仓面积"
+                }
+            },
+            "storage_date": {
+                "type": "date",
+                "meta": {
+                    "comment": "入仓日期"
+                }
+            },
+            "supports_duplex_print": {
+                "type": "boolean",
+                "meta": {
+                    "comment": "是否支持自动双面打印"
+                }
+            },
+            "supports_net_print": {
+                "type": "boolean",
+                "meta": {
+                    "comment": "是否支持网络打印"
+                }
+            },
+            "vehicle_seats": {
+                "type": "integer",
+                "meta": {
+                    "comment": "车辆核准载客人数"
+                }
+            },
+            "warehouse_name": {
+                "type": "text",
+                "meta": {
+                    "comment": "仓储名称"
+                }
+            },
+            "warehouse_type": {
+                "type": "text",
+                "meta": {
+                    "comment": "仓储类型"
+                }
+            },
+            "work_mode": {
+                "type": "text",
+                "meta": {
+                    "comment": "工作方式"
+                }
+            }
+        }
+    }
+}

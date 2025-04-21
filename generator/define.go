@@ -2,7 +2,7 @@ package generator
 
 // 全局常量
 const (
-	MaxCombine = 5
+	MaxCombine = 4 // 随机组合字段的最大个数
 )
 
 // FuncTplData 预处理生产的函数模板需要的信息
