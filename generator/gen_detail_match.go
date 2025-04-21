@@ -17,14 +17,8 @@ import (
 func PreDetailMatchCond(esInfo *EsModelInfo) []*FuncTplData {
 	funcDatas := []*FuncTplData{}
 
-	// 按数据类型分组字段
-	grpFileds := GroupFieldsByType(esInfo.Fields)
-
-	// 提取目标字段
-	fields := grpFileds[TypeText]
-
 	// 字段随机组合
-	cmbFields := utils.Combinations(fields, MaxCombine)
+	cmbFields := utils.Combinations(esInfo.Fields, MaxCombine)
 	for _, cfs := range cmbFields {
 		ftd := &FuncTplData{
 			Name:    getDetailMatchFuncName(esInfo.StructName, cfs),
@@ -55,7 +49,7 @@ func getDetailMatchFuncComment(structComment string, fields []*FieldInfo) string
 		cmt += f.FieldComment + "、"
 	}
 	cmt = strings.TrimSuffix(cmt, "、")
-	cmt += "进行检索查询" + structComment + "的详细数据列表和总数量"
+	cmt += "进行检索(等于)查询" + structComment + "的详细数据列表和总数量"
 
 	// 参数注释
 	for _, f := range fields {
@@ -77,21 +71,52 @@ func getDetailMatchFuncParams(fields []*FieldInfo) string {
 
 // getDetailMatchMatchQuery 获取函数的查询条件
 func getDetailMatchMatchQuery(fields []*FieldInfo) string {
-	fq := ""
-	if len(fields) == 1 {
-		f := fields[0]
-		fq = "esQuery := &eq.ESQuery{\n"
-		fq += fmt.Sprintf("		Query: eq.Match(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
-		fq += "	}\n"
-	} else {
-		fq = "matches := []eq.Map{\n"
-		for _, f := range fields {
-			fq += fmt.Sprintf("		eq.Match(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
+	// match部分参数
+	matchCnt := 0
+	mq := "matches := []eq.Map{\n"
+	for _, f := range fields {
+		if f.EsFieldType == "text" {
+			matchCnt++
+			mq += fmt.Sprintf("		eq.Match(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
 		}
-		fq += "	}\n"
-
-		fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}`
 	}
+	mq += "	}\n"
+
+	// match部分参数
+	termCnt := 0
+	tq := "terms := []eq.Map{\n"
+	for _, f := range fields {
+		if f.EsFieldType != "text" {
+			termCnt++
+			tq += fmt.Sprintf("		eq.Term(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
+		}
+	}
+	tq += "	}\n"
+
+	// 拼接match和term条件
+	fq := ""
+	if matchCnt > 0 {
+		fq += mq
+	}
+	if termCnt > 0 {
+		fq += tq
+	}
+
+	// 组合bool条件
+	fq += "	esQuery := &eq.ESQuery{Query: eq.Bool("
+	if matchCnt > 0 {
+		fq += "eq.WithMust(matches)"
+	}
+	if termCnt > 0 {
+		if matchCnt > 0 {
+			fq += ", eq.WithFilter(terms)"
+		} else {
+			fq += "eq.WithFilter(terms)"
+		}
+	}
+
+	fq += ")}"
+
 	return fq
 }
 

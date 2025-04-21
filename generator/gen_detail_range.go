@@ -85,7 +85,6 @@ func getDetailRangeFuncName(structName string, fields []*FieldInfo) []string {
 	for _, fopt := range fopts {
 		names = append(names, fn+fopt)
 	}
-	utils.JPrint(names)
 	return names
 }
 
@@ -110,7 +109,6 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo) []stri
 	for _, fopt := range fopts {
 		funcCmts = append(funcCmts, fn+fopt+"指定数值的详细数据列表和总数量\n")
 	}
-	// utils.JPrint(funcCmts)
 
 	// 参数注释部分
 	fieldParamCmts := [][]string{}
@@ -134,8 +132,6 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo) []stri
 		}
 	}
 
-	utils.JPrint(funcCmts)
-
 	return funcCmts
 }
 
@@ -158,7 +154,6 @@ func getDetailRangeFuncParams(fields []*FieldInfo) []string {
 	for idx, fp := range funcParams {
 		funcParams[idx] = strings.TrimSuffix(fp, ", ")
 	}
-	utils.JPrint(funcParams)
 	return funcParams
 }
 
@@ -194,7 +189,6 @@ func getDetailRangeMatchQuery(fields []*FieldInfo) []string {
 		fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(ranges))}`
 		funcRanges[idx] = fq
 	}
-	utils.JPrint(funcRanges)
 
 	return funcRanges
 }

@@ -146,6 +146,34 @@ func MustCombineFilter(combs [][]*FieldInfo, mustTypes []string) [][]*FieldInfo 
 	return filterout
 }
 
+// mustCombineField 检查是否包含必须的es字段
+func mustCombineField(comb []*FieldInfo, mustFields []string) bool {
+	for _, t := range mustFields {
+		found := false
+		for _, f := range comb {
+			if f.EsFieldPath == t {
+				found = true
+				break
+			}
+		}
+		if !found {
+			return false
+		}
+	}
+	return true
+}
+
+// MustCombineField 过滤出满足必须包含es字段的组合
+func MustCombineField(combs [][]*FieldInfo, mustFields []string) [][]*FieldInfo {
+	filterout := [][]*FieldInfo{}
+	for _, comb := range combs {
+		if mustCombineField(comb, mustFields) {
+			filterout = append(filterout, comb)
+		}
+	}
+	return filterout
+}
+
 // 类型分组
 const (
 	TypeVector      = "vector"
