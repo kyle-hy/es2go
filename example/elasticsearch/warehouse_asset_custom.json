@@ -1,0 +1,12 @@
+{
+    "combine": [
+        [
+            "ac_power"
+        ],
+        [
+            "ac_power",
+            "ac_type"
+        ]
+    ],
+    "maxCombine": 4
+}

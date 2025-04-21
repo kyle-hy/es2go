@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"sort"
 	"strings"
 	"text/template"
 
@@ -14,11 +15,22 @@ import (
 // 生成对text字段检索的代码
 
 // PreDetailMatchCond 使用go代码预处理渲染需要的一些逻辑，template脚本出来调试困难
-func PreDetailMatchCond(esInfo *EsModelInfo) []*FuncTplData {
+func PreDetailMatchCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData {
 	funcDatas := []*FuncTplData{}
 
+	// 尝试加载自定义生成配置
+	genCfg := LoadCustomGenConfig(mappingPath)
+	maxCombine := MaxCombine
+	if genCfg.MaxCombine > 0 {
+		maxCombine = genCfg.MaxCombine
+	}
+
 	// 字段随机组合
-	cmbFields := utils.Combinations(esInfo.Fields, MaxCombine)
+	cmbFields := combineCustom(esInfo.Fields, genCfg.Combine, maxCombine)
+	if len(cmbFields) == 0 {
+		// 不存在自定义字段的配置，则全字段随机
+		cmbFields = utils.Combinations(esInfo.Fields, maxCombine)
+	}
 	for _, cfs := range cmbFields {
 		ftd := &FuncTplData{
 			Name:    getDetailMatchFuncName(esInfo.StructName, cfs),
@@ -30,6 +42,50 @@ func PreDetailMatchCond(esInfo *EsModelInfo) []*FuncTplData {
 	}
 
 	return funcDatas
+}
+
+// combineCustom 根据指定列表随机组合数组的元素
+// list 字段分组，相当于将宽表拆成多个少字段的表，减少combine组合数
+func combineCustom(items []*FieldInfo, list [][]string, maxCombine int) [][]*FieldInfo {
+	var all [][]*FieldInfo
+	keyDict := map[string]int{}
+	if maxCombine <= 0 {
+		maxCombine = MaxCombine
+	}
+	// 过滤出字段
+	for _, names := range list {
+		fields := []*FieldInfo{}
+		for _, n := range names {
+			for _, i := range items {
+				if i.EsFieldPath == n {
+					fields = append(fields, i)
+				}
+			}
+		}
+		cmbs := utils.Combinations(fields, maxCombine)
+
+		// 过滤掉重复的组合
+		for _, cmb := range cmbs {
+			key := getFieldKey(cmb)
+			if _, ok := keyDict[key]; ok {
+				// 已存在组合，跳过
+				continue
+			} else {
+				keyDict[key] = 1
+				all = append(all, cmb)
+			}
+		}
+	}
+	return all
+}
+
+func getFieldKey(fields []*FieldInfo) string {
+	ks := make([]string, len(fields))
+	for _, f := range fields {
+		ks = append(ks, f.EsFieldPath)
+	}
+	sort.Strings(ks)
+	return strings.Join(ks, "")
 }
 
 // getDetailMatchFuncName 获取函数名称
@@ -121,9 +177,9 @@ func getDetailMatchMatchQuery(fields []*FieldInfo) string {
 }
 
 // GenEsDetailMatch 生成es检索详情
-func GenEsDetailMatch(outputPath string, esInfo *EsModelInfo) error {
+func GenEsDetailMatch(mappingPath, outputPath string, esInfo *EsModelInfo) error {
 	// 预处理渲染所需的内容
-	funcData := PreDetailMatchCond(esInfo)
+	funcData := PreDetailMatchCond(mappingPath, esInfo)
 	detailData := DetailTplData{
 		PackageName:   esInfo.PackageName,
 		StructName:    esInfo.StructName,

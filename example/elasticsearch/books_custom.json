@@ -1,0 +1,14 @@
+{
+    "combine": [
+        [
+            "author",
+            "page_count",
+            "name"
+        ],
+        [
+            "name",
+            "price"
+        ]
+    ],
+    "maxCombine": 4
+}

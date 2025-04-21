@@ -17,7 +17,7 @@ func GetOrDefault[T any](ptr *T, defaultVal T) T {
 
 func main() {
 	// required arguments
-	inputPath := flag.String("in", "", "Input JSON schema file (including file name)")
+	inputPath := flag.String("in", "", "Input JSON schema mapping file (including file name)")
 	outputPath := flag.String("out", "", "Output Go file (including file name)")
 	packageName := flag.String("package", "model", "Name of the Go package")
 	structName := flag.String("struct", "GeneratedStruct", "Name of the generated Go struct")
@@ -56,7 +56,7 @@ func main() {
 	}
 
 	// 生成详情查询函数接口
-	gen.GenEsDetailMatch(*outputPath, esInfo)
+	gen.GenEsDetailMatch(*inputPath, *outputPath, esInfo)
 	gen.GenEsDetailRange(*outputPath, esInfo)
 	gen.GenEsDetailTerm(*outputPath, esInfo)
 

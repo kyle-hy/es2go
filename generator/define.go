@@ -69,7 +69,7 @@ type FieldInfo struct {
 	FieldComment  string // go的字段注释
 	FieldsKeyword string // go的字段text子字段keyword
 	EsFieldType   string // es的mapping字段类型
-	EsFieldPath   string // es的字段(嵌套)的访问路径
+	EsFieldPath   string // es的字段名(嵌套)的访问路径
 }
 
 // EsModelInfo ES库表模型的信息
