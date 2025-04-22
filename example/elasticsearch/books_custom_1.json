@@ -10,5 +10,6 @@
             "price"
         ]
     ],
-    "maxCombine": 4
+    "maxCombine": 4,
+    "termInShould": false
 }

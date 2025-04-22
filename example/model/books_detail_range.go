@@ -15,7 +15,7 @@ func RangeBooksByPageCountGte(es *elasticsearch.Client, pageCountGte int64) (*eq
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -25,7 +25,7 @@ func RangeBooksByPageCountGt(es *elasticsearch.Client, pageCountGt int64) (*eq.D
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -35,7 +35,7 @@ func RangeBooksByPageCountLt(es *elasticsearch.Client, pageCountLt int64) (*eq.D
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -45,7 +45,7 @@ func RangeBooksByPageCountLte(es *elasticsearch.Client, pageCountLte int64) (*eq
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -56,7 +56,7 @@ func RangeBooksByPageCountGteLte(es *elasticsearch.Client, pageCountGte int64, p
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -66,7 +66,7 @@ func RangeBooksByPriceGte(es *elasticsearch.Client, priceGte float64) (*eq.Data,
 	filters := []eq.Map{
 		eq.Range("price", priceGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -76,7 +76,7 @@ func RangeBooksByPriceGt(es *elasticsearch.Client, priceGt float64) (*eq.Data, *
 	filters := []eq.Map{
 		eq.Range("price", nil, priceGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -86,7 +86,7 @@ func RangeBooksByPriceLt(es *elasticsearch.Client, priceLt float64) (*eq.Data, *
 	filters := []eq.Map{
 		eq.Range("price", nil, nil, priceLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -96,7 +96,7 @@ func RangeBooksByPriceLte(es *elasticsearch.Client, priceLte float64) (*eq.Data,
 	filters := []eq.Map{
 		eq.Range("price", nil, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -107,7 +107,7 @@ func RangeBooksByPriceGteLte(es *elasticsearch.Client, priceGte float64, priceLt
 	filters := []eq.Map{
 		eq.Range("price", priceGte, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -117,7 +117,7 @@ func RangeBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateGte time.Ti
 	filters := []eq.Map{
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -127,7 +127,7 @@ func RangeBooksByReleaseDateGt(es *elasticsearch.Client, releaseDateGt time.Time
 	filters := []eq.Map{
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -137,7 +137,7 @@ func RangeBooksByReleaseDateLt(es *elasticsearch.Client, releaseDateLt time.Time
 	filters := []eq.Map{
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -147,7 +147,7 @@ func RangeBooksByReleaseDateLte(es *elasticsearch.Client, releaseDateLte time.Ti
 	filters := []eq.Map{
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -158,7 +158,7 @@ func RangeBooksByReleaseDateGteLte(es *elasticsearch.Client, releaseDateGte time
 	filters := []eq.Map{
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -172,7 +172,7 @@ func RangeBooksByPageCountGteWithAuthor(es *elasticsearch.Client, author string,
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -186,7 +186,7 @@ func RangeBooksByPageCountGtWithAuthor(es *elasticsearch.Client, author string, 
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -200,7 +200,7 @@ func RangeBooksByPageCountLtWithAuthor(es *elasticsearch.Client, author string, 
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -214,7 +214,7 @@ func RangeBooksByPageCountLteWithAuthor(es *elasticsearch.Client, author string,
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -229,7 +229,7 @@ func RangeBooksByPageCountGteLteWithAuthor(es *elasticsearch.Client, author stri
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -243,7 +243,7 @@ func RangeBooksByPriceGteWithAuthor(es *elasticsearch.Client, author string, pri
 	filters := []eq.Map{
 		eq.Range("price", priceGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -257,7 +257,7 @@ func RangeBooksByPriceGtWithAuthor(es *elasticsearch.Client, author string, pric
 	filters := []eq.Map{
 		eq.Range("price", nil, priceGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -271,7 +271,7 @@ func RangeBooksByPriceLtWithAuthor(es *elasticsearch.Client, author string, pric
 	filters := []eq.Map{
 		eq.Range("price", nil, nil, priceLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -285,7 +285,7 @@ func RangeBooksByPriceLteWithAuthor(es *elasticsearch.Client, author string, pri
 	filters := []eq.Map{
 		eq.Range("price", nil, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -300,7 +300,7 @@ func RangeBooksByPriceGteLteWithAuthor(es *elasticsearch.Client, author string, 
 	filters := []eq.Map{
 		eq.Range("price", priceGte, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -314,7 +314,7 @@ func RangeBooksByReleaseDateGteWithAuthor(es *elasticsearch.Client, author strin
 	filters := []eq.Map{
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -328,7 +328,7 @@ func RangeBooksByReleaseDateGtWithAuthor(es *elasticsearch.Client, author string
 	filters := []eq.Map{
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -342,7 +342,7 @@ func RangeBooksByReleaseDateLtWithAuthor(es *elasticsearch.Client, author string
 	filters := []eq.Map{
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -356,7 +356,7 @@ func RangeBooksByReleaseDateLteWithAuthor(es *elasticsearch.Client, author strin
 	filters := []eq.Map{
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -371,7 +371,7 @@ func RangeBooksByReleaseDateGteLteWithAuthor(es *elasticsearch.Client, author st
 	filters := []eq.Map{
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -383,7 +383,7 @@ func RangeBooksByPageCountGteWithClass(es *elasticsearch.Client, class string, p
 		eq.Term("class", class),
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -395,7 +395,7 @@ func RangeBooksByPageCountGtWithClass(es *elasticsearch.Client, class string, pa
 		eq.Term("class", class),
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -407,7 +407,7 @@ func RangeBooksByPageCountLtWithClass(es *elasticsearch.Client, class string, pa
 		eq.Term("class", class),
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -419,7 +419,7 @@ func RangeBooksByPageCountLteWithClass(es *elasticsearch.Client, class string, p
 		eq.Term("class", class),
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -432,7 +432,7 @@ func RangeBooksByPageCountGteLteWithClass(es *elasticsearch.Client, class string
 		eq.Term("class", class),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -444,7 +444,7 @@ func RangeBooksByPriceGteWithClass(es *elasticsearch.Client, class string, price
 		eq.Term("class", class),
 		eq.Range("price", priceGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -456,7 +456,7 @@ func RangeBooksByPriceGtWithClass(es *elasticsearch.Client, class string, priceG
 		eq.Term("class", class),
 		eq.Range("price", nil, priceGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -468,7 +468,7 @@ func RangeBooksByPriceLtWithClass(es *elasticsearch.Client, class string, priceL
 		eq.Term("class", class),
 		eq.Range("price", nil, nil, priceLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -480,7 +480,7 @@ func RangeBooksByPriceLteWithClass(es *elasticsearch.Client, class string, price
 		eq.Term("class", class),
 		eq.Range("price", nil, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -493,7 +493,7 @@ func RangeBooksByPriceGteLteWithClass(es *elasticsearch.Client, class string, pr
 		eq.Term("class", class),
 		eq.Range("price", priceGte, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -505,7 +505,7 @@ func RangeBooksByReleaseDateGteWithClass(es *elasticsearch.Client, class string,
 		eq.Term("class", class),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -517,7 +517,7 @@ func RangeBooksByReleaseDateGtWithClass(es *elasticsearch.Client, class string, 
 		eq.Term("class", class),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -529,7 +529,7 @@ func RangeBooksByReleaseDateLtWithClass(es *elasticsearch.Client, class string, 
 		eq.Term("class", class),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -541,7 +541,7 @@ func RangeBooksByReleaseDateLteWithClass(es *elasticsearch.Client, class string,
 		eq.Term("class", class),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -554,7 +554,7 @@ func RangeBooksByReleaseDateGteLteWithClass(es *elasticsearch.Client, class stri
 		eq.Term("class", class),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -568,7 +568,7 @@ func RangeBooksByPageCountGteWithName(es *elasticsearch.Client, name string, pag
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -582,7 +582,7 @@ func RangeBooksByPageCountGtWithName(es *elasticsearch.Client, name string, page
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -596,7 +596,7 @@ func RangeBooksByPageCountLtWithName(es *elasticsearch.Client, name string, page
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -610,7 +610,7 @@ func RangeBooksByPageCountLteWithName(es *elasticsearch.Client, name string, pag
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -625,7 +625,7 @@ func RangeBooksByPageCountGteLteWithName(es *elasticsearch.Client, name string, 
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -639,7 +639,7 @@ func RangeBooksByPriceGteWithName(es *elasticsearch.Client, name string, priceGt
 	filters := []eq.Map{
 		eq.Range("price", priceGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -653,7 +653,7 @@ func RangeBooksByPriceGtWithName(es *elasticsearch.Client, name string, priceGt 
 	filters := []eq.Map{
 		eq.Range("price", nil, priceGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -667,7 +667,7 @@ func RangeBooksByPriceLtWithName(es *elasticsearch.Client, name string, priceLt 
 	filters := []eq.Map{
 		eq.Range("price", nil, nil, priceLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -681,7 +681,7 @@ func RangeBooksByPriceLteWithName(es *elasticsearch.Client, name string, priceLt
 	filters := []eq.Map{
 		eq.Range("price", nil, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -696,7 +696,7 @@ func RangeBooksByPriceGteLteWithName(es *elasticsearch.Client, name string, pric
 	filters := []eq.Map{
 		eq.Range("price", priceGte, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -710,7 +710,7 @@ func RangeBooksByReleaseDateGteWithName(es *elasticsearch.Client, name string, r
 	filters := []eq.Map{
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -724,7 +724,7 @@ func RangeBooksByReleaseDateGtWithName(es *elasticsearch.Client, name string, re
 	filters := []eq.Map{
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -738,7 +738,7 @@ func RangeBooksByReleaseDateLtWithName(es *elasticsearch.Client, name string, re
 	filters := []eq.Map{
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -752,7 +752,7 @@ func RangeBooksByReleaseDateLteWithName(es *elasticsearch.Client, name string, r
 	filters := []eq.Map{
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -767,7 +767,7 @@ func RangeBooksByReleaseDateGteLteWithName(es *elasticsearch.Client, name string
 	filters := []eq.Map{
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -779,7 +779,7 @@ func RangeBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pageCountG
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -791,7 +791,7 @@ func RangeBooksByPageCountGteReleaseDateGt(es *elasticsearch.Client, pageCountGt
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -803,7 +803,7 @@ func RangeBooksByPageCountGteReleaseDateLt(es *elasticsearch.Client, pageCountGt
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -815,7 +815,7 @@ func RangeBooksByPageCountGteReleaseDateLte(es *elasticsearch.Client, pageCountG
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -828,7 +828,7 @@ func RangeBooksByPageCountGteReleaseDateGteLte(es *elasticsearch.Client, pageCou
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -840,7 +840,7 @@ func RangeBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pageCountGt
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -852,7 +852,7 @@ func RangeBooksByPageCountGtReleaseDateGt(es *elasticsearch.Client, pageCountGt 
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -864,7 +864,7 @@ func RangeBooksByPageCountGtReleaseDateLt(es *elasticsearch.Client, pageCountGt 
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -876,7 +876,7 @@ func RangeBooksByPageCountGtReleaseDateLte(es *elasticsearch.Client, pageCountGt
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -889,7 +889,7 @@ func RangeBooksByPageCountGtReleaseDateGteLte(es *elasticsearch.Client, pageCoun
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -901,7 +901,7 @@ func RangeBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pageCountLt
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -913,7 +913,7 @@ func RangeBooksByPageCountLtReleaseDateGt(es *elasticsearch.Client, pageCountLt 
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -925,7 +925,7 @@ func RangeBooksByPageCountLtReleaseDateLt(es *elasticsearch.Client, pageCountLt 
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -937,7 +937,7 @@ func RangeBooksByPageCountLtReleaseDateLte(es *elasticsearch.Client, pageCountLt
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -950,7 +950,7 @@ func RangeBooksByPageCountLtReleaseDateGteLte(es *elasticsearch.Client, pageCoun
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -962,7 +962,7 @@ func RangeBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pageCountL
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -974,7 +974,7 @@ func RangeBooksByPageCountLteReleaseDateGt(es *elasticsearch.Client, pageCountLt
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -986,7 +986,7 @@ func RangeBooksByPageCountLteReleaseDateLt(es *elasticsearch.Client, pageCountLt
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -998,7 +998,7 @@ func RangeBooksByPageCountLteReleaseDateLte(es *elasticsearch.Client, pageCountL
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1011,7 +1011,7 @@ func RangeBooksByPageCountLteReleaseDateGteLte(es *elasticsearch.Client, pageCou
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1024,7 +1024,7 @@ func RangeBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Client, pageCou
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1037,7 +1037,7 @@ func RangeBooksByPageCountGteLteReleaseDateGt(es *elasticsearch.Client, pageCoun
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1050,7 +1050,7 @@ func RangeBooksByPageCountGteLteReleaseDateLt(es *elasticsearch.Client, pageCoun
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1063,7 +1063,7 @@ func RangeBooksByPageCountGteLteReleaseDateLte(es *elasticsearch.Client, pageCou
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1077,7 +1077,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLte(es *elasticsearch.Client, page
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1089,7 +1089,7 @@ func RangeBooksByPageCountGteWithSeq(es *elasticsearch.Client, seq string, pageC
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1101,7 +1101,7 @@ func RangeBooksByPageCountGtWithSeq(es *elasticsearch.Client, seq string, pageCo
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1113,7 +1113,7 @@ func RangeBooksByPageCountLtWithSeq(es *elasticsearch.Client, seq string, pageCo
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1125,7 +1125,7 @@ func RangeBooksByPageCountLteWithSeq(es *elasticsearch.Client, seq string, pageC
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1138,7 +1138,7 @@ func RangeBooksByPageCountGteLteWithSeq(es *elasticsearch.Client, seq string, pa
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1150,7 +1150,7 @@ func RangeBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceGte float
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1162,7 +1162,7 @@ func RangeBooksByPriceGteReleaseDateGt(es *elasticsearch.Client, priceGte float6
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1174,7 +1174,7 @@ func RangeBooksByPriceGteReleaseDateLt(es *elasticsearch.Client, priceGte float6
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1186,7 +1186,7 @@ func RangeBooksByPriceGteReleaseDateLte(es *elasticsearch.Client, priceGte float
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1199,7 +1199,7 @@ func RangeBooksByPriceGteReleaseDateGteLte(es *elasticsearch.Client, priceGte fl
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1211,7 +1211,7 @@ func RangeBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt float64
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1223,7 +1223,7 @@ func RangeBooksByPriceGtReleaseDateGt(es *elasticsearch.Client, priceGt float64,
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1235,7 +1235,7 @@ func RangeBooksByPriceGtReleaseDateLt(es *elasticsearch.Client, priceGt float64,
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1247,7 +1247,7 @@ func RangeBooksByPriceGtReleaseDateLte(es *elasticsearch.Client, priceGt float64
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1260,7 +1260,7 @@ func RangeBooksByPriceGtReleaseDateGteLte(es *elasticsearch.Client, priceGt floa
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1272,7 +1272,7 @@ func RangeBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt float64
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1284,7 +1284,7 @@ func RangeBooksByPriceLtReleaseDateGt(es *elasticsearch.Client, priceLt float64,
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1296,7 +1296,7 @@ func RangeBooksByPriceLtReleaseDateLt(es *elasticsearch.Client, priceLt float64,
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1308,7 +1308,7 @@ func RangeBooksByPriceLtReleaseDateLte(es *elasticsearch.Client, priceLt float64
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1321,7 +1321,7 @@ func RangeBooksByPriceLtReleaseDateGteLte(es *elasticsearch.Client, priceLt floa
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1333,7 +1333,7 @@ func RangeBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLte float
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1345,7 +1345,7 @@ func RangeBooksByPriceLteReleaseDateGt(es *elasticsearch.Client, priceLte float6
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1357,7 +1357,7 @@ func RangeBooksByPriceLteReleaseDateLt(es *elasticsearch.Client, priceLte float6
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1369,7 +1369,7 @@ func RangeBooksByPriceLteReleaseDateLte(es *elasticsearch.Client, priceLte float
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1382,7 +1382,7 @@ func RangeBooksByPriceLteReleaseDateGteLte(es *elasticsearch.Client, priceLte fl
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1395,7 +1395,7 @@ func RangeBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client, priceGte fl
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1408,7 +1408,7 @@ func RangeBooksByPriceGteLteReleaseDateGt(es *elasticsearch.Client, priceGte flo
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1421,7 +1421,7 @@ func RangeBooksByPriceGteLteReleaseDateLt(es *elasticsearch.Client, priceGte flo
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1434,7 +1434,7 @@ func RangeBooksByPriceGteLteReleaseDateLte(es *elasticsearch.Client, priceGte fl
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1448,7 +1448,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLte(es *elasticsearch.Client, priceGte
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1460,7 +1460,7 @@ func RangeBooksByPriceGteWithSeq(es *elasticsearch.Client, seq string, priceGte 
 		eq.Term("seq", seq),
 		eq.Range("price", priceGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1472,7 +1472,7 @@ func RangeBooksByPriceGtWithSeq(es *elasticsearch.Client, seq string, priceGt fl
 		eq.Term("seq", seq),
 		eq.Range("price", nil, priceGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1484,7 +1484,7 @@ func RangeBooksByPriceLtWithSeq(es *elasticsearch.Client, seq string, priceLt fl
 		eq.Term("seq", seq),
 		eq.Range("price", nil, nil, priceLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1496,7 +1496,7 @@ func RangeBooksByPriceLteWithSeq(es *elasticsearch.Client, seq string, priceLte 
 		eq.Term("seq", seq),
 		eq.Range("price", nil, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1509,7 +1509,7 @@ func RangeBooksByPriceGteLteWithSeq(es *elasticsearch.Client, seq string, priceG
 		eq.Term("seq", seq),
 		eq.Range("price", priceGte, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1521,7 +1521,7 @@ func RangeBooksByReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, rel
 		eq.Term("seq", seq),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1533,7 +1533,7 @@ func RangeBooksByReleaseDateGtWithSeq(es *elasticsearch.Client, seq string, rele
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1545,7 +1545,7 @@ func RangeBooksByReleaseDateLtWithSeq(es *elasticsearch.Client, seq string, rele
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1557,7 +1557,7 @@ func RangeBooksByReleaseDateLteWithSeq(es *elasticsearch.Client, seq string, rel
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1570,7 +1570,7 @@ func RangeBooksByReleaseDateGteLteWithSeq(es *elasticsearch.Client, seq string, 
 		eq.Term("seq", seq),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1586,7 +1586,7 @@ func RangeBooksByPageCountGteWithAuthorClass(es *elasticsearch.Client, author st
 		eq.Term("class", class),
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1602,7 +1602,7 @@ func RangeBooksByPageCountGtWithAuthorClass(es *elasticsearch.Client, author str
 		eq.Term("class", class),
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1618,7 +1618,7 @@ func RangeBooksByPageCountLtWithAuthorClass(es *elasticsearch.Client, author str
 		eq.Term("class", class),
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1634,7 +1634,7 @@ func RangeBooksByPageCountLteWithAuthorClass(es *elasticsearch.Client, author st
 		eq.Term("class", class),
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1651,7 +1651,7 @@ func RangeBooksByPageCountGteLteWithAuthorClass(es *elasticsearch.Client, author
 		eq.Term("class", class),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1667,7 +1667,7 @@ func RangeBooksByPriceGteWithAuthorClass(es *elasticsearch.Client, author string
 		eq.Term("class", class),
 		eq.Range("price", priceGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1683,7 +1683,7 @@ func RangeBooksByPriceGtWithAuthorClass(es *elasticsearch.Client, author string,
 		eq.Term("class", class),
 		eq.Range("price", nil, priceGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1699,7 +1699,7 @@ func RangeBooksByPriceLtWithAuthorClass(es *elasticsearch.Client, author string,
 		eq.Term("class", class),
 		eq.Range("price", nil, nil, priceLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1715,7 +1715,7 @@ func RangeBooksByPriceLteWithAuthorClass(es *elasticsearch.Client, author string
 		eq.Term("class", class),
 		eq.Range("price", nil, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1732,7 +1732,7 @@ func RangeBooksByPriceGteLteWithAuthorClass(es *elasticsearch.Client, author str
 		eq.Term("class", class),
 		eq.Range("price", priceGte, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1748,7 +1748,7 @@ func RangeBooksByReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author 
 		eq.Term("class", class),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1764,7 +1764,7 @@ func RangeBooksByReleaseDateGtWithAuthorClass(es *elasticsearch.Client, author s
 		eq.Term("class", class),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1780,7 +1780,7 @@ func RangeBooksByReleaseDateLtWithAuthorClass(es *elasticsearch.Client, author s
 		eq.Term("class", class),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1796,7 +1796,7 @@ func RangeBooksByReleaseDateLteWithAuthorClass(es *elasticsearch.Client, author 
 		eq.Term("class", class),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1813,7 +1813,7 @@ func RangeBooksByReleaseDateGteLteWithAuthorClass(es *elasticsearch.Client, auth
 		eq.Term("class", class),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1829,7 +1829,7 @@ func RangeBooksByPageCountGteWithAuthorName(es *elasticsearch.Client, author str
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1845,7 +1845,7 @@ func RangeBooksByPageCountGtWithAuthorName(es *elasticsearch.Client, author stri
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1861,7 +1861,7 @@ func RangeBooksByPageCountLtWithAuthorName(es *elasticsearch.Client, author stri
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1877,7 +1877,7 @@ func RangeBooksByPageCountLteWithAuthorName(es *elasticsearch.Client, author str
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1894,7 +1894,7 @@ func RangeBooksByPageCountGteLteWithAuthorName(es *elasticsearch.Client, author 
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1910,7 +1910,7 @@ func RangeBooksByPriceGteWithAuthorName(es *elasticsearch.Client, author string,
 	filters := []eq.Map{
 		eq.Range("price", priceGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1926,7 +1926,7 @@ func RangeBooksByPriceGtWithAuthorName(es *elasticsearch.Client, author string, 
 	filters := []eq.Map{
 		eq.Range("price", nil, priceGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1942,7 +1942,7 @@ func RangeBooksByPriceLtWithAuthorName(es *elasticsearch.Client, author string, 
 	filters := []eq.Map{
 		eq.Range("price", nil, nil, priceLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1958,7 +1958,7 @@ func RangeBooksByPriceLteWithAuthorName(es *elasticsearch.Client, author string,
 	filters := []eq.Map{
 		eq.Range("price", nil, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1975,7 +1975,7 @@ func RangeBooksByPriceGteLteWithAuthorName(es *elasticsearch.Client, author stri
 	filters := []eq.Map{
 		eq.Range("price", priceGte, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1991,7 +1991,7 @@ func RangeBooksByReleaseDateGteWithAuthorName(es *elasticsearch.Client, author s
 	filters := []eq.Map{
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2007,7 +2007,7 @@ func RangeBooksByReleaseDateGtWithAuthorName(es *elasticsearch.Client, author st
 	filters := []eq.Map{
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2023,7 +2023,7 @@ func RangeBooksByReleaseDateLtWithAuthorName(es *elasticsearch.Client, author st
 	filters := []eq.Map{
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2039,7 +2039,7 @@ func RangeBooksByReleaseDateLteWithAuthorName(es *elasticsearch.Client, author s
 	filters := []eq.Map{
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2056,7 +2056,7 @@ func RangeBooksByReleaseDateGteLteWithAuthorName(es *elasticsearch.Client, autho
 	filters := []eq.Map{
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2072,7 +2072,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithAuthor(es *elasticsearch.Client, 
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2088,7 +2088,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithAuthor(es *elasticsearch.Client, a
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2104,7 +2104,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithAuthor(es *elasticsearch.Client, a
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2120,7 +2120,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithAuthor(es *elasticsearch.Client, 
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2137,7 +2137,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithAuthor(es *elasticsearch.Clien
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2153,7 +2153,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithAuthor(es *elasticsearch.Client, a
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2169,7 +2169,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithAuthor(es *elasticsearch.Client, au
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2185,7 +2185,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithAuthor(es *elasticsearch.Client, au
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2201,7 +2201,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithAuthor(es *elasticsearch.Client, a
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2218,7 +2218,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithAuthor(es *elasticsearch.Client
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2234,7 +2234,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithAuthor(es *elasticsearch.Client, a
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2250,7 +2250,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithAuthor(es *elasticsearch.Client, au
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2266,7 +2266,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithAuthor(es *elasticsearch.Client, au
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2282,7 +2282,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithAuthor(es *elasticsearch.Client, a
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2299,7 +2299,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithAuthor(es *elasticsearch.Client
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2315,7 +2315,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithAuthor(es *elasticsearch.Client, 
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2331,7 +2331,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithAuthor(es *elasticsearch.Client, a
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2347,7 +2347,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithAuthor(es *elasticsearch.Client, a
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2363,7 +2363,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithAuthor(es *elasticsearch.Client, 
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2380,7 +2380,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithAuthor(es *elasticsearch.Clien
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2397,7 +2397,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithAuthor(es *elasticsearch.Clien
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2414,7 +2414,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithAuthor(es *elasticsearch.Client
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2431,7 +2431,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithAuthor(es *elasticsearch.Client
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2448,7 +2448,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithAuthor(es *elasticsearch.Clien
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2466,7 +2466,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthor(es *elasticsearch.Cl
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2482,7 +2482,7 @@ func RangeBooksByPageCountGteWithAuthorSeq(es *elasticsearch.Client, author stri
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2498,7 +2498,7 @@ func RangeBooksByPageCountGtWithAuthorSeq(es *elasticsearch.Client, author strin
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2514,7 +2514,7 @@ func RangeBooksByPageCountLtWithAuthorSeq(es *elasticsearch.Client, author strin
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2530,7 +2530,7 @@ func RangeBooksByPageCountLteWithAuthorSeq(es *elasticsearch.Client, author stri
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2547,7 +2547,7 @@ func RangeBooksByPageCountGteLteWithAuthorSeq(es *elasticsearch.Client, author s
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2563,7 +2563,7 @@ func RangeBooksByPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, auth
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2579,7 +2579,7 @@ func RangeBooksByPriceGteReleaseDateGtWithAuthor(es *elasticsearch.Client, autho
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2595,7 +2595,7 @@ func RangeBooksByPriceGteReleaseDateLtWithAuthor(es *elasticsearch.Client, autho
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2611,7 +2611,7 @@ func RangeBooksByPriceGteReleaseDateLteWithAuthor(es *elasticsearch.Client, auth
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2628,7 +2628,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithAuthor(es *elasticsearch.Client, a
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2644,7 +2644,7 @@ func RangeBooksByPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, autho
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2660,7 +2660,7 @@ func RangeBooksByPriceGtReleaseDateGtWithAuthor(es *elasticsearch.Client, author
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2676,7 +2676,7 @@ func RangeBooksByPriceGtReleaseDateLtWithAuthor(es *elasticsearch.Client, author
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2692,7 +2692,7 @@ func RangeBooksByPriceGtReleaseDateLteWithAuthor(es *elasticsearch.Client, autho
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2709,7 +2709,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithAuthor(es *elasticsearch.Client, au
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2725,7 +2725,7 @@ func RangeBooksByPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, autho
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2741,7 +2741,7 @@ func RangeBooksByPriceLtReleaseDateGtWithAuthor(es *elasticsearch.Client, author
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2757,7 +2757,7 @@ func RangeBooksByPriceLtReleaseDateLtWithAuthor(es *elasticsearch.Client, author
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2773,7 +2773,7 @@ func RangeBooksByPriceLtReleaseDateLteWithAuthor(es *elasticsearch.Client, autho
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2790,7 +2790,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithAuthor(es *elasticsearch.Client, au
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2806,7 +2806,7 @@ func RangeBooksByPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, auth
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2822,7 +2822,7 @@ func RangeBooksByPriceLteReleaseDateGtWithAuthor(es *elasticsearch.Client, autho
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2838,7 +2838,7 @@ func RangeBooksByPriceLteReleaseDateLtWithAuthor(es *elasticsearch.Client, autho
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2854,7 +2854,7 @@ func RangeBooksByPriceLteReleaseDateLteWithAuthor(es *elasticsearch.Client, auth
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2871,7 +2871,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithAuthor(es *elasticsearch.Client, a
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2888,7 +2888,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, a
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2905,7 +2905,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithAuthor(es *elasticsearch.Client, au
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2922,7 +2922,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithAuthor(es *elasticsearch.Client, au
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2939,7 +2939,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithAuthor(es *elasticsearch.Client, a
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2957,7 +2957,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithAuthor(es *elasticsearch.Client
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2973,7 +2973,7 @@ func RangeBooksByPriceGteWithAuthorSeq(es *elasticsearch.Client, author string, 
 		eq.Term("seq", seq),
 		eq.Range("price", priceGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2989,7 +2989,7 @@ func RangeBooksByPriceGtWithAuthorSeq(es *elasticsearch.Client, author string, s
 		eq.Term("seq", seq),
 		eq.Range("price", nil, priceGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3005,7 +3005,7 @@ func RangeBooksByPriceLtWithAuthorSeq(es *elasticsearch.Client, author string, s
 		eq.Term("seq", seq),
 		eq.Range("price", nil, nil, priceLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3021,7 +3021,7 @@ func RangeBooksByPriceLteWithAuthorSeq(es *elasticsearch.Client, author string, 
 		eq.Term("seq", seq),
 		eq.Range("price", nil, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3038,7 +3038,7 @@ func RangeBooksByPriceGteLteWithAuthorSeq(es *elasticsearch.Client, author strin
 		eq.Term("seq", seq),
 		eq.Range("price", priceGte, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3054,7 +3054,7 @@ func RangeBooksByReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author st
 		eq.Term("seq", seq),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3070,7 +3070,7 @@ func RangeBooksByReleaseDateGtWithAuthorSeq(es *elasticsearch.Client, author str
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3086,7 +3086,7 @@ func RangeBooksByReleaseDateLtWithAuthorSeq(es *elasticsearch.Client, author str
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3102,7 +3102,7 @@ func RangeBooksByReleaseDateLteWithAuthorSeq(es *elasticsearch.Client, author st
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3119,7 +3119,7 @@ func RangeBooksByReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Client, author
 		eq.Term("seq", seq),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3135,7 +3135,7 @@ func RangeBooksByPageCountGteWithClassName(es *elasticsearch.Client, class strin
 		eq.Term("class", class),
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3151,7 +3151,7 @@ func RangeBooksByPageCountGtWithClassName(es *elasticsearch.Client, class string
 		eq.Term("class", class),
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3167,7 +3167,7 @@ func RangeBooksByPageCountLtWithClassName(es *elasticsearch.Client, class string
 		eq.Term("class", class),
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3183,7 +3183,7 @@ func RangeBooksByPageCountLteWithClassName(es *elasticsearch.Client, class strin
 		eq.Term("class", class),
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3200,7 +3200,7 @@ func RangeBooksByPageCountGteLteWithClassName(es *elasticsearch.Client, class st
 		eq.Term("class", class),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3216,7 +3216,7 @@ func RangeBooksByPriceGteWithClassName(es *elasticsearch.Client, class string, n
 		eq.Term("class", class),
 		eq.Range("price", priceGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3232,7 +3232,7 @@ func RangeBooksByPriceGtWithClassName(es *elasticsearch.Client, class string, na
 		eq.Term("class", class),
 		eq.Range("price", nil, priceGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3248,7 +3248,7 @@ func RangeBooksByPriceLtWithClassName(es *elasticsearch.Client, class string, na
 		eq.Term("class", class),
 		eq.Range("price", nil, nil, priceLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3264,7 +3264,7 @@ func RangeBooksByPriceLteWithClassName(es *elasticsearch.Client, class string, n
 		eq.Term("class", class),
 		eq.Range("price", nil, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3281,7 +3281,7 @@ func RangeBooksByPriceGteLteWithClassName(es *elasticsearch.Client, class string
 		eq.Term("class", class),
 		eq.Range("price", priceGte, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3297,7 +3297,7 @@ func RangeBooksByReleaseDateGteWithClassName(es *elasticsearch.Client, class str
 		eq.Term("class", class),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3313,7 +3313,7 @@ func RangeBooksByReleaseDateGtWithClassName(es *elasticsearch.Client, class stri
 		eq.Term("class", class),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3329,7 +3329,7 @@ func RangeBooksByReleaseDateLtWithClassName(es *elasticsearch.Client, class stri
 		eq.Term("class", class),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3345,7 +3345,7 @@ func RangeBooksByReleaseDateLteWithClassName(es *elasticsearch.Client, class str
 		eq.Term("class", class),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3362,7 +3362,7 @@ func RangeBooksByReleaseDateGteLteWithClassName(es *elasticsearch.Client, class 
 		eq.Term("class", class),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3376,7 +3376,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithClass(es *elasticsearch.Client, c
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3390,7 +3390,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithClass(es *elasticsearch.Client, cl
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3404,7 +3404,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithClass(es *elasticsearch.Client, cl
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3418,7 +3418,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithClass(es *elasticsearch.Client, c
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3433,7 +3433,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithClass(es *elasticsearch.Client
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3447,7 +3447,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithClass(es *elasticsearch.Client, cl
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3461,7 +3461,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithClass(es *elasticsearch.Client, cla
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3475,7 +3475,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithClass(es *elasticsearch.Client, cla
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3489,7 +3489,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithClass(es *elasticsearch.Client, cl
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3504,7 +3504,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithClass(es *elasticsearch.Client,
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3518,7 +3518,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithClass(es *elasticsearch.Client, cl
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3532,7 +3532,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithClass(es *elasticsearch.Client, cla
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3546,7 +3546,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithClass(es *elasticsearch.Client, cla
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3560,7 +3560,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithClass(es *elasticsearch.Client, cl
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3575,7 +3575,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithClass(es *elasticsearch.Client,
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3589,7 +3589,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithClass(es *elasticsearch.Client, c
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3603,7 +3603,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithClass(es *elasticsearch.Client, cl
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3617,7 +3617,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithClass(es *elasticsearch.Client, cl
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3631,7 +3631,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithClass(es *elasticsearch.Client, c
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3646,7 +3646,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithClass(es *elasticsearch.Client
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3661,7 +3661,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithClass(es *elasticsearch.Client
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3676,7 +3676,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithClass(es *elasticsearch.Client,
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3691,7 +3691,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithClass(es *elasticsearch.Client,
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3706,7 +3706,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithClass(es *elasticsearch.Client
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3722,7 +3722,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithClass(es *elasticsearch.Cli
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3736,7 +3736,7 @@ func RangeBooksByPageCountGteWithClassSeq(es *elasticsearch.Client, class string
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3750,7 +3750,7 @@ func RangeBooksByPageCountGtWithClassSeq(es *elasticsearch.Client, class string,
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3764,7 +3764,7 @@ func RangeBooksByPageCountLtWithClassSeq(es *elasticsearch.Client, class string,
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3778,7 +3778,7 @@ func RangeBooksByPageCountLteWithClassSeq(es *elasticsearch.Client, class string
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3793,7 +3793,7 @@ func RangeBooksByPageCountGteLteWithClassSeq(es *elasticsearch.Client, class str
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3807,7 +3807,7 @@ func RangeBooksByPriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3821,7 +3821,7 @@ func RangeBooksByPriceGteReleaseDateGtWithClass(es *elasticsearch.Client, class 
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3835,7 +3835,7 @@ func RangeBooksByPriceGteReleaseDateLtWithClass(es *elasticsearch.Client, class 
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3849,7 +3849,7 @@ func RangeBooksByPriceGteReleaseDateLteWithClass(es *elasticsearch.Client, class
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3864,7 +3864,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithClass(es *elasticsearch.Client, cl
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3878,7 +3878,7 @@ func RangeBooksByPriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class 
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3892,7 +3892,7 @@ func RangeBooksByPriceGtReleaseDateGtWithClass(es *elasticsearch.Client, class s
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3906,7 +3906,7 @@ func RangeBooksByPriceGtReleaseDateLtWithClass(es *elasticsearch.Client, class s
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3920,7 +3920,7 @@ func RangeBooksByPriceGtReleaseDateLteWithClass(es *elasticsearch.Client, class 
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3935,7 +3935,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithClass(es *elasticsearch.Client, cla
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3949,7 +3949,7 @@ func RangeBooksByPriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class 
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3963,7 +3963,7 @@ func RangeBooksByPriceLtReleaseDateGtWithClass(es *elasticsearch.Client, class s
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3977,7 +3977,7 @@ func RangeBooksByPriceLtReleaseDateLtWithClass(es *elasticsearch.Client, class s
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3991,7 +3991,7 @@ func RangeBooksByPriceLtReleaseDateLteWithClass(es *elasticsearch.Client, class 
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4006,7 +4006,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithClass(es *elasticsearch.Client, cla
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4020,7 +4020,7 @@ func RangeBooksByPriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4034,7 +4034,7 @@ func RangeBooksByPriceLteReleaseDateGtWithClass(es *elasticsearch.Client, class 
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4048,7 +4048,7 @@ func RangeBooksByPriceLteReleaseDateLtWithClass(es *elasticsearch.Client, class 
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4062,7 +4062,7 @@ func RangeBooksByPriceLteReleaseDateLteWithClass(es *elasticsearch.Client, class
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4077,7 +4077,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithClass(es *elasticsearch.Client, cl
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4092,7 +4092,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, cl
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4107,7 +4107,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithClass(es *elasticsearch.Client, cla
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4122,7 +4122,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithClass(es *elasticsearch.Client, cla
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4137,7 +4137,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithClass(es *elasticsearch.Client, cl
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4153,7 +4153,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithClass(es *elasticsearch.Client,
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4167,7 +4167,7 @@ func RangeBooksByPriceGteWithClassSeq(es *elasticsearch.Client, class string, se
 		eq.Term("seq", seq),
 		eq.Range("price", priceGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4181,7 +4181,7 @@ func RangeBooksByPriceGtWithClassSeq(es *elasticsearch.Client, class string, seq
 		eq.Term("seq", seq),
 		eq.Range("price", nil, priceGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4195,7 +4195,7 @@ func RangeBooksByPriceLtWithClassSeq(es *elasticsearch.Client, class string, seq
 		eq.Term("seq", seq),
 		eq.Range("price", nil, nil, priceLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4209,7 +4209,7 @@ func RangeBooksByPriceLteWithClassSeq(es *elasticsearch.Client, class string, se
 		eq.Term("seq", seq),
 		eq.Range("price", nil, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4224,7 +4224,7 @@ func RangeBooksByPriceGteLteWithClassSeq(es *elasticsearch.Client, class string,
 		eq.Term("seq", seq),
 		eq.Range("price", priceGte, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4238,7 +4238,7 @@ func RangeBooksByReleaseDateGteWithClassSeq(es *elasticsearch.Client, class stri
 		eq.Term("seq", seq),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4252,7 +4252,7 @@ func RangeBooksByReleaseDateGtWithClassSeq(es *elasticsearch.Client, class strin
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4266,7 +4266,7 @@ func RangeBooksByReleaseDateLtWithClassSeq(es *elasticsearch.Client, class strin
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4280,7 +4280,7 @@ func RangeBooksByReleaseDateLteWithClassSeq(es *elasticsearch.Client, class stri
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4295,7 +4295,7 @@ func RangeBooksByReleaseDateGteLteWithClassSeq(es *elasticsearch.Client, class s
 		eq.Term("seq", seq),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4311,7 +4311,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithName(es *elasticsearch.Client, na
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4327,7 +4327,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithName(es *elasticsearch.Client, nam
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4343,7 +4343,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithName(es *elasticsearch.Client, nam
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4359,7 +4359,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithName(es *elasticsearch.Client, na
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4376,7 +4376,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithName(es *elasticsearch.Client,
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4392,7 +4392,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithName(es *elasticsearch.Client, nam
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4408,7 +4408,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithName(es *elasticsearch.Client, name
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4424,7 +4424,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithName(es *elasticsearch.Client, name
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4440,7 +4440,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithName(es *elasticsearch.Client, nam
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4457,7 +4457,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithName(es *elasticsearch.Client, 
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4473,7 +4473,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithName(es *elasticsearch.Client, nam
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4489,7 +4489,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithName(es *elasticsearch.Client, name
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4505,7 +4505,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithName(es *elasticsearch.Client, name
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4521,7 +4521,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithName(es *elasticsearch.Client, nam
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4538,7 +4538,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithName(es *elasticsearch.Client, 
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4554,7 +4554,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithName(es *elasticsearch.Client, na
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4570,7 +4570,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithName(es *elasticsearch.Client, nam
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4586,7 +4586,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithName(es *elasticsearch.Client, nam
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4602,7 +4602,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithName(es *elasticsearch.Client, na
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4619,7 +4619,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithName(es *elasticsearch.Client,
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4636,7 +4636,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithName(es *elasticsearch.Client,
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4653,7 +4653,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithName(es *elasticsearch.Client, 
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4670,7 +4670,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithName(es *elasticsearch.Client, 
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4687,7 +4687,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithName(es *elasticsearch.Client,
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4705,7 +4705,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithName(es *elasticsearch.Clie
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4721,7 +4721,7 @@ func RangeBooksByPageCountGteWithNameSeq(es *elasticsearch.Client, name string, 
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4737,7 +4737,7 @@ func RangeBooksByPageCountGtWithNameSeq(es *elasticsearch.Client, name string, s
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4753,7 +4753,7 @@ func RangeBooksByPageCountLtWithNameSeq(es *elasticsearch.Client, name string, s
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4769,7 +4769,7 @@ func RangeBooksByPageCountLteWithNameSeq(es *elasticsearch.Client, name string, 
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4786,7 +4786,7 @@ func RangeBooksByPageCountGteLteWithNameSeq(es *elasticsearch.Client, name strin
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4802,7 +4802,7 @@ func RangeBooksByPriceGteReleaseDateGteWithName(es *elasticsearch.Client, name s
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4818,7 +4818,7 @@ func RangeBooksByPriceGteReleaseDateGtWithName(es *elasticsearch.Client, name st
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4834,7 +4834,7 @@ func RangeBooksByPriceGteReleaseDateLtWithName(es *elasticsearch.Client, name st
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4850,7 +4850,7 @@ func RangeBooksByPriceGteReleaseDateLteWithName(es *elasticsearch.Client, name s
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4867,7 +4867,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithName(es *elasticsearch.Client, nam
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4883,7 +4883,7 @@ func RangeBooksByPriceGtReleaseDateGteWithName(es *elasticsearch.Client, name st
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4899,7 +4899,7 @@ func RangeBooksByPriceGtReleaseDateGtWithName(es *elasticsearch.Client, name str
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4915,7 +4915,7 @@ func RangeBooksByPriceGtReleaseDateLtWithName(es *elasticsearch.Client, name str
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4931,7 +4931,7 @@ func RangeBooksByPriceGtReleaseDateLteWithName(es *elasticsearch.Client, name st
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4948,7 +4948,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithName(es *elasticsearch.Client, name
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4964,7 +4964,7 @@ func RangeBooksByPriceLtReleaseDateGteWithName(es *elasticsearch.Client, name st
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4980,7 +4980,7 @@ func RangeBooksByPriceLtReleaseDateGtWithName(es *elasticsearch.Client, name str
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4996,7 +4996,7 @@ func RangeBooksByPriceLtReleaseDateLtWithName(es *elasticsearch.Client, name str
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5012,7 +5012,7 @@ func RangeBooksByPriceLtReleaseDateLteWithName(es *elasticsearch.Client, name st
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5029,7 +5029,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithName(es *elasticsearch.Client, name
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5045,7 +5045,7 @@ func RangeBooksByPriceLteReleaseDateGteWithName(es *elasticsearch.Client, name s
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5061,7 +5061,7 @@ func RangeBooksByPriceLteReleaseDateGtWithName(es *elasticsearch.Client, name st
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5077,7 +5077,7 @@ func RangeBooksByPriceLteReleaseDateLtWithName(es *elasticsearch.Client, name st
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5093,7 +5093,7 @@ func RangeBooksByPriceLteReleaseDateLteWithName(es *elasticsearch.Client, name s
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5110,7 +5110,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithName(es *elasticsearch.Client, nam
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5127,7 +5127,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, nam
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5144,7 +5144,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithName(es *elasticsearch.Client, name
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5161,7 +5161,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithName(es *elasticsearch.Client, name
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5178,7 +5178,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithName(es *elasticsearch.Client, nam
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5196,7 +5196,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithName(es *elasticsearch.Client, 
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5212,7 +5212,7 @@ func RangeBooksByPriceGteWithNameSeq(es *elasticsearch.Client, name string, seq 
 		eq.Term("seq", seq),
 		eq.Range("price", priceGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5228,7 +5228,7 @@ func RangeBooksByPriceGtWithNameSeq(es *elasticsearch.Client, name string, seq s
 		eq.Term("seq", seq),
 		eq.Range("price", nil, priceGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5244,7 +5244,7 @@ func RangeBooksByPriceLtWithNameSeq(es *elasticsearch.Client, name string, seq s
 		eq.Term("seq", seq),
 		eq.Range("price", nil, nil, priceLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5260,7 +5260,7 @@ func RangeBooksByPriceLteWithNameSeq(es *elasticsearch.Client, name string, seq 
 		eq.Term("seq", seq),
 		eq.Range("price", nil, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5277,7 +5277,7 @@ func RangeBooksByPriceGteLteWithNameSeq(es *elasticsearch.Client, name string, s
 		eq.Term("seq", seq),
 		eq.Range("price", priceGte, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5293,7 +5293,7 @@ func RangeBooksByReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string
 		eq.Term("seq", seq),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5309,7 +5309,7 @@ func RangeBooksByReleaseDateGtWithNameSeq(es *elasticsearch.Client, name string,
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5325,7 +5325,7 @@ func RangeBooksByReleaseDateLtWithNameSeq(es *elasticsearch.Client, name string,
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5341,7 +5341,7 @@ func RangeBooksByReleaseDateLteWithNameSeq(es *elasticsearch.Client, name string
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5358,7 +5358,7 @@ func RangeBooksByReleaseDateGteLteWithNameSeq(es *elasticsearch.Client, name str
 		eq.Term("seq", seq),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5372,7 +5372,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5386,7 +5386,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithSeq(es *elasticsearch.Client, seq 
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5400,7 +5400,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithSeq(es *elasticsearch.Client, seq 
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5414,7 +5414,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithSeq(es *elasticsearch.Client, seq
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5429,7 +5429,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5443,7 +5443,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq 
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5457,7 +5457,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithSeq(es *elasticsearch.Client, seq s
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5471,7 +5471,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithSeq(es *elasticsearch.Client, seq s
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5485,7 +5485,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithSeq(es *elasticsearch.Client, seq 
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5500,7 +5500,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithSeq(es *elasticsearch.Client, s
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5514,7 +5514,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq 
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5528,7 +5528,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithSeq(es *elasticsearch.Client, seq s
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5542,7 +5542,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithSeq(es *elasticsearch.Client, seq s
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5556,7 +5556,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithSeq(es *elasticsearch.Client, seq 
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5571,7 +5571,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithSeq(es *elasticsearch.Client, s
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5585,7 +5585,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5599,7 +5599,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithSeq(es *elasticsearch.Client, seq 
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5613,7 +5613,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithSeq(es *elasticsearch.Client, seq 
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5627,7 +5627,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithSeq(es *elasticsearch.Client, seq
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5642,7 +5642,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5657,7 +5657,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5672,7 +5672,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithSeq(es *elasticsearch.Client, s
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5687,7 +5687,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithSeq(es *elasticsearch.Client, s
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5702,7 +5702,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5718,7 +5718,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithSeq(es *elasticsearch.Clien
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5732,7 +5732,7 @@ func RangeBooksByPriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq str
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5746,7 +5746,7 @@ func RangeBooksByPriceGteReleaseDateGtWithSeq(es *elasticsearch.Client, seq stri
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5760,7 +5760,7 @@ func RangeBooksByPriceGteReleaseDateLtWithSeq(es *elasticsearch.Client, seq stri
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5774,7 +5774,7 @@ func RangeBooksByPriceGteReleaseDateLteWithSeq(es *elasticsearch.Client, seq str
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5789,7 +5789,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithSeq(es *elasticsearch.Client, seq 
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5803,7 +5803,7 @@ func RangeBooksByPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq stri
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5817,7 +5817,7 @@ func RangeBooksByPriceGtReleaseDateGtWithSeq(es *elasticsearch.Client, seq strin
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5831,7 +5831,7 @@ func RangeBooksByPriceGtReleaseDateLtWithSeq(es *elasticsearch.Client, seq strin
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5845,7 +5845,7 @@ func RangeBooksByPriceGtReleaseDateLteWithSeq(es *elasticsearch.Client, seq stri
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5860,7 +5860,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithSeq(es *elasticsearch.Client, seq s
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5874,7 +5874,7 @@ func RangeBooksByPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq stri
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5888,7 +5888,7 @@ func RangeBooksByPriceLtReleaseDateGtWithSeq(es *elasticsearch.Client, seq strin
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5902,7 +5902,7 @@ func RangeBooksByPriceLtReleaseDateLtWithSeq(es *elasticsearch.Client, seq strin
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5916,7 +5916,7 @@ func RangeBooksByPriceLtReleaseDateLteWithSeq(es *elasticsearch.Client, seq stri
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5931,7 +5931,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithSeq(es *elasticsearch.Client, seq s
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5945,7 +5945,7 @@ func RangeBooksByPriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq str
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5959,7 +5959,7 @@ func RangeBooksByPriceLteReleaseDateGtWithSeq(es *elasticsearch.Client, seq stri
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5973,7 +5973,7 @@ func RangeBooksByPriceLteReleaseDateLtWithSeq(es *elasticsearch.Client, seq stri
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -5987,7 +5987,7 @@ func RangeBooksByPriceLteReleaseDateLteWithSeq(es *elasticsearch.Client, seq str
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6002,7 +6002,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithSeq(es *elasticsearch.Client, seq 
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6017,7 +6017,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq 
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6032,7 +6032,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithSeq(es *elasticsearch.Client, seq s
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6047,7 +6047,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithSeq(es *elasticsearch.Client, seq s
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6062,7 +6062,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithSeq(es *elasticsearch.Client, seq 
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6078,7 +6078,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithSeq(es *elasticsearch.Client, s
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6096,7 +6096,7 @@ func RangeBooksByPageCountGteWithAuthorClassName(es *elasticsearch.Client, autho
 		eq.Term("class", class),
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6114,7 +6114,7 @@ func RangeBooksByPageCountGtWithAuthorClassName(es *elasticsearch.Client, author
 		eq.Term("class", class),
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6132,7 +6132,7 @@ func RangeBooksByPageCountLtWithAuthorClassName(es *elasticsearch.Client, author
 		eq.Term("class", class),
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6150,7 +6150,7 @@ func RangeBooksByPageCountLteWithAuthorClassName(es *elasticsearch.Client, autho
 		eq.Term("class", class),
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6169,7 +6169,7 @@ func RangeBooksByPageCountGteLteWithAuthorClassName(es *elasticsearch.Client, au
 		eq.Term("class", class),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6187,7 +6187,7 @@ func RangeBooksByPriceGteWithAuthorClassName(es *elasticsearch.Client, author st
 		eq.Term("class", class),
 		eq.Range("price", priceGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6205,7 +6205,7 @@ func RangeBooksByPriceGtWithAuthorClassName(es *elasticsearch.Client, author str
 		eq.Term("class", class),
 		eq.Range("price", nil, priceGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6223,7 +6223,7 @@ func RangeBooksByPriceLtWithAuthorClassName(es *elasticsearch.Client, author str
 		eq.Term("class", class),
 		eq.Range("price", nil, nil, priceLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6241,7 +6241,7 @@ func RangeBooksByPriceLteWithAuthorClassName(es *elasticsearch.Client, author st
 		eq.Term("class", class),
 		eq.Range("price", nil, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6260,7 +6260,7 @@ func RangeBooksByPriceGteLteWithAuthorClassName(es *elasticsearch.Client, author
 		eq.Term("class", class),
 		eq.Range("price", priceGte, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6278,7 +6278,7 @@ func RangeBooksByReleaseDateGteWithAuthorClassName(es *elasticsearch.Client, aut
 		eq.Term("class", class),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6296,7 +6296,7 @@ func RangeBooksByReleaseDateGtWithAuthorClassName(es *elasticsearch.Client, auth
 		eq.Term("class", class),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6314,7 +6314,7 @@ func RangeBooksByReleaseDateLtWithAuthorClassName(es *elasticsearch.Client, auth
 		eq.Term("class", class),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6332,7 +6332,7 @@ func RangeBooksByReleaseDateLteWithAuthorClassName(es *elasticsearch.Client, aut
 		eq.Term("class", class),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6351,7 +6351,7 @@ func RangeBooksByReleaseDateGteLteWithAuthorClassName(es *elasticsearch.Client, 
 		eq.Term("class", class),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6369,7 +6369,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithAuthorClass(es *elasticsearch.Cli
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6387,7 +6387,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithAuthorClass(es *elasticsearch.Clie
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6405,7 +6405,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithAuthorClass(es *elasticsearch.Clie
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6423,7 +6423,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithAuthorClass(es *elasticsearch.Cli
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6442,7 +6442,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithAuthorClass(es *elasticsearch.
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6460,7 +6460,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithAuthorClass(es *elasticsearch.Clie
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6478,7 +6478,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithAuthorClass(es *elasticsearch.Clien
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6496,7 +6496,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithAuthorClass(es *elasticsearch.Clien
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6514,7 +6514,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithAuthorClass(es *elasticsearch.Clie
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6533,7 +6533,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithAuthorClass(es *elasticsearch.C
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6551,7 +6551,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithAuthorClass(es *elasticsearch.Clie
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6569,7 +6569,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithAuthorClass(es *elasticsearch.Clien
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6587,7 +6587,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithAuthorClass(es *elasticsearch.Clien
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6605,7 +6605,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithAuthorClass(es *elasticsearch.Clie
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6624,7 +6624,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithAuthorClass(es *elasticsearch.C
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6642,7 +6642,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithAuthorClass(es *elasticsearch.Cli
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6660,7 +6660,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithAuthorClass(es *elasticsearch.Clie
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6678,7 +6678,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithAuthorClass(es *elasticsearch.Clie
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6696,7 +6696,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithAuthorClass(es *elasticsearch.Cli
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6715,7 +6715,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithAuthorClass(es *elasticsearch.
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6734,7 +6734,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6753,7 +6753,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithAuthorClass(es *elasticsearch.C
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6772,7 +6772,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithAuthorClass(es *elasticsearch.C
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6791,7 +6791,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithAuthorClass(es *elasticsearch.
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6811,7 +6811,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthorClass(es *elasticsear
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6829,7 +6829,7 @@ func RangeBooksByPageCountGteWithAuthorClassSeq(es *elasticsearch.Client, author
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6847,7 +6847,7 @@ func RangeBooksByPageCountGtWithAuthorClassSeq(es *elasticsearch.Client, author 
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6865,7 +6865,7 @@ func RangeBooksByPageCountLtWithAuthorClassSeq(es *elasticsearch.Client, author 
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6883,7 +6883,7 @@ func RangeBooksByPageCountLteWithAuthorClassSeq(es *elasticsearch.Client, author
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6902,7 +6902,7 @@ func RangeBooksByPageCountGteLteWithAuthorClassSeq(es *elasticsearch.Client, aut
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6920,7 +6920,7 @@ func RangeBooksByPriceGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client,
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6938,7 +6938,7 @@ func RangeBooksByPriceGteReleaseDateGtWithAuthorClass(es *elasticsearch.Client, 
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6956,7 +6956,7 @@ func RangeBooksByPriceGteReleaseDateLtWithAuthorClass(es *elasticsearch.Client, 
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6974,7 +6974,7 @@ func RangeBooksByPriceGteReleaseDateLteWithAuthorClass(es *elasticsearch.Client,
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6993,7 +6993,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithAuthorClass(es *elasticsearch.Clie
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7011,7 +7011,7 @@ func RangeBooksByPriceGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, 
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7029,7 +7029,7 @@ func RangeBooksByPriceGtReleaseDateGtWithAuthorClass(es *elasticsearch.Client, a
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7047,7 +7047,7 @@ func RangeBooksByPriceGtReleaseDateLtWithAuthorClass(es *elasticsearch.Client, a
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7065,7 +7065,7 @@ func RangeBooksByPriceGtReleaseDateLteWithAuthorClass(es *elasticsearch.Client, 
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7084,7 +7084,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithAuthorClass(es *elasticsearch.Clien
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7102,7 +7102,7 @@ func RangeBooksByPriceLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, 
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7120,7 +7120,7 @@ func RangeBooksByPriceLtReleaseDateGtWithAuthorClass(es *elasticsearch.Client, a
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7138,7 +7138,7 @@ func RangeBooksByPriceLtReleaseDateLtWithAuthorClass(es *elasticsearch.Client, a
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7156,7 +7156,7 @@ func RangeBooksByPriceLtReleaseDateLteWithAuthorClass(es *elasticsearch.Client, 
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7175,7 +7175,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithAuthorClass(es *elasticsearch.Clien
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7193,7 +7193,7 @@ func RangeBooksByPriceLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client,
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7211,7 +7211,7 @@ func RangeBooksByPriceLteReleaseDateGtWithAuthorClass(es *elasticsearch.Client, 
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7229,7 +7229,7 @@ func RangeBooksByPriceLteReleaseDateLtWithAuthorClass(es *elasticsearch.Client, 
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7247,7 +7247,7 @@ func RangeBooksByPriceLteReleaseDateLteWithAuthorClass(es *elasticsearch.Client,
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7266,7 +7266,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithAuthorClass(es *elasticsearch.Clie
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7285,7 +7285,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Clie
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7304,7 +7304,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithAuthorClass(es *elasticsearch.Clien
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7323,7 +7323,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithAuthorClass(es *elasticsearch.Clien
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7342,7 +7342,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithAuthorClass(es *elasticsearch.Clie
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7362,7 +7362,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithAuthorClass(es *elasticsearch.C
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7380,7 +7380,7 @@ func RangeBooksByPriceGteWithAuthorClassSeq(es *elasticsearch.Client, author str
 		eq.Term("seq", seq),
 		eq.Range("price", priceGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7398,7 +7398,7 @@ func RangeBooksByPriceGtWithAuthorClassSeq(es *elasticsearch.Client, author stri
 		eq.Term("seq", seq),
 		eq.Range("price", nil, priceGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7416,7 +7416,7 @@ func RangeBooksByPriceLtWithAuthorClassSeq(es *elasticsearch.Client, author stri
 		eq.Term("seq", seq),
 		eq.Range("price", nil, nil, priceLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7434,7 +7434,7 @@ func RangeBooksByPriceLteWithAuthorClassSeq(es *elasticsearch.Client, author str
 		eq.Term("seq", seq),
 		eq.Range("price", nil, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7453,7 +7453,7 @@ func RangeBooksByPriceGteLteWithAuthorClassSeq(es *elasticsearch.Client, author 
 		eq.Term("seq", seq),
 		eq.Range("price", priceGte, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7471,7 +7471,7 @@ func RangeBooksByReleaseDateGteWithAuthorClassSeq(es *elasticsearch.Client, auth
 		eq.Term("seq", seq),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7489,7 +7489,7 @@ func RangeBooksByReleaseDateGtWithAuthorClassSeq(es *elasticsearch.Client, autho
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7507,7 +7507,7 @@ func RangeBooksByReleaseDateLtWithAuthorClassSeq(es *elasticsearch.Client, autho
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7525,7 +7525,7 @@ func RangeBooksByReleaseDateLteWithAuthorClassSeq(es *elasticsearch.Client, auth
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7544,7 +7544,7 @@ func RangeBooksByReleaseDateGteLteWithAuthorClassSeq(es *elasticsearch.Client, a
 		eq.Term("seq", seq),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7562,7 +7562,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithAuthorName(es *elasticsearch.Clie
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7580,7 +7580,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithAuthorName(es *elasticsearch.Clien
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7598,7 +7598,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithAuthorName(es *elasticsearch.Clien
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7616,7 +7616,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithAuthorName(es *elasticsearch.Clie
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7635,7 +7635,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithAuthorName(es *elasticsearch.C
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7653,7 +7653,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithAuthorName(es *elasticsearch.Clien
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7671,7 +7671,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithAuthorName(es *elasticsearch.Client
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7689,7 +7689,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithAuthorName(es *elasticsearch.Client
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7707,7 +7707,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithAuthorName(es *elasticsearch.Clien
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7726,7 +7726,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithAuthorName(es *elasticsearch.Cl
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7744,7 +7744,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithAuthorName(es *elasticsearch.Clien
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7762,7 +7762,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithAuthorName(es *elasticsearch.Client
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7780,7 +7780,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithAuthorName(es *elasticsearch.Client
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7798,7 +7798,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithAuthorName(es *elasticsearch.Clien
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7817,7 +7817,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithAuthorName(es *elasticsearch.Cl
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7835,7 +7835,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithAuthorName(es *elasticsearch.Clie
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7853,7 +7853,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithAuthorName(es *elasticsearch.Clien
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7871,7 +7871,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithAuthorName(es *elasticsearch.Clien
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7889,7 +7889,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithAuthorName(es *elasticsearch.Clie
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7908,7 +7908,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithAuthorName(es *elasticsearch.C
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7927,7 +7927,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithAuthorName(es *elasticsearch.C
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7946,7 +7946,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithAuthorName(es *elasticsearch.Cl
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7965,7 +7965,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithAuthorName(es *elasticsearch.Cl
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -7984,7 +7984,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithAuthorName(es *elasticsearch.C
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8004,7 +8004,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthorName(es *elasticsearc
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8022,7 +8022,7 @@ func RangeBooksByPageCountGteWithAuthorNameSeq(es *elasticsearch.Client, author 
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8040,7 +8040,7 @@ func RangeBooksByPageCountGtWithAuthorNameSeq(es *elasticsearch.Client, author s
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8058,7 +8058,7 @@ func RangeBooksByPageCountLtWithAuthorNameSeq(es *elasticsearch.Client, author s
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8076,7 +8076,7 @@ func RangeBooksByPageCountLteWithAuthorNameSeq(es *elasticsearch.Client, author 
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8095,7 +8095,7 @@ func RangeBooksByPageCountGteLteWithAuthorNameSeq(es *elasticsearch.Client, auth
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8113,7 +8113,7 @@ func RangeBooksByPriceGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, 
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8131,7 +8131,7 @@ func RangeBooksByPriceGteReleaseDateGtWithAuthorName(es *elasticsearch.Client, a
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8149,7 +8149,7 @@ func RangeBooksByPriceGteReleaseDateLtWithAuthorName(es *elasticsearch.Client, a
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8167,7 +8167,7 @@ func RangeBooksByPriceGteReleaseDateLteWithAuthorName(es *elasticsearch.Client, 
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8186,7 +8186,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithAuthorName(es *elasticsearch.Clien
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8204,7 +8204,7 @@ func RangeBooksByPriceGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, a
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8222,7 +8222,7 @@ func RangeBooksByPriceGtReleaseDateGtWithAuthorName(es *elasticsearch.Client, au
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8240,7 +8240,7 @@ func RangeBooksByPriceGtReleaseDateLtWithAuthorName(es *elasticsearch.Client, au
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8258,7 +8258,7 @@ func RangeBooksByPriceGtReleaseDateLteWithAuthorName(es *elasticsearch.Client, a
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8277,7 +8277,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithAuthorName(es *elasticsearch.Client
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8295,7 +8295,7 @@ func RangeBooksByPriceLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, a
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8313,7 +8313,7 @@ func RangeBooksByPriceLtReleaseDateGtWithAuthorName(es *elasticsearch.Client, au
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8331,7 +8331,7 @@ func RangeBooksByPriceLtReleaseDateLtWithAuthorName(es *elasticsearch.Client, au
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8349,7 +8349,7 @@ func RangeBooksByPriceLtReleaseDateLteWithAuthorName(es *elasticsearch.Client, a
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8368,7 +8368,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithAuthorName(es *elasticsearch.Client
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8386,7 +8386,7 @@ func RangeBooksByPriceLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, 
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8404,7 +8404,7 @@ func RangeBooksByPriceLteReleaseDateGtWithAuthorName(es *elasticsearch.Client, a
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8422,7 +8422,7 @@ func RangeBooksByPriceLteReleaseDateLtWithAuthorName(es *elasticsearch.Client, a
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8440,7 +8440,7 @@ func RangeBooksByPriceLteReleaseDateLteWithAuthorName(es *elasticsearch.Client, 
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8459,7 +8459,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithAuthorName(es *elasticsearch.Clien
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8478,7 +8478,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Clien
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8497,7 +8497,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithAuthorName(es *elasticsearch.Client
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8516,7 +8516,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithAuthorName(es *elasticsearch.Client
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8535,7 +8535,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithAuthorName(es *elasticsearch.Clien
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8555,7 +8555,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithAuthorName(es *elasticsearch.Cl
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8573,7 +8573,7 @@ func RangeBooksByPriceGteWithAuthorNameSeq(es *elasticsearch.Client, author stri
 		eq.Term("seq", seq),
 		eq.Range("price", priceGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8591,7 +8591,7 @@ func RangeBooksByPriceGtWithAuthorNameSeq(es *elasticsearch.Client, author strin
 		eq.Term("seq", seq),
 		eq.Range("price", nil, priceGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8609,7 +8609,7 @@ func RangeBooksByPriceLtWithAuthorNameSeq(es *elasticsearch.Client, author strin
 		eq.Term("seq", seq),
 		eq.Range("price", nil, nil, priceLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8627,7 +8627,7 @@ func RangeBooksByPriceLteWithAuthorNameSeq(es *elasticsearch.Client, author stri
 		eq.Term("seq", seq),
 		eq.Range("price", nil, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8646,7 +8646,7 @@ func RangeBooksByPriceGteLteWithAuthorNameSeq(es *elasticsearch.Client, author s
 		eq.Term("seq", seq),
 		eq.Range("price", priceGte, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8664,7 +8664,7 @@ func RangeBooksByReleaseDateGteWithAuthorNameSeq(es *elasticsearch.Client, autho
 		eq.Term("seq", seq),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8682,7 +8682,7 @@ func RangeBooksByReleaseDateGtWithAuthorNameSeq(es *elasticsearch.Client, author
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8700,7 +8700,7 @@ func RangeBooksByReleaseDateLtWithAuthorNameSeq(es *elasticsearch.Client, author
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8718,7 +8718,7 @@ func RangeBooksByReleaseDateLteWithAuthorNameSeq(es *elasticsearch.Client, autho
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8737,7 +8737,7 @@ func RangeBooksByReleaseDateGteLteWithAuthorNameSeq(es *elasticsearch.Client, au
 		eq.Term("seq", seq),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8755,7 +8755,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Clien
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8773,7 +8773,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithAuthorSeq(es *elasticsearch.Client
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8791,7 +8791,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithAuthorSeq(es *elasticsearch.Client
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8809,7 +8809,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithAuthorSeq(es *elasticsearch.Clien
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8828,7 +8828,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Cl
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8846,7 +8846,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8864,7 +8864,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithAuthorSeq(es *elasticsearch.Client,
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8882,7 +8882,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithAuthorSeq(es *elasticsearch.Client,
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8900,7 +8900,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithAuthorSeq(es *elasticsearch.Client
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8919,7 +8919,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Cli
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8937,7 +8937,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8955,7 +8955,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithAuthorSeq(es *elasticsearch.Client,
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8973,7 +8973,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithAuthorSeq(es *elasticsearch.Client,
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -8991,7 +8991,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithAuthorSeq(es *elasticsearch.Client
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9010,7 +9010,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Cli
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9028,7 +9028,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Clien
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9046,7 +9046,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithAuthorSeq(es *elasticsearch.Client
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9064,7 +9064,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithAuthorSeq(es *elasticsearch.Client
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9082,7 +9082,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithAuthorSeq(es *elasticsearch.Clien
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9101,7 +9101,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Cl
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9120,7 +9120,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Cl
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9139,7 +9139,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithAuthorSeq(es *elasticsearch.Cli
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9158,7 +9158,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithAuthorSeq(es *elasticsearch.Cli
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9177,7 +9177,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithAuthorSeq(es *elasticsearch.Cl
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9197,7 +9197,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthorSeq(es *elasticsearch
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9215,7 +9215,7 @@ func RangeBooksByPriceGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, a
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9233,7 +9233,7 @@ func RangeBooksByPriceGteReleaseDateGtWithAuthorSeq(es *elasticsearch.Client, au
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9251,7 +9251,7 @@ func RangeBooksByPriceGteReleaseDateLtWithAuthorSeq(es *elasticsearch.Client, au
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9269,7 +9269,7 @@ func RangeBooksByPriceGteReleaseDateLteWithAuthorSeq(es *elasticsearch.Client, a
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9288,7 +9288,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Client
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9306,7 +9306,7 @@ func RangeBooksByPriceGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, au
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9324,7 +9324,7 @@ func RangeBooksByPriceGtReleaseDateGtWithAuthorSeq(es *elasticsearch.Client, aut
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9342,7 +9342,7 @@ func RangeBooksByPriceGtReleaseDateLtWithAuthorSeq(es *elasticsearch.Client, aut
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9360,7 +9360,7 @@ func RangeBooksByPriceGtReleaseDateLteWithAuthorSeq(es *elasticsearch.Client, au
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9379,7 +9379,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Client,
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9397,7 +9397,7 @@ func RangeBooksByPriceLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, au
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9415,7 +9415,7 @@ func RangeBooksByPriceLtReleaseDateGtWithAuthorSeq(es *elasticsearch.Client, aut
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9433,7 +9433,7 @@ func RangeBooksByPriceLtReleaseDateLtWithAuthorSeq(es *elasticsearch.Client, aut
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9451,7 +9451,7 @@ func RangeBooksByPriceLtReleaseDateLteWithAuthorSeq(es *elasticsearch.Client, au
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9470,7 +9470,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Client,
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9488,7 +9488,7 @@ func RangeBooksByPriceLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, a
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9506,7 +9506,7 @@ func RangeBooksByPriceLteReleaseDateGtWithAuthorSeq(es *elasticsearch.Client, au
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9524,7 +9524,7 @@ func RangeBooksByPriceLteReleaseDateLtWithAuthorSeq(es *elasticsearch.Client, au
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9542,7 +9542,7 @@ func RangeBooksByPriceLteReleaseDateLteWithAuthorSeq(es *elasticsearch.Client, a
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9561,7 +9561,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Client
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9580,7 +9580,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9599,7 +9599,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithAuthorSeq(es *elasticsearch.Client,
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9618,7 +9618,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithAuthorSeq(es *elasticsearch.Client,
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9637,7 +9637,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithAuthorSeq(es *elasticsearch.Client
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9657,7 +9657,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Cli
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9675,7 +9675,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithClassName(es *elasticsearch.Clien
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9693,7 +9693,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithClassName(es *elasticsearch.Client
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9711,7 +9711,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithClassName(es *elasticsearch.Client
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9729,7 +9729,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithClassName(es *elasticsearch.Clien
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9748,7 +9748,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithClassName(es *elasticsearch.Cl
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9766,7 +9766,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithClassName(es *elasticsearch.Client
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9784,7 +9784,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithClassName(es *elasticsearch.Client,
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9802,7 +9802,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithClassName(es *elasticsearch.Client,
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9820,7 +9820,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithClassName(es *elasticsearch.Client
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9839,7 +9839,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithClassName(es *elasticsearch.Cli
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9857,7 +9857,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithClassName(es *elasticsearch.Client
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9875,7 +9875,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithClassName(es *elasticsearch.Client,
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9893,7 +9893,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithClassName(es *elasticsearch.Client,
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9911,7 +9911,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithClassName(es *elasticsearch.Client
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9930,7 +9930,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithClassName(es *elasticsearch.Cli
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9948,7 +9948,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithClassName(es *elasticsearch.Clien
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9966,7 +9966,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithClassName(es *elasticsearch.Client
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -9984,7 +9984,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithClassName(es *elasticsearch.Client
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10002,7 +10002,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithClassName(es *elasticsearch.Clien
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10021,7 +10021,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithClassName(es *elasticsearch.Cl
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10040,7 +10040,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithClassName(es *elasticsearch.Cl
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10059,7 +10059,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithClassName(es *elasticsearch.Cli
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10078,7 +10078,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithClassName(es *elasticsearch.Cli
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10097,7 +10097,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithClassName(es *elasticsearch.Cl
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10117,7 +10117,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithClassName(es *elasticsearch
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10135,7 +10135,7 @@ func RangeBooksByPageCountGteWithClassNameSeq(es *elasticsearch.Client, class st
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10153,7 +10153,7 @@ func RangeBooksByPageCountGtWithClassNameSeq(es *elasticsearch.Client, class str
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10171,7 +10171,7 @@ func RangeBooksByPageCountLtWithClassNameSeq(es *elasticsearch.Client, class str
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10189,7 +10189,7 @@ func RangeBooksByPageCountLteWithClassNameSeq(es *elasticsearch.Client, class st
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10208,7 +10208,7 @@ func RangeBooksByPageCountGteLteWithClassNameSeq(es *elasticsearch.Client, class
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10226,7 +10226,7 @@ func RangeBooksByPriceGteReleaseDateGteWithClassName(es *elasticsearch.Client, c
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10244,7 +10244,7 @@ func RangeBooksByPriceGteReleaseDateGtWithClassName(es *elasticsearch.Client, cl
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10262,7 +10262,7 @@ func RangeBooksByPriceGteReleaseDateLtWithClassName(es *elasticsearch.Client, cl
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10280,7 +10280,7 @@ func RangeBooksByPriceGteReleaseDateLteWithClassName(es *elasticsearch.Client, c
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10299,7 +10299,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithClassName(es *elasticsearch.Client
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10317,7 +10317,7 @@ func RangeBooksByPriceGtReleaseDateGteWithClassName(es *elasticsearch.Client, cl
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10335,7 +10335,7 @@ func RangeBooksByPriceGtReleaseDateGtWithClassName(es *elasticsearch.Client, cla
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10353,7 +10353,7 @@ func RangeBooksByPriceGtReleaseDateLtWithClassName(es *elasticsearch.Client, cla
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10371,7 +10371,7 @@ func RangeBooksByPriceGtReleaseDateLteWithClassName(es *elasticsearch.Client, cl
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10390,7 +10390,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithClassName(es *elasticsearch.Client,
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10408,7 +10408,7 @@ func RangeBooksByPriceLtReleaseDateGteWithClassName(es *elasticsearch.Client, cl
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10426,7 +10426,7 @@ func RangeBooksByPriceLtReleaseDateGtWithClassName(es *elasticsearch.Client, cla
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10444,7 +10444,7 @@ func RangeBooksByPriceLtReleaseDateLtWithClassName(es *elasticsearch.Client, cla
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10462,7 +10462,7 @@ func RangeBooksByPriceLtReleaseDateLteWithClassName(es *elasticsearch.Client, cl
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10481,7 +10481,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithClassName(es *elasticsearch.Client,
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10499,7 +10499,7 @@ func RangeBooksByPriceLteReleaseDateGteWithClassName(es *elasticsearch.Client, c
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10517,7 +10517,7 @@ func RangeBooksByPriceLteReleaseDateGtWithClassName(es *elasticsearch.Client, cl
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10535,7 +10535,7 @@ func RangeBooksByPriceLteReleaseDateLtWithClassName(es *elasticsearch.Client, cl
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10553,7 +10553,7 @@ func RangeBooksByPriceLteReleaseDateLteWithClassName(es *elasticsearch.Client, c
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10572,7 +10572,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithClassName(es *elasticsearch.Client
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10591,7 +10591,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithClassName(es *elasticsearch.Client
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10610,7 +10610,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithClassName(es *elasticsearch.Client,
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10629,7 +10629,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithClassName(es *elasticsearch.Client,
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10648,7 +10648,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithClassName(es *elasticsearch.Client
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10668,7 +10668,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithClassName(es *elasticsearch.Cli
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10686,7 +10686,7 @@ func RangeBooksByPriceGteWithClassNameSeq(es *elasticsearch.Client, class string
 		eq.Term("seq", seq),
 		eq.Range("price", priceGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10704,7 +10704,7 @@ func RangeBooksByPriceGtWithClassNameSeq(es *elasticsearch.Client, class string,
 		eq.Term("seq", seq),
 		eq.Range("price", nil, priceGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10722,7 +10722,7 @@ func RangeBooksByPriceLtWithClassNameSeq(es *elasticsearch.Client, class string,
 		eq.Term("seq", seq),
 		eq.Range("price", nil, nil, priceLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10740,7 +10740,7 @@ func RangeBooksByPriceLteWithClassNameSeq(es *elasticsearch.Client, class string
 		eq.Term("seq", seq),
 		eq.Range("price", nil, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10759,7 +10759,7 @@ func RangeBooksByPriceGteLteWithClassNameSeq(es *elasticsearch.Client, class str
 		eq.Term("seq", seq),
 		eq.Range("price", priceGte, nil, nil, priceLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10777,7 +10777,7 @@ func RangeBooksByReleaseDateGteWithClassNameSeq(es *elasticsearch.Client, class 
 		eq.Term("seq", seq),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10795,7 +10795,7 @@ func RangeBooksByReleaseDateGtWithClassNameSeq(es *elasticsearch.Client, class s
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10813,7 +10813,7 @@ func RangeBooksByReleaseDateLtWithClassNameSeq(es *elasticsearch.Client, class s
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10831,7 +10831,7 @@ func RangeBooksByReleaseDateLteWithClassNameSeq(es *elasticsearch.Client, class 
 		eq.Term("seq", seq),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10850,7 +10850,7 @@ func RangeBooksByReleaseDateGteLteWithClassNameSeq(es *elasticsearch.Client, cla
 		eq.Term("seq", seq),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10866,7 +10866,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithClassSeq(es *elasticsearch.Client
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10882,7 +10882,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithClassSeq(es *elasticsearch.Client,
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10898,7 +10898,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithClassSeq(es *elasticsearch.Client,
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10914,7 +10914,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithClassSeq(es *elasticsearch.Client
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10931,7 +10931,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithClassSeq(es *elasticsearch.Cli
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10947,7 +10947,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithClassSeq(es *elasticsearch.Client,
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10963,7 +10963,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithClassSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10979,7 +10979,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithClassSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -10995,7 +10995,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithClassSeq(es *elasticsearch.Client,
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11012,7 +11012,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithClassSeq(es *elasticsearch.Clie
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11028,7 +11028,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithClassSeq(es *elasticsearch.Client,
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11044,7 +11044,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithClassSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11060,7 +11060,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithClassSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11076,7 +11076,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithClassSeq(es *elasticsearch.Client,
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11093,7 +11093,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithClassSeq(es *elasticsearch.Clie
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11109,7 +11109,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithClassSeq(es *elasticsearch.Client
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11125,7 +11125,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithClassSeq(es *elasticsearch.Client,
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11141,7 +11141,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithClassSeq(es *elasticsearch.Client,
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11157,7 +11157,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithClassSeq(es *elasticsearch.Client
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11174,7 +11174,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithClassSeq(es *elasticsearch.Cli
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11191,7 +11191,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Cli
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11208,7 +11208,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithClassSeq(es *elasticsearch.Clie
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11225,7 +11225,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithClassSeq(es *elasticsearch.Clie
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11242,7 +11242,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithClassSeq(es *elasticsearch.Cli
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11260,7 +11260,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithClassSeq(es *elasticsearch.
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11276,7 +11276,7 @@ func RangeBooksByPriceGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, cl
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11292,7 +11292,7 @@ func RangeBooksByPriceGteReleaseDateGtWithClassSeq(es *elasticsearch.Client, cla
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11308,7 +11308,7 @@ func RangeBooksByPriceGteReleaseDateLtWithClassSeq(es *elasticsearch.Client, cla
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11324,7 +11324,7 @@ func RangeBooksByPriceGteReleaseDateLteWithClassSeq(es *elasticsearch.Client, cl
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11341,7 +11341,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithClassSeq(es *elasticsearch.Client,
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11357,7 +11357,7 @@ func RangeBooksByPriceGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, cla
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11373,7 +11373,7 @@ func RangeBooksByPriceGtReleaseDateGtWithClassSeq(es *elasticsearch.Client, clas
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11389,7 +11389,7 @@ func RangeBooksByPriceGtReleaseDateLtWithClassSeq(es *elasticsearch.Client, clas
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11405,7 +11405,7 @@ func RangeBooksByPriceGtReleaseDateLteWithClassSeq(es *elasticsearch.Client, cla
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11422,7 +11422,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithClassSeq(es *elasticsearch.Client, 
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11438,7 +11438,7 @@ func RangeBooksByPriceLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, cla
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11454,7 +11454,7 @@ func RangeBooksByPriceLtReleaseDateGtWithClassSeq(es *elasticsearch.Client, clas
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11470,7 +11470,7 @@ func RangeBooksByPriceLtReleaseDateLtWithClassSeq(es *elasticsearch.Client, clas
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11486,7 +11486,7 @@ func RangeBooksByPriceLtReleaseDateLteWithClassSeq(es *elasticsearch.Client, cla
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11503,7 +11503,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithClassSeq(es *elasticsearch.Client, 
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11519,7 +11519,7 @@ func RangeBooksByPriceLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, cl
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11535,7 +11535,7 @@ func RangeBooksByPriceLteReleaseDateGtWithClassSeq(es *elasticsearch.Client, cla
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11551,7 +11551,7 @@ func RangeBooksByPriceLteReleaseDateLtWithClassSeq(es *elasticsearch.Client, cla
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11567,7 +11567,7 @@ func RangeBooksByPriceLteReleaseDateLteWithClassSeq(es *elasticsearch.Client, cl
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11584,7 +11584,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithClassSeq(es *elasticsearch.Client,
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11601,7 +11601,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client,
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11618,7 +11618,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithClassSeq(es *elasticsearch.Client, 
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11635,7 +11635,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithClassSeq(es *elasticsearch.Client, 
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11652,7 +11652,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithClassSeq(es *elasticsearch.Client,
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11670,7 +11670,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithClassSeq(es *elasticsearch.Clie
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11688,7 +11688,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithNameSeq(es *elasticsearch.Client,
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11706,7 +11706,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithNameSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11724,7 +11724,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithNameSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11742,7 +11742,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithNameSeq(es *elasticsearch.Client,
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11761,7 +11761,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithNameSeq(es *elasticsearch.Clie
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11779,7 +11779,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11797,7 +11797,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithNameSeq(es *elasticsearch.Client, n
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11815,7 +11815,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithNameSeq(es *elasticsearch.Client, n
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11833,7 +11833,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithNameSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11852,7 +11852,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithNameSeq(es *elasticsearch.Clien
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11870,7 +11870,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11888,7 +11888,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithNameSeq(es *elasticsearch.Client, n
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11906,7 +11906,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithNameSeq(es *elasticsearch.Client, n
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11924,7 +11924,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithNameSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11943,7 +11943,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithNameSeq(es *elasticsearch.Clien
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11961,7 +11961,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithNameSeq(es *elasticsearch.Client,
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11979,7 +11979,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithNameSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -11997,7 +11997,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithNameSeq(es *elasticsearch.Client, 
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12015,7 +12015,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithNameSeq(es *elasticsearch.Client,
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12034,7 +12034,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithNameSeq(es *elasticsearch.Clie
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12053,7 +12053,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Clie
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12072,7 +12072,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithNameSeq(es *elasticsearch.Clien
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12091,7 +12091,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithNameSeq(es *elasticsearch.Clien
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12110,7 +12110,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithNameSeq(es *elasticsearch.Clie
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12130,7 +12130,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithNameSeq(es *elasticsearch.C
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12148,7 +12148,7 @@ func RangeBooksByPriceGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, nam
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12166,7 +12166,7 @@ func RangeBooksByPriceGteReleaseDateGtWithNameSeq(es *elasticsearch.Client, name
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12184,7 +12184,7 @@ func RangeBooksByPriceGteReleaseDateLtWithNameSeq(es *elasticsearch.Client, name
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12202,7 +12202,7 @@ func RangeBooksByPriceGteReleaseDateLteWithNameSeq(es *elasticsearch.Client, nam
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12221,7 +12221,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithNameSeq(es *elasticsearch.Client, 
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12239,7 +12239,7 @@ func RangeBooksByPriceGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12257,7 +12257,7 @@ func RangeBooksByPriceGtReleaseDateGtWithNameSeq(es *elasticsearch.Client, name 
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12275,7 +12275,7 @@ func RangeBooksByPriceGtReleaseDateLtWithNameSeq(es *elasticsearch.Client, name 
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12293,7 +12293,7 @@ func RangeBooksByPriceGtReleaseDateLteWithNameSeq(es *elasticsearch.Client, name
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12312,7 +12312,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithNameSeq(es *elasticsearch.Client, n
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12330,7 +12330,7 @@ func RangeBooksByPriceLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12348,7 +12348,7 @@ func RangeBooksByPriceLtReleaseDateGtWithNameSeq(es *elasticsearch.Client, name 
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12366,7 +12366,7 @@ func RangeBooksByPriceLtReleaseDateLtWithNameSeq(es *elasticsearch.Client, name 
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12384,7 +12384,7 @@ func RangeBooksByPriceLtReleaseDateLteWithNameSeq(es *elasticsearch.Client, name
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12403,7 +12403,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithNameSeq(es *elasticsearch.Client, n
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12421,7 +12421,7 @@ func RangeBooksByPriceLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, nam
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12439,7 +12439,7 @@ func RangeBooksByPriceLteReleaseDateGtWithNameSeq(es *elasticsearch.Client, name
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12457,7 +12457,7 @@ func RangeBooksByPriceLteReleaseDateLtWithNameSeq(es *elasticsearch.Client, name
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12475,7 +12475,7 @@ func RangeBooksByPriceLteReleaseDateLteWithNameSeq(es *elasticsearch.Client, nam
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12494,7 +12494,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithNameSeq(es *elasticsearch.Client, 
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12513,7 +12513,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, 
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12532,7 +12532,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithNameSeq(es *elasticsearch.Client, n
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, releaseDateGt, nil, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12551,7 +12551,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithNameSeq(es *elasticsearch.Client, n
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, releaseDateLt, nil),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12570,7 +12570,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithNameSeq(es *elasticsearch.Client, 
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", nil, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -12590,6 +12590,6 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithNameSeq(es *elasticsearch.Clien
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithShould(filters))}
 	return queryBooksList(es, esQuery)
 }

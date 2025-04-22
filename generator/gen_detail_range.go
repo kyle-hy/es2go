@@ -43,7 +43,7 @@ func PreDetailRangeCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 		names := getDetailRangeFuncName(esInfo.StructName, cfs, rangeTypes)
 		comments := getDetailRangeFuncComment(esInfo.StructName, cfs, rangeTypes)
 		params := getDetailRangeFuncParams(cfs, rangeTypes)
-		queries := getDetailRangeMatchQuery(cfs, rangeTypes)
+		queries := getDetailRangeMatchQuery(cfs, rangeTypes, genCfg.TermInShould)
 		for idx := range len(names) {
 			ftd := &FuncTplData{
 				Name:    names[idx],
@@ -179,8 +179,6 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeT
 		}
 	}
 
-	utils.JPrint(funcCmts)
-
 	return funcCmts
 }
 
@@ -215,7 +213,13 @@ func getDetailRangeFuncParams(fields []*FieldInfo, rangeTypes []string) []string
 }
 
 // getDetailRangeMatchQuery 获取函数的查询条件
-func getDetailRangeMatchQuery(fields []*FieldInfo, rangeTypes []string) []string {
+func getDetailRangeMatchQuery(fields []*FieldInfo, rangeTypes []string, termInShould bool) []string {
+	// 精确条件默认放到filter中
+	preciseOpt := "eq.WithFilter"
+	if termInShould {
+		preciseOpt = "eq.WithShould"
+	}
+
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	// match部分参数
 	matchCnt := 0
@@ -267,9 +271,11 @@ func getDetailRangeMatchQuery(fields []*FieldInfo, rangeTypes []string) []string
 		fq := "filters := []eq.Map{\n" + tq + fq + "	}\n"
 		if matchCnt > 0 {
 			fq = mq + fq
-			fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}`
+			qfmt := `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), %s(filters))}`
+			fq += fmt.Sprintf(qfmt, preciseOpt)
 		} else {
-			fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}`
+			qfmt := `	esQuery := &eq.ESQuery{Query: eq.Bool(%s(filters))}`
+			fq += fmt.Sprintf(qfmt, preciseOpt)
 		}
 		funcRanges[idx] = fq
 	}
