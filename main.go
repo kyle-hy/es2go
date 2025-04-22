@@ -58,8 +58,6 @@ func main() {
 	// 生成详情查询函数接口
 	gen.GenEsDetailMatch(*inputPath, *outputPath, esInfo)
 	gen.GenEsDetailRange(*inputPath, *outputPath, esInfo)
-	gen.GenEsDetailTerm(*outputPath, esInfo)
-
 }
 
 // nullableString is a helper function to treat flag.String values as nullable.

@@ -3,7 +3,8 @@
         [
             "author",
             "page_count",
-            "name"
+            "name",
+            "seq"
         ],
         [
             "name",
@@ -11,5 +12,5 @@
         ]
     ],
     "maxCombine": 4,
-    "termInShould": false
+    "termInShould": true
 }

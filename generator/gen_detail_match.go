@@ -37,7 +37,7 @@ func PreDetailMatchCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 			Name:    getDetailMatchFuncName(esInfo.StructName, cfs),
 			Comment: getDetailMatchFuncComment(esInfo.StructComment, cfs),
 			Params:  getDetailMatchFuncParams(cfs),
-			Query:   getDetailMatchMatchQuery(cfs),
+			Query:   getDetailMatchMatchQuery(cfs, genCfg.TermInShould),
 		}
 		funcDatas = append(funcDatas, ftd)
 	}
@@ -127,7 +127,13 @@ func getDetailMatchFuncParams(fields []*FieldInfo) string {
 }
 
 // getDetailMatchMatchQuery 获取函数的查询条件
-func getDetailMatchMatchQuery(fields []*FieldInfo) string {
+func getDetailMatchMatchQuery(fields []*FieldInfo, termInShould bool) string {
+	// 精确条件默认放到filter中
+	preciseOpt := "eq.WithFilter"
+	if termInShould {
+		preciseOpt = "eq.WithShould"
+	}
+
 	// match部分参数
 	matchCnt := 0
 	mq := "matches := []eq.Map{\n"
@@ -166,9 +172,9 @@ func getDetailMatchMatchQuery(fields []*FieldInfo) string {
 	}
 	if termCnt > 0 {
 		if matchCnt > 0 {
-			fq += ", eq.WithFilter(terms)"
+			fq += fmt.Sprintf(", %s(terms)", preciseOpt)
 		} else {
-			fq += "eq.WithFilter(terms)"
+			fq += fmt.Sprintf("%s(terms)", preciseOpt)
 		}
 	}
 
