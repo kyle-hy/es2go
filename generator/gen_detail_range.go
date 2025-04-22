@@ -14,22 +14,36 @@ import (
 // 生成对text字段检索的代码
 
 // PreDetailRangeCond 使用go代码预处理渲染需要的一些逻辑，template脚本调试困难
-func PreDetailRangeCond(esInfo *EsModelInfo) []*FuncTplData {
+func PreDetailRangeCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData {
 	funcDatas := []*FuncTplData{}
 
-	// 按数据类型分组字段
-	grpFileds := GroupFieldsByType(esInfo.Fields)
+	// 尝试加载自定义生成配置
+	genCfg := LoadCustomGenConfig(mappingPath)
+	maxCombine := MaxCombine
+	if genCfg.MaxCombine > 0 {
+		maxCombine = genCfg.MaxCombine
+	}
 
-	// 提取目标字段
-	fields := grpFileds[TypeNumber]
+	// 根据配置文件自定义字段分组进行随机组合
+	cmbFields := combineCustom(esInfo.Fields, genCfg.Combine, maxCombine)
+	if len(cmbFields) == 0 { // 不存在自定义字段的配置，则全字段随机
+		cmbFields = utils.Combinations(esInfo.Fields, maxCombine)
+	}
+
+	// 过滤出满足类型限制的组合
+	cmbLimit := map[string]int{TypeNumber: 1, TypeDate: 1}
+	limitCmbs := LimitCombineFilter(cmbFields, cmbLimit)
+
+	// 过滤出最少包含指定类型之一的组合
+	rangeTypes := []string{TypeNumber, TypeDate}
+	mustFileds := MustCombineFilter(limitCmbs, rangeTypes)
 
 	// 字段随机组合
-	cmbFields := utils.Combinations(fields, 2) // 范围查询比较方式较多，限定到两个字段的组合
-	for _, cfs := range cmbFields {
-		names := getDetailRangeFuncName(esInfo.StructName, cfs)
-		comments := getDetailRangeFuncComment(esInfo.StructName, cfs)
-		params := getDetailRangeFuncParams(cfs)
-		queries := getDetailRangeMatchQuery(cfs)
+	for _, cfs := range mustFileds {
+		names := getDetailRangeFuncName(esInfo.StructName, cfs, rangeTypes)
+		comments := getDetailRangeFuncComment(esInfo.StructName, cfs, rangeTypes)
+		params := getDetailRangeFuncParams(cfs, rangeTypes)
+		queries := getDetailRangeMatchQuery(cfs, rangeTypes)
 		for idx := range len(names) {
 			ftd := &FuncTplData{
 				Name:    names[idx],
@@ -65,9 +79,20 @@ var (
 )
 
 // getDetailRangeFuncName 获取函数名称
-func getDetailRangeFuncName(structName string, fields []*FieldInfo) []string {
+func getDetailRangeFuncName(structName string, fields []*FieldInfo, rangeTypes []string) []string {
+	types, other := FieldFilterByTypes(fields, rangeTypes)
+	otherName := ""
+	// 串联过滤条件的字段名
+	if len(other) > 0 {
+		otherName = "With"
+		for _, f := range other {
+			otherName += f.FieldName
+		}
+	}
+
+	// 各字段与比较符号列表的串联
 	fieldOpts := [][]string{}
-	for _, f := range fields {
+	for _, f := range types {
 		tmps := []string{}
 		for _, opts := range optList {
 			tmp := f.FieldName
@@ -81,24 +106,38 @@ func getDetailRangeFuncName(structName string, fields []*FieldInfo) []string {
 
 	names := []string{}
 	fn := "Range" + structName + "By"
+	// 多字段之间的两两组合
 	fopts := utils.Cartesian(fieldOpts)
 	for _, fopt := range fopts {
-		names = append(names, fn+fopt)
+		names = append(names, fn+fopt+otherName)
 	}
 	return names
 }
 
 // getDetailRangeFuncComment 获取函数注释
-func getDetailRangeFuncComment(structComment string, fields []*FieldInfo) []string {
+func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeTypes []string) []string {
 	// 函数注释部分
+	types, other := FieldFilterByTypes(fields, rangeTypes)
+	otherComment := ""
+	// 串联过滤条件的字段名
+	if len(other) > 0 {
+		otherComment = "根据"
+		for _, f := range other {
+			otherComment += f.FieldName + "、"
+		}
+		otherComment = strings.TrimSuffix(otherComment, "、")
+	}
+
 	fieldCmts := [][]string{}
-	for _, f := range fields {
+	for _, f := range types {
 		tmps := []string{}
 		for _, opts := range optList {
 			tmp := f.FieldComment
 			for _, opt := range opts {
-				tmp += optNames[opt]
+				tmp += optNames[opt] + "和"
 			}
+			tmp = strings.TrimSuffix(tmp, "和")
+			tmp += "、"
 			tmps = append(tmps, tmp)
 		}
 		fieldCmts = append(fieldCmts, tmps)
@@ -107,12 +146,20 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo) []stri
 	fn := "从" + structComment + "查找"
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
-		funcCmts = append(funcCmts, fn+fopt+"指定数值的详细数据列表和总数量\n")
+		fopt = strings.TrimSuffix(fopt, "、")
+		funcCmts = append(funcCmts, otherComment+fn+fopt+"指定数值的详细数据列表和总数量\n")
 	}
 
 	// 参数注释部分
+	// 过滤条件部分
+	filterParam := ""
+	for _, f := range other {
+		filterParam += "// " + utils.ToFirstLower(f.FieldName) + " " + f.FieldType + " " + f.FieldComment + "\n"
+	}
+
+	// 范围条件部分
 	fieldParamCmts := [][]string{}
-	for _, f := range fields {
+	for _, f := range types {
 		tmps := []string{}
 		for _, opts := range optList {
 			tmp := " "
@@ -128,17 +175,27 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo) []stri
 	// 函数注释和参数注释合并
 	if len(funcCmts) == len(paramOpts) {
 		for idx, fc := range funcCmts {
-			funcCmts[idx] = fc + strings.TrimSuffix(paramOpts[idx], "\n")
+			funcCmts[idx] = fc + filterParam + strings.TrimSuffix(paramOpts[idx], "\n")
 		}
 	}
+
+	utils.JPrint(funcCmts)
 
 	return funcCmts
 }
 
 // getDetailRangeFuncParams 获取函数参数列表
-func getDetailRangeFuncParams(fields []*FieldInfo) []string {
+func getDetailRangeFuncParams(fields []*FieldInfo, rangeTypes []string) []string {
+	types, other := FieldFilterByTypes(fields, rangeTypes)
+	// 过滤条件参数
+	cfp := ""
+	for _, f := range other {
+		cfp += utils.ToFirstLower(f.FieldName) + " " + f.FieldType + ", "
+	}
+
+	// 范围条件参数
 	params := [][]string{}
-	for _, f := range fields {
+	for _, f := range types {
 		tmps := []string{}
 		for _, opts := range optList {
 			tmp := ""
@@ -152,15 +209,37 @@ func getDetailRangeFuncParams(fields []*FieldInfo) []string {
 
 	funcParams := utils.Cartesian(params)
 	for idx, fp := range funcParams {
-		funcParams[idx] = strings.TrimSuffix(fp, ", ")
+		funcParams[idx] = cfp + strings.TrimSuffix(fp, ", ")
 	}
 	return funcParams
 }
 
 // getDetailRangeMatchQuery 获取函数的查询条件
-func getDetailRangeMatchQuery(fields []*FieldInfo) []string {
+func getDetailRangeMatchQuery(fields []*FieldInfo, rangeTypes []string) []string {
+	types, other := FieldFilterByTypes(fields, rangeTypes)
+	// match部分参数
+	matchCnt := 0
+	mq := "matches := []eq.Map{\n"
+	for _, f := range other {
+		if f.EsFieldType == "text" {
+			matchCnt++
+			mq += fmt.Sprintf("		eq.Match(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
+		}
+	}
+	mq += "	}\n"
+
+	// match部分参数
+	termCnt := 0
+	tq := ""
+	for _, f := range other {
+		if f.EsFieldType != "text" {
+			termCnt++
+			tq += fmt.Sprintf("		eq.Term(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
+		}
+	}
+
 	ranges := [][]string{}
-	for _, f := range fields {
+	for _, f := range types {
 		tmps := []string{}
 		for _, opts := range optList {
 			tmp := ""
@@ -185,8 +264,13 @@ func getDetailRangeMatchQuery(fields []*FieldInfo) []string {
 
 	funcRanges := utils.Cartesian(ranges)
 	for idx, fq := range funcRanges {
-		fq := "ranges := []eq.Map{\n" + fq + "	}\n"
-		fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(ranges))}`
+		fq := "filters := []eq.Map{\n" + tq + fq + "	}\n"
+		if matchCnt > 0 {
+			fq = mq + fq
+			fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}`
+		} else {
+			fq += `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}`
+		}
 		funcRanges[idx] = fq
 	}
 
@@ -194,9 +278,9 @@ func getDetailRangeMatchQuery(fields []*FieldInfo) []string {
 }
 
 // GenEsDetailRange 生成es检索详情
-func GenEsDetailRange(outputPath string, esInfo *EsModelInfo) error {
+func GenEsDetailRange(mappingPath, outputPath string, esInfo *EsModelInfo) error {
 	// 预处理渲染所需的内容
-	funcData := PreDetailRangeCond(esInfo)
+	funcData := PreDetailRangeCond(mappingPath, esInfo)
 	detailData := DetailTplData{
 		PackageName:   esInfo.PackageName,
 		StructName:    esInfo.StructName,

@@ -25,12 +25,13 @@ func PreDetailMatchCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 		maxCombine = genCfg.MaxCombine
 	}
 
-	// 字段随机组合
+	// 根据配置文件自定义字段分组进行随机组合
 	cmbFields := combineCustom(esInfo.Fields, genCfg.Combine, maxCombine)
-	if len(cmbFields) == 0 {
-		// 不存在自定义字段的配置，则全字段随机
+	if len(cmbFields) == 0 { // 不存在自定义字段的配置，则全字段随机
 		cmbFields = utils.Combinations(esInfo.Fields, maxCombine)
 	}
+
+	// 构造渲染模板所需的数据
 	for _, cfs := range cmbFields {
 		ftd := &FuncTplData{
 			Name:    getDetailMatchFuncName(esInfo.StructName, cfs),

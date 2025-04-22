@@ -1,5 +1,9 @@
 package generator
 
+import (
+	"slices"
+)
+
 // 全局常量
 const (
 	MaxCombine = 4 // 随机组合字段的最大个数
@@ -98,9 +102,9 @@ func GroupFieldsByType(fields []*FieldInfo) map[string][]*FieldInfo {
 func limitCombination(comb []*FieldInfo, typeLimit map[string]int) bool {
 	count := make(map[string]int)
 	for _, item := range comb {
-		tm := getTypeMapping(item.FieldType)
+		tm := getTypeMapping(item.EsFieldType)
 		count[tm]++
-		if count[tm] > typeLimit[tm] {
+		if typeLimit[tm] != 0 && count[tm] > typeLimit[tm] {
 			return false
 		}
 	}
@@ -121,18 +125,25 @@ func LimitCombineFilter(combs [][]*FieldInfo, typeLimit map[string]int) [][]*Fie
 // mustCombination 检查是否包含必须的类型
 func mustCombination(comb []*FieldInfo, mustTypes []string) bool {
 	for _, t := range mustTypes {
-		found := false
 		for _, f := range comb {
-			if f.FieldType == t {
-				found = true
-				break
+			if getTypeMapping(f.EsFieldType) == t {
+				return true
 			}
 		}
-		if !found {
-			return false
+	}
+	return false
+}
+
+// FieldFilterByTypes 根据类型拆分过滤字段
+func FieldFilterByTypes(comb []*FieldInfo, mustTypes []string) (types []*FieldInfo, other []*FieldInfo) {
+	for _, f := range comb {
+		if slices.Contains(mustTypes, getTypeMapping(f.EsFieldType)) {
+			types = append(types, f)
+		} else {
+			other = append(other, f)
 		}
 	}
-	return true
+	return
 }
 
 // MustCombineFilter 过滤出满足必须包含类型的组合
