@@ -207,8 +207,10 @@ func getDetailRecentFuncParams(fields []*FieldInfo, rangeTypes []string, rtype s
 			for _, opts := range optList {
 				tmp := ""
 				for _, opt := range opts {
-					tmp += utils.ToFirstLower(f.FieldName) + opt + " " + f.FieldType + ", "
+					tmp += utils.ToFirstLower(f.FieldName) + opt + ", "
 				}
+				tmp = strings.TrimSuffix(tmp, ", ")
+				tmp += " " + f.FieldType + ", "
 				tmps = append(tmps, tmp)
 			}
 			params = append(params, tmps)

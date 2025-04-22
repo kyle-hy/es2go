@@ -111,7 +111,7 @@ func QuarterBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pageCoun
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
@@ -172,7 +172,7 @@ func QuarterBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLte flo
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
@@ -294,7 +294,7 @@ func QuarterBooksByPageCountLteReleaseDateGteWithAuthor(es *elasticsearch.Client
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -375,7 +375,7 @@ func QuarterBooksByPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, au
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -480,7 +480,7 @@ func QuarterBooksByPageCountLteReleaseDateGteWithClass(es *elasticsearch.Client,
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -551,7 +551,7 @@ func QuarterBooksByPriceLteReleaseDateGteWithClass(es *elasticsearch.Client, cla
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Range("price", priceGte, nil, nil, priceLte),
@@ -644,7 +644,7 @@ func QuarterBooksByPageCountLteReleaseDateGteWithName(es *elasticsearch.Client, 
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -725,7 +725,7 @@ func QuarterBooksByPriceLteReleaseDateGteWithName(es *elasticsearch.Client, name
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -814,7 +814,7 @@ func QuarterBooksByPageCountGtePriceLteReleaseDateGte(es *elasticsearch.Client, 
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGtePriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGtePriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
 		eq.Range("price", priceGte, nil, nil, priceLte),
@@ -885,7 +885,7 @@ func QuarterBooksByPageCountGtPriceLteReleaseDateGte(es *elasticsearch.Client, p
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGtPriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGtPriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
 		eq.Range("price", priceGte, nil, nil, priceLte),
@@ -956,7 +956,7 @@ func QuarterBooksByPageCountLtPriceLteReleaseDateGte(es *elasticsearch.Client, p
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountLtPriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountLtPriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
 		eq.Range("price", priceGte, nil, nil, priceLte),
@@ -1027,7 +1027,7 @@ func QuarterBooksByPageCountLtePriceLteReleaseDateGte(es *elasticsearch.Client, 
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountLtePriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountLtePriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
 		eq.Range("price", priceGte, nil, nil, priceLte),
@@ -1042,7 +1042,7 @@ func QuarterBooksByPageCountLtePriceGteLteReleaseDateGte(es *elasticsearch.Clien
 // pageCountLte int64 page_count小于等于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceGteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, pageCountLte int64, priceGte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceGteReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("price", priceGte, nil, nil, nil),
@@ -1057,7 +1057,7 @@ func QuarterBooksByPageCountGteLtePriceGteReleaseDateGte(es *elasticsearch.Clien
 // pageCountLte int64 page_count小于等于
 // priceGt float64 价格大于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceGtReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, pageCountLte int64, priceGt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceGtReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("price", nil, priceGt, nil, nil),
@@ -1072,7 +1072,7 @@ func QuarterBooksByPageCountGteLtePriceGtReleaseDateGte(es *elasticsearch.Client
 // pageCountLte int64 page_count小于等于
 // priceLt float64 价格小于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceLtReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, pageCountLte int64, priceLt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceLtReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("price", nil, nil, priceLt, nil),
@@ -1087,7 +1087,7 @@ func QuarterBooksByPageCountGteLtePriceLtReleaseDateGte(es *elasticsearch.Client
 // pageCountLte int64 page_count小于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceLteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, pageCountLte int64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceLteReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("price", nil, nil, nil, priceLte),
@@ -1103,7 +1103,7 @@ func QuarterBooksByPageCountGteLtePriceLteReleaseDateGte(es *elasticsearch.Clien
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, pageCountLte int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
 		eq.Range("price", priceGte, nil, nil, priceLte),
@@ -1174,7 +1174,7 @@ func QuarterBooksByPageCountLteReleaseDateGteWithSeq(es *elasticsearch.Client, s
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -1245,7 +1245,7 @@ func QuarterBooksByPriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq s
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Range("price", priceGte, nil, nil, priceLte),
@@ -1351,7 +1351,7 @@ func QuarterBooksByPageCountLteReleaseDateGteWithAuthorClass(es *elasticsearch.C
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountGte int64, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountGte, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1442,7 +1442,7 @@ func QuarterBooksByPriceLteReleaseDateGteWithAuthorClass(es *elasticsearch.Clien
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPriceGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPriceGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1551,7 +1551,7 @@ func QuarterBooksByPageCountLteReleaseDateGteWithAuthorName(es *elasticsearch.Cl
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountGte int64, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountGte, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -1642,7 +1642,7 @@ func QuarterBooksByPriceLteReleaseDateGteWithAuthorName(es *elasticsearch.Client
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPriceGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPriceGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -1751,7 +1751,7 @@ func QuarterBooksByPageCountGtePriceLteReleaseDateGteWithAuthor(es *elasticsearc
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1842,7 +1842,7 @@ func QuarterBooksByPageCountGtPriceLteReleaseDateGteWithAuthor(es *elasticsearch
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGtPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGt int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGtPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGt int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1933,7 +1933,7 @@ func QuarterBooksByPageCountLtPriceLteReleaseDateGteWithAuthor(es *elasticsearch
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountLtPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLt int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountLtPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLt int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2024,7 +2024,7 @@ func QuarterBooksByPageCountLtePriceLteReleaseDateGteWithAuthor(es *elasticsearc
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountLtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLte int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountLtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLte int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2043,7 +2043,7 @@ func QuarterBooksByPageCountLtePriceGteLteReleaseDateGteWithAuthor(es *elasticse
 // pageCountLte int64 page_count小于等于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, pageCountLte int64, priceGte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2062,7 +2062,7 @@ func QuarterBooksByPageCountGteLtePriceGteReleaseDateGteWithAuthor(es *elasticse
 // pageCountLte int64 page_count小于等于
 // priceGt float64 价格大于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, pageCountLte int64, priceGt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2081,7 +2081,7 @@ func QuarterBooksByPageCountGteLtePriceGtReleaseDateGteWithAuthor(es *elasticsea
 // pageCountLte int64 page_count小于等于
 // priceLt float64 价格小于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, pageCountLte int64, priceLt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2100,7 +2100,7 @@ func QuarterBooksByPageCountGteLtePriceLtReleaseDateGteWithAuthor(es *elasticsea
 // pageCountLte int64 page_count小于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, pageCountLte int64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2120,7 +2120,7 @@ func QuarterBooksByPageCountGteLtePriceLteReleaseDateGteWithAuthor(es *elasticse
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, pageCountLte int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2211,7 +2211,7 @@ func QuarterBooksByPageCountLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Cli
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountGte int64, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountGte, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2302,7 +2302,7 @@ func QuarterBooksByPriceLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client,
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPriceGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPriceGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2393,7 +2393,7 @@ func QuarterBooksByPageCountLteReleaseDateGteWithClassName(es *elasticsearch.Cli
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountGte int64, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountGte, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2484,7 +2484,7 @@ func QuarterBooksByPriceLteReleaseDateGteWithClassName(es *elasticsearch.Client,
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPriceGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPriceGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2585,7 +2585,7 @@ func QuarterBooksByPageCountGtePriceLteReleaseDateGteWithClass(es *elasticsearch
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGtePriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGtePriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
@@ -2666,7 +2666,7 @@ func QuarterBooksByPageCountGtPriceLteReleaseDateGteWithClass(es *elasticsearch.
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGtPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGt int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGtPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGt int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
@@ -2747,7 +2747,7 @@ func QuarterBooksByPageCountLtPriceLteReleaseDateGteWithClass(es *elasticsearch.
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountLtPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLt int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountLtPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLt int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
@@ -2828,7 +2828,7 @@ func QuarterBooksByPageCountLtePriceLteReleaseDateGteWithClass(es *elasticsearch
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountLtePriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLte int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountLtePriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLte int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
@@ -2845,7 +2845,7 @@ func QuarterBooksByPageCountLtePriceGteLteReleaseDateGteWithClass(es *elasticsea
 // pageCountLte int64 page_count小于等于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, pageCountLte int64, priceGte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -2862,7 +2862,7 @@ func QuarterBooksByPageCountGteLtePriceGteReleaseDateGteWithClass(es *elasticsea
 // pageCountLte int64 page_count小于等于
 // priceGt float64 价格大于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, pageCountLte int64, priceGt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -2879,7 +2879,7 @@ func QuarterBooksByPageCountGteLtePriceGtReleaseDateGteWithClass(es *elasticsear
 // pageCountLte int64 page_count小于等于
 // priceLt float64 价格小于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, pageCountLte int64, priceLt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -2896,7 +2896,7 @@ func QuarterBooksByPageCountGteLtePriceLtReleaseDateGteWithClass(es *elasticsear
 // pageCountLte int64 page_count小于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, pageCountLte int64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -2914,7 +2914,7 @@ func QuarterBooksByPageCountGteLtePriceLteReleaseDateGteWithClass(es *elasticsea
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, pageCountLte int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -2995,7 +2995,7 @@ func QuarterBooksByPageCountLteReleaseDateGteWithClassSeq(es *elasticsearch.Clie
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountGte int64, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountGte, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -3076,7 +3076,7 @@ func QuarterBooksByPriceLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, 
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPriceGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPriceGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -3165,7 +3165,7 @@ func QuarterBooksByPageCountGtePriceLteReleaseDateGteWithName(es *elasticsearch.
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGtePriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGtePriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3256,7 +3256,7 @@ func QuarterBooksByPageCountGtPriceLteReleaseDateGteWithName(es *elasticsearch.C
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGtPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGt int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGtPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGt int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3347,7 +3347,7 @@ func QuarterBooksByPageCountLtPriceLteReleaseDateGteWithName(es *elasticsearch.C
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountLtPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLt int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountLtPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLt int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3438,7 +3438,7 @@ func QuarterBooksByPageCountLtePriceLteReleaseDateGteWithName(es *elasticsearch.
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountLtePriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLte int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountLtePriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLte int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3457,7 +3457,7 @@ func QuarterBooksByPageCountLtePriceGteLteReleaseDateGteWithName(es *elasticsear
 // pageCountLte int64 page_count小于等于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceGteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, pageCountLte int64, priceGte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceGteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3476,7 +3476,7 @@ func QuarterBooksByPageCountGteLtePriceGteReleaseDateGteWithName(es *elasticsear
 // pageCountLte int64 page_count小于等于
 // priceGt float64 价格大于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceGtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, pageCountLte int64, priceGt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceGtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3495,7 +3495,7 @@ func QuarterBooksByPageCountGteLtePriceGtReleaseDateGteWithName(es *elasticsearc
 // pageCountLte int64 page_count小于等于
 // priceLt float64 价格小于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceLtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, pageCountLte int64, priceLt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceLtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3514,7 +3514,7 @@ func QuarterBooksByPageCountGteLtePriceLtReleaseDateGteWithName(es *elasticsearc
 // pageCountLte int64 page_count小于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, pageCountLte int64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3534,7 +3534,7 @@ func QuarterBooksByPageCountGteLtePriceLteReleaseDateGteWithName(es *elasticsear
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, pageCountLte int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3625,7 +3625,7 @@ func QuarterBooksByPageCountLteReleaseDateGteWithNameSeq(es *elasticsearch.Clien
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountGte int64, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountGte, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3716,7 +3716,7 @@ func QuarterBooksByPriceLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, n
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPriceGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPriceGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3799,7 +3799,7 @@ func QuarterBooksByPageCountGtePriceLteReleaseDateGteWithSeq(es *elasticsearch.C
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
@@ -3880,7 +3880,7 @@ func QuarterBooksByPageCountGtPriceLteReleaseDateGteWithSeq(es *elasticsearch.Cl
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGtPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGt int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGtPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGt int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
@@ -3961,7 +3961,7 @@ func QuarterBooksByPageCountLtPriceLteReleaseDateGteWithSeq(es *elasticsearch.Cl
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountLtPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLt int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountLtPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLt int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
@@ -4042,7 +4042,7 @@ func QuarterBooksByPageCountLtePriceLteReleaseDateGteWithSeq(es *elasticsearch.C
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountLtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLte int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountLtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLte int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
@@ -4059,7 +4059,7 @@ func QuarterBooksByPageCountLtePriceGteLteReleaseDateGteWithSeq(es *elasticsearc
 // pageCountLte int64 page_count小于等于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, pageCountLte int64, priceGte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -4076,7 +4076,7 @@ func QuarterBooksByPageCountGteLtePriceGteReleaseDateGteWithSeq(es *elasticsearc
 // pageCountLte int64 page_count小于等于
 // priceGt float64 价格大于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, pageCountLte int64, priceGt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -4093,7 +4093,7 @@ func QuarterBooksByPageCountGteLtePriceGtReleaseDateGteWithSeq(es *elasticsearch
 // pageCountLte int64 page_count小于等于
 // priceLt float64 价格小于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, pageCountLte int64, priceLt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -4110,7 +4110,7 @@ func QuarterBooksByPageCountGteLtePriceLtReleaseDateGteWithSeq(es *elasticsearch
 // pageCountLte int64 page_count小于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, pageCountLte int64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -4128,7 +4128,7 @@ func QuarterBooksByPageCountGteLtePriceLteReleaseDateGteWithSeq(es *elasticsearc
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int release_date为近几个季度
-func QuarterBooksByPageCountGteLtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, pageCountLte int64, priceGte float64, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
+func QuarterBooksByPageCountGteLtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
