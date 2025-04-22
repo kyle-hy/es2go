@@ -11,7 +11,7 @@ import (
 	"github.com/kyle-hy/es2go/utils"
 )
 
-// 生成对text字段检索的代码
+// 生成数值和日期字段范围查询的代码
 
 // PreDetailRangeCond 使用go代码预处理渲染需要的一些逻辑，template脚本调试困难
 func PreDetailRangeCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData {
