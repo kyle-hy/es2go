@@ -24,10 +24,16 @@ func PreDetailVectorCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData
 		maxCombine = genCfg.MaxCombine
 	}
 
+	// 根据配置处理全文本字段的配置
+	fields := esInfo.Fields
+	if genCfg.AllTextFieldOnly && genCfg.AllTextField != "" {
+		fields = DropTextFieldByName(esInfo.Fields, genCfg.AllTextField)
+	}
+
 	// 根据配置文件自定义字段分组进行随机组合
-	cmbFields := combineCustom(esInfo.Fields, genCfg.Combine, maxCombine)
+	cmbFields := combineCustom(fields, genCfg.Combine, maxCombine)
 	if len(cmbFields) == 0 { // 不存在自定义字段的配置，则全字段随机
-		cmbFields = utils.Combinations(esInfo.Fields, maxCombine)
+		cmbFields = utils.Combinations(fields, maxCombine)
 	}
 
 	// 过滤出满足类型限制的组合
@@ -90,7 +96,7 @@ func getDetailVectorFuncComment(structComment string, fields []*FieldInfo, range
 	}
 
 	for _, f := range types {
-		funcCmt += f.FieldComment + "向量、"
+		funcCmt += f.FieldComment + "、"
 	}
 	funcCmt = strings.TrimSuffix(funcCmt, "、")
 
@@ -104,7 +110,7 @@ func getDetailVectorFuncComment(structComment string, fields []*FieldInfo, range
 
 	// 范围条件部分
 	for _, f := range types {
-		paramCmt += "// " + utils.ToFirstLower(f.FieldName) + " " + f.FieldType + " " + f.FieldComment + "向量\n"
+		paramCmt += "// " + utils.ToFirstLower(f.FieldName) + " " + f.FieldType + " " + f.FieldComment + "\n"
 	}
 	paramCmt = strings.TrimSuffix(paramCmt, "\n")
 

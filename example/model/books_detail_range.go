@@ -162,6 +162,219 @@ func RangeBooksByReleaseDateGteLte(es *elasticsearch.Client, releaseDateGte, rel
 	return queryBooksList(es, esQuery)
 }
 
+// RangeBooksByPageCountGteWithAllText 根据全文本过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGte int64 page_count大于等于
+func RangeBooksByPageCountGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtWithAllText 根据全文本过滤从Books查找page_count大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGt int64 page_count大于
+func RangeBooksByPageCountGtWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtWithAllText 根据全文本过滤从Books查找page_count小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountLt int64 page_count小于
+func RangeBooksByPageCountLtWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteWithAllText 根据全文本过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountLteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteWithAllText 根据全文本过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountGteLteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteWithAllText 根据全文本过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGte float64 价格大于等于
+func RangeBooksByPriceGteWithAllText(es *elasticsearch.Client, allText string, priceGte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtWithAllText 根据全文本过滤从Books查找价格大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGt float64 价格大于
+func RangeBooksByPriceGtWithAllText(es *elasticsearch.Client, allText string, priceGt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtWithAllText 根据全文本过滤从Books查找价格小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceLt float64 价格小于
+func RangeBooksByPriceLtWithAllText(es *elasticsearch.Client, allText string, priceLt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteWithAllText 根据全文本过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceLte float64 价格小于等于
+func RangeBooksByPriceLteWithAllText(es *elasticsearch.Client, allText string, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteWithAllText 根据全文本过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+func RangeBooksByPriceGteLteWithAllText(es *elasticsearch.Client, allText string, priceGte, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteWithAllText 根据全文本过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGtWithAllText 根据全文本过滤从Books查找release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// releaseDateGt time.Time release_date大于
+func RangeBooksByReleaseDateGtWithAllText(es *elasticsearch.Client, allText string, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLtWithAllText 根据全文本过滤从Books查找release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// releaseDateLt time.Time release_date小于
+func RangeBooksByReleaseDateLtWithAllText(es *elasticsearch.Client, allText string, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLteWithAllText 根据全文本过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateLteWithAllText(es *elasticsearch.Client, allText string, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteLteWithAllText 根据全文本过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateGteLteWithAllText(es *elasticsearch.Client, allText string, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
 // RangeBooksByPageCountGteWithAuthor 根据author过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
@@ -1571,6 +1784,1798 @@ func RangeBooksByReleaseDateGteLteWithSeq(es *elasticsearch.Client, seq string, 
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGte int64 page_count大于等于
+func RangeBooksByPageCountGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGt int64 page_count大于
+func RangeBooksByPageCountGtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtWithAllTextAuthor 根据全文本、author过滤从Books查找page_count小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountLt int64 page_count小于
+func RangeBooksByPageCountLtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountGteLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGte float64 价格大于等于
+func RangeBooksByPriceGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGt float64 价格大于
+func RangeBooksByPriceGtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtWithAllTextAuthor 根据全文本、author过滤从Books查找价格小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceLt float64 价格小于
+func RangeBooksByPriceLtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteWithAllTextAuthor 根据全文本、author过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceLte float64 价格小于等于
+func RangeBooksByPriceLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+func RangeBooksByPriceGteLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteWithAllTextAuthor 根据全文本、author过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGtWithAllTextAuthor 根据全文本、author过滤从Books查找release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// releaseDateGt time.Time release_date大于
+func RangeBooksByReleaseDateGtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLtWithAllTextAuthor 根据全文本、author过滤从Books查找release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// releaseDateLt time.Time release_date小于
+func RangeBooksByReleaseDateLtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLteWithAllTextAuthor 根据全文本、author过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteLteWithAllTextAuthor 根据全文本、author过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateGteLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteWithAllTextClass 根据全文本、class过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGte int64 page_count大于等于
+func RangeBooksByPageCountGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtWithAllTextClass 根据全文本、class过滤从Books查找page_count大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGt int64 page_count大于
+func RangeBooksByPageCountGtWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtWithAllTextClass 根据全文本、class过滤从Books查找page_count小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountLt int64 page_count小于
+func RangeBooksByPageCountLtWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteWithAllTextClass 根据全文本、class过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteWithAllTextClass 根据全文本、class过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountGteLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteWithAllTextClass 根据全文本、class过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGte float64 价格大于等于
+func RangeBooksByPriceGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtWithAllTextClass 根据全文本、class过滤从Books查找价格大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGt float64 价格大于
+func RangeBooksByPriceGtWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, priceGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtWithAllTextClass 根据全文本、class过滤从Books查找价格小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceLt float64 价格小于
+func RangeBooksByPriceLtWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, priceLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteWithAllTextClass 根据全文本、class过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceLte float64 价格小于等于
+func RangeBooksByPriceLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteWithAllTextClass 根据全文本、class过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+func RangeBooksByPriceGteLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteWithAllTextClass 根据全文本、class过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGtWithAllTextClass 根据全文本、class过滤从Books查找release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// releaseDateGt time.Time release_date大于
+func RangeBooksByReleaseDateGtWithAllTextClass(es *elasticsearch.Client, allText string, class string, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLtWithAllTextClass 根据全文本、class过滤从Books查找release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// releaseDateLt time.Time release_date小于
+func RangeBooksByReleaseDateLtWithAllTextClass(es *elasticsearch.Client, allText string, class string, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLteWithAllTextClass 根据全文本、class过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteLteWithAllTextClass 根据全文本、class过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateGteLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteWithAllTextName 根据全文本、书名过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGte int64 page_count大于等于
+func RangeBooksByPageCountGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtWithAllTextName 根据全文本、书名过滤从Books查找page_count大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGt int64 page_count大于
+func RangeBooksByPageCountGtWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtWithAllTextName 根据全文本、书名过滤从Books查找page_count小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountLt int64 page_count小于
+func RangeBooksByPageCountLtWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteWithAllTextName 根据全文本、书名过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountLteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteWithAllTextName 根据全文本、书名过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountGteLteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteWithAllTextName 根据全文本、书名过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGte float64 价格大于等于
+func RangeBooksByPriceGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtWithAllTextName 根据全文本、书名过滤从Books查找价格大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGt float64 价格大于
+func RangeBooksByPriceGtWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtWithAllTextName 根据全文本、书名过滤从Books查找价格小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceLt float64 价格小于
+func RangeBooksByPriceLtWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteWithAllTextName 根据全文本、书名过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceLte float64 价格小于等于
+func RangeBooksByPriceLteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteWithAllTextName 根据全文本、书名过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+func RangeBooksByPriceGteLteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteWithAllTextName 根据全文本、书名过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGtWithAllTextName 根据全文本、书名过滤从Books查找release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// releaseDateGt time.Time release_date大于
+func RangeBooksByReleaseDateGtWithAllTextName(es *elasticsearch.Client, allText string, name string, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLtWithAllTextName 根据全文本、书名过滤从Books查找release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// releaseDateLt time.Time release_date小于
+func RangeBooksByReleaseDateLtWithAllTextName(es *elasticsearch.Client, allText string, name string, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLteWithAllTextName 根据全文本、书名过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateLteWithAllTextName(es *elasticsearch.Client, allText string, name string, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteLteWithAllTextName 根据全文本、书名过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateGteLteWithAllTextName(es *elasticsearch.Client, allText string, name string, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateGteWithAllText 根据全文本过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGte int64 page_count大于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateGtWithAllText 根据全文本过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGte int64 page_count大于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountGteReleaseDateGtWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateLtWithAllText 根据全文本过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGte int64 page_count大于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountGteReleaseDateLtWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateLteWithAllText 根据全文本过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGte int64 page_count大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteReleaseDateLteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateGteLteWithAllText 根据全文本过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGte int64 page_count大于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteReleaseDateGteLteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateGteWithAllText 根据全文本过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGt int64 page_count大于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateGtWithAllText 根据全文本过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGt int64 page_count大于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountGtReleaseDateGtWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateLtWithAllText 根据全文本过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGt int64 page_count大于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountGtReleaseDateLtWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateLteWithAllText 根据全文本过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGt int64 page_count大于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGtReleaseDateLteWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateGteLteWithAllText 根据全文本过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGt int64 page_count大于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGtReleaseDateGteLteWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateGteWithAllText 根据全文本过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountLt int64 page_count小于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateGtWithAllText 根据全文本过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountLt int64 page_count小于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountLtReleaseDateGtWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateLtWithAllText 根据全文本过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountLt int64 page_count小于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountLtReleaseDateLtWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateLteWithAllText 根据全文本过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountLt int64 page_count小于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLtReleaseDateLteWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateGteLteWithAllText 根据全文本过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountLt int64 page_count小于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLtReleaseDateGteLteWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateGteWithAllText 根据全文本过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateGtWithAllText 根据全文本过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountLte int64 page_count小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountLteReleaseDateGtWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateLtWithAllText 根据全文本过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountLte int64 page_count小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountLteReleaseDateLtWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateLteWithAllText 根据全文本过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountLte int64 page_count小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLteReleaseDateLteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateGteLteWithAllText 根据全文本过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLteReleaseDateGteLteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateGteWithAllText 根据全文本过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateGtWithAllText 根据全文本过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountGteLteReleaseDateGtWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateLtWithAllText 根据全文本过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountGteLteReleaseDateLtWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateLteWithAllText 根据全文本过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteLteReleaseDateLteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateGteLteWithAllText 根据全文本过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteLteReleaseDateGteLteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGte int64 page_count大于等于
+func RangeBooksByPageCountGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGt int64 page_count大于
+func RangeBooksByPageCountGtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtWithAllTextSeq 根据全文本、seq过滤从Books查找page_count小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountLt int64 page_count小于
+func RangeBooksByPageCountLtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountGteLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateGteWithAllText 根据全文本过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGte float64 价格大于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, priceGte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateGtWithAllText 根据全文本过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGte float64 价格大于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceGteReleaseDateGtWithAllText(es *elasticsearch.Client, allText string, priceGte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateLtWithAllText 根据全文本过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGte float64 价格大于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceGteReleaseDateLtWithAllText(es *elasticsearch.Client, allText string, priceGte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateLteWithAllText 根据全文本过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGte float64 价格大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteReleaseDateLteWithAllText(es *elasticsearch.Client, allText string, priceGte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateGteLteWithAllText 根据全文本过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGte float64 价格大于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteReleaseDateGteLteWithAllText(es *elasticsearch.Client, allText string, priceGte float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateGteWithAllText 根据全文本过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGt float64 价格大于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, priceGt float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateGtWithAllText 根据全文本过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGt float64 价格大于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceGtReleaseDateGtWithAllText(es *elasticsearch.Client, allText string, priceGt float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateLtWithAllText 根据全文本过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGt float64 价格大于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceGtReleaseDateLtWithAllText(es *elasticsearch.Client, allText string, priceGt float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateLteWithAllText 根据全文本过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGt float64 价格大于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGtReleaseDateLteWithAllText(es *elasticsearch.Client, allText string, priceGt float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateGteLteWithAllText 根据全文本过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGt float64 价格大于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGtReleaseDateGteLteWithAllText(es *elasticsearch.Client, allText string, priceGt float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateGteWithAllText 根据全文本过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceLt float64 价格小于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, priceLt float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateGtWithAllText 根据全文本过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceLt float64 价格小于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceLtReleaseDateGtWithAllText(es *elasticsearch.Client, allText string, priceLt float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateLtWithAllText 根据全文本过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceLt float64 价格小于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceLtReleaseDateLtWithAllText(es *elasticsearch.Client, allText string, priceLt float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateLteWithAllText 根据全文本过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceLt float64 价格小于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLtReleaseDateLteWithAllText(es *elasticsearch.Client, allText string, priceLt float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateGteLteWithAllText 根据全文本过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceLt float64 价格小于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLtReleaseDateGteLteWithAllText(es *elasticsearch.Client, allText string, priceLt float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateGteWithAllText 根据全文本过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, priceLte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateGtWithAllText 根据全文本过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceLte float64 价格小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceLteReleaseDateGtWithAllText(es *elasticsearch.Client, allText string, priceLte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateLtWithAllText 根据全文本过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceLte float64 价格小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceLteReleaseDateLtWithAllText(es *elasticsearch.Client, allText string, priceLte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateLteWithAllText 根据全文本过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceLte float64 价格小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLteReleaseDateLteWithAllText(es *elasticsearch.Client, allText string, priceLte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateGteLteWithAllText 根据全文本过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLteReleaseDateGteLteWithAllText(es *elasticsearch.Client, allText string, priceLte float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateGteWithAllText 根据全文本过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, priceGte, priceLte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateGtWithAllText 根据全文本过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceGteLteReleaseDateGtWithAllText(es *elasticsearch.Client, allText string, priceGte, priceLte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateLtWithAllText 根据全文本过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceGteLteReleaseDateLtWithAllText(es *elasticsearch.Client, allText string, priceGte, priceLte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateLteWithAllText 根据全文本过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteLteReleaseDateLteWithAllText(es *elasticsearch.Client, allText string, priceGte, priceLte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateGteLteWithAllText 根据全文本过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteLteReleaseDateGteLteWithAllText(es *elasticsearch.Client, allText string, priceGte, priceLte float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGte float64 价格大于等于
+func RangeBooksByPriceGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGt float64 价格大于
+func RangeBooksByPriceGtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, priceGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtWithAllTextSeq 根据全文本、seq过滤从Books查找价格小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceLt float64 价格小于
+func RangeBooksByPriceLtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, priceLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteWithAllTextSeq 根据全文本、seq过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceLte float64 价格小于等于
+func RangeBooksByPriceLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+func RangeBooksByPriceGteLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteWithAllTextSeq 根据全文本、seq过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGtWithAllTextSeq 根据全文本、seq过滤从Books查找release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// releaseDateGt time.Time release_date大于
+func RangeBooksByReleaseDateGtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLtWithAllTextSeq 根据全文本、seq过滤从Books查找release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// releaseDateLt time.Time release_date小于
+func RangeBooksByReleaseDateLtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLteWithAllTextSeq 根据全文本、seq过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteLteWithAllTextSeq 根据全文本、seq过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateGteLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
 	return queryBooksList(es, esQuery)
 }
 
@@ -6079,6 +8084,5324 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithSeq(es *elasticsearch.Client, s
 		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
 	}
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteWithAllTextAuthorClass 根据全文本、author、class过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// class string class
+// pageCountGte int64 page_count大于等于
+func RangeBooksByPageCountGteWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, pageCountGte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtWithAllTextAuthorClass 根据全文本、author、class过滤从Books查找page_count大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// class string class
+// pageCountGt int64 page_count大于
+func RangeBooksByPageCountGtWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, pageCountGt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtWithAllTextAuthorClass 根据全文本、author、class过滤从Books查找page_count小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// class string class
+// pageCountLt int64 page_count小于
+func RangeBooksByPageCountLtWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, pageCountLt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteWithAllTextAuthorClass 根据全文本、author、class过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// class string class
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountLteWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteWithAllTextAuthorClass 根据全文本、author、class过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// class string class
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountGteLteWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, pageCountGte, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteWithAllTextAuthorClass 根据全文本、author、class过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// class string class
+// priceGte float64 价格大于等于
+func RangeBooksByPriceGteWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, priceGte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtWithAllTextAuthorClass 根据全文本、author、class过滤从Books查找价格大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// class string class
+// priceGt float64 价格大于
+func RangeBooksByPriceGtWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, priceGt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, priceGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtWithAllTextAuthorClass 根据全文本、author、class过滤从Books查找价格小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// class string class
+// priceLt float64 价格小于
+func RangeBooksByPriceLtWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, priceLt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, priceLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteWithAllTextAuthorClass 根据全文本、author、class过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// class string class
+// priceLte float64 价格小于等于
+func RangeBooksByPriceLteWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteWithAllTextAuthorClass 根据全文本、author、class过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// class string class
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+func RangeBooksByPriceGteLteWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, priceGte, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteWithAllTextAuthorClass 根据全文本、author、class过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// class string class
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByReleaseDateGteWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGtWithAllTextAuthorClass 根据全文本、author、class过滤从Books查找release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// class string class
+// releaseDateGt time.Time release_date大于
+func RangeBooksByReleaseDateGtWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLtWithAllTextAuthorClass 根据全文本、author、class过滤从Books查找release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// class string class
+// releaseDateLt time.Time release_date小于
+func RangeBooksByReleaseDateLtWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLteWithAllTextAuthorClass 根据全文本、author、class过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// class string class
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateLteWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteLteWithAllTextAuthorClass 根据全文本、author、class过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// class string class
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateGteLteWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteWithAllTextAuthorName 根据全文本、author、书名过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// name string 书名
+// pageCountGte int64 page_count大于等于
+func RangeBooksByPageCountGteWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, pageCountGte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtWithAllTextAuthorName 根据全文本、author、书名过滤从Books查找page_count大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// name string 书名
+// pageCountGt int64 page_count大于
+func RangeBooksByPageCountGtWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, pageCountGt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtWithAllTextAuthorName 根据全文本、author、书名过滤从Books查找page_count小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// name string 书名
+// pageCountLt int64 page_count小于
+func RangeBooksByPageCountLtWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, pageCountLt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteWithAllTextAuthorName 根据全文本、author、书名过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// name string 书名
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountLteWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteWithAllTextAuthorName 根据全文本、author、书名过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// name string 书名
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountGteLteWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, pageCountGte, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteWithAllTextAuthorName 根据全文本、author、书名过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// name string 书名
+// priceGte float64 价格大于等于
+func RangeBooksByPriceGteWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, priceGte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtWithAllTextAuthorName 根据全文本、author、书名过滤从Books查找价格大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// name string 书名
+// priceGt float64 价格大于
+func RangeBooksByPriceGtWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, priceGt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtWithAllTextAuthorName 根据全文本、author、书名过滤从Books查找价格小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// name string 书名
+// priceLt float64 价格小于
+func RangeBooksByPriceLtWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, priceLt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteWithAllTextAuthorName 根据全文本、author、书名过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// name string 书名
+// priceLte float64 价格小于等于
+func RangeBooksByPriceLteWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteWithAllTextAuthorName 根据全文本、author、书名过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// name string 书名
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+func RangeBooksByPriceGteLteWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, priceGte, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteWithAllTextAuthorName 根据全文本、author、书名过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// name string 书名
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByReleaseDateGteWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGtWithAllTextAuthorName 根据全文本、author、书名过滤从Books查找release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// name string 书名
+// releaseDateGt time.Time release_date大于
+func RangeBooksByReleaseDateGtWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLtWithAllTextAuthorName 根据全文本、author、书名过滤从Books查找release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// name string 书名
+// releaseDateLt time.Time release_date小于
+func RangeBooksByReleaseDateLtWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLteWithAllTextAuthorName 根据全文本、author、书名过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// name string 书名
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateLteWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteLteWithAllTextAuthorName 根据全文本、author、书名过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// name string 书名
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateGteLteWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateGteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGte int64 page_count大于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateGtWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGte int64 page_count大于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountGteReleaseDateGtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateLtWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGte int64 page_count大于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountGteReleaseDateLtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateLteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGte int64 page_count大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteReleaseDateLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateGteLteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGte int64 page_count大于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteReleaseDateGteLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateGteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGt int64 page_count大于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGt int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateGtWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGt int64 page_count大于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountGtReleaseDateGtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGt int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateLtWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGt int64 page_count大于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountGtReleaseDateLtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGt int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateLteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGt int64 page_count大于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGtReleaseDateLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGt int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateGteLteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGt int64 page_count大于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGtReleaseDateGteLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGt int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateGteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountLt int64 page_count小于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLt int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateGtWithAllTextAuthor 根据全文本、author过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountLt int64 page_count小于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountLtReleaseDateGtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLt int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateLtWithAllTextAuthor 根据全文本、author过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountLt int64 page_count小于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountLtReleaseDateLtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLt int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateLteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountLt int64 page_count小于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLtReleaseDateLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLt int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateGteLteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountLt int64 page_count小于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLtReleaseDateGteLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLt int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateGteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateGtWithAllTextAuthor 根据全文本、author过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountLte int64 page_count小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountLteReleaseDateGtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateLtWithAllTextAuthor 根据全文本、author过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountLte int64 page_count小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountLteReleaseDateLtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateLteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountLte int64 page_count小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLteReleaseDateLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateGteLteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLteReleaseDateGteLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLte int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte, pageCountLte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateGtWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountGteLteReleaseDateGtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte, pageCountLte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateLtWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountGteLteReleaseDateLtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte, pageCountLte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateLteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteLteReleaseDateLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte, pageCountLte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateGteLteWithAllTextAuthor 根据全文本、author过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteLteReleaseDateGteLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte, pageCountLte int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteWithAllTextAuthorSeq 根据全文本、author、seq过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// seq string seq
+// pageCountGte int64 page_count大于等于
+func RangeBooksByPageCountGteWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, pageCountGte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtWithAllTextAuthorSeq 根据全文本、author、seq过滤从Books查找page_count大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// seq string seq
+// pageCountGt int64 page_count大于
+func RangeBooksByPageCountGtWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, pageCountGt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtWithAllTextAuthorSeq 根据全文本、author、seq过滤从Books查找page_count小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// seq string seq
+// pageCountLt int64 page_count小于
+func RangeBooksByPageCountLtWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, pageCountLt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteWithAllTextAuthorSeq 根据全文本、author、seq过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// seq string seq
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountLteWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteWithAllTextAuthorSeq 根据全文本、author、seq过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// seq string seq
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountGteLteWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, pageCountGte, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateGteWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGte float64 价格大于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateGtWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGte float64 价格大于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceGteReleaseDateGtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateLtWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGte float64 价格大于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceGteReleaseDateLtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateLteWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGte float64 价格大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteReleaseDateLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateGteLteWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGte float64 价格大于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteReleaseDateGteLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateGteWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGt float64 价格大于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGt float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateGtWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGt float64 价格大于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceGtReleaseDateGtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGt float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateLtWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGt float64 价格大于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceGtReleaseDateLtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGt float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateLteWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGt float64 价格大于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGtReleaseDateLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGt float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateGteLteWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGt float64 价格大于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGtReleaseDateGteLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGt float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateGteWithAllTextAuthor 根据全文本、author过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceLt float64 价格小于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLt float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateGtWithAllTextAuthor 根据全文本、author过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceLt float64 价格小于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceLtReleaseDateGtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLt float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateLtWithAllTextAuthor 根据全文本、author过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceLt float64 价格小于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceLtReleaseDateLtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLt float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateLteWithAllTextAuthor 根据全文本、author过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceLt float64 价格小于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLtReleaseDateLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLt float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateGteLteWithAllTextAuthor 根据全文本、author过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceLt float64 价格小于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLtReleaseDateGteLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLt float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateGteWithAllTextAuthor 根据全文本、author过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateGtWithAllTextAuthor 根据全文本、author过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceLte float64 价格小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceLteReleaseDateGtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateLtWithAllTextAuthor 根据全文本、author过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceLte float64 价格小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceLteReleaseDateLtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateLteWithAllTextAuthor 根据全文本、author过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceLte float64 价格小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLteReleaseDateLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateGteLteWithAllTextAuthor 根据全文本、author过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLteReleaseDateGteLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLte float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateGteWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte, priceLte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateGtWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceGteLteReleaseDateGtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte, priceLte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateLtWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceGteLteReleaseDateLtWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte, priceLte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateLteWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteLteReleaseDateLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte, priceLte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateGteLteWithAllTextAuthor 根据全文本、author过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteLteReleaseDateGteLteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte, priceLte float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteWithAllTextAuthorSeq 根据全文本、author、seq过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// seq string seq
+// priceGte float64 价格大于等于
+func RangeBooksByPriceGteWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, priceGte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtWithAllTextAuthorSeq 根据全文本、author、seq过滤从Books查找价格大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// seq string seq
+// priceGt float64 价格大于
+func RangeBooksByPriceGtWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, priceGt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, priceGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtWithAllTextAuthorSeq 根据全文本、author、seq过滤从Books查找价格小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// seq string seq
+// priceLt float64 价格小于
+func RangeBooksByPriceLtWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, priceLt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, priceLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteWithAllTextAuthorSeq 根据全文本、author、seq过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// seq string seq
+// priceLte float64 价格小于等于
+func RangeBooksByPriceLteWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteWithAllTextAuthorSeq 根据全文本、author、seq过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// seq string seq
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+func RangeBooksByPriceGteLteWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, priceGte, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteWithAllTextAuthorSeq 根据全文本、author、seq过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// seq string seq
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByReleaseDateGteWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGtWithAllTextAuthorSeq 根据全文本、author、seq过滤从Books查找release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// seq string seq
+// releaseDateGt time.Time release_date大于
+func RangeBooksByReleaseDateGtWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLtWithAllTextAuthorSeq 根据全文本、author、seq过滤从Books查找release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// seq string seq
+// releaseDateLt time.Time release_date小于
+func RangeBooksByReleaseDateLtWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLteWithAllTextAuthorSeq 根据全文本、author、seq过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// seq string seq
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateLteWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteLteWithAllTextAuthorSeq 根据全文本、author、seq过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// author string author
+// seq string seq
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateGteLteWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteWithAllTextClassName 根据全文本、class、书名过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// name string 书名
+// pageCountGte int64 page_count大于等于
+func RangeBooksByPageCountGteWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, pageCountGte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtWithAllTextClassName 根据全文本、class、书名过滤从Books查找page_count大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// name string 书名
+// pageCountGt int64 page_count大于
+func RangeBooksByPageCountGtWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, pageCountGt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtWithAllTextClassName 根据全文本、class、书名过滤从Books查找page_count小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// name string 书名
+// pageCountLt int64 page_count小于
+func RangeBooksByPageCountLtWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, pageCountLt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteWithAllTextClassName 根据全文本、class、书名过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// name string 书名
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountLteWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteWithAllTextClassName 根据全文本、class、书名过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// name string 书名
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountGteLteWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, pageCountGte, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteWithAllTextClassName 根据全文本、class、书名过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// name string 书名
+// priceGte float64 价格大于等于
+func RangeBooksByPriceGteWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, priceGte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtWithAllTextClassName 根据全文本、class、书名过滤从Books查找价格大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// name string 书名
+// priceGt float64 价格大于
+func RangeBooksByPriceGtWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, priceGt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, priceGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtWithAllTextClassName 根据全文本、class、书名过滤从Books查找价格小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// name string 书名
+// priceLt float64 价格小于
+func RangeBooksByPriceLtWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, priceLt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, priceLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteWithAllTextClassName 根据全文本、class、书名过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// name string 书名
+// priceLte float64 价格小于等于
+func RangeBooksByPriceLteWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteWithAllTextClassName 根据全文本、class、书名过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// name string 书名
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+func RangeBooksByPriceGteLteWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, priceGte, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteWithAllTextClassName 根据全文本、class、书名过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// name string 书名
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByReleaseDateGteWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGtWithAllTextClassName 根据全文本、class、书名过滤从Books查找release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// name string 书名
+// releaseDateGt time.Time release_date大于
+func RangeBooksByReleaseDateGtWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLtWithAllTextClassName 根据全文本、class、书名过滤从Books查找release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// name string 书名
+// releaseDateLt time.Time release_date小于
+func RangeBooksByReleaseDateLtWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLteWithAllTextClassName 根据全文本、class、书名过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// name string 书名
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateLteWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteLteWithAllTextClassName 根据全文本、class、书名过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// name string 书名
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateGteLteWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateGteWithAllTextClass 根据全文本、class过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGte int64 page_count大于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateGtWithAllTextClass 根据全文本、class过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGte int64 page_count大于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountGteReleaseDateGtWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateLtWithAllTextClass 根据全文本、class过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGte int64 page_count大于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountGteReleaseDateLtWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateLteWithAllTextClass 根据全文本、class过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGte int64 page_count大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteReleaseDateLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateGteLteWithAllTextClass 根据全文本、class过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGte int64 page_count大于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteReleaseDateGteLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateGteWithAllTextClass 根据全文本、class过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGt int64 page_count大于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGt int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateGtWithAllTextClass 根据全文本、class过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGt int64 page_count大于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountGtReleaseDateGtWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGt int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateLtWithAllTextClass 根据全文本、class过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGt int64 page_count大于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountGtReleaseDateLtWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGt int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateLteWithAllTextClass 根据全文本、class过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGt int64 page_count大于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGtReleaseDateLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGt int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateGteLteWithAllTextClass 根据全文本、class过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGt int64 page_count大于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGtReleaseDateGteLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGt int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateGteWithAllTextClass 根据全文本、class过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountLt int64 page_count小于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLt int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateGtWithAllTextClass 根据全文本、class过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountLt int64 page_count小于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountLtReleaseDateGtWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLt int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateLtWithAllTextClass 根据全文本、class过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountLt int64 page_count小于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountLtReleaseDateLtWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLt int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateLteWithAllTextClass 根据全文本、class过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountLt int64 page_count小于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLtReleaseDateLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLt int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateGteLteWithAllTextClass 根据全文本、class过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountLt int64 page_count小于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLtReleaseDateGteLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLt int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateGteWithAllTextClass 根据全文本、class过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateGtWithAllTextClass 根据全文本、class过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountLte int64 page_count小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountLteReleaseDateGtWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateLtWithAllTextClass 根据全文本、class过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountLte int64 page_count小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountLteReleaseDateLtWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateLteWithAllTextClass 根据全文本、class过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountLte int64 page_count小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLteReleaseDateLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateGteLteWithAllTextClass 根据全文本、class过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLteReleaseDateGteLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLte int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateGteWithAllTextClass 根据全文本、class过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte, pageCountLte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateGtWithAllTextClass 根据全文本、class过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountGteLteReleaseDateGtWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte, pageCountLte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateLtWithAllTextClass 根据全文本、class过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountGteLteReleaseDateLtWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte, pageCountLte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateLteWithAllTextClass 根据全文本、class过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteLteReleaseDateLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte, pageCountLte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateGteLteWithAllTextClass 根据全文本、class过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteLteReleaseDateGteLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte, pageCountLte int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteWithAllTextClassSeq 根据全文本、class、seq过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// seq string seq
+// pageCountGte int64 page_count大于等于
+func RangeBooksByPageCountGteWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, pageCountGte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtWithAllTextClassSeq 根据全文本、class、seq过滤从Books查找page_count大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// seq string seq
+// pageCountGt int64 page_count大于
+func RangeBooksByPageCountGtWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, pageCountGt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtWithAllTextClassSeq 根据全文本、class、seq过滤从Books查找page_count小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// seq string seq
+// pageCountLt int64 page_count小于
+func RangeBooksByPageCountLtWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, pageCountLt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteWithAllTextClassSeq 根据全文本、class、seq过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// seq string seq
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountLteWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteWithAllTextClassSeq 根据全文本、class、seq过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// seq string seq
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountGteLteWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, pageCountGte, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateGteWithAllTextClass 根据全文本、class过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGte float64 价格大于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateGtWithAllTextClass 根据全文本、class过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGte float64 价格大于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceGteReleaseDateGtWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateLtWithAllTextClass 根据全文本、class过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGte float64 价格大于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceGteReleaseDateLtWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateLteWithAllTextClass 根据全文本、class过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGte float64 价格大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteReleaseDateLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateGteLteWithAllTextClass 根据全文本、class过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGte float64 价格大于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteReleaseDateGteLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateGteWithAllTextClass 根据全文本、class过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGt float64 价格大于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGt float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateGtWithAllTextClass 根据全文本、class过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGt float64 价格大于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceGtReleaseDateGtWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGt float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateLtWithAllTextClass 根据全文本、class过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGt float64 价格大于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceGtReleaseDateLtWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGt float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateLteWithAllTextClass 根据全文本、class过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGt float64 价格大于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGtReleaseDateLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGt float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateGteLteWithAllTextClass 根据全文本、class过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGt float64 价格大于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGtReleaseDateGteLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGt float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateGteWithAllTextClass 根据全文本、class过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceLt float64 价格小于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLt float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateGtWithAllTextClass 根据全文本、class过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceLt float64 价格小于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceLtReleaseDateGtWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLt float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateLtWithAllTextClass 根据全文本、class过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceLt float64 价格小于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceLtReleaseDateLtWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLt float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateLteWithAllTextClass 根据全文本、class过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceLt float64 价格小于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLtReleaseDateLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLt float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateGteLteWithAllTextClass 根据全文本、class过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceLt float64 价格小于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLtReleaseDateGteLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLt float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateGteWithAllTextClass 根据全文本、class过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateGtWithAllTextClass 根据全文本、class过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceLte float64 价格小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceLteReleaseDateGtWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateLtWithAllTextClass 根据全文本、class过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceLte float64 价格小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceLteReleaseDateLtWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateLteWithAllTextClass 根据全文本、class过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceLte float64 价格小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLteReleaseDateLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateGteLteWithAllTextClass 根据全文本、class过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLteReleaseDateGteLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLte float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateGteWithAllTextClass 根据全文本、class过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte, priceLte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateGtWithAllTextClass 根据全文本、class过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceGteLteReleaseDateGtWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte, priceLte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateLtWithAllTextClass 根据全文本、class过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceGteLteReleaseDateLtWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte, priceLte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateLteWithAllTextClass 根据全文本、class过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteLteReleaseDateLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte, priceLte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateGteLteWithAllTextClass 根据全文本、class过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteLteReleaseDateGteLteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte, priceLte float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteWithAllTextClassSeq 根据全文本、class、seq过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// seq string seq
+// priceGte float64 价格大于等于
+func RangeBooksByPriceGteWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, priceGte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtWithAllTextClassSeq 根据全文本、class、seq过滤从Books查找价格大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// seq string seq
+// priceGt float64 价格大于
+func RangeBooksByPriceGtWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, priceGt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("seq", seq),
+		eq.Range("price", nil, priceGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtWithAllTextClassSeq 根据全文本、class、seq过滤从Books查找价格小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// seq string seq
+// priceLt float64 价格小于
+func RangeBooksByPriceLtWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, priceLt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, priceLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteWithAllTextClassSeq 根据全文本、class、seq过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// seq string seq
+// priceLte float64 价格小于等于
+func RangeBooksByPriceLteWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteWithAllTextClassSeq 根据全文本、class、seq过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// seq string seq
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+func RangeBooksByPriceGteLteWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, priceGte, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteWithAllTextClassSeq 根据全文本、class、seq过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// seq string seq
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByReleaseDateGteWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("seq", seq),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGtWithAllTextClassSeq 根据全文本、class、seq过滤从Books查找release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// seq string seq
+// releaseDateGt time.Time release_date大于
+func RangeBooksByReleaseDateGtWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("seq", seq),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLtWithAllTextClassSeq 根据全文本、class、seq过滤从Books查找release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// seq string seq
+// releaseDateLt time.Time release_date小于
+func RangeBooksByReleaseDateLtWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("seq", seq),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLteWithAllTextClassSeq 根据全文本、class、seq过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// seq string seq
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateLteWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("seq", seq),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteLteWithAllTextClassSeq 根据全文本、class、seq过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// class string class
+// seq string seq
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateGteLteWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("seq", seq),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateGteWithAllTextName 根据全文本、书名过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGte int64 page_count大于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateGtWithAllTextName 根据全文本、书名过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGte int64 page_count大于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountGteReleaseDateGtWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateLtWithAllTextName 根据全文本、书名过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGte int64 page_count大于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountGteReleaseDateLtWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateLteWithAllTextName 根据全文本、书名过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGte int64 page_count大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteReleaseDateLteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateGteLteWithAllTextName 根据全文本、书名过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGte int64 page_count大于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteReleaseDateGteLteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateGteWithAllTextName 根据全文本、书名过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGt int64 page_count大于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGt int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateGtWithAllTextName 根据全文本、书名过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGt int64 page_count大于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountGtReleaseDateGtWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGt int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateLtWithAllTextName 根据全文本、书名过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGt int64 page_count大于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountGtReleaseDateLtWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGt int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateLteWithAllTextName 根据全文本、书名过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGt int64 page_count大于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGtReleaseDateLteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGt int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateGteLteWithAllTextName 根据全文本、书名过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGt int64 page_count大于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGtReleaseDateGteLteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGt int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateGteWithAllTextName 根据全文本、书名过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountLt int64 page_count小于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLt int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateGtWithAllTextName 根据全文本、书名过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountLt int64 page_count小于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountLtReleaseDateGtWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLt int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateLtWithAllTextName 根据全文本、书名过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountLt int64 page_count小于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountLtReleaseDateLtWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLt int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateLteWithAllTextName 根据全文本、书名过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountLt int64 page_count小于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLtReleaseDateLteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLt int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateGteLteWithAllTextName 根据全文本、书名过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountLt int64 page_count小于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLtReleaseDateGteLteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLt int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateGteWithAllTextName 根据全文本、书名过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateGtWithAllTextName 根据全文本、书名过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountLte int64 page_count小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountLteReleaseDateGtWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateLtWithAllTextName 根据全文本、书名过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountLte int64 page_count小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountLteReleaseDateLtWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateLteWithAllTextName 根据全文本、书名过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountLte int64 page_count小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLteReleaseDateLteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateGteLteWithAllTextName 根据全文本、书名过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLteReleaseDateGteLteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLte int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateGteWithAllTextName 根据全文本、书名过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte, pageCountLte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateGtWithAllTextName 根据全文本、书名过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountGteLteReleaseDateGtWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte, pageCountLte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateLtWithAllTextName 根据全文本、书名过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountGteLteReleaseDateLtWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte, pageCountLte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateLteWithAllTextName 根据全文本、书名过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteLteReleaseDateLteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte, pageCountLte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateGteLteWithAllTextName 根据全文本、书名过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteLteReleaseDateGteLteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte, pageCountLte int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteWithAllTextNameSeq 根据全文本、书名、seq过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// seq string seq
+// pageCountGte int64 page_count大于等于
+func RangeBooksByPageCountGteWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, pageCountGte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtWithAllTextNameSeq 根据全文本、书名、seq过滤从Books查找page_count大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// seq string seq
+// pageCountGt int64 page_count大于
+func RangeBooksByPageCountGtWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, pageCountGt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtWithAllTextNameSeq 根据全文本、书名、seq过滤从Books查找page_count小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// seq string seq
+// pageCountLt int64 page_count小于
+func RangeBooksByPageCountLtWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, pageCountLt int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteWithAllTextNameSeq 根据全文本、书名、seq过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// seq string seq
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountLteWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteWithAllTextNameSeq 根据全文本、书名、seq过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// seq string seq
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+func RangeBooksByPageCountGteLteWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, pageCountGte, pageCountLte int64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateGteWithAllTextName 根据全文本、书名过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGte float64 价格大于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateGtWithAllTextName 根据全文本、书名过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGte float64 价格大于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceGteReleaseDateGtWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateLtWithAllTextName 根据全文本、书名过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGte float64 价格大于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceGteReleaseDateLtWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateLteWithAllTextName 根据全文本、书名过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGte float64 价格大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteReleaseDateLteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateGteLteWithAllTextName 根据全文本、书名过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGte float64 价格大于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteReleaseDateGteLteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateGteWithAllTextName 根据全文本、书名过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGt float64 价格大于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGt float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateGtWithAllTextName 根据全文本、书名过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGt float64 价格大于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceGtReleaseDateGtWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGt float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateLtWithAllTextName 根据全文本、书名过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGt float64 价格大于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceGtReleaseDateLtWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGt float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateLteWithAllTextName 根据全文本、书名过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGt float64 价格大于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGtReleaseDateLteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGt float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateGteLteWithAllTextName 根据全文本、书名过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGt float64 价格大于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGtReleaseDateGteLteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGt float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateGteWithAllTextName 根据全文本、书名过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceLt float64 价格小于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLt float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateGtWithAllTextName 根据全文本、书名过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceLt float64 价格小于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceLtReleaseDateGtWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLt float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateLtWithAllTextName 根据全文本、书名过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceLt float64 价格小于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceLtReleaseDateLtWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLt float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateLteWithAllTextName 根据全文本、书名过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceLt float64 价格小于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLtReleaseDateLteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLt float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateGteLteWithAllTextName 根据全文本、书名过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceLt float64 价格小于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLtReleaseDateGteLteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLt float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateGteWithAllTextName 根据全文本、书名过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateGtWithAllTextName 根据全文本、书名过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceLte float64 价格小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceLteReleaseDateGtWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateLtWithAllTextName 根据全文本、书名过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceLte float64 价格小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceLteReleaseDateLtWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateLteWithAllTextName 根据全文本、书名过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceLte float64 价格小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLteReleaseDateLteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateGteLteWithAllTextName 根据全文本、书名过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLteReleaseDateGteLteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLte float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateGteWithAllTextName 根据全文本、书名过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte, priceLte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateGtWithAllTextName 根据全文本、书名过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceGteLteReleaseDateGtWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte, priceLte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateLtWithAllTextName 根据全文本、书名过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceGteLteReleaseDateLtWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte, priceLte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateLteWithAllTextName 根据全文本、书名过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteLteReleaseDateLteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte, priceLte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateGteLteWithAllTextName 根据全文本、书名过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteLteReleaseDateGteLteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte, priceLte float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteWithAllTextNameSeq 根据全文本、书名、seq过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// seq string seq
+// priceGte float64 价格大于等于
+func RangeBooksByPriceGteWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, priceGte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtWithAllTextNameSeq 根据全文本、书名、seq过滤从Books查找价格大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// seq string seq
+// priceGt float64 价格大于
+func RangeBooksByPriceGtWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, priceGt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, priceGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtWithAllTextNameSeq 根据全文本、书名、seq过滤从Books查找价格小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// seq string seq
+// priceLt float64 价格小于
+func RangeBooksByPriceLtWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, priceLt float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, priceLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteWithAllTextNameSeq 根据全文本、书名、seq过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// seq string seq
+// priceLte float64 价格小于等于
+func RangeBooksByPriceLteWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteWithAllTextNameSeq 根据全文本、书名、seq过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// seq string seq
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+func RangeBooksByPriceGteLteWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, priceGte, priceLte float64) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteWithAllTextNameSeq 根据全文本、书名、seq过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// seq string seq
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByReleaseDateGteWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGtWithAllTextNameSeq 根据全文本、书名、seq过滤从Books查找release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// seq string seq
+// releaseDateGt time.Time release_date大于
+func RangeBooksByReleaseDateGtWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLtWithAllTextNameSeq 根据全文本、书名、seq过滤从Books查找release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// seq string seq
+// releaseDateLt time.Time release_date小于
+func RangeBooksByReleaseDateLtWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateLteWithAllTextNameSeq 根据全文本、书名、seq过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// seq string seq
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateLteWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByReleaseDateGteLteWithAllTextNameSeq 根据全文本、书名、seq过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// name string 书名
+// seq string seq
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByReleaseDateGteLteWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateGteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGte int64 page_count大于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateGtWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGte int64 page_count大于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountGteReleaseDateGtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateLtWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGte int64 page_count大于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountGteReleaseDateLtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateLteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGte int64 page_count大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteReleaseDateLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteReleaseDateGteLteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGte int64 page_count大于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteReleaseDateGteLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateGteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGt int64 page_count大于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGt int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateGtWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGt int64 page_count大于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountGtReleaseDateGtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGt int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateLtWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGt int64 page_count大于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountGtReleaseDateLtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGt int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateLteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGt int64 page_count大于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGtReleaseDateLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGt int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGtReleaseDateGteLteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGt int64 page_count大于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGtReleaseDateGteLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGt int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateGteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountLt int64 page_count小于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLt int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateGtWithAllTextSeq 根据全文本、seq过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountLt int64 page_count小于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountLtReleaseDateGtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLt int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateLtWithAllTextSeq 根据全文本、seq过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountLt int64 page_count小于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountLtReleaseDateLtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLt int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateLteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountLt int64 page_count小于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLtReleaseDateLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLt int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLtReleaseDateGteLteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountLt int64 page_count小于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLtReleaseDateGteLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLt int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateGteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateGtWithAllTextSeq 根据全文本、seq过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountLte int64 page_count小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountLteReleaseDateGtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateLtWithAllTextSeq 根据全文本、seq过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountLte int64 page_count小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountLteReleaseDateLtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateLteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountLte int64 page_count小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLteReleaseDateLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountLteReleaseDateGteLteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountLteReleaseDateGteLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLte int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateGteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPageCountGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte, pageCountLte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateGtWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPageCountGteLteReleaseDateGtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte, pageCountLte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateLtWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPageCountGteLteReleaseDateLtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte, pageCountLte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateLteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteLteReleaseDateLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte, pageCountLte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPageCountGteLteReleaseDateGteLteWithAllTextSeq 根据全文本、seq过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// pageCountGte int64 page_count大于等于
+// pageCountLte int64 page_count小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPageCountGteLteReleaseDateGteLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte, pageCountLte int64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateGteWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGte float64 价格大于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateGtWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGte float64 价格大于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceGteReleaseDateGtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateLtWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGte float64 价格大于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceGteReleaseDateLtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateLteWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGte float64 价格大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteReleaseDateLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteReleaseDateGteLteWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGte float64 价格大于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteReleaseDateGteLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateGteWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGt float64 价格大于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGt float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateGtWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGt float64 价格大于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceGtReleaseDateGtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGt float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateLtWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGt float64 价格大于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceGtReleaseDateLtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGt float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateLteWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGt float64 价格大于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGtReleaseDateLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGt float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGtReleaseDateGteLteWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGt float64 价格大于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGtReleaseDateGteLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGt float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateGteWithAllTextSeq 根据全文本、seq过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceLt float64 价格小于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLt float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateGtWithAllTextSeq 根据全文本、seq过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceLt float64 价格小于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceLtReleaseDateGtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLt float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateLtWithAllTextSeq 根据全文本、seq过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceLt float64 价格小于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceLtReleaseDateLtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLt float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateLteWithAllTextSeq 根据全文本、seq过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceLt float64 价格小于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLtReleaseDateLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLt float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLtReleaseDateGteLteWithAllTextSeq 根据全文本、seq过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceLt float64 价格小于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLtReleaseDateGteLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLt float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateGteWithAllTextSeq 根据全文本、seq过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateGtWithAllTextSeq 根据全文本、seq过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceLte float64 价格小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceLteReleaseDateGtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateLtWithAllTextSeq 根据全文本、seq过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceLte float64 价格小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceLteReleaseDateLtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateLteWithAllTextSeq 根据全文本、seq过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceLte float64 价格小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLteReleaseDateLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceLteReleaseDateGteLteWithAllTextSeq 根据全文本、seq过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceLteReleaseDateGteLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLte float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateGteWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+func RangeBooksByPriceGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte, priceLte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateGtWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateGt time.Time release_date大于
+func RangeBooksByPriceGteLteReleaseDateGtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte, priceLte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", nil, releaseDateGt, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateLtWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateLt time.Time release_date小于
+func RangeBooksByPriceGteLteReleaseDateLtWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte, priceLte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, releaseDateLt, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateLteWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteLteReleaseDateLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte, priceLte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", nil, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// RangeBooksByPriceGteLteReleaseDateGteLteWithAllTextSeq 根据全文本、seq过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// allText string 全文本
+// seq string seq
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateGte time.Time release_date大于等于
+// releaseDateLte time.Time release_date小于等于
+func RangeBooksByPriceGteLteReleaseDateGteLteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte, priceLte float64, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", releaseDateGte, nil, nil, releaseDateLte),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
 	return queryBooksList(es, esQuery)
 }
 

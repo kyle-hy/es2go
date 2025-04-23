@@ -25,10 +25,16 @@ func PreDetailMatchCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 		maxCombine = genCfg.MaxCombine
 	}
 
+	// 根据配置处理全文本字段的配置
+	fields := esInfo.Fields
+	if genCfg.AllTextFieldOnly && genCfg.AllTextField != "" {
+		fields = RetainTextFieldByName(esInfo.Fields, genCfg.AllTextField)
+	}
+
 	// 根据配置文件自定义字段分组进行随机组合
-	cmbFields := combineCustom(esInfo.Fields, genCfg.Combine, maxCombine)
+	cmbFields := combineCustom(fields, genCfg.Combine, maxCombine)
 	if len(cmbFields) == 0 { // 不存在自定义字段的配置，则全字段随机
-		cmbFields = utils.Combinations(esInfo.Fields, maxCombine)
+		cmbFields = utils.Combinations(fields, maxCombine)
 	}
 
 	cmbFields = LimitCombineFilter(cmbFields, map[string]int{TypeVector: -1})

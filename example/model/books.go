@@ -6,7 +6,8 @@ import "time"
 
 // Books .
 type Books struct {
-	AllVector   []float32 `json:"all_vector" es:"type:dense_vector"` // 全文本
+	AllText     string    `json:"all_text" es:"type:text"`           // 全文本
+	AllVector   []float32 `json:"all_vector" es:"type:dense_vector"` // 全文本向量
 	Author      string    `json:"author" es:"type:text;keyword"`     // author
 	Class       string    `json:"class" es:"type:keyword"`           // class
 	Name        string    `json:"name" es:"type:text;keyword"`       // 书名

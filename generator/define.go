@@ -147,6 +147,28 @@ func FieldFilterByTypes(comb []*FieldInfo, mustTypes []string) (types []*FieldIn
 	return
 }
 
+// RetainTextFieldByName 保留指定名称的text字段
+func RetainTextFieldByName(comb []*FieldInfo, name string) (fields []*FieldInfo) {
+	for _, f := range comb {
+		if TypeText == getTypeMapping(f.EsFieldType) && f.EsFieldPath != name {
+			continue
+		}
+		fields = append(fields, f)
+	}
+	return
+}
+
+// DropTextFieldByName 过滤掉指定名称的text字段
+func DropTextFieldByName(comb []*FieldInfo, name string) (fields []*FieldInfo) {
+	for _, f := range comb {
+		if TypeText == getTypeMapping(f.EsFieldType) && f.EsFieldPath == name {
+			continue
+		}
+		fields = append(fields, f)
+	}
+	return
+}
+
 // MustCombineFilter 过滤出满足必须包含类型的组合
 func MustCombineFilter(combs [][]*FieldInfo, mustTypes []string) [][]*FieldInfo {
 	filterout := [][]*FieldInfo{}
