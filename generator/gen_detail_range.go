@@ -299,8 +299,13 @@ func GenEsDetailRange(mappingPath, outputPath string, esInfo *EsModelInfo) error
 		FuncDatas:     funcData,
 	}
 
+	// 创建 FuncMap，将函数名映射到 Go 函数
+	funcMap := template.FuncMap{
+		"FirstLine": utils.FirstLine,
+	}
+
 	// 渲染
-	tmpl, err := template.New("structDatail").Parse(DetailTpl)
+	tmpl, err := template.New("structDatail").Funcs(funcMap).Parse(DetailTpl)
 	var buf bytes.Buffer
 	err = tmpl.Execute(&buf, detailData)
 	if err != nil {
