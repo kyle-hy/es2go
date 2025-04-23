@@ -314,7 +314,7 @@ func getDetailRecentMatchQuery(fields []*FieldInfo, rangeTypes []string, termInS
 
 var (
 	recentTypes  = []string{"Day", "Week", "Month", "Quarter", "Year"}
-	recentNames  = map[string]string{"Day": "为近几日", "Week": "为近几周", "Month": "为近几个月", "Quarter": "为近几个季度", "Year": "为近几年"}
+	recentNames  = map[string]string{"Day": "为近几天", "Week": "为近几周", "Month": "为近几个月", "Quarter": "为近几个季度", "Year": "为近几年"}
 	recentFormat = map[string]string{"Day": "now-%dd/d", "Week": "now-%dw/w", "Month": "now-%dM/M", "Quarter": "now-%dQ/Q", "Year": "now-%dy/y"}
 )
 

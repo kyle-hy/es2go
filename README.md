@@ -6,88 +6,12 @@
 
 根据index的mapping生成结构体，index的注释使用_meta字段的comment存储；字段的注释使用meta字段存储。
 
-## TODO
-- [ ] 宽表有可能是多种对象的不同属性的并集，不同对象的属性之间不存在组合查询的情况，因此要区分通用字段和独立字段，分门别类组合。
+宽表有可能是多种对象的不同属性的并集，不同对象的属性之间不存在组合查询的情况，因此要通过配置区分通用字段和独立字段，分门别类组合。
+
+精确匹配字段使用should还是filter可配置。
 
 ## 根据mapping提取的信息生成查询
 
-- [x] 对text字段做match检索（多字段检索可采用合并后的all_text字段来简化）
-```json
-{
-  "match": { "description": "smartphone" }
-}
-或
-{
-    "bool": {
-        "must": [
-            {
-                "match": {
-                    "author": "Neal"
-                }
-            },
-            {
-                "match": {
-                    "name": "snow"
-                }
-            }
-        ]
-    }
-}
-
-```
-- [x] 对text字段做检索后的命中总数
-> 查询响应中的 hits.total.value 字段获取
-- [x] 使用keyword字段随机组合作为过滤条件对text字段做检索
-```json
-{
-    "query": {
-        "bool": {
-            "filter": [
-                {
-                    "term": {
-                        "class": "记录"
-                    }
-                },
-                {
-                    "term": {
-                        "seq": "编号"
-                    }
-                }
-            ],
-            "must": [
-                {
-                    "match": {
-                        "name": "snow"
-                    }
-                }
-            ]
-        }
-    }
-}
-```
-- [ ] 使用keyword字段随机组合作为过滤条件对text字段做检索后的聚合分析
-```json
-{
-  "query": {
-    "bool": {
-      "filter": [
-        { "term": { "category": "electronics" } },
-        { "term": { "brand": "apple" } }
-      ],
-      "must": [
-        { "match": { "description": "smartphone" } }
-      ]
-    }
-  },
-  "aggs": {
-    "top_brands": {
-      "terms": {
-        "field": "brand"
-      }
-    }
-  }
-}
-
-```
-- [ ] 使用boolean字段随机组合作为过滤条件对text字段做检索
-- [ ] 使用boolean字段随机组合作为过滤条件对text字段做检索后的聚合分析
+- [x] 多个字段随机组合进行等值或检索查询，字段数量通过配置限制
+- [x] 结合其他字段对数值和日期字段随机组合进行范围查询
+- [x] 结合其他字段对数值范围和日期近期随机组合进行范围查询
