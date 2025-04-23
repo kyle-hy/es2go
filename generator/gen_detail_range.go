@@ -198,8 +198,12 @@ func getDetailRangeFuncParams(fields []*FieldInfo, rangeTypes []string) []string
 		for _, opts := range optList {
 			tmp := ""
 			for _, opt := range opts {
-				tmp += utils.ToFirstLower(f.FieldName) + opt + " " + f.FieldType + ", "
+				tmp += utils.ToFirstLower(f.FieldName) + opt + ", "
 			}
+			tmp = strings.TrimSuffix(tmp, ", ")
+			tmp += " " + f.FieldType + ", "
+			// 	tmp += utils.ToFirstLower(f.FieldName) + opt + " " + f.FieldType + ", "
+			// }
 			tmps = append(tmps, tmp)
 		}
 		params = append(params, tmps)
