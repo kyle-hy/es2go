@@ -40,10 +40,10 @@ func PreDetailRecentCond(mappingPath string, esInfo *EsModelInfo, rtype string) 
 
 	// 字段随机组合
 	for _, cfs := range mustFileds {
-		names := getDetailRecentFuncName(esInfo.StructName, cfs, rangeTypes, rtype)
-		comments := getDetailRecentFuncComment(esInfo.StructName, cfs, rangeTypes, rtype)
-		params := getDetailRecentFuncParams(cfs, rangeTypes, rtype)
-		queries := getDetailRecentMatchQuery(cfs, rangeTypes, genCfg.TermInShould, rtype)
+		names := getDetailRecentFuncName(esInfo.StructName, cfs, rangeTypes, rtype, genCfg.CmpOptList)
+		comments := getDetailRecentFuncComment(esInfo.StructName, cfs, rangeTypes, rtype, genCfg.CmpOptList)
+		params := getDetailRecentFuncParams(cfs, rangeTypes, rtype, genCfg.CmpOptList)
+		queries := getDetailRecentMatchQuery(cfs, rangeTypes, genCfg.TermInShould, rtype, genCfg.CmpOptList)
 		for idx := range len(names) {
 			ftd := &FuncTplData{
 				Name:    names[idx],
@@ -59,7 +59,10 @@ func PreDetailRecentCond(mappingPath string, esInfo *EsModelInfo, rtype string) 
 }
 
 // getDetailRecentFuncName 获取函数名称
-func getDetailRecentFuncName(structName string, fields []*FieldInfo, rangeTypes []string, rtype string) []string {
+func getDetailRecentFuncName(structName string, fields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
+	if len(optList) == 0 {
+		optList = CmpOptList
+	}
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	otherName := ""
 	// 串联过滤条件的字段名
@@ -106,7 +109,10 @@ func getDetailRecentFuncName(structName string, fields []*FieldInfo, rangeTypes 
 }
 
 // getDetailRecentFuncComment 获取函数注释
-func getDetailRecentFuncComment(structComment string, fields []*FieldInfo, rangeTypes []string, rtype string) []string {
+func getDetailRecentFuncComment(structComment string, fields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
+	if len(optList) == 0 {
+		optList = CmpOptList
+	}
 	// 函数注释部分
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	otherComment := ""
@@ -127,7 +133,7 @@ func getDetailRecentFuncComment(structComment string, fields []*FieldInfo, range
 			for _, opts := range optList {
 				tmp := f.FieldComment
 				for _, opt := range opts {
-					tmp += optNames[opt] + "和"
+					tmp += CmpOptNames[opt] + "和"
 				}
 				tmp = strings.TrimSuffix(tmp, "和")
 				tmp += "、"
@@ -165,7 +171,7 @@ func getDetailRecentFuncComment(structComment string, fields []*FieldInfo, range
 			for _, opts := range optList {
 				tmp := " "
 				for _, opt := range opts {
-					tmp += "// " + utils.ToFirstLower(f.FieldName) + opt + " " + f.FieldType + " " + f.FieldComment + optNames[opt] + "\n"
+					tmp += "// " + utils.ToFirstLower(f.FieldName) + opt + " " + f.FieldType + " " + f.FieldComment + CmpOptNames[opt] + "\n"
 				}
 				tmps = append(tmps, tmp)
 			}
@@ -191,7 +197,10 @@ func getDetailRecentFuncComment(structComment string, fields []*FieldInfo, range
 }
 
 // getDetailRecentFuncParams 获取函数参数列表
-func getDetailRecentFuncParams(fields []*FieldInfo, rangeTypes []string, rtype string) []string {
+func getDetailRecentFuncParams(fields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
+	if len(optList) == 0 {
+		optList = CmpOptList
+	}
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	// 过滤条件参数
 	cfp := ""
@@ -231,7 +240,10 @@ func getDetailRecentFuncParams(fields []*FieldInfo, rangeTypes []string, rtype s
 }
 
 // getDetailRecentMatchQuery 获取函数的查询条件
-func getDetailRecentMatchQuery(fields []*FieldInfo, rangeTypes []string, termInShould bool, rtype string) []string {
+func getDetailRecentMatchQuery(fields []*FieldInfo, rangeTypes []string, termInShould bool, rtype string, optList [][]string) []string {
+	if len(optList) == 0 {
+		optList = CmpOptList
+	}
 	// 精确条件默认放到filter中
 	preciseOpt := "eq.WithFilter"
 	if termInShould {

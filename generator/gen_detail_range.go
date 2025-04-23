@@ -40,10 +40,10 @@ func PreDetailRangeCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 
 	// 字段随机组合
 	for _, cfs := range mustFileds {
-		names := getDetailRangeFuncName(esInfo.StructName, cfs, rangeTypes)
-		comments := getDetailRangeFuncComment(esInfo.StructName, cfs, rangeTypes)
-		params := getDetailRangeFuncParams(cfs, rangeTypes)
-		queries := getDetailRangeMatchQuery(cfs, rangeTypes, genCfg.TermInShould)
+		names := getDetailRangeFuncName(esInfo.StructName, cfs, rangeTypes, genCfg.CmpOptList)
+		comments := getDetailRangeFuncComment(esInfo.StructName, cfs, rangeTypes, genCfg.CmpOptList)
+		params := getDetailRangeFuncParams(cfs, rangeTypes, genCfg.CmpOptList)
+		queries := getDetailRangeMatchQuery(cfs, rangeTypes, genCfg.TermInShould, genCfg.CmpOptList)
 		for idx := range len(names) {
 			ftd := &FuncTplData{
 				Name:    names[idx],
@@ -60,17 +60,17 @@ func PreDetailRangeCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 
 // 数值比较操作
 var (
-	GTE     = "Gte"
-	GT      = "Gt"
-	LT      = "Lt"
-	LTE     = "Lte"
-	optList = [][]string{
+	GTE        = "Gte"
+	GT         = "Gt"
+	LT         = "Lt"
+	LTE        = "Lte"
+	CmpOptList = [][]string{
 		// {GTE}, {LTE},
 		{GTE}, {GT}, {LT}, {LTE},
 		{GTE, LTE},
 		// {GTE, LT}, {GTE, LTE}, {GT, LT}, {GT, LTE},
 	}
-	optNames = map[string]string{
+	CmpOptNames = map[string]string{
 		GTE: "大于等于",
 		GT:  "大于",
 		LT:  "小于",
@@ -79,7 +79,11 @@ var (
 )
 
 // getDetailRangeFuncName 获取函数名称
-func getDetailRangeFuncName(structName string, fields []*FieldInfo, rangeTypes []string) []string {
+func getDetailRangeFuncName(structName string, fields []*FieldInfo, rangeTypes []string, optList [][]string) []string {
+	if len(optList) == 0 {
+		optList = CmpOptList
+	}
+
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	otherName := ""
 	// 串联过滤条件的字段名
@@ -115,7 +119,11 @@ func getDetailRangeFuncName(structName string, fields []*FieldInfo, rangeTypes [
 }
 
 // getDetailRangeFuncComment 获取函数注释
-func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeTypes []string) []string {
+func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeTypes []string, optList [][]string) []string {
+	if len(optList) == 0 {
+		optList = CmpOptList
+	}
+
 	// 函数注释部分
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	otherComment := ""
@@ -134,7 +142,7 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeT
 		for _, opts := range optList {
 			tmp := f.FieldComment
 			for _, opt := range opts {
-				tmp += optNames[opt] + "和"
+				tmp += CmpOptNames[opt] + "和"
 			}
 			tmp = strings.TrimSuffix(tmp, "和")
 			tmp += "、"
@@ -164,7 +172,7 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeT
 		for _, opts := range optList {
 			tmp := " "
 			for _, opt := range opts {
-				tmp += "// " + utils.ToFirstLower(f.FieldName) + opt + " " + f.FieldType + " " + f.FieldComment + optNames[opt] + "\n"
+				tmp += "// " + utils.ToFirstLower(f.FieldName) + opt + " " + f.FieldType + " " + f.FieldComment + CmpOptNames[opt] + "\n"
 			}
 			tmps = append(tmps, tmp)
 		}
@@ -183,7 +191,11 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeT
 }
 
 // getDetailRangeFuncParams 获取函数参数列表
-func getDetailRangeFuncParams(fields []*FieldInfo, rangeTypes []string) []string {
+func getDetailRangeFuncParams(fields []*FieldInfo, rangeTypes []string, optList [][]string) []string {
+	if len(optList) == 0 {
+		optList = CmpOptList
+	}
+
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	// 过滤条件参数
 	cfp := ""
@@ -217,7 +229,11 @@ func getDetailRangeFuncParams(fields []*FieldInfo, rangeTypes []string) []string
 }
 
 // getDetailRangeMatchQuery 获取函数的查询条件
-func getDetailRangeMatchQuery(fields []*FieldInfo, rangeTypes []string, termInShould bool) []string {
+func getDetailRangeMatchQuery(fields []*FieldInfo, rangeTypes []string, termInShould bool, optList [][]string) []string {
+	if len(optList) == 0 {
+		optList = CmpOptList
+	}
+
 	// 精确条件默认放到filter中
 	preciseOpt := "eq.WithFilter"
 	if termInShould {

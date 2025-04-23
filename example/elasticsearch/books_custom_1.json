@@ -1,16 +1,6 @@
 {
-    "combine": [
-        [
-            "author",
-            "page_count",
-            "name",
-            "seq"
-        ],
-        [
-            "name",
-            "price"
-        ]
-    ],
+    "combine": [],
+    "cmpOptList": [],
     "maxCombine": 4,
-    "termInShould": true
+    "termInShould": false
 }
