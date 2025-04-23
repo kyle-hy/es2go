@@ -2,5 +2,5 @@
     "combine": [],
     "cmpOptList": [],
     "maxCombine": 4,
-    "termInShould": false
+    "termInShould": true
 }

@@ -31,13 +31,15 @@ func PreDetailMatchCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 		cmbFields = utils.Combinations(esInfo.Fields, maxCombine)
 	}
 
+	cmbFields = LimitCombineFilter(cmbFields, map[string]int{TypeVector: -1})
+
 	// 构造渲染模板所需的数据
 	for _, cfs := range cmbFields {
 		ftd := &FuncTplData{
 			Name:    getDetailMatchFuncName(esInfo.StructName, cfs),
 			Comment: getDetailMatchFuncComment(esInfo.StructComment, cfs),
 			Params:  getDetailMatchFuncParams(cfs),
-			Query:   getDetailMatchMatchQuery(cfs, genCfg.TermInShould),
+			Query:   getDetailMatchQuery(cfs, genCfg.TermInShould),
 		}
 		funcDatas = append(funcDatas, ftd)
 	}
@@ -106,7 +108,7 @@ func getDetailMatchFuncComment(structComment string, fields []*FieldInfo) string
 		cmt += f.FieldComment + "、"
 	}
 	cmt = strings.TrimSuffix(cmt, "、")
-	cmt += "进行检索(等于)查询" + structComment + "的详细数据列表和总数量"
+	cmt += "进行检索(等于)查找" + structComment + "的详细数据列表和总数量"
 
 	// 参数注释
 	for _, f := range fields {
@@ -126,8 +128,8 @@ func getDetailMatchFuncParams(fields []*FieldInfo) string {
 	return fp
 }
 
-// getDetailMatchMatchQuery 获取函数的查询条件
-func getDetailMatchMatchQuery(fields []*FieldInfo, termInShould bool) string {
+// getDetailMatchQuery 获取函数的查找条件
+func getDetailMatchQuery(fields []*FieldInfo, termInShould bool) string {
 	// 精确条件默认放到filter中
 	preciseOpt := "eq.WithFilter"
 	if termInShould {
@@ -246,7 +248,7 @@ func {{.Name}}(es *elasticsearch.Client, {{.Params}}) (*eq.Data, *eq.Query, erro
 
 // DetailListTpl 检索详情列表通用代码模板
 const DetailListTpl = `
-// 根据query条件查询{{$in.IndexName}}详细数据列表和总数量
+// 根据query条件查找{{$in.IndexName}}详细数据列表和总数量
 func query{{$in.StructName}}List (es *elasticsearch.Client, esQuery *eq.ESQuery) (*eq.Data, *eq.Query, error) {
 	l, t, err := eq.QueryList[{{$in.StructName}}](es, "{{$in.IndexName}}", esQuery)
 	if err != nil {

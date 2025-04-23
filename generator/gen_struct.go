@@ -54,16 +54,19 @@ func GenEsModel(inputPath, outputPath, packageName, structName string, opts *Gen
 	} else {
 		// default mapping
 		GoTypeMap = map[string]string{
-			"integer":   "int64",
-			"long":      "int64",
-			"float":     "float64",
-			"boolean":   "bool",
-			"text":      "string",
-			"keyword":   "string",
-			"date":      "time.Time",
-			"geo_point": "[]float64",
-			"object":    "map[string]any",
-			"nested":    "[]any",
+			"integer":       "int64",
+			"long":          "int64",
+			"float":         "float64",
+			"boolean":       "bool",
+			"text":          "string",
+			"keyword":       "string",
+			"date":          "time.Time",
+			"geo_point":     "[]float64",
+			"object":        "map[string]any",
+			"nested":        "[]any",
+			"dense_vector":  "[]float32",
+			"sparse_vector": "[]float32",
+			"vector":        "[]float32",
 		}
 	}
 

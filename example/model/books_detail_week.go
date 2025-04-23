@@ -19,7 +19,7 @@ func WeekBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNWeek int) (
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByReleaseDateGteWithAuthor 根据Author从Books查找release_date为近几周的详细数据列表和总数量
+// WeekBooksByReleaseDateGteWithAuthor 根据author从Books查找release_date为近几周的详细数据列表和总数量
 // author string author
 // releaseDateNWeek int release_date为近几周
 func WeekBooksByReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, releaseDateNWeek int) (*eq.Data, *eq.Query, error) {
@@ -33,7 +33,7 @@ func WeekBooksByReleaseDateGteWithAuthor(es *elasticsearch.Client, author string
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByReleaseDateGteWithClass 根据Class从Books查找release_date为近几周的详细数据列表和总数量
+// WeekBooksByReleaseDateGteWithClass 根据class从Books查找release_date为近几周的详细数据列表和总数量
 // class string class
 // releaseDateNWeek int release_date为近几周
 func WeekBooksByReleaseDateGteWithClass(es *elasticsearch.Client, class string, releaseDateNWeek int) (*eq.Data, *eq.Query, error) {
@@ -45,7 +45,7 @@ func WeekBooksByReleaseDateGteWithClass(es *elasticsearch.Client, class string, 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByReleaseDateGteWithName 根据Name从Books查找release_date为近几周的详细数据列表和总数量
+// WeekBooksByReleaseDateGteWithName 根据书名从Books查找release_date为近几周的详细数据列表和总数量
 // name string 书名
 // releaseDateNWeek int release_date为近几周
 func WeekBooksByReleaseDateGteWithName(es *elasticsearch.Client, name string, releaseDateNWeek int) (*eq.Data, *eq.Query, error) {
@@ -181,7 +181,7 @@ func WeekBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client, priceGte, pr
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByReleaseDateGteWithSeq 根据Seq从Books查找release_date为近几周的详细数据列表和总数量
+// WeekBooksByReleaseDateGteWithSeq 根据seq从Books查找release_date为近几周的详细数据列表和总数量
 // seq string seq
 // releaseDateNWeek int release_date为近几周
 func WeekBooksByReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, releaseDateNWeek int) (*eq.Data, *eq.Query, error) {
@@ -193,7 +193,7 @@ func WeekBooksByReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, rele
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByReleaseDateGteWithAuthorClass 根据Author、Class从Books查找release_date为近几周的详细数据列表和总数量
+// WeekBooksByReleaseDateGteWithAuthorClass 根据author、class从Books查找release_date为近几周的详细数据列表和总数量
 // author string author
 // class string class
 // releaseDateNWeek int release_date为近几周
@@ -209,7 +209,7 @@ func WeekBooksByReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByReleaseDateGteWithAuthorName 根据Author、Name从Books查找release_date为近几周的详细数据列表和总数量
+// WeekBooksByReleaseDateGteWithAuthorName 根据author、书名从Books查找release_date为近几周的详细数据列表和总数量
 // author string author
 // name string 书名
 // releaseDateNWeek int release_date为近几周
@@ -225,7 +225,7 @@ func WeekBooksByReleaseDateGteWithAuthorName(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteReleaseDateGteWithAuthor 根据Author从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // releaseDateNWeek int release_date为近几周
@@ -241,7 +241,7 @@ func WeekBooksByPageCountGteReleaseDateGteWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtReleaseDateGteWithAuthor 根据Author从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtReleaseDateGteWithAuthor 根据author从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGt int64 page_count大于
 // releaseDateNWeek int release_date为近几周
@@ -257,7 +257,7 @@ func WeekBooksByPageCountGtReleaseDateGteWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtReleaseDateGteWithAuthor 根据Author从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtReleaseDateGteWithAuthor 根据author从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountLt int64 page_count小于
 // releaseDateNWeek int release_date为近几周
@@ -273,7 +273,7 @@ func WeekBooksByPageCountLtReleaseDateGteWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLteReleaseDateGteWithAuthor 根据Author从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLteReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountLte int64 page_count小于等于
 // releaseDateNWeek int release_date为近几周
@@ -289,7 +289,7 @@ func WeekBooksByPageCountLteReleaseDateGteWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLteReleaseDateGteWithAuthor 根据Author从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -306,7 +306,7 @@ func WeekBooksByPageCountGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteReleaseDateGteWithAuthor 根据Author从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteReleaseDateGteWithAuthor 根据author从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // priceGte float64 价格大于等于
 // releaseDateNWeek int release_date为近几周
@@ -322,7 +322,7 @@ func WeekBooksByPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGtReleaseDateGteWithAuthor 根据Author从Books查找价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGtReleaseDateGteWithAuthor 根据author从Books查找价格大于、release_date为近几周的详细数据列表和总数量
 // author string author
 // priceGt float64 价格大于
 // releaseDateNWeek int release_date为近几周
@@ -338,7 +338,7 @@ func WeekBooksByPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLtReleaseDateGteWithAuthor 根据Author从Books查找价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLtReleaseDateGteWithAuthor 根据author从Books查找价格小于、release_date为近几周的详细数据列表和总数量
 // author string author
 // priceLt float64 价格小于
 // releaseDateNWeek int release_date为近几周
@@ -354,7 +354,7 @@ func WeekBooksByPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLteReleaseDateGteWithAuthor 根据Author从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLteReleaseDateGteWithAuthor 根据author从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // priceLte float64 价格小于等于
 // releaseDateNWeek int release_date为近几周
@@ -370,7 +370,7 @@ func WeekBooksByPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteLteReleaseDateGteWithAuthor 根据Author从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteLteReleaseDateGteWithAuthor 根据author从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -387,7 +387,7 @@ func WeekBooksByPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找release_date为近几周的详细数据列表和总数量
+// WeekBooksByReleaseDateGteWithAuthorSeq 根据author、seq从Books查找release_date为近几周的详细数据列表和总数量
 // author string author
 // seq string seq
 // releaseDateNWeek int release_date为近几周
@@ -403,7 +403,7 @@ func WeekBooksByReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByReleaseDateGteWithClassName 根据Class、Name从Books查找release_date为近几周的详细数据列表和总数量
+// WeekBooksByReleaseDateGteWithClassName 根据class、书名从Books查找release_date为近几周的详细数据列表和总数量
 // class string class
 // name string 书名
 // releaseDateNWeek int release_date为近几周
@@ -419,7 +419,7 @@ func WeekBooksByReleaseDateGteWithClassName(es *elasticsearch.Client, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteReleaseDateGteWithClass 根据Class从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteReleaseDateGteWithClass 根据class从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // releaseDateNWeek int release_date为近几周
@@ -433,7 +433,7 @@ func WeekBooksByPageCountGteReleaseDateGteWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtReleaseDateGteWithClass 根据Class从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtReleaseDateGteWithClass 根据class从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGt int64 page_count大于
 // releaseDateNWeek int release_date为近几周
@@ -447,7 +447,7 @@ func WeekBooksByPageCountGtReleaseDateGteWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtReleaseDateGteWithClass 根据Class从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtReleaseDateGteWithClass 根据class从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountLt int64 page_count小于
 // releaseDateNWeek int release_date为近几周
@@ -461,7 +461,7 @@ func WeekBooksByPageCountLtReleaseDateGteWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLteReleaseDateGteWithClass 根据Class从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLteReleaseDateGteWithClass 根据class从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountLte int64 page_count小于等于
 // releaseDateNWeek int release_date为近几周
@@ -475,7 +475,7 @@ func WeekBooksByPageCountLteReleaseDateGteWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLteReleaseDateGteWithClass 根据Class从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLteReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -490,7 +490,7 @@ func WeekBooksByPageCountGteLteReleaseDateGteWithClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteReleaseDateGteWithClass 根据Class从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteReleaseDateGteWithClass 根据class从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // priceGte float64 价格大于等于
 // releaseDateNWeek int release_date为近几周
@@ -504,7 +504,7 @@ func WeekBooksByPriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGtReleaseDateGteWithClass 根据Class从Books查找价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGtReleaseDateGteWithClass 根据class从Books查找价格大于、release_date为近几周的详细数据列表和总数量
 // class string class
 // priceGt float64 价格大于
 // releaseDateNWeek int release_date为近几周
@@ -518,7 +518,7 @@ func WeekBooksByPriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLtReleaseDateGteWithClass 根据Class从Books查找价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLtReleaseDateGteWithClass 根据class从Books查找价格小于、release_date为近几周的详细数据列表和总数量
 // class string class
 // priceLt float64 价格小于
 // releaseDateNWeek int release_date为近几周
@@ -532,7 +532,7 @@ func WeekBooksByPriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLteReleaseDateGteWithClass 根据Class从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLteReleaseDateGteWithClass 根据class从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // priceLte float64 价格小于等于
 // releaseDateNWeek int release_date为近几周
@@ -546,7 +546,7 @@ func WeekBooksByPriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteLteReleaseDateGteWithClass 根据Class从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteLteReleaseDateGteWithClass 根据class从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -561,7 +561,7 @@ func WeekBooksByPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByReleaseDateGteWithClassSeq 根据Class、Seq从Books查找release_date为近几周的详细数据列表和总数量
+// WeekBooksByReleaseDateGteWithClassSeq 根据class、seq从Books查找release_date为近几周的详细数据列表和总数量
 // class string class
 // seq string seq
 // releaseDateNWeek int release_date为近几周
@@ -575,7 +575,7 @@ func WeekBooksByReleaseDateGteWithClassSeq(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteReleaseDateGteWithName 根据Name从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteReleaseDateGteWithName 根据书名从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // releaseDateNWeek int release_date为近几周
@@ -591,7 +591,7 @@ func WeekBooksByPageCountGteReleaseDateGteWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtReleaseDateGteWithName 根据Name从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtReleaseDateGteWithName 根据书名从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGt int64 page_count大于
 // releaseDateNWeek int release_date为近几周
@@ -607,7 +607,7 @@ func WeekBooksByPageCountGtReleaseDateGteWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtReleaseDateGteWithName 根据Name从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtReleaseDateGteWithName 根据书名从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountLt int64 page_count小于
 // releaseDateNWeek int release_date为近几周
@@ -623,7 +623,7 @@ func WeekBooksByPageCountLtReleaseDateGteWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLteReleaseDateGteWithName 根据Name从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLteReleaseDateGteWithName 根据书名从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountLte int64 page_count小于等于
 // releaseDateNWeek int release_date为近几周
@@ -639,7 +639,7 @@ func WeekBooksByPageCountLteReleaseDateGteWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLteReleaseDateGteWithName 根据Name从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLteReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -656,7 +656,7 @@ func WeekBooksByPageCountGteLteReleaseDateGteWithName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteReleaseDateGteWithName 根据Name从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteReleaseDateGteWithName 根据书名从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNWeek int release_date为近几周
@@ -672,7 +672,7 @@ func WeekBooksByPriceGteReleaseDateGteWithName(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGtReleaseDateGteWithName 根据Name从Books查找价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGtReleaseDateGteWithName 根据书名从Books查找价格大于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNWeek int release_date为近几周
@@ -688,7 +688,7 @@ func WeekBooksByPriceGtReleaseDateGteWithName(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLtReleaseDateGteWithName 根据Name从Books查找价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLtReleaseDateGteWithName 根据书名从Books查找价格小于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNWeek int release_date为近几周
@@ -704,7 +704,7 @@ func WeekBooksByPriceLtReleaseDateGteWithName(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLteReleaseDateGteWithName 根据Name从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLteReleaseDateGteWithName 根据书名从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNWeek int release_date为近几周
@@ -720,7 +720,7 @@ func WeekBooksByPriceLteReleaseDateGteWithName(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteLteReleaseDateGteWithName 根据Name从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteLteReleaseDateGteWithName 根据书名从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -737,7 +737,7 @@ func WeekBooksByPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByReleaseDateGteWithNameSeq 根据Name、Seq从Books查找release_date为近几周的详细数据列表和总数量
+// WeekBooksByReleaseDateGteWithNameSeq 根据书名、seq从Books查找release_date为近几周的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // releaseDateNWeek int release_date为近几周
@@ -1113,7 +1113,7 @@ func WeekBooksByPageCountGteLtePriceGteLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteReleaseDateGteWithSeq 根据Seq从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // releaseDateNWeek int release_date为近几周
@@ -1127,7 +1127,7 @@ func WeekBooksByPageCountGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtReleaseDateGteWithSeq 根据Seq从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtReleaseDateGteWithSeq 根据seq从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGt int64 page_count大于
 // releaseDateNWeek int release_date为近几周
@@ -1141,7 +1141,7 @@ func WeekBooksByPageCountGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtReleaseDateGteWithSeq 根据Seq从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtReleaseDateGteWithSeq 根据seq从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountLt int64 page_count小于
 // releaseDateNWeek int release_date为近几周
@@ -1155,7 +1155,7 @@ func WeekBooksByPageCountLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLteReleaseDateGteWithSeq 根据Seq从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLteReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountLte int64 page_count小于等于
 // releaseDateNWeek int release_date为近几周
@@ -1169,7 +1169,7 @@ func WeekBooksByPageCountLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLteReleaseDateGteWithSeq 根据Seq从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -1184,7 +1184,7 @@ func WeekBooksByPageCountGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteReleaseDateGteWithSeq 根据Seq从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteReleaseDateGteWithSeq 根据seq从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // priceGte float64 价格大于等于
 // releaseDateNWeek int release_date为近几周
@@ -1198,7 +1198,7 @@ func WeekBooksByPriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGtReleaseDateGteWithSeq 根据Seq从Books查找价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGtReleaseDateGteWithSeq 根据seq从Books查找价格大于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // priceGt float64 价格大于
 // releaseDateNWeek int release_date为近几周
@@ -1212,7 +1212,7 @@ func WeekBooksByPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLtReleaseDateGteWithSeq 根据Seq从Books查找价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLtReleaseDateGteWithSeq 根据seq从Books查找价格小于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // priceLt float64 价格小于
 // releaseDateNWeek int release_date为近几周
@@ -1226,7 +1226,7 @@ func WeekBooksByPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLteReleaseDateGteWithSeq 根据Seq从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLteReleaseDateGteWithSeq 根据seq从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // priceLte float64 价格小于等于
 // releaseDateNWeek int release_date为近几周
@@ -1240,7 +1240,7 @@ func WeekBooksByPriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteLteReleaseDateGteWithSeq 根据Seq从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteLteReleaseDateGteWithSeq 根据seq从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1255,7 +1255,7 @@ func WeekBooksByPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByReleaseDateGteWithAuthorClassName 根据Author、Class、Name从Books查找release_date为近几周的详细数据列表和总数量
+// WeekBooksByReleaseDateGteWithAuthorClassName 根据author、class、书名从Books查找release_date为近几周的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -1273,7 +1273,7 @@ func WeekBooksByReleaseDateGteWithAuthorClassName(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteReleaseDateGteWithAuthorClass 根据Author、Class从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteReleaseDateGteWithAuthorClass 根据author、class从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGte int64 page_count大于等于
@@ -1291,7 +1291,7 @@ func WeekBooksByPageCountGteReleaseDateGteWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtReleaseDateGteWithAuthorClass 根据Author、Class从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtReleaseDateGteWithAuthorClass 根据author、class从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGt int64 page_count大于
@@ -1309,7 +1309,7 @@ func WeekBooksByPageCountGtReleaseDateGteWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtReleaseDateGteWithAuthorClass 根据Author、Class从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtReleaseDateGteWithAuthorClass 根据author、class从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountLt int64 page_count小于
@@ -1327,7 +1327,7 @@ func WeekBooksByPageCountLtReleaseDateGteWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLteReleaseDateGteWithAuthorClass 根据Author、Class从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLteReleaseDateGteWithAuthorClass 根据author、class从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountLte int64 page_count小于等于
@@ -1345,7 +1345,7 @@ func WeekBooksByPageCountLteReleaseDateGteWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLteReleaseDateGteWithAuthorClass 根据Author、Class从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLteReleaseDateGteWithAuthorClass 根据author、class从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGte int64 page_count大于等于
@@ -1364,7 +1364,7 @@ func WeekBooksByPageCountGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteReleaseDateGteWithAuthorClass 根据Author、Class从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteReleaseDateGteWithAuthorClass 根据author、class从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // class string class
 // priceGte float64 价格大于等于
@@ -1382,7 +1382,7 @@ func WeekBooksByPriceGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGtReleaseDateGteWithAuthorClass 根据Author、Class从Books查找价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGtReleaseDateGteWithAuthorClass 根据author、class从Books查找价格大于、release_date为近几周的详细数据列表和总数量
 // author string author
 // class string class
 // priceGt float64 价格大于
@@ -1400,7 +1400,7 @@ func WeekBooksByPriceGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLtReleaseDateGteWithAuthorClass 根据Author、Class从Books查找价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLtReleaseDateGteWithAuthorClass 根据author、class从Books查找价格小于、release_date为近几周的详细数据列表和总数量
 // author string author
 // class string class
 // priceLt float64 价格小于
@@ -1418,7 +1418,7 @@ func WeekBooksByPriceLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLteReleaseDateGteWithAuthorClass 根据Author、Class从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLteReleaseDateGteWithAuthorClass 根据author、class从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // class string class
 // priceLte float64 价格小于等于
@@ -1436,7 +1436,7 @@ func WeekBooksByPriceLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteLteReleaseDateGteWithAuthorClass 根据Author、Class从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteLteReleaseDateGteWithAuthorClass 根据author、class从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // class string class
 // priceGte float64 价格大于等于
@@ -1455,7 +1455,7 @@ func WeekBooksByPriceGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByReleaseDateGteWithAuthorClassSeq 根据Author、Class、Seq从Books查找release_date为近几周的详细数据列表和总数量
+// WeekBooksByReleaseDateGteWithAuthorClassSeq 根据author、class、seq从Books查找release_date为近几周的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -1473,7 +1473,7 @@ func WeekBooksByReleaseDateGteWithAuthorClassSeq(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteReleaseDateGteWithAuthorName 根据Author、Name从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteReleaseDateGteWithAuthorName 根据author、书名从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -1491,7 +1491,7 @@ func WeekBooksByPageCountGteReleaseDateGteWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtReleaseDateGteWithAuthorName 根据Author、Name从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtReleaseDateGteWithAuthorName 根据author、书名从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGt int64 page_count大于
@@ -1509,7 +1509,7 @@ func WeekBooksByPageCountGtReleaseDateGteWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtReleaseDateGteWithAuthorName 根据Author、Name从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtReleaseDateGteWithAuthorName 根据author、书名从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountLt int64 page_count小于
@@ -1527,7 +1527,7 @@ func WeekBooksByPageCountLtReleaseDateGteWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLteReleaseDateGteWithAuthorName 根据Author、Name从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLteReleaseDateGteWithAuthorName 根据author、书名从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountLte int64 page_count小于等于
@@ -1545,7 +1545,7 @@ func WeekBooksByPageCountLteReleaseDateGteWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLteReleaseDateGteWithAuthorName 根据Author、Name从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLteReleaseDateGteWithAuthorName 根据author、书名从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -1564,7 +1564,7 @@ func WeekBooksByPageCountGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteReleaseDateGteWithAuthorName 根据Author、Name从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteReleaseDateGteWithAuthorName 根据author、书名从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGte float64 价格大于等于
@@ -1582,7 +1582,7 @@ func WeekBooksByPriceGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGtReleaseDateGteWithAuthorName 根据Author、Name从Books查找价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGtReleaseDateGteWithAuthorName 根据author、书名从Books查找价格大于、release_date为近几周的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGt float64 价格大于
@@ -1600,7 +1600,7 @@ func WeekBooksByPriceGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLtReleaseDateGteWithAuthorName 根据Author、Name从Books查找价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLtReleaseDateGteWithAuthorName 根据author、书名从Books查找价格小于、release_date为近几周的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceLt float64 价格小于
@@ -1618,7 +1618,7 @@ func WeekBooksByPriceLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLteReleaseDateGteWithAuthorName 根据Author、Name从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLteReleaseDateGteWithAuthorName 根据author、书名从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceLte float64 价格小于等于
@@ -1636,7 +1636,7 @@ func WeekBooksByPriceLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteLteReleaseDateGteWithAuthorName 根据Author、Name从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteLteReleaseDateGteWithAuthorName 根据author、书名从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGte float64 价格大于等于
@@ -1655,7 +1655,7 @@ func WeekBooksByPriceGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByReleaseDateGteWithAuthorNameSeq 根据Author、Name、Seq从Books查找release_date为近几周的详细数据列表和总数量
+// WeekBooksByReleaseDateGteWithAuthorNameSeq 根据author、书名、seq从Books查找release_date为近几周的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -1673,7 +1673,7 @@ func WeekBooksByReleaseDateGteWithAuthorNameSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceGteReleaseDateGteWithAuthor 根据Author从Books查找page_count大于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceGteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // priceGte float64 价格大于等于
@@ -1691,7 +1691,7 @@ func WeekBooksByPageCountGtePriceGteReleaseDateGteWithAuthor(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceGtReleaseDateGteWithAuthor 根据Author从Books查找page_count大于等于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceGtReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、价格大于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // priceGt float64 价格大于
@@ -1709,7 +1709,7 @@ func WeekBooksByPageCountGtePriceGtReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceLtReleaseDateGteWithAuthor 根据Author从Books查找page_count大于等于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceLtReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、价格小于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // priceLt float64 价格小于
@@ -1727,7 +1727,7 @@ func WeekBooksByPageCountGtePriceLtReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceLteReleaseDateGteWithAuthor 根据Author从Books查找page_count大于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // priceLte float64 价格小于等于
@@ -1745,7 +1745,7 @@ func WeekBooksByPageCountGtePriceLteReleaseDateGteWithAuthor(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceGteLteReleaseDateGteWithAuthor 根据Author从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // priceGte float64 价格大于等于
@@ -1764,7 +1764,7 @@ func WeekBooksByPageCountGtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceGteReleaseDateGteWithAuthor 根据Author从Books查找page_count大于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceGteReleaseDateGteWithAuthor 根据author从Books查找page_count大于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGt int64 page_count大于
 // priceGte float64 价格大于等于
@@ -1782,7 +1782,7 @@ func WeekBooksByPageCountGtPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceGtReleaseDateGteWithAuthor 根据Author从Books查找page_count大于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceGtReleaseDateGteWithAuthor 根据author从Books查找page_count大于、价格大于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGt int64 page_count大于
 // priceGt float64 价格大于
@@ -1800,7 +1800,7 @@ func WeekBooksByPageCountGtPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceLtReleaseDateGteWithAuthor 根据Author从Books查找page_count大于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceLtReleaseDateGteWithAuthor 根据author从Books查找page_count大于、价格小于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGt int64 page_count大于
 // priceLt float64 价格小于
@@ -1818,7 +1818,7 @@ func WeekBooksByPageCountGtPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceLteReleaseDateGteWithAuthor 根据Author从Books查找page_count大于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGt int64 page_count大于
 // priceLte float64 价格小于等于
@@ -1836,7 +1836,7 @@ func WeekBooksByPageCountGtPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceGteLteReleaseDateGteWithAuthor 根据Author从Books查找page_count大于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGt int64 page_count大于
 // priceGte float64 价格大于等于
@@ -1855,7 +1855,7 @@ func WeekBooksByPageCountGtPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceGteReleaseDateGteWithAuthor 根据Author从Books查找page_count小于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceGteReleaseDateGteWithAuthor 根据author从Books查找page_count小于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountLt int64 page_count小于
 // priceGte float64 价格大于等于
@@ -1873,7 +1873,7 @@ func WeekBooksByPageCountLtPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceGtReleaseDateGteWithAuthor 根据Author从Books查找page_count小于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceGtReleaseDateGteWithAuthor 根据author从Books查找page_count小于、价格大于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountLt int64 page_count小于
 // priceGt float64 价格大于
@@ -1891,7 +1891,7 @@ func WeekBooksByPageCountLtPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceLtReleaseDateGteWithAuthor 根据Author从Books查找page_count小于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceLtReleaseDateGteWithAuthor 根据author从Books查找page_count小于、价格小于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountLt int64 page_count小于
 // priceLt float64 价格小于
@@ -1909,7 +1909,7 @@ func WeekBooksByPageCountLtPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceLteReleaseDateGteWithAuthor 根据Author从Books查找page_count小于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceLteReleaseDateGteWithAuthor 根据author从Books查找page_count小于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountLt int64 page_count小于
 // priceLte float64 价格小于等于
@@ -1927,7 +1927,7 @@ func WeekBooksByPageCountLtPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceGteLteReleaseDateGteWithAuthor 根据Author从Books查找page_count小于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count小于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountLt int64 page_count小于
 // priceGte float64 价格大于等于
@@ -1946,7 +1946,7 @@ func WeekBooksByPageCountLtPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceGteReleaseDateGteWithAuthor 根据Author从Books查找page_count小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceGteReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountLte int64 page_count小于等于
 // priceGte float64 价格大于等于
@@ -1964,7 +1964,7 @@ func WeekBooksByPageCountLtePriceGteReleaseDateGteWithAuthor(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceGtReleaseDateGteWithAuthor 根据Author从Books查找page_count小于等于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceGtReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、价格大于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountLte int64 page_count小于等于
 // priceGt float64 价格大于
@@ -1982,7 +1982,7 @@ func WeekBooksByPageCountLtePriceGtReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceLtReleaseDateGteWithAuthor 根据Author从Books查找page_count小于等于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceLtReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、价格小于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountLte int64 page_count小于等于
 // priceLt float64 价格小于
@@ -2000,7 +2000,7 @@ func WeekBooksByPageCountLtePriceLtReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceLteReleaseDateGteWithAuthor 根据Author从Books查找page_count小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceLteReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountLte int64 page_count小于等于
 // priceLte float64 价格小于等于
@@ -2018,7 +2018,7 @@ func WeekBooksByPageCountLtePriceLteReleaseDateGteWithAuthor(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceGteLteReleaseDateGteWithAuthor 根据Author从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountLte int64 page_count小于等于
 // priceGte float64 价格大于等于
@@ -2037,7 +2037,7 @@ func WeekBooksByPageCountLtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceGteReleaseDateGteWithAuthor 根据Author从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceGteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -2056,7 +2056,7 @@ func WeekBooksByPageCountGteLtePriceGteReleaseDateGteWithAuthor(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceGtReleaseDateGteWithAuthor 根据Author从Books查找page_count大于等于和小于等于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceGtReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、价格大于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -2075,7 +2075,7 @@ func WeekBooksByPageCountGteLtePriceGtReleaseDateGteWithAuthor(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceLtReleaseDateGteWithAuthor 根据Author从Books查找page_count大于等于和小于等于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceLtReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、价格小于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -2094,7 +2094,7 @@ func WeekBooksByPageCountGteLtePriceLtReleaseDateGteWithAuthor(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceLteReleaseDateGteWithAuthor 根据Author从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -2113,7 +2113,7 @@ func WeekBooksByPageCountGteLtePriceLteReleaseDateGteWithAuthor(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAuthor 根据Author从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -2133,7 +2133,7 @@ func WeekBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAuthor(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -2151,7 +2151,7 @@ func WeekBooksByPageCountGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtReleaseDateGteWithAuthorSeq 根据author、seq从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -2169,7 +2169,7 @@ func WeekBooksByPageCountGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtReleaseDateGteWithAuthorSeq 根据author、seq从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -2187,7 +2187,7 @@ func WeekBooksByPageCountLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLteReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -2205,7 +2205,7 @@ func WeekBooksByPageCountLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLteReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -2224,7 +2224,7 @@ func WeekBooksByPageCountGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGte float64 价格大于等于
@@ -2242,7 +2242,7 @@ func WeekBooksByPriceGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGtReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGtReleaseDateGteWithAuthorSeq 根据author、seq从Books查找价格大于、release_date为近几周的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGt float64 价格大于
@@ -2260,7 +2260,7 @@ func WeekBooksByPriceGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLtReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLtReleaseDateGteWithAuthorSeq 根据author、seq从Books查找价格小于、release_date为近几周的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceLt float64 价格小于
@@ -2278,7 +2278,7 @@ func WeekBooksByPriceLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLteReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceLte float64 价格小于等于
@@ -2296,7 +2296,7 @@ func WeekBooksByPriceLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteLteReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteLteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGte float64 价格大于等于
@@ -2315,7 +2315,7 @@ func WeekBooksByPriceGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteReleaseDateGteWithClassName 根据Class、Name从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteReleaseDateGteWithClassName 根据class、书名从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -2333,7 +2333,7 @@ func WeekBooksByPageCountGteReleaseDateGteWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtReleaseDateGteWithClassName 根据Class、Name从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtReleaseDateGteWithClassName 根据class、书名从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGt int64 page_count大于
@@ -2351,7 +2351,7 @@ func WeekBooksByPageCountGtReleaseDateGteWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtReleaseDateGteWithClassName 根据Class、Name从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtReleaseDateGteWithClassName 根据class、书名从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountLt int64 page_count小于
@@ -2369,7 +2369,7 @@ func WeekBooksByPageCountLtReleaseDateGteWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLteReleaseDateGteWithClassName 根据Class、Name从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLteReleaseDateGteWithClassName 根据class、书名从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountLte int64 page_count小于等于
@@ -2387,7 +2387,7 @@ func WeekBooksByPageCountLteReleaseDateGteWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLteReleaseDateGteWithClassName 根据Class、Name从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLteReleaseDateGteWithClassName 根据class、书名从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -2406,7 +2406,7 @@ func WeekBooksByPageCountGteLteReleaseDateGteWithClassName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteReleaseDateGteWithClassName 根据Class、Name从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteReleaseDateGteWithClassName 根据class、书名从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGte float64 价格大于等于
@@ -2424,7 +2424,7 @@ func WeekBooksByPriceGteReleaseDateGteWithClassName(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGtReleaseDateGteWithClassName 根据Class、Name从Books查找价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGtReleaseDateGteWithClassName 根据class、书名从Books查找价格大于、release_date为近几周的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGt float64 价格大于
@@ -2442,7 +2442,7 @@ func WeekBooksByPriceGtReleaseDateGteWithClassName(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLtReleaseDateGteWithClassName 根据Class、Name从Books查找价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLtReleaseDateGteWithClassName 根据class、书名从Books查找价格小于、release_date为近几周的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceLt float64 价格小于
@@ -2460,7 +2460,7 @@ func WeekBooksByPriceLtReleaseDateGteWithClassName(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLteReleaseDateGteWithClassName 根据Class、Name从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLteReleaseDateGteWithClassName 根据class、书名从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceLte float64 价格小于等于
@@ -2478,7 +2478,7 @@ func WeekBooksByPriceLteReleaseDateGteWithClassName(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteLteReleaseDateGteWithClassName 根据Class、Name从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteLteReleaseDateGteWithClassName 根据class、书名从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGte float64 价格大于等于
@@ -2497,7 +2497,7 @@ func WeekBooksByPriceGteLteReleaseDateGteWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByReleaseDateGteWithClassNameSeq 根据Class、Name、Seq从Books查找release_date为近几周的详细数据列表和总数量
+// WeekBooksByReleaseDateGteWithClassNameSeq 根据class、书名、seq从Books查找release_date为近几周的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -2515,7 +2515,7 @@ func WeekBooksByReleaseDateGteWithClassNameSeq(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceGteReleaseDateGteWithClass 根据Class从Books查找page_count大于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceGteReleaseDateGteWithClass 根据class从Books查找page_count大于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // priceGte float64 价格大于等于
@@ -2531,7 +2531,7 @@ func WeekBooksByPageCountGtePriceGteReleaseDateGteWithClass(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceGtReleaseDateGteWithClass 根据Class从Books查找page_count大于等于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceGtReleaseDateGteWithClass 根据class从Books查找page_count大于等于、价格大于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // priceGt float64 价格大于
@@ -2547,7 +2547,7 @@ func WeekBooksByPageCountGtePriceGtReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceLtReleaseDateGteWithClass 根据Class从Books查找page_count大于等于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceLtReleaseDateGteWithClass 根据class从Books查找page_count大于等于、价格小于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // priceLt float64 价格小于
@@ -2563,7 +2563,7 @@ func WeekBooksByPageCountGtePriceLtReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceLteReleaseDateGteWithClass 根据Class从Books查找page_count大于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceLteReleaseDateGteWithClass 根据class从Books查找page_count大于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // priceLte float64 价格小于等于
@@ -2579,7 +2579,7 @@ func WeekBooksByPageCountGtePriceLteReleaseDateGteWithClass(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceGteLteReleaseDateGteWithClass 根据Class从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceGteLteReleaseDateGteWithClass 根据class从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // priceGte float64 价格大于等于
@@ -2596,7 +2596,7 @@ func WeekBooksByPageCountGtePriceGteLteReleaseDateGteWithClass(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceGteReleaseDateGteWithClass 根据Class从Books查找page_count大于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceGteReleaseDateGteWithClass 根据class从Books查找page_count大于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGt int64 page_count大于
 // priceGte float64 价格大于等于
@@ -2612,7 +2612,7 @@ func WeekBooksByPageCountGtPriceGteReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceGtReleaseDateGteWithClass 根据Class从Books查找page_count大于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceGtReleaseDateGteWithClass 根据class从Books查找page_count大于、价格大于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGt int64 page_count大于
 // priceGt float64 价格大于
@@ -2628,7 +2628,7 @@ func WeekBooksByPageCountGtPriceGtReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceLtReleaseDateGteWithClass 根据Class从Books查找page_count大于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceLtReleaseDateGteWithClass 根据class从Books查找page_count大于、价格小于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGt int64 page_count大于
 // priceLt float64 价格小于
@@ -2644,7 +2644,7 @@ func WeekBooksByPageCountGtPriceLtReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceLteReleaseDateGteWithClass 根据Class从Books查找page_count大于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceLteReleaseDateGteWithClass 根据class从Books查找page_count大于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGt int64 page_count大于
 // priceLte float64 价格小于等于
@@ -2660,7 +2660,7 @@ func WeekBooksByPageCountGtPriceLteReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceGteLteReleaseDateGteWithClass 根据Class从Books查找page_count大于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceGteLteReleaseDateGteWithClass 根据class从Books查找page_count大于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGt int64 page_count大于
 // priceGte float64 价格大于等于
@@ -2677,7 +2677,7 @@ func WeekBooksByPageCountGtPriceGteLteReleaseDateGteWithClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceGteReleaseDateGteWithClass 根据Class从Books查找page_count小于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceGteReleaseDateGteWithClass 根据class从Books查找page_count小于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountLt int64 page_count小于
 // priceGte float64 价格大于等于
@@ -2693,7 +2693,7 @@ func WeekBooksByPageCountLtPriceGteReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceGtReleaseDateGteWithClass 根据Class从Books查找page_count小于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceGtReleaseDateGteWithClass 根据class从Books查找page_count小于、价格大于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountLt int64 page_count小于
 // priceGt float64 价格大于
@@ -2709,7 +2709,7 @@ func WeekBooksByPageCountLtPriceGtReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceLtReleaseDateGteWithClass 根据Class从Books查找page_count小于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceLtReleaseDateGteWithClass 根据class从Books查找page_count小于、价格小于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountLt int64 page_count小于
 // priceLt float64 价格小于
@@ -2725,7 +2725,7 @@ func WeekBooksByPageCountLtPriceLtReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceLteReleaseDateGteWithClass 根据Class从Books查找page_count小于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceLteReleaseDateGteWithClass 根据class从Books查找page_count小于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountLt int64 page_count小于
 // priceLte float64 价格小于等于
@@ -2741,7 +2741,7 @@ func WeekBooksByPageCountLtPriceLteReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceGteLteReleaseDateGteWithClass 根据Class从Books查找page_count小于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceGteLteReleaseDateGteWithClass 根据class从Books查找page_count小于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountLt int64 page_count小于
 // priceGte float64 价格大于等于
@@ -2758,7 +2758,7 @@ func WeekBooksByPageCountLtPriceGteLteReleaseDateGteWithClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceGteReleaseDateGteWithClass 根据Class从Books查找page_count小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceGteReleaseDateGteWithClass 根据class从Books查找page_count小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountLte int64 page_count小于等于
 // priceGte float64 价格大于等于
@@ -2774,7 +2774,7 @@ func WeekBooksByPageCountLtePriceGteReleaseDateGteWithClass(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceGtReleaseDateGteWithClass 根据Class从Books查找page_count小于等于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceGtReleaseDateGteWithClass 根据class从Books查找page_count小于等于、价格大于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountLte int64 page_count小于等于
 // priceGt float64 价格大于
@@ -2790,7 +2790,7 @@ func WeekBooksByPageCountLtePriceGtReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceLtReleaseDateGteWithClass 根据Class从Books查找page_count小于等于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceLtReleaseDateGteWithClass 根据class从Books查找page_count小于等于、价格小于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountLte int64 page_count小于等于
 // priceLt float64 价格小于
@@ -2806,7 +2806,7 @@ func WeekBooksByPageCountLtePriceLtReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceLteReleaseDateGteWithClass 根据Class从Books查找page_count小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceLteReleaseDateGteWithClass 根据class从Books查找page_count小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountLte int64 page_count小于等于
 // priceLte float64 价格小于等于
@@ -2822,7 +2822,7 @@ func WeekBooksByPageCountLtePriceLteReleaseDateGteWithClass(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceGteLteReleaseDateGteWithClass 根据Class从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceGteLteReleaseDateGteWithClass 根据class从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountLte int64 page_count小于等于
 // priceGte float64 价格大于等于
@@ -2839,7 +2839,7 @@ func WeekBooksByPageCountLtePriceGteLteReleaseDateGteWithClass(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceGteReleaseDateGteWithClass 根据Class从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceGteReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -2856,7 +2856,7 @@ func WeekBooksByPageCountGteLtePriceGteReleaseDateGteWithClass(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceGtReleaseDateGteWithClass 根据Class从Books查找page_count大于等于和小于等于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceGtReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、价格大于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -2873,7 +2873,7 @@ func WeekBooksByPageCountGteLtePriceGtReleaseDateGteWithClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceLtReleaseDateGteWithClass 根据Class从Books查找page_count大于等于和小于等于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceLtReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、价格小于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -2890,7 +2890,7 @@ func WeekBooksByPageCountGteLtePriceLtReleaseDateGteWithClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceLteReleaseDateGteWithClass 根据Class从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceLteReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -2907,7 +2907,7 @@ func WeekBooksByPageCountGteLtePriceLteReleaseDateGteWithClass(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass 根据Class从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -2925,7 +2925,7 @@ func WeekBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteReleaseDateGteWithClassSeq 根据Class、Seq从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteReleaseDateGteWithClassSeq 根据class、seq从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -2941,7 +2941,7 @@ func WeekBooksByPageCountGteReleaseDateGteWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtReleaseDateGteWithClassSeq 根据Class、Seq从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtReleaseDateGteWithClassSeq 根据class、seq从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -2957,7 +2957,7 @@ func WeekBooksByPageCountGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtReleaseDateGteWithClassSeq 根据Class、Seq从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtReleaseDateGteWithClassSeq 根据class、seq从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -2973,7 +2973,7 @@ func WeekBooksByPageCountLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLteReleaseDateGteWithClassSeq 根据Class、Seq从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLteReleaseDateGteWithClassSeq 根据class、seq从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -2989,7 +2989,7 @@ func WeekBooksByPageCountLteReleaseDateGteWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLteReleaseDateGteWithClassSeq 根据Class、Seq从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLteReleaseDateGteWithClassSeq 根据class、seq从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -3006,7 +3006,7 @@ func WeekBooksByPageCountGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteReleaseDateGteWithClassSeq 根据Class、Seq从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteReleaseDateGteWithClassSeq 根据class、seq从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGte float64 价格大于等于
@@ -3022,7 +3022,7 @@ func WeekBooksByPriceGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGtReleaseDateGteWithClassSeq 根据Class、Seq从Books查找价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGtReleaseDateGteWithClassSeq 根据class、seq从Books查找价格大于、release_date为近几周的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGt float64 价格大于
@@ -3038,7 +3038,7 @@ func WeekBooksByPriceGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLtReleaseDateGteWithClassSeq 根据Class、Seq从Books查找价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLtReleaseDateGteWithClassSeq 根据class、seq从Books查找价格小于、release_date为近几周的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceLt float64 价格小于
@@ -3054,7 +3054,7 @@ func WeekBooksByPriceLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLteReleaseDateGteWithClassSeq 根据Class、Seq从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLteReleaseDateGteWithClassSeq 根据class、seq从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceLte float64 价格小于等于
@@ -3070,7 +3070,7 @@ func WeekBooksByPriceLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteLteReleaseDateGteWithClassSeq 根据Class、Seq从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteLteReleaseDateGteWithClassSeq 根据class、seq从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGte float64 价格大于等于
@@ -3087,7 +3087,7 @@ func WeekBooksByPriceGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceGteReleaseDateGteWithName 根据Name从Books查找page_count大于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceGteReleaseDateGteWithName 根据书名从Books查找page_count大于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // priceGte float64 价格大于等于
@@ -3105,7 +3105,7 @@ func WeekBooksByPageCountGtePriceGteReleaseDateGteWithName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceGtReleaseDateGteWithName 根据Name从Books查找page_count大于等于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceGtReleaseDateGteWithName 根据书名从Books查找page_count大于等于、价格大于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // priceGt float64 价格大于
@@ -3123,7 +3123,7 @@ func WeekBooksByPageCountGtePriceGtReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceLtReleaseDateGteWithName 根据Name从Books查找page_count大于等于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceLtReleaseDateGteWithName 根据书名从Books查找page_count大于等于、价格小于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // priceLt float64 价格小于
@@ -3141,7 +3141,7 @@ func WeekBooksByPageCountGtePriceLtReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceLteReleaseDateGteWithName 根据Name从Books查找page_count大于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceLteReleaseDateGteWithName 根据书名从Books查找page_count大于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // priceLte float64 价格小于等于
@@ -3159,7 +3159,7 @@ func WeekBooksByPageCountGtePriceLteReleaseDateGteWithName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceGteLteReleaseDateGteWithName 根据Name从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceGteLteReleaseDateGteWithName 根据书名从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // priceGte float64 价格大于等于
@@ -3178,7 +3178,7 @@ func WeekBooksByPageCountGtePriceGteLteReleaseDateGteWithName(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceGteReleaseDateGteWithName 根据Name从Books查找page_count大于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceGteReleaseDateGteWithName 根据书名从Books查找page_count大于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGt int64 page_count大于
 // priceGte float64 价格大于等于
@@ -3196,7 +3196,7 @@ func WeekBooksByPageCountGtPriceGteReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceGtReleaseDateGteWithName 根据Name从Books查找page_count大于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceGtReleaseDateGteWithName 根据书名从Books查找page_count大于、价格大于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGt int64 page_count大于
 // priceGt float64 价格大于
@@ -3214,7 +3214,7 @@ func WeekBooksByPageCountGtPriceGtReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceLtReleaseDateGteWithName 根据Name从Books查找page_count大于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceLtReleaseDateGteWithName 根据书名从Books查找page_count大于、价格小于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGt int64 page_count大于
 // priceLt float64 价格小于
@@ -3232,7 +3232,7 @@ func WeekBooksByPageCountGtPriceLtReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceLteReleaseDateGteWithName 根据Name从Books查找page_count大于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceLteReleaseDateGteWithName 根据书名从Books查找page_count大于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGt int64 page_count大于
 // priceLte float64 价格小于等于
@@ -3250,7 +3250,7 @@ func WeekBooksByPageCountGtPriceLteReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceGteLteReleaseDateGteWithName 根据Name从Books查找page_count大于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceGteLteReleaseDateGteWithName 根据书名从Books查找page_count大于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGt int64 page_count大于
 // priceGte float64 价格大于等于
@@ -3269,7 +3269,7 @@ func WeekBooksByPageCountGtPriceGteLteReleaseDateGteWithName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceGteReleaseDateGteWithName 根据Name从Books查找page_count小于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceGteReleaseDateGteWithName 根据书名从Books查找page_count小于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountLt int64 page_count小于
 // priceGte float64 价格大于等于
@@ -3287,7 +3287,7 @@ func WeekBooksByPageCountLtPriceGteReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceGtReleaseDateGteWithName 根据Name从Books查找page_count小于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceGtReleaseDateGteWithName 根据书名从Books查找page_count小于、价格大于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountLt int64 page_count小于
 // priceGt float64 价格大于
@@ -3305,7 +3305,7 @@ func WeekBooksByPageCountLtPriceGtReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceLtReleaseDateGteWithName 根据Name从Books查找page_count小于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceLtReleaseDateGteWithName 根据书名从Books查找page_count小于、价格小于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountLt int64 page_count小于
 // priceLt float64 价格小于
@@ -3323,7 +3323,7 @@ func WeekBooksByPageCountLtPriceLtReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceLteReleaseDateGteWithName 根据Name从Books查找page_count小于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceLteReleaseDateGteWithName 根据书名从Books查找page_count小于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountLt int64 page_count小于
 // priceLte float64 价格小于等于
@@ -3341,7 +3341,7 @@ func WeekBooksByPageCountLtPriceLteReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceGteLteReleaseDateGteWithName 根据Name从Books查找page_count小于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceGteLteReleaseDateGteWithName 根据书名从Books查找page_count小于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountLt int64 page_count小于
 // priceGte float64 价格大于等于
@@ -3360,7 +3360,7 @@ func WeekBooksByPageCountLtPriceGteLteReleaseDateGteWithName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceGteReleaseDateGteWithName 根据Name从Books查找page_count小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceGteReleaseDateGteWithName 根据书名从Books查找page_count小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountLte int64 page_count小于等于
 // priceGte float64 价格大于等于
@@ -3378,7 +3378,7 @@ func WeekBooksByPageCountLtePriceGteReleaseDateGteWithName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceGtReleaseDateGteWithName 根据Name从Books查找page_count小于等于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceGtReleaseDateGteWithName 根据书名从Books查找page_count小于等于、价格大于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountLte int64 page_count小于等于
 // priceGt float64 价格大于
@@ -3396,7 +3396,7 @@ func WeekBooksByPageCountLtePriceGtReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceLtReleaseDateGteWithName 根据Name从Books查找page_count小于等于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceLtReleaseDateGteWithName 根据书名从Books查找page_count小于等于、价格小于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountLte int64 page_count小于等于
 // priceLt float64 价格小于
@@ -3414,7 +3414,7 @@ func WeekBooksByPageCountLtePriceLtReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceLteReleaseDateGteWithName 根据Name从Books查找page_count小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceLteReleaseDateGteWithName 根据书名从Books查找page_count小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountLte int64 page_count小于等于
 // priceLte float64 价格小于等于
@@ -3432,7 +3432,7 @@ func WeekBooksByPageCountLtePriceLteReleaseDateGteWithName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceGteLteReleaseDateGteWithName 根据Name从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceGteLteReleaseDateGteWithName 根据书名从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountLte int64 page_count小于等于
 // priceGte float64 价格大于等于
@@ -3451,7 +3451,7 @@ func WeekBooksByPageCountLtePriceGteLteReleaseDateGteWithName(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceGteReleaseDateGteWithName 根据Name从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceGteReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -3470,7 +3470,7 @@ func WeekBooksByPageCountGteLtePriceGteReleaseDateGteWithName(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceGtReleaseDateGteWithName 根据Name从Books查找page_count大于等于和小于等于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceGtReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、价格大于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -3489,7 +3489,7 @@ func WeekBooksByPageCountGteLtePriceGtReleaseDateGteWithName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceLtReleaseDateGteWithName 根据Name从Books查找page_count大于等于和小于等于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceLtReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、价格小于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -3508,7 +3508,7 @@ func WeekBooksByPageCountGteLtePriceLtReleaseDateGteWithName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceLteReleaseDateGteWithName 根据Name从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceLteReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -3527,7 +3527,7 @@ func WeekBooksByPageCountGteLtePriceLteReleaseDateGteWithName(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceGteLteReleaseDateGteWithName 根据Name从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceGteLteReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -3547,7 +3547,7 @@ func WeekBooksByPageCountGteLtePriceGteLteReleaseDateGteWithName(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteReleaseDateGteWithNameSeq 根据Name、Seq从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteReleaseDateGteWithNameSeq 根据书名、seq从Books查找page_count大于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -3565,7 +3565,7 @@ func WeekBooksByPageCountGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtReleaseDateGteWithNameSeq 根据Name、Seq从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtReleaseDateGteWithNameSeq 根据书名、seq从Books查找page_count大于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -3583,7 +3583,7 @@ func WeekBooksByPageCountGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtReleaseDateGteWithNameSeq 根据Name、Seq从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtReleaseDateGteWithNameSeq 根据书名、seq从Books查找page_count小于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -3601,7 +3601,7 @@ func WeekBooksByPageCountLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLteReleaseDateGteWithNameSeq 根据Name、Seq从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLteReleaseDateGteWithNameSeq 根据书名、seq从Books查找page_count小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -3619,7 +3619,7 @@ func WeekBooksByPageCountLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLteReleaseDateGteWithNameSeq 根据Name、Seq从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLteReleaseDateGteWithNameSeq 根据书名、seq从Books查找page_count大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -3638,7 +3638,7 @@ func WeekBooksByPageCountGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteReleaseDateGteWithNameSeq 根据Name、Seq从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteReleaseDateGteWithNameSeq 根据书名、seq从Books查找价格大于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGte float64 价格大于等于
@@ -3656,7 +3656,7 @@ func WeekBooksByPriceGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGtReleaseDateGteWithNameSeq 根据Name、Seq从Books查找价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGtReleaseDateGteWithNameSeq 根据书名、seq从Books查找价格大于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGt float64 价格大于
@@ -3674,7 +3674,7 @@ func WeekBooksByPriceGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLtReleaseDateGteWithNameSeq 根据Name、Seq从Books查找价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLtReleaseDateGteWithNameSeq 根据书名、seq从Books查找价格小于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceLt float64 价格小于
@@ -3692,7 +3692,7 @@ func WeekBooksByPriceLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceLteReleaseDateGteWithNameSeq 根据Name、Seq从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceLteReleaseDateGteWithNameSeq 根据书名、seq从Books查找价格小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceLte float64 价格小于等于
@@ -3710,7 +3710,7 @@ func WeekBooksByPriceLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPriceGteLteReleaseDateGteWithNameSeq 根据Name、Seq从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPriceGteLteReleaseDateGteWithNameSeq 根据书名、seq从Books查找价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGte float64 价格大于等于
@@ -3729,7 +3729,7 @@ func WeekBooksByPriceGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceGteReleaseDateGteWithSeq 根据Seq从Books查找page_count大于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceGteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // priceGte float64 价格大于等于
@@ -3745,7 +3745,7 @@ func WeekBooksByPageCountGtePriceGteReleaseDateGteWithSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceGtReleaseDateGteWithSeq 根据Seq从Books查找page_count大于等于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceGtReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、价格大于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // priceGt float64 价格大于
@@ -3761,7 +3761,7 @@ func WeekBooksByPageCountGtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceLtReleaseDateGteWithSeq 根据Seq从Books查找page_count大于等于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceLtReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、价格小于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // priceLt float64 价格小于
@@ -3777,7 +3777,7 @@ func WeekBooksByPageCountGtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceLteReleaseDateGteWithSeq 根据Seq从Books查找page_count大于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // priceLte float64 价格小于等于
@@ -3793,7 +3793,7 @@ func WeekBooksByPageCountGtePriceLteReleaseDateGteWithSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtePriceGteLteReleaseDateGteWithSeq 根据Seq从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtePriceGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // priceGte float64 价格大于等于
@@ -3810,7 +3810,7 @@ func WeekBooksByPageCountGtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceGteReleaseDateGteWithSeq 根据Seq从Books查找page_count大于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceGteReleaseDateGteWithSeq 根据seq从Books查找page_count大于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGt int64 page_count大于
 // priceGte float64 价格大于等于
@@ -3826,7 +3826,7 @@ func WeekBooksByPageCountGtPriceGteReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceGtReleaseDateGteWithSeq 根据Seq从Books查找page_count大于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceGtReleaseDateGteWithSeq 根据seq从Books查找page_count大于、价格大于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGt int64 page_count大于
 // priceGt float64 价格大于
@@ -3842,7 +3842,7 @@ func WeekBooksByPageCountGtPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceLtReleaseDateGteWithSeq 根据Seq从Books查找page_count大于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceLtReleaseDateGteWithSeq 根据seq从Books查找page_count大于、价格小于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGt int64 page_count大于
 // priceLt float64 价格小于
@@ -3858,7 +3858,7 @@ func WeekBooksByPageCountGtPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceLteReleaseDateGteWithSeq 根据Seq从Books查找page_count大于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGt int64 page_count大于
 // priceLte float64 价格小于等于
@@ -3874,7 +3874,7 @@ func WeekBooksByPageCountGtPriceLteReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGtPriceGteLteReleaseDateGteWithSeq 根据Seq从Books查找page_count大于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGtPriceGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGt int64 page_count大于
 // priceGte float64 价格大于等于
@@ -3891,7 +3891,7 @@ func WeekBooksByPageCountGtPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceGteReleaseDateGteWithSeq 根据Seq从Books查找page_count小于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceGteReleaseDateGteWithSeq 根据seq从Books查找page_count小于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountLt int64 page_count小于
 // priceGte float64 价格大于等于
@@ -3907,7 +3907,7 @@ func WeekBooksByPageCountLtPriceGteReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceGtReleaseDateGteWithSeq 根据Seq从Books查找page_count小于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceGtReleaseDateGteWithSeq 根据seq从Books查找page_count小于、价格大于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountLt int64 page_count小于
 // priceGt float64 价格大于
@@ -3923,7 +3923,7 @@ func WeekBooksByPageCountLtPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceLtReleaseDateGteWithSeq 根据Seq从Books查找page_count小于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceLtReleaseDateGteWithSeq 根据seq从Books查找page_count小于、价格小于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountLt int64 page_count小于
 // priceLt float64 价格小于
@@ -3939,7 +3939,7 @@ func WeekBooksByPageCountLtPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceLteReleaseDateGteWithSeq 根据Seq从Books查找page_count小于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceLteReleaseDateGteWithSeq 根据seq从Books查找page_count小于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountLt int64 page_count小于
 // priceLte float64 价格小于等于
@@ -3955,7 +3955,7 @@ func WeekBooksByPageCountLtPriceLteReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtPriceGteLteReleaseDateGteWithSeq 根据Seq从Books查找page_count小于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtPriceGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count小于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountLt int64 page_count小于
 // priceGte float64 价格大于等于
@@ -3972,7 +3972,7 @@ func WeekBooksByPageCountLtPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceGteReleaseDateGteWithSeq 根据Seq从Books查找page_count小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceGteReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountLte int64 page_count小于等于
 // priceGte float64 价格大于等于
@@ -3988,7 +3988,7 @@ func WeekBooksByPageCountLtePriceGteReleaseDateGteWithSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceGtReleaseDateGteWithSeq 根据Seq从Books查找page_count小于等于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceGtReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、价格大于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountLte int64 page_count小于等于
 // priceGt float64 价格大于
@@ -4004,7 +4004,7 @@ func WeekBooksByPageCountLtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceLtReleaseDateGteWithSeq 根据Seq从Books查找page_count小于等于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceLtReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、价格小于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountLte int64 page_count小于等于
 // priceLt float64 价格小于
@@ -4020,7 +4020,7 @@ func WeekBooksByPageCountLtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceLteReleaseDateGteWithSeq 根据Seq从Books查找page_count小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceLteReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountLte int64 page_count小于等于
 // priceLte float64 价格小于等于
@@ -4036,7 +4036,7 @@ func WeekBooksByPageCountLtePriceLteReleaseDateGteWithSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountLtePriceGteLteReleaseDateGteWithSeq 根据Seq从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountLtePriceGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountLte int64 page_count小于等于
 // priceGte float64 价格大于等于
@@ -4053,7 +4053,7 @@ func WeekBooksByPageCountLtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceGteReleaseDateGteWithSeq 根据Seq从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceGteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -4070,7 +4070,7 @@ func WeekBooksByPageCountGteLtePriceGteReleaseDateGteWithSeq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceGtReleaseDateGteWithSeq 根据Seq从Books查找page_count大于等于和小于等于、价格大于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceGtReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、价格大于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -4087,7 +4087,7 @@ func WeekBooksByPageCountGteLtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceLtReleaseDateGteWithSeq 根据Seq从Books查找page_count大于等于和小于等于、价格小于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceLtReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、价格小于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -4104,7 +4104,7 @@ func WeekBooksByPageCountGteLtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceLteReleaseDateGteWithSeq 根据Seq从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -4121,7 +4121,7 @@ func WeekBooksByPageCountGteLtePriceLteReleaseDateGteWithSeq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekBooksByPageCountGteLtePriceGteLteReleaseDateGteWithSeq 根据Seq从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
+// WeekBooksByPageCountGteLtePriceGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几周的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于

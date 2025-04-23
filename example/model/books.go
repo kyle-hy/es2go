@@ -6,11 +6,12 @@ import "time"
 
 // Books .
 type Books struct {
-	Author      string    `json:"author" es:"type:text;keyword"` // author
-	Class       string    `json:"class" es:"type:keyword"`       // class
-	Name        string    `json:"name" es:"type:text;keyword"`   // 书名
-	PageCount   int64     `json:"page_count" es:"type:long"`     // page_count
-	Price       float64   `json:"price" es:"type:float"`         // 价格
-	ReleaseDate time.Time `json:"release_date" es:"type:date"`   // release_date
-	Seq         string    `json:"seq" es:"type:keyword"`         // seq
+	AllVector   []float32 `json:"all_vector" es:"type:dense_vector"` // 全文本
+	Author      string    `json:"author" es:"type:text;keyword"`     // author
+	Class       string    `json:"class" es:"type:keyword"`           // class
+	Name        string    `json:"name" es:"type:text;keyword"`       // 书名
+	PageCount   int64     `json:"page_count" es:"type:long"`         // page_count
+	Price       float64   `json:"price" es:"type:float"`             // 价格
+	ReleaseDate time.Time `json:"release_date" es:"type:date"`       // release_date
+	Seq         string    `json:"seq" es:"type:keyword"`             // seq
 }

@@ -11,7 +11,7 @@ import (
 	"github.com/kyle-hy/es2go/utils"
 )
 
-// 生成数值和日期字段范围查询的代码
+// 生成数值和日期字段范围查找的代码
 
 // PreDetailRangeCond 使用go代码预处理渲染需要的一些逻辑，template脚本调试困难
 func PreDetailRangeCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData {
@@ -31,7 +31,7 @@ func PreDetailRangeCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 	}
 
 	// 过滤出满足类型限制的组合
-	cmbLimit := map[string]int{TypeNumber: 1, TypeDate: 1}
+	cmbLimit := map[string]int{TypeNumber: 1, TypeDate: 1, TypeVector: -1}
 	limitCmbs := LimitCombineFilter(cmbFields, cmbLimit)
 
 	// 过滤出最少包含指定类型之一的组合
@@ -43,7 +43,7 @@ func PreDetailRangeCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 		names := getDetailRangeFuncName(esInfo.StructName, cfs, rangeTypes, genCfg.CmpOptList)
 		comments := getDetailRangeFuncComment(esInfo.StructName, cfs, rangeTypes, genCfg.CmpOptList)
 		params := getDetailRangeFuncParams(cfs, rangeTypes, genCfg.CmpOptList)
-		queries := getDetailRangeMatchQuery(cfs, rangeTypes, genCfg.TermInShould, genCfg.CmpOptList)
+		queries := getDetailRangeQuery(cfs, rangeTypes, genCfg.TermInShould, genCfg.CmpOptList)
 		for idx := range len(names) {
 			ftd := &FuncTplData{
 				Name:    names[idx],
@@ -131,7 +131,7 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeT
 	if len(other) > 0 {
 		otherComment = "根据"
 		for _, f := range other {
-			otherComment += f.FieldName + "、"
+			otherComment += f.FieldComment + "、"
 		}
 		otherComment = strings.TrimSuffix(otherComment, "、")
 	}
@@ -150,8 +150,9 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeT
 		}
 		fieldCmts = append(fieldCmts, tmps)
 	}
+
 	funcCmts := []string{}
-	fn := "从" + structComment + "查找"
+	fn := "过滤从" + structComment + "查找"
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
 		fopt = strings.TrimSuffix(fopt, "、")
@@ -228,8 +229,8 @@ func getDetailRangeFuncParams(fields []*FieldInfo, rangeTypes []string, optList 
 	return funcParams
 }
 
-// getDetailRangeMatchQuery 获取函数的查询条件
-func getDetailRangeMatchQuery(fields []*FieldInfo, rangeTypes []string, termInShould bool, optList [][]string) []string {
+// getDetailRangeQuery 获取函数的查找条件
+func getDetailRangeQuery(fields []*FieldInfo, rangeTypes []string, termInShould bool, optList [][]string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}

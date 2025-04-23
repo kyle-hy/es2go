@@ -39,6 +39,12 @@
             },
             "release_date": {
                 "type": "date"
+            },
+            "all_vector": {
+                "type": "dense_vector",
+                "meta": {
+                    "comment": "全文本"
+                }
             }
         }
     }

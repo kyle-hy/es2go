@@ -11,7 +11,7 @@ import (
 	"github.com/kyle-hy/es2go/utils"
 )
 
-// 生成对时间字段近期查询的代码,数值字段范围查询
+// 生成对时间字段近期查找的代码,数值字段范围查找
 
 // PreDetailRecentCond 使用go代码预处理渲染需要的一些逻辑，template脚本调试困难
 func PreDetailRecentCond(mappingPath string, esInfo *EsModelInfo, rtype string) []*FuncTplData {
@@ -31,7 +31,7 @@ func PreDetailRecentCond(mappingPath string, esInfo *EsModelInfo, rtype string) 
 	}
 
 	// 过滤出满足类型限制的组合
-	cmbLimit := map[string]int{TypeNumber: 2, TypeDate: 1}
+	cmbLimit := map[string]int{TypeNumber: 2, TypeDate: 1, TypeVector: -1}
 	limitCmbs := LimitCombineFilter(cmbFields, cmbLimit)
 
 	// 过滤出最少包含指定类型之一的组合
@@ -43,7 +43,7 @@ func PreDetailRecentCond(mappingPath string, esInfo *EsModelInfo, rtype string) 
 		names := getDetailRecentFuncName(esInfo.StructName, cfs, rangeTypes, rtype, genCfg.CmpOptList)
 		comments := getDetailRecentFuncComment(esInfo.StructName, cfs, rangeTypes, rtype, genCfg.CmpOptList)
 		params := getDetailRecentFuncParams(cfs, rangeTypes, rtype, genCfg.CmpOptList)
-		queries := getDetailRecentMatchQuery(cfs, rangeTypes, genCfg.TermInShould, rtype, genCfg.CmpOptList)
+		queries := getDetailRecentQuery(cfs, rangeTypes, genCfg.TermInShould, rtype, genCfg.CmpOptList)
 		for idx := range len(names) {
 			ftd := &FuncTplData{
 				Name:    names[idx],
@@ -88,7 +88,7 @@ func getDetailRecentFuncName(structName string, fields []*FieldInfo, rangeTypes 
 			}
 			fieldOpts = append(fieldOpts, tmps)
 		} else if getTypeMapping(f.EsFieldType) == TypeDate {
-			// 日期的近期查询
+			// 日期的近期查找
 			tmps := []string{}
 			tmp := f.FieldName
 			tmp += GTE
@@ -120,7 +120,7 @@ func getDetailRecentFuncComment(structComment string, fields []*FieldInfo, range
 	if len(other) > 0 {
 		otherComment = "根据"
 		for _, f := range other {
-			otherComment += f.FieldName + "、"
+			otherComment += f.FieldComment + "、"
 		}
 		otherComment = strings.TrimSuffix(otherComment, "、")
 	}
@@ -141,7 +141,7 @@ func getDetailRecentFuncComment(structComment string, fields []*FieldInfo, range
 			}
 			fieldCmts = append(fieldCmts, tmps)
 		} else if getTypeMapping(f.EsFieldType) == TypeDate {
-			// 日期的近期查询
+			// 日期的近期查找
 			tmps := []string{}
 			tmp := f.FieldComment
 			tmp += recentNames[rtype]
@@ -239,8 +239,8 @@ func getDetailRecentFuncParams(fields []*FieldInfo, rangeTypes []string, rtype s
 	return funcParams
 }
 
-// getDetailRecentMatchQuery 获取函数的查询条件
-func getDetailRecentMatchQuery(fields []*FieldInfo, rangeTypes []string, termInShould bool, rtype string, optList [][]string) []string {
+// getDetailRecentQuery 获取函数的查找条件
+func getDetailRecentQuery(fields []*FieldInfo, rangeTypes []string, termInShould bool, rtype string, optList [][]string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}

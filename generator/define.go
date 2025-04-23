@@ -14,7 +14,7 @@ type FuncTplData struct {
 	Name    string // 函数名称
 	Comment string // 函数注释
 	Params  string // 参数列表
-	Query   string // 查询条件
+	Query   string // 查找条件
 }
 
 // DetailTplData 生成详情的模板数据
@@ -112,6 +112,7 @@ func limitCombination(comb []*FieldInfo, typeLimit map[string]int) bool {
 }
 
 // LimitCombineFilter 过滤出满足类型组合限制的组合
+// typeLimit 整数则最大出现次数，负数则不允许出现
 func LimitCombineFilter(combs [][]*FieldInfo, typeLimit map[string]int) [][]*FieldInfo {
 	filterout := [][]*FieldInfo{}
 	for _, comb := range combs {

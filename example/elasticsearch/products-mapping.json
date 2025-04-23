@@ -20,20 +20,20 @@
             "name": {
                 "type": "text",
                 "meta": {
-                    "comment": "商品名称，支持模糊查询。使用标准分析器进行分词处理。"
+                    "comment": "商品名称，支持模糊查找。使用标准分析器进行分词处理。"
                 },
                 "analyzer": "standard"
             },
             "price": {
                 "type": "float",
                 "meta": {
-                    "comment": "商品价格，存储为浮动数值，支持范围查询和排序。"
+                    "comment": "商品价格，存储为浮动数值，支持范围查找和排序。"
                 }
             },
             "region": {
                 "type": "text",
                 "meta": {
-                    "comment": "商品所在的地区名称，支持模糊查询。"
+                    "comment": "商品所在的地区名称，支持模糊查找。"
                 },
                 "analyzer": "standard"
             }

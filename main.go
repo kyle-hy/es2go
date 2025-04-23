@@ -55,10 +55,11 @@ func main() {
 		log.Fatalf("Failed to generate data model: %v", err)
 	}
 
-	// 生成详情查询函数接口
+	// 生成详情查找函数接口
 	gen.GenEsDetailMatch(*inputPath, *outputPath, esInfo)
 	gen.GenEsDetailRange(*inputPath, *outputPath, esInfo)
 	gen.GenEsDetailRecent(*inputPath, *outputPath, esInfo)
+	gen.GenEsDetailVector(*inputPath, *outputPath, esInfo)
 }
 
 // nullableString is a helper function to treat flag.String values as nullable.

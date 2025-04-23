@@ -9,7 +9,7 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// RangeBooksByPageCountGte 从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGte 过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // pageCountGte int64 page_count大于等于
 func RangeBooksByPageCountGte(es *elasticsearch.Client, pageCountGte int64) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -19,7 +19,7 @@ func RangeBooksByPageCountGte(es *elasticsearch.Client, pageCountGte int64) (*eq
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGt 从Books查找page_count大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGt 过滤从Books查找page_count大于指定数值的详细数据列表和总数量
 // pageCountGt int64 page_count大于
 func RangeBooksByPageCountGt(es *elasticsearch.Client, pageCountGt int64) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -29,7 +29,7 @@ func RangeBooksByPageCountGt(es *elasticsearch.Client, pageCountGt int64) (*eq.D
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLt 从Books查找page_count小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLt 过滤从Books查找page_count小于指定数值的详细数据列表和总数量
 // pageCountLt int64 page_count小于
 func RangeBooksByPageCountLt(es *elasticsearch.Client, pageCountLt int64) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -39,7 +39,7 @@ func RangeBooksByPageCountLt(es *elasticsearch.Client, pageCountLt int64) (*eq.D
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLte 从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLte 过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
 // pageCountLte int64 page_count小于等于
 func RangeBooksByPageCountLte(es *elasticsearch.Client, pageCountLte int64) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -49,7 +49,7 @@ func RangeBooksByPageCountLte(es *elasticsearch.Client, pageCountLte int64) (*eq
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLte 从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLte 过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 func RangeBooksByPageCountGteLte(es *elasticsearch.Client, pageCountGte, pageCountLte int64) (*eq.Data, *eq.Query, error) {
@@ -60,7 +60,7 @@ func RangeBooksByPageCountGteLte(es *elasticsearch.Client, pageCountGte, pageCou
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGte 从Books查找价格大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGte 过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
 // priceGte float64 价格大于等于
 func RangeBooksByPriceGte(es *elasticsearch.Client, priceGte float64) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -70,7 +70,7 @@ func RangeBooksByPriceGte(es *elasticsearch.Client, priceGte float64) (*eq.Data,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGt 从Books查找价格大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGt 过滤从Books查找价格大于指定数值的详细数据列表和总数量
 // priceGt float64 价格大于
 func RangeBooksByPriceGt(es *elasticsearch.Client, priceGt float64) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -80,7 +80,7 @@ func RangeBooksByPriceGt(es *elasticsearch.Client, priceGt float64) (*eq.Data, *
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLt 从Books查找价格小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLt 过滤从Books查找价格小于指定数值的详细数据列表和总数量
 // priceLt float64 价格小于
 func RangeBooksByPriceLt(es *elasticsearch.Client, priceLt float64) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -90,7 +90,7 @@ func RangeBooksByPriceLt(es *elasticsearch.Client, priceLt float64) (*eq.Data, *
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLte 从Books查找价格小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLte 过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
 // priceLte float64 价格小于等于
 func RangeBooksByPriceLte(es *elasticsearch.Client, priceLte float64) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -100,7 +100,7 @@ func RangeBooksByPriceLte(es *elasticsearch.Client, priceLte float64) (*eq.Data,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLte 从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLte 过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 func RangeBooksByPriceGteLte(es *elasticsearch.Client, priceGte, priceLte float64) (*eq.Data, *eq.Query, error) {
@@ -111,7 +111,7 @@ func RangeBooksByPriceGteLte(es *elasticsearch.Client, priceGte, priceLte float6
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGte 从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGte 过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
 // releaseDateGte time.Time release_date大于等于
 func RangeBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -121,7 +121,7 @@ func RangeBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateGte time.Ti
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGt 从Books查找release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGt 过滤从Books查找release_date大于指定数值的详细数据列表和总数量
 // releaseDateGt time.Time release_date大于
 func RangeBooksByReleaseDateGt(es *elasticsearch.Client, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -131,7 +131,7 @@ func RangeBooksByReleaseDateGt(es *elasticsearch.Client, releaseDateGt time.Time
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLt 从Books查找release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLt 过滤从Books查找release_date小于指定数值的详细数据列表和总数量
 // releaseDateLt time.Time release_date小于
 func RangeBooksByReleaseDateLt(es *elasticsearch.Client, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -141,7 +141,7 @@ func RangeBooksByReleaseDateLt(es *elasticsearch.Client, releaseDateLt time.Time
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLte 从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLte 过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
 // releaseDateLte time.Time release_date小于等于
 func RangeBooksByReleaseDateLte(es *elasticsearch.Client, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -151,7 +151,7 @@ func RangeBooksByReleaseDateLte(es *elasticsearch.Client, releaseDateLte time.Ti
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteLte 从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteLte 过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // releaseDateGte time.Time release_date大于等于
 // releaseDateLte time.Time release_date小于等于
 func RangeBooksByReleaseDateGteLte(es *elasticsearch.Client, releaseDateGte, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
@@ -162,7 +162,7 @@ func RangeBooksByReleaseDateGteLte(es *elasticsearch.Client, releaseDateGte, rel
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteWithAuthor 根据Author从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteWithAuthor 根据author过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 func RangeBooksByPageCountGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64) (*eq.Data, *eq.Query, error) {
@@ -176,7 +176,7 @@ func RangeBooksByPageCountGteWithAuthor(es *elasticsearch.Client, author string,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtWithAuthor 根据Author从Books查找page_count大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtWithAuthor 根据author过滤从Books查找page_count大于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGt int64 page_count大于
 func RangeBooksByPageCountGtWithAuthor(es *elasticsearch.Client, author string, pageCountGt int64) (*eq.Data, *eq.Query, error) {
@@ -190,7 +190,7 @@ func RangeBooksByPageCountGtWithAuthor(es *elasticsearch.Client, author string, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtWithAuthor 根据Author从Books查找page_count小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtWithAuthor 根据author过滤从Books查找page_count小于指定数值的详细数据列表和总数量
 // author string author
 // pageCountLt int64 page_count小于
 func RangeBooksByPageCountLtWithAuthor(es *elasticsearch.Client, author string, pageCountLt int64) (*eq.Data, *eq.Query, error) {
@@ -204,7 +204,7 @@ func RangeBooksByPageCountLtWithAuthor(es *elasticsearch.Client, author string, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteWithAuthor 根据Author从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteWithAuthor 根据author过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountLte int64 page_count小于等于
 func RangeBooksByPageCountLteWithAuthor(es *elasticsearch.Client, author string, pageCountLte int64) (*eq.Data, *eq.Query, error) {
@@ -218,7 +218,7 @@ func RangeBooksByPageCountLteWithAuthor(es *elasticsearch.Client, author string,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteWithAuthor 根据Author从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteWithAuthor 根据author过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -233,7 +233,7 @@ func RangeBooksByPageCountGteLteWithAuthor(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteWithAuthor 根据Author从Books查找价格大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteWithAuthor 根据author过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
 // author string author
 // priceGte float64 价格大于等于
 func RangeBooksByPriceGteWithAuthor(es *elasticsearch.Client, author string, priceGte float64) (*eq.Data, *eq.Query, error) {
@@ -247,7 +247,7 @@ func RangeBooksByPriceGteWithAuthor(es *elasticsearch.Client, author string, pri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtWithAuthor 根据Author从Books查找价格大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtWithAuthor 根据author过滤从Books查找价格大于指定数值的详细数据列表和总数量
 // author string author
 // priceGt float64 价格大于
 func RangeBooksByPriceGtWithAuthor(es *elasticsearch.Client, author string, priceGt float64) (*eq.Data, *eq.Query, error) {
@@ -261,7 +261,7 @@ func RangeBooksByPriceGtWithAuthor(es *elasticsearch.Client, author string, pric
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtWithAuthor 根据Author从Books查找价格小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtWithAuthor 根据author过滤从Books查找价格小于指定数值的详细数据列表和总数量
 // author string author
 // priceLt float64 价格小于
 func RangeBooksByPriceLtWithAuthor(es *elasticsearch.Client, author string, priceLt float64) (*eq.Data, *eq.Query, error) {
@@ -275,7 +275,7 @@ func RangeBooksByPriceLtWithAuthor(es *elasticsearch.Client, author string, pric
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteWithAuthor 根据Author从Books查找价格小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteWithAuthor 根据author过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
 // author string author
 // priceLte float64 价格小于等于
 func RangeBooksByPriceLteWithAuthor(es *elasticsearch.Client, author string, priceLte float64) (*eq.Data, *eq.Query, error) {
@@ -289,7 +289,7 @@ func RangeBooksByPriceLteWithAuthor(es *elasticsearch.Client, author string, pri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteWithAuthor 根据Author从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteWithAuthor 根据author过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -304,7 +304,7 @@ func RangeBooksByPriceGteLteWithAuthor(es *elasticsearch.Client, author string, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteWithAuthor 根据Author从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteWithAuthor 根据author过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // releaseDateGte time.Time release_date大于等于
 func RangeBooksByReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
@@ -318,7 +318,7 @@ func RangeBooksByReleaseDateGteWithAuthor(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGtWithAuthor 根据Author从Books查找release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGtWithAuthor 根据author过滤从Books查找release_date大于指定数值的详细数据列表和总数量
 // author string author
 // releaseDateGt time.Time release_date大于
 func RangeBooksByReleaseDateGtWithAuthor(es *elasticsearch.Client, author string, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
@@ -332,7 +332,7 @@ func RangeBooksByReleaseDateGtWithAuthor(es *elasticsearch.Client, author string
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLtWithAuthor 根据Author从Books查找release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLtWithAuthor 根据author过滤从Books查找release_date小于指定数值的详细数据列表和总数量
 // author string author
 // releaseDateLt time.Time release_date小于
 func RangeBooksByReleaseDateLtWithAuthor(es *elasticsearch.Client, author string, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
@@ -346,7 +346,7 @@ func RangeBooksByReleaseDateLtWithAuthor(es *elasticsearch.Client, author string
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLteWithAuthor 根据Author从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLteWithAuthor 根据author过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // releaseDateLte time.Time release_date小于等于
 func RangeBooksByReleaseDateLteWithAuthor(es *elasticsearch.Client, author string, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
@@ -360,7 +360,7 @@ func RangeBooksByReleaseDateLteWithAuthor(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteLteWithAuthor 根据Author从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteLteWithAuthor 根据author过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // releaseDateGte time.Time release_date大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -375,7 +375,7 @@ func RangeBooksByReleaseDateGteLteWithAuthor(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteWithClass 根据Class从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteWithClass 根据class过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 func RangeBooksByPageCountGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64) (*eq.Data, *eq.Query, error) {
@@ -387,7 +387,7 @@ func RangeBooksByPageCountGteWithClass(es *elasticsearch.Client, class string, p
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtWithClass 根据Class从Books查找page_count大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtWithClass 根据class过滤从Books查找page_count大于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGt int64 page_count大于
 func RangeBooksByPageCountGtWithClass(es *elasticsearch.Client, class string, pageCountGt int64) (*eq.Data, *eq.Query, error) {
@@ -399,7 +399,7 @@ func RangeBooksByPageCountGtWithClass(es *elasticsearch.Client, class string, pa
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtWithClass 根据Class从Books查找page_count小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtWithClass 根据class过滤从Books查找page_count小于指定数值的详细数据列表和总数量
 // class string class
 // pageCountLt int64 page_count小于
 func RangeBooksByPageCountLtWithClass(es *elasticsearch.Client, class string, pageCountLt int64) (*eq.Data, *eq.Query, error) {
@@ -411,7 +411,7 @@ func RangeBooksByPageCountLtWithClass(es *elasticsearch.Client, class string, pa
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteWithClass 根据Class从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteWithClass 根据class过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountLte int64 page_count小于等于
 func RangeBooksByPageCountLteWithClass(es *elasticsearch.Client, class string, pageCountLte int64) (*eq.Data, *eq.Query, error) {
@@ -423,7 +423,7 @@ func RangeBooksByPageCountLteWithClass(es *elasticsearch.Client, class string, p
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteWithClass 根据Class从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteWithClass 根据class过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -436,7 +436,7 @@ func RangeBooksByPageCountGteLteWithClass(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteWithClass 根据Class从Books查找价格大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteWithClass 根据class过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
 // class string class
 // priceGte float64 价格大于等于
 func RangeBooksByPriceGteWithClass(es *elasticsearch.Client, class string, priceGte float64) (*eq.Data, *eq.Query, error) {
@@ -448,7 +448,7 @@ func RangeBooksByPriceGteWithClass(es *elasticsearch.Client, class string, price
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtWithClass 根据Class从Books查找价格大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtWithClass 根据class过滤从Books查找价格大于指定数值的详细数据列表和总数量
 // class string class
 // priceGt float64 价格大于
 func RangeBooksByPriceGtWithClass(es *elasticsearch.Client, class string, priceGt float64) (*eq.Data, *eq.Query, error) {
@@ -460,7 +460,7 @@ func RangeBooksByPriceGtWithClass(es *elasticsearch.Client, class string, priceG
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtWithClass 根据Class从Books查找价格小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtWithClass 根据class过滤从Books查找价格小于指定数值的详细数据列表和总数量
 // class string class
 // priceLt float64 价格小于
 func RangeBooksByPriceLtWithClass(es *elasticsearch.Client, class string, priceLt float64) (*eq.Data, *eq.Query, error) {
@@ -472,7 +472,7 @@ func RangeBooksByPriceLtWithClass(es *elasticsearch.Client, class string, priceL
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteWithClass 根据Class从Books查找价格小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteWithClass 根据class过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
 // class string class
 // priceLte float64 价格小于等于
 func RangeBooksByPriceLteWithClass(es *elasticsearch.Client, class string, priceLte float64) (*eq.Data, *eq.Query, error) {
@@ -484,7 +484,7 @@ func RangeBooksByPriceLteWithClass(es *elasticsearch.Client, class string, price
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteWithClass 根据Class从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteWithClass 根据class过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -497,7 +497,7 @@ func RangeBooksByPriceGteLteWithClass(es *elasticsearch.Client, class string, pr
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteWithClass 根据Class从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteWithClass 根据class过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // releaseDateGte time.Time release_date大于等于
 func RangeBooksByReleaseDateGteWithClass(es *elasticsearch.Client, class string, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
@@ -509,7 +509,7 @@ func RangeBooksByReleaseDateGteWithClass(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGtWithClass 根据Class从Books查找release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGtWithClass 根据class过滤从Books查找release_date大于指定数值的详细数据列表和总数量
 // class string class
 // releaseDateGt time.Time release_date大于
 func RangeBooksByReleaseDateGtWithClass(es *elasticsearch.Client, class string, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
@@ -521,7 +521,7 @@ func RangeBooksByReleaseDateGtWithClass(es *elasticsearch.Client, class string, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLtWithClass 根据Class从Books查找release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLtWithClass 根据class过滤从Books查找release_date小于指定数值的详细数据列表和总数量
 // class string class
 // releaseDateLt time.Time release_date小于
 func RangeBooksByReleaseDateLtWithClass(es *elasticsearch.Client, class string, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
@@ -533,7 +533,7 @@ func RangeBooksByReleaseDateLtWithClass(es *elasticsearch.Client, class string, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLteWithClass 根据Class从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLteWithClass 根据class过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // releaseDateLte time.Time release_date小于等于
 func RangeBooksByReleaseDateLteWithClass(es *elasticsearch.Client, class string, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
@@ -545,7 +545,7 @@ func RangeBooksByReleaseDateLteWithClass(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteLteWithClass 根据Class从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteLteWithClass 根据class过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // releaseDateGte time.Time release_date大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -558,7 +558,7 @@ func RangeBooksByReleaseDateGteLteWithClass(es *elasticsearch.Client, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteWithName 根据Name从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteWithName 根据书名过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 func RangeBooksByPageCountGteWithName(es *elasticsearch.Client, name string, pageCountGte int64) (*eq.Data, *eq.Query, error) {
@@ -572,7 +572,7 @@ func RangeBooksByPageCountGteWithName(es *elasticsearch.Client, name string, pag
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtWithName 根据Name从Books查找page_count大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtWithName 根据书名过滤从Books查找page_count大于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGt int64 page_count大于
 func RangeBooksByPageCountGtWithName(es *elasticsearch.Client, name string, pageCountGt int64) (*eq.Data, *eq.Query, error) {
@@ -586,7 +586,7 @@ func RangeBooksByPageCountGtWithName(es *elasticsearch.Client, name string, page
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtWithName 根据Name从Books查找page_count小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtWithName 根据书名过滤从Books查找page_count小于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountLt int64 page_count小于
 func RangeBooksByPageCountLtWithName(es *elasticsearch.Client, name string, pageCountLt int64) (*eq.Data, *eq.Query, error) {
@@ -600,7 +600,7 @@ func RangeBooksByPageCountLtWithName(es *elasticsearch.Client, name string, page
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteWithName 根据Name从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteWithName 根据书名过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountLte int64 page_count小于等于
 func RangeBooksByPageCountLteWithName(es *elasticsearch.Client, name string, pageCountLte int64) (*eq.Data, *eq.Query, error) {
@@ -614,7 +614,7 @@ func RangeBooksByPageCountLteWithName(es *elasticsearch.Client, name string, pag
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteWithName 根据Name从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteWithName 根据书名过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -629,7 +629,7 @@ func RangeBooksByPageCountGteLteWithName(es *elasticsearch.Client, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteWithName 根据Name从Books查找价格大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteWithName 根据书名过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 func RangeBooksByPriceGteWithName(es *elasticsearch.Client, name string, priceGte float64) (*eq.Data, *eq.Query, error) {
@@ -643,7 +643,7 @@ func RangeBooksByPriceGteWithName(es *elasticsearch.Client, name string, priceGt
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtWithName 根据Name从Books查找价格大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtWithName 根据书名过滤从Books查找价格大于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGt float64 价格大于
 func RangeBooksByPriceGtWithName(es *elasticsearch.Client, name string, priceGt float64) (*eq.Data, *eq.Query, error) {
@@ -657,7 +657,7 @@ func RangeBooksByPriceGtWithName(es *elasticsearch.Client, name string, priceGt 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtWithName 根据Name从Books查找价格小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtWithName 根据书名过滤从Books查找价格小于指定数值的详细数据列表和总数量
 // name string 书名
 // priceLt float64 价格小于
 func RangeBooksByPriceLtWithName(es *elasticsearch.Client, name string, priceLt float64) (*eq.Data, *eq.Query, error) {
@@ -671,7 +671,7 @@ func RangeBooksByPriceLtWithName(es *elasticsearch.Client, name string, priceLt 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteWithName 根据Name从Books查找价格小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteWithName 根据书名过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceLte float64 价格小于等于
 func RangeBooksByPriceLteWithName(es *elasticsearch.Client, name string, priceLte float64) (*eq.Data, *eq.Query, error) {
@@ -685,7 +685,7 @@ func RangeBooksByPriceLteWithName(es *elasticsearch.Client, name string, priceLt
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteWithName 根据Name从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteWithName 根据书名过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -700,7 +700,7 @@ func RangeBooksByPriceGteLteWithName(es *elasticsearch.Client, name string, pric
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteWithName 根据Name从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteWithName 根据书名过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // releaseDateGte time.Time release_date大于等于
 func RangeBooksByReleaseDateGteWithName(es *elasticsearch.Client, name string, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
@@ -714,7 +714,7 @@ func RangeBooksByReleaseDateGteWithName(es *elasticsearch.Client, name string, r
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGtWithName 根据Name从Books查找release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGtWithName 根据书名过滤从Books查找release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // releaseDateGt time.Time release_date大于
 func RangeBooksByReleaseDateGtWithName(es *elasticsearch.Client, name string, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
@@ -728,7 +728,7 @@ func RangeBooksByReleaseDateGtWithName(es *elasticsearch.Client, name string, re
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLtWithName 根据Name从Books查找release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLtWithName 根据书名过滤从Books查找release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // releaseDateLt time.Time release_date小于
 func RangeBooksByReleaseDateLtWithName(es *elasticsearch.Client, name string, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
@@ -742,7 +742,7 @@ func RangeBooksByReleaseDateLtWithName(es *elasticsearch.Client, name string, re
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLteWithName 根据Name从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLteWithName 根据书名过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // releaseDateLte time.Time release_date小于等于
 func RangeBooksByReleaseDateLteWithName(es *elasticsearch.Client, name string, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
@@ -756,7 +756,7 @@ func RangeBooksByReleaseDateLteWithName(es *elasticsearch.Client, name string, r
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteLteWithName 根据Name从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteLteWithName 根据书名过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // releaseDateGte time.Time release_date大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -771,7 +771,7 @@ func RangeBooksByReleaseDateGteLteWithName(es *elasticsearch.Client, name string
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGte 从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGte 过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // pageCountGte int64 page_count大于等于
 // releaseDateGte time.Time release_date大于等于
 func RangeBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
@@ -783,7 +783,7 @@ func RangeBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pageCountG
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGt 从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGt 过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
 // pageCountGte int64 page_count大于等于
 // releaseDateGt time.Time release_date大于
 func RangeBooksByPageCountGteReleaseDateGt(es *elasticsearch.Client, pageCountGte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
@@ -795,7 +795,7 @@ func RangeBooksByPageCountGteReleaseDateGt(es *elasticsearch.Client, pageCountGt
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLt 从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLt 过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
 // pageCountGte int64 page_count大于等于
 // releaseDateLt time.Time release_date小于
 func RangeBooksByPageCountGteReleaseDateLt(es *elasticsearch.Client, pageCountGte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
@@ -807,7 +807,7 @@ func RangeBooksByPageCountGteReleaseDateLt(es *elasticsearch.Client, pageCountGt
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLte 从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLte 过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // pageCountGte int64 page_count大于等于
 // releaseDateLte time.Time release_date小于等于
 func RangeBooksByPageCountGteReleaseDateLte(es *elasticsearch.Client, pageCountGte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
@@ -819,7 +819,7 @@ func RangeBooksByPageCountGteReleaseDateLte(es *elasticsearch.Client, pageCountG
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteLte 从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteLte 过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // pageCountGte int64 page_count大于等于
 // releaseDateGte time.Time release_date大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -832,7 +832,7 @@ func RangeBooksByPageCountGteReleaseDateGteLte(es *elasticsearch.Client, pageCou
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGte 从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGte 过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
 // pageCountGt int64 page_count大于
 // releaseDateGte time.Time release_date大于等于
 func RangeBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
@@ -844,7 +844,7 @@ func RangeBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pageCountGt
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGt 从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGt 过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
 // pageCountGt int64 page_count大于
 // releaseDateGt time.Time release_date大于
 func RangeBooksByPageCountGtReleaseDateGt(es *elasticsearch.Client, pageCountGt int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
@@ -856,7 +856,7 @@ func RangeBooksByPageCountGtReleaseDateGt(es *elasticsearch.Client, pageCountGt 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLt 从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLt 过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
 // pageCountGt int64 page_count大于
 // releaseDateLt time.Time release_date小于
 func RangeBooksByPageCountGtReleaseDateLt(es *elasticsearch.Client, pageCountGt int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
@@ -868,7 +868,7 @@ func RangeBooksByPageCountGtReleaseDateLt(es *elasticsearch.Client, pageCountGt 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLte 从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLte 过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
 // pageCountGt int64 page_count大于
 // releaseDateLte time.Time release_date小于等于
 func RangeBooksByPageCountGtReleaseDateLte(es *elasticsearch.Client, pageCountGt int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
@@ -880,7 +880,7 @@ func RangeBooksByPageCountGtReleaseDateLte(es *elasticsearch.Client, pageCountGt
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteLte 从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteLte 过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // pageCountGt int64 page_count大于
 // releaseDateGte time.Time release_date大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -893,7 +893,7 @@ func RangeBooksByPageCountGtReleaseDateGteLte(es *elasticsearch.Client, pageCoun
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGte 从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGte 过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
 // pageCountLt int64 page_count小于
 // releaseDateGte time.Time release_date大于等于
 func RangeBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
@@ -905,7 +905,7 @@ func RangeBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pageCountLt
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGt 从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGt 过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
 // pageCountLt int64 page_count小于
 // releaseDateGt time.Time release_date大于
 func RangeBooksByPageCountLtReleaseDateGt(es *elasticsearch.Client, pageCountLt int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
@@ -917,7 +917,7 @@ func RangeBooksByPageCountLtReleaseDateGt(es *elasticsearch.Client, pageCountLt 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLt 从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLt 过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
 // pageCountLt int64 page_count小于
 // releaseDateLt time.Time release_date小于
 func RangeBooksByPageCountLtReleaseDateLt(es *elasticsearch.Client, pageCountLt int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
@@ -929,7 +929,7 @@ func RangeBooksByPageCountLtReleaseDateLt(es *elasticsearch.Client, pageCountLt 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLte 从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLte 过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
 // pageCountLt int64 page_count小于
 // releaseDateLte time.Time release_date小于等于
 func RangeBooksByPageCountLtReleaseDateLte(es *elasticsearch.Client, pageCountLt int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
@@ -941,7 +941,7 @@ func RangeBooksByPageCountLtReleaseDateLte(es *elasticsearch.Client, pageCountLt
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteLte 从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteLte 过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // pageCountLt int64 page_count小于
 // releaseDateGte time.Time release_date大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -954,7 +954,7 @@ func RangeBooksByPageCountLtReleaseDateGteLte(es *elasticsearch.Client, pageCoun
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGte 从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGte 过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // pageCountLte int64 page_count小于等于
 // releaseDateGte time.Time release_date大于等于
 func RangeBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
@@ -966,7 +966,7 @@ func RangeBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pageCountL
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGt 从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGt 过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
 // pageCountLte int64 page_count小于等于
 // releaseDateGt time.Time release_date大于
 func RangeBooksByPageCountLteReleaseDateGt(es *elasticsearch.Client, pageCountLte int64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
@@ -978,7 +978,7 @@ func RangeBooksByPageCountLteReleaseDateGt(es *elasticsearch.Client, pageCountLt
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLt 从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLt 过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
 // pageCountLte int64 page_count小于等于
 // releaseDateLt time.Time release_date小于
 func RangeBooksByPageCountLteReleaseDateLt(es *elasticsearch.Client, pageCountLte int64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
@@ -990,7 +990,7 @@ func RangeBooksByPageCountLteReleaseDateLt(es *elasticsearch.Client, pageCountLt
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLte 从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLte 过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // pageCountLte int64 page_count小于等于
 // releaseDateLte time.Time release_date小于等于
 func RangeBooksByPageCountLteReleaseDateLte(es *elasticsearch.Client, pageCountLte int64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
@@ -1002,7 +1002,7 @@ func RangeBooksByPageCountLteReleaseDateLte(es *elasticsearch.Client, pageCountL
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteLte 从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteLte 过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // pageCountLte int64 page_count小于等于
 // releaseDateGte time.Time release_date大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -1015,7 +1015,7 @@ func RangeBooksByPageCountLteReleaseDateGteLte(es *elasticsearch.Client, pageCou
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGte 从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGte 过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -1028,7 +1028,7 @@ func RangeBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Client, pageCou
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGt 从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGt 过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateGt time.Time release_date大于
@@ -1041,7 +1041,7 @@ func RangeBooksByPageCountGteLteReleaseDateGt(es *elasticsearch.Client, pageCoun
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLt 从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLt 过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateLt time.Time release_date小于
@@ -1054,7 +1054,7 @@ func RangeBooksByPageCountGteLteReleaseDateLt(es *elasticsearch.Client, pageCoun
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLte 从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLte 过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateLte time.Time release_date小于等于
@@ -1067,7 +1067,7 @@ func RangeBooksByPageCountGteLteReleaseDateLte(es *elasticsearch.Client, pageCou
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteLte 从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteLte 过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -1081,7 +1081,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteWithSeq 根据Seq从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteWithSeq 根据seq过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 func RangeBooksByPageCountGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64) (*eq.Data, *eq.Query, error) {
@@ -1093,7 +1093,7 @@ func RangeBooksByPageCountGteWithSeq(es *elasticsearch.Client, seq string, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtWithSeq 根据Seq从Books查找page_count大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtWithSeq 根据seq过滤从Books查找page_count大于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGt int64 page_count大于
 func RangeBooksByPageCountGtWithSeq(es *elasticsearch.Client, seq string, pageCountGt int64) (*eq.Data, *eq.Query, error) {
@@ -1105,7 +1105,7 @@ func RangeBooksByPageCountGtWithSeq(es *elasticsearch.Client, seq string, pageCo
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtWithSeq 根据Seq从Books查找page_count小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtWithSeq 根据seq过滤从Books查找page_count小于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountLt int64 page_count小于
 func RangeBooksByPageCountLtWithSeq(es *elasticsearch.Client, seq string, pageCountLt int64) (*eq.Data, *eq.Query, error) {
@@ -1117,7 +1117,7 @@ func RangeBooksByPageCountLtWithSeq(es *elasticsearch.Client, seq string, pageCo
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteWithSeq 根据Seq从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteWithSeq 根据seq过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountLte int64 page_count小于等于
 func RangeBooksByPageCountLteWithSeq(es *elasticsearch.Client, seq string, pageCountLte int64) (*eq.Data, *eq.Query, error) {
@@ -1129,7 +1129,7 @@ func RangeBooksByPageCountLteWithSeq(es *elasticsearch.Client, seq string, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteWithSeq 根据Seq从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteWithSeq 根据seq过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -1142,7 +1142,7 @@ func RangeBooksByPageCountGteLteWithSeq(es *elasticsearch.Client, seq string, pa
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGte 从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGte 过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time release_date大于等于
 func RangeBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceGte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
@@ -1154,7 +1154,7 @@ func RangeBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceGte float
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGt 从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGt 过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
 // priceGte float64 价格大于等于
 // releaseDateGt time.Time release_date大于
 func RangeBooksByPriceGteReleaseDateGt(es *elasticsearch.Client, priceGte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
@@ -1166,7 +1166,7 @@ func RangeBooksByPriceGteReleaseDateGt(es *elasticsearch.Client, priceGte float6
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLt 从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLt 过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
 // priceGte float64 价格大于等于
 // releaseDateLt time.Time release_date小于
 func RangeBooksByPriceGteReleaseDateLt(es *elasticsearch.Client, priceGte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
@@ -1178,7 +1178,7 @@ func RangeBooksByPriceGteReleaseDateLt(es *elasticsearch.Client, priceGte float6
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLte 从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLte 过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // priceGte float64 价格大于等于
 // releaseDateLte time.Time release_date小于等于
 func RangeBooksByPriceGteReleaseDateLte(es *elasticsearch.Client, priceGte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
@@ -1190,7 +1190,7 @@ func RangeBooksByPriceGteReleaseDateLte(es *elasticsearch.Client, priceGte float
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteLte 从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteLte 过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time release_date大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -1203,7 +1203,7 @@ func RangeBooksByPriceGteReleaseDateGteLte(es *elasticsearch.Client, priceGte fl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGte 从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGte 过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
 // priceGt float64 价格大于
 // releaseDateGte time.Time release_date大于等于
 func RangeBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
@@ -1215,7 +1215,7 @@ func RangeBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt float64
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGt 从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGt 过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
 // priceGt float64 价格大于
 // releaseDateGt time.Time release_date大于
 func RangeBooksByPriceGtReleaseDateGt(es *elasticsearch.Client, priceGt float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
@@ -1227,7 +1227,7 @@ func RangeBooksByPriceGtReleaseDateGt(es *elasticsearch.Client, priceGt float64,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLt 从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLt 过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
 // priceGt float64 价格大于
 // releaseDateLt time.Time release_date小于
 func RangeBooksByPriceGtReleaseDateLt(es *elasticsearch.Client, priceGt float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
@@ -1239,7 +1239,7 @@ func RangeBooksByPriceGtReleaseDateLt(es *elasticsearch.Client, priceGt float64,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLte 从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLte 过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
 // priceGt float64 价格大于
 // releaseDateLte time.Time release_date小于等于
 func RangeBooksByPriceGtReleaseDateLte(es *elasticsearch.Client, priceGt float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
@@ -1251,7 +1251,7 @@ func RangeBooksByPriceGtReleaseDateLte(es *elasticsearch.Client, priceGt float64
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteLte 从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteLte 过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // priceGt float64 价格大于
 // releaseDateGte time.Time release_date大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -1264,7 +1264,7 @@ func RangeBooksByPriceGtReleaseDateGteLte(es *elasticsearch.Client, priceGt floa
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGte 从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGte 过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
 // priceLt float64 价格小于
 // releaseDateGte time.Time release_date大于等于
 func RangeBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
@@ -1276,7 +1276,7 @@ func RangeBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt float64
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGt 从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGt 过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
 // priceLt float64 价格小于
 // releaseDateGt time.Time release_date大于
 func RangeBooksByPriceLtReleaseDateGt(es *elasticsearch.Client, priceLt float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
@@ -1288,7 +1288,7 @@ func RangeBooksByPriceLtReleaseDateGt(es *elasticsearch.Client, priceLt float64,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLt 从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLt 过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
 // priceLt float64 价格小于
 // releaseDateLt time.Time release_date小于
 func RangeBooksByPriceLtReleaseDateLt(es *elasticsearch.Client, priceLt float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
@@ -1300,7 +1300,7 @@ func RangeBooksByPriceLtReleaseDateLt(es *elasticsearch.Client, priceLt float64,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLte 从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLte 过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
 // priceLt float64 价格小于
 // releaseDateLte time.Time release_date小于等于
 func RangeBooksByPriceLtReleaseDateLte(es *elasticsearch.Client, priceLt float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
@@ -1312,7 +1312,7 @@ func RangeBooksByPriceLtReleaseDateLte(es *elasticsearch.Client, priceLt float64
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteLte 从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteLte 过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // priceLt float64 价格小于
 // releaseDateGte time.Time release_date大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -1325,7 +1325,7 @@ func RangeBooksByPriceLtReleaseDateGteLte(es *elasticsearch.Client, priceLt floa
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGte 从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGte 过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time release_date大于等于
 func RangeBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLte float64, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
@@ -1337,7 +1337,7 @@ func RangeBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLte float
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGt 从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGt 过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
 // priceLte float64 价格小于等于
 // releaseDateGt time.Time release_date大于
 func RangeBooksByPriceLteReleaseDateGt(es *elasticsearch.Client, priceLte float64, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
@@ -1349,7 +1349,7 @@ func RangeBooksByPriceLteReleaseDateGt(es *elasticsearch.Client, priceLte float6
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLt 从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLt 过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
 // priceLte float64 价格小于等于
 // releaseDateLt time.Time release_date小于
 func RangeBooksByPriceLteReleaseDateLt(es *elasticsearch.Client, priceLte float64, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
@@ -1361,7 +1361,7 @@ func RangeBooksByPriceLteReleaseDateLt(es *elasticsearch.Client, priceLte float6
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLte 从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLte 过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // priceLte float64 价格小于等于
 // releaseDateLte time.Time release_date小于等于
 func RangeBooksByPriceLteReleaseDateLte(es *elasticsearch.Client, priceLte float64, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
@@ -1373,7 +1373,7 @@ func RangeBooksByPriceLteReleaseDateLte(es *elasticsearch.Client, priceLte float
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteLte 从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteLte 过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time release_date大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -1386,7 +1386,7 @@ func RangeBooksByPriceLteReleaseDateGteLte(es *elasticsearch.Client, priceLte fl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGte 从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGte 过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -1399,7 +1399,7 @@ func RangeBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client, priceGte, p
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGt 从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGt 过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateGt time.Time release_date大于
@@ -1412,7 +1412,7 @@ func RangeBooksByPriceGteLteReleaseDateGt(es *elasticsearch.Client, priceGte, pr
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLt 从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLt 过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateLt time.Time release_date小于
@@ -1425,7 +1425,7 @@ func RangeBooksByPriceGteLteReleaseDateLt(es *elasticsearch.Client, priceGte, pr
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLte 从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLte 过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateLte time.Time release_date小于等于
@@ -1438,7 +1438,7 @@ func RangeBooksByPriceGteLteReleaseDateLte(es *elasticsearch.Client, priceGte, p
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteLte 从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteLte 过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -1452,7 +1452,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLte(es *elasticsearch.Client, priceGte
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteWithSeq 根据Seq从Books查找价格大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteWithSeq 根据seq过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGte float64 价格大于等于
 func RangeBooksByPriceGteWithSeq(es *elasticsearch.Client, seq string, priceGte float64) (*eq.Data, *eq.Query, error) {
@@ -1464,7 +1464,7 @@ func RangeBooksByPriceGteWithSeq(es *elasticsearch.Client, seq string, priceGte 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtWithSeq 根据Seq从Books查找价格大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtWithSeq 根据seq过滤从Books查找价格大于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGt float64 价格大于
 func RangeBooksByPriceGtWithSeq(es *elasticsearch.Client, seq string, priceGt float64) (*eq.Data, *eq.Query, error) {
@@ -1476,7 +1476,7 @@ func RangeBooksByPriceGtWithSeq(es *elasticsearch.Client, seq string, priceGt fl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtWithSeq 根据Seq从Books查找价格小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtWithSeq 根据seq过滤从Books查找价格小于指定数值的详细数据列表和总数量
 // seq string seq
 // priceLt float64 价格小于
 func RangeBooksByPriceLtWithSeq(es *elasticsearch.Client, seq string, priceLt float64) (*eq.Data, *eq.Query, error) {
@@ -1488,7 +1488,7 @@ func RangeBooksByPriceLtWithSeq(es *elasticsearch.Client, seq string, priceLt fl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteWithSeq 根据Seq从Books查找价格小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteWithSeq 根据seq过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceLte float64 价格小于等于
 func RangeBooksByPriceLteWithSeq(es *elasticsearch.Client, seq string, priceLte float64) (*eq.Data, *eq.Query, error) {
@@ -1500,7 +1500,7 @@ func RangeBooksByPriceLteWithSeq(es *elasticsearch.Client, seq string, priceLte 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteWithSeq 根据Seq从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteWithSeq 根据seq过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1513,7 +1513,7 @@ func RangeBooksByPriceGteLteWithSeq(es *elasticsearch.Client, seq string, priceG
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteWithSeq 根据Seq从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteWithSeq 根据seq过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
 // seq string seq
 // releaseDateGte time.Time release_date大于等于
 func RangeBooksByReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, releaseDateGte time.Time) (*eq.Data, *eq.Query, error) {
@@ -1525,7 +1525,7 @@ func RangeBooksByReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, rel
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGtWithSeq 根据Seq从Books查找release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGtWithSeq 根据seq过滤从Books查找release_date大于指定数值的详细数据列表和总数量
 // seq string seq
 // releaseDateGt time.Time release_date大于
 func RangeBooksByReleaseDateGtWithSeq(es *elasticsearch.Client, seq string, releaseDateGt time.Time) (*eq.Data, *eq.Query, error) {
@@ -1537,7 +1537,7 @@ func RangeBooksByReleaseDateGtWithSeq(es *elasticsearch.Client, seq string, rele
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLtWithSeq 根据Seq从Books查找release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLtWithSeq 根据seq过滤从Books查找release_date小于指定数值的详细数据列表和总数量
 // seq string seq
 // releaseDateLt time.Time release_date小于
 func RangeBooksByReleaseDateLtWithSeq(es *elasticsearch.Client, seq string, releaseDateLt time.Time) (*eq.Data, *eq.Query, error) {
@@ -1549,7 +1549,7 @@ func RangeBooksByReleaseDateLtWithSeq(es *elasticsearch.Client, seq string, rele
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLteWithSeq 根据Seq从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLteWithSeq 根据seq过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // releaseDateLte time.Time release_date小于等于
 func RangeBooksByReleaseDateLteWithSeq(es *elasticsearch.Client, seq string, releaseDateLte time.Time) (*eq.Data, *eq.Query, error) {
@@ -1561,7 +1561,7 @@ func RangeBooksByReleaseDateLteWithSeq(es *elasticsearch.Client, seq string, rel
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteLteWithSeq 根据Seq从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteLteWithSeq 根据seq过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // releaseDateGte time.Time release_date大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -1574,7 +1574,7 @@ func RangeBooksByReleaseDateGteLteWithSeq(es *elasticsearch.Client, seq string, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteWithAuthorClass 根据Author、Class从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteWithAuthorClass 根据author、class过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGte int64 page_count大于等于
@@ -1590,7 +1590,7 @@ func RangeBooksByPageCountGteWithAuthorClass(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtWithAuthorClass 根据Author、Class从Books查找page_count大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtWithAuthorClass 根据author、class过滤从Books查找page_count大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGt int64 page_count大于
@@ -1606,7 +1606,7 @@ func RangeBooksByPageCountGtWithAuthorClass(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtWithAuthorClass 根据Author、Class从Books查找page_count小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtWithAuthorClass 根据author、class过滤从Books查找page_count小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountLt int64 page_count小于
@@ -1622,7 +1622,7 @@ func RangeBooksByPageCountLtWithAuthorClass(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteWithAuthorClass 根据Author、Class从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteWithAuthorClass 根据author、class过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountLte int64 page_count小于等于
@@ -1638,7 +1638,7 @@ func RangeBooksByPageCountLteWithAuthorClass(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteWithAuthorClass 根据Author、Class从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteWithAuthorClass 根据author、class过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGte int64 page_count大于等于
@@ -1655,7 +1655,7 @@ func RangeBooksByPageCountGteLteWithAuthorClass(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteWithAuthorClass 根据Author、Class从Books查找价格大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteWithAuthorClass 根据author、class过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGte float64 价格大于等于
@@ -1671,7 +1671,7 @@ func RangeBooksByPriceGteWithAuthorClass(es *elasticsearch.Client, author string
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtWithAuthorClass 根据Author、Class从Books查找价格大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtWithAuthorClass 根据author、class过滤从Books查找价格大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGt float64 价格大于
@@ -1687,7 +1687,7 @@ func RangeBooksByPriceGtWithAuthorClass(es *elasticsearch.Client, author string,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtWithAuthorClass 根据Author、Class从Books查找价格小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtWithAuthorClass 根据author、class过滤从Books查找价格小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceLt float64 价格小于
@@ -1703,7 +1703,7 @@ func RangeBooksByPriceLtWithAuthorClass(es *elasticsearch.Client, author string,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteWithAuthorClass 根据Author、Class从Books查找价格小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteWithAuthorClass 根据author、class过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceLte float64 价格小于等于
@@ -1719,7 +1719,7 @@ func RangeBooksByPriceLteWithAuthorClass(es *elasticsearch.Client, author string
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteWithAuthorClass 根据Author、Class从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteWithAuthorClass 根据author、class过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGte float64 价格大于等于
@@ -1736,7 +1736,7 @@ func RangeBooksByPriceGteLteWithAuthorClass(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteWithAuthorClass 根据Author、Class从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteWithAuthorClass 根据author、class过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // releaseDateGte time.Time release_date大于等于
@@ -1752,7 +1752,7 @@ func RangeBooksByReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGtWithAuthorClass 根据Author、Class从Books查找release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGtWithAuthorClass 根据author、class过滤从Books查找release_date大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // releaseDateGt time.Time release_date大于
@@ -1768,7 +1768,7 @@ func RangeBooksByReleaseDateGtWithAuthorClass(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLtWithAuthorClass 根据Author、Class从Books查找release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLtWithAuthorClass 根据author、class过滤从Books查找release_date小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // releaseDateLt time.Time release_date小于
@@ -1784,7 +1784,7 @@ func RangeBooksByReleaseDateLtWithAuthorClass(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLteWithAuthorClass 根据Author、Class从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLteWithAuthorClass 根据author、class过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // releaseDateLte time.Time release_date小于等于
@@ -1800,7 +1800,7 @@ func RangeBooksByReleaseDateLteWithAuthorClass(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteLteWithAuthorClass 根据Author、Class从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteLteWithAuthorClass 根据author、class过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // releaseDateGte time.Time release_date大于等于
@@ -1817,7 +1817,7 @@ func RangeBooksByReleaseDateGteLteWithAuthorClass(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteWithAuthorName 根据Author、Name从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteWithAuthorName 根据author、书名过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -1833,7 +1833,7 @@ func RangeBooksByPageCountGteWithAuthorName(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtWithAuthorName 根据Author、Name从Books查找page_count大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtWithAuthorName 根据author、书名过滤从Books查找page_count大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGt int64 page_count大于
@@ -1849,7 +1849,7 @@ func RangeBooksByPageCountGtWithAuthorName(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtWithAuthorName 根据Author、Name从Books查找page_count小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtWithAuthorName 根据author、书名过滤从Books查找page_count小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountLt int64 page_count小于
@@ -1865,7 +1865,7 @@ func RangeBooksByPageCountLtWithAuthorName(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteWithAuthorName 根据Author、Name从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteWithAuthorName 根据author、书名过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountLte int64 page_count小于等于
@@ -1881,7 +1881,7 @@ func RangeBooksByPageCountLteWithAuthorName(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteWithAuthorName 根据Author、Name从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteWithAuthorName 根据author、书名过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -1898,7 +1898,7 @@ func RangeBooksByPageCountGteLteWithAuthorName(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteWithAuthorName 根据Author、Name从Books查找价格大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteWithAuthorName 根据author、书名过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGte float64 价格大于等于
@@ -1914,7 +1914,7 @@ func RangeBooksByPriceGteWithAuthorName(es *elasticsearch.Client, author string,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtWithAuthorName 根据Author、Name从Books查找价格大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtWithAuthorName 根据author、书名过滤从Books查找价格大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGt float64 价格大于
@@ -1930,7 +1930,7 @@ func RangeBooksByPriceGtWithAuthorName(es *elasticsearch.Client, author string, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtWithAuthorName 根据Author、Name从Books查找价格小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtWithAuthorName 根据author、书名过滤从Books查找价格小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceLt float64 价格小于
@@ -1946,7 +1946,7 @@ func RangeBooksByPriceLtWithAuthorName(es *elasticsearch.Client, author string, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteWithAuthorName 根据Author、Name从Books查找价格小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteWithAuthorName 根据author、书名过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceLte float64 价格小于等于
@@ -1962,7 +1962,7 @@ func RangeBooksByPriceLteWithAuthorName(es *elasticsearch.Client, author string,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteWithAuthorName 根据Author、Name从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteWithAuthorName 根据author、书名过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGte float64 价格大于等于
@@ -1979,7 +1979,7 @@ func RangeBooksByPriceGteLteWithAuthorName(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteWithAuthorName 根据Author、Name从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteWithAuthorName 根据author、书名过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // releaseDateGte time.Time release_date大于等于
@@ -1995,7 +1995,7 @@ func RangeBooksByReleaseDateGteWithAuthorName(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGtWithAuthorName 根据Author、Name从Books查找release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGtWithAuthorName 根据author、书名过滤从Books查找release_date大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // releaseDateGt time.Time release_date大于
@@ -2011,7 +2011,7 @@ func RangeBooksByReleaseDateGtWithAuthorName(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLtWithAuthorName 根据Author、Name从Books查找release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLtWithAuthorName 根据author、书名过滤从Books查找release_date小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // releaseDateLt time.Time release_date小于
@@ -2027,7 +2027,7 @@ func RangeBooksByReleaseDateLtWithAuthorName(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLteWithAuthorName 根据Author、Name从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLteWithAuthorName 根据author、书名过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // releaseDateLte time.Time release_date小于等于
@@ -2043,7 +2043,7 @@ func RangeBooksByReleaseDateLteWithAuthorName(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteLteWithAuthorName 根据Author、Name从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteLteWithAuthorName 根据author、书名过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // releaseDateGte time.Time release_date大于等于
@@ -2060,7 +2060,7 @@ func RangeBooksByReleaseDateGteLteWithAuthorName(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteWithAuthor 根据Author从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteWithAuthor 根据author过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -2076,7 +2076,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGtWithAuthor 根据Author从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGtWithAuthor 根据author过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // releaseDateGt time.Time release_date大于
@@ -2092,7 +2092,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLtWithAuthor 根据Author从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLtWithAuthor 根据author过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // releaseDateLt time.Time release_date小于
@@ -2108,7 +2108,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLteWithAuthor 根据Author从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLteWithAuthor 根据author过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -2124,7 +2124,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteLteWithAuthor 根据Author从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteLteWithAuthor 根据author过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -2141,7 +2141,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithAuthor(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteWithAuthor 根据Author从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteWithAuthor 根据author过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGt int64 page_count大于
 // releaseDateGte time.Time release_date大于等于
@@ -2157,7 +2157,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGtWithAuthor 根据Author从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGtWithAuthor 根据author过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGt int64 page_count大于
 // releaseDateGt time.Time release_date大于
@@ -2173,7 +2173,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLtWithAuthor 根据Author从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLtWithAuthor 根据author过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGt int64 page_count大于
 // releaseDateLt time.Time release_date小于
@@ -2189,7 +2189,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLteWithAuthor 根据Author从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLteWithAuthor 根据author过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGt int64 page_count大于
 // releaseDateLte time.Time release_date小于等于
@@ -2205,7 +2205,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteLteWithAuthor 根据Author从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteLteWithAuthor 根据author过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGt int64 page_count大于
 // releaseDateGte time.Time release_date大于等于
@@ -2222,7 +2222,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteWithAuthor 根据Author从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteWithAuthor 根据author过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountLt int64 page_count小于
 // releaseDateGte time.Time release_date大于等于
@@ -2238,7 +2238,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGtWithAuthor 根据Author从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGtWithAuthor 根据author过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // pageCountLt int64 page_count小于
 // releaseDateGt time.Time release_date大于
@@ -2254,7 +2254,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLtWithAuthor 根据Author从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLtWithAuthor 根据author过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // pageCountLt int64 page_count小于
 // releaseDateLt time.Time release_date小于
@@ -2270,7 +2270,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLteWithAuthor 根据Author从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLteWithAuthor 根据author过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountLt int64 page_count小于
 // releaseDateLte time.Time release_date小于等于
@@ -2286,7 +2286,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteLteWithAuthor 根据Author从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteLteWithAuthor 根据author过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountLt int64 page_count小于
 // releaseDateGte time.Time release_date大于等于
@@ -2303,7 +2303,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteWithAuthor 根据Author从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteWithAuthor 根据author过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountLte int64 page_count小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -2319,7 +2319,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGtWithAuthor 根据Author从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGtWithAuthor 根据author过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // pageCountLte int64 page_count小于等于
 // releaseDateGt time.Time release_date大于
@@ -2335,7 +2335,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLtWithAuthor 根据Author从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLtWithAuthor 根据author过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // pageCountLte int64 page_count小于等于
 // releaseDateLt time.Time release_date小于
@@ -2351,7 +2351,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLteWithAuthor 根据Author从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLteWithAuthor 根据author过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountLte int64 page_count小于等于
 // releaseDateLte time.Time release_date小于等于
@@ -2367,7 +2367,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteLteWithAuthor 根据Author从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteLteWithAuthor 根据author过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountLte int64 page_count小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -2384,7 +2384,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithAuthor(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteWithAuthor 根据Author从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteWithAuthor 根据author过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -2401,7 +2401,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithAuthor(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGtWithAuthor 根据Author从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGtWithAuthor 根据author过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -2418,7 +2418,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLtWithAuthor 根据Author从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLtWithAuthor 根据author过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -2435,7 +2435,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLteWithAuthor 根据Author从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLteWithAuthor 根据author过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -2452,7 +2452,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithAuthor(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthor 根据Author从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthor 根据author过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -2470,7 +2470,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteWithAuthorSeq 根据Author、Seq从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteWithAuthorSeq 根据author、seq过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -2486,7 +2486,7 @@ func RangeBooksByPageCountGteWithAuthorSeq(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtWithAuthorSeq 根据Author、Seq从Books查找page_count大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtWithAuthorSeq 根据author、seq过滤从Books查找page_count大于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -2502,7 +2502,7 @@ func RangeBooksByPageCountGtWithAuthorSeq(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtWithAuthorSeq 根据Author、Seq从Books查找page_count小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtWithAuthorSeq 根据author、seq过滤从Books查找page_count小于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -2518,7 +2518,7 @@ func RangeBooksByPageCountLtWithAuthorSeq(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteWithAuthorSeq 根据Author、Seq从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteWithAuthorSeq 根据author、seq过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -2534,7 +2534,7 @@ func RangeBooksByPageCountLteWithAuthorSeq(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteWithAuthorSeq 根据Author、Seq从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteWithAuthorSeq 根据author、seq过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -2551,7 +2551,7 @@ func RangeBooksByPageCountGteLteWithAuthorSeq(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteWithAuthor 根据Author从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteWithAuthor 根据author过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -2567,7 +2567,7 @@ func RangeBooksByPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGtWithAuthor 根据Author从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGtWithAuthor 根据author过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // priceGte float64 价格大于等于
 // releaseDateGt time.Time release_date大于
@@ -2583,7 +2583,7 @@ func RangeBooksByPriceGteReleaseDateGtWithAuthor(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLtWithAuthor 根据Author从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLtWithAuthor 根据author过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // priceGte float64 价格大于等于
 // releaseDateLt time.Time release_date小于
@@ -2599,7 +2599,7 @@ func RangeBooksByPriceGteReleaseDateLtWithAuthor(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLteWithAuthor 根据Author从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLteWithAuthor 根据author过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // priceGte float64 价格大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -2615,7 +2615,7 @@ func RangeBooksByPriceGteReleaseDateLteWithAuthor(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteLteWithAuthor 根据Author从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteLteWithAuthor 根据author过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -2632,7 +2632,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteWithAuthor 根据Author从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteWithAuthor 根据author过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // priceGt float64 价格大于
 // releaseDateGte time.Time release_date大于等于
@@ -2648,7 +2648,7 @@ func RangeBooksByPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGtWithAuthor 根据Author从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGtWithAuthor 根据author过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // priceGt float64 价格大于
 // releaseDateGt time.Time release_date大于
@@ -2664,7 +2664,7 @@ func RangeBooksByPriceGtReleaseDateGtWithAuthor(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLtWithAuthor 根据Author从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLtWithAuthor 根据author过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // priceGt float64 价格大于
 // releaseDateLt time.Time release_date小于
@@ -2680,7 +2680,7 @@ func RangeBooksByPriceGtReleaseDateLtWithAuthor(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLteWithAuthor 根据Author从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLteWithAuthor 根据author过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // priceGt float64 价格大于
 // releaseDateLte time.Time release_date小于等于
@@ -2696,7 +2696,7 @@ func RangeBooksByPriceGtReleaseDateLteWithAuthor(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteLteWithAuthor 根据Author从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteLteWithAuthor 根据author过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // priceGt float64 价格大于
 // releaseDateGte time.Time release_date大于等于
@@ -2713,7 +2713,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteWithAuthor 根据Author从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteWithAuthor 根据author过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // priceLt float64 价格小于
 // releaseDateGte time.Time release_date大于等于
@@ -2729,7 +2729,7 @@ func RangeBooksByPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGtWithAuthor 根据Author从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGtWithAuthor 根据author过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // priceLt float64 价格小于
 // releaseDateGt time.Time release_date大于
@@ -2745,7 +2745,7 @@ func RangeBooksByPriceLtReleaseDateGtWithAuthor(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLtWithAuthor 根据Author从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLtWithAuthor 根据author过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // priceLt float64 价格小于
 // releaseDateLt time.Time release_date小于
@@ -2761,7 +2761,7 @@ func RangeBooksByPriceLtReleaseDateLtWithAuthor(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLteWithAuthor 根据Author从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLteWithAuthor 根据author过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // priceLt float64 价格小于
 // releaseDateLte time.Time release_date小于等于
@@ -2777,7 +2777,7 @@ func RangeBooksByPriceLtReleaseDateLteWithAuthor(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteLteWithAuthor 根据Author从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteLteWithAuthor 根据author过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // priceLt float64 价格小于
 // releaseDateGte time.Time release_date大于等于
@@ -2794,7 +2794,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteWithAuthor 根据Author从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteWithAuthor 根据author过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -2810,7 +2810,7 @@ func RangeBooksByPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGtWithAuthor 根据Author从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGtWithAuthor 根据author过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // priceLte float64 价格小于等于
 // releaseDateGt time.Time release_date大于
@@ -2826,7 +2826,7 @@ func RangeBooksByPriceLteReleaseDateGtWithAuthor(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLtWithAuthor 根据Author从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLtWithAuthor 根据author过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // priceLte float64 价格小于等于
 // releaseDateLt time.Time release_date小于
@@ -2842,7 +2842,7 @@ func RangeBooksByPriceLteReleaseDateLtWithAuthor(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLteWithAuthor 根据Author从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLteWithAuthor 根据author过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // priceLte float64 价格小于等于
 // releaseDateLte time.Time release_date小于等于
@@ -2858,7 +2858,7 @@ func RangeBooksByPriceLteReleaseDateLteWithAuthor(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteLteWithAuthor 根据Author从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteLteWithAuthor 根据author过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -2875,7 +2875,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteWithAuthor 根据Author从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteWithAuthor 根据author过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2892,7 +2892,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGtWithAuthor 根据Author从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGtWithAuthor 根据author过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2909,7 +2909,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLtWithAuthor 根据Author从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLtWithAuthor 根据author过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2926,7 +2926,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLteWithAuthor 根据Author从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLteWithAuthor 根据author过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2943,7 +2943,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteLteWithAuthor 根据Author从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteLteWithAuthor 根据author过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2961,7 +2961,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteWithAuthorSeq 根据Author、Seq从Books查找价格大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteWithAuthorSeq 根据author、seq过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGte float64 价格大于等于
@@ -2977,7 +2977,7 @@ func RangeBooksByPriceGteWithAuthorSeq(es *elasticsearch.Client, author string, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtWithAuthorSeq 根据Author、Seq从Books查找价格大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtWithAuthorSeq 根据author、seq过滤从Books查找价格大于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGt float64 价格大于
@@ -2993,7 +2993,7 @@ func RangeBooksByPriceGtWithAuthorSeq(es *elasticsearch.Client, author string, s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtWithAuthorSeq 根据Author、Seq从Books查找价格小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtWithAuthorSeq 根据author、seq过滤从Books查找价格小于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceLt float64 价格小于
@@ -3009,7 +3009,7 @@ func RangeBooksByPriceLtWithAuthorSeq(es *elasticsearch.Client, author string, s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteWithAuthorSeq 根据Author、Seq从Books查找价格小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteWithAuthorSeq 根据author、seq过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceLte float64 价格小于等于
@@ -3025,7 +3025,7 @@ func RangeBooksByPriceLteWithAuthorSeq(es *elasticsearch.Client, author string, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteWithAuthorSeq 根据Author、Seq从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteWithAuthorSeq 根据author、seq过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGte float64 价格大于等于
@@ -3042,7 +3042,7 @@ func RangeBooksByPriceGteLteWithAuthorSeq(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteWithAuthorSeq 根据author、seq过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // releaseDateGte time.Time release_date大于等于
@@ -3058,7 +3058,7 @@ func RangeBooksByReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGtWithAuthorSeq 根据Author、Seq从Books查找release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGtWithAuthorSeq 根据author、seq过滤从Books查找release_date大于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // releaseDateGt time.Time release_date大于
@@ -3074,7 +3074,7 @@ func RangeBooksByReleaseDateGtWithAuthorSeq(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLtWithAuthorSeq 根据Author、Seq从Books查找release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLtWithAuthorSeq 根据author、seq过滤从Books查找release_date小于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // releaseDateLt time.Time release_date小于
@@ -3090,7 +3090,7 @@ func RangeBooksByReleaseDateLtWithAuthorSeq(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLteWithAuthorSeq 根据Author、Seq从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLteWithAuthorSeq 根据author、seq过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // releaseDateLte time.Time release_date小于等于
@@ -3106,7 +3106,7 @@ func RangeBooksByReleaseDateLteWithAuthorSeq(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteLteWithAuthorSeq 根据Author、Seq从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteLteWithAuthorSeq 根据author、seq过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // releaseDateGte time.Time release_date大于等于
@@ -3123,7 +3123,7 @@ func RangeBooksByReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteWithClassName 根据Class、Name从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteWithClassName 根据class、书名过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -3139,7 +3139,7 @@ func RangeBooksByPageCountGteWithClassName(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtWithClassName 根据Class、Name从Books查找page_count大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtWithClassName 根据class、书名过滤从Books查找page_count大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGt int64 page_count大于
@@ -3155,7 +3155,7 @@ func RangeBooksByPageCountGtWithClassName(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtWithClassName 根据Class、Name从Books查找page_count小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtWithClassName 根据class、书名过滤从Books查找page_count小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountLt int64 page_count小于
@@ -3171,7 +3171,7 @@ func RangeBooksByPageCountLtWithClassName(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteWithClassName 根据Class、Name从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteWithClassName 根据class、书名过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountLte int64 page_count小于等于
@@ -3187,7 +3187,7 @@ func RangeBooksByPageCountLteWithClassName(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteWithClassName 根据Class、Name从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteWithClassName 根据class、书名过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -3204,7 +3204,7 @@ func RangeBooksByPageCountGteLteWithClassName(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteWithClassName 根据Class、Name从Books查找价格大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteWithClassName 根据class、书名过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGte float64 价格大于等于
@@ -3220,7 +3220,7 @@ func RangeBooksByPriceGteWithClassName(es *elasticsearch.Client, class string, n
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtWithClassName 根据Class、Name从Books查找价格大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtWithClassName 根据class、书名过滤从Books查找价格大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGt float64 价格大于
@@ -3236,7 +3236,7 @@ func RangeBooksByPriceGtWithClassName(es *elasticsearch.Client, class string, na
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtWithClassName 根据Class、Name从Books查找价格小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtWithClassName 根据class、书名过滤从Books查找价格小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceLt float64 价格小于
@@ -3252,7 +3252,7 @@ func RangeBooksByPriceLtWithClassName(es *elasticsearch.Client, class string, na
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteWithClassName 根据Class、Name从Books查找价格小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteWithClassName 根据class、书名过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceLte float64 价格小于等于
@@ -3268,7 +3268,7 @@ func RangeBooksByPriceLteWithClassName(es *elasticsearch.Client, class string, n
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteWithClassName 根据Class、Name从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteWithClassName 根据class、书名过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGte float64 价格大于等于
@@ -3285,7 +3285,7 @@ func RangeBooksByPriceGteLteWithClassName(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteWithClassName 根据Class、Name从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteWithClassName 根据class、书名过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // releaseDateGte time.Time release_date大于等于
@@ -3301,7 +3301,7 @@ func RangeBooksByReleaseDateGteWithClassName(es *elasticsearch.Client, class str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGtWithClassName 根据Class、Name从Books查找release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGtWithClassName 根据class、书名过滤从Books查找release_date大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // releaseDateGt time.Time release_date大于
@@ -3317,7 +3317,7 @@ func RangeBooksByReleaseDateGtWithClassName(es *elasticsearch.Client, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLtWithClassName 根据Class、Name从Books查找release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLtWithClassName 根据class、书名过滤从Books查找release_date小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // releaseDateLt time.Time release_date小于
@@ -3333,7 +3333,7 @@ func RangeBooksByReleaseDateLtWithClassName(es *elasticsearch.Client, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLteWithClassName 根据Class、Name从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLteWithClassName 根据class、书名过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // releaseDateLte time.Time release_date小于等于
@@ -3349,7 +3349,7 @@ func RangeBooksByReleaseDateLteWithClassName(es *elasticsearch.Client, class str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteLteWithClassName 根据Class、Name从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteLteWithClassName 根据class、书名过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // releaseDateGte time.Time release_date大于等于
@@ -3366,7 +3366,7 @@ func RangeBooksByReleaseDateGteLteWithClassName(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteWithClass 根据Class从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteWithClass 根据class过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -3380,7 +3380,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithClass(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGtWithClass 根据Class从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGtWithClass 根据class过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // releaseDateGt time.Time release_date大于
@@ -3394,7 +3394,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLtWithClass 根据Class从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLtWithClass 根据class过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // releaseDateLt time.Time release_date小于
@@ -3408,7 +3408,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLteWithClass 根据Class从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLteWithClass 根据class过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -3422,7 +3422,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithClass(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteLteWithClass 根据Class从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteLteWithClass 根据class过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -3437,7 +3437,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteWithClass 根据Class从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteWithClass 根据class过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGt int64 page_count大于
 // releaseDateGte time.Time release_date大于等于
@@ -3451,7 +3451,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGtWithClass 根据Class从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGtWithClass 根据class过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGt int64 page_count大于
 // releaseDateGt time.Time release_date大于
@@ -3465,7 +3465,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLtWithClass 根据Class从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLtWithClass 根据class过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGt int64 page_count大于
 // releaseDateLt time.Time release_date小于
@@ -3479,7 +3479,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLteWithClass 根据Class从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLteWithClass 根据class过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGt int64 page_count大于
 // releaseDateLte time.Time release_date小于等于
@@ -3493,7 +3493,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteLteWithClass 根据Class从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteLteWithClass 根据class过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGt int64 page_count大于
 // releaseDateGte time.Time release_date大于等于
@@ -3508,7 +3508,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteWithClass 根据Class从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteWithClass 根据class过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountLt int64 page_count小于
 // releaseDateGte time.Time release_date大于等于
@@ -3522,7 +3522,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGtWithClass 根据Class从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGtWithClass 根据class过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // pageCountLt int64 page_count小于
 // releaseDateGt time.Time release_date大于
@@ -3536,7 +3536,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLtWithClass 根据Class从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLtWithClass 根据class过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // pageCountLt int64 page_count小于
 // releaseDateLt time.Time release_date小于
@@ -3550,7 +3550,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLteWithClass 根据Class从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLteWithClass 根据class过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountLt int64 page_count小于
 // releaseDateLte time.Time release_date小于等于
@@ -3564,7 +3564,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteLteWithClass 根据Class从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteLteWithClass 根据class过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountLt int64 page_count小于
 // releaseDateGte time.Time release_date大于等于
@@ -3579,7 +3579,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteWithClass 根据Class从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteWithClass 根据class过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountLte int64 page_count小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -3593,7 +3593,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithClass(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGtWithClass 根据Class从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGtWithClass 根据class过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // pageCountLte int64 page_count小于等于
 // releaseDateGt time.Time release_date大于
@@ -3607,7 +3607,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLtWithClass 根据Class从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLtWithClass 根据class过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // pageCountLte int64 page_count小于等于
 // releaseDateLt time.Time release_date小于
@@ -3621,7 +3621,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLteWithClass 根据Class从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLteWithClass 根据class过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountLte int64 page_count小于等于
 // releaseDateLte time.Time release_date小于等于
@@ -3635,7 +3635,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithClass(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteLteWithClass 根据Class从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteLteWithClass 根据class过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountLte int64 page_count小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -3650,7 +3650,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteWithClass 根据Class从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteWithClass 根据class过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -3665,7 +3665,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGtWithClass 根据Class从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGtWithClass 根据class过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -3680,7 +3680,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLtWithClass 根据Class从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLtWithClass 根据class过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -3695,7 +3695,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLteWithClass 根据Class从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLteWithClass 根据class过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -3710,7 +3710,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteLteWithClass 根据Class从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteLteWithClass 根据class过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -3726,7 +3726,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteWithClassSeq 根据Class、Seq从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteWithClassSeq 根据class、seq过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -3740,7 +3740,7 @@ func RangeBooksByPageCountGteWithClassSeq(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtWithClassSeq 根据Class、Seq从Books查找page_count大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtWithClassSeq 根据class、seq过滤从Books查找page_count大于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -3754,7 +3754,7 @@ func RangeBooksByPageCountGtWithClassSeq(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtWithClassSeq 根据Class、Seq从Books查找page_count小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtWithClassSeq 根据class、seq过滤从Books查找page_count小于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -3768,7 +3768,7 @@ func RangeBooksByPageCountLtWithClassSeq(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteWithClassSeq 根据Class、Seq从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteWithClassSeq 根据class、seq过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -3782,7 +3782,7 @@ func RangeBooksByPageCountLteWithClassSeq(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteWithClassSeq 根据Class、Seq从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteWithClassSeq 根据class、seq过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -3797,7 +3797,7 @@ func RangeBooksByPageCountGteLteWithClassSeq(es *elasticsearch.Client, class str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteWithClass 根据Class从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteWithClass 根据class过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -3811,7 +3811,7 @@ func RangeBooksByPriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGtWithClass 根据Class从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGtWithClass 根据class过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // priceGte float64 价格大于等于
 // releaseDateGt time.Time release_date大于
@@ -3825,7 +3825,7 @@ func RangeBooksByPriceGteReleaseDateGtWithClass(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLtWithClass 根据Class从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLtWithClass 根据class过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // priceGte float64 价格大于等于
 // releaseDateLt time.Time release_date小于
@@ -3839,7 +3839,7 @@ func RangeBooksByPriceGteReleaseDateLtWithClass(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLteWithClass 根据Class从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLteWithClass 根据class过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // priceGte float64 价格大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -3853,7 +3853,7 @@ func RangeBooksByPriceGteReleaseDateLteWithClass(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteLteWithClass 根据Class从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteLteWithClass 根据class过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -3868,7 +3868,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteWithClass 根据Class从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteWithClass 根据class过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // priceGt float64 价格大于
 // releaseDateGte time.Time release_date大于等于
@@ -3882,7 +3882,7 @@ func RangeBooksByPriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGtWithClass 根据Class从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGtWithClass 根据class过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // priceGt float64 价格大于
 // releaseDateGt time.Time release_date大于
@@ -3896,7 +3896,7 @@ func RangeBooksByPriceGtReleaseDateGtWithClass(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLtWithClass 根据Class从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLtWithClass 根据class过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // priceGt float64 价格大于
 // releaseDateLt time.Time release_date小于
@@ -3910,7 +3910,7 @@ func RangeBooksByPriceGtReleaseDateLtWithClass(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLteWithClass 根据Class从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLteWithClass 根据class过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // priceGt float64 价格大于
 // releaseDateLte time.Time release_date小于等于
@@ -3924,7 +3924,7 @@ func RangeBooksByPriceGtReleaseDateLteWithClass(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteLteWithClass 根据Class从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteLteWithClass 根据class过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // priceGt float64 价格大于
 // releaseDateGte time.Time release_date大于等于
@@ -3939,7 +3939,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteWithClass 根据Class从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteWithClass 根据class过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // priceLt float64 价格小于
 // releaseDateGte time.Time release_date大于等于
@@ -3953,7 +3953,7 @@ func RangeBooksByPriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGtWithClass 根据Class从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGtWithClass 根据class过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // priceLt float64 价格小于
 // releaseDateGt time.Time release_date大于
@@ -3967,7 +3967,7 @@ func RangeBooksByPriceLtReleaseDateGtWithClass(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLtWithClass 根据Class从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLtWithClass 根据class过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // priceLt float64 价格小于
 // releaseDateLt time.Time release_date小于
@@ -3981,7 +3981,7 @@ func RangeBooksByPriceLtReleaseDateLtWithClass(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLteWithClass 根据Class从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLteWithClass 根据class过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // priceLt float64 价格小于
 // releaseDateLte time.Time release_date小于等于
@@ -3995,7 +3995,7 @@ func RangeBooksByPriceLtReleaseDateLteWithClass(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteLteWithClass 根据Class从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteLteWithClass 根据class过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // priceLt float64 价格小于
 // releaseDateGte time.Time release_date大于等于
@@ -4010,7 +4010,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteWithClass 根据Class从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteWithClass 根据class过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -4024,7 +4024,7 @@ func RangeBooksByPriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGtWithClass 根据Class从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGtWithClass 根据class过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // priceLte float64 价格小于等于
 // releaseDateGt time.Time release_date大于
@@ -4038,7 +4038,7 @@ func RangeBooksByPriceLteReleaseDateGtWithClass(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLtWithClass 根据Class从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLtWithClass 根据class过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // priceLte float64 价格小于等于
 // releaseDateLt time.Time release_date小于
@@ -4052,7 +4052,7 @@ func RangeBooksByPriceLteReleaseDateLtWithClass(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLteWithClass 根据Class从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLteWithClass 根据class过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // priceLte float64 价格小于等于
 // releaseDateLte time.Time release_date小于等于
@@ -4066,7 +4066,7 @@ func RangeBooksByPriceLteReleaseDateLteWithClass(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteLteWithClass 根据Class从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteLteWithClass 根据class过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -4081,7 +4081,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteWithClass 根据Class从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteWithClass 根据class过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4096,7 +4096,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGtWithClass 根据Class从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGtWithClass 根据class过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4111,7 +4111,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLtWithClass 根据Class从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLtWithClass 根据class过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4126,7 +4126,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLteWithClass 根据Class从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLteWithClass 根据class过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4141,7 +4141,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteLteWithClass 根据Class从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteLteWithClass 根据class过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4157,7 +4157,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteWithClassSeq 根据Class、Seq从Books查找价格大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteWithClassSeq 根据class、seq过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGte float64 价格大于等于
@@ -4171,7 +4171,7 @@ func RangeBooksByPriceGteWithClassSeq(es *elasticsearch.Client, class string, se
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtWithClassSeq 根据Class、Seq从Books查找价格大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtWithClassSeq 根据class、seq过滤从Books查找价格大于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGt float64 价格大于
@@ -4185,7 +4185,7 @@ func RangeBooksByPriceGtWithClassSeq(es *elasticsearch.Client, class string, seq
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtWithClassSeq 根据Class、Seq从Books查找价格小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtWithClassSeq 根据class、seq过滤从Books查找价格小于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceLt float64 价格小于
@@ -4199,7 +4199,7 @@ func RangeBooksByPriceLtWithClassSeq(es *elasticsearch.Client, class string, seq
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteWithClassSeq 根据Class、Seq从Books查找价格小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteWithClassSeq 根据class、seq过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceLte float64 价格小于等于
@@ -4213,7 +4213,7 @@ func RangeBooksByPriceLteWithClassSeq(es *elasticsearch.Client, class string, se
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteWithClassSeq 根据Class、Seq从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteWithClassSeq 根据class、seq过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGte float64 价格大于等于
@@ -4228,7 +4228,7 @@ func RangeBooksByPriceGteLteWithClassSeq(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteWithClassSeq 根据Class、Seq从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteWithClassSeq 根据class、seq过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // releaseDateGte time.Time release_date大于等于
@@ -4242,7 +4242,7 @@ func RangeBooksByReleaseDateGteWithClassSeq(es *elasticsearch.Client, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGtWithClassSeq 根据Class、Seq从Books查找release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGtWithClassSeq 根据class、seq过滤从Books查找release_date大于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // releaseDateGt time.Time release_date大于
@@ -4256,7 +4256,7 @@ func RangeBooksByReleaseDateGtWithClassSeq(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLtWithClassSeq 根据Class、Seq从Books查找release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLtWithClassSeq 根据class、seq过滤从Books查找release_date小于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // releaseDateLt time.Time release_date小于
@@ -4270,7 +4270,7 @@ func RangeBooksByReleaseDateLtWithClassSeq(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLteWithClassSeq 根据Class、Seq从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLteWithClassSeq 根据class、seq过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // releaseDateLte time.Time release_date小于等于
@@ -4284,7 +4284,7 @@ func RangeBooksByReleaseDateLteWithClassSeq(es *elasticsearch.Client, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteLteWithClassSeq 根据Class、Seq从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteLteWithClassSeq 根据class、seq过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // releaseDateGte time.Time release_date大于等于
@@ -4299,7 +4299,7 @@ func RangeBooksByReleaseDateGteLteWithClassSeq(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteWithName 根据Name从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteWithName 根据书名过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -4315,7 +4315,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithName(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGtWithName 根据Name从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGtWithName 根据书名过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // releaseDateGt time.Time release_date大于
@@ -4331,7 +4331,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLtWithName 根据Name从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLtWithName 根据书名过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // releaseDateLt time.Time release_date小于
@@ -4347,7 +4347,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLteWithName 根据Name从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLteWithName 根据书名过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -4363,7 +4363,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithName(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteLteWithName 根据Name从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteLteWithName 根据书名过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -4380,7 +4380,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteWithName 根据Name从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteWithName 根据书名过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGt int64 page_count大于
 // releaseDateGte time.Time release_date大于等于
@@ -4396,7 +4396,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGtWithName 根据Name从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGtWithName 根据书名过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGt int64 page_count大于
 // releaseDateGt time.Time release_date大于
@@ -4412,7 +4412,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLtWithName 根据Name从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLtWithName 根据书名过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGt int64 page_count大于
 // releaseDateLt time.Time release_date小于
@@ -4428,7 +4428,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLteWithName 根据Name从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLteWithName 根据书名过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGt int64 page_count大于
 // releaseDateLte time.Time release_date小于等于
@@ -4444,7 +4444,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteLteWithName 根据Name从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteLteWithName 根据书名过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGt int64 page_count大于
 // releaseDateGte time.Time release_date大于等于
@@ -4461,7 +4461,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteWithName 根据Name从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteWithName 根据书名过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountLt int64 page_count小于
 // releaseDateGte time.Time release_date大于等于
@@ -4477,7 +4477,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGtWithName 根据Name从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGtWithName 根据书名过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountLt int64 page_count小于
 // releaseDateGt time.Time release_date大于
@@ -4493,7 +4493,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLtWithName 根据Name从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLtWithName 根据书名过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountLt int64 page_count小于
 // releaseDateLt time.Time release_date小于
@@ -4509,7 +4509,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLteWithName 根据Name从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLteWithName 根据书名过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountLt int64 page_count小于
 // releaseDateLte time.Time release_date小于等于
@@ -4525,7 +4525,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteLteWithName 根据Name从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteLteWithName 根据书名过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountLt int64 page_count小于
 // releaseDateGte time.Time release_date大于等于
@@ -4542,7 +4542,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteWithName 根据Name从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteWithName 根据书名过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountLte int64 page_count小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -4558,7 +4558,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithName(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGtWithName 根据Name从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGtWithName 根据书名过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountLte int64 page_count小于等于
 // releaseDateGt time.Time release_date大于
@@ -4574,7 +4574,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLtWithName 根据Name从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLtWithName 根据书名过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountLte int64 page_count小于等于
 // releaseDateLt time.Time release_date小于
@@ -4590,7 +4590,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLteWithName 根据Name从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLteWithName 根据书名过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountLte int64 page_count小于等于
 // releaseDateLte time.Time release_date小于等于
@@ -4606,7 +4606,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithName(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteLteWithName 根据Name从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteLteWithName 根据书名过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountLte int64 page_count小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -4623,7 +4623,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteWithName 根据Name从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteWithName 根据书名过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -4640,7 +4640,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGtWithName 根据Name从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGtWithName 根据书名过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -4657,7 +4657,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLtWithName 根据Name从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLtWithName 根据书名过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -4674,7 +4674,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLteWithName 根据Name从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLteWithName 根据书名过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -4691,7 +4691,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteLteWithName 根据Name从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteLteWithName 根据书名过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -4709,7 +4709,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteWithNameSeq 根据Name、Seq从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteWithNameSeq 根据书名、seq过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -4725,7 +4725,7 @@ func RangeBooksByPageCountGteWithNameSeq(es *elasticsearch.Client, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtWithNameSeq 根据Name、Seq从Books查找page_count大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtWithNameSeq 根据书名、seq过滤从Books查找page_count大于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -4741,7 +4741,7 @@ func RangeBooksByPageCountGtWithNameSeq(es *elasticsearch.Client, name string, s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtWithNameSeq 根据Name、Seq从Books查找page_count小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtWithNameSeq 根据书名、seq过滤从Books查找page_count小于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -4757,7 +4757,7 @@ func RangeBooksByPageCountLtWithNameSeq(es *elasticsearch.Client, name string, s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteWithNameSeq 根据Name、Seq从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteWithNameSeq 根据书名、seq过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -4773,7 +4773,7 @@ func RangeBooksByPageCountLteWithNameSeq(es *elasticsearch.Client, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteWithNameSeq 根据Name、Seq从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteWithNameSeq 根据书名、seq过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -4790,7 +4790,7 @@ func RangeBooksByPageCountGteLteWithNameSeq(es *elasticsearch.Client, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteWithName 根据Name从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteWithName 根据书名过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -4806,7 +4806,7 @@ func RangeBooksByPriceGteReleaseDateGteWithName(es *elasticsearch.Client, name s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGtWithName 根据Name从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGtWithName 根据书名过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateGt time.Time release_date大于
@@ -4822,7 +4822,7 @@ func RangeBooksByPriceGteReleaseDateGtWithName(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLtWithName 根据Name从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLtWithName 根据书名过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateLt time.Time release_date小于
@@ -4838,7 +4838,7 @@ func RangeBooksByPriceGteReleaseDateLtWithName(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLteWithName 根据Name从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLteWithName 根据书名过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -4854,7 +4854,7 @@ func RangeBooksByPriceGteReleaseDateLteWithName(es *elasticsearch.Client, name s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteLteWithName 根据Name从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteLteWithName 根据书名过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -4871,7 +4871,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteWithName 根据Name从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteWithName 根据书名过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateGte time.Time release_date大于等于
@@ -4887,7 +4887,7 @@ func RangeBooksByPriceGtReleaseDateGteWithName(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGtWithName 根据Name从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGtWithName 根据书名过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateGt time.Time release_date大于
@@ -4903,7 +4903,7 @@ func RangeBooksByPriceGtReleaseDateGtWithName(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLtWithName 根据Name从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLtWithName 根据书名过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateLt time.Time release_date小于
@@ -4919,7 +4919,7 @@ func RangeBooksByPriceGtReleaseDateLtWithName(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLteWithName 根据Name从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLteWithName 根据书名过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateLte time.Time release_date小于等于
@@ -4935,7 +4935,7 @@ func RangeBooksByPriceGtReleaseDateLteWithName(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteLteWithName 根据Name从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteLteWithName 根据书名过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateGte time.Time release_date大于等于
@@ -4952,7 +4952,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteWithName 根据Name从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteWithName 根据书名过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateGte time.Time release_date大于等于
@@ -4968,7 +4968,7 @@ func RangeBooksByPriceLtReleaseDateGteWithName(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGtWithName 根据Name从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGtWithName 根据书名过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateGt time.Time release_date大于
@@ -4984,7 +4984,7 @@ func RangeBooksByPriceLtReleaseDateGtWithName(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLtWithName 根据Name从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLtWithName 根据书名过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateLt time.Time release_date小于
@@ -5000,7 +5000,7 @@ func RangeBooksByPriceLtReleaseDateLtWithName(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLteWithName 根据Name从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLteWithName 根据书名过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateLte time.Time release_date小于等于
@@ -5016,7 +5016,7 @@ func RangeBooksByPriceLtReleaseDateLteWithName(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteLteWithName 根据Name从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteLteWithName 根据书名过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateGte time.Time release_date大于等于
@@ -5033,7 +5033,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteWithName 根据Name从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteWithName 根据书名过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -5049,7 +5049,7 @@ func RangeBooksByPriceLteReleaseDateGteWithName(es *elasticsearch.Client, name s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGtWithName 根据Name从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGtWithName 根据书名过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateGt time.Time release_date大于
@@ -5065,7 +5065,7 @@ func RangeBooksByPriceLteReleaseDateGtWithName(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLtWithName 根据Name从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLtWithName 根据书名过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateLt time.Time release_date小于
@@ -5081,7 +5081,7 @@ func RangeBooksByPriceLteReleaseDateLtWithName(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLteWithName 根据Name从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLteWithName 根据书名过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateLte time.Time release_date小于等于
@@ -5097,7 +5097,7 @@ func RangeBooksByPriceLteReleaseDateLteWithName(es *elasticsearch.Client, name s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteLteWithName 根据Name从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteLteWithName 根据书名过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -5114,7 +5114,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteWithName 根据Name从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteWithName 根据书名过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -5131,7 +5131,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGtWithName 根据Name从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGtWithName 根据书名过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -5148,7 +5148,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLtWithName 根据Name从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLtWithName 根据书名过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -5165,7 +5165,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLteWithName 根据Name从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLteWithName 根据书名过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -5182,7 +5182,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteLteWithName 根据Name从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteLteWithName 根据书名过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -5200,7 +5200,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteWithNameSeq 根据Name、Seq从Books查找价格大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteWithNameSeq 根据书名、seq过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGte float64 价格大于等于
@@ -5216,7 +5216,7 @@ func RangeBooksByPriceGteWithNameSeq(es *elasticsearch.Client, name string, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtWithNameSeq 根据Name、Seq从Books查找价格大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtWithNameSeq 根据书名、seq过滤从Books查找价格大于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGt float64 价格大于
@@ -5232,7 +5232,7 @@ func RangeBooksByPriceGtWithNameSeq(es *elasticsearch.Client, name string, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtWithNameSeq 根据Name、Seq从Books查找价格小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtWithNameSeq 根据书名、seq过滤从Books查找价格小于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceLt float64 价格小于
@@ -5248,7 +5248,7 @@ func RangeBooksByPriceLtWithNameSeq(es *elasticsearch.Client, name string, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteWithNameSeq 根据Name、Seq从Books查找价格小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteWithNameSeq 根据书名、seq过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceLte float64 价格小于等于
@@ -5264,7 +5264,7 @@ func RangeBooksByPriceLteWithNameSeq(es *elasticsearch.Client, name string, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteWithNameSeq 根据Name、Seq从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteWithNameSeq 根据书名、seq过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGte float64 价格大于等于
@@ -5281,7 +5281,7 @@ func RangeBooksByPriceGteLteWithNameSeq(es *elasticsearch.Client, name string, s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteWithNameSeq 根据Name、Seq从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteWithNameSeq 根据书名、seq过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // releaseDateGte time.Time release_date大于等于
@@ -5297,7 +5297,7 @@ func RangeBooksByReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGtWithNameSeq 根据Name、Seq从Books查找release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGtWithNameSeq 根据书名、seq过滤从Books查找release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // releaseDateGt time.Time release_date大于
@@ -5313,7 +5313,7 @@ func RangeBooksByReleaseDateGtWithNameSeq(es *elasticsearch.Client, name string,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLtWithNameSeq 根据Name、Seq从Books查找release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLtWithNameSeq 根据书名、seq过滤从Books查找release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // releaseDateLt time.Time release_date小于
@@ -5329,7 +5329,7 @@ func RangeBooksByReleaseDateLtWithNameSeq(es *elasticsearch.Client, name string,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLteWithNameSeq 根据Name、Seq从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLteWithNameSeq 根据书名、seq过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // releaseDateLte time.Time release_date小于等于
@@ -5345,7 +5345,7 @@ func RangeBooksByReleaseDateLteWithNameSeq(es *elasticsearch.Client, name string
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteLteWithNameSeq 根据Name、Seq从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteLteWithNameSeq 根据书名、seq过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // releaseDateGte time.Time release_date大于等于
@@ -5362,7 +5362,7 @@ func RangeBooksByReleaseDateGteLteWithNameSeq(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteWithSeq 根据Seq从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteWithSeq 根据seq过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -5376,7 +5376,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGtWithSeq 根据Seq从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGtWithSeq 根据seq过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // releaseDateGt time.Time release_date大于
@@ -5390,7 +5390,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLtWithSeq 根据Seq从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLtWithSeq 根据seq过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // releaseDateLt time.Time release_date小于
@@ -5404,7 +5404,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLteWithSeq 根据Seq从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLteWithSeq 根据seq过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -5418,7 +5418,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithSeq(es *elasticsearch.Client, seq
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteLteWithSeq 根据Seq从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteLteWithSeq 根据seq过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -5433,7 +5433,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteWithSeq 根据Seq从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteWithSeq 根据seq过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGt int64 page_count大于
 // releaseDateGte time.Time release_date大于等于
@@ -5447,7 +5447,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGtWithSeq 根据Seq从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGtWithSeq 根据seq过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGt int64 page_count大于
 // releaseDateGt time.Time release_date大于
@@ -5461,7 +5461,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLtWithSeq 根据Seq从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLtWithSeq 根据seq过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGt int64 page_count大于
 // releaseDateLt time.Time release_date小于
@@ -5475,7 +5475,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLteWithSeq 根据Seq从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLteWithSeq 根据seq过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGt int64 page_count大于
 // releaseDateLte time.Time release_date小于等于
@@ -5489,7 +5489,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteLteWithSeq 根据Seq从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteLteWithSeq 根据seq过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGt int64 page_count大于
 // releaseDateGte time.Time release_date大于等于
@@ -5504,7 +5504,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithSeq(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteWithSeq 根据Seq从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteWithSeq 根据seq过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountLt int64 page_count小于
 // releaseDateGte time.Time release_date大于等于
@@ -5518,7 +5518,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGtWithSeq 根据Seq从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGtWithSeq 根据seq过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountLt int64 page_count小于
 // releaseDateGt time.Time release_date大于
@@ -5532,7 +5532,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLtWithSeq 根据Seq从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLtWithSeq 根据seq过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountLt int64 page_count小于
 // releaseDateLt time.Time release_date小于
@@ -5546,7 +5546,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLteWithSeq 根据Seq从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLteWithSeq 根据seq过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountLt int64 page_count小于
 // releaseDateLte time.Time release_date小于等于
@@ -5560,7 +5560,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteLteWithSeq 根据Seq从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteLteWithSeq 根据seq过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountLt int64 page_count小于
 // releaseDateGte time.Time release_date大于等于
@@ -5575,7 +5575,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithSeq(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteWithSeq 根据Seq从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteWithSeq 根据seq过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountLte int64 page_count小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -5589,7 +5589,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGtWithSeq 根据Seq从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGtWithSeq 根据seq过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountLte int64 page_count小于等于
 // releaseDateGt time.Time release_date大于
@@ -5603,7 +5603,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLtWithSeq 根据Seq从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLtWithSeq 根据seq过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountLte int64 page_count小于等于
 // releaseDateLt time.Time release_date小于
@@ -5617,7 +5617,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLteWithSeq 根据Seq从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLteWithSeq 根据seq过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountLte int64 page_count小于等于
 // releaseDateLte time.Time release_date小于等于
@@ -5631,7 +5631,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithSeq(es *elasticsearch.Client, seq
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteLteWithSeq 根据Seq从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteLteWithSeq 根据seq过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountLte int64 page_count小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -5646,7 +5646,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteWithSeq 根据Seq从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteWithSeq 根据seq过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -5661,7 +5661,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGtWithSeq 根据Seq从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGtWithSeq 根据seq过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -5676,7 +5676,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithSeq(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLtWithSeq 根据Seq从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLtWithSeq 根据seq过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -5691,7 +5691,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithSeq(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLteWithSeq 根据Seq从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLteWithSeq 根据seq过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -5706,7 +5706,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteLteWithSeq 根据Seq从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteLteWithSeq 根据seq过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // pageCountGte int64 page_count大于等于
 // pageCountLte int64 page_count小于等于
@@ -5722,7 +5722,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteWithSeq 根据Seq从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteWithSeq 根据seq过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -5736,7 +5736,7 @@ func RangeBooksByPriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGtWithSeq 根据Seq从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGtWithSeq 根据seq过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGte float64 价格大于等于
 // releaseDateGt time.Time release_date大于
@@ -5750,7 +5750,7 @@ func RangeBooksByPriceGteReleaseDateGtWithSeq(es *elasticsearch.Client, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLtWithSeq 根据Seq从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLtWithSeq 根据seq过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGte float64 价格大于等于
 // releaseDateLt time.Time release_date小于
@@ -5764,7 +5764,7 @@ func RangeBooksByPriceGteReleaseDateLtWithSeq(es *elasticsearch.Client, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLteWithSeq 根据Seq从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLteWithSeq 根据seq过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGte float64 价格大于等于
 // releaseDateLte time.Time release_date小于等于
@@ -5778,7 +5778,7 @@ func RangeBooksByPriceGteReleaseDateLteWithSeq(es *elasticsearch.Client, seq str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteLteWithSeq 根据Seq从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteLteWithSeq 根据seq过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time release_date大于等于
@@ -5793,7 +5793,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteWithSeq 根据Seq从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteWithSeq 根据seq过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGt float64 价格大于
 // releaseDateGte time.Time release_date大于等于
@@ -5807,7 +5807,7 @@ func RangeBooksByPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGtWithSeq 根据Seq从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGtWithSeq 根据seq过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGt float64 价格大于
 // releaseDateGt time.Time release_date大于
@@ -5821,7 +5821,7 @@ func RangeBooksByPriceGtReleaseDateGtWithSeq(es *elasticsearch.Client, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLtWithSeq 根据Seq从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLtWithSeq 根据seq过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGt float64 价格大于
 // releaseDateLt time.Time release_date小于
@@ -5835,7 +5835,7 @@ func RangeBooksByPriceGtReleaseDateLtWithSeq(es *elasticsearch.Client, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLteWithSeq 根据Seq从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLteWithSeq 根据seq过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGt float64 价格大于
 // releaseDateLte time.Time release_date小于等于
@@ -5849,7 +5849,7 @@ func RangeBooksByPriceGtReleaseDateLteWithSeq(es *elasticsearch.Client, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteLteWithSeq 根据Seq从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteLteWithSeq 根据seq过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGt float64 价格大于
 // releaseDateGte time.Time release_date大于等于
@@ -5864,7 +5864,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteWithSeq 根据Seq从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteWithSeq 根据seq过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceLt float64 价格小于
 // releaseDateGte time.Time release_date大于等于
@@ -5878,7 +5878,7 @@ func RangeBooksByPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGtWithSeq 根据Seq从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGtWithSeq 根据seq过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
 // seq string seq
 // priceLt float64 价格小于
 // releaseDateGt time.Time release_date大于
@@ -5892,7 +5892,7 @@ func RangeBooksByPriceLtReleaseDateGtWithSeq(es *elasticsearch.Client, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLtWithSeq 根据Seq从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLtWithSeq 根据seq过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
 // seq string seq
 // priceLt float64 价格小于
 // releaseDateLt time.Time release_date小于
@@ -5906,7 +5906,7 @@ func RangeBooksByPriceLtReleaseDateLtWithSeq(es *elasticsearch.Client, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLteWithSeq 根据Seq从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLteWithSeq 根据seq过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceLt float64 价格小于
 // releaseDateLte time.Time release_date小于等于
@@ -5920,7 +5920,7 @@ func RangeBooksByPriceLtReleaseDateLteWithSeq(es *elasticsearch.Client, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteLteWithSeq 根据Seq从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteLteWithSeq 根据seq过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceLt float64 价格小于
 // releaseDateGte time.Time release_date大于等于
@@ -5935,7 +5935,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteWithSeq 根据Seq从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteWithSeq 根据seq过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -5949,7 +5949,7 @@ func RangeBooksByPriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGtWithSeq 根据Seq从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGtWithSeq 根据seq过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
 // seq string seq
 // priceLte float64 价格小于等于
 // releaseDateGt time.Time release_date大于
@@ -5963,7 +5963,7 @@ func RangeBooksByPriceLteReleaseDateGtWithSeq(es *elasticsearch.Client, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLtWithSeq 根据Seq从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLtWithSeq 根据seq过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
 // seq string seq
 // priceLte float64 价格小于等于
 // releaseDateLt time.Time release_date小于
@@ -5977,7 +5977,7 @@ func RangeBooksByPriceLteReleaseDateLtWithSeq(es *elasticsearch.Client, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLteWithSeq 根据Seq从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLteWithSeq 根据seq过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceLte float64 价格小于等于
 // releaseDateLte time.Time release_date小于等于
@@ -5991,7 +5991,7 @@ func RangeBooksByPriceLteReleaseDateLteWithSeq(es *elasticsearch.Client, seq str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteLteWithSeq 根据Seq从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteLteWithSeq 根据seq过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time release_date大于等于
@@ -6006,7 +6006,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteWithSeq 根据Seq从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteWithSeq 根据seq过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -6021,7 +6021,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGtWithSeq 根据Seq从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGtWithSeq 根据seq过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -6036,7 +6036,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLtWithSeq 根据Seq从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLtWithSeq 根据seq过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -6051,7 +6051,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLteWithSeq 根据Seq从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLteWithSeq 根据seq过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -6066,7 +6066,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteLteWithSeq 根据Seq从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteLteWithSeq 根据seq过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // seq string seq
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -6082,7 +6082,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithSeq(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteWithAuthorClassName 根据Author、Class、Name从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteWithAuthorClassName 根据author、class、书名过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -6100,7 +6100,7 @@ func RangeBooksByPageCountGteWithAuthorClassName(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtWithAuthorClassName 根据Author、Class、Name从Books查找page_count大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtWithAuthorClassName 根据author、class、书名过滤从Books查找page_count大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -6118,7 +6118,7 @@ func RangeBooksByPageCountGtWithAuthorClassName(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtWithAuthorClassName 根据Author、Class、Name从Books查找page_count小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtWithAuthorClassName 根据author、class、书名过滤从Books查找page_count小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -6136,7 +6136,7 @@ func RangeBooksByPageCountLtWithAuthorClassName(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteWithAuthorClassName 根据Author、Class、Name从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteWithAuthorClassName 根据author、class、书名过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -6154,7 +6154,7 @@ func RangeBooksByPageCountLteWithAuthorClassName(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteWithAuthorClassName 根据Author、Class、Name从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteWithAuthorClassName 根据author、class、书名过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -6173,7 +6173,7 @@ func RangeBooksByPageCountGteLteWithAuthorClassName(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteWithAuthorClassName 根据Author、Class、Name从Books查找价格大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteWithAuthorClassName 根据author、class、书名过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -6191,7 +6191,7 @@ func RangeBooksByPriceGteWithAuthorClassName(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtWithAuthorClassName 根据Author、Class、Name从Books查找价格大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtWithAuthorClassName 根据author、class、书名过滤从Books查找价格大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -6209,7 +6209,7 @@ func RangeBooksByPriceGtWithAuthorClassName(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtWithAuthorClassName 根据Author、Class、Name从Books查找价格小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtWithAuthorClassName 根据author、class、书名过滤从Books查找价格小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -6227,7 +6227,7 @@ func RangeBooksByPriceLtWithAuthorClassName(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteWithAuthorClassName 根据Author、Class、Name从Books查找价格小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteWithAuthorClassName 根据author、class、书名过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -6245,7 +6245,7 @@ func RangeBooksByPriceLteWithAuthorClassName(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteWithAuthorClassName 根据Author、Class、Name从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteWithAuthorClassName 根据author、class、书名过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -6264,7 +6264,7 @@ func RangeBooksByPriceGteLteWithAuthorClassName(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteWithAuthorClassName 根据Author、Class、Name从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteWithAuthorClassName 根据author、class、书名过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -6282,7 +6282,7 @@ func RangeBooksByReleaseDateGteWithAuthorClassName(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGtWithAuthorClassName 根据Author、Class、Name从Books查找release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGtWithAuthorClassName 根据author、class、书名过滤从Books查找release_date大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -6300,7 +6300,7 @@ func RangeBooksByReleaseDateGtWithAuthorClassName(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLtWithAuthorClassName 根据Author、Class、Name从Books查找release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLtWithAuthorClassName 根据author、class、书名过滤从Books查找release_date小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -6318,7 +6318,7 @@ func RangeBooksByReleaseDateLtWithAuthorClassName(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLteWithAuthorClassName 根据Author、Class、Name从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLteWithAuthorClassName 根据author、class、书名过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -6336,7 +6336,7 @@ func RangeBooksByReleaseDateLteWithAuthorClassName(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteLteWithAuthorClassName 根据Author、Class、Name从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteLteWithAuthorClassName 根据author、class、书名过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // name string 书名
@@ -6355,7 +6355,7 @@ func RangeBooksByReleaseDateGteLteWithAuthorClassName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteWithAuthorClass 根据Author、Class从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteWithAuthorClass 根据author、class过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGte int64 page_count大于等于
@@ -6373,7 +6373,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithAuthorClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGtWithAuthorClass 根据Author、Class从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGtWithAuthorClass 根据author、class过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGte int64 page_count大于等于
@@ -6391,7 +6391,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLtWithAuthorClass 根据Author、Class从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLtWithAuthorClass 根据author、class过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGte int64 page_count大于等于
@@ -6409,7 +6409,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLteWithAuthorClass 根据Author、Class从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLteWithAuthorClass 根据author、class过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGte int64 page_count大于等于
@@ -6427,7 +6427,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithAuthorClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteLteWithAuthorClass 根据Author、Class从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteLteWithAuthorClass 根据author、class过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGte int64 page_count大于等于
@@ -6446,7 +6446,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithAuthorClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteWithAuthorClass 根据Author、Class从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteWithAuthorClass 根据author、class过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGt int64 page_count大于
@@ -6464,7 +6464,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGtWithAuthorClass 根据Author、Class从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGtWithAuthorClass 根据author、class过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGt int64 page_count大于
@@ -6482,7 +6482,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLtWithAuthorClass 根据Author、Class从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLtWithAuthorClass 根据author、class过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGt int64 page_count大于
@@ -6500,7 +6500,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLteWithAuthorClass 根据Author、Class从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLteWithAuthorClass 根据author、class过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGt int64 page_count大于
@@ -6518,7 +6518,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteLteWithAuthorClass 根据Author、Class从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteLteWithAuthorClass 根据author、class过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGt int64 page_count大于
@@ -6537,7 +6537,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithAuthorClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteWithAuthorClass 根据Author、Class从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteWithAuthorClass 根据author、class过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountLt int64 page_count小于
@@ -6555,7 +6555,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGtWithAuthorClass 根据Author、Class从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGtWithAuthorClass 根据author、class过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountLt int64 page_count小于
@@ -6573,7 +6573,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLtWithAuthorClass 根据Author、Class从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLtWithAuthorClass 根据author、class过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountLt int64 page_count小于
@@ -6591,7 +6591,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLteWithAuthorClass 根据Author、Class从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLteWithAuthorClass 根据author、class过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountLt int64 page_count小于
@@ -6609,7 +6609,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteLteWithAuthorClass 根据Author、Class从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteLteWithAuthorClass 根据author、class过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountLt int64 page_count小于
@@ -6628,7 +6628,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithAuthorClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteWithAuthorClass 根据Author、Class从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteWithAuthorClass 根据author、class过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountLte int64 page_count小于等于
@@ -6646,7 +6646,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithAuthorClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGtWithAuthorClass 根据Author、Class从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGtWithAuthorClass 根据author、class过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountLte int64 page_count小于等于
@@ -6664,7 +6664,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLtWithAuthorClass 根据Author、Class从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLtWithAuthorClass 根据author、class过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountLte int64 page_count小于等于
@@ -6682,7 +6682,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLteWithAuthorClass 根据Author、Class从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLteWithAuthorClass 根据author、class过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountLte int64 page_count小于等于
@@ -6700,7 +6700,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithAuthorClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteLteWithAuthorClass 根据Author、Class从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteLteWithAuthorClass 根据author、class过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountLte int64 page_count小于等于
@@ -6719,7 +6719,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithAuthorClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteWithAuthorClass 根据Author、Class从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteWithAuthorClass 根据author、class过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGte int64 page_count大于等于
@@ -6738,7 +6738,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGtWithAuthorClass 根据Author、Class从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGtWithAuthorClass 根据author、class过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGte int64 page_count大于等于
@@ -6757,7 +6757,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithAuthorClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLtWithAuthorClass 根据Author、Class从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLtWithAuthorClass 根据author、class过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGte int64 page_count大于等于
@@ -6776,7 +6776,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithAuthorClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLteWithAuthorClass 根据Author、Class从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLteWithAuthorClass 根据author、class过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGte int64 page_count大于等于
@@ -6795,7 +6795,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithAuthorClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthorClass 根据Author、Class从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthorClass 根据author、class过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // pageCountGte int64 page_count大于等于
@@ -6815,7 +6815,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthorClass(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteWithAuthorClassSeq 根据Author、Class、Seq从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteWithAuthorClassSeq 根据author、class、seq过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -6833,7 +6833,7 @@ func RangeBooksByPageCountGteWithAuthorClassSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtWithAuthorClassSeq 根据Author、Class、Seq从Books查找page_count大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtWithAuthorClassSeq 根据author、class、seq过滤从Books查找page_count大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -6851,7 +6851,7 @@ func RangeBooksByPageCountGtWithAuthorClassSeq(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtWithAuthorClassSeq 根据Author、Class、Seq从Books查找page_count小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtWithAuthorClassSeq 根据author、class、seq过滤从Books查找page_count小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -6869,7 +6869,7 @@ func RangeBooksByPageCountLtWithAuthorClassSeq(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteWithAuthorClassSeq 根据Author、Class、Seq从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteWithAuthorClassSeq 根据author、class、seq过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -6887,7 +6887,7 @@ func RangeBooksByPageCountLteWithAuthorClassSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteWithAuthorClassSeq 根据Author、Class、Seq从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteWithAuthorClassSeq 根据author、class、seq过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -6906,7 +6906,7 @@ func RangeBooksByPageCountGteLteWithAuthorClassSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteWithAuthorClass 根据Author、Class从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteWithAuthorClass 根据author、class过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGte float64 价格大于等于
@@ -6924,7 +6924,7 @@ func RangeBooksByPriceGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGtWithAuthorClass 根据Author、Class从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGtWithAuthorClass 根据author、class过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGte float64 价格大于等于
@@ -6942,7 +6942,7 @@ func RangeBooksByPriceGteReleaseDateGtWithAuthorClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLtWithAuthorClass 根据Author、Class从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLtWithAuthorClass 根据author、class过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGte float64 价格大于等于
@@ -6960,7 +6960,7 @@ func RangeBooksByPriceGteReleaseDateLtWithAuthorClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLteWithAuthorClass 根据Author、Class从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLteWithAuthorClass 根据author、class过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGte float64 价格大于等于
@@ -6978,7 +6978,7 @@ func RangeBooksByPriceGteReleaseDateLteWithAuthorClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteLteWithAuthorClass 根据Author、Class从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteLteWithAuthorClass 根据author、class过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGte float64 价格大于等于
@@ -6997,7 +6997,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteWithAuthorClass 根据Author、Class从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteWithAuthorClass 根据author、class过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGt float64 价格大于
@@ -7015,7 +7015,7 @@ func RangeBooksByPriceGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGtWithAuthorClass 根据Author、Class从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGtWithAuthorClass 根据author、class过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGt float64 价格大于
@@ -7033,7 +7033,7 @@ func RangeBooksByPriceGtReleaseDateGtWithAuthorClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLtWithAuthorClass 根据Author、Class从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLtWithAuthorClass 根据author、class过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGt float64 价格大于
@@ -7051,7 +7051,7 @@ func RangeBooksByPriceGtReleaseDateLtWithAuthorClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLteWithAuthorClass 根据Author、Class从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLteWithAuthorClass 根据author、class过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGt float64 价格大于
@@ -7069,7 +7069,7 @@ func RangeBooksByPriceGtReleaseDateLteWithAuthorClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteLteWithAuthorClass 根据Author、Class从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteLteWithAuthorClass 根据author、class过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGt float64 价格大于
@@ -7088,7 +7088,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteWithAuthorClass 根据Author、Class从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteWithAuthorClass 根据author、class过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceLt float64 价格小于
@@ -7106,7 +7106,7 @@ func RangeBooksByPriceLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGtWithAuthorClass 根据Author、Class从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGtWithAuthorClass 根据author、class过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceLt float64 价格小于
@@ -7124,7 +7124,7 @@ func RangeBooksByPriceLtReleaseDateGtWithAuthorClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLtWithAuthorClass 根据Author、Class从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLtWithAuthorClass 根据author、class过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceLt float64 价格小于
@@ -7142,7 +7142,7 @@ func RangeBooksByPriceLtReleaseDateLtWithAuthorClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLteWithAuthorClass 根据Author、Class从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLteWithAuthorClass 根据author、class过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceLt float64 价格小于
@@ -7160,7 +7160,7 @@ func RangeBooksByPriceLtReleaseDateLteWithAuthorClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteLteWithAuthorClass 根据Author、Class从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteLteWithAuthorClass 根据author、class过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceLt float64 价格小于
@@ -7179,7 +7179,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteWithAuthorClass 根据Author、Class从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteWithAuthorClass 根据author、class过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceLte float64 价格小于等于
@@ -7197,7 +7197,7 @@ func RangeBooksByPriceLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGtWithAuthorClass 根据Author、Class从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGtWithAuthorClass 根据author、class过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceLte float64 价格小于等于
@@ -7215,7 +7215,7 @@ func RangeBooksByPriceLteReleaseDateGtWithAuthorClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLtWithAuthorClass 根据Author、Class从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLtWithAuthorClass 根据author、class过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceLte float64 价格小于等于
@@ -7233,7 +7233,7 @@ func RangeBooksByPriceLteReleaseDateLtWithAuthorClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLteWithAuthorClass 根据Author、Class从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLteWithAuthorClass 根据author、class过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceLte float64 价格小于等于
@@ -7251,7 +7251,7 @@ func RangeBooksByPriceLteReleaseDateLteWithAuthorClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteLteWithAuthorClass 根据Author、Class从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteLteWithAuthorClass 根据author、class过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceLte float64 价格小于等于
@@ -7270,7 +7270,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteWithAuthorClass 根据Author、Class从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteWithAuthorClass 根据author、class过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGte float64 价格大于等于
@@ -7289,7 +7289,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGtWithAuthorClass 根据Author、Class从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGtWithAuthorClass 根据author、class过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGte float64 价格大于等于
@@ -7308,7 +7308,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLtWithAuthorClass 根据Author、Class从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLtWithAuthorClass 根据author、class过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGte float64 价格大于等于
@@ -7327,7 +7327,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLteWithAuthorClass 根据Author、Class从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLteWithAuthorClass 根据author、class过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGte float64 价格大于等于
@@ -7346,7 +7346,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteLteWithAuthorClass 根据Author、Class从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteLteWithAuthorClass 根据author、class过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // priceGte float64 价格大于等于
@@ -7366,7 +7366,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithAuthorClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteWithAuthorClassSeq 根据Author、Class、Seq从Books查找价格大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteWithAuthorClassSeq 根据author、class、seq过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -7384,7 +7384,7 @@ func RangeBooksByPriceGteWithAuthorClassSeq(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtWithAuthorClassSeq 根据Author、Class、Seq从Books查找价格大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtWithAuthorClassSeq 根据author、class、seq过滤从Books查找价格大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -7402,7 +7402,7 @@ func RangeBooksByPriceGtWithAuthorClassSeq(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtWithAuthorClassSeq 根据Author、Class、Seq从Books查找价格小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtWithAuthorClassSeq 根据author、class、seq过滤从Books查找价格小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -7420,7 +7420,7 @@ func RangeBooksByPriceLtWithAuthorClassSeq(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteWithAuthorClassSeq 根据Author、Class、Seq从Books查找价格小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteWithAuthorClassSeq 根据author、class、seq过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -7438,7 +7438,7 @@ func RangeBooksByPriceLteWithAuthorClassSeq(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteWithAuthorClassSeq 根据Author、Class、Seq从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteWithAuthorClassSeq 根据author、class、seq过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -7457,7 +7457,7 @@ func RangeBooksByPriceGteLteWithAuthorClassSeq(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteWithAuthorClassSeq 根据Author、Class、Seq从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteWithAuthorClassSeq 根据author、class、seq过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -7475,7 +7475,7 @@ func RangeBooksByReleaseDateGteWithAuthorClassSeq(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGtWithAuthorClassSeq 根据Author、Class、Seq从Books查找release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGtWithAuthorClassSeq 根据author、class、seq过滤从Books查找release_date大于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -7493,7 +7493,7 @@ func RangeBooksByReleaseDateGtWithAuthorClassSeq(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLtWithAuthorClassSeq 根据Author、Class、Seq从Books查找release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLtWithAuthorClassSeq 根据author、class、seq过滤从Books查找release_date小于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -7511,7 +7511,7 @@ func RangeBooksByReleaseDateLtWithAuthorClassSeq(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLteWithAuthorClassSeq 根据Author、Class、Seq从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLteWithAuthorClassSeq 根据author、class、seq过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -7529,7 +7529,7 @@ func RangeBooksByReleaseDateLteWithAuthorClassSeq(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteLteWithAuthorClassSeq 根据Author、Class、Seq从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteLteWithAuthorClassSeq 根据author、class、seq过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // class string class
 // seq string seq
@@ -7548,7 +7548,7 @@ func RangeBooksByReleaseDateGteLteWithAuthorClassSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteWithAuthorName 根据Author、Name从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteWithAuthorName 根据author、书名过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -7566,7 +7566,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithAuthorName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGtWithAuthorName 根据Author、Name从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGtWithAuthorName 根据author、书名过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -7584,7 +7584,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLtWithAuthorName 根据Author、Name从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLtWithAuthorName 根据author、书名过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -7602,7 +7602,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLteWithAuthorName 根据Author、Name从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLteWithAuthorName 根据author、书名过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -7620,7 +7620,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithAuthorName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteLteWithAuthorName 根据Author、Name从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteLteWithAuthorName 根据author、书名过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -7639,7 +7639,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithAuthorName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteWithAuthorName 根据Author、Name从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteWithAuthorName 根据author、书名过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGt int64 page_count大于
@@ -7657,7 +7657,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGtWithAuthorName 根据Author、Name从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGtWithAuthorName 根据author、书名过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGt int64 page_count大于
@@ -7675,7 +7675,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLtWithAuthorName 根据Author、Name从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLtWithAuthorName 根据author、书名过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGt int64 page_count大于
@@ -7693,7 +7693,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLteWithAuthorName 根据Author、Name从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLteWithAuthorName 根据author、书名过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGt int64 page_count大于
@@ -7711,7 +7711,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteLteWithAuthorName 根据Author、Name从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteLteWithAuthorName 根据author、书名过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGt int64 page_count大于
@@ -7730,7 +7730,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithAuthorName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteWithAuthorName 根据Author、Name从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteWithAuthorName 根据author、书名过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountLt int64 page_count小于
@@ -7748,7 +7748,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGtWithAuthorName 根据Author、Name从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGtWithAuthorName 根据author、书名过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountLt int64 page_count小于
@@ -7766,7 +7766,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLtWithAuthorName 根据Author、Name从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLtWithAuthorName 根据author、书名过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountLt int64 page_count小于
@@ -7784,7 +7784,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLteWithAuthorName 根据Author、Name从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLteWithAuthorName 根据author、书名过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountLt int64 page_count小于
@@ -7802,7 +7802,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteLteWithAuthorName 根据Author、Name从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteLteWithAuthorName 根据author、书名过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountLt int64 page_count小于
@@ -7821,7 +7821,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithAuthorName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteWithAuthorName 根据Author、Name从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteWithAuthorName 根据author、书名过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountLte int64 page_count小于等于
@@ -7839,7 +7839,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithAuthorName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGtWithAuthorName 根据Author、Name从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGtWithAuthorName 根据author、书名过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountLte int64 page_count小于等于
@@ -7857,7 +7857,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLtWithAuthorName 根据Author、Name从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLtWithAuthorName 根据author、书名过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountLte int64 page_count小于等于
@@ -7875,7 +7875,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLteWithAuthorName 根据Author、Name从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLteWithAuthorName 根据author、书名过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountLte int64 page_count小于等于
@@ -7893,7 +7893,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithAuthorName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteLteWithAuthorName 根据Author、Name从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteLteWithAuthorName 根据author、书名过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountLte int64 page_count小于等于
@@ -7912,7 +7912,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithAuthorName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteWithAuthorName 根据Author、Name从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteWithAuthorName 根据author、书名过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -7931,7 +7931,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithAuthorName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGtWithAuthorName 根据Author、Name从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGtWithAuthorName 根据author、书名过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -7950,7 +7950,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithAuthorName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLtWithAuthorName 根据Author、Name从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLtWithAuthorName 根据author、书名过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -7969,7 +7969,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithAuthorName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLteWithAuthorName 根据Author、Name从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLteWithAuthorName 根据author、书名过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -7988,7 +7988,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithAuthorName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthorName 根据Author、Name从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthorName 根据author、书名过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -8008,7 +8008,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthorName(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteWithAuthorNameSeq 根据Author、Name、Seq从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteWithAuthorNameSeq 根据author、书名、seq过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -8026,7 +8026,7 @@ func RangeBooksByPageCountGteWithAuthorNameSeq(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtWithAuthorNameSeq 根据Author、Name、Seq从Books查找page_count大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtWithAuthorNameSeq 根据author、书名、seq过滤从Books查找page_count大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -8044,7 +8044,7 @@ func RangeBooksByPageCountGtWithAuthorNameSeq(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtWithAuthorNameSeq 根据Author、Name、Seq从Books查找page_count小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtWithAuthorNameSeq 根据author、书名、seq过滤从Books查找page_count小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -8062,7 +8062,7 @@ func RangeBooksByPageCountLtWithAuthorNameSeq(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteWithAuthorNameSeq 根据Author、Name、Seq从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteWithAuthorNameSeq 根据author、书名、seq过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -8080,7 +8080,7 @@ func RangeBooksByPageCountLteWithAuthorNameSeq(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteWithAuthorNameSeq 根据Author、Name、Seq从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteWithAuthorNameSeq 根据author、书名、seq过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -8099,7 +8099,7 @@ func RangeBooksByPageCountGteLteWithAuthorNameSeq(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteWithAuthorName 根据Author、Name从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteWithAuthorName 根据author、书名过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGte float64 价格大于等于
@@ -8117,7 +8117,7 @@ func RangeBooksByPriceGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGtWithAuthorName 根据Author、Name从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGtWithAuthorName 根据author、书名过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGte float64 价格大于等于
@@ -8135,7 +8135,7 @@ func RangeBooksByPriceGteReleaseDateGtWithAuthorName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLtWithAuthorName 根据Author、Name从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLtWithAuthorName 根据author、书名过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGte float64 价格大于等于
@@ -8153,7 +8153,7 @@ func RangeBooksByPriceGteReleaseDateLtWithAuthorName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLteWithAuthorName 根据Author、Name从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLteWithAuthorName 根据author、书名过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGte float64 价格大于等于
@@ -8171,7 +8171,7 @@ func RangeBooksByPriceGteReleaseDateLteWithAuthorName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteLteWithAuthorName 根据Author、Name从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteLteWithAuthorName 根据author、书名过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGte float64 价格大于等于
@@ -8190,7 +8190,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteWithAuthorName 根据Author、Name从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteWithAuthorName 根据author、书名过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGt float64 价格大于
@@ -8208,7 +8208,7 @@ func RangeBooksByPriceGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGtWithAuthorName 根据Author、Name从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGtWithAuthorName 根据author、书名过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGt float64 价格大于
@@ -8226,7 +8226,7 @@ func RangeBooksByPriceGtReleaseDateGtWithAuthorName(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLtWithAuthorName 根据Author、Name从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLtWithAuthorName 根据author、书名过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGt float64 价格大于
@@ -8244,7 +8244,7 @@ func RangeBooksByPriceGtReleaseDateLtWithAuthorName(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLteWithAuthorName 根据Author、Name从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLteWithAuthorName 根据author、书名过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGt float64 价格大于
@@ -8262,7 +8262,7 @@ func RangeBooksByPriceGtReleaseDateLteWithAuthorName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteLteWithAuthorName 根据Author、Name从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteLteWithAuthorName 根据author、书名过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGt float64 价格大于
@@ -8281,7 +8281,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteWithAuthorName 根据Author、Name从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteWithAuthorName 根据author、书名过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceLt float64 价格小于
@@ -8299,7 +8299,7 @@ func RangeBooksByPriceLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGtWithAuthorName 根据Author、Name从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGtWithAuthorName 根据author、书名过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceLt float64 价格小于
@@ -8317,7 +8317,7 @@ func RangeBooksByPriceLtReleaseDateGtWithAuthorName(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLtWithAuthorName 根据Author、Name从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLtWithAuthorName 根据author、书名过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceLt float64 价格小于
@@ -8335,7 +8335,7 @@ func RangeBooksByPriceLtReleaseDateLtWithAuthorName(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLteWithAuthorName 根据Author、Name从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLteWithAuthorName 根据author、书名过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceLt float64 价格小于
@@ -8353,7 +8353,7 @@ func RangeBooksByPriceLtReleaseDateLteWithAuthorName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteLteWithAuthorName 根据Author、Name从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteLteWithAuthorName 根据author、书名过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceLt float64 价格小于
@@ -8372,7 +8372,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteWithAuthorName 根据Author、Name从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteWithAuthorName 根据author、书名过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceLte float64 价格小于等于
@@ -8390,7 +8390,7 @@ func RangeBooksByPriceLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGtWithAuthorName 根据Author、Name从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGtWithAuthorName 根据author、书名过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceLte float64 价格小于等于
@@ -8408,7 +8408,7 @@ func RangeBooksByPriceLteReleaseDateGtWithAuthorName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLtWithAuthorName 根据Author、Name从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLtWithAuthorName 根据author、书名过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceLte float64 价格小于等于
@@ -8426,7 +8426,7 @@ func RangeBooksByPriceLteReleaseDateLtWithAuthorName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLteWithAuthorName 根据Author、Name从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLteWithAuthorName 根据author、书名过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceLte float64 价格小于等于
@@ -8444,7 +8444,7 @@ func RangeBooksByPriceLteReleaseDateLteWithAuthorName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteLteWithAuthorName 根据Author、Name从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteLteWithAuthorName 根据author、书名过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceLte float64 价格小于等于
@@ -8463,7 +8463,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteWithAuthorName 根据Author、Name从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteWithAuthorName 根据author、书名过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGte float64 价格大于等于
@@ -8482,7 +8482,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGtWithAuthorName 根据Author、Name从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGtWithAuthorName 根据author、书名过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGte float64 价格大于等于
@@ -8501,7 +8501,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLtWithAuthorName 根据Author、Name从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLtWithAuthorName 根据author、书名过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGte float64 价格大于等于
@@ -8520,7 +8520,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLteWithAuthorName 根据Author、Name从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLteWithAuthorName 根据author、书名过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGte float64 价格大于等于
@@ -8539,7 +8539,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteLteWithAuthorName 根据Author、Name从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteLteWithAuthorName 根据author、书名过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // priceGte float64 价格大于等于
@@ -8559,7 +8559,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithAuthorName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteWithAuthorNameSeq 根据Author、Name、Seq从Books查找价格大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteWithAuthorNameSeq 根据author、书名、seq过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -8577,7 +8577,7 @@ func RangeBooksByPriceGteWithAuthorNameSeq(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtWithAuthorNameSeq 根据Author、Name、Seq从Books查找价格大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtWithAuthorNameSeq 根据author、书名、seq过滤从Books查找价格大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -8595,7 +8595,7 @@ func RangeBooksByPriceGtWithAuthorNameSeq(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtWithAuthorNameSeq 根据Author、Name、Seq从Books查找价格小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtWithAuthorNameSeq 根据author、书名、seq过滤从Books查找价格小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -8613,7 +8613,7 @@ func RangeBooksByPriceLtWithAuthorNameSeq(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteWithAuthorNameSeq 根据Author、Name、Seq从Books查找价格小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteWithAuthorNameSeq 根据author、书名、seq过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -8631,7 +8631,7 @@ func RangeBooksByPriceLteWithAuthorNameSeq(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteWithAuthorNameSeq 根据Author、Name、Seq从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteWithAuthorNameSeq 根据author、书名、seq过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -8650,7 +8650,7 @@ func RangeBooksByPriceGteLteWithAuthorNameSeq(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteWithAuthorNameSeq 根据Author、Name、Seq从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteWithAuthorNameSeq 根据author、书名、seq过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -8668,7 +8668,7 @@ func RangeBooksByReleaseDateGteWithAuthorNameSeq(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGtWithAuthorNameSeq 根据Author、Name、Seq从Books查找release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGtWithAuthorNameSeq 根据author、书名、seq过滤从Books查找release_date大于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -8686,7 +8686,7 @@ func RangeBooksByReleaseDateGtWithAuthorNameSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLtWithAuthorNameSeq 根据Author、Name、Seq从Books查找release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLtWithAuthorNameSeq 根据author、书名、seq过滤从Books查找release_date小于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -8704,7 +8704,7 @@ func RangeBooksByReleaseDateLtWithAuthorNameSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLteWithAuthorNameSeq 根据Author、Name、Seq从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLteWithAuthorNameSeq 根据author、书名、seq过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -8722,7 +8722,7 @@ func RangeBooksByReleaseDateLteWithAuthorNameSeq(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteLteWithAuthorNameSeq 根据Author、Name、Seq从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteLteWithAuthorNameSeq 根据author、书名、seq过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // name string 书名
 // seq string seq
@@ -8741,7 +8741,7 @@ func RangeBooksByReleaseDateGteLteWithAuthorNameSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteWithAuthorSeq 根据author、seq过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -8759,7 +8759,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGtWithAuthorSeq 根据Author、Seq从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGtWithAuthorSeq 根据author、seq过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -8777,7 +8777,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLtWithAuthorSeq 根据Author、Seq从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLtWithAuthorSeq 根据author、seq过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -8795,7 +8795,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLteWithAuthorSeq 根据Author、Seq从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLteWithAuthorSeq 根据author、seq过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -8813,7 +8813,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithAuthorSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteLteWithAuthorSeq 根据Author、Seq从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteLteWithAuthorSeq 根据author、seq过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -8832,7 +8832,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteWithAuthorSeq 根据author、seq过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -8850,7 +8850,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGtWithAuthorSeq 根据Author、Seq从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGtWithAuthorSeq 根据author、seq过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -8868,7 +8868,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLtWithAuthorSeq 根据Author、Seq从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLtWithAuthorSeq 根据author、seq过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -8886,7 +8886,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLteWithAuthorSeq 根据Author、Seq从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLteWithAuthorSeq 根据author、seq过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -8904,7 +8904,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteLteWithAuthorSeq 根据Author、Seq从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteLteWithAuthorSeq 根据author、seq过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -8923,7 +8923,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteWithAuthorSeq 根据author、seq过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -8941,7 +8941,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGtWithAuthorSeq 根据Author、Seq从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGtWithAuthorSeq 根据author、seq过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -8959,7 +8959,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLtWithAuthorSeq 根据Author、Seq从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLtWithAuthorSeq 根据author、seq过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -8977,7 +8977,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLteWithAuthorSeq 根据Author、Seq从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLteWithAuthorSeq 根据author、seq过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -8995,7 +8995,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteLteWithAuthorSeq 根据Author、Seq从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteLteWithAuthorSeq 根据author、seq过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -9014,7 +9014,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteWithAuthorSeq 根据author、seq过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -9032,7 +9032,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGtWithAuthorSeq 根据Author、Seq从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGtWithAuthorSeq 根据author、seq过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -9050,7 +9050,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLtWithAuthorSeq 根据Author、Seq从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLtWithAuthorSeq 根据author、seq过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -9068,7 +9068,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLteWithAuthorSeq 根据Author、Seq从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLteWithAuthorSeq 根据author、seq过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -9086,7 +9086,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithAuthorSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteLteWithAuthorSeq 根据Author、Seq从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteLteWithAuthorSeq 根据author、seq过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -9105,7 +9105,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteWithAuthorSeq 根据author、seq过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -9124,7 +9124,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGtWithAuthorSeq 根据Author、Seq从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGtWithAuthorSeq 根据author、seq过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -9143,7 +9143,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithAuthorSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLtWithAuthorSeq 根据Author、Seq从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLtWithAuthorSeq 根据author、seq过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -9162,7 +9162,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithAuthorSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLteWithAuthorSeq 根据Author、Seq从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLteWithAuthorSeq 根据author、seq过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -9181,7 +9181,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithAuthorSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthorSeq 根据Author、Seq从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthorSeq 根据author、seq过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -9201,7 +9201,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithAuthorSeq(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteWithAuthorSeq 根据author、seq过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGte float64 价格大于等于
@@ -9219,7 +9219,7 @@ func RangeBooksByPriceGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGtWithAuthorSeq 根据Author、Seq从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGtWithAuthorSeq 根据author、seq过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGte float64 价格大于等于
@@ -9237,7 +9237,7 @@ func RangeBooksByPriceGteReleaseDateGtWithAuthorSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLtWithAuthorSeq 根据Author、Seq从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLtWithAuthorSeq 根据author、seq过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGte float64 价格大于等于
@@ -9255,7 +9255,7 @@ func RangeBooksByPriceGteReleaseDateLtWithAuthorSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLteWithAuthorSeq 根据Author、Seq从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLteWithAuthorSeq 根据author、seq过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGte float64 价格大于等于
@@ -9273,7 +9273,7 @@ func RangeBooksByPriceGteReleaseDateLteWithAuthorSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteLteWithAuthorSeq 根据Author、Seq从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteLteWithAuthorSeq 根据author、seq过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGte float64 价格大于等于
@@ -9292,7 +9292,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteWithAuthorSeq 根据author、seq过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGt float64 价格大于
@@ -9310,7 +9310,7 @@ func RangeBooksByPriceGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGtWithAuthorSeq 根据Author、Seq从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGtWithAuthorSeq 根据author、seq过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGt float64 价格大于
@@ -9328,7 +9328,7 @@ func RangeBooksByPriceGtReleaseDateGtWithAuthorSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLtWithAuthorSeq 根据Author、Seq从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLtWithAuthorSeq 根据author、seq过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGt float64 价格大于
@@ -9346,7 +9346,7 @@ func RangeBooksByPriceGtReleaseDateLtWithAuthorSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLteWithAuthorSeq 根据Author、Seq从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLteWithAuthorSeq 根据author、seq过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGt float64 价格大于
@@ -9364,7 +9364,7 @@ func RangeBooksByPriceGtReleaseDateLteWithAuthorSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteLteWithAuthorSeq 根据Author、Seq从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteLteWithAuthorSeq 根据author、seq过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGt float64 价格大于
@@ -9383,7 +9383,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteWithAuthorSeq 根据author、seq过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceLt float64 价格小于
@@ -9401,7 +9401,7 @@ func RangeBooksByPriceLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGtWithAuthorSeq 根据Author、Seq从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGtWithAuthorSeq 根据author、seq过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceLt float64 价格小于
@@ -9419,7 +9419,7 @@ func RangeBooksByPriceLtReleaseDateGtWithAuthorSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLtWithAuthorSeq 根据Author、Seq从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLtWithAuthorSeq 根据author、seq过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceLt float64 价格小于
@@ -9437,7 +9437,7 @@ func RangeBooksByPriceLtReleaseDateLtWithAuthorSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLteWithAuthorSeq 根据Author、Seq从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLteWithAuthorSeq 根据author、seq过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceLt float64 价格小于
@@ -9455,7 +9455,7 @@ func RangeBooksByPriceLtReleaseDateLteWithAuthorSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteLteWithAuthorSeq 根据Author、Seq从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteLteWithAuthorSeq 根据author、seq过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceLt float64 价格小于
@@ -9474,7 +9474,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteWithAuthorSeq 根据author、seq过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceLte float64 价格小于等于
@@ -9492,7 +9492,7 @@ func RangeBooksByPriceLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGtWithAuthorSeq 根据Author、Seq从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGtWithAuthorSeq 根据author、seq过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceLte float64 价格小于等于
@@ -9510,7 +9510,7 @@ func RangeBooksByPriceLteReleaseDateGtWithAuthorSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLtWithAuthorSeq 根据Author、Seq从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLtWithAuthorSeq 根据author、seq过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceLte float64 价格小于等于
@@ -9528,7 +9528,7 @@ func RangeBooksByPriceLteReleaseDateLtWithAuthorSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLteWithAuthorSeq 根据Author、Seq从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLteWithAuthorSeq 根据author、seq过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceLte float64 价格小于等于
@@ -9546,7 +9546,7 @@ func RangeBooksByPriceLteReleaseDateLteWithAuthorSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteLteWithAuthorSeq 根据Author、Seq从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteLteWithAuthorSeq 根据author、seq过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceLte float64 价格小于等于
@@ -9565,7 +9565,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteWithAuthorSeq 根据Author、Seq从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteWithAuthorSeq 根据author、seq过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGte float64 价格大于等于
@@ -9584,7 +9584,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGtWithAuthorSeq 根据Author、Seq从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGtWithAuthorSeq 根据author、seq过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGte float64 价格大于等于
@@ -9603,7 +9603,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLtWithAuthorSeq 根据Author、Seq从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLtWithAuthorSeq 根据author、seq过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGte float64 价格大于等于
@@ -9622,7 +9622,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLteWithAuthorSeq 根据Author、Seq从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLteWithAuthorSeq 根据author、seq过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGte float64 价格大于等于
@@ -9641,7 +9641,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteLteWithAuthorSeq 根据Author、Seq从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteLteWithAuthorSeq 根据author、seq过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // author string author
 // seq string seq
 // priceGte float64 价格大于等于
@@ -9661,7 +9661,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithAuthorSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteWithClassName 根据Class、Name从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteWithClassName 根据class、书名过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -9679,7 +9679,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithClassName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGtWithClassName 根据Class、Name从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGtWithClassName 根据class、书名过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -9697,7 +9697,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLtWithClassName 根据Class、Name从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLtWithClassName 根据class、书名过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -9715,7 +9715,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLteWithClassName 根据Class、Name从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLteWithClassName 根据class、书名过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -9733,7 +9733,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithClassName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteLteWithClassName 根据Class、Name从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteLteWithClassName 根据class、书名过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -9752,7 +9752,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithClassName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteWithClassName 根据Class、Name从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteWithClassName 根据class、书名过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGt int64 page_count大于
@@ -9770,7 +9770,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGtWithClassName 根据Class、Name从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGtWithClassName 根据class、书名过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGt int64 page_count大于
@@ -9788,7 +9788,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLtWithClassName 根据Class、Name从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLtWithClassName 根据class、书名过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGt int64 page_count大于
@@ -9806,7 +9806,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLteWithClassName 根据Class、Name从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLteWithClassName 根据class、书名过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGt int64 page_count大于
@@ -9824,7 +9824,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteLteWithClassName 根据Class、Name从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteLteWithClassName 根据class、书名过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGt int64 page_count大于
@@ -9843,7 +9843,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithClassName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteWithClassName 根据Class、Name从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteWithClassName 根据class、书名过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountLt int64 page_count小于
@@ -9861,7 +9861,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGtWithClassName 根据Class、Name从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGtWithClassName 根据class、书名过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountLt int64 page_count小于
@@ -9879,7 +9879,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLtWithClassName 根据Class、Name从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLtWithClassName 根据class、书名过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountLt int64 page_count小于
@@ -9897,7 +9897,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLteWithClassName 根据Class、Name从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLteWithClassName 根据class、书名过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountLt int64 page_count小于
@@ -9915,7 +9915,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteLteWithClassName 根据Class、Name从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteLteWithClassName 根据class、书名过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountLt int64 page_count小于
@@ -9934,7 +9934,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithClassName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteWithClassName 根据Class、Name从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteWithClassName 根据class、书名过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountLte int64 page_count小于等于
@@ -9952,7 +9952,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithClassName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGtWithClassName 根据Class、Name从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGtWithClassName 根据class、书名过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountLte int64 page_count小于等于
@@ -9970,7 +9970,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLtWithClassName 根据Class、Name从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLtWithClassName 根据class、书名过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountLte int64 page_count小于等于
@@ -9988,7 +9988,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLteWithClassName 根据Class、Name从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLteWithClassName 根据class、书名过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountLte int64 page_count小于等于
@@ -10006,7 +10006,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithClassName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteLteWithClassName 根据Class、Name从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteLteWithClassName 根据class、书名过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountLte int64 page_count小于等于
@@ -10025,7 +10025,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithClassName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteWithClassName 根据Class、Name从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteWithClassName 根据class、书名过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -10044,7 +10044,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithClassName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGtWithClassName 根据Class、Name从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGtWithClassName 根据class、书名过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -10063,7 +10063,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithClassName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLtWithClassName 根据Class、Name从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLtWithClassName 根据class、书名过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -10082,7 +10082,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithClassName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLteWithClassName 根据Class、Name从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLteWithClassName 根据class、书名过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -10101,7 +10101,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithClassName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteLteWithClassName 根据Class、Name从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteLteWithClassName 根据class、书名过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // pageCountGte int64 page_count大于等于
@@ -10121,7 +10121,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithClassName(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteWithClassNameSeq 根据Class、Name、Seq从Books查找page_count大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteWithClassNameSeq 根据class、书名、seq过滤从Books查找page_count大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -10139,7 +10139,7 @@ func RangeBooksByPageCountGteWithClassNameSeq(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtWithClassNameSeq 根据Class、Name、Seq从Books查找page_count大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtWithClassNameSeq 根据class、书名、seq过滤从Books查找page_count大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -10157,7 +10157,7 @@ func RangeBooksByPageCountGtWithClassNameSeq(es *elasticsearch.Client, class str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtWithClassNameSeq 根据Class、Name、Seq从Books查找page_count小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtWithClassNameSeq 根据class、书名、seq过滤从Books查找page_count小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -10175,7 +10175,7 @@ func RangeBooksByPageCountLtWithClassNameSeq(es *elasticsearch.Client, class str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteWithClassNameSeq 根据Class、Name、Seq从Books查找page_count小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteWithClassNameSeq 根据class、书名、seq过滤从Books查找page_count小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -10193,7 +10193,7 @@ func RangeBooksByPageCountLteWithClassNameSeq(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteWithClassNameSeq 根据Class、Name、Seq从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteWithClassNameSeq 根据class、书名、seq过滤从Books查找page_count大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -10212,7 +10212,7 @@ func RangeBooksByPageCountGteLteWithClassNameSeq(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteWithClassName 根据Class、Name从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteWithClassName 根据class、书名过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGte float64 价格大于等于
@@ -10230,7 +10230,7 @@ func RangeBooksByPriceGteReleaseDateGteWithClassName(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGtWithClassName 根据Class、Name从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGtWithClassName 根据class、书名过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGte float64 价格大于等于
@@ -10248,7 +10248,7 @@ func RangeBooksByPriceGteReleaseDateGtWithClassName(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLtWithClassName 根据Class、Name从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLtWithClassName 根据class、书名过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGte float64 价格大于等于
@@ -10266,7 +10266,7 @@ func RangeBooksByPriceGteReleaseDateLtWithClassName(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLteWithClassName 根据Class、Name从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLteWithClassName 根据class、书名过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGte float64 价格大于等于
@@ -10284,7 +10284,7 @@ func RangeBooksByPriceGteReleaseDateLteWithClassName(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteLteWithClassName 根据Class、Name从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteLteWithClassName 根据class、书名过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGte float64 价格大于等于
@@ -10303,7 +10303,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteWithClassName 根据Class、Name从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteWithClassName 根据class、书名过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGt float64 价格大于
@@ -10321,7 +10321,7 @@ func RangeBooksByPriceGtReleaseDateGteWithClassName(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGtWithClassName 根据Class、Name从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGtWithClassName 根据class、书名过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGt float64 价格大于
@@ -10339,7 +10339,7 @@ func RangeBooksByPriceGtReleaseDateGtWithClassName(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLtWithClassName 根据Class、Name从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLtWithClassName 根据class、书名过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGt float64 价格大于
@@ -10357,7 +10357,7 @@ func RangeBooksByPriceGtReleaseDateLtWithClassName(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLteWithClassName 根据Class、Name从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLteWithClassName 根据class、书名过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGt float64 价格大于
@@ -10375,7 +10375,7 @@ func RangeBooksByPriceGtReleaseDateLteWithClassName(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteLteWithClassName 根据Class、Name从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteLteWithClassName 根据class、书名过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGt float64 价格大于
@@ -10394,7 +10394,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteWithClassName 根据Class、Name从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteWithClassName 根据class、书名过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceLt float64 价格小于
@@ -10412,7 +10412,7 @@ func RangeBooksByPriceLtReleaseDateGteWithClassName(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGtWithClassName 根据Class、Name从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGtWithClassName 根据class、书名过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceLt float64 价格小于
@@ -10430,7 +10430,7 @@ func RangeBooksByPriceLtReleaseDateGtWithClassName(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLtWithClassName 根据Class、Name从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLtWithClassName 根据class、书名过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceLt float64 价格小于
@@ -10448,7 +10448,7 @@ func RangeBooksByPriceLtReleaseDateLtWithClassName(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLteWithClassName 根据Class、Name从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLteWithClassName 根据class、书名过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceLt float64 价格小于
@@ -10466,7 +10466,7 @@ func RangeBooksByPriceLtReleaseDateLteWithClassName(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteLteWithClassName 根据Class、Name从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteLteWithClassName 根据class、书名过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceLt float64 价格小于
@@ -10485,7 +10485,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteWithClassName 根据Class、Name从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteWithClassName 根据class、书名过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceLte float64 价格小于等于
@@ -10503,7 +10503,7 @@ func RangeBooksByPriceLteReleaseDateGteWithClassName(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGtWithClassName 根据Class、Name从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGtWithClassName 根据class、书名过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceLte float64 价格小于等于
@@ -10521,7 +10521,7 @@ func RangeBooksByPriceLteReleaseDateGtWithClassName(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLtWithClassName 根据Class、Name从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLtWithClassName 根据class、书名过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceLte float64 价格小于等于
@@ -10539,7 +10539,7 @@ func RangeBooksByPriceLteReleaseDateLtWithClassName(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLteWithClassName 根据Class、Name从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLteWithClassName 根据class、书名过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceLte float64 价格小于等于
@@ -10557,7 +10557,7 @@ func RangeBooksByPriceLteReleaseDateLteWithClassName(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteLteWithClassName 根据Class、Name从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteLteWithClassName 根据class、书名过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceLte float64 价格小于等于
@@ -10576,7 +10576,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteWithClassName 根据Class、Name从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteWithClassName 根据class、书名过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGte float64 价格大于等于
@@ -10595,7 +10595,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGtWithClassName 根据Class、Name从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGtWithClassName 根据class、书名过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGte float64 价格大于等于
@@ -10614,7 +10614,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLtWithClassName 根据Class、Name从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLtWithClassName 根据class、书名过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGte float64 价格大于等于
@@ -10633,7 +10633,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLteWithClassName 根据Class、Name从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLteWithClassName 根据class、书名过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGte float64 价格大于等于
@@ -10652,7 +10652,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteLteWithClassName 根据Class、Name从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteLteWithClassName 根据class、书名过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // priceGte float64 价格大于等于
@@ -10672,7 +10672,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithClassName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteWithClassNameSeq 根据Class、Name、Seq从Books查找价格大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteWithClassNameSeq 根据class、书名、seq过滤从Books查找价格大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -10690,7 +10690,7 @@ func RangeBooksByPriceGteWithClassNameSeq(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtWithClassNameSeq 根据Class、Name、Seq从Books查找价格大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtWithClassNameSeq 根据class、书名、seq过滤从Books查找价格大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -10708,7 +10708,7 @@ func RangeBooksByPriceGtWithClassNameSeq(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtWithClassNameSeq 根据Class、Name、Seq从Books查找价格小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtWithClassNameSeq 根据class、书名、seq过滤从Books查找价格小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -10726,7 +10726,7 @@ func RangeBooksByPriceLtWithClassNameSeq(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteWithClassNameSeq 根据Class、Name、Seq从Books查找价格小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteWithClassNameSeq 根据class、书名、seq过滤从Books查找价格小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -10744,7 +10744,7 @@ func RangeBooksByPriceLteWithClassNameSeq(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteWithClassNameSeq 根据Class、Name、Seq从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteWithClassNameSeq 根据class、书名、seq过滤从Books查找价格大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -10763,7 +10763,7 @@ func RangeBooksByPriceGteLteWithClassNameSeq(es *elasticsearch.Client, class str
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteWithClassNameSeq 根据Class、Name、Seq从Books查找release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteWithClassNameSeq 根据class、书名、seq过滤从Books查找release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -10781,7 +10781,7 @@ func RangeBooksByReleaseDateGteWithClassNameSeq(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGtWithClassNameSeq 根据Class、Name、Seq从Books查找release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGtWithClassNameSeq 根据class、书名、seq过滤从Books查找release_date大于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -10799,7 +10799,7 @@ func RangeBooksByReleaseDateGtWithClassNameSeq(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLtWithClassNameSeq 根据Class、Name、Seq从Books查找release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLtWithClassNameSeq 根据class、书名、seq过滤从Books查找release_date小于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -10817,7 +10817,7 @@ func RangeBooksByReleaseDateLtWithClassNameSeq(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateLteWithClassNameSeq 根据Class、Name、Seq从Books查找release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateLteWithClassNameSeq 根据class、书名、seq过滤从Books查找release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -10835,7 +10835,7 @@ func RangeBooksByReleaseDateLteWithClassNameSeq(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByReleaseDateGteLteWithClassNameSeq 根据Class、Name、Seq从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByReleaseDateGteLteWithClassNameSeq 根据class、书名、seq过滤从Books查找release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // name string 书名
 // seq string seq
@@ -10854,7 +10854,7 @@ func RangeBooksByReleaseDateGteLteWithClassNameSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteWithClassSeq 根据Class、Seq从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteWithClassSeq 根据class、seq过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -10870,7 +10870,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithClassSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGtWithClassSeq 根据Class、Seq从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGtWithClassSeq 根据class、seq过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -10886,7 +10886,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLtWithClassSeq 根据Class、Seq从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLtWithClassSeq 根据class、seq过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -10902,7 +10902,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLteWithClassSeq 根据Class、Seq从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLteWithClassSeq 根据class、seq过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -10918,7 +10918,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithClassSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteLteWithClassSeq 根据Class、Seq从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteLteWithClassSeq 根据class、seq过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -10935,7 +10935,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithClassSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteWithClassSeq 根据Class、Seq从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteWithClassSeq 根据class、seq过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -10951,7 +10951,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGtWithClassSeq 根据Class、Seq从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGtWithClassSeq 根据class、seq过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -10967,7 +10967,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLtWithClassSeq 根据Class、Seq从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLtWithClassSeq 根据class、seq过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -10983,7 +10983,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLteWithClassSeq 根据Class、Seq从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLteWithClassSeq 根据class、seq过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -10999,7 +10999,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteLteWithClassSeq 根据Class、Seq从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteLteWithClassSeq 根据class、seq过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -11016,7 +11016,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithClassSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteWithClassSeq 根据Class、Seq从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteWithClassSeq 根据class、seq过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -11032,7 +11032,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGtWithClassSeq 根据Class、Seq从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGtWithClassSeq 根据class、seq过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -11048,7 +11048,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLtWithClassSeq 根据Class、Seq从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLtWithClassSeq 根据class、seq过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -11064,7 +11064,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLteWithClassSeq 根据Class、Seq从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLteWithClassSeq 根据class、seq过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -11080,7 +11080,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteLteWithClassSeq 根据Class、Seq从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteLteWithClassSeq 根据class、seq过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -11097,7 +11097,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithClassSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteWithClassSeq 根据Class、Seq从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteWithClassSeq 根据class、seq过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -11113,7 +11113,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithClassSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGtWithClassSeq 根据Class、Seq从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGtWithClassSeq 根据class、seq过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -11129,7 +11129,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLtWithClassSeq 根据Class、Seq从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLtWithClassSeq 根据class、seq过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -11145,7 +11145,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLteWithClassSeq 根据Class、Seq从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLteWithClassSeq 根据class、seq过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -11161,7 +11161,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithClassSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteLteWithClassSeq 根据Class、Seq从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteLteWithClassSeq 根据class、seq过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -11178,7 +11178,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithClassSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteWithClassSeq 根据Class、Seq从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteWithClassSeq 根据class、seq过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -11195,7 +11195,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGtWithClassSeq 根据Class、Seq从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGtWithClassSeq 根据class、seq过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -11212,7 +11212,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithClassSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLtWithClassSeq 根据Class、Seq从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLtWithClassSeq 根据class、seq过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -11229,7 +11229,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithClassSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLteWithClassSeq 根据Class、Seq从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLteWithClassSeq 根据class、seq过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -11246,7 +11246,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithClassSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteLteWithClassSeq 根据Class、Seq从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteLteWithClassSeq 根据class、seq过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -11264,7 +11264,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithClassSeq(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteWithClassSeq 根据Class、Seq从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteWithClassSeq 根据class、seq过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGte float64 价格大于等于
@@ -11280,7 +11280,7 @@ func RangeBooksByPriceGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGtWithClassSeq 根据Class、Seq从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGtWithClassSeq 根据class、seq过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGte float64 价格大于等于
@@ -11296,7 +11296,7 @@ func RangeBooksByPriceGteReleaseDateGtWithClassSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLtWithClassSeq 根据Class、Seq从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLtWithClassSeq 根据class、seq过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGte float64 价格大于等于
@@ -11312,7 +11312,7 @@ func RangeBooksByPriceGteReleaseDateLtWithClassSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLteWithClassSeq 根据Class、Seq从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLteWithClassSeq 根据class、seq过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGte float64 价格大于等于
@@ -11328,7 +11328,7 @@ func RangeBooksByPriceGteReleaseDateLteWithClassSeq(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteLteWithClassSeq 根据Class、Seq从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteLteWithClassSeq 根据class、seq过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGte float64 价格大于等于
@@ -11345,7 +11345,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteWithClassSeq 根据Class、Seq从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteWithClassSeq 根据class、seq过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGt float64 价格大于
@@ -11361,7 +11361,7 @@ func RangeBooksByPriceGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGtWithClassSeq 根据Class、Seq从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGtWithClassSeq 根据class、seq过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGt float64 价格大于
@@ -11377,7 +11377,7 @@ func RangeBooksByPriceGtReleaseDateGtWithClassSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLtWithClassSeq 根据Class、Seq从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLtWithClassSeq 根据class、seq过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGt float64 价格大于
@@ -11393,7 +11393,7 @@ func RangeBooksByPriceGtReleaseDateLtWithClassSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLteWithClassSeq 根据Class、Seq从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLteWithClassSeq 根据class、seq过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGt float64 价格大于
@@ -11409,7 +11409,7 @@ func RangeBooksByPriceGtReleaseDateLteWithClassSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteLteWithClassSeq 根据Class、Seq从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteLteWithClassSeq 根据class、seq过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGt float64 价格大于
@@ -11426,7 +11426,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteWithClassSeq 根据Class、Seq从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteWithClassSeq 根据class、seq过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceLt float64 价格小于
@@ -11442,7 +11442,7 @@ func RangeBooksByPriceLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGtWithClassSeq 根据Class、Seq从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGtWithClassSeq 根据class、seq过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceLt float64 价格小于
@@ -11458,7 +11458,7 @@ func RangeBooksByPriceLtReleaseDateGtWithClassSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLtWithClassSeq 根据Class、Seq从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLtWithClassSeq 根据class、seq过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceLt float64 价格小于
@@ -11474,7 +11474,7 @@ func RangeBooksByPriceLtReleaseDateLtWithClassSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLteWithClassSeq 根据Class、Seq从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLteWithClassSeq 根据class、seq过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceLt float64 价格小于
@@ -11490,7 +11490,7 @@ func RangeBooksByPriceLtReleaseDateLteWithClassSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteLteWithClassSeq 根据Class、Seq从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteLteWithClassSeq 根据class、seq过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceLt float64 价格小于
@@ -11507,7 +11507,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteWithClassSeq 根据Class、Seq从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteWithClassSeq 根据class、seq过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceLte float64 价格小于等于
@@ -11523,7 +11523,7 @@ func RangeBooksByPriceLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGtWithClassSeq 根据Class、Seq从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGtWithClassSeq 根据class、seq过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceLte float64 价格小于等于
@@ -11539,7 +11539,7 @@ func RangeBooksByPriceLteReleaseDateGtWithClassSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLtWithClassSeq 根据Class、Seq从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLtWithClassSeq 根据class、seq过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceLte float64 价格小于等于
@@ -11555,7 +11555,7 @@ func RangeBooksByPriceLteReleaseDateLtWithClassSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLteWithClassSeq 根据Class、Seq从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLteWithClassSeq 根据class、seq过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceLte float64 价格小于等于
@@ -11571,7 +11571,7 @@ func RangeBooksByPriceLteReleaseDateLteWithClassSeq(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteLteWithClassSeq 根据Class、Seq从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteLteWithClassSeq 根据class、seq过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceLte float64 价格小于等于
@@ -11588,7 +11588,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteWithClassSeq 根据Class、Seq从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteWithClassSeq 根据class、seq过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGte float64 价格大于等于
@@ -11605,7 +11605,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGtWithClassSeq 根据Class、Seq从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGtWithClassSeq 根据class、seq过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGte float64 价格大于等于
@@ -11622,7 +11622,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLtWithClassSeq 根据Class、Seq从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLtWithClassSeq 根据class、seq过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGte float64 价格大于等于
@@ -11639,7 +11639,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLteWithClassSeq 根据Class、Seq从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLteWithClassSeq 根据class、seq过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGte float64 价格大于等于
@@ -11656,7 +11656,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteLteWithClassSeq 根据Class、Seq从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteLteWithClassSeq 根据class、seq过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // class string class
 // seq string seq
 // priceGte float64 价格大于等于
@@ -11674,7 +11674,7 @@ func RangeBooksByPriceGteLteReleaseDateGteLteWithClassSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteWithNameSeq 根据Name、Seq从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteWithNameSeq 根据书名、seq过滤从Books查找page_count大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -11692,7 +11692,7 @@ func RangeBooksByPageCountGteReleaseDateGteWithNameSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGtWithNameSeq 根据Name、Seq从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGtWithNameSeq 根据书名、seq过滤从Books查找page_count大于等于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -11710,7 +11710,7 @@ func RangeBooksByPageCountGteReleaseDateGtWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLtWithNameSeq 根据Name、Seq从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLtWithNameSeq 根据书名、seq过滤从Books查找page_count大于等于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -11728,7 +11728,7 @@ func RangeBooksByPageCountGteReleaseDateLtWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateLteWithNameSeq 根据Name、Seq从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateLteWithNameSeq 根据书名、seq过滤从Books查找page_count大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -11746,7 +11746,7 @@ func RangeBooksByPageCountGteReleaseDateLteWithNameSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteReleaseDateGteLteWithNameSeq 根据Name、Seq从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteReleaseDateGteLteWithNameSeq 根据书名、seq过滤从Books查找page_count大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -11765,7 +11765,7 @@ func RangeBooksByPageCountGteReleaseDateGteLteWithNameSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteWithNameSeq 根据Name、Seq从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteWithNameSeq 根据书名、seq过滤从Books查找page_count大于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -11783,7 +11783,7 @@ func RangeBooksByPageCountGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGtWithNameSeq 根据Name、Seq从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGtWithNameSeq 根据书名、seq过滤从Books查找page_count大于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -11801,7 +11801,7 @@ func RangeBooksByPageCountGtReleaseDateGtWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLtWithNameSeq 根据Name、Seq从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLtWithNameSeq 根据书名、seq过滤从Books查找page_count大于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -11819,7 +11819,7 @@ func RangeBooksByPageCountGtReleaseDateLtWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateLteWithNameSeq 根据Name、Seq从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateLteWithNameSeq 根据书名、seq过滤从Books查找page_count大于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -11837,7 +11837,7 @@ func RangeBooksByPageCountGtReleaseDateLteWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGtReleaseDateGteLteWithNameSeq 根据Name、Seq从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGtReleaseDateGteLteWithNameSeq 根据书名、seq过滤从Books查找page_count大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGt int64 page_count大于
@@ -11856,7 +11856,7 @@ func RangeBooksByPageCountGtReleaseDateGteLteWithNameSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteWithNameSeq 根据Name、Seq从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteWithNameSeq 根据书名、seq过滤从Books查找page_count小于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -11874,7 +11874,7 @@ func RangeBooksByPageCountLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGtWithNameSeq 根据Name、Seq从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGtWithNameSeq 根据书名、seq过滤从Books查找page_count小于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -11892,7 +11892,7 @@ func RangeBooksByPageCountLtReleaseDateGtWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLtWithNameSeq 根据Name、Seq从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLtWithNameSeq 根据书名、seq过滤从Books查找page_count小于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -11910,7 +11910,7 @@ func RangeBooksByPageCountLtReleaseDateLtWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateLteWithNameSeq 根据Name、Seq从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateLteWithNameSeq 根据书名、seq过滤从Books查找page_count小于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -11928,7 +11928,7 @@ func RangeBooksByPageCountLtReleaseDateLteWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLtReleaseDateGteLteWithNameSeq 根据Name、Seq从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLtReleaseDateGteLteWithNameSeq 根据书名、seq过滤从Books查找page_count小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountLt int64 page_count小于
@@ -11947,7 +11947,7 @@ func RangeBooksByPageCountLtReleaseDateGteLteWithNameSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteWithNameSeq 根据Name、Seq从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteWithNameSeq 根据书名、seq过滤从Books查找page_count小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -11965,7 +11965,7 @@ func RangeBooksByPageCountLteReleaseDateGteWithNameSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGtWithNameSeq 根据Name、Seq从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGtWithNameSeq 根据书名、seq过滤从Books查找page_count小于等于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -11983,7 +11983,7 @@ func RangeBooksByPageCountLteReleaseDateGtWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLtWithNameSeq 根据Name、Seq从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLtWithNameSeq 根据书名、seq过滤从Books查找page_count小于等于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -12001,7 +12001,7 @@ func RangeBooksByPageCountLteReleaseDateLtWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateLteWithNameSeq 根据Name、Seq从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateLteWithNameSeq 根据书名、seq过滤从Books查找page_count小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -12019,7 +12019,7 @@ func RangeBooksByPageCountLteReleaseDateLteWithNameSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountLteReleaseDateGteLteWithNameSeq 根据Name、Seq从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountLteReleaseDateGteLteWithNameSeq 根据书名、seq过滤从Books查找page_count小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountLte int64 page_count小于等于
@@ -12038,7 +12038,7 @@ func RangeBooksByPageCountLteReleaseDateGteLteWithNameSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteWithNameSeq 根据Name、Seq从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteWithNameSeq 根据书名、seq过滤从Books查找page_count大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -12057,7 +12057,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGtWithNameSeq 根据Name、Seq从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGtWithNameSeq 根据书名、seq过滤从Books查找page_count大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -12076,7 +12076,7 @@ func RangeBooksByPageCountGteLteReleaseDateGtWithNameSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLtWithNameSeq 根据Name、Seq从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLtWithNameSeq 根据书名、seq过滤从Books查找page_count大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -12095,7 +12095,7 @@ func RangeBooksByPageCountGteLteReleaseDateLtWithNameSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateLteWithNameSeq 根据Name、Seq从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateLteWithNameSeq 根据书名、seq过滤从Books查找page_count大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -12114,7 +12114,7 @@ func RangeBooksByPageCountGteLteReleaseDateLteWithNameSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPageCountGteLteReleaseDateGteLteWithNameSeq 根据Name、Seq从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPageCountGteLteReleaseDateGteLteWithNameSeq 根据书名、seq过滤从Books查找page_count大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // pageCountGte int64 page_count大于等于
@@ -12134,7 +12134,7 @@ func RangeBooksByPageCountGteLteReleaseDateGteLteWithNameSeq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteWithNameSeq 根据Name、Seq从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteWithNameSeq 根据书名、seq过滤从Books查找价格大于等于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGte float64 价格大于等于
@@ -12152,7 +12152,7 @@ func RangeBooksByPriceGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGtWithNameSeq 根据Name、Seq从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGtWithNameSeq 根据书名、seq过滤从Books查找价格大于等于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGte float64 价格大于等于
@@ -12170,7 +12170,7 @@ func RangeBooksByPriceGteReleaseDateGtWithNameSeq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLtWithNameSeq 根据Name、Seq从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLtWithNameSeq 根据书名、seq过滤从Books查找价格大于等于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGte float64 价格大于等于
@@ -12188,7 +12188,7 @@ func RangeBooksByPriceGteReleaseDateLtWithNameSeq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateLteWithNameSeq 根据Name、Seq从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateLteWithNameSeq 根据书名、seq过滤从Books查找价格大于等于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGte float64 价格大于等于
@@ -12206,7 +12206,7 @@ func RangeBooksByPriceGteReleaseDateLteWithNameSeq(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteReleaseDateGteLteWithNameSeq 根据Name、Seq从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteReleaseDateGteLteWithNameSeq 根据书名、seq过滤从Books查找价格大于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGte float64 价格大于等于
@@ -12225,7 +12225,7 @@ func RangeBooksByPriceGteReleaseDateGteLteWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteWithNameSeq 根据Name、Seq从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteWithNameSeq 根据书名、seq过滤从Books查找价格大于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGt float64 价格大于
@@ -12243,7 +12243,7 @@ func RangeBooksByPriceGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGtWithNameSeq 根据Name、Seq从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGtWithNameSeq 根据书名、seq过滤从Books查找价格大于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGt float64 价格大于
@@ -12261,7 +12261,7 @@ func RangeBooksByPriceGtReleaseDateGtWithNameSeq(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLtWithNameSeq 根据Name、Seq从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLtWithNameSeq 根据书名、seq过滤从Books查找价格大于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGt float64 价格大于
@@ -12279,7 +12279,7 @@ func RangeBooksByPriceGtReleaseDateLtWithNameSeq(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateLteWithNameSeq 根据Name、Seq从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateLteWithNameSeq 根据书名、seq过滤从Books查找价格大于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGt float64 价格大于
@@ -12297,7 +12297,7 @@ func RangeBooksByPriceGtReleaseDateLteWithNameSeq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGtReleaseDateGteLteWithNameSeq 根据Name、Seq从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGtReleaseDateGteLteWithNameSeq 根据书名、seq过滤从Books查找价格大于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGt float64 价格大于
@@ -12316,7 +12316,7 @@ func RangeBooksByPriceGtReleaseDateGteLteWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteWithNameSeq 根据Name、Seq从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteWithNameSeq 根据书名、seq过滤从Books查找价格小于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceLt float64 价格小于
@@ -12334,7 +12334,7 @@ func RangeBooksByPriceLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGtWithNameSeq 根据Name、Seq从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGtWithNameSeq 根据书名、seq过滤从Books查找价格小于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceLt float64 价格小于
@@ -12352,7 +12352,7 @@ func RangeBooksByPriceLtReleaseDateGtWithNameSeq(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLtWithNameSeq 根据Name、Seq从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLtWithNameSeq 根据书名、seq过滤从Books查找价格小于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceLt float64 价格小于
@@ -12370,7 +12370,7 @@ func RangeBooksByPriceLtReleaseDateLtWithNameSeq(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateLteWithNameSeq 根据Name、Seq从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateLteWithNameSeq 根据书名、seq过滤从Books查找价格小于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceLt float64 价格小于
@@ -12388,7 +12388,7 @@ func RangeBooksByPriceLtReleaseDateLteWithNameSeq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLtReleaseDateGteLteWithNameSeq 根据Name、Seq从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLtReleaseDateGteLteWithNameSeq 根据书名、seq过滤从Books查找价格小于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceLt float64 价格小于
@@ -12407,7 +12407,7 @@ func RangeBooksByPriceLtReleaseDateGteLteWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteWithNameSeq 根据Name、Seq从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteWithNameSeq 根据书名、seq过滤从Books查找价格小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceLte float64 价格小于等于
@@ -12425,7 +12425,7 @@ func RangeBooksByPriceLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGtWithNameSeq 根据Name、Seq从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGtWithNameSeq 根据书名、seq过滤从Books查找价格小于等于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceLte float64 价格小于等于
@@ -12443,7 +12443,7 @@ func RangeBooksByPriceLteReleaseDateGtWithNameSeq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLtWithNameSeq 根据Name、Seq从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLtWithNameSeq 根据书名、seq过滤从Books查找价格小于等于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceLte float64 价格小于等于
@@ -12461,7 +12461,7 @@ func RangeBooksByPriceLteReleaseDateLtWithNameSeq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateLteWithNameSeq 根据Name、Seq从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateLteWithNameSeq 根据书名、seq过滤从Books查找价格小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceLte float64 价格小于等于
@@ -12479,7 +12479,7 @@ func RangeBooksByPriceLteReleaseDateLteWithNameSeq(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceLteReleaseDateGteLteWithNameSeq 根据Name、Seq从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceLteReleaseDateGteLteWithNameSeq 根据书名、seq过滤从Books查找价格小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceLte float64 价格小于等于
@@ -12498,7 +12498,7 @@ func RangeBooksByPriceLteReleaseDateGteLteWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteWithNameSeq 根据Name、Seq从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteWithNameSeq 根据书名、seq过滤从Books查找价格大于等于和小于等于、release_date大于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGte float64 价格大于等于
@@ -12517,7 +12517,7 @@ func RangeBooksByPriceGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGtWithNameSeq 根据Name、Seq从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGtWithNameSeq 根据书名、seq过滤从Books查找价格大于等于和小于等于、release_date大于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGte float64 价格大于等于
@@ -12536,7 +12536,7 @@ func RangeBooksByPriceGteLteReleaseDateGtWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLtWithNameSeq 根据Name、Seq从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLtWithNameSeq 根据书名、seq过滤从Books查找价格大于等于和小于等于、release_date小于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGte float64 价格大于等于
@@ -12555,7 +12555,7 @@ func RangeBooksByPriceGteLteReleaseDateLtWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateLteWithNameSeq 根据Name、Seq从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateLteWithNameSeq 根据书名、seq过滤从Books查找价格大于等于和小于等于、release_date小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGte float64 价格大于等于
@@ -12574,7 +12574,7 @@ func RangeBooksByPriceGteLteReleaseDateLteWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// RangeBooksByPriceGteLteReleaseDateGteLteWithNameSeq 根据Name、Seq从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
+// RangeBooksByPriceGteLteReleaseDateGteLteWithNameSeq 根据书名、seq过滤从Books查找价格大于等于和小于等于、release_date大于等于和小于等于指定数值的详细数据列表和总数量
 // name string 书名
 // seq string seq
 // priceGte float64 价格大于等于
