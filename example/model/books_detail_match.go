@@ -386,7 +386,7 @@ func MatchBooksByNameSeq(es *elasticsearch.Client, name, seq string) (*eq.Data, 
 // MatchBooksByPageCountPrice 对page_count、价格进行检索(等于)查找books的详细数据列表和总数量
 // pageCount int64 page_count
 // price float64 价格
-func MatchBooksByPageCountPrice(es *elasticsearch.Client, price float64, pageCount int64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
@@ -665,7 +665,7 @@ func MatchBooksByAllTextNamePrice(es *elasticsearch.Client, allText, name string
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time release_date
-func MatchBooksByAllTextNameReleaseDate(es *elasticsearch.Client, releaseDate time.Time, allText, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -729,7 +729,7 @@ func MatchBooksByAllTextPageCountReleaseDate(es *elasticsearch.Client, allText s
 // allText string 全文本
 // pageCount int64 page_count
 // seq string seq
-func MatchBooksByAllTextPageCountSeq(es *elasticsearch.Client, pageCount int64, allText, seq string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextPageCountSeq(es *elasticsearch.Client, allText string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -761,7 +761,7 @@ func MatchBooksByAllTextPriceReleaseDate(es *elasticsearch.Client, allText strin
 // allText string 全文本
 // price float64 价格
 // seq string seq
-func MatchBooksByAllTextPriceSeq(es *elasticsearch.Client, allText, seq string, price float64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextPriceSeq(es *elasticsearch.Client, allText string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -777,7 +777,7 @@ func MatchBooksByAllTextPriceSeq(es *elasticsearch.Client, allText, seq string, 
 // allText string 全文本
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText, seq string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -969,7 +969,7 @@ func MatchBooksByAuthorPageCountReleaseDate(es *elasticsearch.Client, author str
 // author string author
 // pageCount int64 page_count
 // seq string seq
-func MatchBooksByAuthorPageCountSeq(es *elasticsearch.Client, author, seq string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorPageCountSeq(es *elasticsearch.Client, author string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1001,7 +1001,7 @@ func MatchBooksByAuthorPriceReleaseDate(es *elasticsearch.Client, author string,
 // author string author
 // price float64 价格
 // seq string seq
-func MatchBooksByAuthorPriceSeq(es *elasticsearch.Client, author, seq string, price float64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorPriceSeq(es *elasticsearch.Client, author string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1017,7 +1017,7 @@ func MatchBooksByAuthorPriceSeq(es *elasticsearch.Client, author, seq string, pr
 // author string author
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author, seq string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1125,7 +1125,7 @@ func MatchBooksByClassPageCountReleaseDate(es *elasticsearch.Client, class strin
 // class string class
 // pageCount int64 page_count
 // seq string seq
-func MatchBooksByClassPageCountSeq(es *elasticsearch.Client, class, seq string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByClassPageCountSeq(es *elasticsearch.Client, class string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -1153,7 +1153,7 @@ func MatchBooksByClassPriceReleaseDate(es *elasticsearch.Client, class string, p
 // class string class
 // price float64 价格
 // seq string seq
-func MatchBooksByClassPriceSeq(es *elasticsearch.Client, price float64, class, seq string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByClassPriceSeq(es *elasticsearch.Client, class string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
@@ -1167,7 +1167,7 @@ func MatchBooksByClassPriceSeq(es *elasticsearch.Client, price float64, class, s
 // class string class
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByClassReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, class, seq string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByClassReleaseDateSeq(es *elasticsearch.Client, class string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
@@ -1213,7 +1213,7 @@ func MatchBooksByNamePageCountReleaseDate(es *elasticsearch.Client, name string,
 // name string 书名
 // pageCount int64 page_count
 // seq string seq
-func MatchBooksByNamePageCountSeq(es *elasticsearch.Client, name, seq string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNamePageCountSeq(es *elasticsearch.Client, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1229,7 +1229,7 @@ func MatchBooksByNamePageCountSeq(es *elasticsearch.Client, name, seq string, pa
 // name string 书名
 // price float64 价格
 // releaseDate time.Time release_date
-func MatchBooksByNamePriceReleaseDate(es *elasticsearch.Client, releaseDate time.Time, name string, price float64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNamePriceReleaseDate(es *elasticsearch.Client, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1245,7 +1245,7 @@ func MatchBooksByNamePriceReleaseDate(es *elasticsearch.Client, releaseDate time
 // name string 书名
 // price float64 价格
 // seq string seq
-func MatchBooksByNamePriceSeq(es *elasticsearch.Client, price float64, name, seq string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNamePriceSeq(es *elasticsearch.Client, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1261,7 +1261,7 @@ func MatchBooksByNamePriceSeq(es *elasticsearch.Client, price float64, name, seq
 // name string 书名
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByNameReleaseDateSeq(es *elasticsearch.Client, name, seq string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1277,7 +1277,7 @@ func MatchBooksByNameReleaseDateSeq(es *elasticsearch.Client, name, seq string, 
 // pageCount int64 page_count
 // price float64 价格
 // releaseDate time.Time release_date
-func MatchBooksByPageCountPriceReleaseDate(es *elasticsearch.Client, releaseDate time.Time, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByPageCountPriceReleaseDate(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
@@ -1319,7 +1319,7 @@ func MatchBooksByPageCountReleaseDateSeq(es *elasticsearch.Client, pageCount int
 // price float64 价格
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByPriceReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string, price float64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByPriceReleaseDateSeq(es *elasticsearch.Client, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
@@ -1352,7 +1352,7 @@ func MatchBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, autho
 // author string author
 // class string class
 // pageCount int64 page_count
-func MatchBooksByAllTextAuthorClassPageCount(es *elasticsearch.Client, pageCount int64, allText, author, class string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextAuthorClassPageCount(es *elasticsearch.Client, allText, author, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1496,7 +1496,7 @@ func MatchBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author,
 // author string author
 // pageCount int64 page_count
 // price float64 价格
-func MatchBooksByAllTextAuthorPageCountPrice(es *elasticsearch.Client, price float64, allText, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextAuthorPageCountPrice(es *elasticsearch.Client, allText, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1514,7 +1514,7 @@ func MatchBooksByAllTextAuthorPageCountPrice(es *elasticsearch.Client, price flo
 // author string author
 // pageCount int64 page_count
 // releaseDate time.Time release_date
-func MatchBooksByAllTextAuthorPageCountReleaseDate(es *elasticsearch.Client, releaseDate time.Time, allText, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextAuthorPageCountReleaseDate(es *elasticsearch.Client, allText, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1532,7 +1532,7 @@ func MatchBooksByAllTextAuthorPageCountReleaseDate(es *elasticsearch.Client, rel
 // author string author
 // pageCount int64 page_count
 // seq string seq
-func MatchBooksByAllTextAuthorPageCountSeq(es *elasticsearch.Client, allText, author, seq string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextAuthorPageCountSeq(es *elasticsearch.Client, allText, author string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1568,7 +1568,7 @@ func MatchBooksByAllTextAuthorPriceReleaseDate(es *elasticsearch.Client, allText
 // author string author
 // price float64 价格
 // seq string seq
-func MatchBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client, allText, author, seq string, price float64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client, allText, author string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1586,7 +1586,7 @@ func MatchBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client, allText, author
 // author string author
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, author, seq string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1694,7 +1694,7 @@ func MatchBooksByAllTextClassPageCountPrice(es *elasticsearch.Client, allText, c
 // class string class
 // pageCount int64 page_count
 // releaseDate time.Time release_date
-func MatchBooksByAllTextClassPageCountReleaseDate(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, allText, class string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextClassPageCountReleaseDate(es *elasticsearch.Client, allText, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -1712,7 +1712,7 @@ func MatchBooksByAllTextClassPageCountReleaseDate(es *elasticsearch.Client, page
 // class string class
 // pageCount int64 page_count
 // seq string seq
-func MatchBooksByAllTextClassPageCountSeq(es *elasticsearch.Client, allText, class, seq string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextClassPageCountSeq(es *elasticsearch.Client, allText, class string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -1748,7 +1748,7 @@ func MatchBooksByAllTextClassPriceReleaseDate(es *elasticsearch.Client, allText,
 // class string class
 // price float64 价格
 // seq string seq
-func MatchBooksByAllTextClassPriceSeq(es *elasticsearch.Client, allText, class, seq string, price float64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextClassPriceSeq(es *elasticsearch.Client, allText, class string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -1766,7 +1766,7 @@ func MatchBooksByAllTextClassPriceSeq(es *elasticsearch.Client, allText, class, 
 // class string class
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, class, seq string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, class string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -1784,7 +1784,7 @@ func MatchBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, c
 // name string 书名
 // pageCount int64 page_count
 // price float64 价格
-func MatchBooksByAllTextNamePageCountPrice(es *elasticsearch.Client, pageCount int64, price float64, allText, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextNamePageCountPrice(es *elasticsearch.Client, allText, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -1820,7 +1820,7 @@ func MatchBooksByAllTextNamePageCountReleaseDate(es *elasticsearch.Client, allTe
 // name string 书名
 // pageCount int64 page_count
 // seq string seq
-func MatchBooksByAllTextNamePageCountSeq(es *elasticsearch.Client, pageCount int64, allText, name, seq string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextNamePageCountSeq(es *elasticsearch.Client, allText, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -1856,7 +1856,7 @@ func MatchBooksByAllTextNamePriceReleaseDate(es *elasticsearch.Client, allText, 
 // name string 书名
 // price float64 价格
 // seq string seq
-func MatchBooksByAllTextNamePriceSeq(es *elasticsearch.Client, allText, name, seq string, price float64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextNamePriceSeq(es *elasticsearch.Client, allText, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -1874,7 +1874,7 @@ func MatchBooksByAllTextNamePriceSeq(es *elasticsearch.Client, allText, name, se
 // name string 书名
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, name, seq string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -1910,7 +1910,7 @@ func MatchBooksByAllTextPageCountPriceReleaseDate(es *elasticsearch.Client, allT
 // pageCount int64 page_count
 // price float64 价格
 // seq string seq
-func MatchBooksByAllTextPageCountPriceSeq(es *elasticsearch.Client, price float64, allText, seq string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextPageCountPriceSeq(es *elasticsearch.Client, allText string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -1928,7 +1928,7 @@ func MatchBooksByAllTextPageCountPriceSeq(es *elasticsearch.Client, price float6
 // pageCount int64 page_count
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByAllTextPageCountReleaseDateSeq(es *elasticsearch.Client, allText, seq string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextPageCountReleaseDateSeq(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -1946,7 +1946,7 @@ func MatchBooksByAllTextPageCountReleaseDateSeq(es *elasticsearch.Client, allTex
 // price float64 价格
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByAllTextPriceReleaseDateSeq(es *elasticsearch.Client, allText, seq string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAllTextPriceReleaseDateSeq(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -1964,7 +1964,7 @@ func MatchBooksByAllTextPriceReleaseDateSeq(es *elasticsearch.Client, allText, s
 // class string class
 // name string 书名
 // pageCount int64 page_count
-func MatchBooksByAuthorClassNamePageCount(es *elasticsearch.Client, pageCount int64, author, class, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorClassNamePageCount(es *elasticsearch.Client, author, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -2072,7 +2072,7 @@ func MatchBooksByAuthorClassPageCountReleaseDate(es *elasticsearch.Client, autho
 // class string class
 // pageCount int64 page_count
 // seq string seq
-func MatchBooksByAuthorClassPageCountSeq(es *elasticsearch.Client, author, class, seq string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorClassPageCountSeq(es *elasticsearch.Client, author, class string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2108,7 +2108,7 @@ func MatchBooksByAuthorClassPriceReleaseDate(es *elasticsearch.Client, author, c
 // class string class
 // price float64 价格
 // seq string seq
-func MatchBooksByAuthorClassPriceSeq(es *elasticsearch.Client, author, class, seq string, price float64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorClassPriceSeq(es *elasticsearch.Client, author, class string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2126,7 +2126,7 @@ func MatchBooksByAuthorClassPriceSeq(es *elasticsearch.Client, author, class, se
 // class string class
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, class, seq string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, class string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2144,7 +2144,7 @@ func MatchBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, cla
 // name string 书名
 // pageCount int64 page_count
 // price float64 价格
-func MatchBooksByAuthorNamePageCountPrice(es *elasticsearch.Client, price float64, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorNamePageCountPrice(es *elasticsearch.Client, author, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -2180,7 +2180,7 @@ func MatchBooksByAuthorNamePageCountReleaseDate(es *elasticsearch.Client, author
 // name string 书名
 // pageCount int64 page_count
 // seq string seq
-func MatchBooksByAuthorNamePageCountSeq(es *elasticsearch.Client, pageCount int64, author, name, seq string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorNamePageCountSeq(es *elasticsearch.Client, author, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -2198,7 +2198,7 @@ func MatchBooksByAuthorNamePageCountSeq(es *elasticsearch.Client, pageCount int6
 // name string 书名
 // price float64 价格
 // releaseDate time.Time release_date
-func MatchBooksByAuthorNamePriceReleaseDate(es *elasticsearch.Client, price float64, releaseDate time.Time, author, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorNamePriceReleaseDate(es *elasticsearch.Client, author, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -2216,7 +2216,7 @@ func MatchBooksByAuthorNamePriceReleaseDate(es *elasticsearch.Client, price floa
 // name string 书名
 // price float64 价格
 // seq string seq
-func MatchBooksByAuthorNamePriceSeq(es *elasticsearch.Client, author, name, seq string, price float64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorNamePriceSeq(es *elasticsearch.Client, author, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -2234,7 +2234,7 @@ func MatchBooksByAuthorNamePriceSeq(es *elasticsearch.Client, author, name, seq 
 // name string 书名
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name, seq string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -2270,7 +2270,7 @@ func MatchBooksByAuthorPageCountPriceReleaseDate(es *elasticsearch.Client, autho
 // pageCount int64 page_count
 // price float64 价格
 // seq string seq
-func MatchBooksByAuthorPageCountPriceSeq(es *elasticsearch.Client, author, seq string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorPageCountPriceSeq(es *elasticsearch.Client, author string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2288,7 +2288,7 @@ func MatchBooksByAuthorPageCountPriceSeq(es *elasticsearch.Client, author, seq s
 // pageCount int64 page_count
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByAuthorPageCountReleaseDateSeq(es *elasticsearch.Client, author, seq string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorPageCountReleaseDateSeq(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2306,7 +2306,7 @@ func MatchBooksByAuthorPageCountReleaseDateSeq(es *elasticsearch.Client, author,
 // price float64 价格
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByAuthorPriceReleaseDateSeq(es *elasticsearch.Client, author, seq string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func MatchBooksByAuthorPriceReleaseDateSeq(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2342,7 +2342,7 @@ func MatchBooksByClassNamePageCountPrice(es *elasticsearch.Client, class, name s
 // name string 书名
 // pageCount int64 page_count
 // releaseDate time.Time release_date
-func MatchBooksByClassNamePageCountReleaseDate(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, class, name string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByClassNamePageCountReleaseDate(es *elasticsearch.Client, class, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2360,7 +2360,7 @@ func MatchBooksByClassNamePageCountReleaseDate(es *elasticsearch.Client, pageCou
 // name string 书名
 // pageCount int64 page_count
 // seq string seq
-func MatchBooksByClassNamePageCountSeq(es *elasticsearch.Client, class, name, seq string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByClassNamePageCountSeq(es *elasticsearch.Client, class, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2396,7 +2396,7 @@ func MatchBooksByClassNamePriceReleaseDate(es *elasticsearch.Client, class, name
 // name string 书名
 // price float64 价格
 // seq string seq
-func MatchBooksByClassNamePriceSeq(es *elasticsearch.Client, class, name, seq string, price float64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByClassNamePriceSeq(es *elasticsearch.Client, class, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2414,7 +2414,7 @@ func MatchBooksByClassNamePriceSeq(es *elasticsearch.Client, class, name, seq st
 // name string 书名
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name, seq string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func MatchBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2432,7 +2432,7 @@ func MatchBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name, 
 // pageCount int64 page_count
 // price float64 价格
 // releaseDate time.Time release_date
-func MatchBooksByClassPageCountPriceReleaseDate(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time, class string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByClassPageCountPriceReleaseDate(es *elasticsearch.Client, class string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -2448,7 +2448,7 @@ func MatchBooksByClassPageCountPriceReleaseDate(es *elasticsearch.Client, pageCo
 // pageCount int64 page_count
 // price float64 价格
 // seq string seq
-func MatchBooksByClassPageCountPriceSeq(es *elasticsearch.Client, class, seq string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByClassPageCountPriceSeq(es *elasticsearch.Client, class string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -2464,7 +2464,7 @@ func MatchBooksByClassPageCountPriceSeq(es *elasticsearch.Client, class, seq str
 // pageCount int64 page_count
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByClassPageCountReleaseDateSeq(es *elasticsearch.Client, class, seq string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func MatchBooksByClassPageCountReleaseDateSeq(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -2480,7 +2480,7 @@ func MatchBooksByClassPageCountReleaseDateSeq(es *elasticsearch.Client, class, s
 // price float64 价格
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByClassPriceReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, class, seq string, price float64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByClassPriceReleaseDateSeq(es *elasticsearch.Client, class string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
@@ -2496,7 +2496,7 @@ func MatchBooksByClassPriceReleaseDateSeq(es *elasticsearch.Client, releaseDate 
 // pageCount int64 page_count
 // price float64 价格
 // releaseDate time.Time release_date
-func MatchBooksByNamePageCountPriceReleaseDate(es *elasticsearch.Client, price float64, releaseDate time.Time, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNamePageCountPriceReleaseDate(es *elasticsearch.Client, name string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2514,7 +2514,7 @@ func MatchBooksByNamePageCountPriceReleaseDate(es *elasticsearch.Client, price f
 // pageCount int64 page_count
 // price float64 价格
 // seq string seq
-func MatchBooksByNamePageCountPriceSeq(es *elasticsearch.Client, name, seq string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNamePageCountPriceSeq(es *elasticsearch.Client, name string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2532,7 +2532,7 @@ func MatchBooksByNamePageCountPriceSeq(es *elasticsearch.Client, name, seq strin
 // pageCount int64 page_count
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByNamePageCountReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, name, seq string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNamePageCountReleaseDateSeq(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2550,7 +2550,7 @@ func MatchBooksByNamePageCountReleaseDateSeq(es *elasticsearch.Client, releaseDa
 // price float64 价格
 // releaseDate time.Time release_date
 // seq string seq
-func MatchBooksByNamePriceReleaseDateSeq(es *elasticsearch.Client, price float64, releaseDate time.Time, name, seq string) (*eq.Data, *eq.Query, error) {
+func MatchBooksByNamePriceReleaseDateSeq(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}

@@ -7,27 +7,59 @@ import (
 	"github.com/kyle-hy/es2go/utils"
 )
 
+// GenParamCmt 生成函数参数部分的注释
+func GenParamCmt(fields []*FieldInfo) string {
+	cmt := ""
+	for _, f := range fields {
+		cmt += "// " + utils.ToFirstLower(f.FieldName) + " " + f.FieldType + " " + f.FieldComment + "\n"
+	}
+	cmt = strings.TrimSuffix(cmt, "\n")
+	return cmt
+}
+
+// GenFieldNames 串联参数的名称
+func GenFieldNames(fields []*FieldInfo) string {
+	cmt := ""
+	for _, f := range fields {
+		cmt += f.FieldComment + "、"
+	}
+	cmt = strings.TrimSuffix(cmt, "、")
+	return cmt
+}
+
 // simplifyParams 函数参数列表类型的简化
 func simplifyParams(paramStr string) string {
 	params := strings.Split(paramStr, ",")
-	typeMap := make(map[string][]string)
+	var result []string
+
+	// 当前一组的变量名和类型
+	var currentNames []string
+	var currentType string
+
+	flush := func() {
+		if len(currentNames) > 0 {
+			result = append(result, fmt.Sprintf("%s %s", strings.Join(currentNames, ", "), currentType))
+			currentNames = nil
+		}
+	}
 
 	for _, p := range params {
 		p = strings.TrimSpace(p)
 		parts := strings.Fields(p)
-		if len(parts) == 2 {
-			name := parts[0]
-			typ := parts[1]
-			typeMap[typ] = append(typeMap[typ], name)
+		if len(parts) != 2 {
+			continue // 忽略格式不正确的部分
 		}
-	}
+		name, typ := parts[0], parts[1]
 
-	var simplified []string
-	for typ, names := range typeMap {
-		simplified = append(simplified, fmt.Sprintf("%s %s", strings.Join(names, ", "), typ))
+		if typ != currentType {
+			flush()
+			currentType = typ
+		}
+		currentNames = append(currentNames, name)
 	}
+	flush()
 
-	return strings.Join(simplified, ", ")
+	return strings.Join(result, ", ")
 }
 
 // GenParam 生成函数参数

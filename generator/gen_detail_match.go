@@ -109,29 +109,22 @@ func getDetailMatchFuncName(structName string, fields []*FieldInfo) string {
 // getDetailMatchFuncComment 获取函数注释
 func getDetailMatchFuncComment(structComment string, fields []*FieldInfo) string {
 	// 函数注释
-	cmt := "对"
-	for _, f := range fields {
-		cmt += f.FieldComment + "、"
-	}
-	cmt = strings.TrimSuffix(cmt, "、")
-	cmt += "进行检索(等于)查找" + structComment + "的详细数据列表和总数量"
+	cmt := "对" + GenFieldNames(fields)
+	// for _, f := range fields {
+	// 	cmt += f.FieldComment + "、"
+	// }
+	// cmt = strings.TrimSuffix(cmt, "、")
+	cmt += "进行检索(等于)查找" + structComment + "的详细数据列表和总数量\n"
 
 	// 参数注释
-	for _, f := range fields {
-		cmt += "\n// " + utils.ToFirstLower(f.FieldName) + " " + f.FieldType + " " + f.FieldComment
-	}
+	cmt += GenParamCmt(fields)
 
 	return cmt
 }
 
 // getDetailMatchFuncParams 获取函数参数列表
 func getDetailMatchFuncParams(fields []*FieldInfo) string {
-	fp := ""
-	for _, f := range fields {
-		fp += utils.ToFirstLower(f.FieldName) + " " + f.FieldType + ", "
-	}
-	fp = strings.TrimSuffix(fp, ", ")
-	fp = GenParam(fields)
+	fp := GenParam(fields)
 	return fp
 }
 
