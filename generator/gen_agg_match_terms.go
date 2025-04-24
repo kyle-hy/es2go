@@ -61,12 +61,12 @@ func getAggMatchTermsFuncName(structName string, fields, termsFields []*FieldInf
 
 // getAggMatchTermsFuncComment 获取函数注释
 func getAggMatchTermsFuncComment(structComment string, fields, termsFields []*FieldInfo) string {
-	statCmt := "分组统计"
+	statCmt := "并分组统计"
 	if len(termsFields) > 1 {
-		statCmt = "同时统计"
+		statCmt = "并同时统计"
 	}
 	// 函数注释
-	cmt := "根据" + GenFieldsCmt(fields) + "检索并对" + structComment + statCmt + GenFieldsCmt(termsFields) + "的分布情况\n"
+	cmt := "根据" + GenFieldsCmt(fields) + "检索" + structComment + statCmt + GenFieldsCmt(termsFields) + "的分布情况\n"
 
 	// 参数注释
 	cmt += GenParamCmt(fields)

@@ -19,10 +19,6 @@ func PreDetailRangeCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 
 	// 尝试加载自定义生成配置
 	genCfg := LoadCustomGenConfig(mappingPath)
-	maxCombine := MaxCombine
-	if genCfg.MaxCombine > 0 {
-		maxCombine = genCfg.MaxCombine
-	}
 
 	// 根据配置处理全文本字段的配置
 	fields := esInfo.Fields
@@ -31,10 +27,7 @@ func PreDetailRangeCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 	}
 
 	// 根据配置文件自定义字段分组进行随机组合
-	cmbFields := combineCustom(fields, genCfg.Combine, maxCombine)
-	if len(cmbFields) == 0 { // 不存在自定义字段的配置，则全字段随机
-		cmbFields = utils.Combinations(fields, maxCombine)
-	}
+	cmbFields := combineCustom(fields, genCfg.Combine, genCfg.MaxCombine)
 
 	// 过滤出满足类型限制的组合
 	cmbLimit := map[string]int{TypeNumber: 1, TypeDate: 1, TypeVector: -1}
@@ -94,10 +87,7 @@ func getDetailRangeFuncName(structName string, fields []*FieldInfo, rangeTypes [
 	otherName := ""
 	// 串联过滤条件的字段名
 	if len(other) > 0 {
-		otherName = "With"
-		for _, f := range other {
-			otherName += f.FieldName
-		}
+		otherName = "With" + GenFieldsName(other)
 	}
 
 	// 各字段与比较符号列表的串联
@@ -135,11 +125,7 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeT
 	otherComment := ""
 	// 串联过滤条件的字段名
 	if len(other) > 0 {
-		otherComment = "根据"
-		for _, f := range other {
-			otherComment += f.FieldComment + "、"
-		}
-		otherComment = strings.TrimSuffix(otherComment, "、")
+		otherComment = "根据" + GenFieldsCmt(other)
 	}
 
 	fieldCmts := [][]string{}
@@ -221,8 +207,6 @@ func getDetailRangeFuncParams(fields []*FieldInfo, rangeTypes []string, optList 
 			}
 			tmp = strings.TrimSuffix(tmp, ", ")
 			tmp += " " + f.FieldType + ", "
-			// 	tmp += utils.ToFirstLower(f.FieldName) + opt + " " + f.FieldType + ", "
-			// }
 			tmps = append(tmps, tmp)
 		}
 		params = append(params, tmps)

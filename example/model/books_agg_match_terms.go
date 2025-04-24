@@ -9,7 +9,7 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// MatchBooksByAllTextTermsClass 根据全文本检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextTermsClass 根据全文本检索books表并分组统计类别的分布情况
 // allText string 全文本
 func MatchBooksByAllTextTermsClass(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -20,7 +20,7 @@ func MatchBooksByAllTextTermsClass(es *elasticsearch.Client, allText string) (*e
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextTermsClass2 根据全文本检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextTermsClass2 根据全文本检索books表并分组统计子类别的分布情况
 // allText string 全文本
 func MatchBooksByAllTextTermsClass2(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -31,7 +31,7 @@ func MatchBooksByAllTextTermsClass2(es *elasticsearch.Client, allText string) (*
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextTermsSeq 根据全文本检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextTermsSeq 根据全文本检索books表并分组统计编号的分布情况
 // allText string 全文本
 func MatchBooksByAllTextTermsSeq(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -42,7 +42,7 @@ func MatchBooksByAllTextTermsSeq(es *elasticsearch.Client, allText string) (*eq.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextTermsClassClass2 根据全文本检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextTermsClassClass2 根据全文本检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 func MatchBooksByAllTextTermsClassClass2(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -53,7 +53,7 @@ func MatchBooksByAllTextTermsClassClass2(es *elasticsearch.Client, allText strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextTermsClassSeq 根据全文本检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextTermsClassSeq 根据全文本检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 func MatchBooksByAllTextTermsClassSeq(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -64,7 +64,7 @@ func MatchBooksByAllTextTermsClassSeq(es *elasticsearch.Client, allText string) 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextTermsClass2Seq 根据全文本检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextTermsClass2Seq 根据全文本检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 func MatchBooksByAllTextTermsClass2Seq(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -75,7 +75,7 @@ func MatchBooksByAllTextTermsClass2Seq(es *elasticsearch.Client, allText string)
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextTermsClassClass2Seq 根据全文本检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextTermsClassClass2Seq 根据全文本检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 func MatchBooksByAllTextTermsClassClass2Seq(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -86,7 +86,7 @@ func MatchBooksByAllTextTermsClassClass2Seq(es *elasticsearch.Client, allText st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorTermsClass 根据作者检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorTermsClass 根据作者检索books表并分组统计类别的分布情况
 // author string 作者
 func MatchBooksByAuthorTermsClass(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -97,7 +97,7 @@ func MatchBooksByAuthorTermsClass(es *elasticsearch.Client, author string) (*eq.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorTermsClass2 根据作者检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorTermsClass2 根据作者检索books表并分组统计子类别的分布情况
 // author string 作者
 func MatchBooksByAuthorTermsClass2(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -108,7 +108,7 @@ func MatchBooksByAuthorTermsClass2(es *elasticsearch.Client, author string) (*eq
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorTermsSeq 根据作者检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorTermsSeq 根据作者检索books表并分组统计编号的分布情况
 // author string 作者
 func MatchBooksByAuthorTermsSeq(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -119,7 +119,7 @@ func MatchBooksByAuthorTermsSeq(es *elasticsearch.Client, author string) (*eq.Da
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorTermsClassClass2 根据作者检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorTermsClassClass2 根据作者检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 func MatchBooksByAuthorTermsClassClass2(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -130,7 +130,7 @@ func MatchBooksByAuthorTermsClassClass2(es *elasticsearch.Client, author string)
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorTermsClassSeq 根据作者检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorTermsClassSeq 根据作者检索books表并同时统计类别、编号的分布情况
 // author string 作者
 func MatchBooksByAuthorTermsClassSeq(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -141,7 +141,7 @@ func MatchBooksByAuthorTermsClassSeq(es *elasticsearch.Client, author string) (*
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorTermsClass2Seq 根据作者检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorTermsClass2Seq 根据作者检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 func MatchBooksByAuthorTermsClass2Seq(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -152,7 +152,7 @@ func MatchBooksByAuthorTermsClass2Seq(es *elasticsearch.Client, author string) (
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorTermsClassClass2Seq 根据作者检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAuthorTermsClassClass2Seq 根据作者检索books表并同时统计类别、子类别、编号的分布情况
 // author string 作者
 func MatchBooksByAuthorTermsClassClass2Seq(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -163,7 +163,7 @@ func MatchBooksByAuthorTermsClassClass2Seq(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassTermsClass2 根据类别检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassTermsClass2 根据类别检索books表并分组统计子类别的分布情况
 // class string 类别
 func MatchBooksByClassTermsClass2(es *elasticsearch.Client, class string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -174,7 +174,7 @@ func MatchBooksByClassTermsClass2(es *elasticsearch.Client, class string) (*eq.D
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassTermsSeq 根据类别检索并对books表分组统计编号的分布情况
+// MatchBooksByClassTermsSeq 根据类别检索books表并分组统计编号的分布情况
 // class string 类别
 func MatchBooksByClassTermsSeq(es *elasticsearch.Client, class string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -185,7 +185,7 @@ func MatchBooksByClassTermsSeq(es *elasticsearch.Client, class string) (*eq.Data
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassTermsClass2Seq 根据类别检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByClassTermsClass2Seq 根据类别检索books表并同时统计子类别、编号的分布情况
 // class string 类别
 func MatchBooksByClassTermsClass2Seq(es *elasticsearch.Client, class string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -196,7 +196,7 @@ func MatchBooksByClassTermsClass2Seq(es *elasticsearch.Client, class string) (*e
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2TermsClass 根据子类别检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2TermsClass 根据子类别检索books表并分组统计类别的分布情况
 // class2 string 子类别
 func MatchBooksByClass2TermsClass(es *elasticsearch.Client, class2 string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -207,7 +207,7 @@ func MatchBooksByClass2TermsClass(es *elasticsearch.Client, class2 string) (*eq.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2TermsSeq 根据子类别检索并对books表分组统计编号的分布情况
+// MatchBooksByClass2TermsSeq 根据子类别检索books表并分组统计编号的分布情况
 // class2 string 子类别
 func MatchBooksByClass2TermsSeq(es *elasticsearch.Client, class2 string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -218,7 +218,7 @@ func MatchBooksByClass2TermsSeq(es *elasticsearch.Client, class2 string) (*eq.Da
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2TermsClassSeq 根据子类别检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByClass2TermsClassSeq 根据子类别检索books表并同时统计类别、编号的分布情况
 // class2 string 子类别
 func MatchBooksByClass2TermsClassSeq(es *elasticsearch.Client, class2 string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -229,7 +229,7 @@ func MatchBooksByClass2TermsClassSeq(es *elasticsearch.Client, class2 string) (*
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameTermsClass 根据书名检索并对books表分组统计类别的分布情况
+// MatchBooksByNameTermsClass 根据书名检索books表并分组统计类别的分布情况
 // name string 书名
 func MatchBooksByNameTermsClass(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -240,7 +240,7 @@ func MatchBooksByNameTermsClass(es *elasticsearch.Client, name string) (*eq.Data
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameTermsClass2 根据书名检索并对books表分组统计子类别的分布情况
+// MatchBooksByNameTermsClass2 根据书名检索books表并分组统计子类别的分布情况
 // name string 书名
 func MatchBooksByNameTermsClass2(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -251,7 +251,7 @@ func MatchBooksByNameTermsClass2(es *elasticsearch.Client, name string) (*eq.Dat
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameTermsSeq 根据书名检索并对books表分组统计编号的分布情况
+// MatchBooksByNameTermsSeq 根据书名检索books表并分组统计编号的分布情况
 // name string 书名
 func MatchBooksByNameTermsSeq(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -262,7 +262,7 @@ func MatchBooksByNameTermsSeq(es *elasticsearch.Client, name string) (*eq.Data, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameTermsClassClass2 根据书名检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByNameTermsClassClass2 根据书名检索books表并同时统计类别、子类别的分布情况
 // name string 书名
 func MatchBooksByNameTermsClassClass2(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -273,7 +273,7 @@ func MatchBooksByNameTermsClassClass2(es *elasticsearch.Client, name string) (*e
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameTermsClassSeq 根据书名检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByNameTermsClassSeq 根据书名检索books表并同时统计类别、编号的分布情况
 // name string 书名
 func MatchBooksByNameTermsClassSeq(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -284,7 +284,7 @@ func MatchBooksByNameTermsClassSeq(es *elasticsearch.Client, name string) (*eq.D
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameTermsClass2Seq 根据书名检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByNameTermsClass2Seq 根据书名检索books表并同时统计子类别、编号的分布情况
 // name string 书名
 func MatchBooksByNameTermsClass2Seq(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -295,7 +295,7 @@ func MatchBooksByNameTermsClass2Seq(es *elasticsearch.Client, name string) (*eq.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameTermsClassClass2Seq 根据书名检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByNameTermsClassClass2Seq 根据书名检索books表并同时统计类别、子类别、编号的分布情况
 // name string 书名
 func MatchBooksByNameTermsClassClass2Seq(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -306,7 +306,7 @@ func MatchBooksByNameTermsClassClass2Seq(es *elasticsearch.Client, name string) 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountTermsClass 根据页数检索并对books表分组统计类别的分布情况
+// MatchBooksByPageCountTermsClass 根据页数检索books表并分组统计类别的分布情况
 // pageCount int64 页数
 func MatchBooksByPageCountTermsClass(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -317,7 +317,7 @@ func MatchBooksByPageCountTermsClass(es *elasticsearch.Client, pageCount int64) 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountTermsClass2 根据页数检索并对books表分组统计子类别的分布情况
+// MatchBooksByPageCountTermsClass2 根据页数检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
 func MatchBooksByPageCountTermsClass2(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -328,7 +328,7 @@ func MatchBooksByPageCountTermsClass2(es *elasticsearch.Client, pageCount int64)
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountTermsSeq 根据页数检索并对books表分组统计编号的分布情况
+// MatchBooksByPageCountTermsSeq 根据页数检索books表并分组统计编号的分布情况
 // pageCount int64 页数
 func MatchBooksByPageCountTermsSeq(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -339,7 +339,7 @@ func MatchBooksByPageCountTermsSeq(es *elasticsearch.Client, pageCount int64) (*
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountTermsClassClass2 根据页数检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByPageCountTermsClassClass2 根据页数检索books表并同时统计类别、子类别的分布情况
 // pageCount int64 页数
 func MatchBooksByPageCountTermsClassClass2(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -350,7 +350,7 @@ func MatchBooksByPageCountTermsClassClass2(es *elasticsearch.Client, pageCount i
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountTermsClassSeq 根据页数检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByPageCountTermsClassSeq 根据页数检索books表并同时统计类别、编号的分布情况
 // pageCount int64 页数
 func MatchBooksByPageCountTermsClassSeq(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -361,7 +361,7 @@ func MatchBooksByPageCountTermsClassSeq(es *elasticsearch.Client, pageCount int6
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountTermsClass2Seq 根据页数检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByPageCountTermsClass2Seq 根据页数检索books表并同时统计子类别、编号的分布情况
 // pageCount int64 页数
 func MatchBooksByPageCountTermsClass2Seq(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -372,7 +372,7 @@ func MatchBooksByPageCountTermsClass2Seq(es *elasticsearch.Client, pageCount int
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountTermsClassClass2Seq 根据页数检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByPageCountTermsClassClass2Seq 根据页数检索books表并同时统计类别、子类别、编号的分布情况
 // pageCount int64 页数
 func MatchBooksByPageCountTermsClassClass2Seq(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -383,7 +383,7 @@ func MatchBooksByPageCountTermsClassClass2Seq(es *elasticsearch.Client, pageCoun
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceTermsClass 根据价格检索并对books表分组统计类别的分布情况
+// MatchBooksByPriceTermsClass 根据价格检索books表并分组统计类别的分布情况
 // price float64 价格
 func MatchBooksByPriceTermsClass(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -394,7 +394,7 @@ func MatchBooksByPriceTermsClass(es *elasticsearch.Client, price float64) (*eq.D
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceTermsClass2 根据价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByPriceTermsClass2 根据价格检索books表并分组统计子类别的分布情况
 // price float64 价格
 func MatchBooksByPriceTermsClass2(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -405,7 +405,7 @@ func MatchBooksByPriceTermsClass2(es *elasticsearch.Client, price float64) (*eq.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceTermsSeq 根据价格检索并对books表分组统计编号的分布情况
+// MatchBooksByPriceTermsSeq 根据价格检索books表并分组统计编号的分布情况
 // price float64 价格
 func MatchBooksByPriceTermsSeq(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -416,7 +416,7 @@ func MatchBooksByPriceTermsSeq(es *elasticsearch.Client, price float64) (*eq.Dat
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceTermsClassClass2 根据价格检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByPriceTermsClassClass2 根据价格检索books表并同时统计类别、子类别的分布情况
 // price float64 价格
 func MatchBooksByPriceTermsClassClass2(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -427,7 +427,7 @@ func MatchBooksByPriceTermsClassClass2(es *elasticsearch.Client, price float64) 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceTermsClassSeq 根据价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByPriceTermsClassSeq 根据价格检索books表并同时统计类别、编号的分布情况
 // price float64 价格
 func MatchBooksByPriceTermsClassSeq(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -438,7 +438,7 @@ func MatchBooksByPriceTermsClassSeq(es *elasticsearch.Client, price float64) (*e
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceTermsClass2Seq 根据价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByPriceTermsClass2Seq 根据价格检索books表并同时统计子类别、编号的分布情况
 // price float64 价格
 func MatchBooksByPriceTermsClass2Seq(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -449,7 +449,7 @@ func MatchBooksByPriceTermsClass2Seq(es *elasticsearch.Client, price float64) (*
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceTermsClassClass2Seq 根据价格检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByPriceTermsClassClass2Seq 根据价格检索books表并同时统计类别、子类别、编号的分布情况
 // price float64 价格
 func MatchBooksByPriceTermsClassClass2Seq(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -460,7 +460,7 @@ func MatchBooksByPriceTermsClassClass2Seq(es *elasticsearch.Client, price float6
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateTermsClass 根据发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByReleaseDateTermsClass 根据发布日期检索books表并分组统计类别的分布情况
 // releaseDate time.Time 发布日期
 func MatchBooksByReleaseDateTermsClass(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -471,7 +471,7 @@ func MatchBooksByReleaseDateTermsClass(es *elasticsearch.Client, releaseDate tim
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateTermsClass2 根据发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByReleaseDateTermsClass2 根据发布日期检索books表并分组统计子类别的分布情况
 // releaseDate time.Time 发布日期
 func MatchBooksByReleaseDateTermsClass2(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -482,7 +482,7 @@ func MatchBooksByReleaseDateTermsClass2(es *elasticsearch.Client, releaseDate ti
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateTermsSeq 根据发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByReleaseDateTermsSeq 根据发布日期检索books表并分组统计编号的分布情况
 // releaseDate time.Time 发布日期
 func MatchBooksByReleaseDateTermsSeq(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -493,7 +493,7 @@ func MatchBooksByReleaseDateTermsSeq(es *elasticsearch.Client, releaseDate time.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateTermsClassClass2 根据发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByReleaseDateTermsClassClass2 根据发布日期检索books表并同时统计类别、子类别的分布情况
 // releaseDate time.Time 发布日期
 func MatchBooksByReleaseDateTermsClassClass2(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -504,7 +504,7 @@ func MatchBooksByReleaseDateTermsClassClass2(es *elasticsearch.Client, releaseDa
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateTermsClassSeq 根据发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByReleaseDateTermsClassSeq 根据发布日期检索books表并同时统计类别、编号的分布情况
 // releaseDate time.Time 发布日期
 func MatchBooksByReleaseDateTermsClassSeq(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -515,7 +515,7 @@ func MatchBooksByReleaseDateTermsClassSeq(es *elasticsearch.Client, releaseDate 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateTermsClass2Seq 根据发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByReleaseDateTermsClass2Seq 根据发布日期检索books表并同时统计子类别、编号的分布情况
 // releaseDate time.Time 发布日期
 func MatchBooksByReleaseDateTermsClass2Seq(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -526,7 +526,7 @@ func MatchBooksByReleaseDateTermsClass2Seq(es *elasticsearch.Client, releaseDate
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateTermsClassClass2Seq 根据发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByReleaseDateTermsClassClass2Seq 根据发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // releaseDate time.Time 发布日期
 func MatchBooksByReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -537,7 +537,7 @@ func MatchBooksByReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, releas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksBySeqTermsClass 根据编号检索并对books表分组统计类别的分布情况
+// MatchBooksBySeqTermsClass 根据编号检索books表并分组统计类别的分布情况
 // seq string 编号
 func MatchBooksBySeqTermsClass(es *elasticsearch.Client, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -548,7 +548,7 @@ func MatchBooksBySeqTermsClass(es *elasticsearch.Client, seq string) (*eq.Data, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksBySeqTermsClass2 根据编号检索并对books表分组统计子类别的分布情况
+// MatchBooksBySeqTermsClass2 根据编号检索books表并分组统计子类别的分布情况
 // seq string 编号
 func MatchBooksBySeqTermsClass2(es *elasticsearch.Client, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -559,7 +559,7 @@ func MatchBooksBySeqTermsClass2(es *elasticsearch.Client, seq string) (*eq.Data,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksBySeqTermsClassClass2 根据编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksBySeqTermsClassClass2 根据编号检索books表并同时统计类别、子类别的分布情况
 // seq string 编号
 func MatchBooksBySeqTermsClassClass2(es *elasticsearch.Client, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -570,7 +570,7 @@ func MatchBooksBySeqTermsClassClass2(es *elasticsearch.Client, seq string) (*eq.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorTermsClass 根据全文本、作者检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorTermsClass 根据全文本、作者检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 func MatchBooksByAllTextAuthorTermsClass(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
@@ -583,7 +583,7 @@ func MatchBooksByAllTextAuthorTermsClass(es *elasticsearch.Client, allText, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorTermsClass2 根据全文本、作者检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorTermsClass2 根据全文本、作者检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 func MatchBooksByAllTextAuthorTermsClass2(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
@@ -596,7 +596,7 @@ func MatchBooksByAllTextAuthorTermsClass2(es *elasticsearch.Client, allText, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorTermsSeq 根据全文本、作者检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorTermsSeq 根据全文本、作者检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 func MatchBooksByAllTextAuthorTermsSeq(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
@@ -609,7 +609,7 @@ func MatchBooksByAllTextAuthorTermsSeq(es *elasticsearch.Client, allText, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorTermsClassClass2 根据全文本、作者检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorTermsClassClass2 根据全文本、作者检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 func MatchBooksByAllTextAuthorTermsClassClass2(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
@@ -622,7 +622,7 @@ func MatchBooksByAllTextAuthorTermsClassClass2(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorTermsClassSeq 根据全文本、作者检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorTermsClassSeq 根据全文本、作者检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 func MatchBooksByAllTextAuthorTermsClassSeq(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
@@ -635,7 +635,7 @@ func MatchBooksByAllTextAuthorTermsClassSeq(es *elasticsearch.Client, allText, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorTermsClass2Seq 根据全文本、作者检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorTermsClass2Seq 根据全文本、作者检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 func MatchBooksByAllTextAuthorTermsClass2Seq(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
@@ -648,7 +648,7 @@ func MatchBooksByAllTextAuthorTermsClass2Seq(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorTermsClassClass2Seq 根据全文本、作者检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextAuthorTermsClassClass2Seq 根据全文本、作者检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 func MatchBooksByAllTextAuthorTermsClassClass2Seq(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
@@ -661,7 +661,7 @@ func MatchBooksByAllTextAuthorTermsClassClass2Seq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassTermsClass2 根据全文本、类别检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassTermsClass2 根据全文本、类别检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 func MatchBooksByAllTextClassTermsClass2(es *elasticsearch.Client, allText, class string) (*eq.Data, *eq.Query, error) {
@@ -676,7 +676,7 @@ func MatchBooksByAllTextClassTermsClass2(es *elasticsearch.Client, allText, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassTermsSeq 根据全文本、类别检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassTermsSeq 根据全文本、类别检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 func MatchBooksByAllTextClassTermsSeq(es *elasticsearch.Client, allText, class string) (*eq.Data, *eq.Query, error) {
@@ -691,7 +691,7 @@ func MatchBooksByAllTextClassTermsSeq(es *elasticsearch.Client, allText, class s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassTermsClass2Seq 根据全文本、类别检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextClassTermsClass2Seq 根据全文本、类别检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // class string 类别
 func MatchBooksByAllTextClassTermsClass2Seq(es *elasticsearch.Client, allText, class string) (*eq.Data, *eq.Query, error) {
@@ -706,7 +706,7 @@ func MatchBooksByAllTextClassTermsClass2Seq(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2TermsClass 根据全文本、子类别检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2TermsClass 根据全文本、子类别检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 func MatchBooksByAllTextClass2TermsClass(es *elasticsearch.Client, allText, class2 string) (*eq.Data, *eq.Query, error) {
@@ -721,7 +721,7 @@ func MatchBooksByAllTextClass2TermsClass(es *elasticsearch.Client, allText, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2TermsSeq 根据全文本、子类别检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClass2TermsSeq 根据全文本、子类别检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 func MatchBooksByAllTextClass2TermsSeq(es *elasticsearch.Client, allText, class2 string) (*eq.Data, *eq.Query, error) {
@@ -736,7 +736,7 @@ func MatchBooksByAllTextClass2TermsSeq(es *elasticsearch.Client, allText, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2TermsClassSeq 根据全文本、子类别检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextClass2TermsClassSeq 根据全文本、子类别检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 func MatchBooksByAllTextClass2TermsClassSeq(es *elasticsearch.Client, allText, class2 string) (*eq.Data, *eq.Query, error) {
@@ -751,7 +751,7 @@ func MatchBooksByAllTextClass2TermsClassSeq(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameTermsClass 根据全文本、书名检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextNameTermsClass 根据全文本、书名检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 func MatchBooksByAllTextNameTermsClass(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
@@ -764,7 +764,7 @@ func MatchBooksByAllTextNameTermsClass(es *elasticsearch.Client, allText, name s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameTermsClass2 根据全文本、书名检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextNameTermsClass2 根据全文本、书名检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 func MatchBooksByAllTextNameTermsClass2(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
@@ -777,7 +777,7 @@ func MatchBooksByAllTextNameTermsClass2(es *elasticsearch.Client, allText, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameTermsSeq 根据全文本、书名检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextNameTermsSeq 根据全文本、书名检索books表并分组统计编号的分布情况
 // allText string 全文本
 // name string 书名
 func MatchBooksByAllTextNameTermsSeq(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
@@ -790,7 +790,7 @@ func MatchBooksByAllTextNameTermsSeq(es *elasticsearch.Client, allText, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameTermsClassClass2 根据全文本、书名检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextNameTermsClassClass2 根据全文本、书名检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // name string 书名
 func MatchBooksByAllTextNameTermsClassClass2(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
@@ -803,7 +803,7 @@ func MatchBooksByAllTextNameTermsClassClass2(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameTermsClassSeq 根据全文本、书名检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextNameTermsClassSeq 根据全文本、书名检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 func MatchBooksByAllTextNameTermsClassSeq(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
@@ -816,7 +816,7 @@ func MatchBooksByAllTextNameTermsClassSeq(es *elasticsearch.Client, allText, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameTermsClass2Seq 根据全文本、书名检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextNameTermsClass2Seq 根据全文本、书名检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 func MatchBooksByAllTextNameTermsClass2Seq(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
@@ -829,7 +829,7 @@ func MatchBooksByAllTextNameTermsClass2Seq(es *elasticsearch.Client, allText, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameTermsClassClass2Seq 根据全文本、书名检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextNameTermsClassClass2Seq 根据全文本、书名检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 func MatchBooksByAllTextNameTermsClassClass2Seq(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
@@ -842,7 +842,7 @@ func MatchBooksByAllTextNameTermsClassClass2Seq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountTermsClass 根据全文本、页数检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextPageCountTermsClass 根据全文本、页数检索books表并分组统计类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 func MatchBooksByAllTextPageCountTermsClass(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -857,7 +857,7 @@ func MatchBooksByAllTextPageCountTermsClass(es *elasticsearch.Client, allText st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountTermsClass2 根据全文本、页数检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextPageCountTermsClass2 根据全文本、页数检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 func MatchBooksByAllTextPageCountTermsClass2(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -872,7 +872,7 @@ func MatchBooksByAllTextPageCountTermsClass2(es *elasticsearch.Client, allText s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountTermsSeq 根据全文本、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextPageCountTermsSeq 根据全文本、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 func MatchBooksByAllTextPageCountTermsSeq(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -887,7 +887,7 @@ func MatchBooksByAllTextPageCountTermsSeq(es *elasticsearch.Client, allText stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountTermsClassClass2 根据全文本、页数检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextPageCountTermsClassClass2 根据全文本、页数检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 func MatchBooksByAllTextPageCountTermsClassClass2(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -902,7 +902,7 @@ func MatchBooksByAllTextPageCountTermsClassClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountTermsClassSeq 根据全文本、页数检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextPageCountTermsClassSeq 根据全文本、页数检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 func MatchBooksByAllTextPageCountTermsClassSeq(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -917,7 +917,7 @@ func MatchBooksByAllTextPageCountTermsClassSeq(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountTermsClass2Seq 根据全文本、页数检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextPageCountTermsClass2Seq 根据全文本、页数检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 func MatchBooksByAllTextPageCountTermsClass2Seq(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -932,7 +932,7 @@ func MatchBooksByAllTextPageCountTermsClass2Seq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountTermsClassClass2Seq 根据全文本、页数检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextPageCountTermsClassClass2Seq 根据全文本、页数检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 func MatchBooksByAllTextPageCountTermsClassClass2Seq(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -947,7 +947,7 @@ func MatchBooksByAllTextPageCountTermsClassClass2Seq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceTermsClass 根据全文本、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextPriceTermsClass 根据全文本、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // price float64 价格
 func MatchBooksByAllTextPriceTermsClass(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
@@ -962,7 +962,7 @@ func MatchBooksByAllTextPriceTermsClass(es *elasticsearch.Client, allText string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceTermsClass2 根据全文本、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextPriceTermsClass2 根据全文本、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // price float64 价格
 func MatchBooksByAllTextPriceTermsClass2(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
@@ -977,7 +977,7 @@ func MatchBooksByAllTextPriceTermsClass2(es *elasticsearch.Client, allText strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceTermsSeq 根据全文本、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextPriceTermsSeq 根据全文本、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // price float64 价格
 func MatchBooksByAllTextPriceTermsSeq(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
@@ -992,7 +992,7 @@ func MatchBooksByAllTextPriceTermsSeq(es *elasticsearch.Client, allText string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceTermsClassClass2 根据全文本、价格检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextPriceTermsClassClass2 根据全文本、价格检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // price float64 价格
 func MatchBooksByAllTextPriceTermsClassClass2(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
@@ -1007,7 +1007,7 @@ func MatchBooksByAllTextPriceTermsClassClass2(es *elasticsearch.Client, allText 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceTermsClassSeq 根据全文本、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextPriceTermsClassSeq 根据全文本、价格检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // price float64 价格
 func MatchBooksByAllTextPriceTermsClassSeq(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
@@ -1022,7 +1022,7 @@ func MatchBooksByAllTextPriceTermsClassSeq(es *elasticsearch.Client, allText str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceTermsClass2Seq 根据全文本、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextPriceTermsClass2Seq 根据全文本、价格检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // price float64 价格
 func MatchBooksByAllTextPriceTermsClass2Seq(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
@@ -1037,7 +1037,7 @@ func MatchBooksByAllTextPriceTermsClass2Seq(es *elasticsearch.Client, allText st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceTermsClassClass2Seq 根据全文本、价格检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextPriceTermsClassClass2Seq 根据全文本、价格检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // price float64 价格
 func MatchBooksByAllTextPriceTermsClassClass2Seq(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
@@ -1052,7 +1052,7 @@ func MatchBooksByAllTextPriceTermsClassClass2Seq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateTermsClass 根据全文本、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextReleaseDateTermsClass 根据全文本、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // releaseDate time.Time 发布日期
 func MatchBooksByAllTextReleaseDateTermsClass(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1067,7 +1067,7 @@ func MatchBooksByAllTextReleaseDateTermsClass(es *elasticsearch.Client, allText 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateTermsClass2 根据全文本、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextReleaseDateTermsClass2 根据全文本、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // releaseDate time.Time 发布日期
 func MatchBooksByAllTextReleaseDateTermsClass2(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1082,7 +1082,7 @@ func MatchBooksByAllTextReleaseDateTermsClass2(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateTermsSeq 根据全文本、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextReleaseDateTermsSeq 根据全文本、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // releaseDate time.Time 发布日期
 func MatchBooksByAllTextReleaseDateTermsSeq(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1097,7 +1097,7 @@ func MatchBooksByAllTextReleaseDateTermsSeq(es *elasticsearch.Client, allText st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateTermsClassClass2 根据全文本、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextReleaseDateTermsClassClass2 根据全文本、发布日期检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // releaseDate time.Time 发布日期
 func MatchBooksByAllTextReleaseDateTermsClassClass2(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1112,7 +1112,7 @@ func MatchBooksByAllTextReleaseDateTermsClassClass2(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateTermsClassSeq 根据全文本、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextReleaseDateTermsClassSeq 根据全文本、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // releaseDate time.Time 发布日期
 func MatchBooksByAllTextReleaseDateTermsClassSeq(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1127,7 +1127,7 @@ func MatchBooksByAllTextReleaseDateTermsClassSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateTermsClass2Seq 根据全文本、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextReleaseDateTermsClass2Seq 根据全文本、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // releaseDate time.Time 发布日期
 func MatchBooksByAllTextReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1142,7 +1142,7 @@ func MatchBooksByAllTextReleaseDateTermsClass2Seq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateTermsClassClass2Seq 根据全文本、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextReleaseDateTermsClassClass2Seq 根据全文本、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // releaseDate time.Time 发布日期
 func MatchBooksByAllTextReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1157,7 +1157,7 @@ func MatchBooksByAllTextReleaseDateTermsClassClass2Seq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextSeqTermsClass 根据全文本、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextSeqTermsClass 根据全文本、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // seq string 编号
 func MatchBooksByAllTextSeqTermsClass(es *elasticsearch.Client, allText, seq string) (*eq.Data, *eq.Query, error) {
@@ -1172,7 +1172,7 @@ func MatchBooksByAllTextSeqTermsClass(es *elasticsearch.Client, allText, seq str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextSeqTermsClass2 根据全文本、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextSeqTermsClass2 根据全文本、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // seq string 编号
 func MatchBooksByAllTextSeqTermsClass2(es *elasticsearch.Client, allText, seq string) (*eq.Data, *eq.Query, error) {
@@ -1187,7 +1187,7 @@ func MatchBooksByAllTextSeqTermsClass2(es *elasticsearch.Client, allText, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextSeqTermsClassClass2 根据全文本、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextSeqTermsClassClass2 根据全文本、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // seq string 编号
 func MatchBooksByAllTextSeqTermsClassClass2(es *elasticsearch.Client, allText, seq string) (*eq.Data, *eq.Query, error) {
@@ -1202,7 +1202,7 @@ func MatchBooksByAllTextSeqTermsClassClass2(es *elasticsearch.Client, allText, s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassTermsClass2 根据作者、类别检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassTermsClass2 根据作者、类别检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 func MatchBooksByAuthorClassTermsClass2(es *elasticsearch.Client, author, class string) (*eq.Data, *eq.Query, error) {
@@ -1217,7 +1217,7 @@ func MatchBooksByAuthorClassTermsClass2(es *elasticsearch.Client, author, class 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassTermsSeq 根据作者、类别检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassTermsSeq 根据作者、类别检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 func MatchBooksByAuthorClassTermsSeq(es *elasticsearch.Client, author, class string) (*eq.Data, *eq.Query, error) {
@@ -1232,7 +1232,7 @@ func MatchBooksByAuthorClassTermsSeq(es *elasticsearch.Client, author, class str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassTermsClass2Seq 根据作者、类别检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorClassTermsClass2Seq 根据作者、类别检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // class string 类别
 func MatchBooksByAuthorClassTermsClass2Seq(es *elasticsearch.Client, author, class string) (*eq.Data, *eq.Query, error) {
@@ -1247,7 +1247,7 @@ func MatchBooksByAuthorClassTermsClass2Seq(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2TermsClass 根据作者、子类别检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2TermsClass 根据作者、子类别检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 func MatchBooksByAuthorClass2TermsClass(es *elasticsearch.Client, author, class2 string) (*eq.Data, *eq.Query, error) {
@@ -1262,7 +1262,7 @@ func MatchBooksByAuthorClass2TermsClass(es *elasticsearch.Client, author, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2TermsSeq 根据作者、子类别检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClass2TermsSeq 根据作者、子类别检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 func MatchBooksByAuthorClass2TermsSeq(es *elasticsearch.Client, author, class2 string) (*eq.Data, *eq.Query, error) {
@@ -1277,7 +1277,7 @@ func MatchBooksByAuthorClass2TermsSeq(es *elasticsearch.Client, author, class2 s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2TermsClassSeq 根据作者、子类别检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorClass2TermsClassSeq 根据作者、子类别检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // class2 string 子类别
 func MatchBooksByAuthorClass2TermsClassSeq(es *elasticsearch.Client, author, class2 string) (*eq.Data, *eq.Query, error) {
@@ -1292,7 +1292,7 @@ func MatchBooksByAuthorClass2TermsClassSeq(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameTermsClass 根据作者、书名检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorNameTermsClass 根据作者、书名检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 func MatchBooksByAuthorNameTermsClass(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
@@ -1305,7 +1305,7 @@ func MatchBooksByAuthorNameTermsClass(es *elasticsearch.Client, author, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameTermsClass2 根据作者、书名检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorNameTermsClass2 根据作者、书名检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 func MatchBooksByAuthorNameTermsClass2(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
@@ -1318,7 +1318,7 @@ func MatchBooksByAuthorNameTermsClass2(es *elasticsearch.Client, author, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameTermsSeq 根据作者、书名检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorNameTermsSeq 根据作者、书名检索books表并分组统计编号的分布情况
 // author string 作者
 // name string 书名
 func MatchBooksByAuthorNameTermsSeq(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
@@ -1331,7 +1331,7 @@ func MatchBooksByAuthorNameTermsSeq(es *elasticsearch.Client, author, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameTermsClassClass2 根据作者、书名检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorNameTermsClassClass2 根据作者、书名检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // name string 书名
 func MatchBooksByAuthorNameTermsClassClass2(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
@@ -1344,7 +1344,7 @@ func MatchBooksByAuthorNameTermsClassClass2(es *elasticsearch.Client, author, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameTermsClassSeq 根据作者、书名检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorNameTermsClassSeq 根据作者、书名检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // name string 书名
 func MatchBooksByAuthorNameTermsClassSeq(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
@@ -1357,7 +1357,7 @@ func MatchBooksByAuthorNameTermsClassSeq(es *elasticsearch.Client, author, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameTermsClass2Seq 根据作者、书名检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorNameTermsClass2Seq 根据作者、书名检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // name string 书名
 func MatchBooksByAuthorNameTermsClass2Seq(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
@@ -1370,7 +1370,7 @@ func MatchBooksByAuthorNameTermsClass2Seq(es *elasticsearch.Client, author, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameTermsClassClass2Seq 根据作者、书名检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAuthorNameTermsClassClass2Seq 根据作者、书名检索books表并同时统计类别、子类别、编号的分布情况
 // author string 作者
 // name string 书名
 func MatchBooksByAuthorNameTermsClassClass2Seq(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
@@ -1383,7 +1383,7 @@ func MatchBooksByAuthorNameTermsClassClass2Seq(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountTermsClass 根据作者、页数检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorPageCountTermsClass 根据作者、页数检索books表并分组统计类别的分布情况
 // author string 作者
 // pageCount int64 页数
 func MatchBooksByAuthorPageCountTermsClass(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -1398,7 +1398,7 @@ func MatchBooksByAuthorPageCountTermsClass(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountTermsClass2 根据作者、页数检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorPageCountTermsClass2 根据作者、页数检索books表并分组统计子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 func MatchBooksByAuthorPageCountTermsClass2(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -1413,7 +1413,7 @@ func MatchBooksByAuthorPageCountTermsClass2(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountTermsSeq 根据作者、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorPageCountTermsSeq 根据作者、页数检索books表并分组统计编号的分布情况
 // author string 作者
 // pageCount int64 页数
 func MatchBooksByAuthorPageCountTermsSeq(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -1428,7 +1428,7 @@ func MatchBooksByAuthorPageCountTermsSeq(es *elasticsearch.Client, author string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountTermsClassClass2 根据作者、页数检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorPageCountTermsClassClass2 根据作者、页数检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 func MatchBooksByAuthorPageCountTermsClassClass2(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -1443,7 +1443,7 @@ func MatchBooksByAuthorPageCountTermsClassClass2(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountTermsClassSeq 根据作者、页数检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorPageCountTermsClassSeq 根据作者、页数检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // pageCount int64 页数
 func MatchBooksByAuthorPageCountTermsClassSeq(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -1458,7 +1458,7 @@ func MatchBooksByAuthorPageCountTermsClassSeq(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountTermsClass2Seq 根据作者、页数检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorPageCountTermsClass2Seq 根据作者、页数检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // pageCount int64 页数
 func MatchBooksByAuthorPageCountTermsClass2Seq(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -1473,7 +1473,7 @@ func MatchBooksByAuthorPageCountTermsClass2Seq(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountTermsClassClass2Seq 根据作者、页数检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAuthorPageCountTermsClassClass2Seq 根据作者、页数检索books表并同时统计类别、子类别、编号的分布情况
 // author string 作者
 // pageCount int64 页数
 func MatchBooksByAuthorPageCountTermsClassClass2Seq(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -1488,7 +1488,7 @@ func MatchBooksByAuthorPageCountTermsClassClass2Seq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceTermsClass 根据作者、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorPriceTermsClass 根据作者、价格检索books表并分组统计类别的分布情况
 // author string 作者
 // price float64 价格
 func MatchBooksByAuthorPriceTermsClass(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
@@ -1503,7 +1503,7 @@ func MatchBooksByAuthorPriceTermsClass(es *elasticsearch.Client, author string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceTermsClass2 根据作者、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorPriceTermsClass2 根据作者、价格检索books表并分组统计子类别的分布情况
 // author string 作者
 // price float64 价格
 func MatchBooksByAuthorPriceTermsClass2(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
@@ -1518,7 +1518,7 @@ func MatchBooksByAuthorPriceTermsClass2(es *elasticsearch.Client, author string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceTermsSeq 根据作者、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorPriceTermsSeq 根据作者、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // price float64 价格
 func MatchBooksByAuthorPriceTermsSeq(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
@@ -1533,7 +1533,7 @@ func MatchBooksByAuthorPriceTermsSeq(es *elasticsearch.Client, author string, pr
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceTermsClassClass2 根据作者、价格检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorPriceTermsClassClass2 根据作者、价格检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // price float64 价格
 func MatchBooksByAuthorPriceTermsClassClass2(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
@@ -1548,7 +1548,7 @@ func MatchBooksByAuthorPriceTermsClassClass2(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceTermsClassSeq 根据作者、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorPriceTermsClassSeq 根据作者、价格检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // price float64 价格
 func MatchBooksByAuthorPriceTermsClassSeq(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
@@ -1563,7 +1563,7 @@ func MatchBooksByAuthorPriceTermsClassSeq(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceTermsClass2Seq 根据作者、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorPriceTermsClass2Seq 根据作者、价格检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // price float64 价格
 func MatchBooksByAuthorPriceTermsClass2Seq(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
@@ -1578,7 +1578,7 @@ func MatchBooksByAuthorPriceTermsClass2Seq(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceTermsClassClass2Seq 根据作者、价格检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAuthorPriceTermsClassClass2Seq 根据作者、价格检索books表并同时统计类别、子类别、编号的分布情况
 // author string 作者
 // price float64 价格
 func MatchBooksByAuthorPriceTermsClassClass2Seq(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
@@ -1593,7 +1593,7 @@ func MatchBooksByAuthorPriceTermsClassClass2Seq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateTermsClass 根据作者、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorReleaseDateTermsClass 根据作者、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // releaseDate time.Time 发布日期
 func MatchBooksByAuthorReleaseDateTermsClass(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1608,7 +1608,7 @@ func MatchBooksByAuthorReleaseDateTermsClass(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateTermsClass2 根据作者、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorReleaseDateTermsClass2 根据作者、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // releaseDate time.Time 发布日期
 func MatchBooksByAuthorReleaseDateTermsClass2(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1623,7 +1623,7 @@ func MatchBooksByAuthorReleaseDateTermsClass2(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateTermsSeq 根据作者、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorReleaseDateTermsSeq 根据作者、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // releaseDate time.Time 发布日期
 func MatchBooksByAuthorReleaseDateTermsSeq(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1638,7 +1638,7 @@ func MatchBooksByAuthorReleaseDateTermsSeq(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateTermsClassClass2 根据作者、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorReleaseDateTermsClassClass2 根据作者、发布日期检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // releaseDate time.Time 发布日期
 func MatchBooksByAuthorReleaseDateTermsClassClass2(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1653,7 +1653,7 @@ func MatchBooksByAuthorReleaseDateTermsClassClass2(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateTermsClassSeq 根据作者、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorReleaseDateTermsClassSeq 根据作者、发布日期检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // releaseDate time.Time 发布日期
 func MatchBooksByAuthorReleaseDateTermsClassSeq(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1668,7 +1668,7 @@ func MatchBooksByAuthorReleaseDateTermsClassSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateTermsClass2Seq 根据作者、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorReleaseDateTermsClass2Seq 根据作者、发布日期检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // releaseDate time.Time 发布日期
 func MatchBooksByAuthorReleaseDateTermsClass2Seq(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1683,7 +1683,7 @@ func MatchBooksByAuthorReleaseDateTermsClass2Seq(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateTermsClassClass2Seq 根据作者、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAuthorReleaseDateTermsClassClass2Seq 根据作者、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // author string 作者
 // releaseDate time.Time 发布日期
 func MatchBooksByAuthorReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1698,7 +1698,7 @@ func MatchBooksByAuthorReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorSeqTermsClass 根据作者、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorSeqTermsClass 根据作者、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // seq string 编号
 func MatchBooksByAuthorSeqTermsClass(es *elasticsearch.Client, author, seq string) (*eq.Data, *eq.Query, error) {
@@ -1713,7 +1713,7 @@ func MatchBooksByAuthorSeqTermsClass(es *elasticsearch.Client, author, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorSeqTermsClass2 根据作者、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorSeqTermsClass2 根据作者、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // seq string 编号
 func MatchBooksByAuthorSeqTermsClass2(es *elasticsearch.Client, author, seq string) (*eq.Data, *eq.Query, error) {
@@ -1728,7 +1728,7 @@ func MatchBooksByAuthorSeqTermsClass2(es *elasticsearch.Client, author, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorSeqTermsClassClass2 根据作者、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorSeqTermsClassClass2 根据作者、编号检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // seq string 编号
 func MatchBooksByAuthorSeqTermsClassClass2(es *elasticsearch.Client, author, seq string) (*eq.Data, *eq.Query, error) {
@@ -1743,7 +1743,7 @@ func MatchBooksByAuthorSeqTermsClassClass2(es *elasticsearch.Client, author, seq
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2TermsSeq 根据类别、子类别检索并对books表分组统计编号的分布情况
+// MatchBooksByClassClass2TermsSeq 根据类别、子类别检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 func MatchBooksByClassClass2TermsSeq(es *elasticsearch.Client, class, class2 string) (*eq.Data, *eq.Query, error) {
@@ -1756,7 +1756,7 @@ func MatchBooksByClassClass2TermsSeq(es *elasticsearch.Client, class, class2 str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameTermsClass2 根据类别、书名检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassNameTermsClass2 根据类别、书名检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 func MatchBooksByClassNameTermsClass2(es *elasticsearch.Client, class, name string) (*eq.Data, *eq.Query, error) {
@@ -1771,7 +1771,7 @@ func MatchBooksByClassNameTermsClass2(es *elasticsearch.Client, class, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameTermsSeq 根据类别、书名检索并对books表分组统计编号的分布情况
+// MatchBooksByClassNameTermsSeq 根据类别、书名检索books表并分组统计编号的分布情况
 // class string 类别
 // name string 书名
 func MatchBooksByClassNameTermsSeq(es *elasticsearch.Client, class, name string) (*eq.Data, *eq.Query, error) {
@@ -1786,7 +1786,7 @@ func MatchBooksByClassNameTermsSeq(es *elasticsearch.Client, class, name string)
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameTermsClass2Seq 根据类别、书名检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByClassNameTermsClass2Seq 根据类别、书名检索books表并同时统计子类别、编号的分布情况
 // class string 类别
 // name string 书名
 func MatchBooksByClassNameTermsClass2Seq(es *elasticsearch.Client, class, name string) (*eq.Data, *eq.Query, error) {
@@ -1801,7 +1801,7 @@ func MatchBooksByClassNameTermsClass2Seq(es *elasticsearch.Client, class, name s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountTermsClass2 根据类别、页数检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassPageCountTermsClass2 根据类别、页数检索books表并分组统计子类别的分布情况
 // class string 类别
 // pageCount int64 页数
 func MatchBooksByClassPageCountTermsClass2(es *elasticsearch.Client, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -1814,7 +1814,7 @@ func MatchBooksByClassPageCountTermsClass2(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountTermsSeq 根据类别、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByClassPageCountTermsSeq 根据类别、页数检索books表并分组统计编号的分布情况
 // class string 类别
 // pageCount int64 页数
 func MatchBooksByClassPageCountTermsSeq(es *elasticsearch.Client, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -1827,7 +1827,7 @@ func MatchBooksByClassPageCountTermsSeq(es *elasticsearch.Client, class string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountTermsClass2Seq 根据类别、页数检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByClassPageCountTermsClass2Seq 根据类别、页数检索books表并同时统计子类别、编号的分布情况
 // class string 类别
 // pageCount int64 页数
 func MatchBooksByClassPageCountTermsClass2Seq(es *elasticsearch.Client, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -1840,7 +1840,7 @@ func MatchBooksByClassPageCountTermsClass2Seq(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceTermsClass2 根据类别、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassPriceTermsClass2 根据类别、价格检索books表并分组统计子类别的分布情况
 // class string 类别
 // price float64 价格
 func MatchBooksByClassPriceTermsClass2(es *elasticsearch.Client, class string, price float64) (*eq.Data, *eq.Query, error) {
@@ -1853,7 +1853,7 @@ func MatchBooksByClassPriceTermsClass2(es *elasticsearch.Client, class string, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceTermsSeq 根据类别、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByClassPriceTermsSeq 根据类别、价格检索books表并分组统计编号的分布情况
 // class string 类别
 // price float64 价格
 func MatchBooksByClassPriceTermsSeq(es *elasticsearch.Client, class string, price float64) (*eq.Data, *eq.Query, error) {
@@ -1866,7 +1866,7 @@ func MatchBooksByClassPriceTermsSeq(es *elasticsearch.Client, class string, pric
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceTermsClass2Seq 根据类别、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByClassPriceTermsClass2Seq 根据类别、价格检索books表并同时统计子类别、编号的分布情况
 // class string 类别
 // price float64 价格
 func MatchBooksByClassPriceTermsClass2Seq(es *elasticsearch.Client, class string, price float64) (*eq.Data, *eq.Query, error) {
@@ -1879,7 +1879,7 @@ func MatchBooksByClassPriceTermsClass2Seq(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateTermsClass2 根据类别、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassReleaseDateTermsClass2 根据类别、发布日期检索books表并分组统计子类别的分布情况
 // class string 类别
 // releaseDate time.Time 发布日期
 func MatchBooksByClassReleaseDateTermsClass2(es *elasticsearch.Client, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1892,7 +1892,7 @@ func MatchBooksByClassReleaseDateTermsClass2(es *elasticsearch.Client, class str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateTermsSeq 根据类别、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClassReleaseDateTermsSeq 根据类别、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // releaseDate time.Time 发布日期
 func MatchBooksByClassReleaseDateTermsSeq(es *elasticsearch.Client, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1905,7 +1905,7 @@ func MatchBooksByClassReleaseDateTermsSeq(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateTermsClass2Seq 根据类别、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByClassReleaseDateTermsClass2Seq 根据类别、发布日期检索books表并同时统计子类别、编号的分布情况
 // class string 类别
 // releaseDate time.Time 发布日期
 func MatchBooksByClassReleaseDateTermsClass2Seq(es *elasticsearch.Client, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -1918,7 +1918,7 @@ func MatchBooksByClassReleaseDateTermsClass2Seq(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassSeqTermsClass2 根据类别、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassSeqTermsClass2 根据类别、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // seq string 编号
 func MatchBooksByClassSeqTermsClass2(es *elasticsearch.Client, class, seq string) (*eq.Data, *eq.Query, error) {
@@ -1931,7 +1931,7 @@ func MatchBooksByClassSeqTermsClass2(es *elasticsearch.Client, class, seq string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameTermsClass 根据子类别、书名检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2NameTermsClass 根据子类别、书名检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 func MatchBooksByClass2NameTermsClass(es *elasticsearch.Client, class2, name string) (*eq.Data, *eq.Query, error) {
@@ -1946,7 +1946,7 @@ func MatchBooksByClass2NameTermsClass(es *elasticsearch.Client, class2, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameTermsSeq 根据子类别、书名检索并对books表分组统计编号的分布情况
+// MatchBooksByClass2NameTermsSeq 根据子类别、书名检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // name string 书名
 func MatchBooksByClass2NameTermsSeq(es *elasticsearch.Client, class2, name string) (*eq.Data, *eq.Query, error) {
@@ -1961,7 +1961,7 @@ func MatchBooksByClass2NameTermsSeq(es *elasticsearch.Client, class2, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameTermsClassSeq 根据子类别、书名检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByClass2NameTermsClassSeq 根据子类别、书名检索books表并同时统计类别、编号的分布情况
 // class2 string 子类别
 // name string 书名
 func MatchBooksByClass2NameTermsClassSeq(es *elasticsearch.Client, class2, name string) (*eq.Data, *eq.Query, error) {
@@ -1976,7 +1976,7 @@ func MatchBooksByClass2NameTermsClassSeq(es *elasticsearch.Client, class2, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountTermsClass 根据子类别、页数检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2PageCountTermsClass 根据子类别、页数检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 func MatchBooksByClass2PageCountTermsClass(es *elasticsearch.Client, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -1989,7 +1989,7 @@ func MatchBooksByClass2PageCountTermsClass(es *elasticsearch.Client, class2 stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountTermsSeq 根据子类别、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByClass2PageCountTermsSeq 根据子类别、页数检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 func MatchBooksByClass2PageCountTermsSeq(es *elasticsearch.Client, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -2002,7 +2002,7 @@ func MatchBooksByClass2PageCountTermsSeq(es *elasticsearch.Client, class2 string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountTermsClassSeq 根据子类别、页数检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByClass2PageCountTermsClassSeq 根据子类别、页数检索books表并同时统计类别、编号的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 func MatchBooksByClass2PageCountTermsClassSeq(es *elasticsearch.Client, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -2015,7 +2015,7 @@ func MatchBooksByClass2PageCountTermsClassSeq(es *elasticsearch.Client, class2 s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceTermsClass 根据子类别、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2PriceTermsClass 根据子类别、价格检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // price float64 价格
 func MatchBooksByClass2PriceTermsClass(es *elasticsearch.Client, class2 string, price float64) (*eq.Data, *eq.Query, error) {
@@ -2028,7 +2028,7 @@ func MatchBooksByClass2PriceTermsClass(es *elasticsearch.Client, class2 string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceTermsSeq 根据子类别、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByClass2PriceTermsSeq 根据子类别、价格检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // price float64 价格
 func MatchBooksByClass2PriceTermsSeq(es *elasticsearch.Client, class2 string, price float64) (*eq.Data, *eq.Query, error) {
@@ -2041,7 +2041,7 @@ func MatchBooksByClass2PriceTermsSeq(es *elasticsearch.Client, class2 string, pr
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceTermsClassSeq 根据子类别、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByClass2PriceTermsClassSeq 根据子类别、价格检索books表并同时统计类别、编号的分布情况
 // class2 string 子类别
 // price float64 价格
 func MatchBooksByClass2PriceTermsClassSeq(es *elasticsearch.Client, class2 string, price float64) (*eq.Data, *eq.Query, error) {
@@ -2054,7 +2054,7 @@ func MatchBooksByClass2PriceTermsClassSeq(es *elasticsearch.Client, class2 strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateTermsClass 根据子类别、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2ReleaseDateTermsClass 根据子类别、发布日期检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 func MatchBooksByClass2ReleaseDateTermsClass(es *elasticsearch.Client, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2067,7 +2067,7 @@ func MatchBooksByClass2ReleaseDateTermsClass(es *elasticsearch.Client, class2 st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateTermsSeq 根据子类别、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClass2ReleaseDateTermsSeq 根据子类别、发布日期检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 func MatchBooksByClass2ReleaseDateTermsSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2080,7 +2080,7 @@ func MatchBooksByClass2ReleaseDateTermsSeq(es *elasticsearch.Client, class2 stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateTermsClassSeq 根据子类别、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByClass2ReleaseDateTermsClassSeq 根据子类别、发布日期检索books表并同时统计类别、编号的分布情况
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 func MatchBooksByClass2ReleaseDateTermsClassSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2093,7 +2093,7 @@ func MatchBooksByClass2ReleaseDateTermsClassSeq(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2SeqTermsClass 根据子类别、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2SeqTermsClass 根据子类别、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // seq string 编号
 func MatchBooksByClass2SeqTermsClass(es *elasticsearch.Client, class2, seq string) (*eq.Data, *eq.Query, error) {
@@ -2106,7 +2106,7 @@ func MatchBooksByClass2SeqTermsClass(es *elasticsearch.Client, class2, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountTermsClass 根据书名、页数检索并对books表分组统计类别的分布情况
+// MatchBooksByNamePageCountTermsClass 根据书名、页数检索books表并分组统计类别的分布情况
 // name string 书名
 // pageCount int64 页数
 func MatchBooksByNamePageCountTermsClass(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -2121,7 +2121,7 @@ func MatchBooksByNamePageCountTermsClass(es *elasticsearch.Client, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountTermsClass2 根据书名、页数检索并对books表分组统计子类别的分布情况
+// MatchBooksByNamePageCountTermsClass2 根据书名、页数检索books表并分组统计子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 func MatchBooksByNamePageCountTermsClass2(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -2136,7 +2136,7 @@ func MatchBooksByNamePageCountTermsClass2(es *elasticsearch.Client, name string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountTermsSeq 根据书名、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByNamePageCountTermsSeq 根据书名、页数检索books表并分组统计编号的分布情况
 // name string 书名
 // pageCount int64 页数
 func MatchBooksByNamePageCountTermsSeq(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -2151,7 +2151,7 @@ func MatchBooksByNamePageCountTermsSeq(es *elasticsearch.Client, name string, pa
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountTermsClassClass2 根据书名、页数检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByNamePageCountTermsClassClass2 根据书名、页数检索books表并同时统计类别、子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 func MatchBooksByNamePageCountTermsClassClass2(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -2166,7 +2166,7 @@ func MatchBooksByNamePageCountTermsClassClass2(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountTermsClassSeq 根据书名、页数检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByNamePageCountTermsClassSeq 根据书名、页数检索books表并同时统计类别、编号的分布情况
 // name string 书名
 // pageCount int64 页数
 func MatchBooksByNamePageCountTermsClassSeq(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -2181,7 +2181,7 @@ func MatchBooksByNamePageCountTermsClassSeq(es *elasticsearch.Client, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountTermsClass2Seq 根据书名、页数检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByNamePageCountTermsClass2Seq 根据书名、页数检索books表并同时统计子类别、编号的分布情况
 // name string 书名
 // pageCount int64 页数
 func MatchBooksByNamePageCountTermsClass2Seq(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -2196,7 +2196,7 @@ func MatchBooksByNamePageCountTermsClass2Seq(es *elasticsearch.Client, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountTermsClassClass2Seq 根据书名、页数检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByNamePageCountTermsClassClass2Seq 根据书名、页数检索books表并同时统计类别、子类别、编号的分布情况
 // name string 书名
 // pageCount int64 页数
 func MatchBooksByNamePageCountTermsClassClass2Seq(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -2211,7 +2211,7 @@ func MatchBooksByNamePageCountTermsClassClass2Seq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceTermsClass 根据书名、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByNamePriceTermsClass 根据书名、价格检索books表并分组统计类别的分布情况
 // name string 书名
 // price float64 价格
 func MatchBooksByNamePriceTermsClass(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
@@ -2226,7 +2226,7 @@ func MatchBooksByNamePriceTermsClass(es *elasticsearch.Client, name string, pric
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceTermsClass2 根据书名、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByNamePriceTermsClass2 根据书名、价格检索books表并分组统计子类别的分布情况
 // name string 书名
 // price float64 价格
 func MatchBooksByNamePriceTermsClass2(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
@@ -2241,7 +2241,7 @@ func MatchBooksByNamePriceTermsClass2(es *elasticsearch.Client, name string, pri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceTermsSeq 根据书名、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByNamePriceTermsSeq 根据书名、价格检索books表并分组统计编号的分布情况
 // name string 书名
 // price float64 价格
 func MatchBooksByNamePriceTermsSeq(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
@@ -2256,7 +2256,7 @@ func MatchBooksByNamePriceTermsSeq(es *elasticsearch.Client, name string, price 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceTermsClassClass2 根据书名、价格检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByNamePriceTermsClassClass2 根据书名、价格检索books表并同时统计类别、子类别的分布情况
 // name string 书名
 // price float64 价格
 func MatchBooksByNamePriceTermsClassClass2(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
@@ -2271,7 +2271,7 @@ func MatchBooksByNamePriceTermsClassClass2(es *elasticsearch.Client, name string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceTermsClassSeq 根据书名、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByNamePriceTermsClassSeq 根据书名、价格检索books表并同时统计类别、编号的分布情况
 // name string 书名
 // price float64 价格
 func MatchBooksByNamePriceTermsClassSeq(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
@@ -2286,7 +2286,7 @@ func MatchBooksByNamePriceTermsClassSeq(es *elasticsearch.Client, name string, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceTermsClass2Seq 根据书名、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByNamePriceTermsClass2Seq 根据书名、价格检索books表并同时统计子类别、编号的分布情况
 // name string 书名
 // price float64 价格
 func MatchBooksByNamePriceTermsClass2Seq(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
@@ -2301,7 +2301,7 @@ func MatchBooksByNamePriceTermsClass2Seq(es *elasticsearch.Client, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceTermsClassClass2Seq 根据书名、价格检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByNamePriceTermsClassClass2Seq 根据书名、价格检索books表并同时统计类别、子类别、编号的分布情况
 // name string 书名
 // price float64 价格
 func MatchBooksByNamePriceTermsClassClass2Seq(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
@@ -2316,7 +2316,7 @@ func MatchBooksByNamePriceTermsClassClass2Seq(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateTermsClass 根据书名、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByNameReleaseDateTermsClass 根据书名、发布日期检索books表并分组统计类别的分布情况
 // name string 书名
 // releaseDate time.Time 发布日期
 func MatchBooksByNameReleaseDateTermsClass(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2331,7 +2331,7 @@ func MatchBooksByNameReleaseDateTermsClass(es *elasticsearch.Client, name string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateTermsClass2 根据书名、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByNameReleaseDateTermsClass2 根据书名、发布日期检索books表并分组统计子类别的分布情况
 // name string 书名
 // releaseDate time.Time 发布日期
 func MatchBooksByNameReleaseDateTermsClass2(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2346,7 +2346,7 @@ func MatchBooksByNameReleaseDateTermsClass2(es *elasticsearch.Client, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateTermsSeq 根据书名、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByNameReleaseDateTermsSeq 根据书名、发布日期检索books表并分组统计编号的分布情况
 // name string 书名
 // releaseDate time.Time 发布日期
 func MatchBooksByNameReleaseDateTermsSeq(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2361,7 +2361,7 @@ func MatchBooksByNameReleaseDateTermsSeq(es *elasticsearch.Client, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateTermsClassClass2 根据书名、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByNameReleaseDateTermsClassClass2 根据书名、发布日期检索books表并同时统计类别、子类别的分布情况
 // name string 书名
 // releaseDate time.Time 发布日期
 func MatchBooksByNameReleaseDateTermsClassClass2(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2376,7 +2376,7 @@ func MatchBooksByNameReleaseDateTermsClassClass2(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateTermsClassSeq 根据书名、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByNameReleaseDateTermsClassSeq 根据书名、发布日期检索books表并同时统计类别、编号的分布情况
 // name string 书名
 // releaseDate time.Time 发布日期
 func MatchBooksByNameReleaseDateTermsClassSeq(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2391,7 +2391,7 @@ func MatchBooksByNameReleaseDateTermsClassSeq(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateTermsClass2Seq 根据书名、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByNameReleaseDateTermsClass2Seq 根据书名、发布日期检索books表并同时统计子类别、编号的分布情况
 // name string 书名
 // releaseDate time.Time 发布日期
 func MatchBooksByNameReleaseDateTermsClass2Seq(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2406,7 +2406,7 @@ func MatchBooksByNameReleaseDateTermsClass2Seq(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateTermsClassClass2Seq 根据书名、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByNameReleaseDateTermsClassClass2Seq 根据书名、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // name string 书名
 // releaseDate time.Time 发布日期
 func MatchBooksByNameReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2421,7 +2421,7 @@ func MatchBooksByNameReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameSeqTermsClass 根据书名、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByNameSeqTermsClass 根据书名、编号检索books表并分组统计类别的分布情况
 // name string 书名
 // seq string 编号
 func MatchBooksByNameSeqTermsClass(es *elasticsearch.Client, name, seq string) (*eq.Data, *eq.Query, error) {
@@ -2436,7 +2436,7 @@ func MatchBooksByNameSeqTermsClass(es *elasticsearch.Client, name, seq string) (
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameSeqTermsClass2 根据书名、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByNameSeqTermsClass2 根据书名、编号检索books表并分组统计子类别的分布情况
 // name string 书名
 // seq string 编号
 func MatchBooksByNameSeqTermsClass2(es *elasticsearch.Client, name, seq string) (*eq.Data, *eq.Query, error) {
@@ -2451,7 +2451,7 @@ func MatchBooksByNameSeqTermsClass2(es *elasticsearch.Client, name, seq string) 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameSeqTermsClassClass2 根据书名、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByNameSeqTermsClassClass2 根据书名、编号检索books表并同时统计类别、子类别的分布情况
 // name string 书名
 // seq string 编号
 func MatchBooksByNameSeqTermsClassClass2(es *elasticsearch.Client, name, seq string) (*eq.Data, *eq.Query, error) {
@@ -2466,7 +2466,7 @@ func MatchBooksByNameSeqTermsClassClass2(es *elasticsearch.Client, name, seq str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceTermsClass 根据页数、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByPageCountPriceTermsClass 根据页数、价格检索books表并分组统计类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 func MatchBooksByPageCountPriceTermsClass(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
@@ -2479,7 +2479,7 @@ func MatchBooksByPageCountPriceTermsClass(es *elasticsearch.Client, pageCount in
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceTermsClass2 根据页数、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByPageCountPriceTermsClass2 根据页数、价格检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 func MatchBooksByPageCountPriceTermsClass2(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
@@ -2492,7 +2492,7 @@ func MatchBooksByPageCountPriceTermsClass2(es *elasticsearch.Client, pageCount i
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceTermsSeq 根据页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByPageCountPriceTermsSeq 根据页数、价格检索books表并分组统计编号的分布情况
 // pageCount int64 页数
 // price float64 价格
 func MatchBooksByPageCountPriceTermsSeq(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
@@ -2505,7 +2505,7 @@ func MatchBooksByPageCountPriceTermsSeq(es *elasticsearch.Client, pageCount int6
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceTermsClassClass2 根据页数、价格检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByPageCountPriceTermsClassClass2 根据页数、价格检索books表并同时统计类别、子类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 func MatchBooksByPageCountPriceTermsClassClass2(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
@@ -2518,7 +2518,7 @@ func MatchBooksByPageCountPriceTermsClassClass2(es *elasticsearch.Client, pageCo
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceTermsClassSeq 根据页数、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByPageCountPriceTermsClassSeq 根据页数、价格检索books表并同时统计类别、编号的分布情况
 // pageCount int64 页数
 // price float64 价格
 func MatchBooksByPageCountPriceTermsClassSeq(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
@@ -2531,7 +2531,7 @@ func MatchBooksByPageCountPriceTermsClassSeq(es *elasticsearch.Client, pageCount
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceTermsClass2Seq 根据页数、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByPageCountPriceTermsClass2Seq 根据页数、价格检索books表并同时统计子类别、编号的分布情况
 // pageCount int64 页数
 // price float64 价格
 func MatchBooksByPageCountPriceTermsClass2Seq(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
@@ -2544,7 +2544,7 @@ func MatchBooksByPageCountPriceTermsClass2Seq(es *elasticsearch.Client, pageCoun
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceTermsClassClass2Seq 根据页数、价格检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByPageCountPriceTermsClassClass2Seq 根据页数、价格检索books表并同时统计类别、子类别、编号的分布情况
 // pageCount int64 页数
 // price float64 价格
 func MatchBooksByPageCountPriceTermsClassClass2Seq(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
@@ -2557,7 +2557,7 @@ func MatchBooksByPageCountPriceTermsClassClass2Seq(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateTermsClass 根据页数、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByPageCountReleaseDateTermsClass 根据页数、发布日期检索books表并分组统计类别的分布情况
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 func MatchBooksByPageCountReleaseDateTermsClass(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2570,7 +2570,7 @@ func MatchBooksByPageCountReleaseDateTermsClass(es *elasticsearch.Client, pageCo
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateTermsClass2 根据页数、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByPageCountReleaseDateTermsClass2 根据页数、发布日期检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 func MatchBooksByPageCountReleaseDateTermsClass2(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2583,7 +2583,7 @@ func MatchBooksByPageCountReleaseDateTermsClass2(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateTermsSeq 根据页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByPageCountReleaseDateTermsSeq 根据页数、发布日期检索books表并分组统计编号的分布情况
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 func MatchBooksByPageCountReleaseDateTermsSeq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2596,7 +2596,7 @@ func MatchBooksByPageCountReleaseDateTermsSeq(es *elasticsearch.Client, pageCoun
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateTermsClassClass2 根据页数、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByPageCountReleaseDateTermsClassClass2 根据页数、发布日期检索books表并同时统计类别、子类别的分布情况
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 func MatchBooksByPageCountReleaseDateTermsClassClass2(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2609,7 +2609,7 @@ func MatchBooksByPageCountReleaseDateTermsClassClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateTermsClassSeq 根据页数、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByPageCountReleaseDateTermsClassSeq 根据页数、发布日期检索books表并同时统计类别、编号的分布情况
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 func MatchBooksByPageCountReleaseDateTermsClassSeq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2622,7 +2622,7 @@ func MatchBooksByPageCountReleaseDateTermsClassSeq(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateTermsClass2Seq 根据页数、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByPageCountReleaseDateTermsClass2Seq 根据页数、发布日期检索books表并同时统计子类别、编号的分布情况
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 func MatchBooksByPageCountReleaseDateTermsClass2Seq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2635,7 +2635,7 @@ func MatchBooksByPageCountReleaseDateTermsClass2Seq(es *elasticsearch.Client, pa
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateTermsClassClass2Seq 根据页数、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByPageCountReleaseDateTermsClassClass2Seq 根据页数、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 func MatchBooksByPageCountReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2648,7 +2648,7 @@ func MatchBooksByPageCountReleaseDateTermsClassClass2Seq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountSeqTermsClass 根据页数、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByPageCountSeqTermsClass 根据页数、编号检索books表并分组统计类别的分布情况
 // pageCount int64 页数
 // seq string 编号
 func MatchBooksByPageCountSeqTermsClass(es *elasticsearch.Client, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
@@ -2661,7 +2661,7 @@ func MatchBooksByPageCountSeqTermsClass(es *elasticsearch.Client, pageCount int6
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountSeqTermsClass2 根据页数、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByPageCountSeqTermsClass2 根据页数、编号检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
 // seq string 编号
 func MatchBooksByPageCountSeqTermsClass2(es *elasticsearch.Client, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
@@ -2674,7 +2674,7 @@ func MatchBooksByPageCountSeqTermsClass2(es *elasticsearch.Client, pageCount int
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountSeqTermsClassClass2 根据页数、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByPageCountSeqTermsClassClass2 根据页数、编号检索books表并同时统计类别、子类别的分布情况
 // pageCount int64 页数
 // seq string 编号
 func MatchBooksByPageCountSeqTermsClassClass2(es *elasticsearch.Client, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
@@ -2687,7 +2687,7 @@ func MatchBooksByPageCountSeqTermsClassClass2(es *elasticsearch.Client, pageCoun
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateTermsClass 根据价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByPriceReleaseDateTermsClass 根据价格、发布日期检索books表并分组统计类别的分布情况
 // price float64 价格
 // releaseDate time.Time 发布日期
 func MatchBooksByPriceReleaseDateTermsClass(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2700,7 +2700,7 @@ func MatchBooksByPriceReleaseDateTermsClass(es *elasticsearch.Client, price floa
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateTermsClass2 根据价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByPriceReleaseDateTermsClass2 根据价格、发布日期检索books表并分组统计子类别的分布情况
 // price float64 价格
 // releaseDate time.Time 发布日期
 func MatchBooksByPriceReleaseDateTermsClass2(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2713,7 +2713,7 @@ func MatchBooksByPriceReleaseDateTermsClass2(es *elasticsearch.Client, price flo
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateTermsSeq 根据价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByPriceReleaseDateTermsSeq 根据价格、发布日期检索books表并分组统计编号的分布情况
 // price float64 价格
 // releaseDate time.Time 发布日期
 func MatchBooksByPriceReleaseDateTermsSeq(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2726,7 +2726,7 @@ func MatchBooksByPriceReleaseDateTermsSeq(es *elasticsearch.Client, price float6
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateTermsClassClass2 根据价格、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByPriceReleaseDateTermsClassClass2 根据价格、发布日期检索books表并同时统计类别、子类别的分布情况
 // price float64 价格
 // releaseDate time.Time 发布日期
 func MatchBooksByPriceReleaseDateTermsClassClass2(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2739,7 +2739,7 @@ func MatchBooksByPriceReleaseDateTermsClassClass2(es *elasticsearch.Client, pric
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateTermsClassSeq 根据价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByPriceReleaseDateTermsClassSeq 根据价格、发布日期检索books表并同时统计类别、编号的分布情况
 // price float64 价格
 // releaseDate time.Time 发布日期
 func MatchBooksByPriceReleaseDateTermsClassSeq(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2752,7 +2752,7 @@ func MatchBooksByPriceReleaseDateTermsClassSeq(es *elasticsearch.Client, price f
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateTermsClass2Seq 根据价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByPriceReleaseDateTermsClass2Seq 根据价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // price float64 价格
 // releaseDate time.Time 发布日期
 func MatchBooksByPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2765,7 +2765,7 @@ func MatchBooksByPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, price 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateTermsClassClass2Seq 根据价格、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByPriceReleaseDateTermsClassClass2Seq 根据价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // price float64 价格
 // releaseDate time.Time 发布日期
 func MatchBooksByPriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -2778,7 +2778,7 @@ func MatchBooksByPriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceSeqTermsClass 根据价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByPriceSeqTermsClass 根据价格、编号检索books表并分组统计类别的分布情况
 // price float64 价格
 // seq string 编号
 func MatchBooksByPriceSeqTermsClass(es *elasticsearch.Client, price float64, seq string) (*eq.Data, *eq.Query, error) {
@@ -2791,7 +2791,7 @@ func MatchBooksByPriceSeqTermsClass(es *elasticsearch.Client, price float64, seq
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceSeqTermsClass2 根据价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByPriceSeqTermsClass2 根据价格、编号检索books表并分组统计子类别的分布情况
 // price float64 价格
 // seq string 编号
 func MatchBooksByPriceSeqTermsClass2(es *elasticsearch.Client, price float64, seq string) (*eq.Data, *eq.Query, error) {
@@ -2804,7 +2804,7 @@ func MatchBooksByPriceSeqTermsClass2(es *elasticsearch.Client, price float64, se
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceSeqTermsClassClass2 根据价格、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByPriceSeqTermsClassClass2 根据价格、编号检索books表并同时统计类别、子类别的分布情况
 // price float64 价格
 // seq string 编号
 func MatchBooksByPriceSeqTermsClassClass2(es *elasticsearch.Client, price float64, seq string) (*eq.Data, *eq.Query, error) {
@@ -2817,7 +2817,7 @@ func MatchBooksByPriceSeqTermsClassClass2(es *elasticsearch.Client, price float6
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateSeqTermsClass 根据发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByReleaseDateSeqTermsClass 根据发布日期、编号检索books表并分组统计类别的分布情况
 // releaseDate time.Time 发布日期
 // seq string 编号
 func MatchBooksByReleaseDateSeqTermsClass(es *elasticsearch.Client, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
@@ -2830,7 +2830,7 @@ func MatchBooksByReleaseDateSeqTermsClass(es *elasticsearch.Client, releaseDate 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateSeqTermsClass2 根据发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByReleaseDateSeqTermsClass2 根据发布日期、编号检索books表并分组统计子类别的分布情况
 // releaseDate time.Time 发布日期
 // seq string 编号
 func MatchBooksByReleaseDateSeqTermsClass2(es *elasticsearch.Client, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
@@ -2843,7 +2843,7 @@ func MatchBooksByReleaseDateSeqTermsClass2(es *elasticsearch.Client, releaseDate
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateSeqTermsClassClass2 根据发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByReleaseDateSeqTermsClassClass2 根据发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // releaseDate time.Time 发布日期
 // seq string 编号
 func MatchBooksByReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
@@ -2856,7 +2856,7 @@ func MatchBooksByReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, releas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassTermsClass2 根据全文本、作者、类别检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorClassTermsClass2 根据全文本、作者、类别检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -2873,7 +2873,7 @@ func MatchBooksByAllTextAuthorClassTermsClass2(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassTermsSeq 根据全文本、作者、类别检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorClassTermsSeq 根据全文本、作者、类别检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -2890,7 +2890,7 @@ func MatchBooksByAllTextAuthorClassTermsSeq(es *elasticsearch.Client, allText, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassTermsClass2Seq 根据全文本、作者、类别检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorClassTermsClass2Seq 根据全文本、作者、类别检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -2907,7 +2907,7 @@ func MatchBooksByAllTextAuthorClassTermsClass2Seq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2TermsClass 根据全文本、作者、子类别检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorClass2TermsClass 根据全文本、作者、子类别检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -2924,7 +2924,7 @@ func MatchBooksByAllTextAuthorClass2TermsClass(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2TermsSeq 根据全文本、作者、子类别检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorClass2TermsSeq 根据全文本、作者、子类别检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -2941,7 +2941,7 @@ func MatchBooksByAllTextAuthorClass2TermsSeq(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2TermsClassSeq 根据全文本、作者、子类别检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorClass2TermsClassSeq 根据全文本、作者、子类别检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -2958,7 +2958,7 @@ func MatchBooksByAllTextAuthorClass2TermsClassSeq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameTermsClass 根据全文本、作者、书名检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorNameTermsClass 根据全文本、作者、书名检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -2973,7 +2973,7 @@ func MatchBooksByAllTextAuthorNameTermsClass(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameTermsClass2 根据全文本、作者、书名检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorNameTermsClass2 根据全文本、作者、书名检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -2988,7 +2988,7 @@ func MatchBooksByAllTextAuthorNameTermsClass2(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameTermsSeq 根据全文本、作者、书名检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorNameTermsSeq 根据全文本、作者、书名检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -3003,7 +3003,7 @@ func MatchBooksByAllTextAuthorNameTermsSeq(es *elasticsearch.Client, allText, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameTermsClassClass2 根据全文本、作者、书名检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorNameTermsClassClass2 根据全文本、作者、书名检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -3018,7 +3018,7 @@ func MatchBooksByAllTextAuthorNameTermsClassClass2(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameTermsClassSeq 根据全文本、作者、书名检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorNameTermsClassSeq 根据全文本、作者、书名检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -3033,7 +3033,7 @@ func MatchBooksByAllTextAuthorNameTermsClassSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameTermsClass2Seq 根据全文本、作者、书名检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorNameTermsClass2Seq 根据全文本、作者、书名检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -3048,7 +3048,7 @@ func MatchBooksByAllTextAuthorNameTermsClass2Seq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameTermsClassClass2Seq 根据全文本、作者、书名检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextAuthorNameTermsClassClass2Seq 根据全文本、作者、书名检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -3063,7 +3063,7 @@ func MatchBooksByAllTextAuthorNameTermsClassClass2Seq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountTermsClass 根据全文本、作者、页数检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorPageCountTermsClass 根据全文本、作者、页数检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -3080,7 +3080,7 @@ func MatchBooksByAllTextAuthorPageCountTermsClass(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountTermsClass2 根据全文本、作者、页数检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorPageCountTermsClass2 根据全文本、作者、页数检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -3097,7 +3097,7 @@ func MatchBooksByAllTextAuthorPageCountTermsClass2(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountTermsSeq 根据全文本、作者、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorPageCountTermsSeq 根据全文本、作者、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -3114,7 +3114,7 @@ func MatchBooksByAllTextAuthorPageCountTermsSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountTermsClassClass2 根据全文本、作者、页数检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorPageCountTermsClassClass2 根据全文本、作者、页数检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -3131,7 +3131,7 @@ func MatchBooksByAllTextAuthorPageCountTermsClassClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountTermsClassSeq 根据全文本、作者、页数检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorPageCountTermsClassSeq 根据全文本、作者、页数检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -3148,7 +3148,7 @@ func MatchBooksByAllTextAuthorPageCountTermsClassSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountTermsClass2Seq 根据全文本、作者、页数检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorPageCountTermsClass2Seq 根据全文本、作者、页数检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -3165,7 +3165,7 @@ func MatchBooksByAllTextAuthorPageCountTermsClass2Seq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountTermsClassClass2Seq 根据全文本、作者、页数检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextAuthorPageCountTermsClassClass2Seq 根据全文本、作者、页数检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -3182,7 +3182,7 @@ func MatchBooksByAllTextAuthorPageCountTermsClassClass2Seq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceTermsClass 根据全文本、作者、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorPriceTermsClass 根据全文本、作者、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -3199,7 +3199,7 @@ func MatchBooksByAllTextAuthorPriceTermsClass(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceTermsClass2 根据全文本、作者、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorPriceTermsClass2 根据全文本、作者、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -3216,7 +3216,7 @@ func MatchBooksByAllTextAuthorPriceTermsClass2(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceTermsSeq 根据全文本、作者、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorPriceTermsSeq 根据全文本、作者、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -3233,7 +3233,7 @@ func MatchBooksByAllTextAuthorPriceTermsSeq(es *elasticsearch.Client, allText, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceTermsClassClass2 根据全文本、作者、价格检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorPriceTermsClassClass2 根据全文本、作者、价格检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -3250,7 +3250,7 @@ func MatchBooksByAllTextAuthorPriceTermsClassClass2(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceTermsClassSeq 根据全文本、作者、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorPriceTermsClassSeq 根据全文本、作者、价格检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -3267,7 +3267,7 @@ func MatchBooksByAllTextAuthorPriceTermsClassSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceTermsClass2Seq 根据全文本、作者、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorPriceTermsClass2Seq 根据全文本、作者、价格检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -3284,7 +3284,7 @@ func MatchBooksByAllTextAuthorPriceTermsClass2Seq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceTermsClassClass2Seq 根据全文本、作者、价格检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextAuthorPriceTermsClassClass2Seq 根据全文本、作者、价格检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -3301,7 +3301,7 @@ func MatchBooksByAllTextAuthorPriceTermsClassClass2Seq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateTermsClass 根据全文本、作者、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorReleaseDateTermsClass 根据全文本、作者、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
@@ -3318,7 +3318,7 @@ func MatchBooksByAllTextAuthorReleaseDateTermsClass(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateTermsClass2 根据全文本、作者、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorReleaseDateTermsClass2 根据全文本、作者、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
@@ -3335,7 +3335,7 @@ func MatchBooksByAllTextAuthorReleaseDateTermsClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateTermsSeq 根据全文本、作者、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorReleaseDateTermsSeq 根据全文本、作者、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
@@ -3352,7 +3352,7 @@ func MatchBooksByAllTextAuthorReleaseDateTermsSeq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateTermsClassClass2 根据全文本、作者、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorReleaseDateTermsClassClass2 根据全文本、作者、发布日期检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
@@ -3369,7 +3369,7 @@ func MatchBooksByAllTextAuthorReleaseDateTermsClassClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateTermsClassSeq 根据全文本、作者、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorReleaseDateTermsClassSeq 根据全文本、作者、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
@@ -3386,7 +3386,7 @@ func MatchBooksByAllTextAuthorReleaseDateTermsClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateTermsClass2Seq 根据全文本、作者、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorReleaseDateTermsClass2Seq 根据全文本、作者、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
@@ -3403,7 +3403,7 @@ func MatchBooksByAllTextAuthorReleaseDateTermsClass2Seq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateTermsClassClass2Seq 根据全文本、作者、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextAuthorReleaseDateTermsClassClass2Seq 根据全文本、作者、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
@@ -3420,7 +3420,7 @@ func MatchBooksByAllTextAuthorReleaseDateTermsClassClass2Seq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorSeqTermsClass 根据全文本、作者、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorSeqTermsClass 根据全文本、作者、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // seq string 编号
@@ -3437,7 +3437,7 @@ func MatchBooksByAllTextAuthorSeqTermsClass(es *elasticsearch.Client, allText, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorSeqTermsClass2 根据全文本、作者、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorSeqTermsClass2 根据全文本、作者、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // seq string 编号
@@ -3454,7 +3454,7 @@ func MatchBooksByAllTextAuthorSeqTermsClass2(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorSeqTermsClassClass2 根据全文本、作者、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorSeqTermsClassClass2 根据全文本、作者、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 // seq string 编号
@@ -3471,7 +3471,7 @@ func MatchBooksByAllTextAuthorSeqTermsClassClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2TermsSeq 根据全文本、类别、子类别检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassClass2TermsSeq 根据全文本、类别、子类别检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -3488,7 +3488,7 @@ func MatchBooksByAllTextClassClass2TermsSeq(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameTermsClass2 根据全文本、类别、书名检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassNameTermsClass2 根据全文本、类别、书名检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -3505,7 +3505,7 @@ func MatchBooksByAllTextClassNameTermsClass2(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameTermsSeq 根据全文本、类别、书名检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassNameTermsSeq 根据全文本、类别、书名检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -3522,7 +3522,7 @@ func MatchBooksByAllTextClassNameTermsSeq(es *elasticsearch.Client, allText, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameTermsClass2Seq 根据全文本、类别、书名检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextClassNameTermsClass2Seq 根据全文本、类别、书名检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -3539,7 +3539,7 @@ func MatchBooksByAllTextClassNameTermsClass2Seq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountTermsClass2 根据全文本、类别、页数检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassPageCountTermsClass2 根据全文本、类别、页数检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -3556,7 +3556,7 @@ func MatchBooksByAllTextClassPageCountTermsClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountTermsSeq 根据全文本、类别、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassPageCountTermsSeq 根据全文本、类别、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -3573,7 +3573,7 @@ func MatchBooksByAllTextClassPageCountTermsSeq(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountTermsClass2Seq 根据全文本、类别、页数检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextClassPageCountTermsClass2Seq 根据全文本、类别、页数检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -3590,7 +3590,7 @@ func MatchBooksByAllTextClassPageCountTermsClass2Seq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceTermsClass2 根据全文本、类别、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassPriceTermsClass2 根据全文本、类别、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // price float64 价格
@@ -3607,7 +3607,7 @@ func MatchBooksByAllTextClassPriceTermsClass2(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceTermsSeq 根据全文本、类别、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassPriceTermsSeq 根据全文本、类别、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // price float64 价格
@@ -3624,7 +3624,7 @@ func MatchBooksByAllTextClassPriceTermsSeq(es *elasticsearch.Client, allText, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceTermsClass2Seq 根据全文本、类别、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextClassPriceTermsClass2Seq 根据全文本、类别、价格检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // class string 类别
 // price float64 价格
@@ -3641,7 +3641,7 @@ func MatchBooksByAllTextClassPriceTermsClass2Seq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassReleaseDateTermsClass2 根据全文本、类别、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassReleaseDateTermsClass2 根据全文本、类别、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
@@ -3658,7 +3658,7 @@ func MatchBooksByAllTextClassReleaseDateTermsClass2(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassReleaseDateTermsSeq 根据全文本、类别、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassReleaseDateTermsSeq 根据全文本、类别、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
@@ -3675,7 +3675,7 @@ func MatchBooksByAllTextClassReleaseDateTermsSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassReleaseDateTermsClass2Seq 根据全文本、类别、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextClassReleaseDateTermsClass2Seq 根据全文本、类别、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
@@ -3692,7 +3692,7 @@ func MatchBooksByAllTextClassReleaseDateTermsClass2Seq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassSeqTermsClass2 根据全文本、类别、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassSeqTermsClass2 根据全文本、类别、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // seq string 编号
@@ -3709,7 +3709,7 @@ func MatchBooksByAllTextClassSeqTermsClass2(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameTermsClass 根据全文本、子类别、书名检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2NameTermsClass 根据全文本、子类别、书名检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -3726,7 +3726,7 @@ func MatchBooksByAllTextClass2NameTermsClass(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameTermsSeq 根据全文本、子类别、书名检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClass2NameTermsSeq 根据全文本、子类别、书名检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -3743,7 +3743,7 @@ func MatchBooksByAllTextClass2NameTermsSeq(es *elasticsearch.Client, allText, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameTermsClassSeq 根据全文本、子类别、书名检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextClass2NameTermsClassSeq 根据全文本、子类别、书名检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -3760,7 +3760,7 @@ func MatchBooksByAllTextClass2NameTermsClassSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountTermsClass 根据全文本、子类别、页数检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2PageCountTermsClass 根据全文本、子类别、页数检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -3777,7 +3777,7 @@ func MatchBooksByAllTextClass2PageCountTermsClass(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountTermsSeq 根据全文本、子类别、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClass2PageCountTermsSeq 根据全文本、子类别、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -3794,7 +3794,7 @@ func MatchBooksByAllTextClass2PageCountTermsSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountTermsClassSeq 根据全文本、子类别、页数检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextClass2PageCountTermsClassSeq 根据全文本、子类别、页数检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -3811,7 +3811,7 @@ func MatchBooksByAllTextClass2PageCountTermsClassSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceTermsClass 根据全文本、子类别、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2PriceTermsClass 根据全文本、子类别、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
@@ -3828,7 +3828,7 @@ func MatchBooksByAllTextClass2PriceTermsClass(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceTermsSeq 根据全文本、子类别、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClass2PriceTermsSeq 根据全文本、子类别、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
@@ -3845,7 +3845,7 @@ func MatchBooksByAllTextClass2PriceTermsSeq(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceTermsClassSeq 根据全文本、子类别、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextClass2PriceTermsClassSeq 根据全文本、子类别、价格检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
@@ -3862,7 +3862,7 @@ func MatchBooksByAllTextClass2PriceTermsClassSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2ReleaseDateTermsClass 根据全文本、子类别、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2ReleaseDateTermsClass 根据全文本、子类别、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
@@ -3879,7 +3879,7 @@ func MatchBooksByAllTextClass2ReleaseDateTermsClass(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2ReleaseDateTermsSeq 根据全文本、子类别、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClass2ReleaseDateTermsSeq 根据全文本、子类别、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
@@ -3896,7 +3896,7 @@ func MatchBooksByAllTextClass2ReleaseDateTermsSeq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2ReleaseDateTermsClassSeq 根据全文本、子类别、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextClass2ReleaseDateTermsClassSeq 根据全文本、子类别、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
@@ -3913,7 +3913,7 @@ func MatchBooksByAllTextClass2ReleaseDateTermsClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2SeqTermsClass 根据全文本、子类别、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2SeqTermsClass 根据全文本、子类别、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // seq string 编号
@@ -3930,7 +3930,7 @@ func MatchBooksByAllTextClass2SeqTermsClass(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountTermsClass 根据全文本、书名、页数检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextNamePageCountTermsClass 根据全文本、书名、页数检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -3947,7 +3947,7 @@ func MatchBooksByAllTextNamePageCountTermsClass(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountTermsClass2 根据全文本、书名、页数检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextNamePageCountTermsClass2 根据全文本、书名、页数检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -3964,7 +3964,7 @@ func MatchBooksByAllTextNamePageCountTermsClass2(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountTermsSeq 根据全文本、书名、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextNamePageCountTermsSeq 根据全文本、书名、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -3981,7 +3981,7 @@ func MatchBooksByAllTextNamePageCountTermsSeq(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountTermsClassClass2 根据全文本、书名、页数检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextNamePageCountTermsClassClass2 根据全文本、书名、页数检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -3998,7 +3998,7 @@ func MatchBooksByAllTextNamePageCountTermsClassClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountTermsClassSeq 根据全文本、书名、页数检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextNamePageCountTermsClassSeq 根据全文本、书名、页数检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -4015,7 +4015,7 @@ func MatchBooksByAllTextNamePageCountTermsClassSeq(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountTermsClass2Seq 根据全文本、书名、页数检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextNamePageCountTermsClass2Seq 根据全文本、书名、页数检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -4032,7 +4032,7 @@ func MatchBooksByAllTextNamePageCountTermsClass2Seq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountTermsClassClass2Seq 根据全文本、书名、页数检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextNamePageCountTermsClassClass2Seq 根据全文本、书名、页数检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -4049,7 +4049,7 @@ func MatchBooksByAllTextNamePageCountTermsClassClass2Seq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceTermsClass 根据全文本、书名、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextNamePriceTermsClass 根据全文本、书名、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -4066,7 +4066,7 @@ func MatchBooksByAllTextNamePriceTermsClass(es *elasticsearch.Client, allText, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceTermsClass2 根据全文本、书名、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextNamePriceTermsClass2 根据全文本、书名、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -4083,7 +4083,7 @@ func MatchBooksByAllTextNamePriceTermsClass2(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceTermsSeq 根据全文本、书名、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextNamePriceTermsSeq 根据全文本、书名、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -4100,7 +4100,7 @@ func MatchBooksByAllTextNamePriceTermsSeq(es *elasticsearch.Client, allText, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceTermsClassClass2 根据全文本、书名、价格检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextNamePriceTermsClassClass2 根据全文本、书名、价格检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -4117,7 +4117,7 @@ func MatchBooksByAllTextNamePriceTermsClassClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceTermsClassSeq 根据全文本、书名、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextNamePriceTermsClassSeq 根据全文本、书名、价格检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -4134,7 +4134,7 @@ func MatchBooksByAllTextNamePriceTermsClassSeq(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceTermsClass2Seq 根据全文本、书名、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextNamePriceTermsClass2Seq 根据全文本、书名、价格检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -4151,7 +4151,7 @@ func MatchBooksByAllTextNamePriceTermsClass2Seq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceTermsClassClass2Seq 根据全文本、书名、价格检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextNamePriceTermsClassClass2Seq 根据全文本、书名、价格检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -4168,7 +4168,7 @@ func MatchBooksByAllTextNamePriceTermsClassClass2Seq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateTermsClass 根据全文本、书名、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextNameReleaseDateTermsClass 根据全文本、书名、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -4185,7 +4185,7 @@ func MatchBooksByAllTextNameReleaseDateTermsClass(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateTermsClass2 根据全文本、书名、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextNameReleaseDateTermsClass2 根据全文本、书名、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -4202,7 +4202,7 @@ func MatchBooksByAllTextNameReleaseDateTermsClass2(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateTermsSeq 根据全文本、书名、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextNameReleaseDateTermsSeq 根据全文本、书名、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -4219,7 +4219,7 @@ func MatchBooksByAllTextNameReleaseDateTermsSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateTermsClassClass2 根据全文本、书名、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextNameReleaseDateTermsClassClass2 根据全文本、书名、发布日期检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -4236,7 +4236,7 @@ func MatchBooksByAllTextNameReleaseDateTermsClassClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateTermsClassSeq 根据全文本、书名、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextNameReleaseDateTermsClassSeq 根据全文本、书名、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -4253,7 +4253,7 @@ func MatchBooksByAllTextNameReleaseDateTermsClassSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateTermsClass2Seq 根据全文本、书名、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextNameReleaseDateTermsClass2Seq 根据全文本、书名、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -4270,7 +4270,7 @@ func MatchBooksByAllTextNameReleaseDateTermsClass2Seq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateTermsClassClass2Seq 根据全文本、书名、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextNameReleaseDateTermsClassClass2Seq 根据全文本、书名、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -4287,7 +4287,7 @@ func MatchBooksByAllTextNameReleaseDateTermsClassClass2Seq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameSeqTermsClass 根据全文本、书名、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextNameSeqTermsClass 根据全文本、书名、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // seq string 编号
@@ -4304,7 +4304,7 @@ func MatchBooksByAllTextNameSeqTermsClass(es *elasticsearch.Client, allText, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameSeqTermsClass2 根据全文本、书名、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextNameSeqTermsClass2 根据全文本、书名、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // seq string 编号
@@ -4321,7 +4321,7 @@ func MatchBooksByAllTextNameSeqTermsClass2(es *elasticsearch.Client, allText, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameSeqTermsClassClass2 根据全文本、书名、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextNameSeqTermsClassClass2 根据全文本、书名、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // name string 书名
 // seq string 编号
@@ -4338,7 +4338,7 @@ func MatchBooksByAllTextNameSeqTermsClassClass2(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceTermsClass 根据全文本、页数、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextPageCountPriceTermsClass 根据全文本、页数、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -4355,7 +4355,7 @@ func MatchBooksByAllTextPageCountPriceTermsClass(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceTermsClass2 根据全文本、页数、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextPageCountPriceTermsClass2 根据全文本、页数、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -4372,7 +4372,7 @@ func MatchBooksByAllTextPageCountPriceTermsClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceTermsSeq 根据全文本、页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextPageCountPriceTermsSeq 根据全文本、页数、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -4389,7 +4389,7 @@ func MatchBooksByAllTextPageCountPriceTermsSeq(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceTermsClassClass2 根据全文本、页数、价格检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextPageCountPriceTermsClassClass2 根据全文本、页数、价格检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -4406,7 +4406,7 @@ func MatchBooksByAllTextPageCountPriceTermsClassClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceTermsClassSeq 根据全文本、页数、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextPageCountPriceTermsClassSeq 根据全文本、页数、价格检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -4423,7 +4423,7 @@ func MatchBooksByAllTextPageCountPriceTermsClassSeq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceTermsClass2Seq 根据全文本、页数、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextPageCountPriceTermsClass2Seq 根据全文本、页数、价格检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -4440,7 +4440,7 @@ func MatchBooksByAllTextPageCountPriceTermsClass2Seq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceTermsClassClass2Seq 根据全文本、页数、价格检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextPageCountPriceTermsClassClass2Seq 根据全文本、页数、价格检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -4457,7 +4457,7 @@ func MatchBooksByAllTextPageCountPriceTermsClassClass2Seq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateTermsClass 根据全文本、页数、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextPageCountReleaseDateTermsClass 根据全文本、页数、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -4474,7 +4474,7 @@ func MatchBooksByAllTextPageCountReleaseDateTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateTermsClass2 根据全文本、页数、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextPageCountReleaseDateTermsClass2 根据全文本、页数、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -4491,7 +4491,7 @@ func MatchBooksByAllTextPageCountReleaseDateTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateTermsSeq 根据全文本、页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextPageCountReleaseDateTermsSeq 根据全文本、页数、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -4508,7 +4508,7 @@ func MatchBooksByAllTextPageCountReleaseDateTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateTermsClassClass2 根据全文本、页数、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextPageCountReleaseDateTermsClassClass2 根据全文本、页数、发布日期检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -4525,7 +4525,7 @@ func MatchBooksByAllTextPageCountReleaseDateTermsClassClass2(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateTermsClassSeq 根据全文本、页数、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextPageCountReleaseDateTermsClassSeq 根据全文本、页数、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -4542,7 +4542,7 @@ func MatchBooksByAllTextPageCountReleaseDateTermsClassSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateTermsClass2Seq 根据全文本、页数、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextPageCountReleaseDateTermsClass2Seq 根据全文本、页数、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -4559,7 +4559,7 @@ func MatchBooksByAllTextPageCountReleaseDateTermsClass2Seq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateTermsClassClass2Seq 根据全文本、页数、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextPageCountReleaseDateTermsClassClass2Seq 根据全文本、页数、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -4576,7 +4576,7 @@ func MatchBooksByAllTextPageCountReleaseDateTermsClassClass2Seq(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountSeqTermsClass 根据全文本、页数、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextPageCountSeqTermsClass 根据全文本、页数、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // seq string 编号
@@ -4593,7 +4593,7 @@ func MatchBooksByAllTextPageCountSeqTermsClass(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountSeqTermsClass2 根据全文本、页数、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextPageCountSeqTermsClass2 根据全文本、页数、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // seq string 编号
@@ -4610,7 +4610,7 @@ func MatchBooksByAllTextPageCountSeqTermsClass2(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountSeqTermsClassClass2 根据全文本、页数、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextPageCountSeqTermsClassClass2 根据全文本、页数、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // seq string 编号
@@ -4627,7 +4627,7 @@ func MatchBooksByAllTextPageCountSeqTermsClassClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateTermsClass 根据全文本、价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextPriceReleaseDateTermsClass 根据全文本、价格、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -4644,7 +4644,7 @@ func MatchBooksByAllTextPriceReleaseDateTermsClass(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateTermsClass2 根据全文本、价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextPriceReleaseDateTermsClass2 根据全文本、价格、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -4661,7 +4661,7 @@ func MatchBooksByAllTextPriceReleaseDateTermsClass2(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateTermsSeq 根据全文本、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextPriceReleaseDateTermsSeq 根据全文本、价格、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -4678,7 +4678,7 @@ func MatchBooksByAllTextPriceReleaseDateTermsSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateTermsClassClass2 根据全文本、价格、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextPriceReleaseDateTermsClassClass2 根据全文本、价格、发布日期检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -4695,7 +4695,7 @@ func MatchBooksByAllTextPriceReleaseDateTermsClassClass2(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateTermsClassSeq 根据全文本、价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextPriceReleaseDateTermsClassSeq 根据全文本、价格、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -4712,7 +4712,7 @@ func MatchBooksByAllTextPriceReleaseDateTermsClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateTermsClass2Seq 根据全文本、价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextPriceReleaseDateTermsClass2Seq 根据全文本、价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -4729,7 +4729,7 @@ func MatchBooksByAllTextPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateTermsClassClass2Seq 根据全文本、价格、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextPriceReleaseDateTermsClassClass2Seq 根据全文本、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -4746,7 +4746,7 @@ func MatchBooksByAllTextPriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceSeqTermsClass 根据全文本、价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextPriceSeqTermsClass 根据全文本、价格、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // price float64 价格
 // seq string 编号
@@ -4763,7 +4763,7 @@ func MatchBooksByAllTextPriceSeqTermsClass(es *elasticsearch.Client, allText str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceSeqTermsClass2 根据全文本、价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextPriceSeqTermsClass2 根据全文本、价格、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // price float64 价格
 // seq string 编号
@@ -4780,7 +4780,7 @@ func MatchBooksByAllTextPriceSeqTermsClass2(es *elasticsearch.Client, allText st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceSeqTermsClassClass2 根据全文本、价格、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextPriceSeqTermsClassClass2 根据全文本、价格、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // price float64 价格
 // seq string 编号
@@ -4797,7 +4797,7 @@ func MatchBooksByAllTextPriceSeqTermsClassClass2(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateSeqTermsClass 根据全文本、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextReleaseDateSeqTermsClass 根据全文本、发布日期、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -4814,7 +4814,7 @@ func MatchBooksByAllTextReleaseDateSeqTermsClass(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateSeqTermsClass2 根据全文本、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextReleaseDateSeqTermsClass2 根据全文本、发布日期、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -4831,7 +4831,7 @@ func MatchBooksByAllTextReleaseDateSeqTermsClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateSeqTermsClassClass2 根据全文本、发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextReleaseDateSeqTermsClassClass2 根据全文本、发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -4848,7 +4848,7 @@ func MatchBooksByAllTextReleaseDateSeqTermsClassClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2TermsSeq 根据作者、类别、子类别检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassClass2TermsSeq 根据作者、类别、子类别检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -4865,7 +4865,7 @@ func MatchBooksByAuthorClassClass2TermsSeq(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameTermsClass2 根据作者、类别、书名检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassNameTermsClass2 根据作者、类别、书名检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
@@ -4882,7 +4882,7 @@ func MatchBooksByAuthorClassNameTermsClass2(es *elasticsearch.Client, author, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameTermsSeq 根据作者、类别、书名检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassNameTermsSeq 根据作者、类别、书名检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
@@ -4899,7 +4899,7 @@ func MatchBooksByAuthorClassNameTermsSeq(es *elasticsearch.Client, author, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameTermsClass2Seq 根据作者、类别、书名检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorClassNameTermsClass2Seq 根据作者、类别、书名检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
@@ -4916,7 +4916,7 @@ func MatchBooksByAuthorClassNameTermsClass2Seq(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountTermsClass2 根据作者、类别、页数检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassPageCountTermsClass2 根据作者、类别、页数检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -4933,7 +4933,7 @@ func MatchBooksByAuthorClassPageCountTermsClass2(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountTermsSeq 根据作者、类别、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassPageCountTermsSeq 根据作者、类别、页数检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -4950,7 +4950,7 @@ func MatchBooksByAuthorClassPageCountTermsSeq(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountTermsClass2Seq 根据作者、类别、页数检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorClassPageCountTermsClass2Seq 根据作者、类别、页数检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -4967,7 +4967,7 @@ func MatchBooksByAuthorClassPageCountTermsClass2Seq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceTermsClass2 根据作者、类别、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassPriceTermsClass2 根据作者、类别、价格检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // price float64 价格
@@ -4984,7 +4984,7 @@ func MatchBooksByAuthorClassPriceTermsClass2(es *elasticsearch.Client, author, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceTermsSeq 根据作者、类别、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassPriceTermsSeq 根据作者、类别、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // price float64 价格
@@ -5001,7 +5001,7 @@ func MatchBooksByAuthorClassPriceTermsSeq(es *elasticsearch.Client, author, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceTermsClass2Seq 根据作者、类别、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorClassPriceTermsClass2Seq 根据作者、类别、价格检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // class string 类别
 // price float64 价格
@@ -5018,7 +5018,7 @@ func MatchBooksByAuthorClassPriceTermsClass2Seq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassReleaseDateTermsClass2 根据作者、类别、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassReleaseDateTermsClass2 根据作者、类别、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
@@ -5035,7 +5035,7 @@ func MatchBooksByAuthorClassReleaseDateTermsClass2(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassReleaseDateTermsSeq 根据作者、类别、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassReleaseDateTermsSeq 根据作者、类别、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
@@ -5052,7 +5052,7 @@ func MatchBooksByAuthorClassReleaseDateTermsSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassReleaseDateTermsClass2Seq 根据作者、类别、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorClassReleaseDateTermsClass2Seq 根据作者、类别、发布日期检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
@@ -5069,7 +5069,7 @@ func MatchBooksByAuthorClassReleaseDateTermsClass2Seq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassSeqTermsClass2 根据作者、类别、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassSeqTermsClass2 根据作者、类别、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // seq string 编号
@@ -5086,7 +5086,7 @@ func MatchBooksByAuthorClassSeqTermsClass2(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameTermsClass 根据作者、子类别、书名检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2NameTermsClass 根据作者、子类别、书名检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -5103,7 +5103,7 @@ func MatchBooksByAuthorClass2NameTermsClass(es *elasticsearch.Client, author, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameTermsSeq 根据作者、子类别、书名检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClass2NameTermsSeq 根据作者、子类别、书名检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -5120,7 +5120,7 @@ func MatchBooksByAuthorClass2NameTermsSeq(es *elasticsearch.Client, author, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameTermsClassSeq 根据作者、子类别、书名检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorClass2NameTermsClassSeq 根据作者、子类别、书名检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -5137,7 +5137,7 @@ func MatchBooksByAuthorClass2NameTermsClassSeq(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountTermsClass 根据作者、子类别、页数检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2PageCountTermsClass 根据作者、子类别、页数检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -5154,7 +5154,7 @@ func MatchBooksByAuthorClass2PageCountTermsClass(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountTermsSeq 根据作者、子类别、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClass2PageCountTermsSeq 根据作者、子类别、页数检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -5171,7 +5171,7 @@ func MatchBooksByAuthorClass2PageCountTermsSeq(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountTermsClassSeq 根据作者、子类别、页数检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorClass2PageCountTermsClassSeq 根据作者、子类别、页数检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -5188,7 +5188,7 @@ func MatchBooksByAuthorClass2PageCountTermsClassSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceTermsClass 根据作者、子类别、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2PriceTermsClass 根据作者、子类别、价格检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // price float64 价格
@@ -5205,7 +5205,7 @@ func MatchBooksByAuthorClass2PriceTermsClass(es *elasticsearch.Client, author, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceTermsSeq 根据作者、子类别、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClass2PriceTermsSeq 根据作者、子类别、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // price float64 价格
@@ -5222,7 +5222,7 @@ func MatchBooksByAuthorClass2PriceTermsSeq(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceTermsClassSeq 根据作者、子类别、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorClass2PriceTermsClassSeq 根据作者、子类别、价格检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // class2 string 子类别
 // price float64 价格
@@ -5239,7 +5239,7 @@ func MatchBooksByAuthorClass2PriceTermsClassSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2ReleaseDateTermsClass 根据作者、子类别、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2ReleaseDateTermsClass 根据作者、子类别、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
@@ -5256,7 +5256,7 @@ func MatchBooksByAuthorClass2ReleaseDateTermsClass(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2ReleaseDateTermsSeq 根据作者、子类别、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClass2ReleaseDateTermsSeq 根据作者、子类别、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
@@ -5273,7 +5273,7 @@ func MatchBooksByAuthorClass2ReleaseDateTermsSeq(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2ReleaseDateTermsClassSeq 根据作者、子类别、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorClass2ReleaseDateTermsClassSeq 根据作者、子类别、发布日期检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
@@ -5290,7 +5290,7 @@ func MatchBooksByAuthorClass2ReleaseDateTermsClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2SeqTermsClass 根据作者、子类别、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2SeqTermsClass 根据作者、子类别、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // seq string 编号
@@ -5307,7 +5307,7 @@ func MatchBooksByAuthorClass2SeqTermsClass(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountTermsClass 根据作者、书名、页数检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorNamePageCountTermsClass 根据作者、书名、页数检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -5324,7 +5324,7 @@ func MatchBooksByAuthorNamePageCountTermsClass(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountTermsClass2 根据作者、书名、页数检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorNamePageCountTermsClass2 根据作者、书名、页数检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -5341,7 +5341,7 @@ func MatchBooksByAuthorNamePageCountTermsClass2(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountTermsSeq 根据作者、书名、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorNamePageCountTermsSeq 根据作者、书名、页数检索books表并分组统计编号的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -5358,7 +5358,7 @@ func MatchBooksByAuthorNamePageCountTermsSeq(es *elasticsearch.Client, author, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountTermsClassClass2 根据作者、书名、页数检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorNamePageCountTermsClassClass2 根据作者、书名、页数检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -5375,7 +5375,7 @@ func MatchBooksByAuthorNamePageCountTermsClassClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountTermsClassSeq 根据作者、书名、页数检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorNamePageCountTermsClassSeq 根据作者、书名、页数检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -5392,7 +5392,7 @@ func MatchBooksByAuthorNamePageCountTermsClassSeq(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountTermsClass2Seq 根据作者、书名、页数检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorNamePageCountTermsClass2Seq 根据作者、书名、页数检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -5409,7 +5409,7 @@ func MatchBooksByAuthorNamePageCountTermsClass2Seq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountTermsClassClass2Seq 根据作者、书名、页数检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAuthorNamePageCountTermsClassClass2Seq 根据作者、书名、页数检索books表并同时统计类别、子类别、编号的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -5426,7 +5426,7 @@ func MatchBooksByAuthorNamePageCountTermsClassClass2Seq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceTermsClass 根据作者、书名、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorNamePriceTermsClass 根据作者、书名、价格检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -5443,7 +5443,7 @@ func MatchBooksByAuthorNamePriceTermsClass(es *elasticsearch.Client, author, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceTermsClass2 根据作者、书名、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorNamePriceTermsClass2 根据作者、书名、价格检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -5460,7 +5460,7 @@ func MatchBooksByAuthorNamePriceTermsClass2(es *elasticsearch.Client, author, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceTermsSeq 根据作者、书名、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorNamePriceTermsSeq 根据作者、书名、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -5477,7 +5477,7 @@ func MatchBooksByAuthorNamePriceTermsSeq(es *elasticsearch.Client, author, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceTermsClassClass2 根据作者、书名、价格检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorNamePriceTermsClassClass2 根据作者、书名、价格检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -5494,7 +5494,7 @@ func MatchBooksByAuthorNamePriceTermsClassClass2(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceTermsClassSeq 根据作者、书名、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorNamePriceTermsClassSeq 根据作者、书名、价格检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -5511,7 +5511,7 @@ func MatchBooksByAuthorNamePriceTermsClassSeq(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceTermsClass2Seq 根据作者、书名、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorNamePriceTermsClass2Seq 根据作者、书名、价格检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -5528,7 +5528,7 @@ func MatchBooksByAuthorNamePriceTermsClass2Seq(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceTermsClassClass2Seq 根据作者、书名、价格检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAuthorNamePriceTermsClassClass2Seq 根据作者、书名、价格检索books表并同时统计类别、子类别、编号的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -5545,7 +5545,7 @@ func MatchBooksByAuthorNamePriceTermsClassClass2Seq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateTermsClass 根据作者、书名、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorNameReleaseDateTermsClass 根据作者、书名、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -5562,7 +5562,7 @@ func MatchBooksByAuthorNameReleaseDateTermsClass(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateTermsClass2 根据作者、书名、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorNameReleaseDateTermsClass2 根据作者、书名、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -5579,7 +5579,7 @@ func MatchBooksByAuthorNameReleaseDateTermsClass2(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateTermsSeq 根据作者、书名、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorNameReleaseDateTermsSeq 根据作者、书名、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -5596,7 +5596,7 @@ func MatchBooksByAuthorNameReleaseDateTermsSeq(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateTermsClassClass2 根据作者、书名、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorNameReleaseDateTermsClassClass2 根据作者、书名、发布日期检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -5613,7 +5613,7 @@ func MatchBooksByAuthorNameReleaseDateTermsClassClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateTermsClassSeq 根据作者、书名、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorNameReleaseDateTermsClassSeq 根据作者、书名、发布日期检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -5630,7 +5630,7 @@ func MatchBooksByAuthorNameReleaseDateTermsClassSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateTermsClass2Seq 根据作者、书名、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorNameReleaseDateTermsClass2Seq 根据作者、书名、发布日期检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -5647,7 +5647,7 @@ func MatchBooksByAuthorNameReleaseDateTermsClass2Seq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateTermsClassClass2Seq 根据作者、书名、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAuthorNameReleaseDateTermsClassClass2Seq 根据作者、书名、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -5664,7 +5664,7 @@ func MatchBooksByAuthorNameReleaseDateTermsClassClass2Seq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameSeqTermsClass 根据作者、书名、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorNameSeqTermsClass 根据作者、书名、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // seq string 编号
@@ -5681,7 +5681,7 @@ func MatchBooksByAuthorNameSeqTermsClass(es *elasticsearch.Client, author, name,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameSeqTermsClass2 根据作者、书名、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorNameSeqTermsClass2 根据作者、书名、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // seq string 编号
@@ -5698,7 +5698,7 @@ func MatchBooksByAuthorNameSeqTermsClass2(es *elasticsearch.Client, author, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameSeqTermsClassClass2 根据作者、书名、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorNameSeqTermsClassClass2 根据作者、书名、编号检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // name string 书名
 // seq string 编号
@@ -5715,7 +5715,7 @@ func MatchBooksByAuthorNameSeqTermsClassClass2(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceTermsClass 根据作者、页数、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorPageCountPriceTermsClass 根据作者、页数、价格检索books表并分组统计类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -5732,7 +5732,7 @@ func MatchBooksByAuthorPageCountPriceTermsClass(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceTermsClass2 根据作者、页数、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorPageCountPriceTermsClass2 根据作者、页数、价格检索books表并分组统计子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -5749,7 +5749,7 @@ func MatchBooksByAuthorPageCountPriceTermsClass2(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceTermsSeq 根据作者、页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorPageCountPriceTermsSeq 根据作者、页数、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -5766,7 +5766,7 @@ func MatchBooksByAuthorPageCountPriceTermsSeq(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceTermsClassClass2 根据作者、页数、价格检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorPageCountPriceTermsClassClass2 根据作者、页数、价格检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -5783,7 +5783,7 @@ func MatchBooksByAuthorPageCountPriceTermsClassClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceTermsClassSeq 根据作者、页数、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorPageCountPriceTermsClassSeq 根据作者、页数、价格检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -5800,7 +5800,7 @@ func MatchBooksByAuthorPageCountPriceTermsClassSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceTermsClass2Seq 根据作者、页数、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorPageCountPriceTermsClass2Seq 根据作者、页数、价格检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -5817,7 +5817,7 @@ func MatchBooksByAuthorPageCountPriceTermsClass2Seq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceTermsClassClass2Seq 根据作者、页数、价格检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAuthorPageCountPriceTermsClassClass2Seq 根据作者、页数、价格检索books表并同时统计类别、子类别、编号的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -5834,7 +5834,7 @@ func MatchBooksByAuthorPageCountPriceTermsClassClass2Seq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateTermsClass 根据作者、页数、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorPageCountReleaseDateTermsClass 根据作者、页数、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -5851,7 +5851,7 @@ func MatchBooksByAuthorPageCountReleaseDateTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateTermsClass2 根据作者、页数、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorPageCountReleaseDateTermsClass2 根据作者、页数、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -5868,7 +5868,7 @@ func MatchBooksByAuthorPageCountReleaseDateTermsClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateTermsSeq 根据作者、页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorPageCountReleaseDateTermsSeq 根据作者、页数、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -5885,7 +5885,7 @@ func MatchBooksByAuthorPageCountReleaseDateTermsSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateTermsClassClass2 根据作者、页数、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorPageCountReleaseDateTermsClassClass2 根据作者、页数、发布日期检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -5902,7 +5902,7 @@ func MatchBooksByAuthorPageCountReleaseDateTermsClassClass2(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateTermsClassSeq 根据作者、页数、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorPageCountReleaseDateTermsClassSeq 根据作者、页数、发布日期检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -5919,7 +5919,7 @@ func MatchBooksByAuthorPageCountReleaseDateTermsClassSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateTermsClass2Seq 根据作者、页数、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorPageCountReleaseDateTermsClass2Seq 根据作者、页数、发布日期检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -5936,7 +5936,7 @@ func MatchBooksByAuthorPageCountReleaseDateTermsClass2Seq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateTermsClassClass2Seq 根据作者、页数、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAuthorPageCountReleaseDateTermsClassClass2Seq 根据作者、页数、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -5953,7 +5953,7 @@ func MatchBooksByAuthorPageCountReleaseDateTermsClassClass2Seq(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountSeqTermsClass 根据作者、页数、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorPageCountSeqTermsClass 根据作者、页数、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
@@ -5970,7 +5970,7 @@ func MatchBooksByAuthorPageCountSeqTermsClass(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountSeqTermsClass2 根据作者、页数、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorPageCountSeqTermsClass2 根据作者、页数、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
@@ -5987,7 +5987,7 @@ func MatchBooksByAuthorPageCountSeqTermsClass2(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountSeqTermsClassClass2 根据作者、页数、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorPageCountSeqTermsClassClass2 根据作者、页数、编号检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
@@ -6004,7 +6004,7 @@ func MatchBooksByAuthorPageCountSeqTermsClassClass2(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateTermsClass 根据作者、价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorPriceReleaseDateTermsClass 根据作者、价格、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -6021,7 +6021,7 @@ func MatchBooksByAuthorPriceReleaseDateTermsClass(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateTermsClass2 根据作者、价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorPriceReleaseDateTermsClass2 根据作者、价格、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -6038,7 +6038,7 @@ func MatchBooksByAuthorPriceReleaseDateTermsClass2(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateTermsSeq 根据作者、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorPriceReleaseDateTermsSeq 根据作者、价格、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -6055,7 +6055,7 @@ func MatchBooksByAuthorPriceReleaseDateTermsSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateTermsClassClass2 根据作者、价格、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorPriceReleaseDateTermsClassClass2 根据作者、价格、发布日期检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -6072,7 +6072,7 @@ func MatchBooksByAuthorPriceReleaseDateTermsClassClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateTermsClassSeq 根据作者、价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorPriceReleaseDateTermsClassSeq 根据作者、价格、发布日期检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -6089,7 +6089,7 @@ func MatchBooksByAuthorPriceReleaseDateTermsClassSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateTermsClass2Seq 根据作者、价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorPriceReleaseDateTermsClass2Seq 根据作者、价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -6106,7 +6106,7 @@ func MatchBooksByAuthorPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateTermsClassClass2Seq 根据作者、价格、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAuthorPriceReleaseDateTermsClassClass2Seq 根据作者、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -6123,7 +6123,7 @@ func MatchBooksByAuthorPriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceSeqTermsClass 根据作者、价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorPriceSeqTermsClass 根据作者、价格、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // price float64 价格
 // seq string 编号
@@ -6140,7 +6140,7 @@ func MatchBooksByAuthorPriceSeqTermsClass(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceSeqTermsClass2 根据作者、价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorPriceSeqTermsClass2 根据作者、价格、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // price float64 价格
 // seq string 编号
@@ -6157,7 +6157,7 @@ func MatchBooksByAuthorPriceSeqTermsClass2(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceSeqTermsClassClass2 根据作者、价格、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorPriceSeqTermsClassClass2 根据作者、价格、编号检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // price float64 价格
 // seq string 编号
@@ -6174,7 +6174,7 @@ func MatchBooksByAuthorPriceSeqTermsClassClass2(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateSeqTermsClass 根据作者、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorReleaseDateSeqTermsClass 根据作者、发布日期、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -6191,7 +6191,7 @@ func MatchBooksByAuthorReleaseDateSeqTermsClass(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateSeqTermsClass2 根据作者、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorReleaseDateSeqTermsClass2 根据作者、发布日期、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -6208,7 +6208,7 @@ func MatchBooksByAuthorReleaseDateSeqTermsClass2(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateSeqTermsClassClass2 根据作者、发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorReleaseDateSeqTermsClassClass2 根据作者、发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -6225,7 +6225,7 @@ func MatchBooksByAuthorReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2NameTermsSeq 根据类别、子类别、书名检索并对books表分组统计编号的分布情况
+// MatchBooksByClassClass2NameTermsSeq 根据类别、子类别、书名检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -6242,7 +6242,7 @@ func MatchBooksByClassClass2NameTermsSeq(es *elasticsearch.Client, class, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PageCountTermsSeq 根据类别、子类别、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByClassClass2PageCountTermsSeq 根据类别、子类别、页数检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
@@ -6257,7 +6257,7 @@ func MatchBooksByClassClass2PageCountTermsSeq(es *elasticsearch.Client, class, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PriceTermsSeq 根据类别、子类别、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByClassClass2PriceTermsSeq 根据类别、子类别、价格检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // price float64 价格
@@ -6272,7 +6272,7 @@ func MatchBooksByClassClass2PriceTermsSeq(es *elasticsearch.Client, class, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2ReleaseDateTermsSeq 根据类别、子类别、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClassClass2ReleaseDateTermsSeq 根据类别、子类别、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
@@ -6287,7 +6287,7 @@ func MatchBooksByClassClass2ReleaseDateTermsSeq(es *elasticsearch.Client, class,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountTermsClass2 根据类别、书名、页数检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassNamePageCountTermsClass2 根据类别、书名、页数检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -6304,7 +6304,7 @@ func MatchBooksByClassNamePageCountTermsClass2(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountTermsSeq 根据类别、书名、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByClassNamePageCountTermsSeq 根据类别、书名、页数检索books表并分组统计编号的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -6321,7 +6321,7 @@ func MatchBooksByClassNamePageCountTermsSeq(es *elasticsearch.Client, class, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountTermsClass2Seq 根据类别、书名、页数检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByClassNamePageCountTermsClass2Seq 根据类别、书名、页数检索books表并同时统计子类别、编号的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -6338,7 +6338,7 @@ func MatchBooksByClassNamePageCountTermsClass2Seq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceTermsClass2 根据类别、书名、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassNamePriceTermsClass2 根据类别、书名、价格检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // price float64 价格
@@ -6355,7 +6355,7 @@ func MatchBooksByClassNamePriceTermsClass2(es *elasticsearch.Client, class, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceTermsSeq 根据类别、书名、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByClassNamePriceTermsSeq 根据类别、书名、价格检索books表并分组统计编号的分布情况
 // class string 类别
 // name string 书名
 // price float64 价格
@@ -6372,7 +6372,7 @@ func MatchBooksByClassNamePriceTermsSeq(es *elasticsearch.Client, class, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceTermsClass2Seq 根据类别、书名、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByClassNamePriceTermsClass2Seq 根据类别、书名、价格检索books表并同时统计子类别、编号的分布情况
 // class string 类别
 // name string 书名
 // price float64 价格
@@ -6389,7 +6389,7 @@ func MatchBooksByClassNamePriceTermsClass2Seq(es *elasticsearch.Client, class, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameReleaseDateTermsClass2 根据类别、书名、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassNameReleaseDateTermsClass2 根据类别、书名、发布日期检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -6406,7 +6406,7 @@ func MatchBooksByClassNameReleaseDateTermsClass2(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameReleaseDateTermsSeq 根据类别、书名、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClassNameReleaseDateTermsSeq 根据类别、书名、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -6423,7 +6423,7 @@ func MatchBooksByClassNameReleaseDateTermsSeq(es *elasticsearch.Client, class, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameReleaseDateTermsClass2Seq 根据类别、书名、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByClassNameReleaseDateTermsClass2Seq 根据类别、书名、发布日期检索books表并同时统计子类别、编号的分布情况
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -6440,7 +6440,7 @@ func MatchBooksByClassNameReleaseDateTermsClass2Seq(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameSeqTermsClass2 根据类别、书名、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassNameSeqTermsClass2 根据类别、书名、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // seq string 编号
@@ -6457,7 +6457,7 @@ func MatchBooksByClassNameSeqTermsClass2(es *elasticsearch.Client, class, name, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPriceTermsClass2 根据类别、页数、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassPageCountPriceTermsClass2 根据类别、页数、价格检索books表并分组统计子类别的分布情况
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
@@ -6472,7 +6472,7 @@ func MatchBooksByClassPageCountPriceTermsClass2(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPriceTermsSeq 根据类别、页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByClassPageCountPriceTermsSeq 根据类别、页数、价格检索books表并分组统计编号的分布情况
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
@@ -6487,7 +6487,7 @@ func MatchBooksByClassPageCountPriceTermsSeq(es *elasticsearch.Client, class str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPriceTermsClass2Seq 根据类别、页数、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByClassPageCountPriceTermsClass2Seq 根据类别、页数、价格检索books表并同时统计子类别、编号的分布情况
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
@@ -6502,7 +6502,7 @@ func MatchBooksByClassPageCountPriceTermsClass2Seq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountReleaseDateTermsClass2 根据类别、页数、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassPageCountReleaseDateTermsClass2 根据类别、页数、发布日期检索books表并分组统计子类别的分布情况
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -6517,7 +6517,7 @@ func MatchBooksByClassPageCountReleaseDateTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountReleaseDateTermsSeq 根据类别、页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClassPageCountReleaseDateTermsSeq 根据类别、页数、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -6532,7 +6532,7 @@ func MatchBooksByClassPageCountReleaseDateTermsSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountReleaseDateTermsClass2Seq 根据类别、页数、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByClassPageCountReleaseDateTermsClass2Seq 根据类别、页数、发布日期检索books表并同时统计子类别、编号的分布情况
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -6547,7 +6547,7 @@ func MatchBooksByClassPageCountReleaseDateTermsClass2Seq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountSeqTermsClass2 根据类别、页数、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassPageCountSeqTermsClass2 根据类别、页数、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // pageCount int64 页数
 // seq string 编号
@@ -6562,7 +6562,7 @@ func MatchBooksByClassPageCountSeqTermsClass2(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceReleaseDateTermsClass2 根据类别、价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassPriceReleaseDateTermsClass2 根据类别、价格、发布日期检索books表并分组统计子类别的分布情况
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -6577,7 +6577,7 @@ func MatchBooksByClassPriceReleaseDateTermsClass2(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceReleaseDateTermsSeq 根据类别、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClassPriceReleaseDateTermsSeq 根据类别、价格、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -6592,7 +6592,7 @@ func MatchBooksByClassPriceReleaseDateTermsSeq(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceReleaseDateTermsClass2Seq 根据类别、价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByClassPriceReleaseDateTermsClass2Seq 根据类别、价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -6607,7 +6607,7 @@ func MatchBooksByClassPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceSeqTermsClass2 根据类别、价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassPriceSeqTermsClass2 根据类别、价格、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // price float64 价格
 // seq string 编号
@@ -6622,7 +6622,7 @@ func MatchBooksByClassPriceSeqTermsClass2(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateSeqTermsClass2 根据类别、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassReleaseDateSeqTermsClass2 根据类别、发布日期、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -6637,7 +6637,7 @@ func MatchBooksByClassReleaseDateSeqTermsClass2(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountTermsClass 根据子类别、书名、页数检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2NamePageCountTermsClass 根据子类别、书名、页数检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -6654,7 +6654,7 @@ func MatchBooksByClass2NamePageCountTermsClass(es *elasticsearch.Client, class2,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountTermsSeq 根据子类别、书名、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByClass2NamePageCountTermsSeq 根据子类别、书名、页数检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -6671,7 +6671,7 @@ func MatchBooksByClass2NamePageCountTermsSeq(es *elasticsearch.Client, class2, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountTermsClassSeq 根据子类别、书名、页数检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByClass2NamePageCountTermsClassSeq 根据子类别、书名、页数检索books表并同时统计类别、编号的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -6688,7 +6688,7 @@ func MatchBooksByClass2NamePageCountTermsClassSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceTermsClass 根据子类别、书名、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2NamePriceTermsClass 根据子类别、书名、价格检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // price float64 价格
@@ -6705,7 +6705,7 @@ func MatchBooksByClass2NamePriceTermsClass(es *elasticsearch.Client, class2, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceTermsSeq 根据子类别、书名、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByClass2NamePriceTermsSeq 根据子类别、书名、价格检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // name string 书名
 // price float64 价格
@@ -6722,7 +6722,7 @@ func MatchBooksByClass2NamePriceTermsSeq(es *elasticsearch.Client, class2, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceTermsClassSeq 根据子类别、书名、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByClass2NamePriceTermsClassSeq 根据子类别、书名、价格检索books表并同时统计类别、编号的分布情况
 // class2 string 子类别
 // name string 书名
 // price float64 价格
@@ -6739,7 +6739,7 @@ func MatchBooksByClass2NamePriceTermsClassSeq(es *elasticsearch.Client, class2, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameReleaseDateTermsClass 根据子类别、书名、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2NameReleaseDateTermsClass 根据子类别、书名、发布日期检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -6756,7 +6756,7 @@ func MatchBooksByClass2NameReleaseDateTermsClass(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameReleaseDateTermsSeq 根据子类别、书名、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClass2NameReleaseDateTermsSeq 根据子类别、书名、发布日期检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -6773,7 +6773,7 @@ func MatchBooksByClass2NameReleaseDateTermsSeq(es *elasticsearch.Client, class2,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameReleaseDateTermsClassSeq 根据子类别、书名、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByClass2NameReleaseDateTermsClassSeq 根据子类别、书名、发布日期检索books表并同时统计类别、编号的分布情况
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -6790,7 +6790,7 @@ func MatchBooksByClass2NameReleaseDateTermsClassSeq(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameSeqTermsClass 根据子类别、书名、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2NameSeqTermsClass 根据子类别、书名、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // seq string 编号
@@ -6807,7 +6807,7 @@ func MatchBooksByClass2NameSeqTermsClass(es *elasticsearch.Client, class2, name,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPriceTermsClass 根据子类别、页数、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2PageCountPriceTermsClass 根据子类别、页数、价格检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
@@ -6822,7 +6822,7 @@ func MatchBooksByClass2PageCountPriceTermsClass(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPriceTermsSeq 根据子类别、页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByClass2PageCountPriceTermsSeq 根据子类别、页数、价格检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
@@ -6837,7 +6837,7 @@ func MatchBooksByClass2PageCountPriceTermsSeq(es *elasticsearch.Client, class2 s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPriceTermsClassSeq 根据子类别、页数、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByClass2PageCountPriceTermsClassSeq 根据子类别、页数、价格检索books表并同时统计类别、编号的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
@@ -6852,7 +6852,7 @@ func MatchBooksByClass2PageCountPriceTermsClassSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountReleaseDateTermsClass 根据子类别、页数、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2PageCountReleaseDateTermsClass 根据子类别、页数、发布日期检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -6867,7 +6867,7 @@ func MatchBooksByClass2PageCountReleaseDateTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountReleaseDateTermsSeq 根据子类别、页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClass2PageCountReleaseDateTermsSeq 根据子类别、页数、发布日期检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -6882,7 +6882,7 @@ func MatchBooksByClass2PageCountReleaseDateTermsSeq(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountReleaseDateTermsClassSeq 根据子类别、页数、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByClass2PageCountReleaseDateTermsClassSeq 根据子类别、页数、发布日期检索books表并同时统计类别、编号的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -6897,7 +6897,7 @@ func MatchBooksByClass2PageCountReleaseDateTermsClassSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountSeqTermsClass 根据子类别、页数、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2PageCountSeqTermsClass 根据子类别、页数、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
@@ -6912,7 +6912,7 @@ func MatchBooksByClass2PageCountSeqTermsClass(es *elasticsearch.Client, class2 s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceReleaseDateTermsClass 根据子类别、价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2PriceReleaseDateTermsClass 根据子类别、价格、发布日期检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -6927,7 +6927,7 @@ func MatchBooksByClass2PriceReleaseDateTermsClass(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceReleaseDateTermsSeq 根据子类别、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClass2PriceReleaseDateTermsSeq 根据子类别、价格、发布日期检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -6942,7 +6942,7 @@ func MatchBooksByClass2PriceReleaseDateTermsSeq(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceReleaseDateTermsClassSeq 根据子类别、价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByClass2PriceReleaseDateTermsClassSeq 根据子类别、价格、发布日期检索books表并同时统计类别、编号的分布情况
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -6957,7 +6957,7 @@ func MatchBooksByClass2PriceReleaseDateTermsClassSeq(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceSeqTermsClass 根据子类别、价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2PriceSeqTermsClass 根据子类别、价格、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
@@ -6972,7 +6972,7 @@ func MatchBooksByClass2PriceSeqTermsClass(es *elasticsearch.Client, class2 strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateSeqTermsClass 根据子类别、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2ReleaseDateSeqTermsClass 根据子类别、发布日期、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -6987,7 +6987,7 @@ func MatchBooksByClass2ReleaseDateSeqTermsClass(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceTermsClass 根据书名、页数、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByNamePageCountPriceTermsClass 根据书名、页数、价格检索books表并分组统计类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -7004,7 +7004,7 @@ func MatchBooksByNamePageCountPriceTermsClass(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceTermsClass2 根据书名、页数、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByNamePageCountPriceTermsClass2 根据书名、页数、价格检索books表并分组统计子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -7021,7 +7021,7 @@ func MatchBooksByNamePageCountPriceTermsClass2(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceTermsSeq 根据书名、页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByNamePageCountPriceTermsSeq 根据书名、页数、价格检索books表并分组统计编号的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -7038,7 +7038,7 @@ func MatchBooksByNamePageCountPriceTermsSeq(es *elasticsearch.Client, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceTermsClassClass2 根据书名、页数、价格检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByNamePageCountPriceTermsClassClass2 根据书名、页数、价格检索books表并同时统计类别、子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -7055,7 +7055,7 @@ func MatchBooksByNamePageCountPriceTermsClassClass2(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceTermsClassSeq 根据书名、页数、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByNamePageCountPriceTermsClassSeq 根据书名、页数、价格检索books表并同时统计类别、编号的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -7072,7 +7072,7 @@ func MatchBooksByNamePageCountPriceTermsClassSeq(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceTermsClass2Seq 根据书名、页数、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByNamePageCountPriceTermsClass2Seq 根据书名、页数、价格检索books表并同时统计子类别、编号的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -7089,7 +7089,7 @@ func MatchBooksByNamePageCountPriceTermsClass2Seq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceTermsClassClass2Seq 根据书名、页数、价格检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByNamePageCountPriceTermsClassClass2Seq 根据书名、页数、价格检索books表并同时统计类别、子类别、编号的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -7106,7 +7106,7 @@ func MatchBooksByNamePageCountPriceTermsClassClass2Seq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateTermsClass 根据书名、页数、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByNamePageCountReleaseDateTermsClass 根据书名、页数、发布日期检索books表并分组统计类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -7123,7 +7123,7 @@ func MatchBooksByNamePageCountReleaseDateTermsClass(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateTermsClass2 根据书名、页数、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByNamePageCountReleaseDateTermsClass2 根据书名、页数、发布日期检索books表并分组统计子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -7140,7 +7140,7 @@ func MatchBooksByNamePageCountReleaseDateTermsClass2(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateTermsSeq 根据书名、页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByNamePageCountReleaseDateTermsSeq 根据书名、页数、发布日期检索books表并分组统计编号的分布情况
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -7157,7 +7157,7 @@ func MatchBooksByNamePageCountReleaseDateTermsSeq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateTermsClassClass2 根据书名、页数、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByNamePageCountReleaseDateTermsClassClass2 根据书名、页数、发布日期检索books表并同时统计类别、子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -7174,7 +7174,7 @@ func MatchBooksByNamePageCountReleaseDateTermsClassClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateTermsClassSeq 根据书名、页数、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByNamePageCountReleaseDateTermsClassSeq 根据书名、页数、发布日期检索books表并同时统计类别、编号的分布情况
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -7191,7 +7191,7 @@ func MatchBooksByNamePageCountReleaseDateTermsClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateTermsClass2Seq 根据书名、页数、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByNamePageCountReleaseDateTermsClass2Seq 根据书名、页数、发布日期检索books表并同时统计子类别、编号的分布情况
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -7208,7 +7208,7 @@ func MatchBooksByNamePageCountReleaseDateTermsClass2Seq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateTermsClassClass2Seq 根据书名、页数、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByNamePageCountReleaseDateTermsClassClass2Seq 根据书名、页数、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -7225,7 +7225,7 @@ func MatchBooksByNamePageCountReleaseDateTermsClassClass2Seq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountSeqTermsClass 根据书名、页数、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByNamePageCountSeqTermsClass 根据书名、页数、编号检索books表并分组统计类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
@@ -7242,7 +7242,7 @@ func MatchBooksByNamePageCountSeqTermsClass(es *elasticsearch.Client, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountSeqTermsClass2 根据书名、页数、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByNamePageCountSeqTermsClass2 根据书名、页数、编号检索books表并分组统计子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
@@ -7259,7 +7259,7 @@ func MatchBooksByNamePageCountSeqTermsClass2(es *elasticsearch.Client, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountSeqTermsClassClass2 根据书名、页数、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByNamePageCountSeqTermsClassClass2 根据书名、页数、编号检索books表并同时统计类别、子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
@@ -7276,7 +7276,7 @@ func MatchBooksByNamePageCountSeqTermsClassClass2(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateTermsClass 根据书名、价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByNamePriceReleaseDateTermsClass 根据书名、价格、发布日期检索books表并分组统计类别的分布情况
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -7293,7 +7293,7 @@ func MatchBooksByNamePriceReleaseDateTermsClass(es *elasticsearch.Client, name s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateTermsClass2 根据书名、价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByNamePriceReleaseDateTermsClass2 根据书名、价格、发布日期检索books表并分组统计子类别的分布情况
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -7310,7 +7310,7 @@ func MatchBooksByNamePriceReleaseDateTermsClass2(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateTermsSeq 根据书名、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByNamePriceReleaseDateTermsSeq 根据书名、价格、发布日期检索books表并分组统计编号的分布情况
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -7327,7 +7327,7 @@ func MatchBooksByNamePriceReleaseDateTermsSeq(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateTermsClassClass2 根据书名、价格、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByNamePriceReleaseDateTermsClassClass2 根据书名、价格、发布日期检索books表并同时统计类别、子类别的分布情况
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -7344,7 +7344,7 @@ func MatchBooksByNamePriceReleaseDateTermsClassClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateTermsClassSeq 根据书名、价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByNamePriceReleaseDateTermsClassSeq 根据书名、价格、发布日期检索books表并同时统计类别、编号的分布情况
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -7361,7 +7361,7 @@ func MatchBooksByNamePriceReleaseDateTermsClassSeq(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateTermsClass2Seq 根据书名、价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByNamePriceReleaseDateTermsClass2Seq 根据书名、价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -7378,7 +7378,7 @@ func MatchBooksByNamePriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateTermsClassClass2Seq 根据书名、价格、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByNamePriceReleaseDateTermsClassClass2Seq 根据书名、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -7395,7 +7395,7 @@ func MatchBooksByNamePriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceSeqTermsClass 根据书名、价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByNamePriceSeqTermsClass 根据书名、价格、编号检索books表并分组统计类别的分布情况
 // name string 书名
 // price float64 价格
 // seq string 编号
@@ -7412,7 +7412,7 @@ func MatchBooksByNamePriceSeqTermsClass(es *elasticsearch.Client, name string, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceSeqTermsClass2 根据书名、价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByNamePriceSeqTermsClass2 根据书名、价格、编号检索books表并分组统计子类别的分布情况
 // name string 书名
 // price float64 价格
 // seq string 编号
@@ -7429,7 +7429,7 @@ func MatchBooksByNamePriceSeqTermsClass2(es *elasticsearch.Client, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceSeqTermsClassClass2 根据书名、价格、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByNamePriceSeqTermsClassClass2 根据书名、价格、编号检索books表并同时统计类别、子类别的分布情况
 // name string 书名
 // price float64 价格
 // seq string 编号
@@ -7446,7 +7446,7 @@ func MatchBooksByNamePriceSeqTermsClassClass2(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateSeqTermsClass 根据书名、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByNameReleaseDateSeqTermsClass 根据书名、发布日期、编号检索books表并分组统计类别的分布情况
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -7463,7 +7463,7 @@ func MatchBooksByNameReleaseDateSeqTermsClass(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateSeqTermsClass2 根据书名、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByNameReleaseDateSeqTermsClass2 根据书名、发布日期、编号检索books表并分组统计子类别的分布情况
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -7480,7 +7480,7 @@ func MatchBooksByNameReleaseDateSeqTermsClass2(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateSeqTermsClassClass2 根据书名、发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByNameReleaseDateSeqTermsClassClass2 根据书名、发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -7497,7 +7497,7 @@ func MatchBooksByNameReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDateTermsClass 根据页数、价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByPageCountPriceReleaseDateTermsClass 根据页数、价格、发布日期检索books表并分组统计类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -7512,7 +7512,7 @@ func MatchBooksByPageCountPriceReleaseDateTermsClass(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDateTermsClass2 根据页数、价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByPageCountPriceReleaseDateTermsClass2 根据页数、价格、发布日期检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -7527,7 +7527,7 @@ func MatchBooksByPageCountPriceReleaseDateTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDateTermsSeq 根据页数、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByPageCountPriceReleaseDateTermsSeq 根据页数、价格、发布日期检索books表并分组统计编号的分布情况
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -7542,7 +7542,7 @@ func MatchBooksByPageCountPriceReleaseDateTermsSeq(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDateTermsClassClass2 根据页数、价格、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByPageCountPriceReleaseDateTermsClassClass2 根据页数、价格、发布日期检索books表并同时统计类别、子类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -7557,7 +7557,7 @@ func MatchBooksByPageCountPriceReleaseDateTermsClassClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDateTermsClassSeq 根据页数、价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByPageCountPriceReleaseDateTermsClassSeq 根据页数、价格、发布日期检索books表并同时统计类别、编号的分布情况
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -7572,7 +7572,7 @@ func MatchBooksByPageCountPriceReleaseDateTermsClassSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDateTermsClass2Seq 根据页数、价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByPageCountPriceReleaseDateTermsClass2Seq 根据页数、价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -7587,7 +7587,7 @@ func MatchBooksByPageCountPriceReleaseDateTermsClass2Seq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDateTermsClassClass2Seq 根据页数、价格、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByPageCountPriceReleaseDateTermsClassClass2Seq 根据页数、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -7602,7 +7602,7 @@ func MatchBooksByPageCountPriceReleaseDateTermsClassClass2Seq(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceSeqTermsClass 根据页数、价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByPageCountPriceSeqTermsClass 根据页数、价格、编号检索books表并分组统计类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
@@ -7617,7 +7617,7 @@ func MatchBooksByPageCountPriceSeqTermsClass(es *elasticsearch.Client, pageCount
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceSeqTermsClass2 根据页数、价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByPageCountPriceSeqTermsClass2 根据页数、价格、编号检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
@@ -7632,7 +7632,7 @@ func MatchBooksByPageCountPriceSeqTermsClass2(es *elasticsearch.Client, pageCoun
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceSeqTermsClassClass2 根据页数、价格、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByPageCountPriceSeqTermsClassClass2 根据页数、价格、编号检索books表并同时统计类别、子类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
@@ -7647,7 +7647,7 @@ func MatchBooksByPageCountPriceSeqTermsClassClass2(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateSeqTermsClass 根据页数、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByPageCountReleaseDateSeqTermsClass 根据页数、发布日期、编号检索books表并分组统计类别的分布情况
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -7662,7 +7662,7 @@ func MatchBooksByPageCountReleaseDateSeqTermsClass(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateSeqTermsClass2 根据页数、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByPageCountReleaseDateSeqTermsClass2 根据页数、发布日期、编号检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -7677,7 +7677,7 @@ func MatchBooksByPageCountReleaseDateSeqTermsClass2(es *elasticsearch.Client, pa
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateSeqTermsClassClass2 根据页数、发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByPageCountReleaseDateSeqTermsClassClass2 根据页数、发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -7692,7 +7692,7 @@ func MatchBooksByPageCountReleaseDateSeqTermsClassClass2(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateSeqTermsClass 根据价格、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByPriceReleaseDateSeqTermsClass 根据价格、发布日期、编号检索books表并分组统计类别的分布情况
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -7707,7 +7707,7 @@ func MatchBooksByPriceReleaseDateSeqTermsClass(es *elasticsearch.Client, price f
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateSeqTermsClass2 根据价格、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByPriceReleaseDateSeqTermsClass2 根据价格、发布日期、编号检索books表并分组统计子类别的分布情况
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -7722,7 +7722,7 @@ func MatchBooksByPriceReleaseDateSeqTermsClass2(es *elasticsearch.Client, price 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateSeqTermsClassClass2 根据价格、发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByPriceReleaseDateSeqTermsClassClass2 根据价格、发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -7737,7 +7737,7 @@ func MatchBooksByPriceReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassClass2TermsSeq 根据全文本、作者、类别、子类别检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorClassClass2TermsSeq 根据全文本、作者、类别、子类别检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -7756,7 +7756,7 @@ func MatchBooksByAllTextAuthorClassClass2TermsSeq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassNameTermsClass2 根据全文本、作者、类别、书名检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorClassNameTermsClass2 根据全文本、作者、类别、书名检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -7775,7 +7775,7 @@ func MatchBooksByAllTextAuthorClassNameTermsClass2(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassNameTermsSeq 根据全文本、作者、类别、书名检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorClassNameTermsSeq 根据全文本、作者、类别、书名检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -7794,7 +7794,7 @@ func MatchBooksByAllTextAuthorClassNameTermsSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassNameTermsClass2Seq 根据全文本、作者、类别、书名检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorClassNameTermsClass2Seq 根据全文本、作者、类别、书名检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -7813,7 +7813,7 @@ func MatchBooksByAllTextAuthorClassNameTermsClass2Seq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassPageCountTermsClass2 根据全文本、作者、类别、页数检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorClassPageCountTermsClass2 根据全文本、作者、类别、页数检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -7832,7 +7832,7 @@ func MatchBooksByAllTextAuthorClassPageCountTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassPageCountTermsSeq 根据全文本、作者、类别、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorClassPageCountTermsSeq 根据全文本、作者、类别、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -7851,7 +7851,7 @@ func MatchBooksByAllTextAuthorClassPageCountTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassPageCountTermsClass2Seq 根据全文本、作者、类别、页数检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorClassPageCountTermsClass2Seq 根据全文本、作者、类别、页数检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -7870,7 +7870,7 @@ func MatchBooksByAllTextAuthorClassPageCountTermsClass2Seq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassPriceTermsClass2 根据全文本、作者、类别、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorClassPriceTermsClass2 根据全文本、作者、类别、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -7889,7 +7889,7 @@ func MatchBooksByAllTextAuthorClassPriceTermsClass2(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassPriceTermsSeq 根据全文本、作者、类别、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorClassPriceTermsSeq 根据全文本、作者、类别、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -7908,7 +7908,7 @@ func MatchBooksByAllTextAuthorClassPriceTermsSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassPriceTermsClass2Seq 根据全文本、作者、类别、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorClassPriceTermsClass2Seq 根据全文本、作者、类别、价格检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -7927,7 +7927,7 @@ func MatchBooksByAllTextAuthorClassPriceTermsClass2Seq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassReleaseDateTermsClass2 根据全文本、作者、类别、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorClassReleaseDateTermsClass2 根据全文本、作者、类别、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -7946,7 +7946,7 @@ func MatchBooksByAllTextAuthorClassReleaseDateTermsClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassReleaseDateTermsSeq 根据全文本、作者、类别、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorClassReleaseDateTermsSeq 根据全文本、作者、类别、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -7965,7 +7965,7 @@ func MatchBooksByAllTextAuthorClassReleaseDateTermsSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassReleaseDateTermsClass2Seq 根据全文本、作者、类别、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorClassReleaseDateTermsClass2Seq 根据全文本、作者、类别、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -7984,7 +7984,7 @@ func MatchBooksByAllTextAuthorClassReleaseDateTermsClass2Seq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassSeqTermsClass2 根据全文本、作者、类别、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorClassSeqTermsClass2 根据全文本、作者、类别、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -8003,7 +8003,7 @@ func MatchBooksByAllTextAuthorClassSeqTermsClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2NameTermsClass 根据全文本、作者、子类别、书名检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorClass2NameTermsClass 根据全文本、作者、子类别、书名检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -8022,7 +8022,7 @@ func MatchBooksByAllTextAuthorClass2NameTermsClass(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2NameTermsSeq 根据全文本、作者、子类别、书名检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorClass2NameTermsSeq 根据全文本、作者、子类别、书名检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -8041,7 +8041,7 @@ func MatchBooksByAllTextAuthorClass2NameTermsSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2NameTermsClassSeq 根据全文本、作者、子类别、书名检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorClass2NameTermsClassSeq 根据全文本、作者、子类别、书名检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -8060,7 +8060,7 @@ func MatchBooksByAllTextAuthorClass2NameTermsClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2PageCountTermsClass 根据全文本、作者、子类别、页数检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorClass2PageCountTermsClass 根据全文本、作者、子类别、页数检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -8079,7 +8079,7 @@ func MatchBooksByAllTextAuthorClass2PageCountTermsClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2PageCountTermsSeq 根据全文本、作者、子类别、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorClass2PageCountTermsSeq 根据全文本、作者、子类别、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -8098,7 +8098,7 @@ func MatchBooksByAllTextAuthorClass2PageCountTermsSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2PageCountTermsClassSeq 根据全文本、作者、子类别、页数检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorClass2PageCountTermsClassSeq 根据全文本、作者、子类别、页数检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -8117,7 +8117,7 @@ func MatchBooksByAllTextAuthorClass2PageCountTermsClassSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2PriceTermsClass 根据全文本、作者、子类别、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorClass2PriceTermsClass 根据全文本、作者、子类别、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -8136,7 +8136,7 @@ func MatchBooksByAllTextAuthorClass2PriceTermsClass(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2PriceTermsSeq 根据全文本、作者、子类别、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorClass2PriceTermsSeq 根据全文本、作者、子类别、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -8155,7 +8155,7 @@ func MatchBooksByAllTextAuthorClass2PriceTermsSeq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2PriceTermsClassSeq 根据全文本、作者、子类别、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorClass2PriceTermsClassSeq 根据全文本、作者、子类别、价格检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -8174,7 +8174,7 @@ func MatchBooksByAllTextAuthorClass2PriceTermsClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2ReleaseDateTermsClass 根据全文本、作者、子类别、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorClass2ReleaseDateTermsClass 根据全文本、作者、子类别、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -8193,7 +8193,7 @@ func MatchBooksByAllTextAuthorClass2ReleaseDateTermsClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2ReleaseDateTermsSeq 根据全文本、作者、子类别、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorClass2ReleaseDateTermsSeq 根据全文本、作者、子类别、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -8212,7 +8212,7 @@ func MatchBooksByAllTextAuthorClass2ReleaseDateTermsSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2ReleaseDateTermsClassSeq 根据全文本、作者、子类别、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorClass2ReleaseDateTermsClassSeq 根据全文本、作者、子类别、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -8231,7 +8231,7 @@ func MatchBooksByAllTextAuthorClass2ReleaseDateTermsClassSeq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2SeqTermsClass 根据全文本、作者、子类别、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorClass2SeqTermsClass 根据全文本、作者、子类别、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -8250,7 +8250,7 @@ func MatchBooksByAllTextAuthorClass2SeqTermsClass(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePageCountTermsClass 根据全文本、作者、书名、页数检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorNamePageCountTermsClass 根据全文本、作者、书名、页数检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8269,7 +8269,7 @@ func MatchBooksByAllTextAuthorNamePageCountTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePageCountTermsClass2 根据全文本、作者、书名、页数检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorNamePageCountTermsClass2 根据全文本、作者、书名、页数检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8288,7 +8288,7 @@ func MatchBooksByAllTextAuthorNamePageCountTermsClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePageCountTermsSeq 根据全文本、作者、书名、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorNamePageCountTermsSeq 根据全文本、作者、书名、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8307,7 +8307,7 @@ func MatchBooksByAllTextAuthorNamePageCountTermsSeq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePageCountTermsClassClass2 根据全文本、作者、书名、页数检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorNamePageCountTermsClassClass2 根据全文本、作者、书名、页数检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8326,7 +8326,7 @@ func MatchBooksByAllTextAuthorNamePageCountTermsClassClass2(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePageCountTermsClassSeq 根据全文本、作者、书名、页数检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorNamePageCountTermsClassSeq 根据全文本、作者、书名、页数检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8345,7 +8345,7 @@ func MatchBooksByAllTextAuthorNamePageCountTermsClassSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePageCountTermsClass2Seq 根据全文本、作者、书名、页数检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorNamePageCountTermsClass2Seq 根据全文本、作者、书名、页数检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8364,7 +8364,7 @@ func MatchBooksByAllTextAuthorNamePageCountTermsClass2Seq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePageCountTermsClassClass2Seq 根据全文本、作者、书名、页数检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextAuthorNamePageCountTermsClassClass2Seq 根据全文本、作者、书名、页数检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8383,7 +8383,7 @@ func MatchBooksByAllTextAuthorNamePageCountTermsClassClass2Seq(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePriceTermsClass 根据全文本、作者、书名、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorNamePriceTermsClass 根据全文本、作者、书名、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8402,7 +8402,7 @@ func MatchBooksByAllTextAuthorNamePriceTermsClass(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePriceTermsClass2 根据全文本、作者、书名、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorNamePriceTermsClass2 根据全文本、作者、书名、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8421,7 +8421,7 @@ func MatchBooksByAllTextAuthorNamePriceTermsClass2(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePriceTermsSeq 根据全文本、作者、书名、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorNamePriceTermsSeq 根据全文本、作者、书名、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8440,7 +8440,7 @@ func MatchBooksByAllTextAuthorNamePriceTermsSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePriceTermsClassClass2 根据全文本、作者、书名、价格检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorNamePriceTermsClassClass2 根据全文本、作者、书名、价格检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8459,7 +8459,7 @@ func MatchBooksByAllTextAuthorNamePriceTermsClassClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePriceTermsClassSeq 根据全文本、作者、书名、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorNamePriceTermsClassSeq 根据全文本、作者、书名、价格检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8478,7 +8478,7 @@ func MatchBooksByAllTextAuthorNamePriceTermsClassSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePriceTermsClass2Seq 根据全文本、作者、书名、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorNamePriceTermsClass2Seq 根据全文本、作者、书名、价格检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8497,7 +8497,7 @@ func MatchBooksByAllTextAuthorNamePriceTermsClass2Seq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePriceTermsClassClass2Seq 根据全文本、作者、书名、价格检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextAuthorNamePriceTermsClassClass2Seq 根据全文本、作者、书名、价格检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8516,7 +8516,7 @@ func MatchBooksByAllTextAuthorNamePriceTermsClassClass2Seq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameReleaseDateTermsClass 根据全文本、作者、书名、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorNameReleaseDateTermsClass 根据全文本、作者、书名、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8535,7 +8535,7 @@ func MatchBooksByAllTextAuthorNameReleaseDateTermsClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameReleaseDateTermsClass2 根据全文本、作者、书名、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorNameReleaseDateTermsClass2 根据全文本、作者、书名、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8554,7 +8554,7 @@ func MatchBooksByAllTextAuthorNameReleaseDateTermsClass2(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameReleaseDateTermsSeq 根据全文本、作者、书名、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorNameReleaseDateTermsSeq 根据全文本、作者、书名、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8573,7 +8573,7 @@ func MatchBooksByAllTextAuthorNameReleaseDateTermsSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameReleaseDateTermsClassClass2 根据全文本、作者、书名、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorNameReleaseDateTermsClassClass2 根据全文本、作者、书名、发布日期检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8592,7 +8592,7 @@ func MatchBooksByAllTextAuthorNameReleaseDateTermsClassClass2(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameReleaseDateTermsClassSeq 根据全文本、作者、书名、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorNameReleaseDateTermsClassSeq 根据全文本、作者、书名、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8611,7 +8611,7 @@ func MatchBooksByAllTextAuthorNameReleaseDateTermsClassSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameReleaseDateTermsClass2Seq 根据全文本、作者、书名、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorNameReleaseDateTermsClass2Seq 根据全文本、作者、书名、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8630,7 +8630,7 @@ func MatchBooksByAllTextAuthorNameReleaseDateTermsClass2Seq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameReleaseDateTermsClassClass2Seq 根据全文本、作者、书名、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextAuthorNameReleaseDateTermsClassClass2Seq 根据全文本、作者、书名、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8649,7 +8649,7 @@ func MatchBooksByAllTextAuthorNameReleaseDateTermsClassClass2Seq(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameSeqTermsClass 根据全文本、作者、书名、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorNameSeqTermsClass 根据全文本、作者、书名、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8668,7 +8668,7 @@ func MatchBooksByAllTextAuthorNameSeqTermsClass(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameSeqTermsClass2 根据全文本、作者、书名、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorNameSeqTermsClass2 根据全文本、作者、书名、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8687,7 +8687,7 @@ func MatchBooksByAllTextAuthorNameSeqTermsClass2(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameSeqTermsClassClass2 根据全文本、作者、书名、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorNameSeqTermsClassClass2 根据全文本、作者、书名、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -8706,7 +8706,7 @@ func MatchBooksByAllTextAuthorNameSeqTermsClassClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountPriceTermsClass 根据全文本、作者、页数、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorPageCountPriceTermsClass 根据全文本、作者、页数、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -8725,7 +8725,7 @@ func MatchBooksByAllTextAuthorPageCountPriceTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountPriceTermsClass2 根据全文本、作者、页数、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorPageCountPriceTermsClass2 根据全文本、作者、页数、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -8744,7 +8744,7 @@ func MatchBooksByAllTextAuthorPageCountPriceTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountPriceTermsSeq 根据全文本、作者、页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorPageCountPriceTermsSeq 根据全文本、作者、页数、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -8763,7 +8763,7 @@ func MatchBooksByAllTextAuthorPageCountPriceTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountPriceTermsClassClass2 根据全文本、作者、页数、价格检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorPageCountPriceTermsClassClass2 根据全文本、作者、页数、价格检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -8782,7 +8782,7 @@ func MatchBooksByAllTextAuthorPageCountPriceTermsClassClass2(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountPriceTermsClassSeq 根据全文本、作者、页数、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorPageCountPriceTermsClassSeq 根据全文本、作者、页数、价格检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -8801,7 +8801,7 @@ func MatchBooksByAllTextAuthorPageCountPriceTermsClassSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountPriceTermsClass2Seq 根据全文本、作者、页数、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorPageCountPriceTermsClass2Seq 根据全文本、作者、页数、价格检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -8820,7 +8820,7 @@ func MatchBooksByAllTextAuthorPageCountPriceTermsClass2Seq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountPriceTermsClassClass2Seq 根据全文本、作者、页数、价格检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextAuthorPageCountPriceTermsClassClass2Seq 根据全文本、作者、页数、价格检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -8839,7 +8839,7 @@ func MatchBooksByAllTextAuthorPageCountPriceTermsClassClass2Seq(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass 根据全文本、作者、页数、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass 根据全文本、作者、页数、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -8858,7 +8858,7 @@ func MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass2 根据全文本、作者、页数、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass2 根据全文本、作者、页数、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -8877,7 +8877,7 @@ func MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass2(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountReleaseDateTermsSeq 根据全文本、作者、页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorPageCountReleaseDateTermsSeq 根据全文本、作者、页数、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -8896,7 +8896,7 @@ func MatchBooksByAllTextAuthorPageCountReleaseDateTermsSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClassClass2 根据全文本、作者、页数、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClassClass2 根据全文本、作者、页数、发布日期检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -8915,7 +8915,7 @@ func MatchBooksByAllTextAuthorPageCountReleaseDateTermsClassClass2(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClassSeq 根据全文本、作者、页数、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClassSeq 根据全文本、作者、页数、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -8934,7 +8934,7 @@ func MatchBooksByAllTextAuthorPageCountReleaseDateTermsClassSeq(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass2Seq 根据全文本、作者、页数、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass2Seq 根据全文本、作者、页数、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -8953,7 +8953,7 @@ func MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass2Seq(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClassClass2Seq 根据全文本、作者、页数、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClassClass2Seq 根据全文本、作者、页数、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -8972,7 +8972,7 @@ func MatchBooksByAllTextAuthorPageCountReleaseDateTermsClassClass2Seq(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountSeqTermsClass 根据全文本、作者、页数、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorPageCountSeqTermsClass 根据全文本、作者、页数、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -8991,7 +8991,7 @@ func MatchBooksByAllTextAuthorPageCountSeqTermsClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountSeqTermsClass2 根据全文本、作者、页数、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorPageCountSeqTermsClass2 根据全文本、作者、页数、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -9010,7 +9010,7 @@ func MatchBooksByAllTextAuthorPageCountSeqTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountSeqTermsClassClass2 根据全文本、作者、页数、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorPageCountSeqTermsClassClass2 根据全文本、作者、页数、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -9029,7 +9029,7 @@ func MatchBooksByAllTextAuthorPageCountSeqTermsClassClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceReleaseDateTermsClass 根据全文本、作者、价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorPriceReleaseDateTermsClass 根据全文本、作者、价格、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -9048,7 +9048,7 @@ func MatchBooksByAllTextAuthorPriceReleaseDateTermsClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceReleaseDateTermsClass2 根据全文本、作者、价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorPriceReleaseDateTermsClass2 根据全文本、作者、价格、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -9067,7 +9067,7 @@ func MatchBooksByAllTextAuthorPriceReleaseDateTermsClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceReleaseDateTermsSeq 根据全文本、作者、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextAuthorPriceReleaseDateTermsSeq 根据全文本、作者、价格、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -9086,7 +9086,7 @@ func MatchBooksByAllTextAuthorPriceReleaseDateTermsSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceReleaseDateTermsClassClass2 根据全文本、作者、价格、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorPriceReleaseDateTermsClassClass2 根据全文本、作者、价格、发布日期检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -9105,7 +9105,7 @@ func MatchBooksByAllTextAuthorPriceReleaseDateTermsClassClass2(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceReleaseDateTermsClassSeq 根据全文本、作者、价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextAuthorPriceReleaseDateTermsClassSeq 根据全文本、作者、价格、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -9124,7 +9124,7 @@ func MatchBooksByAllTextAuthorPriceReleaseDateTermsClassSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceReleaseDateTermsClass2Seq 根据全文本、作者、价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextAuthorPriceReleaseDateTermsClass2Seq 根据全文本、作者、价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -9143,7 +9143,7 @@ func MatchBooksByAllTextAuthorPriceReleaseDateTermsClass2Seq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceReleaseDateTermsClassClass2Seq 根据全文本、作者、价格、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextAuthorPriceReleaseDateTermsClassClass2Seq 根据全文本、作者、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -9162,7 +9162,7 @@ func MatchBooksByAllTextAuthorPriceReleaseDateTermsClassClass2Seq(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceSeqTermsClass 根据全文本、作者、价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorPriceSeqTermsClass 根据全文本、作者、价格、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -9181,7 +9181,7 @@ func MatchBooksByAllTextAuthorPriceSeqTermsClass(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceSeqTermsClass2 根据全文本、作者、价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorPriceSeqTermsClass2 根据全文本、作者、价格、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -9200,7 +9200,7 @@ func MatchBooksByAllTextAuthorPriceSeqTermsClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceSeqTermsClassClass2 根据全文本、作者、价格、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorPriceSeqTermsClassClass2 根据全文本、作者、价格、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -9219,7 +9219,7 @@ func MatchBooksByAllTextAuthorPriceSeqTermsClassClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateSeqTermsClass 根据全文本、作者、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextAuthorReleaseDateSeqTermsClass 根据全文本、作者、发布日期、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
@@ -9238,7 +9238,7 @@ func MatchBooksByAllTextAuthorReleaseDateSeqTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateSeqTermsClass2 根据全文本、作者、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextAuthorReleaseDateSeqTermsClass2 根据全文本、作者、发布日期、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
@@ -9257,7 +9257,7 @@ func MatchBooksByAllTextAuthorReleaseDateSeqTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateSeqTermsClassClass2 根据全文本、作者、发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextAuthorReleaseDateSeqTermsClassClass2 根据全文本、作者、发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
@@ -9276,7 +9276,7 @@ func MatchBooksByAllTextAuthorReleaseDateSeqTermsClassClass2(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2NameTermsSeq 根据全文本、类别、子类别、书名检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassClass2NameTermsSeq 根据全文本、类别、子类别、书名检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -9295,7 +9295,7 @@ func MatchBooksByAllTextClassClass2NameTermsSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2PageCountTermsSeq 根据全文本、类别、子类别、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassClass2PageCountTermsSeq 根据全文本、类别、子类别、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -9314,7 +9314,7 @@ func MatchBooksByAllTextClassClass2PageCountTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2PriceTermsSeq 根据全文本、类别、子类别、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassClass2PriceTermsSeq 根据全文本、类别、子类别、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -9333,7 +9333,7 @@ func MatchBooksByAllTextClassClass2PriceTermsSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2ReleaseDateTermsSeq 根据全文本、类别、子类别、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassClass2ReleaseDateTermsSeq 根据全文本、类别、子类别、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -9352,7 +9352,7 @@ func MatchBooksByAllTextClassClass2ReleaseDateTermsSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNamePageCountTermsClass2 根据全文本、类别、书名、页数检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassNamePageCountTermsClass2 根据全文本、类别、书名、页数检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -9371,7 +9371,7 @@ func MatchBooksByAllTextClassNamePageCountTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNamePageCountTermsSeq 根据全文本、类别、书名、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassNamePageCountTermsSeq 根据全文本、类别、书名、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -9390,7 +9390,7 @@ func MatchBooksByAllTextClassNamePageCountTermsSeq(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNamePageCountTermsClass2Seq 根据全文本、类别、书名、页数检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextClassNamePageCountTermsClass2Seq 根据全文本、类别、书名、页数检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -9409,7 +9409,7 @@ func MatchBooksByAllTextClassNamePageCountTermsClass2Seq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNamePriceTermsClass2 根据全文本、类别、书名、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassNamePriceTermsClass2 根据全文本、类别、书名、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -9428,7 +9428,7 @@ func MatchBooksByAllTextClassNamePriceTermsClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNamePriceTermsSeq 根据全文本、类别、书名、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassNamePriceTermsSeq 根据全文本、类别、书名、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -9447,7 +9447,7 @@ func MatchBooksByAllTextClassNamePriceTermsSeq(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNamePriceTermsClass2Seq 根据全文本、类别、书名、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextClassNamePriceTermsClass2Seq 根据全文本、类别、书名、价格检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -9466,7 +9466,7 @@ func MatchBooksByAllTextClassNamePriceTermsClass2Seq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameReleaseDateTermsClass2 根据全文本、类别、书名、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassNameReleaseDateTermsClass2 根据全文本、类别、书名、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -9485,7 +9485,7 @@ func MatchBooksByAllTextClassNameReleaseDateTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameReleaseDateTermsSeq 根据全文本、类别、书名、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassNameReleaseDateTermsSeq 根据全文本、类别、书名、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -9504,7 +9504,7 @@ func MatchBooksByAllTextClassNameReleaseDateTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameReleaseDateTermsClass2Seq 根据全文本、类别、书名、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextClassNameReleaseDateTermsClass2Seq 根据全文本、类别、书名、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -9523,7 +9523,7 @@ func MatchBooksByAllTextClassNameReleaseDateTermsClass2Seq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameSeqTermsClass2 根据全文本、类别、书名、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassNameSeqTermsClass2 根据全文本、类别、书名、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -9542,7 +9542,7 @@ func MatchBooksByAllTextClassNameSeqTermsClass2(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountPriceTermsClass2 根据全文本、类别、页数、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassPageCountPriceTermsClass2 根据全文本、类别、页数、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -9561,7 +9561,7 @@ func MatchBooksByAllTextClassPageCountPriceTermsClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountPriceTermsSeq 根据全文本、类别、页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassPageCountPriceTermsSeq 根据全文本、类别、页数、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -9580,7 +9580,7 @@ func MatchBooksByAllTextClassPageCountPriceTermsSeq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountPriceTermsClass2Seq 根据全文本、类别、页数、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextClassPageCountPriceTermsClass2Seq 根据全文本、类别、页数、价格检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -9599,7 +9599,7 @@ func MatchBooksByAllTextClassPageCountPriceTermsClass2Seq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountReleaseDateTermsClass2 根据全文本、类别、页数、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassPageCountReleaseDateTermsClass2 根据全文本、类别、页数、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -9618,7 +9618,7 @@ func MatchBooksByAllTextClassPageCountReleaseDateTermsClass2(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountReleaseDateTermsSeq 根据全文本、类别、页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassPageCountReleaseDateTermsSeq 根据全文本、类别、页数、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -9637,7 +9637,7 @@ func MatchBooksByAllTextClassPageCountReleaseDateTermsSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountReleaseDateTermsClass2Seq 根据全文本、类别、页数、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextClassPageCountReleaseDateTermsClass2Seq 根据全文本、类别、页数、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -9656,7 +9656,7 @@ func MatchBooksByAllTextClassPageCountReleaseDateTermsClass2Seq(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountSeqTermsClass2 根据全文本、类别、页数、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassPageCountSeqTermsClass2 根据全文本、类别、页数、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -9675,7 +9675,7 @@ func MatchBooksByAllTextClassPageCountSeqTermsClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceReleaseDateTermsClass2 根据全文本、类别、价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassPriceReleaseDateTermsClass2 根据全文本、类别、价格、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // price float64 价格
@@ -9694,7 +9694,7 @@ func MatchBooksByAllTextClassPriceReleaseDateTermsClass2(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceReleaseDateTermsSeq 根据全文本、类别、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClassPriceReleaseDateTermsSeq 根据全文本、类别、价格、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // price float64 价格
@@ -9713,7 +9713,7 @@ func MatchBooksByAllTextClassPriceReleaseDateTermsSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceReleaseDateTermsClass2Seq 根据全文本、类别、价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextClassPriceReleaseDateTermsClass2Seq 根据全文本、类别、价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // class string 类别
 // price float64 价格
@@ -9732,7 +9732,7 @@ func MatchBooksByAllTextClassPriceReleaseDateTermsClass2Seq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceSeqTermsClass2 根据全文本、类别、价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassPriceSeqTermsClass2 根据全文本、类别、价格、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // price float64 价格
@@ -9751,7 +9751,7 @@ func MatchBooksByAllTextClassPriceSeqTermsClass2(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassReleaseDateSeqTermsClass2 根据全文本、类别、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextClassReleaseDateSeqTermsClass2 根据全文本、类别、发布日期、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
@@ -9770,7 +9770,7 @@ func MatchBooksByAllTextClassReleaseDateSeqTermsClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NamePageCountTermsClass 根据全文本、子类别、书名、页数检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2NamePageCountTermsClass 根据全文本、子类别、书名、页数检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -9789,7 +9789,7 @@ func MatchBooksByAllTextClass2NamePageCountTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NamePageCountTermsSeq 根据全文本、子类别、书名、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClass2NamePageCountTermsSeq 根据全文本、子类别、书名、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -9808,7 +9808,7 @@ func MatchBooksByAllTextClass2NamePageCountTermsSeq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NamePageCountTermsClassSeq 根据全文本、子类别、书名、页数检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextClass2NamePageCountTermsClassSeq 根据全文本、子类别、书名、页数检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -9827,7 +9827,7 @@ func MatchBooksByAllTextClass2NamePageCountTermsClassSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NamePriceTermsClass 根据全文本、子类别、书名、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2NamePriceTermsClass 根据全文本、子类别、书名、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -9846,7 +9846,7 @@ func MatchBooksByAllTextClass2NamePriceTermsClass(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NamePriceTermsSeq 根据全文本、子类别、书名、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClass2NamePriceTermsSeq 根据全文本、子类别、书名、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -9865,7 +9865,7 @@ func MatchBooksByAllTextClass2NamePriceTermsSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NamePriceTermsClassSeq 根据全文本、子类别、书名、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextClass2NamePriceTermsClassSeq 根据全文本、子类别、书名、价格检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -9884,7 +9884,7 @@ func MatchBooksByAllTextClass2NamePriceTermsClassSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameReleaseDateTermsClass 根据全文本、子类别、书名、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2NameReleaseDateTermsClass 根据全文本、子类别、书名、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -9903,7 +9903,7 @@ func MatchBooksByAllTextClass2NameReleaseDateTermsClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameReleaseDateTermsSeq 根据全文本、子类别、书名、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClass2NameReleaseDateTermsSeq 根据全文本、子类别、书名、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -9922,7 +9922,7 @@ func MatchBooksByAllTextClass2NameReleaseDateTermsSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameReleaseDateTermsClassSeq 根据全文本、子类别、书名、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextClass2NameReleaseDateTermsClassSeq 根据全文本、子类别、书名、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -9941,7 +9941,7 @@ func MatchBooksByAllTextClass2NameReleaseDateTermsClassSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameSeqTermsClass 根据全文本、子类别、书名、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2NameSeqTermsClass 根据全文本、子类别、书名、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -9960,7 +9960,7 @@ func MatchBooksByAllTextClass2NameSeqTermsClass(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountPriceTermsClass 根据全文本、子类别、页数、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2PageCountPriceTermsClass 根据全文本、子类别、页数、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -9979,7 +9979,7 @@ func MatchBooksByAllTextClass2PageCountPriceTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountPriceTermsSeq 根据全文本、子类别、页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClass2PageCountPriceTermsSeq 根据全文本、子类别、页数、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -9998,7 +9998,7 @@ func MatchBooksByAllTextClass2PageCountPriceTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountPriceTermsClassSeq 根据全文本、子类别、页数、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextClass2PageCountPriceTermsClassSeq 根据全文本、子类别、页数、价格检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -10017,7 +10017,7 @@ func MatchBooksByAllTextClass2PageCountPriceTermsClassSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountReleaseDateTermsClass 根据全文本、子类别、页数、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2PageCountReleaseDateTermsClass 根据全文本、子类别、页数、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -10036,7 +10036,7 @@ func MatchBooksByAllTextClass2PageCountReleaseDateTermsClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountReleaseDateTermsSeq 根据全文本、子类别、页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClass2PageCountReleaseDateTermsSeq 根据全文本、子类别、页数、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -10055,7 +10055,7 @@ func MatchBooksByAllTextClass2PageCountReleaseDateTermsSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountReleaseDateTermsClassSeq 根据全文本、子类别、页数、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextClass2PageCountReleaseDateTermsClassSeq 根据全文本、子类别、页数、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -10074,7 +10074,7 @@ func MatchBooksByAllTextClass2PageCountReleaseDateTermsClassSeq(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountSeqTermsClass 根据全文本、子类别、页数、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2PageCountSeqTermsClass 根据全文本、子类别、页数、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -10093,7 +10093,7 @@ func MatchBooksByAllTextClass2PageCountSeqTermsClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceReleaseDateTermsClass 根据全文本、子类别、价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2PriceReleaseDateTermsClass 根据全文本、子类别、价格、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
@@ -10112,7 +10112,7 @@ func MatchBooksByAllTextClass2PriceReleaseDateTermsClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceReleaseDateTermsSeq 根据全文本、子类别、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextClass2PriceReleaseDateTermsSeq 根据全文本、子类别、价格、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
@@ -10131,7 +10131,7 @@ func MatchBooksByAllTextClass2PriceReleaseDateTermsSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceReleaseDateTermsClassSeq 根据全文本、子类别、价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextClass2PriceReleaseDateTermsClassSeq 根据全文本、子类别、价格、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
@@ -10150,7 +10150,7 @@ func MatchBooksByAllTextClass2PriceReleaseDateTermsClassSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceSeqTermsClass 根据全文本、子类别、价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2PriceSeqTermsClass 根据全文本、子类别、价格、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
@@ -10169,7 +10169,7 @@ func MatchBooksByAllTextClass2PriceSeqTermsClass(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2ReleaseDateSeqTermsClass 根据全文本、子类别、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextClass2ReleaseDateSeqTermsClass 根据全文本、子类别、发布日期、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
@@ -10188,7 +10188,7 @@ func MatchBooksByAllTextClass2ReleaseDateSeqTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountPriceTermsClass 根据全文本、书名、页数、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextNamePageCountPriceTermsClass 根据全文本、书名、页数、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10207,7 +10207,7 @@ func MatchBooksByAllTextNamePageCountPriceTermsClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountPriceTermsClass2 根据全文本、书名、页数、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextNamePageCountPriceTermsClass2 根据全文本、书名、页数、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10226,7 +10226,7 @@ func MatchBooksByAllTextNamePageCountPriceTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountPriceTermsSeq 根据全文本、书名、页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextNamePageCountPriceTermsSeq 根据全文本、书名、页数、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10245,7 +10245,7 @@ func MatchBooksByAllTextNamePageCountPriceTermsSeq(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountPriceTermsClassClass2 根据全文本、书名、页数、价格检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextNamePageCountPriceTermsClassClass2 根据全文本、书名、页数、价格检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10264,7 +10264,7 @@ func MatchBooksByAllTextNamePageCountPriceTermsClassClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountPriceTermsClassSeq 根据全文本、书名、页数、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextNamePageCountPriceTermsClassSeq 根据全文本、书名、页数、价格检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10283,7 +10283,7 @@ func MatchBooksByAllTextNamePageCountPriceTermsClassSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountPriceTermsClass2Seq 根据全文本、书名、页数、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextNamePageCountPriceTermsClass2Seq 根据全文本、书名、页数、价格检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10302,7 +10302,7 @@ func MatchBooksByAllTextNamePageCountPriceTermsClass2Seq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountPriceTermsClassClass2Seq 根据全文本、书名、页数、价格检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextNamePageCountPriceTermsClassClass2Seq 根据全文本、书名、页数、价格检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10321,7 +10321,7 @@ func MatchBooksByAllTextNamePageCountPriceTermsClassClass2Seq(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountReleaseDateTermsClass 根据全文本、书名、页数、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextNamePageCountReleaseDateTermsClass 根据全文本、书名、页数、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10340,7 +10340,7 @@ func MatchBooksByAllTextNamePageCountReleaseDateTermsClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountReleaseDateTermsClass2 根据全文本、书名、页数、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextNamePageCountReleaseDateTermsClass2 根据全文本、书名、页数、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10359,7 +10359,7 @@ func MatchBooksByAllTextNamePageCountReleaseDateTermsClass2(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountReleaseDateTermsSeq 根据全文本、书名、页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextNamePageCountReleaseDateTermsSeq 根据全文本、书名、页数、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10378,7 +10378,7 @@ func MatchBooksByAllTextNamePageCountReleaseDateTermsSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountReleaseDateTermsClassClass2 根据全文本、书名、页数、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextNamePageCountReleaseDateTermsClassClass2 根据全文本、书名、页数、发布日期检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10397,7 +10397,7 @@ func MatchBooksByAllTextNamePageCountReleaseDateTermsClassClass2(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountReleaseDateTermsClassSeq 根据全文本、书名、页数、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextNamePageCountReleaseDateTermsClassSeq 根据全文本、书名、页数、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10416,7 +10416,7 @@ func MatchBooksByAllTextNamePageCountReleaseDateTermsClassSeq(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountReleaseDateTermsClass2Seq 根据全文本、书名、页数、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextNamePageCountReleaseDateTermsClass2Seq 根据全文本、书名、页数、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10435,7 +10435,7 @@ func MatchBooksByAllTextNamePageCountReleaseDateTermsClass2Seq(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountReleaseDateTermsClassClass2Seq 根据全文本、书名、页数、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextNamePageCountReleaseDateTermsClassClass2Seq 根据全文本、书名、页数、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10454,7 +10454,7 @@ func MatchBooksByAllTextNamePageCountReleaseDateTermsClassClass2Seq(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountSeqTermsClass 根据全文本、书名、页数、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextNamePageCountSeqTermsClass 根据全文本、书名、页数、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10473,7 +10473,7 @@ func MatchBooksByAllTextNamePageCountSeqTermsClass(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountSeqTermsClass2 根据全文本、书名、页数、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextNamePageCountSeqTermsClass2 根据全文本、书名、页数、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10492,7 +10492,7 @@ func MatchBooksByAllTextNamePageCountSeqTermsClass2(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountSeqTermsClassClass2 根据全文本、书名、页数、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextNamePageCountSeqTermsClassClass2 根据全文本、书名、页数、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -10511,7 +10511,7 @@ func MatchBooksByAllTextNamePageCountSeqTermsClassClass2(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceReleaseDateTermsClass 根据全文本、书名、价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextNamePriceReleaseDateTermsClass 根据全文本、书名、价格、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -10530,7 +10530,7 @@ func MatchBooksByAllTextNamePriceReleaseDateTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceReleaseDateTermsClass2 根据全文本、书名、价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextNamePriceReleaseDateTermsClass2 根据全文本、书名、价格、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -10549,7 +10549,7 @@ func MatchBooksByAllTextNamePriceReleaseDateTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceReleaseDateTermsSeq 根据全文本、书名、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextNamePriceReleaseDateTermsSeq 根据全文本、书名、价格、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -10568,7 +10568,7 @@ func MatchBooksByAllTextNamePriceReleaseDateTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceReleaseDateTermsClassClass2 根据全文本、书名、价格、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextNamePriceReleaseDateTermsClassClass2 根据全文本、书名、价格、发布日期检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -10587,7 +10587,7 @@ func MatchBooksByAllTextNamePriceReleaseDateTermsClassClass2(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceReleaseDateTermsClassSeq 根据全文本、书名、价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextNamePriceReleaseDateTermsClassSeq 根据全文本、书名、价格、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -10606,7 +10606,7 @@ func MatchBooksByAllTextNamePriceReleaseDateTermsClassSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceReleaseDateTermsClass2Seq 根据全文本、书名、价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextNamePriceReleaseDateTermsClass2Seq 根据全文本、书名、价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -10625,7 +10625,7 @@ func MatchBooksByAllTextNamePriceReleaseDateTermsClass2Seq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceReleaseDateTermsClassClass2Seq 根据全文本、书名、价格、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextNamePriceReleaseDateTermsClassClass2Seq 根据全文本、书名、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -10644,7 +10644,7 @@ func MatchBooksByAllTextNamePriceReleaseDateTermsClassClass2Seq(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceSeqTermsClass 根据全文本、书名、价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextNamePriceSeqTermsClass 根据全文本、书名、价格、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -10663,7 +10663,7 @@ func MatchBooksByAllTextNamePriceSeqTermsClass(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceSeqTermsClass2 根据全文本、书名、价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextNamePriceSeqTermsClass2 根据全文本、书名、价格、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -10682,7 +10682,7 @@ func MatchBooksByAllTextNamePriceSeqTermsClass2(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceSeqTermsClassClass2 根据全文本、书名、价格、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextNamePriceSeqTermsClassClass2 根据全文本、书名、价格、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -10701,7 +10701,7 @@ func MatchBooksByAllTextNamePriceSeqTermsClassClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateSeqTermsClass 根据全文本、书名、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextNameReleaseDateSeqTermsClass 根据全文本、书名、发布日期、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -10720,7 +10720,7 @@ func MatchBooksByAllTextNameReleaseDateSeqTermsClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateSeqTermsClass2 根据全文本、书名、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextNameReleaseDateSeqTermsClass2 根据全文本、书名、发布日期、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -10739,7 +10739,7 @@ func MatchBooksByAllTextNameReleaseDateSeqTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateSeqTermsClassClass2 根据全文本、书名、发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextNameReleaseDateSeqTermsClassClass2 根据全文本、书名、发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -10758,7 +10758,7 @@ func MatchBooksByAllTextNameReleaseDateSeqTermsClassClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceReleaseDateTermsClass 根据全文本、页数、价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextPageCountPriceReleaseDateTermsClass 根据全文本、页数、价格、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -10777,7 +10777,7 @@ func MatchBooksByAllTextPageCountPriceReleaseDateTermsClass(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceReleaseDateTermsClass2 根据全文本、页数、价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextPageCountPriceReleaseDateTermsClass2 根据全文本、页数、价格、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -10796,7 +10796,7 @@ func MatchBooksByAllTextPageCountPriceReleaseDateTermsClass2(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceReleaseDateTermsSeq 根据全文本、页数、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAllTextPageCountPriceReleaseDateTermsSeq 根据全文本、页数、价格、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -10815,7 +10815,7 @@ func MatchBooksByAllTextPageCountPriceReleaseDateTermsSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceReleaseDateTermsClassClass2 根据全文本、页数、价格、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextPageCountPriceReleaseDateTermsClassClass2 根据全文本、页数、价格、发布日期检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -10834,7 +10834,7 @@ func MatchBooksByAllTextPageCountPriceReleaseDateTermsClassClass2(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceReleaseDateTermsClassSeq 根据全文本、页数、价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAllTextPageCountPriceReleaseDateTermsClassSeq 根据全文本、页数、价格、发布日期检索books表并同时统计类别、编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -10853,7 +10853,7 @@ func MatchBooksByAllTextPageCountPriceReleaseDateTermsClassSeq(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceReleaseDateTermsClass2Seq 根据全文本、页数、价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAllTextPageCountPriceReleaseDateTermsClass2Seq 根据全文本、页数、价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -10872,7 +10872,7 @@ func MatchBooksByAllTextPageCountPriceReleaseDateTermsClass2Seq(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceReleaseDateTermsClassClass2Seq 根据全文本、页数、价格、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAllTextPageCountPriceReleaseDateTermsClassClass2Seq 根据全文本、页数、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -10891,7 +10891,7 @@ func MatchBooksByAllTextPageCountPriceReleaseDateTermsClassClass2Seq(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceSeqTermsClass 根据全文本、页数、价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextPageCountPriceSeqTermsClass 根据全文本、页数、价格、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -10910,7 +10910,7 @@ func MatchBooksByAllTextPageCountPriceSeqTermsClass(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceSeqTermsClass2 根据全文本、页数、价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextPageCountPriceSeqTermsClass2 根据全文本、页数、价格、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -10929,7 +10929,7 @@ func MatchBooksByAllTextPageCountPriceSeqTermsClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceSeqTermsClassClass2 根据全文本、页数、价格、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextPageCountPriceSeqTermsClassClass2 根据全文本、页数、价格、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -10948,7 +10948,7 @@ func MatchBooksByAllTextPageCountPriceSeqTermsClassClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateSeqTermsClass 根据全文本、页数、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextPageCountReleaseDateSeqTermsClass 根据全文本、页数、发布日期、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -10967,7 +10967,7 @@ func MatchBooksByAllTextPageCountReleaseDateSeqTermsClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateSeqTermsClass2 根据全文本、页数、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextPageCountReleaseDateSeqTermsClass2 根据全文本、页数、发布日期、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -10986,7 +10986,7 @@ func MatchBooksByAllTextPageCountReleaseDateSeqTermsClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateSeqTermsClassClass2 根据全文本、页数、发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextPageCountReleaseDateSeqTermsClassClass2 根据全文本、页数、发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -11005,7 +11005,7 @@ func MatchBooksByAllTextPageCountReleaseDateSeqTermsClassClass2(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateSeqTermsClass 根据全文本、价格、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAllTextPriceReleaseDateSeqTermsClass 根据全文本、价格、发布日期、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -11024,7 +11024,7 @@ func MatchBooksByAllTextPriceReleaseDateSeqTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateSeqTermsClass2 根据全文本、价格、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAllTextPriceReleaseDateSeqTermsClass2 根据全文本、价格、发布日期、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -11043,7 +11043,7 @@ func MatchBooksByAllTextPriceReleaseDateSeqTermsClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateSeqTermsClassClass2 根据全文本、价格、发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAllTextPriceReleaseDateSeqTermsClassClass2 根据全文本、价格、发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -11062,7 +11062,7 @@ func MatchBooksByAllTextPriceReleaseDateSeqTermsClassClass2(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2NameTermsSeq 根据作者、类别、子类别、书名检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassClass2NameTermsSeq 根据作者、类别、子类别、书名检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -11081,7 +11081,7 @@ func MatchBooksByAuthorClassClass2NameTermsSeq(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2PageCountTermsSeq 根据作者、类别、子类别、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassClass2PageCountTermsSeq 根据作者、类别、子类别、页数检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -11100,7 +11100,7 @@ func MatchBooksByAuthorClassClass2PageCountTermsSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2PriceTermsSeq 根据作者、类别、子类别、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassClass2PriceTermsSeq 根据作者、类别、子类别、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -11119,7 +11119,7 @@ func MatchBooksByAuthorClassClass2PriceTermsSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2ReleaseDateTermsSeq 根据作者、类别、子类别、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassClass2ReleaseDateTermsSeq 根据作者、类别、子类别、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -11138,7 +11138,7 @@ func MatchBooksByAuthorClassClass2ReleaseDateTermsSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNamePageCountTermsClass2 根据作者、类别、书名、页数检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassNamePageCountTermsClass2 根据作者、类别、书名、页数检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
@@ -11157,7 +11157,7 @@ func MatchBooksByAuthorClassNamePageCountTermsClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNamePageCountTermsSeq 根据作者、类别、书名、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassNamePageCountTermsSeq 根据作者、类别、书名、页数检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
@@ -11176,7 +11176,7 @@ func MatchBooksByAuthorClassNamePageCountTermsSeq(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNamePageCountTermsClass2Seq 根据作者、类别、书名、页数检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorClassNamePageCountTermsClass2Seq 根据作者、类别、书名、页数检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
@@ -11195,7 +11195,7 @@ func MatchBooksByAuthorClassNamePageCountTermsClass2Seq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNamePriceTermsClass2 根据作者、类别、书名、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassNamePriceTermsClass2 根据作者、类别、书名、价格检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
@@ -11214,7 +11214,7 @@ func MatchBooksByAuthorClassNamePriceTermsClass2(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNamePriceTermsSeq 根据作者、类别、书名、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassNamePriceTermsSeq 根据作者、类别、书名、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
@@ -11233,7 +11233,7 @@ func MatchBooksByAuthorClassNamePriceTermsSeq(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNamePriceTermsClass2Seq 根据作者、类别、书名、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorClassNamePriceTermsClass2Seq 根据作者、类别、书名、价格检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
@@ -11252,7 +11252,7 @@ func MatchBooksByAuthorClassNamePriceTermsClass2Seq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameReleaseDateTermsClass2 根据作者、类别、书名、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassNameReleaseDateTermsClass2 根据作者、类别、书名、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
@@ -11271,7 +11271,7 @@ func MatchBooksByAuthorClassNameReleaseDateTermsClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameReleaseDateTermsSeq 根据作者、类别、书名、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassNameReleaseDateTermsSeq 根据作者、类别、书名、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
@@ -11290,7 +11290,7 @@ func MatchBooksByAuthorClassNameReleaseDateTermsSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameReleaseDateTermsClass2Seq 根据作者、类别、书名、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorClassNameReleaseDateTermsClass2Seq 根据作者、类别、书名、发布日期检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
@@ -11309,7 +11309,7 @@ func MatchBooksByAuthorClassNameReleaseDateTermsClass2Seq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameSeqTermsClass2 根据作者、类别、书名、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassNameSeqTermsClass2 根据作者、类别、书名、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
@@ -11328,7 +11328,7 @@ func MatchBooksByAuthorClassNameSeqTermsClass2(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountPriceTermsClass2 根据作者、类别、页数、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassPageCountPriceTermsClass2 根据作者、类别、页数、价格检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -11347,7 +11347,7 @@ func MatchBooksByAuthorClassPageCountPriceTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountPriceTermsSeq 根据作者、类别、页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassPageCountPriceTermsSeq 根据作者、类别、页数、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -11366,7 +11366,7 @@ func MatchBooksByAuthorClassPageCountPriceTermsSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountPriceTermsClass2Seq 根据作者、类别、页数、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorClassPageCountPriceTermsClass2Seq 根据作者、类别、页数、价格检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -11385,7 +11385,7 @@ func MatchBooksByAuthorClassPageCountPriceTermsClass2Seq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountReleaseDateTermsClass2 根据作者、类别、页数、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassPageCountReleaseDateTermsClass2 根据作者、类别、页数、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -11404,7 +11404,7 @@ func MatchBooksByAuthorClassPageCountReleaseDateTermsClass2(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountReleaseDateTermsSeq 根据作者、类别、页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassPageCountReleaseDateTermsSeq 根据作者、类别、页数、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -11423,7 +11423,7 @@ func MatchBooksByAuthorClassPageCountReleaseDateTermsSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountReleaseDateTermsClass2Seq 根据作者、类别、页数、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorClassPageCountReleaseDateTermsClass2Seq 根据作者、类别、页数、发布日期检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -11442,7 +11442,7 @@ func MatchBooksByAuthorClassPageCountReleaseDateTermsClass2Seq(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountSeqTermsClass2 根据作者、类别、页数、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassPageCountSeqTermsClass2 根据作者、类别、页数、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -11461,7 +11461,7 @@ func MatchBooksByAuthorClassPageCountSeqTermsClass2(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceReleaseDateTermsClass2 根据作者、类别、价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassPriceReleaseDateTermsClass2 根据作者、类别、价格、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // price float64 价格
@@ -11480,7 +11480,7 @@ func MatchBooksByAuthorClassPriceReleaseDateTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceReleaseDateTermsSeq 根据作者、类别、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClassPriceReleaseDateTermsSeq 根据作者、类别、价格、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // price float64 价格
@@ -11499,7 +11499,7 @@ func MatchBooksByAuthorClassPriceReleaseDateTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceReleaseDateTermsClass2Seq 根据作者、类别、价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorClassPriceReleaseDateTermsClass2Seq 根据作者、类别、价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // class string 类别
 // price float64 价格
@@ -11518,7 +11518,7 @@ func MatchBooksByAuthorClassPriceReleaseDateTermsClass2Seq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceSeqTermsClass2 根据作者、类别、价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassPriceSeqTermsClass2 根据作者、类别、价格、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // price float64 价格
@@ -11537,7 +11537,7 @@ func MatchBooksByAuthorClassPriceSeqTermsClass2(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassReleaseDateSeqTermsClass2 根据作者、类别、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorClassReleaseDateSeqTermsClass2 根据作者、类别、发布日期、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
@@ -11556,7 +11556,7 @@ func MatchBooksByAuthorClassReleaseDateSeqTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NamePageCountTermsClass 根据作者、子类别、书名、页数检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2NamePageCountTermsClass 根据作者、子类别、书名、页数检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -11575,7 +11575,7 @@ func MatchBooksByAuthorClass2NamePageCountTermsClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NamePageCountTermsSeq 根据作者、子类别、书名、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClass2NamePageCountTermsSeq 根据作者、子类别、书名、页数检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -11594,7 +11594,7 @@ func MatchBooksByAuthorClass2NamePageCountTermsSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NamePageCountTermsClassSeq 根据作者、子类别、书名、页数检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorClass2NamePageCountTermsClassSeq 根据作者、子类别、书名、页数检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -11613,7 +11613,7 @@ func MatchBooksByAuthorClass2NamePageCountTermsClassSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NamePriceTermsClass 根据作者、子类别、书名、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2NamePriceTermsClass 根据作者、子类别、书名、价格检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -11632,7 +11632,7 @@ func MatchBooksByAuthorClass2NamePriceTermsClass(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NamePriceTermsSeq 根据作者、子类别、书名、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClass2NamePriceTermsSeq 根据作者、子类别、书名、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -11651,7 +11651,7 @@ func MatchBooksByAuthorClass2NamePriceTermsSeq(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NamePriceTermsClassSeq 根据作者、子类别、书名、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorClass2NamePriceTermsClassSeq 根据作者、子类别、书名、价格检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -11670,7 +11670,7 @@ func MatchBooksByAuthorClass2NamePriceTermsClassSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameReleaseDateTermsClass 根据作者、子类别、书名、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2NameReleaseDateTermsClass 根据作者、子类别、书名、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -11689,7 +11689,7 @@ func MatchBooksByAuthorClass2NameReleaseDateTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameReleaseDateTermsSeq 根据作者、子类别、书名、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClass2NameReleaseDateTermsSeq 根据作者、子类别、书名、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -11708,7 +11708,7 @@ func MatchBooksByAuthorClass2NameReleaseDateTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameReleaseDateTermsClassSeq 根据作者、子类别、书名、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorClass2NameReleaseDateTermsClassSeq 根据作者、子类别、书名、发布日期检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -11727,7 +11727,7 @@ func MatchBooksByAuthorClass2NameReleaseDateTermsClassSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameSeqTermsClass 根据作者、子类别、书名、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2NameSeqTermsClass 根据作者、子类别、书名、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -11746,7 +11746,7 @@ func MatchBooksByAuthorClass2NameSeqTermsClass(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountPriceTermsClass 根据作者、子类别、页数、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2PageCountPriceTermsClass 根据作者、子类别、页数、价格检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -11765,7 +11765,7 @@ func MatchBooksByAuthorClass2PageCountPriceTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountPriceTermsSeq 根据作者、子类别、页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClass2PageCountPriceTermsSeq 根据作者、子类别、页数、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -11784,7 +11784,7 @@ func MatchBooksByAuthorClass2PageCountPriceTermsSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountPriceTermsClassSeq 根据作者、子类别、页数、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorClass2PageCountPriceTermsClassSeq 根据作者、子类别、页数、价格检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -11803,7 +11803,7 @@ func MatchBooksByAuthorClass2PageCountPriceTermsClassSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountReleaseDateTermsClass 根据作者、子类别、页数、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2PageCountReleaseDateTermsClass 根据作者、子类别、页数、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -11822,7 +11822,7 @@ func MatchBooksByAuthorClass2PageCountReleaseDateTermsClass(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountReleaseDateTermsSeq 根据作者、子类别、页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClass2PageCountReleaseDateTermsSeq 根据作者、子类别、页数、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -11841,7 +11841,7 @@ func MatchBooksByAuthorClass2PageCountReleaseDateTermsSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountReleaseDateTermsClassSeq 根据作者、子类别、页数、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorClass2PageCountReleaseDateTermsClassSeq 根据作者、子类别、页数、发布日期检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -11860,7 +11860,7 @@ func MatchBooksByAuthorClass2PageCountReleaseDateTermsClassSeq(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountSeqTermsClass 根据作者、子类别、页数、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2PageCountSeqTermsClass 根据作者、子类别、页数、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -11879,7 +11879,7 @@ func MatchBooksByAuthorClass2PageCountSeqTermsClass(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceReleaseDateTermsClass 根据作者、子类别、价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2PriceReleaseDateTermsClass 根据作者、子类别、价格、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // price float64 价格
@@ -11898,7 +11898,7 @@ func MatchBooksByAuthorClass2PriceReleaseDateTermsClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceReleaseDateTermsSeq 根据作者、子类别、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorClass2PriceReleaseDateTermsSeq 根据作者、子类别、价格、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // price float64 价格
@@ -11917,7 +11917,7 @@ func MatchBooksByAuthorClass2PriceReleaseDateTermsSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceReleaseDateTermsClassSeq 根据作者、子类别、价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorClass2PriceReleaseDateTermsClassSeq 根据作者、子类别、价格、发布日期检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // class2 string 子类别
 // price float64 价格
@@ -11936,7 +11936,7 @@ func MatchBooksByAuthorClass2PriceReleaseDateTermsClassSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceSeqTermsClass 根据作者、子类别、价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2PriceSeqTermsClass 根据作者、子类别、价格、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // price float64 价格
@@ -11955,7 +11955,7 @@ func MatchBooksByAuthorClass2PriceSeqTermsClass(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2ReleaseDateSeqTermsClass 根据作者、子类别、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorClass2ReleaseDateSeqTermsClass 根据作者、子类别、发布日期、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
@@ -11974,7 +11974,7 @@ func MatchBooksByAuthorClass2ReleaseDateSeqTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountPriceTermsClass 根据作者、书名、页数、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorNamePageCountPriceTermsClass 根据作者、书名、页数、价格检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -11993,7 +11993,7 @@ func MatchBooksByAuthorNamePageCountPriceTermsClass(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountPriceTermsClass2 根据作者、书名、页数、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorNamePageCountPriceTermsClass2 根据作者、书名、页数、价格检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12012,7 +12012,7 @@ func MatchBooksByAuthorNamePageCountPriceTermsClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountPriceTermsSeq 根据作者、书名、页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorNamePageCountPriceTermsSeq 根据作者、书名、页数、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12031,7 +12031,7 @@ func MatchBooksByAuthorNamePageCountPriceTermsSeq(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountPriceTermsClassClass2 根据作者、书名、页数、价格检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorNamePageCountPriceTermsClassClass2 根据作者、书名、页数、价格检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12050,7 +12050,7 @@ func MatchBooksByAuthorNamePageCountPriceTermsClassClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountPriceTermsClassSeq 根据作者、书名、页数、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorNamePageCountPriceTermsClassSeq 根据作者、书名、页数、价格检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12069,7 +12069,7 @@ func MatchBooksByAuthorNamePageCountPriceTermsClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountPriceTermsClass2Seq 根据作者、书名、页数、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorNamePageCountPriceTermsClass2Seq 根据作者、书名、页数、价格检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12088,7 +12088,7 @@ func MatchBooksByAuthorNamePageCountPriceTermsClass2Seq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountPriceTermsClassClass2Seq 根据作者、书名、页数、价格检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAuthorNamePageCountPriceTermsClassClass2Seq 根据作者、书名、页数、价格检索books表并同时统计类别、子类别、编号的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12107,7 +12107,7 @@ func MatchBooksByAuthorNamePageCountPriceTermsClassClass2Seq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountReleaseDateTermsClass 根据作者、书名、页数、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorNamePageCountReleaseDateTermsClass 根据作者、书名、页数、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12126,7 +12126,7 @@ func MatchBooksByAuthorNamePageCountReleaseDateTermsClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountReleaseDateTermsClass2 根据作者、书名、页数、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorNamePageCountReleaseDateTermsClass2 根据作者、书名、页数、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12145,7 +12145,7 @@ func MatchBooksByAuthorNamePageCountReleaseDateTermsClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountReleaseDateTermsSeq 根据作者、书名、页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorNamePageCountReleaseDateTermsSeq 根据作者、书名、页数、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12164,7 +12164,7 @@ func MatchBooksByAuthorNamePageCountReleaseDateTermsSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountReleaseDateTermsClassClass2 根据作者、书名、页数、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorNamePageCountReleaseDateTermsClassClass2 根据作者、书名、页数、发布日期检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12183,7 +12183,7 @@ func MatchBooksByAuthorNamePageCountReleaseDateTermsClassClass2(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountReleaseDateTermsClassSeq 根据作者、书名、页数、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorNamePageCountReleaseDateTermsClassSeq 根据作者、书名、页数、发布日期检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12202,7 +12202,7 @@ func MatchBooksByAuthorNamePageCountReleaseDateTermsClassSeq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountReleaseDateTermsClass2Seq 根据作者、书名、页数、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorNamePageCountReleaseDateTermsClass2Seq 根据作者、书名、页数、发布日期检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12221,7 +12221,7 @@ func MatchBooksByAuthorNamePageCountReleaseDateTermsClass2Seq(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountReleaseDateTermsClassClass2Seq 根据作者、书名、页数、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAuthorNamePageCountReleaseDateTermsClassClass2Seq 根据作者、书名、页数、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12240,7 +12240,7 @@ func MatchBooksByAuthorNamePageCountReleaseDateTermsClassClass2Seq(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountSeqTermsClass 根据作者、书名、页数、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorNamePageCountSeqTermsClass 根据作者、书名、页数、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12259,7 +12259,7 @@ func MatchBooksByAuthorNamePageCountSeqTermsClass(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountSeqTermsClass2 根据作者、书名、页数、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorNamePageCountSeqTermsClass2 根据作者、书名、页数、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12278,7 +12278,7 @@ func MatchBooksByAuthorNamePageCountSeqTermsClass2(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountSeqTermsClassClass2 根据作者、书名、页数、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorNamePageCountSeqTermsClassClass2 根据作者、书名、页数、编号检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -12297,7 +12297,7 @@ func MatchBooksByAuthorNamePageCountSeqTermsClassClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceReleaseDateTermsClass 根据作者、书名、价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorNamePriceReleaseDateTermsClass 根据作者、书名、价格、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -12316,7 +12316,7 @@ func MatchBooksByAuthorNamePriceReleaseDateTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceReleaseDateTermsClass2 根据作者、书名、价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorNamePriceReleaseDateTermsClass2 根据作者、书名、价格、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -12335,7 +12335,7 @@ func MatchBooksByAuthorNamePriceReleaseDateTermsClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceReleaseDateTermsSeq 根据作者、书名、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorNamePriceReleaseDateTermsSeq 根据作者、书名、价格、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -12354,7 +12354,7 @@ func MatchBooksByAuthorNamePriceReleaseDateTermsSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceReleaseDateTermsClassClass2 根据作者、书名、价格、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorNamePriceReleaseDateTermsClassClass2 根据作者、书名、价格、发布日期检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -12373,7 +12373,7 @@ func MatchBooksByAuthorNamePriceReleaseDateTermsClassClass2(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceReleaseDateTermsClassSeq 根据作者、书名、价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorNamePriceReleaseDateTermsClassSeq 根据作者、书名、价格、发布日期检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -12392,7 +12392,7 @@ func MatchBooksByAuthorNamePriceReleaseDateTermsClassSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceReleaseDateTermsClass2Seq 根据作者、书名、价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorNamePriceReleaseDateTermsClass2Seq 根据作者、书名、价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -12411,7 +12411,7 @@ func MatchBooksByAuthorNamePriceReleaseDateTermsClass2Seq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceReleaseDateTermsClassClass2Seq 根据作者、书名、价格、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAuthorNamePriceReleaseDateTermsClassClass2Seq 根据作者、书名、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -12430,7 +12430,7 @@ func MatchBooksByAuthorNamePriceReleaseDateTermsClassClass2Seq(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceSeqTermsClass 根据作者、书名、价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorNamePriceSeqTermsClass 根据作者、书名、价格、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -12449,7 +12449,7 @@ func MatchBooksByAuthorNamePriceSeqTermsClass(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceSeqTermsClass2 根据作者、书名、价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorNamePriceSeqTermsClass2 根据作者、书名、价格、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -12468,7 +12468,7 @@ func MatchBooksByAuthorNamePriceSeqTermsClass2(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceSeqTermsClassClass2 根据作者、书名、价格、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorNamePriceSeqTermsClassClass2 根据作者、书名、价格、编号检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -12487,7 +12487,7 @@ func MatchBooksByAuthorNamePriceSeqTermsClassClass2(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateSeqTermsClass 根据作者、书名、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorNameReleaseDateSeqTermsClass 根据作者、书名、发布日期、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -12506,7 +12506,7 @@ func MatchBooksByAuthorNameReleaseDateSeqTermsClass(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateSeqTermsClass2 根据作者、书名、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorNameReleaseDateSeqTermsClass2 根据作者、书名、发布日期、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -12525,7 +12525,7 @@ func MatchBooksByAuthorNameReleaseDateSeqTermsClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateSeqTermsClassClass2 根据作者、书名、发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorNameReleaseDateSeqTermsClassClass2 根据作者、书名、发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -12544,7 +12544,7 @@ func MatchBooksByAuthorNameReleaseDateSeqTermsClassClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceReleaseDateTermsClass 根据作者、页数、价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorPageCountPriceReleaseDateTermsClass 根据作者、页数、价格、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -12563,7 +12563,7 @@ func MatchBooksByAuthorPageCountPriceReleaseDateTermsClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceReleaseDateTermsClass2 根据作者、页数、价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorPageCountPriceReleaseDateTermsClass2 根据作者、页数、价格、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -12582,7 +12582,7 @@ func MatchBooksByAuthorPageCountPriceReleaseDateTermsClass2(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceReleaseDateTermsSeq 根据作者、页数、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByAuthorPageCountPriceReleaseDateTermsSeq 根据作者、页数、价格、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -12601,7 +12601,7 @@ func MatchBooksByAuthorPageCountPriceReleaseDateTermsSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceReleaseDateTermsClassClass2 根据作者、页数、价格、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorPageCountPriceReleaseDateTermsClassClass2 根据作者、页数、价格、发布日期检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -12620,7 +12620,7 @@ func MatchBooksByAuthorPageCountPriceReleaseDateTermsClassClass2(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceReleaseDateTermsClassSeq 根据作者、页数、价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByAuthorPageCountPriceReleaseDateTermsClassSeq 根据作者、页数、价格、发布日期检索books表并同时统计类别、编号的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -12639,7 +12639,7 @@ func MatchBooksByAuthorPageCountPriceReleaseDateTermsClassSeq(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceReleaseDateTermsClass2Seq 根据作者、页数、价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByAuthorPageCountPriceReleaseDateTermsClass2Seq 根据作者、页数、价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -12658,7 +12658,7 @@ func MatchBooksByAuthorPageCountPriceReleaseDateTermsClass2Seq(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceReleaseDateTermsClassClass2Seq 根据作者、页数、价格、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByAuthorPageCountPriceReleaseDateTermsClassClass2Seq 根据作者、页数、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -12677,7 +12677,7 @@ func MatchBooksByAuthorPageCountPriceReleaseDateTermsClassClass2Seq(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceSeqTermsClass 根据作者、页数、价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorPageCountPriceSeqTermsClass 根据作者、页数、价格、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -12696,7 +12696,7 @@ func MatchBooksByAuthorPageCountPriceSeqTermsClass(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceSeqTermsClass2 根据作者、页数、价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorPageCountPriceSeqTermsClass2 根据作者、页数、价格、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -12715,7 +12715,7 @@ func MatchBooksByAuthorPageCountPriceSeqTermsClass2(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceSeqTermsClassClass2 根据作者、页数、价格、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorPageCountPriceSeqTermsClassClass2 根据作者、页数、价格、编号检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -12734,7 +12734,7 @@ func MatchBooksByAuthorPageCountPriceSeqTermsClassClass2(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateSeqTermsClass 根据作者、页数、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorPageCountReleaseDateSeqTermsClass 根据作者、页数、发布日期、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -12753,7 +12753,7 @@ func MatchBooksByAuthorPageCountReleaseDateSeqTermsClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateSeqTermsClass2 根据作者、页数、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorPageCountReleaseDateSeqTermsClass2 根据作者、页数、发布日期、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -12772,7 +12772,7 @@ func MatchBooksByAuthorPageCountReleaseDateSeqTermsClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateSeqTermsClassClass2 根据作者、页数、发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorPageCountReleaseDateSeqTermsClassClass2 根据作者、页数、发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -12791,7 +12791,7 @@ func MatchBooksByAuthorPageCountReleaseDateSeqTermsClassClass2(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateSeqTermsClass 根据作者、价格、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByAuthorPriceReleaseDateSeqTermsClass 根据作者、价格、发布日期、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -12810,7 +12810,7 @@ func MatchBooksByAuthorPriceReleaseDateSeqTermsClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateSeqTermsClass2 根据作者、价格、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByAuthorPriceReleaseDateSeqTermsClass2 根据作者、价格、发布日期、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -12829,7 +12829,7 @@ func MatchBooksByAuthorPriceReleaseDateSeqTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateSeqTermsClassClass2 根据作者、价格、发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByAuthorPriceReleaseDateSeqTermsClassClass2 根据作者、价格、发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -12848,7 +12848,7 @@ func MatchBooksByAuthorPriceReleaseDateSeqTermsClassClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2NamePageCountTermsSeq 根据类别、子类别、书名、页数检索并对books表分组统计编号的分布情况
+// MatchBooksByClassClass2NamePageCountTermsSeq 根据类别、子类别、书名、页数检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -12867,7 +12867,7 @@ func MatchBooksByClassClass2NamePageCountTermsSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2NamePriceTermsSeq 根据类别、子类别、书名、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByClassClass2NamePriceTermsSeq 根据类别、子类别、书名、价格检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -12886,7 +12886,7 @@ func MatchBooksByClassClass2NamePriceTermsSeq(es *elasticsearch.Client, class, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2NameReleaseDateTermsSeq 根据类别、子类别、书名、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClassClass2NameReleaseDateTermsSeq 根据类别、子类别、书名、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -12905,7 +12905,7 @@ func MatchBooksByClassClass2NameReleaseDateTermsSeq(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PageCountPriceTermsSeq 根据类别、子类别、页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByClassClass2PageCountPriceTermsSeq 根据类别、子类别、页数、价格检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
@@ -12922,7 +12922,7 @@ func MatchBooksByClassClass2PageCountPriceTermsSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PageCountReleaseDateTermsSeq 根据类别、子类别、页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClassClass2PageCountReleaseDateTermsSeq 根据类别、子类别、页数、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
@@ -12939,7 +12939,7 @@ func MatchBooksByClassClass2PageCountReleaseDateTermsSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PriceReleaseDateTermsSeq 根据类别、子类别、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClassClass2PriceReleaseDateTermsSeq 根据类别、子类别、价格、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // price float64 价格
@@ -12956,7 +12956,7 @@ func MatchBooksByClassClass2PriceReleaseDateTermsSeq(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountPriceTermsClass2 根据类别、书名、页数、价格检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassNamePageCountPriceTermsClass2 根据类别、书名、页数、价格检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -12975,7 +12975,7 @@ func MatchBooksByClassNamePageCountPriceTermsClass2(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountPriceTermsSeq 根据类别、书名、页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByClassNamePageCountPriceTermsSeq 根据类别、书名、页数、价格检索books表并分组统计编号的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -12994,7 +12994,7 @@ func MatchBooksByClassNamePageCountPriceTermsSeq(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountPriceTermsClass2Seq 根据类别、书名、页数、价格检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByClassNamePageCountPriceTermsClass2Seq 根据类别、书名、页数、价格检索books表并同时统计子类别、编号的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -13013,7 +13013,7 @@ func MatchBooksByClassNamePageCountPriceTermsClass2Seq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountReleaseDateTermsClass2 根据类别、书名、页数、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassNamePageCountReleaseDateTermsClass2 根据类别、书名、页数、发布日期检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -13032,7 +13032,7 @@ func MatchBooksByClassNamePageCountReleaseDateTermsClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountReleaseDateTermsSeq 根据类别、书名、页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClassNamePageCountReleaseDateTermsSeq 根据类别、书名、页数、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -13051,7 +13051,7 @@ func MatchBooksByClassNamePageCountReleaseDateTermsSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountReleaseDateTermsClass2Seq 根据类别、书名、页数、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByClassNamePageCountReleaseDateTermsClass2Seq 根据类别、书名、页数、发布日期检索books表并同时统计子类别、编号的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -13070,7 +13070,7 @@ func MatchBooksByClassNamePageCountReleaseDateTermsClass2Seq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountSeqTermsClass2 根据类别、书名、页数、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassNamePageCountSeqTermsClass2 根据类别、书名、页数、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -13089,7 +13089,7 @@ func MatchBooksByClassNamePageCountSeqTermsClass2(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceReleaseDateTermsClass2 根据类别、书名、价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassNamePriceReleaseDateTermsClass2 根据类别、书名、价格、发布日期检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // price float64 价格
@@ -13108,7 +13108,7 @@ func MatchBooksByClassNamePriceReleaseDateTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceReleaseDateTermsSeq 根据类别、书名、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClassNamePriceReleaseDateTermsSeq 根据类别、书名、价格、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // name string 书名
 // price float64 价格
@@ -13127,7 +13127,7 @@ func MatchBooksByClassNamePriceReleaseDateTermsSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceReleaseDateTermsClass2Seq 根据类别、书名、价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByClassNamePriceReleaseDateTermsClass2Seq 根据类别、书名、价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // class string 类别
 // name string 书名
 // price float64 价格
@@ -13146,7 +13146,7 @@ func MatchBooksByClassNamePriceReleaseDateTermsClass2Seq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceSeqTermsClass2 根据类别、书名、价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassNamePriceSeqTermsClass2 根据类别、书名、价格、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // price float64 价格
@@ -13165,7 +13165,7 @@ func MatchBooksByClassNamePriceSeqTermsClass2(es *elasticsearch.Client, class, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameReleaseDateSeqTermsClass2 根据类别、书名、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassNameReleaseDateSeqTermsClass2 根据类别、书名、发布日期、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -13184,7 +13184,7 @@ func MatchBooksByClassNameReleaseDateSeqTermsClass2(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPriceReleaseDateTermsClass2 根据类别、页数、价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassPageCountPriceReleaseDateTermsClass2 根据类别、页数、价格、发布日期检索books表并分组统计子类别的分布情况
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
@@ -13201,7 +13201,7 @@ func MatchBooksByClassPageCountPriceReleaseDateTermsClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPriceReleaseDateTermsSeq 根据类别、页数、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClassPageCountPriceReleaseDateTermsSeq 根据类别、页数、价格、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
@@ -13218,7 +13218,7 @@ func MatchBooksByClassPageCountPriceReleaseDateTermsSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPriceReleaseDateTermsClass2Seq 根据类别、页数、价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByClassPageCountPriceReleaseDateTermsClass2Seq 根据类别、页数、价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
@@ -13235,7 +13235,7 @@ func MatchBooksByClassPageCountPriceReleaseDateTermsClass2Seq(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPriceSeqTermsClass2 根据类别、页数、价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassPageCountPriceSeqTermsClass2 根据类别、页数、价格、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
@@ -13252,7 +13252,7 @@ func MatchBooksByClassPageCountPriceSeqTermsClass2(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountReleaseDateSeqTermsClass2 根据类别、页数、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassPageCountReleaseDateSeqTermsClass2 根据类别、页数、发布日期、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -13269,7 +13269,7 @@ func MatchBooksByClassPageCountReleaseDateSeqTermsClass2(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceReleaseDateSeqTermsClass2 根据类别、价格、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByClassPriceReleaseDateSeqTermsClass2 根据类别、价格、发布日期、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -13286,7 +13286,7 @@ func MatchBooksByClassPriceReleaseDateSeqTermsClass2(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountPriceTermsClass 根据子类别、书名、页数、价格检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2NamePageCountPriceTermsClass 根据子类别、书名、页数、价格检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -13305,7 +13305,7 @@ func MatchBooksByClass2NamePageCountPriceTermsClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountPriceTermsSeq 根据子类别、书名、页数、价格检索并对books表分组统计编号的分布情况
+// MatchBooksByClass2NamePageCountPriceTermsSeq 根据子类别、书名、页数、价格检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -13324,7 +13324,7 @@ func MatchBooksByClass2NamePageCountPriceTermsSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountPriceTermsClassSeq 根据子类别、书名、页数、价格检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByClass2NamePageCountPriceTermsClassSeq 根据子类别、书名、页数、价格检索books表并同时统计类别、编号的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -13343,7 +13343,7 @@ func MatchBooksByClass2NamePageCountPriceTermsClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountReleaseDateTermsClass 根据子类别、书名、页数、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2NamePageCountReleaseDateTermsClass 根据子类别、书名、页数、发布日期检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -13362,7 +13362,7 @@ func MatchBooksByClass2NamePageCountReleaseDateTermsClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountReleaseDateTermsSeq 根据子类别、书名、页数、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClass2NamePageCountReleaseDateTermsSeq 根据子类别、书名、页数、发布日期检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -13381,7 +13381,7 @@ func MatchBooksByClass2NamePageCountReleaseDateTermsSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountReleaseDateTermsClassSeq 根据子类别、书名、页数、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByClass2NamePageCountReleaseDateTermsClassSeq 根据子类别、书名、页数、发布日期检索books表并同时统计类别、编号的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -13400,7 +13400,7 @@ func MatchBooksByClass2NamePageCountReleaseDateTermsClassSeq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountSeqTermsClass 根据子类别、书名、页数、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2NamePageCountSeqTermsClass 根据子类别、书名、页数、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -13419,7 +13419,7 @@ func MatchBooksByClass2NamePageCountSeqTermsClass(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceReleaseDateTermsClass 根据子类别、书名、价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2NamePriceReleaseDateTermsClass 根据子类别、书名、价格、发布日期检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // price float64 价格
@@ -13438,7 +13438,7 @@ func MatchBooksByClass2NamePriceReleaseDateTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceReleaseDateTermsSeq 根据子类别、书名、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClass2NamePriceReleaseDateTermsSeq 根据子类别、书名、价格、发布日期检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // name string 书名
 // price float64 价格
@@ -13457,7 +13457,7 @@ func MatchBooksByClass2NamePriceReleaseDateTermsSeq(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceReleaseDateTermsClassSeq 根据子类别、书名、价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByClass2NamePriceReleaseDateTermsClassSeq 根据子类别、书名、价格、发布日期检索books表并同时统计类别、编号的分布情况
 // class2 string 子类别
 // name string 书名
 // price float64 价格
@@ -13476,7 +13476,7 @@ func MatchBooksByClass2NamePriceReleaseDateTermsClassSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceSeqTermsClass 根据子类别、书名、价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2NamePriceSeqTermsClass 根据子类别、书名、价格、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // price float64 价格
@@ -13495,7 +13495,7 @@ func MatchBooksByClass2NamePriceSeqTermsClass(es *elasticsearch.Client, class2, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameReleaseDateSeqTermsClass 根据子类别、书名、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2NameReleaseDateSeqTermsClass 根据子类别、书名、发布日期、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -13514,7 +13514,7 @@ func MatchBooksByClass2NameReleaseDateSeqTermsClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPriceReleaseDateTermsClass 根据子类别、页数、价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2PageCountPriceReleaseDateTermsClass 根据子类别、页数、价格、发布日期检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
@@ -13531,7 +13531,7 @@ func MatchBooksByClass2PageCountPriceReleaseDateTermsClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPriceReleaseDateTermsSeq 根据子类别、页数、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByClass2PageCountPriceReleaseDateTermsSeq 根据子类别、页数、价格、发布日期检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
@@ -13548,7 +13548,7 @@ func MatchBooksByClass2PageCountPriceReleaseDateTermsSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPriceReleaseDateTermsClassSeq 根据子类别、页数、价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByClass2PageCountPriceReleaseDateTermsClassSeq 根据子类别、页数、价格、发布日期检索books表并同时统计类别、编号的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
@@ -13565,7 +13565,7 @@ func MatchBooksByClass2PageCountPriceReleaseDateTermsClassSeq(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPriceSeqTermsClass 根据子类别、页数、价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2PageCountPriceSeqTermsClass 根据子类别、页数、价格、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
@@ -13582,7 +13582,7 @@ func MatchBooksByClass2PageCountPriceSeqTermsClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountReleaseDateSeqTermsClass 根据子类别、页数、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2PageCountReleaseDateSeqTermsClass 根据子类别、页数、发布日期、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -13599,7 +13599,7 @@ func MatchBooksByClass2PageCountReleaseDateSeqTermsClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceReleaseDateSeqTermsClass 根据子类别、价格、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByClass2PriceReleaseDateSeqTermsClass 根据子类别、价格、发布日期、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -13616,7 +13616,7 @@ func MatchBooksByClass2PriceReleaseDateSeqTermsClass(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceReleaseDateTermsClass 根据书名、页数、价格、发布日期检索并对books表分组统计类别的分布情况
+// MatchBooksByNamePageCountPriceReleaseDateTermsClass 根据书名、页数、价格、发布日期检索books表并分组统计类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -13635,7 +13635,7 @@ func MatchBooksByNamePageCountPriceReleaseDateTermsClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceReleaseDateTermsClass2 根据书名、页数、价格、发布日期检索并对books表分组统计子类别的分布情况
+// MatchBooksByNamePageCountPriceReleaseDateTermsClass2 根据书名、页数、价格、发布日期检索books表并分组统计子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -13654,7 +13654,7 @@ func MatchBooksByNamePageCountPriceReleaseDateTermsClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceReleaseDateTermsSeq 根据书名、页数、价格、发布日期检索并对books表分组统计编号的分布情况
+// MatchBooksByNamePageCountPriceReleaseDateTermsSeq 根据书名、页数、价格、发布日期检索books表并分组统计编号的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -13673,7 +13673,7 @@ func MatchBooksByNamePageCountPriceReleaseDateTermsSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceReleaseDateTermsClassClass2 根据书名、页数、价格、发布日期检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByNamePageCountPriceReleaseDateTermsClassClass2 根据书名、页数、价格、发布日期检索books表并同时统计类别、子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -13692,7 +13692,7 @@ func MatchBooksByNamePageCountPriceReleaseDateTermsClassClass2(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceReleaseDateTermsClassSeq 根据书名、页数、价格、发布日期检索并对books表同时统计类别、编号的分布情况
+// MatchBooksByNamePageCountPriceReleaseDateTermsClassSeq 根据书名、页数、价格、发布日期检索books表并同时统计类别、编号的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -13711,7 +13711,7 @@ func MatchBooksByNamePageCountPriceReleaseDateTermsClassSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceReleaseDateTermsClass2Seq 根据书名、页数、价格、发布日期检索并对books表同时统计子类别、编号的分布情况
+// MatchBooksByNamePageCountPriceReleaseDateTermsClass2Seq 根据书名、页数、价格、发布日期检索books表并同时统计子类别、编号的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -13730,7 +13730,7 @@ func MatchBooksByNamePageCountPriceReleaseDateTermsClass2Seq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceReleaseDateTermsClassClass2Seq 根据书名、页数、价格、发布日期检索并对books表同时统计类别、子类别、编号的分布情况
+// MatchBooksByNamePageCountPriceReleaseDateTermsClassClass2Seq 根据书名、页数、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -13749,7 +13749,7 @@ func MatchBooksByNamePageCountPriceReleaseDateTermsClassClass2Seq(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceSeqTermsClass 根据书名、页数、价格、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByNamePageCountPriceSeqTermsClass 根据书名、页数、价格、编号检索books表并分组统计类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -13768,7 +13768,7 @@ func MatchBooksByNamePageCountPriceSeqTermsClass(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceSeqTermsClass2 根据书名、页数、价格、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByNamePageCountPriceSeqTermsClass2 根据书名、页数、价格、编号检索books表并分组统计子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -13787,7 +13787,7 @@ func MatchBooksByNamePageCountPriceSeqTermsClass2(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceSeqTermsClassClass2 根据书名、页数、价格、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByNamePageCountPriceSeqTermsClassClass2 根据书名、页数、价格、编号检索books表并同时统计类别、子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -13806,7 +13806,7 @@ func MatchBooksByNamePageCountPriceSeqTermsClassClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateSeqTermsClass 根据书名、页数、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByNamePageCountReleaseDateSeqTermsClass 根据书名、页数、发布日期、编号检索books表并分组统计类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -13825,7 +13825,7 @@ func MatchBooksByNamePageCountReleaseDateSeqTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateSeqTermsClass2 根据书名、页数、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByNamePageCountReleaseDateSeqTermsClass2 根据书名、页数、发布日期、编号检索books表并分组统计子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -13844,7 +13844,7 @@ func MatchBooksByNamePageCountReleaseDateSeqTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateSeqTermsClassClass2 根据书名、页数、发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByNamePageCountReleaseDateSeqTermsClassClass2 根据书名、页数、发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -13863,7 +13863,7 @@ func MatchBooksByNamePageCountReleaseDateSeqTermsClassClass2(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateSeqTermsClass 根据书名、价格、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByNamePriceReleaseDateSeqTermsClass 根据书名、价格、发布日期、编号检索books表并分组统计类别的分布情况
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -13882,7 +13882,7 @@ func MatchBooksByNamePriceReleaseDateSeqTermsClass(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateSeqTermsClass2 根据书名、价格、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByNamePriceReleaseDateSeqTermsClass2 根据书名、价格、发布日期、编号检索books表并分组统计子类别的分布情况
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -13901,7 +13901,7 @@ func MatchBooksByNamePriceReleaseDateSeqTermsClass2(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateSeqTermsClassClass2 根据书名、价格、发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByNamePriceReleaseDateSeqTermsClassClass2 根据书名、价格、发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -13920,7 +13920,7 @@ func MatchBooksByNamePriceReleaseDateSeqTermsClassClass2(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDateSeqTermsClass 根据页数、价格、发布日期、编号检索并对books表分组统计类别的分布情况
+// MatchBooksByPageCountPriceReleaseDateSeqTermsClass 根据页数、价格、发布日期、编号检索books表并分组统计类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -13937,7 +13937,7 @@ func MatchBooksByPageCountPriceReleaseDateSeqTermsClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDateSeqTermsClass2 根据页数、价格、发布日期、编号检索并对books表分组统计子类别的分布情况
+// MatchBooksByPageCountPriceReleaseDateSeqTermsClass2 根据页数、价格、发布日期、编号检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -13954,7 +13954,7 @@ func MatchBooksByPageCountPriceReleaseDateSeqTermsClass2(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDateSeqTermsClassClass2 根据页数、价格、发布日期、编号检索并对books表同时统计类别、子类别的分布情况
+// MatchBooksByPageCountPriceReleaseDateSeqTermsClassClass2 根据页数、价格、发布日期、编号检索books表并同时统计类别、子类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
