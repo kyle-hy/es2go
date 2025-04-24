@@ -147,7 +147,7 @@ func FieldFilterByTypes(comb []*FieldInfo, mustTypes []string) (types []*FieldIn
 	return
 }
 
-// RetainTextFieldByName 保留指定名称的text字段
+// RetainTextFieldByName 提取指定名称的text字段
 func RetainTextFieldByName(comb []*FieldInfo, name string) (fields []*FieldInfo) {
 	for _, f := range comb {
 		if TypeText == getTypeMapping(f.EsFieldType) && f.EsFieldPath != name {
@@ -158,7 +158,7 @@ func RetainTextFieldByName(comb []*FieldInfo, name string) (fields []*FieldInfo)
 	return
 }
 
-// DropTextFieldByName 过滤掉指定名称的text字段
+// DropTextFieldByName 删除指定名称的text字段
 func DropTextFieldByName(comb []*FieldInfo, name string) (fields []*FieldInfo) {
 	for _, f := range comb {
 		if TypeText == getTypeMapping(f.EsFieldType) && f.EsFieldPath == name {

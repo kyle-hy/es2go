@@ -9,8 +9,8 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// YearBooksByReleaseDateGte 从Books查找release_date为近几年的详细数据列表和总数量
-// releaseDateNYear int release_date为近几年
+// YearBooksByReleaseDateGte 从books表查找发布日期为近几年的详细数据列表和总数量
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
@@ -19,9 +19,9 @@ func YearBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNYear int) (
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAllText 根据全文本从Books查找release_date为近几年的详细数据列表和总数量
+// YearBooksByReleaseDateGteWithAllText 根据全文本从books表查找发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -33,9 +33,9 @@ func YearBooksByReleaseDateGteWithAllText(es *elasticsearch.Client, allText stri
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAuthor 根据author从Books查找release_date为近几年的详细数据列表和总数量
-// author string author
-// releaseDateNYear int release_date为近几年
+// YearBooksByReleaseDateGteWithAuthor 根据作者从books表查找发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -47,9 +47,9 @@ func YearBooksByReleaseDateGteWithAuthor(es *elasticsearch.Client, author string
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithClass 根据class从Books查找release_date为近几年的详细数据列表和总数量
-// class string class
-// releaseDateNYear int release_date为近几年
+// YearBooksByReleaseDateGteWithClass 根据类别从books表查找发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithClass(es *elasticsearch.Client, class string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -59,9 +59,21 @@ func YearBooksByReleaseDateGteWithClass(es *elasticsearch.Client, class string, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithName 根据书名从Books查找release_date为近几年的详细数据列表和总数量
+// YearBooksByReleaseDateGteWithClass2 根据子类别从books表查找发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByReleaseDateGteWithName 根据书名从books表查找发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithName(es *elasticsearch.Client, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -73,9 +85,9 @@ func YearBooksByReleaseDateGteWithName(es *elasticsearch.Client, name string, re
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGte 从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGteReleaseDateGte 从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
@@ -85,9 +97,9 @@ func YearBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pageCountGt
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGte 从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGtReleaseDateGte 从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
@@ -97,9 +109,9 @@ func YearBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pageCountGt 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGte 从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountLtReleaseDateGte 从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
@@ -109,9 +121,9 @@ func YearBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pageCountLt 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGte 从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountLteReleaseDateGte 从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
@@ -121,10 +133,10 @@ func YearBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pageCountLt
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGte 从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGteLteReleaseDateGte 从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -134,9 +146,9 @@ func YearBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Client, pageCoun
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGte 从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteReleaseDateGte 从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("price", priceGte, nil, nil, nil),
@@ -146,9 +158,9 @@ func YearBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceGte float6
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGte 从Books查找价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGtReleaseDateGte 从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("price", nil, priceGt, nil, nil),
@@ -158,9 +170,9 @@ func YearBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt float64,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGte 从Books查找价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLtReleaseDateGte 从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("price", nil, nil, priceLt, nil),
@@ -170,9 +182,9 @@ func YearBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt float64,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGte 从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLteReleaseDateGte 从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("price", nil, nil, nil, priceLte),
@@ -182,10 +194,10 @@ func YearBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLte float6
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGte 从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteLteReleaseDateGte 从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("price", priceGte, nil, nil, priceLte),
@@ -195,9 +207,9 @@ func YearBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client, priceGte, pr
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithSeq 根据seq从Books查找release_date为近几年的详细数据列表和总数量
-// seq string seq
-// releaseDateNYear int release_date为近几年
+// YearBooksByReleaseDateGteWithSeq 根据编号从books表查找发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -207,10 +219,10 @@ func YearBooksByReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, rele
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找release_date为近几年的详细数据列表和总数量
+// YearBooksByReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// releaseDateNYear int release_date为近几年
+// author string 作者
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -223,10 +235,10 @@ func YearBooksByReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAllTextClass 根据全文本、class从Books查找release_date为近几年的详细数据列表和总数量
+// YearBooksByReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// releaseDateNYear int release_date为近几年
+// class string 类别
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -239,10 +251,26 @@ func YearBooksByReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAllTextName 根据全文本、书名从Books查找release_date为近几年的详细数据列表和总数量
+// YearBooksByReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找发布日期为近几年的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByReleaseDateGteWithAllTextName 根据全文本、书名从books表查找发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -255,10 +283,10 @@ func YearBooksByReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -271,10 +299,10 @@ func YearBooksByPageCountGteReleaseDateGteWithAllText(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGteWithAllText 根据全文本从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtReleaseDateGteWithAllText 根据全文本从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -287,10 +315,10 @@ func YearBooksByPageCountGtReleaseDateGteWithAllText(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGteWithAllText 根据全文本从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtReleaseDateGteWithAllText 根据全文本从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -303,10 +331,10 @@ func YearBooksByPageCountLtReleaseDateGteWithAllText(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGteWithAllText 根据全文本从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLteReleaseDateGteWithAllText 根据全文本从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -319,11 +347,11 @@ func YearBooksByPageCountLteReleaseDateGteWithAllText(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -336,10 +364,10 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAllText(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGteWithAllText 根据全文本从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteReleaseDateGteWithAllText 根据全文本从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -352,10 +380,10 @@ func YearBooksByPriceGteReleaseDateGteWithAllText(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGteWithAllText 根据全文本从Books查找价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGtReleaseDateGteWithAllText 根据全文本从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -368,10 +396,10 @@ func YearBooksByPriceGtReleaseDateGteWithAllText(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGteWithAllText 根据全文本从Books查找价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLtReleaseDateGteWithAllText 根据全文本从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -384,10 +412,10 @@ func YearBooksByPriceLtReleaseDateGteWithAllText(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGteWithAllText 根据全文本从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLteReleaseDateGteWithAllText 根据全文本从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -400,11 +428,11 @@ func YearBooksByPriceLteReleaseDateGteWithAllText(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGteWithAllText 根据全文本从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteLteReleaseDateGteWithAllText 根据全文本从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -417,10 +445,10 @@ func YearBooksByPriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找release_date为近几年的详细数据列表和总数量
+// YearBooksByReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
-// releaseDateNYear int release_date为近几年
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -433,10 +461,10 @@ func YearBooksByReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText s
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAuthorClass 根据author、class从Books查找release_date为近几年的详细数据列表和总数量
-// author string author
-// class string class
-// releaseDateNYear int release_date为近几年
+// YearBooksByReleaseDateGteWithAuthorClass 根据作者、类别从books表查找发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -449,10 +477,26 @@ func YearBooksByReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAuthorName 根据author、书名从Books查找release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByReleaseDateGteWithAuthorName 根据作者、书名从books表查找发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // name string 书名
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -465,10 +509,10 @@ func YearBooksByReleaseDateGteWithAuthorName(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -481,10 +525,10 @@ func YearBooksByPageCountGteReleaseDateGteWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGteWithAuthor 根据author从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGtReleaseDateGteWithAuthor 根据作者从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -497,10 +541,10 @@ func YearBooksByPageCountGtReleaseDateGteWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGteWithAuthor 根据author从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountLtReleaseDateGteWithAuthor 根据作者从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -513,10 +557,10 @@ func YearBooksByPageCountLtReleaseDateGteWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountLteReleaseDateGteWithAuthor 根据作者从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -529,11 +573,11 @@ func YearBooksByPageCountLteReleaseDateGteWithAuthor(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGteLteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -546,10 +590,10 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGteWithAuthor 根据author从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByPriceGteReleaseDateGteWithAuthor 根据作者从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -562,10 +606,10 @@ func YearBooksByPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGteWithAuthor 根据author从Books查找价格大于、release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByPriceGtReleaseDateGteWithAuthor 根据作者从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -578,10 +622,10 @@ func YearBooksByPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGteWithAuthor 根据author从Books查找价格小于、release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByPriceLtReleaseDateGteWithAuthor 根据作者从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -594,10 +638,10 @@ func YearBooksByPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGteWithAuthor 根据author从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByPriceLteReleaseDateGteWithAuthor 根据作者从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -610,11 +654,11 @@ func YearBooksByPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGteWithAuthor 根据author从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByPriceGteLteReleaseDateGteWithAuthor 根据作者从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -627,10 +671,10 @@ func YearBooksByPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAuthorSeq 根据author、seq从Books查找release_date为近几年的详细数据列表和总数量
-// author string author
-// seq string seq
-// releaseDateNYear int release_date为近几年
+// YearBooksByReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -643,10 +687,24 @@ func YearBooksByReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithClassName 根据class、书名从Books查找release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByReleaseDateGteWithClassClass2 根据类别、子类别从books表查找发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByReleaseDateGteWithClassName 根据类别、书名从books表查找发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // name string 书名
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -659,10 +717,10 @@ func YearBooksByReleaseDateGteWithClassName(es *elasticsearch.Client, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGteWithClass 根据class从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGteReleaseDateGteWithClass 根据类别从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -673,10 +731,10 @@ func YearBooksByPageCountGteReleaseDateGteWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGteWithClass 根据class从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGtReleaseDateGteWithClass 根据类别从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -687,10 +745,10 @@ func YearBooksByPageCountGtReleaseDateGteWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGteWithClass 根据class从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountLtReleaseDateGteWithClass 根据类别从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -701,10 +759,10 @@ func YearBooksByPageCountLtReleaseDateGteWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGteWithClass 根据class从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountLteReleaseDateGteWithClass 根据类别从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -715,11 +773,11 @@ func YearBooksByPageCountLteReleaseDateGteWithClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGteLteReleaseDateGteWithClass 根据类别从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -730,10 +788,10 @@ func YearBooksByPageCountGteLteReleaseDateGteWithClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGteWithClass 根据class从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByPriceGteReleaseDateGteWithClass 根据类别从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -744,10 +802,10 @@ func YearBooksByPriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGteWithClass 根据class从Books查找价格大于、release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByPriceGtReleaseDateGteWithClass 根据类别从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -758,10 +816,10 @@ func YearBooksByPriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGteWithClass 根据class从Books查找价格小于、release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByPriceLtReleaseDateGteWithClass 根据类别从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -772,10 +830,10 @@ func YearBooksByPriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGteWithClass 根据class从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByPriceLteReleaseDateGteWithClass 根据类别从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -786,11 +844,11 @@ func YearBooksByPriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGteWithClass 根据class从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByPriceGteLteReleaseDateGteWithClass 根据类别从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -801,10 +859,10 @@ func YearBooksByPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithClassSeq 根据class、seq从Books查找release_date为近几年的详细数据列表和总数量
-// class string class
-// seq string seq
-// releaseDateNYear int release_date为近几年
+// YearBooksByReleaseDateGteWithClassSeq 根据类别、编号从books表查找发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -815,10 +873,182 @@ func YearBooksByReleaseDateGteWithClassSeq(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGteWithName 根据书名从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByReleaseDateGteWithClass2Name 根据子类别、书名从books表查找发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtReleaseDateGteWithClass2 根据子类别从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtReleaseDateGteWithClass2 根据子类别从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLteReleaseDateGteWithClass2 根据子类别从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteLteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGteReleaseDateGteWithClass2 根据子类别从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGtReleaseDateGteWithClass2 根据子类别从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// priceGt float64 价格大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceLtReleaseDateGteWithClass2 根据子类别从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// priceLt float64 价格小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceLtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceLteReleaseDateGteWithClass2 根据子类别从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGteLteReleaseDateGteWithClass2 根据子类别从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteReleaseDateGteWithName 根据书名从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// name string 书名
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -831,10 +1061,10 @@ func YearBooksByPageCountGteReleaseDateGteWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGteWithName 根据书名从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtReleaseDateGteWithName 根据书名从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -847,10 +1077,10 @@ func YearBooksByPageCountGtReleaseDateGteWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGteWithName 根据书名从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtReleaseDateGteWithName 根据书名从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -863,10 +1093,10 @@ func YearBooksByPageCountLtReleaseDateGteWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGteWithName 根据书名从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLteReleaseDateGteWithName 根据书名从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -879,11 +1109,11 @@ func YearBooksByPageCountLteReleaseDateGteWithName(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLteReleaseDateGteWithName 根据书名从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -896,10 +1126,10 @@ func YearBooksByPageCountGteLteReleaseDateGteWithName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGteWithName 根据书名从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteReleaseDateGteWithName 根据书名从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGteWithName(es *elasticsearch.Client, name string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -912,10 +1142,10 @@ func YearBooksByPriceGteReleaseDateGteWithName(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGteWithName 根据书名从Books查找价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGtReleaseDateGteWithName 根据书名从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGteWithName(es *elasticsearch.Client, name string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -928,10 +1158,10 @@ func YearBooksByPriceGtReleaseDateGteWithName(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGteWithName 根据书名从Books查找价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLtReleaseDateGteWithName 根据书名从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGteWithName(es *elasticsearch.Client, name string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -944,10 +1174,10 @@ func YearBooksByPriceLtReleaseDateGteWithName(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGteWithName 根据书名从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLteReleaseDateGteWithName 根据书名从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGteWithName(es *elasticsearch.Client, name string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -960,11 +1190,11 @@ func YearBooksByPriceLteReleaseDateGteWithName(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGteWithName 根据书名从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteLteReleaseDateGteWithName 根据书名从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -977,10 +1207,10 @@ func YearBooksByPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithNameSeq 根据书名、seq从Books查找release_date为近几年的详细数据列表和总数量
+// YearBooksByReleaseDateGteWithNameSeq 根据书名、编号从books表查找发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// seq string seq
-// releaseDateNYear int release_date为近几年
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -993,10 +1223,10 @@ func YearBooksByReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGteReleaseDateGte 从Books查找page_count大于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceGteReleaseDateGte 从books表查找页数大于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
@@ -1007,10 +1237,10 @@ func YearBooksByPageCountGtePriceGteReleaseDateGte(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGtReleaseDateGte 从Books查找page_count大于等于、价格大于、release_date为近几年的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceGtReleaseDateGte 从books表查找页数大于等于、价格大于、发布日期为近几年的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGtReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
@@ -1021,10 +1251,10 @@ func YearBooksByPageCountGtePriceGtReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceLtReleaseDateGte 从Books查找page_count大于等于、价格小于、release_date为近几年的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceLtReleaseDateGte 从books表查找页数大于等于、价格小于、发布日期为近几年的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceLtReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
@@ -1035,10 +1265,10 @@ func YearBooksByPageCountGtePriceLtReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceLteReleaseDateGte 从Books查找page_count大于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceLteReleaseDateGte 从books表查找页数大于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceLteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
@@ -1049,11 +1279,11 @@ func YearBooksByPageCountGtePriceLteReleaseDateGte(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGteLteReleaseDateGte 从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceGteLteReleaseDateGte 从books表查找页数大于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
@@ -1064,10 +1294,10 @@ func YearBooksByPageCountGtePriceGteLteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGteReleaseDateGte 从Books查找page_count大于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceGteReleaseDateGte 从books表查找页数大于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGteReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
@@ -1078,10 +1308,10 @@ func YearBooksByPageCountGtPriceGteReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGtReleaseDateGte 从Books查找page_count大于、价格大于、release_date为近几年的详细数据列表和总数量
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceGtReleaseDateGte 从books表查找页数大于、价格大于、发布日期为近几年的详细数据列表和总数量
+// pageCountGt int64 页数大于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGtReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
@@ -1092,10 +1322,10 @@ func YearBooksByPageCountGtPriceGtReleaseDateGte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceLtReleaseDateGte 从Books查找page_count大于、价格小于、release_date为近几年的详细数据列表和总数量
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceLtReleaseDateGte 从books表查找页数大于、价格小于、发布日期为近几年的详细数据列表和总数量
+// pageCountGt int64 页数大于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceLtReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
@@ -1106,10 +1336,10 @@ func YearBooksByPageCountGtPriceLtReleaseDateGte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceLteReleaseDateGte 从Books查找page_count大于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceLteReleaseDateGte 从books表查找页数大于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceLteReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
@@ -1120,11 +1350,11 @@ func YearBooksByPageCountGtPriceLteReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGteLteReleaseDateGte 从Books查找page_count大于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceGteLteReleaseDateGte 从books表查找页数大于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
@@ -1135,10 +1365,10 @@ func YearBooksByPageCountGtPriceGteLteReleaseDateGte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGteReleaseDateGte 从Books查找page_count小于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceGteReleaseDateGte 从books表查找页数小于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGteReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
@@ -1149,10 +1379,10 @@ func YearBooksByPageCountLtPriceGteReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGtReleaseDateGte 从Books查找page_count小于、价格大于、release_date为近几年的详细数据列表和总数量
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceGtReleaseDateGte 从books表查找页数小于、价格大于、发布日期为近几年的详细数据列表和总数量
+// pageCountLt int64 页数小于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGtReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
@@ -1163,10 +1393,10 @@ func YearBooksByPageCountLtPriceGtReleaseDateGte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceLtReleaseDateGte 从Books查找page_count小于、价格小于、release_date为近几年的详细数据列表和总数量
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceLtReleaseDateGte 从books表查找页数小于、价格小于、发布日期为近几年的详细数据列表和总数量
+// pageCountLt int64 页数小于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceLtReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
@@ -1177,10 +1407,10 @@ func YearBooksByPageCountLtPriceLtReleaseDateGte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceLteReleaseDateGte 从Books查找page_count小于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceLteReleaseDateGte 从books表查找页数小于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceLteReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
@@ -1191,11 +1421,11 @@ func YearBooksByPageCountLtPriceLteReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGteLteReleaseDateGte 从Books查找page_count小于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceGteLteReleaseDateGte 从books表查找页数小于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
@@ -1206,10 +1436,10 @@ func YearBooksByPageCountLtPriceGteLteReleaseDateGte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGteReleaseDateGte 从Books查找page_count小于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceGteReleaseDateGte 从books表查找页数小于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
@@ -1220,10 +1450,10 @@ func YearBooksByPageCountLtePriceGteReleaseDateGte(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGtReleaseDateGte 从Books查找page_count小于等于、价格大于、release_date为近几年的详细数据列表和总数量
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceGtReleaseDateGte 从books表查找页数小于等于、价格大于、发布日期为近几年的详细数据列表和总数量
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGtReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
@@ -1234,10 +1464,10 @@ func YearBooksByPageCountLtePriceGtReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceLtReleaseDateGte 从Books查找page_count小于等于、价格小于、release_date为近几年的详细数据列表和总数量
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceLtReleaseDateGte 从books表查找页数小于等于、价格小于、发布日期为近几年的详细数据列表和总数量
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceLtReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
@@ -1248,10 +1478,10 @@ func YearBooksByPageCountLtePriceLtReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceLteReleaseDateGte 从Books查找page_count小于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceLteReleaseDateGte 从books表查找页数小于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
@@ -1262,11 +1492,11 @@ func YearBooksByPageCountLtePriceLteReleaseDateGte(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGteLteReleaseDateGte 从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceGteLteReleaseDateGte 从books表查找页数小于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
@@ -1277,11 +1507,11 @@ func YearBooksByPageCountLtePriceGteLteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGteReleaseDateGte 从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceGteReleaseDateGte 从books表查找页数大于等于和小于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGteReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -1292,11 +1522,11 @@ func YearBooksByPageCountGteLtePriceGteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGtReleaseDateGte 从Books查找page_count大于等于和小于等于、价格大于、release_date为近几年的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceGtReleaseDateGte 从books表查找页数大于等于和小于等于、价格大于、发布日期为近几年的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGtReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -1307,11 +1537,11 @@ func YearBooksByPageCountGteLtePriceGtReleaseDateGte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceLtReleaseDateGte 从Books查找page_count大于等于和小于等于、价格小于、release_date为近几年的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceLtReleaseDateGte 从books表查找页数大于等于和小于等于、价格小于、发布日期为近几年的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceLtReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -1322,11 +1552,11 @@ func YearBooksByPageCountGteLtePriceLtReleaseDateGte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceLteReleaseDateGte 从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceLteReleaseDateGte 从books表查找页数大于等于和小于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceLteReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -1337,12 +1567,12 @@ func YearBooksByPageCountGteLtePriceLteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGteLteReleaseDateGte 从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceGteLteReleaseDateGte 从books表查找页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -1353,10 +1583,10 @@ func YearBooksByPageCountGteLtePriceGteLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1367,10 +1597,10 @@ func YearBooksByPageCountGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGteWithSeq 根据seq从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGtReleaseDateGteWithSeq 根据编号从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1381,10 +1611,10 @@ func YearBooksByPageCountGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGteWithSeq 根据seq从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountLtReleaseDateGteWithSeq 根据编号从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1395,10 +1625,10 @@ func YearBooksByPageCountLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountLteReleaseDateGteWithSeq 根据编号从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1409,11 +1639,11 @@ func YearBooksByPageCountLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGteLteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1424,10 +1654,10 @@ func YearBooksByPageCountGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGteWithSeq 根据seq从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
+// YearBooksByPriceGteReleaseDateGteWithSeq 根据编号从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1438,10 +1668,10 @@ func YearBooksByPriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGteWithSeq 根据seq从Books查找价格大于、release_date为近几年的详细数据列表和总数量
-// seq string seq
+// YearBooksByPriceGtReleaseDateGteWithSeq 根据编号从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1452,10 +1682,10 @@ func YearBooksByPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGteWithSeq 根据seq从Books查找价格小于、release_date为近几年的详细数据列表和总数量
-// seq string seq
+// YearBooksByPriceLtReleaseDateGteWithSeq 根据编号从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1466,10 +1696,10 @@ func YearBooksByPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGteWithSeq 根据seq从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
+// YearBooksByPriceLteReleaseDateGteWithSeq 根据编号从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1480,11 +1710,11 @@ func YearBooksByPriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGteWithSeq 根据seq从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
+// YearBooksByPriceGteLteReleaseDateGteWithSeq 根据编号从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1495,11 +1725,11 @@ func YearBooksByPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAllTextAuthorClass 根据全文本、author、class从Books查找release_date为近几年的详细数据列表和总数量
+// YearBooksByReleaseDateGteWithAllTextAuthorClass 根据全文本、作者、类别从books表查找发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// class string class
-// releaseDateNYear int release_date为近几年
+// author string 作者
+// class string 类别
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1513,11 +1743,29 @@ func YearBooksByReleaseDateGteWithAllTextAuthorClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAllTextAuthorName 根据全文本、author、书名从Books查找release_date为近几年的详细数据列表和总数量
+// YearBooksByReleaseDateGteWithAllTextAuthorClass2 根据全文本、作者、子类别从books表查找发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// author string author
+// author string 作者
+// class2 string 子类别
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithAllTextAuthorClass2(es *elasticsearch.Client, allText string, author string, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByReleaseDateGteWithAllTextAuthorName 根据全文本、作者、书名从books表查找发布日期为近几年的详细数据列表和总数量
+// allText string 全文本
+// author string 作者
 // name string 书名
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1531,11 +1779,11 @@ func YearBooksByReleaseDateGteWithAllTextAuthorName(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// author string 作者
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1549,11 +1797,11 @@ func YearBooksByPageCountGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// author string 作者
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1567,11 +1815,11 @@ func YearBooksByPageCountGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// author string 作者
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1585,11 +1833,11 @@ func YearBooksByPageCountLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLteReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// author string 作者
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1603,12 +1851,12 @@ func YearBooksByPageCountLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// author string 作者
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1622,11 +1870,11 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// author string author
+// author string 作者
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1640,11 +1888,11 @@ func YearBooksByPriceGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGtReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// author string author
+// author string 作者
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1658,11 +1906,11 @@ func YearBooksByPriceGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLtReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// author string author
+// author string 作者
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1676,11 +1924,11 @@ func YearBooksByPriceLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLteReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// author string author
+// author string 作者
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1694,12 +1942,12 @@ func YearBooksByPriceLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteLteReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// author string author
+// author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1713,11 +1961,11 @@ func YearBooksByPriceGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAllTextAuthorSeq 根据全文本、author、seq从Books查找release_date为近几年的详细数据列表和总数量
+// YearBooksByReleaseDateGteWithAllTextAuthorSeq 根据全文本、作者、编号从books表查找发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// seq string seq
-// releaseDateNYear int release_date为近几年
+// author string 作者
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1731,11 +1979,29 @@ func YearBooksByReleaseDateGteWithAllTextAuthorSeq(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAllTextClassName 根据全文本、class、书名从Books查找release_date为近几年的详细数据列表和总数量
+// YearBooksByReleaseDateGteWithAllTextClassClass2 根据全文本、类别、子类别从books表查找发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// class string class
+// class string 类别
+// class2 string 子类别
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithAllTextClassClass2(es *elasticsearch.Client, allText string, class string, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByReleaseDateGteWithAllTextClassName 根据全文本、类别、书名从books表查找发布日期为近几年的详细数据列表和总数量
+// allText string 全文本
+// class string 类别
 // name string 书名
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1749,11 +2015,11 @@ func YearBooksByReleaseDateGteWithAllTextClassName(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGteWithAllTextClass 根据全文本、class从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// class string 类别
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1767,11 +2033,11 @@ func YearBooksByPageCountGteReleaseDateGteWithAllTextClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGteWithAllTextClass 根据全文本、class从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// class string 类别
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1785,11 +2051,11 @@ func YearBooksByPageCountGtReleaseDateGteWithAllTextClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGteWithAllTextClass 根据全文本、class从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// class string 类别
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1803,11 +2069,11 @@ func YearBooksByPageCountLtReleaseDateGteWithAllTextClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGteWithAllTextClass 根据全文本、class从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLteReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// class string 类别
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1821,12 +2087,12 @@ func YearBooksByPageCountLteReleaseDateGteWithAllTextClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGteWithAllTextClass 根据全文本、class从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLteReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1840,11 +2106,11 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGteWithAllTextClass 根据全文本、class从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// class string class
+// class string 类别
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1858,11 +2124,11 @@ func YearBooksByPriceGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGteWithAllTextClass 根据全文本、class从Books查找价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGtReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// class string class
+// class string 类别
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1876,11 +2142,11 @@ func YearBooksByPriceGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGteWithAllTextClass 根据全文本、class从Books查找价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLtReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// class string class
+// class string 类别
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1894,11 +2160,11 @@ func YearBooksByPriceLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGteWithAllTextClass 根据全文本、class从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLteReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// class string class
+// class string 类别
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1912,12 +2178,12 @@ func YearBooksByPriceLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGteWithAllTextClass 根据全文本、class从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteLteReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// class string class
+// class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1931,11 +2197,11 @@ func YearBooksByPriceGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAllTextClassSeq 根据全文本、class、seq从Books查找release_date为近几年的详细数据列表和总数量
+// YearBooksByReleaseDateGteWithAllTextClassSeq 根据全文本、类别、编号从books表查找发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// seq string seq
-// releaseDateNYear int release_date为近几年
+// class string 类别
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1949,11 +2215,229 @@ func YearBooksByReleaseDateGteWithAllTextClassSeq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGteWithAllTextName 根据全文本、书名从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByReleaseDateGteWithAllTextClass2Name 根据全文本、子类别、书名从books表查找发布日期为近几年的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// name string 书名
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithAllTextClass2Name(es *elasticsearch.Client, allText string, class2 string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLteReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteLteReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGteReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGtReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// priceGt float64 价格大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceLtReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// priceLt float64 价格小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceLteReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGteLteReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByReleaseDateGteWithAllTextClass2Seq 根据全文本、子类别、编号从books表查找发布日期为近几年的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithAllTextClass2Seq(es *elasticsearch.Client, allText string, class2 string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteReleaseDateGteWithAllTextName 根据全文本、书名从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1967,11 +2451,11 @@ func YearBooksByPageCountGteReleaseDateGteWithAllTextName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGteWithAllTextName 根据全文本、书名从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtReleaseDateGteWithAllTextName 根据全文本、书名从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1985,11 +2469,11 @@ func YearBooksByPageCountGtReleaseDateGteWithAllTextName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGteWithAllTextName 根据全文本、书名从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtReleaseDateGteWithAllTextName 根据全文本、书名从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2003,11 +2487,11 @@ func YearBooksByPageCountLtReleaseDateGteWithAllTextName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGteWithAllTextName 根据全文本、书名从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLteReleaseDateGteWithAllTextName 根据全文本、书名从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2021,12 +2505,12 @@ func YearBooksByPageCountLteReleaseDateGteWithAllTextName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGteWithAllTextName 根据全文本、书名从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLteReleaseDateGteWithAllTextName 根据全文本、书名从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2040,11 +2524,11 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAllTextName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGteWithAllTextName 根据全文本、书名从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteReleaseDateGteWithAllTextName 根据全文本、书名从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2058,11 +2542,11 @@ func YearBooksByPriceGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGteWithAllTextName 根据全文本、书名从Books查找价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGtReleaseDateGteWithAllTextName 根据全文本、书名从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2076,11 +2560,11 @@ func YearBooksByPriceGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGteWithAllTextName 根据全文本、书名从Books查找价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLtReleaseDateGteWithAllTextName 根据全文本、书名从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2094,11 +2578,11 @@ func YearBooksByPriceLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGteWithAllTextName 根据全文本、书名从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLteReleaseDateGteWithAllTextName 根据全文本、书名从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2112,12 +2596,12 @@ func YearBooksByPriceLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGteWithAllTextName 根据全文本、书名从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteLteReleaseDateGteWithAllTextName 根据全文本、书名从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2131,11 +2615,11 @@ func YearBooksByPriceGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAllTextNameSeq 根据全文本、书名、seq从Books查找release_date为近几年的详细数据列表和总数量
+// YearBooksByReleaseDateGteWithAllTextNameSeq 根据全文本、书名、编号从books表查找发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// seq string seq
-// releaseDateNYear int release_date为近几年
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2149,11 +2633,11 @@ func YearBooksByReleaseDateGteWithAllTextNameSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtePriceGteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2167,11 +2651,11 @@ func YearBooksByPageCountGtePriceGteReleaseDateGteWithAllText(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGtReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于、价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtePriceGtReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于、价格大于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2185,11 +2669,11 @@ func YearBooksByPageCountGtePriceGtReleaseDateGteWithAllText(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceLtReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于、价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtePriceLtReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于、价格小于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2203,11 +2687,11 @@ func YearBooksByPageCountGtePriceLtReleaseDateGteWithAllText(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceLteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtePriceLteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2221,12 +2705,12 @@ func YearBooksByPageCountGtePriceLteReleaseDateGteWithAllText(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGteLteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtePriceGteLteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2240,11 +2724,11 @@ func YearBooksByPageCountGtePriceGteLteReleaseDateGteWithAllText(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于、价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtPriceGteReleaseDateGteWithAllText 根据全文本从books表查找页数大于、价格大于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2258,11 +2742,11 @@ func YearBooksByPageCountGtPriceGteReleaseDateGteWithAllText(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGtReleaseDateGteWithAllText 根据全文本从Books查找page_count大于、价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtPriceGtReleaseDateGteWithAllText 根据全文本从books表查找页数大于、价格大于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2276,11 +2760,11 @@ func YearBooksByPageCountGtPriceGtReleaseDateGteWithAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceLtReleaseDateGteWithAllText 根据全文本从Books查找page_count大于、价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtPriceLtReleaseDateGteWithAllText 根据全文本从books表查找页数大于、价格小于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2294,11 +2778,11 @@ func YearBooksByPageCountGtPriceLtReleaseDateGteWithAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceLteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于、价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtPriceLteReleaseDateGteWithAllText 根据全文本从books表查找页数大于、价格小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2312,12 +2796,12 @@ func YearBooksByPageCountGtPriceLteReleaseDateGteWithAllText(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGteLteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtPriceGteLteReleaseDateGteWithAllText 根据全文本从books表查找页数大于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2331,11 +2815,11 @@ func YearBooksByPageCountGtPriceGteLteReleaseDateGteWithAllText(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGteReleaseDateGteWithAllText 根据全文本从Books查找page_count小于、价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtPriceGteReleaseDateGteWithAllText 根据全文本从books表查找页数小于、价格大于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2349,11 +2833,11 @@ func YearBooksByPageCountLtPriceGteReleaseDateGteWithAllText(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGtReleaseDateGteWithAllText 根据全文本从Books查找page_count小于、价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtPriceGtReleaseDateGteWithAllText 根据全文本从books表查找页数小于、价格大于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2367,11 +2851,11 @@ func YearBooksByPageCountLtPriceGtReleaseDateGteWithAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceLtReleaseDateGteWithAllText 根据全文本从Books查找page_count小于、价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtPriceLtReleaseDateGteWithAllText 根据全文本从books表查找页数小于、价格小于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2385,11 +2869,11 @@ func YearBooksByPageCountLtPriceLtReleaseDateGteWithAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceLteReleaseDateGteWithAllText 根据全文本从Books查找page_count小于、价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtPriceLteReleaseDateGteWithAllText 根据全文本从books表查找页数小于、价格小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2403,12 +2887,12 @@ func YearBooksByPageCountLtPriceLteReleaseDateGteWithAllText(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGteLteReleaseDateGteWithAllText 根据全文本从Books查找page_count小于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtPriceGteLteReleaseDateGteWithAllText 根据全文本从books表查找页数小于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2422,11 +2906,11 @@ func YearBooksByPageCountLtPriceGteLteReleaseDateGteWithAllText(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGteReleaseDateGteWithAllText 根据全文本从Books查找page_count小于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtePriceGteReleaseDateGteWithAllText 根据全文本从books表查找页数小于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2440,11 +2924,11 @@ func YearBooksByPageCountLtePriceGteReleaseDateGteWithAllText(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGtReleaseDateGteWithAllText 根据全文本从Books查找page_count小于等于、价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtePriceGtReleaseDateGteWithAllText 根据全文本从books表查找页数小于等于、价格大于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2458,11 +2942,11 @@ func YearBooksByPageCountLtePriceGtReleaseDateGteWithAllText(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceLtReleaseDateGteWithAllText 根据全文本从Books查找page_count小于等于、价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtePriceLtReleaseDateGteWithAllText 根据全文本从books表查找页数小于等于、价格小于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2476,11 +2960,11 @@ func YearBooksByPageCountLtePriceLtReleaseDateGteWithAllText(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceLteReleaseDateGteWithAllText 根据全文本从Books查找page_count小于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtePriceLteReleaseDateGteWithAllText 根据全文本从books表查找页数小于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2494,12 +2978,12 @@ func YearBooksByPageCountLtePriceLteReleaseDateGteWithAllText(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGteLteReleaseDateGteWithAllText 根据全文本从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtePriceGteLteReleaseDateGteWithAllText 根据全文本从books表查找页数小于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2513,12 +2997,12 @@ func YearBooksByPageCountLtePriceGteLteReleaseDateGteWithAllText(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLtePriceGteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于和小于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2532,12 +3016,12 @@ func YearBooksByPageCountGteLtePriceGteReleaseDateGteWithAllText(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGtReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于和小于等于、价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLtePriceGtReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于和小于等于、价格大于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2551,12 +3035,12 @@ func YearBooksByPageCountGteLtePriceGtReleaseDateGteWithAllText(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceLtReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于和小于等于、价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLtePriceLtReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于和小于等于、价格小于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2570,12 +3054,12 @@ func YearBooksByPageCountGteLtePriceLtReleaseDateGteWithAllText(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceLteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLtePriceLteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于和小于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2589,13 +3073,13 @@ func YearBooksByPageCountGteLtePriceLteReleaseDateGteWithAllText(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2609,11 +3093,11 @@ func YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAllText(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2627,11 +3111,11 @@ func YearBooksByPageCountGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// seq string 编号
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2645,11 +3129,11 @@ func YearBooksByPageCountGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// seq string 编号
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2663,11 +3147,11 @@ func YearBooksByPageCountLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLteReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// seq string 编号
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2681,12 +3165,12 @@ func YearBooksByPageCountLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLteReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2700,11 +3184,11 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
+// seq string 编号
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2718,11 +3202,11 @@ func YearBooksByPriceGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGtReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
+// seq string 编号
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2736,11 +3220,11 @@ func YearBooksByPriceGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLtReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
+// seq string 编号
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2754,11 +3238,11 @@ func YearBooksByPriceLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLteReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
+// seq string 编号
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2772,12 +3256,12 @@ func YearBooksByPriceLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteLteReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
+// seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2791,11 +3275,29 @@ func YearBooksByPriceGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAuthorClassName 根据author、class、书名从Books查找release_date为近几年的详细数据列表和总数量
-// author string author
-// class string class
+// YearBooksByReleaseDateGteWithAuthorClassClass2 根据作者、类别、子类别从books表查找发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// class2 string 子类别
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithAuthorClassClass2(es *elasticsearch.Client, author string, class string, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByReleaseDateGteWithAuthorClassName 根据作者、类别、书名从books表查找发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class string 类别
 // name string 书名
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAuthorClassName(es *elasticsearch.Client, author string, class string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2809,11 +3311,11 @@ func YearBooksByReleaseDateGteWithAuthorClassName(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGteWithAuthorClass 根据author、class从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// class string class
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGteReleaseDateGteWithAuthorClass 根据作者、类别从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2827,11 +3329,11 @@ func YearBooksByPageCountGteReleaseDateGteWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGteWithAuthorClass 根据author、class从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
-// author string author
-// class string class
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGtReleaseDateGteWithAuthorClass 根据作者、类别从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2845,11 +3347,11 @@ func YearBooksByPageCountGtReleaseDateGteWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGteWithAuthorClass 根据author、class从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
-// author string author
-// class string class
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountLtReleaseDateGteWithAuthorClass 根据作者、类别从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2863,11 +3365,11 @@ func YearBooksByPageCountLtReleaseDateGteWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGteWithAuthorClass 根据author、class从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// class string class
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountLteReleaseDateGteWithAuthorClass 根据作者、类别从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2881,12 +3383,12 @@ func YearBooksByPageCountLteReleaseDateGteWithAuthorClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGteWithAuthorClass 根据author、class从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGteLteReleaseDateGteWithAuthorClass 根据作者、类别从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2900,11 +3402,11 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGteWithAuthorClass 根据author、class从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// class string class
+// YearBooksByPriceGteReleaseDateGteWithAuthorClass 根据作者、类别从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class string 类别
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2918,11 +3420,11 @@ func YearBooksByPriceGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGteWithAuthorClass 根据author、class从Books查找价格大于、release_date为近几年的详细数据列表和总数量
-// author string author
-// class string class
+// YearBooksByPriceGtReleaseDateGteWithAuthorClass 根据作者、类别从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class string 类别
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2936,11 +3438,11 @@ func YearBooksByPriceGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGteWithAuthorClass 根据author、class从Books查找价格小于、release_date为近几年的详细数据列表和总数量
-// author string author
-// class string class
+// YearBooksByPriceLtReleaseDateGteWithAuthorClass 根据作者、类别从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class string 类别
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2954,11 +3456,11 @@ func YearBooksByPriceLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGteWithAuthorClass 根据author、class从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// class string class
+// YearBooksByPriceLteReleaseDateGteWithAuthorClass 根据作者、类别从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class string 类别
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2972,12 +3474,12 @@ func YearBooksByPriceLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGteWithAuthorClass 根据author、class从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// class string class
+// YearBooksByPriceGteLteReleaseDateGteWithAuthorClass 根据作者、类别从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2991,11 +3493,11 @@ func YearBooksByPriceGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAuthorClassSeq 根据author、class、seq从Books查找release_date为近几年的详细数据列表和总数量
-// author string author
-// class string class
-// seq string seq
-// releaseDateNYear int release_date为近几年
+// YearBooksByReleaseDateGteWithAuthorClassSeq 根据作者、类别、编号从books表查找发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAuthorClassSeq(es *elasticsearch.Client, author string, class string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3009,11 +3511,229 @@ func YearBooksByReleaseDateGteWithAuthorClassSeq(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGteWithAuthorName 根据author、书名从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByReleaseDateGteWithAuthorClass2Name 根据作者、子类别、书名从books表查找发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithAuthorClass2Name(es *elasticsearch.Client, author string, class2 string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLteReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteLteReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGteReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGtReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// priceGt float64 价格大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceLtReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// priceLt float64 价格小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceLteReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGteLteReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByReleaseDateGteWithAuthorClass2Seq 根据作者、子类别、编号从books表查找发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithAuthorClass2Seq(es *elasticsearch.Client, author string, class2 string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteReleaseDateGteWithAuthorName 根据作者、书名从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// name string 书名
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3027,11 +3747,11 @@ func YearBooksByPageCountGteReleaseDateGteWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGteWithAuthorName 根据author、书名从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByPageCountGtReleaseDateGteWithAuthorName 根据作者、书名从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // name string 书名
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3045,11 +3765,11 @@ func YearBooksByPageCountGtReleaseDateGteWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGteWithAuthorName 根据author、书名从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByPageCountLtReleaseDateGteWithAuthorName 根据作者、书名从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // name string 书名
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3063,11 +3783,11 @@ func YearBooksByPageCountLtReleaseDateGteWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGteWithAuthorName 根据author、书名从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByPageCountLteReleaseDateGteWithAuthorName 根据作者、书名从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // name string 书名
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3081,12 +3801,12 @@ func YearBooksByPageCountLteReleaseDateGteWithAuthorName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGteWithAuthorName 根据author、书名从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByPageCountGteLteReleaseDateGteWithAuthorName 根据作者、书名从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3100,11 +3820,11 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGteWithAuthorName 根据author、书名从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByPriceGteReleaseDateGteWithAuthorName 根据作者、书名从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // name string 书名
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3118,11 +3838,11 @@ func YearBooksByPriceGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGteWithAuthorName 根据author、书名从Books查找价格大于、release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByPriceGtReleaseDateGteWithAuthorName 根据作者、书名从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // name string 书名
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3136,11 +3856,11 @@ func YearBooksByPriceGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGteWithAuthorName 根据author、书名从Books查找价格小于、release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByPriceLtReleaseDateGteWithAuthorName 根据作者、书名从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // name string 书名
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3154,11 +3874,11 @@ func YearBooksByPriceLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGteWithAuthorName 根据author、书名从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByPriceLteReleaseDateGteWithAuthorName 根据作者、书名从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // name string 书名
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3172,12 +3892,12 @@ func YearBooksByPriceLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGteWithAuthorName 根据author、书名从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByPriceGteLteReleaseDateGteWithAuthorName 根据作者、书名从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3191,11 +3911,11 @@ func YearBooksByPriceGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithAuthorNameSeq 根据author、书名、seq从Books查找release_date为近几年的详细数据列表和总数量
-// author string author
+// YearBooksByReleaseDateGteWithAuthorNameSeq 根据作者、书名、编号从books表查找发布日期为近几年的详细数据列表和总数量
+// author string 作者
 // name string 书名
-// seq string seq
-// releaseDateNYear int release_date为近几年
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithAuthorNameSeq(es *elasticsearch.Client, author string, name string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3209,11 +3929,11 @@ func YearBooksByReleaseDateGteWithAuthorNameSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceGteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3227,11 +3947,11 @@ func YearBooksByPageCountGtePriceGteReleaseDateGteWithAuthor(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGtReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、价格大于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceGtReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于、价格大于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3245,11 +3965,11 @@ func YearBooksByPageCountGtePriceGtReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceLtReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、价格小于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceLtReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于、价格小于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3263,11 +3983,11 @@ func YearBooksByPageCountGtePriceLtReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceLteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3281,12 +4001,12 @@ func YearBooksByPageCountGtePriceLteReleaseDateGteWithAuthor(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceGteLteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3300,11 +4020,11 @@ func YearBooksByPageCountGtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGteReleaseDateGteWithAuthor 根据author从Books查找page_count大于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceGteReleaseDateGteWithAuthor 根据作者从books表查找页数大于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGt int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3318,11 +4038,11 @@ func YearBooksByPageCountGtPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGtReleaseDateGteWithAuthor 根据author从Books查找page_count大于、价格大于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceGtReleaseDateGteWithAuthor 根据作者从books表查找页数大于、价格大于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGt int64 页数大于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGt int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3336,11 +4056,11 @@ func YearBooksByPageCountGtPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceLtReleaseDateGteWithAuthor 根据author从Books查找page_count大于、价格小于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceLtReleaseDateGteWithAuthor 根据作者从books表查找页数大于、价格小于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGt int64 页数大于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGt int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3354,11 +4074,11 @@ func YearBooksByPageCountGtPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceLteReleaseDateGteWithAuthor 根据作者从books表查找页数大于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGt int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3372,12 +4092,12 @@ func YearBooksByPageCountGtPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceGteLteReleaseDateGteWithAuthor 根据作者从books表查找页数大于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGt int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3391,11 +4111,11 @@ func YearBooksByPageCountGtPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGteReleaseDateGteWithAuthor 根据author从Books查找page_count小于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceGteReleaseDateGteWithAuthor 根据作者从books表查找页数小于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLt int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3409,11 +4129,11 @@ func YearBooksByPageCountLtPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGtReleaseDateGteWithAuthor 根据author从Books查找page_count小于、价格大于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceGtReleaseDateGteWithAuthor 根据作者从books表查找页数小于、价格大于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountLt int64 页数小于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLt int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3427,11 +4147,11 @@ func YearBooksByPageCountLtPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceLtReleaseDateGteWithAuthor 根据author从Books查找page_count小于、价格小于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceLtReleaseDateGteWithAuthor 根据作者从books表查找页数小于、价格小于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountLt int64 页数小于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLt int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3445,11 +4165,11 @@ func YearBooksByPageCountLtPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceLteReleaseDateGteWithAuthor 根据author从Books查找page_count小于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceLteReleaseDateGteWithAuthor 根据作者从books表查找页数小于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLt int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3463,12 +4183,12 @@ func YearBooksByPageCountLtPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count小于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceGteLteReleaseDateGteWithAuthor 根据作者从books表查找页数小于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLt int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3482,11 +4202,11 @@ func YearBooksByPageCountLtPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGteReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceGteReleaseDateGteWithAuthor 根据作者从books表查找页数小于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3500,11 +4220,11 @@ func YearBooksByPageCountLtePriceGteReleaseDateGteWithAuthor(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGtReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、价格大于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceGtReleaseDateGteWithAuthor 根据作者从books表查找页数小于等于、价格大于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3518,11 +4238,11 @@ func YearBooksByPageCountLtePriceGtReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceLtReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、价格小于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceLtReleaseDateGteWithAuthor 根据作者从books表查找页数小于等于、价格小于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3536,11 +4256,11 @@ func YearBooksByPageCountLtePriceLtReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceLteReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceLteReleaseDateGteWithAuthor 根据作者从books表查找页数小于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3554,12 +4274,12 @@ func YearBooksByPageCountLtePriceLteReleaseDateGteWithAuthor(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceGteLteReleaseDateGteWithAuthor 根据作者从books表查找页数小于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3573,12 +4293,12 @@ func YearBooksByPageCountLtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceGteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于和小于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3592,12 +4312,12 @@ func YearBooksByPageCountGteLtePriceGteReleaseDateGteWithAuthor(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGtReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、价格大于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceGtReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于和小于等于、价格大于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3611,12 +4331,12 @@ func YearBooksByPageCountGteLtePriceGtReleaseDateGteWithAuthor(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceLtReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、价格小于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceLtReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于和小于等于、价格小于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3630,12 +4350,12 @@ func YearBooksByPageCountGteLtePriceLtReleaseDateGteWithAuthor(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceLteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于和小于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3649,13 +4369,13 @@ func YearBooksByPageCountGteLtePriceLteReleaseDateGteWithAuthor(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3669,11 +4389,11 @@ func YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAuthor(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGteReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3687,11 +4407,11 @@ func YearBooksByPageCountGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGteWithAuthorSeq 根据author、seq从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
-// author string author
-// seq string seq
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGtReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// seq string 编号
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3705,11 +4425,11 @@ func YearBooksByPageCountGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGteWithAuthorSeq 根据author、seq从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
-// author string author
-// seq string seq
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountLtReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// seq string 编号
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3723,11 +4443,11 @@ func YearBooksByPageCountLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// seq string seq
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountLteReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// seq string 编号
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3741,12 +4461,12 @@ func YearBooksByPageCountLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGteLteReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3760,11 +4480,11 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// seq string seq
+// YearBooksByPriceGteReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// seq string 编号
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3778,11 +4498,11 @@ func YearBooksByPriceGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGteWithAuthorSeq 根据author、seq从Books查找价格大于、release_date为近几年的详细数据列表和总数量
-// author string author
-// seq string seq
+// YearBooksByPriceGtReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// seq string 编号
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3796,11 +4516,11 @@ func YearBooksByPriceGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGteWithAuthorSeq 根据author、seq从Books查找价格小于、release_date为近几年的详细数据列表和总数量
-// author string author
-// seq string seq
+// YearBooksByPriceLtReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// seq string 编号
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3814,11 +4534,11 @@ func YearBooksByPriceLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// seq string seq
+// YearBooksByPriceLteReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// seq string 编号
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3832,12 +4552,12 @@ func YearBooksByPriceLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// author string author
-// seq string seq
+// YearBooksByPriceGteLteReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// author string 作者
+// seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3851,11 +4571,207 @@ func YearBooksByPriceGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGteWithClassName 根据class、书名从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByReleaseDateGteWithClassClass2Name 根据类别、子类别、书名从books表查找发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithClassClass2Name(es *elasticsearch.Client, class string, class2 string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteReleaseDateGteWithClassClass2 根据类别、子类别从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtReleaseDateGteWithClassClass2 根据类别、子类别从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtReleaseDateGteWithClassClass2 根据类别、子类别从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLteReleaseDateGteWithClassClass2 根据类别、子类别从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteLteReleaseDateGteWithClassClass2 根据类别、子类别从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGteReleaseDateGteWithClassClass2 根据类别、子类别从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGtReleaseDateGteWithClassClass2 根据类别、子类别从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// priceGt float64 价格大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceLtReleaseDateGteWithClassClass2 根据类别、子类别从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// priceLt float64 价格小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceLtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceLteReleaseDateGteWithClassClass2 根据类别、子类别从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGteLteReleaseDateGteWithClassClass2 根据类别、子类别从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGteLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByReleaseDateGteWithClassClass2Seq 根据类别、子类别、编号从books表查找发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithClassClass2Seq(es *elasticsearch.Client, class string, class2 string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteReleaseDateGteWithClassName 根据类别、书名从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// name string 书名
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3869,11 +4785,11 @@ func YearBooksByPageCountGteReleaseDateGteWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGteWithClassName 根据class、书名从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByPageCountGtReleaseDateGteWithClassName 根据类别、书名从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // name string 书名
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3887,11 +4803,11 @@ func YearBooksByPageCountGtReleaseDateGteWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGteWithClassName 根据class、书名从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByPageCountLtReleaseDateGteWithClassName 根据类别、书名从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // name string 书名
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3905,11 +4821,11 @@ func YearBooksByPageCountLtReleaseDateGteWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGteWithClassName 根据class、书名从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByPageCountLteReleaseDateGteWithClassName 根据类别、书名从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // name string 书名
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3923,12 +4839,12 @@ func YearBooksByPageCountLteReleaseDateGteWithClassName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGteWithClassName 根据class、书名从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByPageCountGteLteReleaseDateGteWithClassName 根据类别、书名从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3942,11 +4858,11 @@ func YearBooksByPageCountGteLteReleaseDateGteWithClassName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGteWithClassName 根据class、书名从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByPriceGteReleaseDateGteWithClassName 根据类别、书名从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // name string 书名
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3960,11 +4876,11 @@ func YearBooksByPriceGteReleaseDateGteWithClassName(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGteWithClassName 根据class、书名从Books查找价格大于、release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByPriceGtReleaseDateGteWithClassName 根据类别、书名从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // name string 书名
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3978,11 +4894,11 @@ func YearBooksByPriceGtReleaseDateGteWithClassName(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGteWithClassName 根据class、书名从Books查找价格小于、release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByPriceLtReleaseDateGteWithClassName 根据类别、书名从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // name string 书名
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3996,11 +4912,11 @@ func YearBooksByPriceLtReleaseDateGteWithClassName(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGteWithClassName 根据class、书名从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByPriceLteReleaseDateGteWithClassName 根据类别、书名从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // name string 书名
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4014,12 +4930,12 @@ func YearBooksByPriceLteReleaseDateGteWithClassName(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGteWithClassName 根据class、书名从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByPriceGteLteReleaseDateGteWithClassName 根据类别、书名从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4033,11 +4949,11 @@ func YearBooksByPriceGteLteReleaseDateGteWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByReleaseDateGteWithClassNameSeq 根据class、书名、seq从Books查找release_date为近几年的详细数据列表和总数量
-// class string class
+// YearBooksByReleaseDateGteWithClassNameSeq 根据类别、书名、编号从books表查找发布日期为近几年的详细数据列表和总数量
+// class string 类别
 // name string 书名
-// seq string seq
-// releaseDateNYear int release_date为近几年
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByReleaseDateGteWithClassNameSeq(es *elasticsearch.Client, class string, name string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4051,11 +4967,11 @@ func YearBooksByReleaseDateGteWithClassNameSeq(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGteReleaseDateGteWithClass 根据class从Books查找page_count大于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceGteReleaseDateGteWithClass 根据类别从books表查找页数大于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4067,11 +4983,11 @@ func YearBooksByPageCountGtePriceGteReleaseDateGteWithClass(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGtReleaseDateGteWithClass 根据class从Books查找page_count大于等于、价格大于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceGtReleaseDateGteWithClass 根据类别从books表查找页数大于等于、价格大于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4083,11 +4999,11 @@ func YearBooksByPageCountGtePriceGtReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceLtReleaseDateGteWithClass 根据class从Books查找page_count大于等于、价格小于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceLtReleaseDateGteWithClass 根据类别从books表查找页数大于等于、价格小于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4099,11 +5015,11 @@ func YearBooksByPageCountGtePriceLtReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceLteReleaseDateGteWithClass 根据class从Books查找page_count大于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceLteReleaseDateGteWithClass 根据类别从books表查找页数大于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4115,12 +5031,12 @@ func YearBooksByPageCountGtePriceLteReleaseDateGteWithClass(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGteLteReleaseDateGteWithClass 根据class从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceGteLteReleaseDateGteWithClass 根据类别从books表查找页数大于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4132,11 +5048,11 @@ func YearBooksByPageCountGtePriceGteLteReleaseDateGteWithClass(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGteReleaseDateGteWithClass 根据class从Books查找page_count大于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceGteReleaseDateGteWithClass 根据类别从books表查找页数大于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGt int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4148,11 +5064,11 @@ func YearBooksByPageCountGtPriceGteReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGtReleaseDateGteWithClass 根据class从Books查找page_count大于、价格大于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceGtReleaseDateGteWithClass 根据类别从books表查找页数大于、价格大于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGt int64 页数大于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGt int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4164,11 +5080,11 @@ func YearBooksByPageCountGtPriceGtReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceLtReleaseDateGteWithClass 根据class从Books查找page_count大于、价格小于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceLtReleaseDateGteWithClass 根据类别从books表查找页数大于、价格小于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGt int64 页数大于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGt int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4180,11 +5096,11 @@ func YearBooksByPageCountGtPriceLtReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceLteReleaseDateGteWithClass 根据class从Books查找page_count大于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceLteReleaseDateGteWithClass 根据类别从books表查找页数大于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGt int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4196,12 +5112,12 @@ func YearBooksByPageCountGtPriceLteReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGteLteReleaseDateGteWithClass 根据class从Books查找page_count大于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceGteLteReleaseDateGteWithClass 根据类别从books表查找页数大于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGt int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4213,11 +5129,11 @@ func YearBooksByPageCountGtPriceGteLteReleaseDateGteWithClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGteReleaseDateGteWithClass 根据class从Books查找page_count小于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceGteReleaseDateGteWithClass 根据类别从books表查找页数小于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLt int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4229,11 +5145,11 @@ func YearBooksByPageCountLtPriceGteReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGtReleaseDateGteWithClass 根据class从Books查找page_count小于、价格大于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceGtReleaseDateGteWithClass 根据类别从books表查找页数小于、价格大于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountLt int64 页数小于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLt int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4245,11 +5161,11 @@ func YearBooksByPageCountLtPriceGtReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceLtReleaseDateGteWithClass 根据class从Books查找page_count小于、价格小于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceLtReleaseDateGteWithClass 根据类别从books表查找页数小于、价格小于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountLt int64 页数小于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLt int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4261,11 +5177,11 @@ func YearBooksByPageCountLtPriceLtReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceLteReleaseDateGteWithClass 根据class从Books查找page_count小于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceLteReleaseDateGteWithClass 根据类别从books表查找页数小于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLt int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4277,12 +5193,12 @@ func YearBooksByPageCountLtPriceLteReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGteLteReleaseDateGteWithClass 根据class从Books查找page_count小于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceGteLteReleaseDateGteWithClass 根据类别从books表查找页数小于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLt int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4294,11 +5210,11 @@ func YearBooksByPageCountLtPriceGteLteReleaseDateGteWithClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGteReleaseDateGteWithClass 根据class从Books查找page_count小于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceGteReleaseDateGteWithClass 根据类别从books表查找页数小于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4310,11 +5226,11 @@ func YearBooksByPageCountLtePriceGteReleaseDateGteWithClass(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGtReleaseDateGteWithClass 根据class从Books查找page_count小于等于、价格大于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceGtReleaseDateGteWithClass 根据类别从books表查找页数小于等于、价格大于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4326,11 +5242,11 @@ func YearBooksByPageCountLtePriceGtReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceLtReleaseDateGteWithClass 根据class从Books查找page_count小于等于、价格小于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceLtReleaseDateGteWithClass 根据类别从books表查找页数小于等于、价格小于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4342,11 +5258,11 @@ func YearBooksByPageCountLtePriceLtReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceLteReleaseDateGteWithClass 根据class从Books查找page_count小于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceLteReleaseDateGteWithClass 根据类别从books表查找页数小于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4358,12 +5274,12 @@ func YearBooksByPageCountLtePriceLteReleaseDateGteWithClass(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGteLteReleaseDateGteWithClass 根据class从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceGteLteReleaseDateGteWithClass 根据类别从books表查找页数小于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4375,12 +5291,12 @@ func YearBooksByPageCountLtePriceGteLteReleaseDateGteWithClass(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGteReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceGteReleaseDateGteWithClass 根据类别从books表查找页数大于等于和小于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4392,12 +5308,12 @@ func YearBooksByPageCountGteLtePriceGteReleaseDateGteWithClass(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGtReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、价格大于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceGtReleaseDateGteWithClass 根据类别从books表查找页数大于等于和小于等于、价格大于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4409,12 +5325,12 @@ func YearBooksByPageCountGteLtePriceGtReleaseDateGteWithClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceLtReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、价格小于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceLtReleaseDateGteWithClass 根据类别从books表查找页数大于等于和小于等于、价格小于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4426,12 +5342,12 @@ func YearBooksByPageCountGteLtePriceLtReleaseDateGteWithClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceLteReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceLteReleaseDateGteWithClass 根据类别从books表查找页数大于等于和小于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4443,13 +5359,13 @@ func YearBooksByPageCountGteLtePriceLteReleaseDateGteWithClass(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass 根据类别从books表查找页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4461,11 +5377,11 @@ func YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGteWithClassSeq 根据class、seq从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGteReleaseDateGteWithClassSeq 根据类别、编号从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4477,11 +5393,11 @@ func YearBooksByPageCountGteReleaseDateGteWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGteWithClassSeq 根据class、seq从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
-// class string class
-// seq string seq
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGtReleaseDateGteWithClassSeq 根据类别、编号从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// seq string 编号
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4493,11 +5409,11 @@ func YearBooksByPageCountGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGteWithClassSeq 根据class、seq从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
-// class string class
-// seq string seq
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountLtReleaseDateGteWithClassSeq 根据类别、编号从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// seq string 编号
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4509,11 +5425,11 @@ func YearBooksByPageCountLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGteWithClassSeq 根据class、seq从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// seq string seq
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountLteReleaseDateGteWithClassSeq 根据类别、编号从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// seq string 编号
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4525,12 +5441,12 @@ func YearBooksByPageCountLteReleaseDateGteWithClassSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGteWithClassSeq 根据class、seq从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// YearBooksByPageCountGteLteReleaseDateGteWithClassSeq 根据类别、编号从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4542,11 +5458,11 @@ func YearBooksByPageCountGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGteWithClassSeq 根据class、seq从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// seq string seq
+// YearBooksByPriceGteReleaseDateGteWithClassSeq 根据类别、编号从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// seq string 编号
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4558,11 +5474,11 @@ func YearBooksByPriceGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGteWithClassSeq 根据class、seq从Books查找价格大于、release_date为近几年的详细数据列表和总数量
-// class string class
-// seq string seq
+// YearBooksByPriceGtReleaseDateGteWithClassSeq 根据类别、编号从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// seq string 编号
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4574,11 +5490,11 @@ func YearBooksByPriceGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGteWithClassSeq 根据class、seq从Books查找价格小于、release_date为近几年的详细数据列表和总数量
-// class string class
-// seq string seq
+// YearBooksByPriceLtReleaseDateGteWithClassSeq 根据类别、编号从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// seq string 编号
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4590,11 +5506,11 @@ func YearBooksByPriceLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGteWithClassSeq 根据class、seq从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// seq string seq
+// YearBooksByPriceLteReleaseDateGteWithClassSeq 根据类别、编号从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// seq string 编号
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4606,12 +5522,12 @@ func YearBooksByPriceLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGteWithClassSeq 根据class、seq从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// class string class
-// seq string seq
+// YearBooksByPriceGteLteReleaseDateGteWithClassSeq 根据类别、编号从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class string 类别
+// seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4623,11 +5539,783 @@ func YearBooksByPriceGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGteReleaseDateGteWithName 根据书名从Books查找page_count大于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteReleaseDateGteWithClass2Name 根据子类别、书名从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
 // name string 书名
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtReleaseDateGteWithClass2Name 根据子类别、书名从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtReleaseDateGteWithClass2Name 根据子类别、书名从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLteReleaseDateGteWithClass2Name 根据子类别、书名从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteLteReleaseDateGteWithClass2Name 根据子类别、书名从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGteReleaseDateGteWithClass2Name 根据子类别、书名从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGtReleaseDateGteWithClass2Name 根据子类别、书名从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// priceGt float64 价格大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceLtReleaseDateGteWithClass2Name 根据子类别、书名从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// priceLt float64 价格小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceLtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceLteReleaseDateGteWithClass2Name 根据子类别、书名从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGteLteReleaseDateGteWithClass2Name 根据子类别、书名从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByReleaseDateGteWithClass2NameSeq 根据子类别、书名、编号从books表查找发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// seq string 编号
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByReleaseDateGteWithClass2NameSeq(es *elasticsearch.Client, class2 string, name string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtePriceGteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// priceGte float64 价格大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtePriceGteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtePriceGtReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于、价格大于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// priceGt float64 价格大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtePriceGtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtePriceLtReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于、价格小于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// priceLt float64 价格小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtePriceLtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtePriceLteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtePriceLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtePriceGteLteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtePriceGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtPriceGteReleaseDateGteWithClass2 根据子类别从books表查找页数大于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// priceGte float64 价格大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtPriceGteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGt int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtPriceGtReleaseDateGteWithClass2 根据子类别从books表查找页数大于、价格大于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// priceGt float64 价格大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtPriceGtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGt int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtPriceLtReleaseDateGteWithClass2 根据子类别从books表查找页数大于、价格小于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// priceLt float64 价格小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtPriceLtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGt int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtPriceLteReleaseDateGteWithClass2 根据子类别从books表查找页数大于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtPriceLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGt int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtPriceGteLteReleaseDateGteWithClass2 根据子类别从books表查找页数大于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtPriceGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGt int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtPriceGteReleaseDateGteWithClass2 根据子类别从books表查找页数小于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// priceGte float64 价格大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtPriceGteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLt int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtPriceGtReleaseDateGteWithClass2 根据子类别从books表查找页数小于、价格大于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// priceGt float64 价格大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtPriceGtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLt int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtPriceLtReleaseDateGteWithClass2 根据子类别从books表查找页数小于、价格小于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// priceLt float64 价格小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtPriceLtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLt int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtPriceLteReleaseDateGteWithClass2 根据子类别从books表查找页数小于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtPriceLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLt int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtPriceGteLteReleaseDateGteWithClass2 根据子类别从books表查找页数小于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtPriceGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLt int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtePriceGteReleaseDateGteWithClass2 根据子类别从books表查找页数小于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// priceGte float64 价格大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtePriceGteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtePriceGtReleaseDateGteWithClass2 根据子类别从books表查找页数小于等于、价格大于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// priceGt float64 价格大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtePriceGtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtePriceLtReleaseDateGteWithClass2 根据子类别从books表查找页数小于等于、价格小于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// priceLt float64 价格小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtePriceLtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtePriceLteReleaseDateGteWithClass2 根据子类别从books表查找页数小于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtePriceLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtePriceGteLteReleaseDateGteWithClass2 根据子类别从books表查找页数小于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtePriceGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteLtePriceGteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于和小于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// priceGte float64 价格大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteLtePriceGteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteLtePriceGtReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于和小于等于、价格大于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// priceGt float64 价格大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteLtePriceGtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteLtePriceLtReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于和小于等于、价格小于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// priceLt float64 价格小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteLtePriceLtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteLtePriceLteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于和小于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteLtePriceLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLtReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountLteReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGteLteReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPageCountGteLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGteReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// priceGte float64 价格大于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGtReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// priceGt float64 价格大于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceLtReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// priceLt float64 价格小于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceLteReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPriceGteLteReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNYear int 发布日期为近几年
+func YearBooksByPriceGteLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dy/y", releaseDateNYear), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// YearBooksByPageCountGtePriceGteReleaseDateGteWithName 根据书名从books表查找页数大于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// name string 书名
+// pageCountGte int64 页数大于等于
+// priceGte float64 价格大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4641,11 +6329,11 @@ func YearBooksByPageCountGtePriceGteReleaseDateGteWithName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGtReleaseDateGteWithName 根据书名从Books查找page_count大于等于、价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtePriceGtReleaseDateGteWithName 根据书名从books表查找页数大于等于、价格大于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4659,11 +6347,11 @@ func YearBooksByPageCountGtePriceGtReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceLtReleaseDateGteWithName 根据书名从Books查找page_count大于等于、价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtePriceLtReleaseDateGteWithName 根据书名从books表查找页数大于等于、价格小于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceLtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4677,11 +6365,11 @@ func YearBooksByPageCountGtePriceLtReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceLteReleaseDateGteWithName 根据书名从Books查找page_count大于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtePriceLteReleaseDateGteWithName 根据书名从books表查找页数大于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4695,12 +6383,12 @@ func YearBooksByPageCountGtePriceLteReleaseDateGteWithName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGteLteReleaseDateGteWithName 根据书名从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtePriceGteLteReleaseDateGteWithName 根据书名从books表查找页数大于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4714,11 +6402,11 @@ func YearBooksByPageCountGtePriceGteLteReleaseDateGteWithName(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGteReleaseDateGteWithName 根据书名从Books查找page_count大于、价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtPriceGteReleaseDateGteWithName 根据书名从books表查找页数大于、价格大于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGt int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4732,11 +6420,11 @@ func YearBooksByPageCountGtPriceGteReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGtReleaseDateGteWithName 根据书名从Books查找page_count大于、价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtPriceGtReleaseDateGteWithName 根据书名从books表查找页数大于、价格大于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGt int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4750,11 +6438,11 @@ func YearBooksByPageCountGtPriceGtReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceLtReleaseDateGteWithName 根据书名从Books查找page_count大于、价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtPriceLtReleaseDateGteWithName 根据书名从books表查找页数大于、价格小于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceLtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGt int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4768,11 +6456,11 @@ func YearBooksByPageCountGtPriceLtReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceLteReleaseDateGteWithName 根据书名从Books查找page_count大于、价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtPriceLteReleaseDateGteWithName 根据书名从books表查找页数大于、价格小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGt int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4786,12 +6474,12 @@ func YearBooksByPageCountGtPriceLteReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGteLteReleaseDateGteWithName 根据书名从Books查找page_count大于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtPriceGteLteReleaseDateGteWithName 根据书名从books表查找页数大于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGt int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4805,11 +6493,11 @@ func YearBooksByPageCountGtPriceGteLteReleaseDateGteWithName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGteReleaseDateGteWithName 根据书名从Books查找page_count小于、价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtPriceGteReleaseDateGteWithName 根据书名从books表查找页数小于、价格大于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLt int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4823,11 +6511,11 @@ func YearBooksByPageCountLtPriceGteReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGtReleaseDateGteWithName 根据书名从Books查找page_count小于、价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtPriceGtReleaseDateGteWithName 根据书名从books表查找页数小于、价格大于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLt int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4841,11 +6529,11 @@ func YearBooksByPageCountLtPriceGtReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceLtReleaseDateGteWithName 根据书名从Books查找page_count小于、价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtPriceLtReleaseDateGteWithName 根据书名从books表查找页数小于、价格小于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceLtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLt int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4859,11 +6547,11 @@ func YearBooksByPageCountLtPriceLtReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceLteReleaseDateGteWithName 根据书名从Books查找page_count小于、价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtPriceLteReleaseDateGteWithName 根据书名从books表查找页数小于、价格小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLt int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4877,12 +6565,12 @@ func YearBooksByPageCountLtPriceLteReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGteLteReleaseDateGteWithName 根据书名从Books查找page_count小于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtPriceGteLteReleaseDateGteWithName 根据书名从books表查找页数小于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLt int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4896,11 +6584,11 @@ func YearBooksByPageCountLtPriceGteLteReleaseDateGteWithName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGteReleaseDateGteWithName 根据书名从Books查找page_count小于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtePriceGteReleaseDateGteWithName 根据书名从books表查找页数小于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4914,11 +6602,11 @@ func YearBooksByPageCountLtePriceGteReleaseDateGteWithName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGtReleaseDateGteWithName 根据书名从Books查找page_count小于等于、价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtePriceGtReleaseDateGteWithName 根据书名从books表查找页数小于等于、价格大于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4932,11 +6620,11 @@ func YearBooksByPageCountLtePriceGtReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceLtReleaseDateGteWithName 根据书名从Books查找page_count小于等于、价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtePriceLtReleaseDateGteWithName 根据书名从books表查找页数小于等于、价格小于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceLtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4950,11 +6638,11 @@ func YearBooksByPageCountLtePriceLtReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceLteReleaseDateGteWithName 根据书名从Books查找page_count小于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtePriceLteReleaseDateGteWithName 根据书名从books表查找页数小于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4968,12 +6656,12 @@ func YearBooksByPageCountLtePriceLteReleaseDateGteWithName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGteLteReleaseDateGteWithName 根据书名从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtePriceGteLteReleaseDateGteWithName 根据书名从books表查找页数小于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4987,12 +6675,12 @@ func YearBooksByPageCountLtePriceGteLteReleaseDateGteWithName(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGteReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLtePriceGteReleaseDateGteWithName 根据书名从books表查找页数大于等于和小于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5006,12 +6694,12 @@ func YearBooksByPageCountGteLtePriceGteReleaseDateGteWithName(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGtReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLtePriceGtReleaseDateGteWithName 根据书名从books表查找页数大于等于和小于等于、价格大于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5025,12 +6713,12 @@ func YearBooksByPageCountGteLtePriceGtReleaseDateGteWithName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceLtReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLtePriceLtReleaseDateGteWithName 根据书名从books表查找页数大于等于和小于等于、价格小于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceLtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5044,12 +6732,12 @@ func YearBooksByPageCountGteLtePriceLtReleaseDateGteWithName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceLteReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLtePriceLteReleaseDateGteWithName 根据书名从books表查找页数大于等于和小于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5063,13 +6751,13 @@ func YearBooksByPageCountGteLtePriceLteReleaseDateGteWithName(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithName 根据书名从books表查找页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5083,11 +6771,11 @@ func YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithName(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteReleaseDateGteWithNameSeq 根据书名、seq从Books查找page_count大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteReleaseDateGteWithNameSeq 根据书名、编号从books表查找页数大于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// releaseDateNYear int release_date为近几年
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5101,11 +6789,11 @@ func YearBooksByPageCountGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtReleaseDateGteWithNameSeq 根据书名、seq从Books查找page_count大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGtReleaseDateGteWithNameSeq 根据书名、编号从books表查找页数大于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// seq string seq
-// pageCountGt int64 page_count大于
-// releaseDateNYear int release_date为近几年
+// seq string 编号
+// pageCountGt int64 页数大于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5119,11 +6807,11 @@ func YearBooksByPageCountGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtReleaseDateGteWithNameSeq 根据书名、seq从Books查找page_count小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLtReleaseDateGteWithNameSeq 根据书名、编号从books表查找页数小于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// seq string seq
-// pageCountLt int64 page_count小于
-// releaseDateNYear int release_date为近几年
+// seq string 编号
+// pageCountLt int64 页数小于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5137,11 +6825,11 @@ func YearBooksByPageCountLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLteReleaseDateGteWithNameSeq 根据书名、seq从Books查找page_count小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountLteReleaseDateGteWithNameSeq 根据书名、编号从books表查找页数小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// seq string seq
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// seq string 编号
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5155,12 +6843,12 @@ func YearBooksByPageCountLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLteReleaseDateGteWithNameSeq 根据书名、seq从Books查找page_count大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPageCountGteLteReleaseDateGteWithNameSeq 根据书名、编号从books表查找页数大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNYear int release_date为近几年
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5174,11 +6862,11 @@ func YearBooksByPageCountGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteReleaseDateGteWithNameSeq 根据书名、seq从Books查找价格大于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteReleaseDateGteWithNameSeq 根据书名、编号从books表查找价格大于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// seq string seq
+// seq string 编号
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5192,11 +6880,11 @@ func YearBooksByPriceGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGtReleaseDateGteWithNameSeq 根据书名、seq从Books查找价格大于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGtReleaseDateGteWithNameSeq 根据书名、编号从books表查找价格大于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// seq string seq
+// seq string 编号
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5210,11 +6898,11 @@ func YearBooksByPriceGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLtReleaseDateGteWithNameSeq 根据书名、seq从Books查找价格小于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLtReleaseDateGteWithNameSeq 根据书名、编号从books表查找价格小于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// seq string seq
+// seq string 编号
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5228,11 +6916,11 @@ func YearBooksByPriceLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceLteReleaseDateGteWithNameSeq 根据书名、seq从Books查找价格小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceLteReleaseDateGteWithNameSeq 根据书名、编号从books表查找价格小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// seq string seq
+// seq string 编号
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5246,12 +6934,12 @@ func YearBooksByPriceLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPriceGteLteReleaseDateGteWithNameSeq 根据书名、seq从Books查找价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
+// YearBooksByPriceGteLteReleaseDateGteWithNameSeq 根据书名、编号从books表查找价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
 // name string 书名
-// seq string seq
+// seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPriceGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5265,11 +6953,11 @@ func YearBooksByPriceGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceGteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5281,11 +6969,11 @@ func YearBooksByPageCountGtePriceGteReleaseDateGteWithSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGtReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、价格大于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceGtReleaseDateGteWithSeq 根据编号从books表查找页数大于等于、价格大于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5297,11 +6985,11 @@ func YearBooksByPageCountGtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceLtReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、价格小于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceLtReleaseDateGteWithSeq 根据编号从books表查找页数大于等于、价格小于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5313,11 +7001,11 @@ func YearBooksByPageCountGtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceLteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5329,12 +7017,12 @@ func YearBooksByPageCountGtePriceLteReleaseDateGteWithSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtePriceGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
+// YearBooksByPageCountGtePriceGteLteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5346,11 +7034,11 @@ func YearBooksByPageCountGtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGteReleaseDateGteWithSeq 根据seq从Books查找page_count大于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceGteReleaseDateGteWithSeq 根据编号从books表查找页数大于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGt int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5362,11 +7050,11 @@ func YearBooksByPageCountGtPriceGteReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGtReleaseDateGteWithSeq 根据seq从Books查找page_count大于、价格大于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceGtReleaseDateGteWithSeq 根据编号从books表查找页数大于、价格大于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGt int64 页数大于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGt int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5378,11 +7066,11 @@ func YearBooksByPageCountGtPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceLtReleaseDateGteWithSeq 根据seq从Books查找page_count大于、价格小于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceLtReleaseDateGteWithSeq 根据编号从books表查找页数大于、价格小于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGt int64 页数大于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGt int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5394,11 +7082,11 @@ func YearBooksByPageCountGtPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceLteReleaseDateGteWithSeq 根据编号从books表查找页数大于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGt int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5410,12 +7098,12 @@ func YearBooksByPageCountGtPriceLteReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGtPriceGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGt int64 page_count大于
+// YearBooksByPageCountGtPriceGteLteReleaseDateGteWithSeq 根据编号从books表查找页数大于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGtPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGt int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5427,11 +7115,11 @@ func YearBooksByPageCountGtPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGteReleaseDateGteWithSeq 根据seq从Books查找page_count小于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceGteReleaseDateGteWithSeq 根据编号从books表查找页数小于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLt int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5443,11 +7131,11 @@ func YearBooksByPageCountLtPriceGteReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGtReleaseDateGteWithSeq 根据seq从Books查找page_count小于、价格大于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceGtReleaseDateGteWithSeq 根据编号从books表查找页数小于、价格大于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountLt int64 页数小于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLt int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5459,11 +7147,11 @@ func YearBooksByPageCountLtPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceLtReleaseDateGteWithSeq 根据seq从Books查找page_count小于、价格小于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceLtReleaseDateGteWithSeq 根据编号从books表查找页数小于、价格小于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountLt int64 页数小于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLt int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5475,11 +7163,11 @@ func YearBooksByPageCountLtPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceLteReleaseDateGteWithSeq 根据seq从Books查找page_count小于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceLteReleaseDateGteWithSeq 根据编号从books表查找页数小于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLt int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5491,12 +7179,12 @@ func YearBooksByPageCountLtPriceLteReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtPriceGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count小于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountLt int64 page_count小于
+// YearBooksByPageCountLtPriceGteLteReleaseDateGteWithSeq 根据编号从books表查找页数小于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLt int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5508,11 +7196,11 @@ func YearBooksByPageCountLtPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGteReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceGteReleaseDateGteWithSeq 根据编号从books表查找页数小于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5524,11 +7212,11 @@ func YearBooksByPageCountLtePriceGteReleaseDateGteWithSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGtReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、价格大于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceGtReleaseDateGteWithSeq 根据编号从books表查找页数小于等于、价格大于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5540,11 +7228,11 @@ func YearBooksByPageCountLtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceLtReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、价格小于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceLtReleaseDateGteWithSeq 根据编号从books表查找页数小于等于、价格小于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5556,11 +7244,11 @@ func YearBooksByPageCountLtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceLteReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceLteReleaseDateGteWithSeq 根据编号从books表查找页数小于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5572,12 +7260,12 @@ func YearBooksByPageCountLtePriceLteReleaseDateGteWithSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountLtePriceGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountLtePriceGteLteReleaseDateGteWithSeq 根据编号从books表查找页数小于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountLtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5589,12 +7277,12 @@ func YearBooksByPageCountLtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceGteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于和小于等于、价格大于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5606,12 +7294,12 @@ func YearBooksByPageCountGteLtePriceGteReleaseDateGteWithSeq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGtReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、价格大于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceGtReleaseDateGteWithSeq 根据编号从books表查找页数大于等于和小于等于、价格大于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5623,12 +7311,12 @@ func YearBooksByPageCountGteLtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceLtReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、价格小于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceLtReleaseDateGteWithSeq 根据编号从books表查找页数大于等于和小于等于、价格小于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5640,12 +7328,12 @@ func YearBooksByPageCountGteLtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceLteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于和小于等于、价格小于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5657,13 +7345,13 @@ func YearBooksByPageCountGteLtePriceLteReleaseDateGteWithSeq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几年的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几年的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNYear int release_date为近几年
+// releaseDateNYear int 发布日期为近几年
 func YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),

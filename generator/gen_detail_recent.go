@@ -47,7 +47,7 @@ func PreDetailRecentCond(mappingPath string, esInfo *EsModelInfo, rtype string) 
 	// 字段随机组合
 	for _, cfs := range mustFileds {
 		names := getDetailRecentFuncName(esInfo.StructName, cfs, rangeTypes, rtype, genCfg.CmpOptList)
-		comments := getDetailRecentFuncComment(esInfo.StructName, cfs, rangeTypes, rtype, genCfg.CmpOptList)
+		comments := getDetailRecentFuncComment(esInfo.StructComment, cfs, rangeTypes, rtype, genCfg.CmpOptList)
 		params := getDetailRecentFuncParams(cfs, rangeTypes, rtype, genCfg.CmpOptList)
 		queries := getDetailRecentQuery(cfs, rangeTypes, genCfg.TermInShould, rtype, genCfg.CmpOptList)
 		for idx := range len(names) {

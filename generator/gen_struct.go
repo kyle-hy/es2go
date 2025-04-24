@@ -182,8 +182,9 @@ func processFile(inputPath, outputPath, packageName, structName string, opts *Ge
 		StructComment: esMapping.Mappings.Meta.Comment,
 		Fields:        fields,
 	}
+	// 表注释
 	if esModelInfo.StructComment == "" {
-		esModelInfo.StructComment = indexName
+		esModelInfo.StructComment = indexName + "表"
 	}
 	return esModelInfo, nil
 }
@@ -288,7 +289,7 @@ func generateStruct(structDefs *strings.Builder, structName string, meta Meta, p
 
 	// generate struct definition
 	if meta.Comment == "" {
-		meta.Comment = "."
+		meta.Comment = structName + "表"
 	}
 	structDefs.WriteString(fmt.Sprintf("// %s %s\n", structName, meta.Comment))
 	structDefs.WriteString(fmt.Sprintf("type %s struct {\n", structName))

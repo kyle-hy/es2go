@@ -47,7 +47,7 @@ func PreDetailRangeCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 	// 字段随机组合
 	for _, cfs := range mustFileds {
 		names := getDetailRangeFuncName(esInfo.StructName, cfs, rangeTypes, genCfg.CmpOptList)
-		comments := getDetailRangeFuncComment(esInfo.StructName, cfs, rangeTypes, genCfg.CmpOptList)
+		comments := getDetailRangeFuncComment(esInfo.StructComment, cfs, rangeTypes, genCfg.CmpOptList)
 		params := getDetailRangeFuncParams(cfs, rangeTypes, genCfg.CmpOptList)
 		queries := getDetailRangeQuery(cfs, rangeTypes, genCfg.TermInShould, genCfg.CmpOptList)
 		for idx := range len(names) {
@@ -158,7 +158,7 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeT
 	}
 
 	funcCmts := []string{}
-	fn := "过滤从" + structComment + "查找"
+	fn := "从" + structComment + "查找"
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
 		fopt = strings.TrimSuffix(fopt, "、")

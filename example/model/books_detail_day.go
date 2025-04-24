@@ -9,8 +9,8 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// DayBooksByReleaseDateGte 从Books查找release_date为近几天的详细数据列表和总数量
-// releaseDateNDay int release_date为近几天
+// DayBooksByReleaseDateGte 从books表查找发布日期为近几天的详细数据列表和总数量
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
@@ -19,9 +19,9 @@ func DayBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNDay int) (*e
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAllText 根据全文本从Books查找release_date为近几天的详细数据列表和总数量
+// DayBooksByReleaseDateGteWithAllText 根据全文本从books表查找发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -33,9 +33,9 @@ func DayBooksByReleaseDateGteWithAllText(es *elasticsearch.Client, allText strin
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAuthor 根据author从Books查找release_date为近几天的详细数据列表和总数量
-// author string author
-// releaseDateNDay int release_date为近几天
+// DayBooksByReleaseDateGteWithAuthor 根据作者从books表查找发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -47,9 +47,9 @@ func DayBooksByReleaseDateGteWithAuthor(es *elasticsearch.Client, author string,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithClass 根据class从Books查找release_date为近几天的详细数据列表和总数量
-// class string class
-// releaseDateNDay int release_date为近几天
+// DayBooksByReleaseDateGteWithClass 根据类别从books表查找发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithClass(es *elasticsearch.Client, class string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -59,9 +59,21 @@ func DayBooksByReleaseDateGteWithClass(es *elasticsearch.Client, class string, r
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithName 根据书名从Books查找release_date为近几天的详细数据列表和总数量
+// DayBooksByReleaseDateGteWithClass2 根据子类别从books表查找发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByReleaseDateGteWithName 根据书名从books表查找发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithName(es *elasticsearch.Client, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -73,9 +85,9 @@ func DayBooksByReleaseDateGteWithName(es *elasticsearch.Client, name string, rel
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGte 从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGteReleaseDateGte 从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
@@ -85,9 +97,9 @@ func DayBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pageCountGte
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGte 从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGtReleaseDateGte 从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
@@ -97,9 +109,9 @@ func DayBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pageCountGt i
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGte 从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountLtReleaseDateGte 从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
@@ -109,9 +121,9 @@ func DayBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pageCountLt i
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGte 从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountLteReleaseDateGte 从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
@@ -121,10 +133,10 @@ func DayBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pageCountLte
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGte 从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGteLteReleaseDateGte 从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -134,9 +146,9 @@ func DayBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Client, pageCount
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGte 从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteReleaseDateGte 从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("price", priceGte, nil, nil, nil),
@@ -146,9 +158,9 @@ func DayBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceGte float64
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGte 从Books查找价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGtReleaseDateGte 从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("price", nil, priceGt, nil, nil),
@@ -158,9 +170,9 @@ func DayBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt float64, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGte 从Books查找价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLtReleaseDateGte 从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("price", nil, nil, priceLt, nil),
@@ -170,9 +182,9 @@ func DayBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt float64, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGte 从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLteReleaseDateGte 从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("price", nil, nil, nil, priceLte),
@@ -182,10 +194,10 @@ func DayBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLte float64
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGte 从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteLteReleaseDateGte 从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("price", priceGte, nil, nil, priceLte),
@@ -195,9 +207,9 @@ func DayBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client, priceGte, pri
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithSeq 根据seq从Books查找release_date为近几天的详细数据列表和总数量
-// seq string seq
-// releaseDateNDay int release_date为近几天
+// DayBooksByReleaseDateGteWithSeq 根据编号从books表查找发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -207,10 +219,10 @@ func DayBooksByReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, relea
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找release_date为近几天的详细数据列表和总数量
+// DayBooksByReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// releaseDateNDay int release_date为近几天
+// author string 作者
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -223,10 +235,10 @@ func DayBooksByReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAllTextClass 根据全文本、class从Books查找release_date为近几天的详细数据列表和总数量
+// DayBooksByReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// releaseDateNDay int release_date为近几天
+// class string 类别
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -239,10 +251,26 @@ func DayBooksByReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAllTextName 根据全文本、书名从Books查找release_date为近几天的详细数据列表和总数量
+// DayBooksByReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找发布日期为近几天的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByReleaseDateGteWithAllTextName 根据全文本、书名从books表查找发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -255,10 +283,10 @@ func DayBooksByReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText s
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -271,10 +299,10 @@ func DayBooksByPageCountGteReleaseDateGteWithAllText(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGteWithAllText 根据全文本从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtReleaseDateGteWithAllText 根据全文本从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -287,10 +315,10 @@ func DayBooksByPageCountGtReleaseDateGteWithAllText(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGteWithAllText 根据全文本从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtReleaseDateGteWithAllText 根据全文本从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -303,10 +331,10 @@ func DayBooksByPageCountLtReleaseDateGteWithAllText(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGteWithAllText 根据全文本从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLteReleaseDateGteWithAllText 根据全文本从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -319,11 +347,11 @@ func DayBooksByPageCountLteReleaseDateGteWithAllText(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -336,10 +364,10 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGteWithAllText 根据全文本从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteReleaseDateGteWithAllText 根据全文本从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -352,10 +380,10 @@ func DayBooksByPriceGteReleaseDateGteWithAllText(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGteWithAllText 根据全文本从Books查找价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGtReleaseDateGteWithAllText 根据全文本从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -368,10 +396,10 @@ func DayBooksByPriceGtReleaseDateGteWithAllText(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGteWithAllText 根据全文本从Books查找价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLtReleaseDateGteWithAllText 根据全文本从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -384,10 +412,10 @@ func DayBooksByPriceLtReleaseDateGteWithAllText(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGteWithAllText 根据全文本从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLteReleaseDateGteWithAllText 根据全文本从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -400,11 +428,11 @@ func DayBooksByPriceLteReleaseDateGteWithAllText(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGteWithAllText 根据全文本从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteLteReleaseDateGteWithAllText 根据全文本从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -417,10 +445,10 @@ func DayBooksByPriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找release_date为近几天的详细数据列表和总数量
+// DayBooksByReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
-// releaseDateNDay int release_date为近几天
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -433,10 +461,10 @@ func DayBooksByReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText st
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAuthorClass 根据author、class从Books查找release_date为近几天的详细数据列表和总数量
-// author string author
-// class string class
-// releaseDateNDay int release_date为近几天
+// DayBooksByReleaseDateGteWithAuthorClass 根据作者、类别从books表查找发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -449,10 +477,26 @@ func DayBooksByReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAuthorName 根据author、书名从Books查找release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByReleaseDateGteWithAuthorName 根据作者、书名从books表查找发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // name string 书名
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -465,10 +509,10 @@ func DayBooksByReleaseDateGteWithAuthorName(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -481,10 +525,10 @@ func DayBooksByPageCountGteReleaseDateGteWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGteWithAuthor 根据author从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGtReleaseDateGteWithAuthor 根据作者从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -497,10 +541,10 @@ func DayBooksByPageCountGtReleaseDateGteWithAuthor(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGteWithAuthor 根据author从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountLtReleaseDateGteWithAuthor 根据作者从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -513,10 +557,10 @@ func DayBooksByPageCountLtReleaseDateGteWithAuthor(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountLteReleaseDateGteWithAuthor 根据作者从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -529,11 +573,11 @@ func DayBooksByPageCountLteReleaseDateGteWithAuthor(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGteLteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -546,10 +590,10 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGteWithAuthor 根据author从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByPriceGteReleaseDateGteWithAuthor 根据作者从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -562,10 +606,10 @@ func DayBooksByPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGteWithAuthor 根据author从Books查找价格大于、release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByPriceGtReleaseDateGteWithAuthor 根据作者从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -578,10 +622,10 @@ func DayBooksByPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGteWithAuthor 根据author从Books查找价格小于、release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByPriceLtReleaseDateGteWithAuthor 根据作者从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -594,10 +638,10 @@ func DayBooksByPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGteWithAuthor 根据author从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByPriceLteReleaseDateGteWithAuthor 根据作者从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -610,11 +654,11 @@ func DayBooksByPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGteWithAuthor 根据author从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByPriceGteLteReleaseDateGteWithAuthor 根据作者从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -627,10 +671,10 @@ func DayBooksByPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAuthorSeq 根据author、seq从Books查找release_date为近几天的详细数据列表和总数量
-// author string author
-// seq string seq
-// releaseDateNDay int release_date为近几天
+// DayBooksByReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -643,10 +687,24 @@ func DayBooksByReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithClassName 根据class、书名从Books查找release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByReleaseDateGteWithClassClass2 根据类别、子类别从books表查找发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByReleaseDateGteWithClassName 根据类别、书名从books表查找发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // name string 书名
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -659,10 +717,10 @@ func DayBooksByReleaseDateGteWithClassName(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGteWithClass 根据class从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGteReleaseDateGteWithClass 根据类别从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -673,10 +731,10 @@ func DayBooksByPageCountGteReleaseDateGteWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGteWithClass 根据class从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGtReleaseDateGteWithClass 根据类别从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -687,10 +745,10 @@ func DayBooksByPageCountGtReleaseDateGteWithClass(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGteWithClass 根据class从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountLtReleaseDateGteWithClass 根据类别从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -701,10 +759,10 @@ func DayBooksByPageCountLtReleaseDateGteWithClass(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGteWithClass 根据class从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountLteReleaseDateGteWithClass 根据类别从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -715,11 +773,11 @@ func DayBooksByPageCountLteReleaseDateGteWithClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGteLteReleaseDateGteWithClass 根据类别从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -730,10 +788,10 @@ func DayBooksByPageCountGteLteReleaseDateGteWithClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGteWithClass 根据class从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByPriceGteReleaseDateGteWithClass 根据类别从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -744,10 +802,10 @@ func DayBooksByPriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGteWithClass 根据class从Books查找价格大于、release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByPriceGtReleaseDateGteWithClass 根据类别从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -758,10 +816,10 @@ func DayBooksByPriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGteWithClass 根据class从Books查找价格小于、release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByPriceLtReleaseDateGteWithClass 根据类别从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -772,10 +830,10 @@ func DayBooksByPriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGteWithClass 根据class从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByPriceLteReleaseDateGteWithClass 根据类别从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -786,11 +844,11 @@ func DayBooksByPriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGteWithClass 根据class从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByPriceGteLteReleaseDateGteWithClass 根据类别从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -801,10 +859,10 @@ func DayBooksByPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithClassSeq 根据class、seq从Books查找release_date为近几天的详细数据列表和总数量
-// class string class
-// seq string seq
-// releaseDateNDay int release_date为近几天
+// DayBooksByReleaseDateGteWithClassSeq 根据类别、编号从books表查找发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -815,10 +873,182 @@ func DayBooksByReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGteWithName 根据书名从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByReleaseDateGteWithClass2Name 根据子类别、书名从books表查找发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtReleaseDateGteWithClass2 根据子类别从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtReleaseDateGteWithClass2 根据子类别从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLteReleaseDateGteWithClass2 根据子类别从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteLteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGteReleaseDateGteWithClass2 根据子类别从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGtReleaseDateGteWithClass2 根据子类别从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// priceGt float64 价格大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceLtReleaseDateGteWithClass2 根据子类别从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// priceLt float64 价格小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceLtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceLteReleaseDateGteWithClass2 根据子类别从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGteLteReleaseDateGteWithClass2 根据子类别从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteReleaseDateGteWithName 根据书名从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// name string 书名
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -831,10 +1061,10 @@ func DayBooksByPageCountGteReleaseDateGteWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGteWithName 根据书名从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtReleaseDateGteWithName 根据书名从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -847,10 +1077,10 @@ func DayBooksByPageCountGtReleaseDateGteWithName(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGteWithName 根据书名从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtReleaseDateGteWithName 根据书名从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -863,10 +1093,10 @@ func DayBooksByPageCountLtReleaseDateGteWithName(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGteWithName 根据书名从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLteReleaseDateGteWithName 根据书名从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -879,11 +1109,11 @@ func DayBooksByPageCountLteReleaseDateGteWithName(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLteReleaseDateGteWithName 根据书名从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -896,10 +1126,10 @@ func DayBooksByPageCountGteLteReleaseDateGteWithName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGteWithName 根据书名从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteReleaseDateGteWithName 根据书名从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGteWithName(es *elasticsearch.Client, name string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -912,10 +1142,10 @@ func DayBooksByPriceGteReleaseDateGteWithName(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGteWithName 根据书名从Books查找价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGtReleaseDateGteWithName 根据书名从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGteWithName(es *elasticsearch.Client, name string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -928,10 +1158,10 @@ func DayBooksByPriceGtReleaseDateGteWithName(es *elasticsearch.Client, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGteWithName 根据书名从Books查找价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLtReleaseDateGteWithName 根据书名从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGteWithName(es *elasticsearch.Client, name string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -944,10 +1174,10 @@ func DayBooksByPriceLtReleaseDateGteWithName(es *elasticsearch.Client, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGteWithName 根据书名从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLteReleaseDateGteWithName 根据书名从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGteWithName(es *elasticsearch.Client, name string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -960,11 +1190,11 @@ func DayBooksByPriceLteReleaseDateGteWithName(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGteWithName 根据书名从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteLteReleaseDateGteWithName 根据书名从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -977,10 +1207,10 @@ func DayBooksByPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithNameSeq 根据书名、seq从Books查找release_date为近几天的详细数据列表和总数量
+// DayBooksByReleaseDateGteWithNameSeq 根据书名、编号从books表查找发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// seq string seq
-// releaseDateNDay int release_date为近几天
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -993,10 +1223,10 @@ func DayBooksByReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGteReleaseDateGte 从Books查找page_count大于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceGteReleaseDateGte 从books表查找页数大于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
@@ -1007,10 +1237,10 @@ func DayBooksByPageCountGtePriceGteReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGtReleaseDateGte 从Books查找page_count大于等于、价格大于、release_date为近几天的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceGtReleaseDateGte 从books表查找页数大于等于、价格大于、发布日期为近几天的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGtReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
@@ -1021,10 +1251,10 @@ func DayBooksByPageCountGtePriceGtReleaseDateGte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceLtReleaseDateGte 从Books查找page_count大于等于、价格小于、release_date为近几天的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceLtReleaseDateGte 从books表查找页数大于等于、价格小于、发布日期为近几天的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceLtReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
@@ -1035,10 +1265,10 @@ func DayBooksByPageCountGtePriceLtReleaseDateGte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceLteReleaseDateGte 从Books查找page_count大于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceLteReleaseDateGte 从books表查找页数大于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceLteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
@@ -1049,11 +1279,11 @@ func DayBooksByPageCountGtePriceLteReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGteLteReleaseDateGte 从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceGteLteReleaseDateGte 从books表查找页数大于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
@@ -1064,10 +1294,10 @@ func DayBooksByPageCountGtePriceGteLteReleaseDateGte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGteReleaseDateGte 从Books查找page_count大于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceGteReleaseDateGte 从books表查找页数大于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGteReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
@@ -1078,10 +1308,10 @@ func DayBooksByPageCountGtPriceGteReleaseDateGte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGtReleaseDateGte 从Books查找page_count大于、价格大于、release_date为近几天的详细数据列表和总数量
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceGtReleaseDateGte 从books表查找页数大于、价格大于、发布日期为近几天的详细数据列表和总数量
+// pageCountGt int64 页数大于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGtReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
@@ -1092,10 +1322,10 @@ func DayBooksByPageCountGtPriceGtReleaseDateGte(es *elasticsearch.Client, pageCo
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceLtReleaseDateGte 从Books查找page_count大于、价格小于、release_date为近几天的详细数据列表和总数量
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceLtReleaseDateGte 从books表查找页数大于、价格小于、发布日期为近几天的详细数据列表和总数量
+// pageCountGt int64 页数大于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceLtReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
@@ -1106,10 +1336,10 @@ func DayBooksByPageCountGtPriceLtReleaseDateGte(es *elasticsearch.Client, pageCo
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceLteReleaseDateGte 从Books查找page_count大于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceLteReleaseDateGte 从books表查找页数大于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceLteReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
@@ -1120,11 +1350,11 @@ func DayBooksByPageCountGtPriceLteReleaseDateGte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGteLteReleaseDateGte 从Books查找page_count大于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceGteLteReleaseDateGte 从books表查找页数大于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
@@ -1135,10 +1365,10 @@ func DayBooksByPageCountGtPriceGteLteReleaseDateGte(es *elasticsearch.Client, pa
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGteReleaseDateGte 从Books查找page_count小于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceGteReleaseDateGte 从books表查找页数小于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGteReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
@@ -1149,10 +1379,10 @@ func DayBooksByPageCountLtPriceGteReleaseDateGte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGtReleaseDateGte 从Books查找page_count小于、价格大于、release_date为近几天的详细数据列表和总数量
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceGtReleaseDateGte 从books表查找页数小于、价格大于、发布日期为近几天的详细数据列表和总数量
+// pageCountLt int64 页数小于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGtReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
@@ -1163,10 +1393,10 @@ func DayBooksByPageCountLtPriceGtReleaseDateGte(es *elasticsearch.Client, pageCo
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceLtReleaseDateGte 从Books查找page_count小于、价格小于、release_date为近几天的详细数据列表和总数量
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceLtReleaseDateGte 从books表查找页数小于、价格小于、发布日期为近几天的详细数据列表和总数量
+// pageCountLt int64 页数小于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceLtReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
@@ -1177,10 +1407,10 @@ func DayBooksByPageCountLtPriceLtReleaseDateGte(es *elasticsearch.Client, pageCo
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceLteReleaseDateGte 从Books查找page_count小于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceLteReleaseDateGte 从books表查找页数小于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceLteReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
@@ -1191,11 +1421,11 @@ func DayBooksByPageCountLtPriceLteReleaseDateGte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGteLteReleaseDateGte 从Books查找page_count小于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceGteLteReleaseDateGte 从books表查找页数小于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
@@ -1206,10 +1436,10 @@ func DayBooksByPageCountLtPriceGteLteReleaseDateGte(es *elasticsearch.Client, pa
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGteReleaseDateGte 从Books查找page_count小于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceGteReleaseDateGte 从books表查找页数小于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
@@ -1220,10 +1450,10 @@ func DayBooksByPageCountLtePriceGteReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGtReleaseDateGte 从Books查找page_count小于等于、价格大于、release_date为近几天的详细数据列表和总数量
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceGtReleaseDateGte 从books表查找页数小于等于、价格大于、发布日期为近几天的详细数据列表和总数量
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGtReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
@@ -1234,10 +1464,10 @@ func DayBooksByPageCountLtePriceGtReleaseDateGte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceLtReleaseDateGte 从Books查找page_count小于等于、价格小于、release_date为近几天的详细数据列表和总数量
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceLtReleaseDateGte 从books表查找页数小于等于、价格小于、发布日期为近几天的详细数据列表和总数量
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceLtReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
@@ -1248,10 +1478,10 @@ func DayBooksByPageCountLtePriceLtReleaseDateGte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceLteReleaseDateGte 从Books查找page_count小于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceLteReleaseDateGte 从books表查找页数小于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
@@ -1262,11 +1492,11 @@ func DayBooksByPageCountLtePriceLteReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGteLteReleaseDateGte 从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceGteLteReleaseDateGte 从books表查找页数小于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
@@ -1277,11 +1507,11 @@ func DayBooksByPageCountLtePriceGteLteReleaseDateGte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGteReleaseDateGte 从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceGteReleaseDateGte 从books表查找页数大于等于和小于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGteReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -1292,11 +1522,11 @@ func DayBooksByPageCountGteLtePriceGteReleaseDateGte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGtReleaseDateGte 从Books查找page_count大于等于和小于等于、价格大于、release_date为近几天的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceGtReleaseDateGte 从books表查找页数大于等于和小于等于、价格大于、发布日期为近几天的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGtReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -1307,11 +1537,11 @@ func DayBooksByPageCountGteLtePriceGtReleaseDateGte(es *elasticsearch.Client, pa
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceLtReleaseDateGte 从Books查找page_count大于等于和小于等于、价格小于、release_date为近几天的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceLtReleaseDateGte 从books表查找页数大于等于和小于等于、价格小于、发布日期为近几天的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceLtReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -1322,11 +1552,11 @@ func DayBooksByPageCountGteLtePriceLtReleaseDateGte(es *elasticsearch.Client, pa
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceLteReleaseDateGte 从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceLteReleaseDateGte 从books表查找页数大于等于和小于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceLteReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -1337,12 +1567,12 @@ func DayBooksByPageCountGteLtePriceLteReleaseDateGte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGteLteReleaseDateGte 从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceGteLteReleaseDateGte 从books表查找页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -1353,10 +1583,10 @@ func DayBooksByPageCountGteLtePriceGteLteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1367,10 +1597,10 @@ func DayBooksByPageCountGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGteWithSeq 根据seq从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGtReleaseDateGteWithSeq 根据编号从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1381,10 +1611,10 @@ func DayBooksByPageCountGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGteWithSeq 根据seq从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountLtReleaseDateGteWithSeq 根据编号从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1395,10 +1625,10 @@ func DayBooksByPageCountLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountLteReleaseDateGteWithSeq 根据编号从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1409,11 +1639,11 @@ func DayBooksByPageCountLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGteLteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1424,10 +1654,10 @@ func DayBooksByPageCountGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGteWithSeq 根据seq从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
+// DayBooksByPriceGteReleaseDateGteWithSeq 根据编号从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1438,10 +1668,10 @@ func DayBooksByPriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGteWithSeq 根据seq从Books查找价格大于、release_date为近几天的详细数据列表和总数量
-// seq string seq
+// DayBooksByPriceGtReleaseDateGteWithSeq 根据编号从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1452,10 +1682,10 @@ func DayBooksByPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGteWithSeq 根据seq从Books查找价格小于、release_date为近几天的详细数据列表和总数量
-// seq string seq
+// DayBooksByPriceLtReleaseDateGteWithSeq 根据编号从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1466,10 +1696,10 @@ func DayBooksByPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGteWithSeq 根据seq从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
+// DayBooksByPriceLteReleaseDateGteWithSeq 根据编号从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1480,11 +1710,11 @@ func DayBooksByPriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGteWithSeq 根据seq从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
+// DayBooksByPriceGteLteReleaseDateGteWithSeq 根据编号从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -1495,11 +1725,11 @@ func DayBooksByPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAllTextAuthorClass 根据全文本、author、class从Books查找release_date为近几天的详细数据列表和总数量
+// DayBooksByReleaseDateGteWithAllTextAuthorClass 根据全文本、作者、类别从books表查找发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// class string class
-// releaseDateNDay int release_date为近几天
+// author string 作者
+// class string 类别
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1513,11 +1743,29 @@ func DayBooksByReleaseDateGteWithAllTextAuthorClass(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAllTextAuthorName 根据全文本、author、书名从Books查找release_date为近几天的详细数据列表和总数量
+// DayBooksByReleaseDateGteWithAllTextAuthorClass2 根据全文本、作者、子类别从books表查找发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// author string author
+// author string 作者
+// class2 string 子类别
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithAllTextAuthorClass2(es *elasticsearch.Client, allText string, author string, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByReleaseDateGteWithAllTextAuthorName 根据全文本、作者、书名从books表查找发布日期为近几天的详细数据列表和总数量
+// allText string 全文本
+// author string 作者
 // name string 书名
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1531,11 +1779,11 @@ func DayBooksByReleaseDateGteWithAllTextAuthorName(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// author string 作者
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1549,11 +1797,11 @@ func DayBooksByPageCountGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// author string 作者
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1567,11 +1815,11 @@ func DayBooksByPageCountGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// author string 作者
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1585,11 +1833,11 @@ func DayBooksByPageCountLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLteReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// author string 作者
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1603,12 +1851,12 @@ func DayBooksByPageCountLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// author string 作者
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1622,11 +1870,11 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// author string author
+// author string 作者
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1640,11 +1888,11 @@ func DayBooksByPriceGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGtReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// author string author
+// author string 作者
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1658,11 +1906,11 @@ func DayBooksByPriceGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLtReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// author string author
+// author string 作者
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1676,11 +1924,11 @@ func DayBooksByPriceLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLteReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// author string author
+// author string 作者
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1694,12 +1942,12 @@ func DayBooksByPriceLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGteWithAllTextAuthor 根据全文本、author从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteLteReleaseDateGteWithAllTextAuthor 根据全文本、作者从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// author string author
+// author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1713,11 +1961,11 @@ func DayBooksByPriceGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAllTextAuthorSeq 根据全文本、author、seq从Books查找release_date为近几天的详细数据列表和总数量
+// DayBooksByReleaseDateGteWithAllTextAuthorSeq 根据全文本、作者、编号从books表查找发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// seq string seq
-// releaseDateNDay int release_date为近几天
+// author string 作者
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1731,11 +1979,29 @@ func DayBooksByReleaseDateGteWithAllTextAuthorSeq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAllTextClassName 根据全文本、class、书名从Books查找release_date为近几天的详细数据列表和总数量
+// DayBooksByReleaseDateGteWithAllTextClassClass2 根据全文本、类别、子类别从books表查找发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// class string class
+// class string 类别
+// class2 string 子类别
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithAllTextClassClass2(es *elasticsearch.Client, allText string, class string, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByReleaseDateGteWithAllTextClassName 根据全文本、类别、书名从books表查找发布日期为近几天的详细数据列表和总数量
+// allText string 全文本
+// class string 类别
 // name string 书名
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1749,11 +2015,11 @@ func DayBooksByReleaseDateGteWithAllTextClassName(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGteWithAllTextClass 根据全文本、class从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// class string 类别
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1767,11 +2033,11 @@ func DayBooksByPageCountGteReleaseDateGteWithAllTextClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGteWithAllTextClass 根据全文本、class从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// class string 类别
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1785,11 +2051,11 @@ func DayBooksByPageCountGtReleaseDateGteWithAllTextClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGteWithAllTextClass 根据全文本、class从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// class string 类别
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1803,11 +2069,11 @@ func DayBooksByPageCountLtReleaseDateGteWithAllTextClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGteWithAllTextClass 根据全文本、class从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLteReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// class string 类别
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1821,12 +2087,12 @@ func DayBooksByPageCountLteReleaseDateGteWithAllTextClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGteWithAllTextClass 根据全文本、class从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLteReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1840,11 +2106,11 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGteWithAllTextClass 根据全文本、class从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// class string class
+// class string 类别
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1858,11 +2124,11 @@ func DayBooksByPriceGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGteWithAllTextClass 根据全文本、class从Books查找价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGtReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// class string class
+// class string 类别
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1876,11 +2142,11 @@ func DayBooksByPriceGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGteWithAllTextClass 根据全文本、class从Books查找价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLtReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// class string class
+// class string 类别
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1894,11 +2160,11 @@ func DayBooksByPriceLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGteWithAllTextClass 根据全文本、class从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLteReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// class string class
+// class string 类别
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1912,12 +2178,12 @@ func DayBooksByPriceLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGteWithAllTextClass 根据全文本、class从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteLteReleaseDateGteWithAllTextClass 根据全文本、类别从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// class string class
+// class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1931,11 +2197,11 @@ func DayBooksByPriceGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAllTextClassSeq 根据全文本、class、seq从Books查找release_date为近几天的详细数据列表和总数量
+// DayBooksByReleaseDateGteWithAllTextClassSeq 根据全文本、类别、编号从books表查找发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// seq string seq
-// releaseDateNDay int release_date为近几天
+// class string 类别
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1949,11 +2215,229 @@ func DayBooksByReleaseDateGteWithAllTextClassSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGteWithAllTextName 根据全文本、书名从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByReleaseDateGteWithAllTextClass2Name 根据全文本、子类别、书名从books表查找发布日期为近几天的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// name string 书名
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithAllTextClass2Name(es *elasticsearch.Client, allText string, class2 string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLteReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteLteReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGteReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGtReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// priceGt float64 价格大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceLtReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// priceLt float64 价格小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceLteReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGteLteReleaseDateGteWithAllTextClass2 根据全文本、子类别从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByReleaseDateGteWithAllTextClass2Seq 根据全文本、子类别、编号从books表查找发布日期为近几天的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithAllTextClass2Seq(es *elasticsearch.Client, allText string, class2 string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("all_text", allText),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteReleaseDateGteWithAllTextName 根据全文本、书名从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1967,11 +2451,11 @@ func DayBooksByPageCountGteReleaseDateGteWithAllTextName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGteWithAllTextName 根据全文本、书名从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtReleaseDateGteWithAllTextName 根据全文本、书名从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1985,11 +2469,11 @@ func DayBooksByPageCountGtReleaseDateGteWithAllTextName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGteWithAllTextName 根据全文本、书名从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtReleaseDateGteWithAllTextName 根据全文本、书名从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2003,11 +2487,11 @@ func DayBooksByPageCountLtReleaseDateGteWithAllTextName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGteWithAllTextName 根据全文本、书名从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLteReleaseDateGteWithAllTextName 根据全文本、书名从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2021,12 +2505,12 @@ func DayBooksByPageCountLteReleaseDateGteWithAllTextName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGteWithAllTextName 根据全文本、书名从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLteReleaseDateGteWithAllTextName 根据全文本、书名从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2040,11 +2524,11 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGteWithAllTextName 根据全文本、书名从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteReleaseDateGteWithAllTextName 根据全文本、书名从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2058,11 +2542,11 @@ func DayBooksByPriceGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGteWithAllTextName 根据全文本、书名从Books查找价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGtReleaseDateGteWithAllTextName 根据全文本、书名从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2076,11 +2560,11 @@ func DayBooksByPriceGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGteWithAllTextName 根据全文本、书名从Books查找价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLtReleaseDateGteWithAllTextName 根据全文本、书名从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2094,11 +2578,11 @@ func DayBooksByPriceLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGteWithAllTextName 根据全文本、书名从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLteReleaseDateGteWithAllTextName 根据全文本、书名从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2112,12 +2596,12 @@ func DayBooksByPriceLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGteWithAllTextName 根据全文本、书名从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteLteReleaseDateGteWithAllTextName 根据全文本、书名从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2131,11 +2615,11 @@ func DayBooksByPriceGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAllTextNameSeq 根据全文本、书名、seq从Books查找release_date为近几天的详细数据列表和总数量
+// DayBooksByReleaseDateGteWithAllTextNameSeq 根据全文本、书名、编号从books表查找发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// seq string seq
-// releaseDateNDay int release_date为近几天
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2149,11 +2633,11 @@ func DayBooksByReleaseDateGteWithAllTextNameSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtePriceGteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2167,11 +2651,11 @@ func DayBooksByPageCountGtePriceGteReleaseDateGteWithAllText(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGtReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于、价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtePriceGtReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于、价格大于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2185,11 +2669,11 @@ func DayBooksByPageCountGtePriceGtReleaseDateGteWithAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceLtReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于、价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtePriceLtReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于、价格小于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2203,11 +2687,11 @@ func DayBooksByPageCountGtePriceLtReleaseDateGteWithAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceLteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtePriceLteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2221,12 +2705,12 @@ func DayBooksByPageCountGtePriceLteReleaseDateGteWithAllText(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGteLteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtePriceGteLteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2240,11 +2724,11 @@ func DayBooksByPageCountGtePriceGteLteReleaseDateGteWithAllText(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于、价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtPriceGteReleaseDateGteWithAllText 根据全文本从books表查找页数大于、价格大于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2258,11 +2742,11 @@ func DayBooksByPageCountGtPriceGteReleaseDateGteWithAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGtReleaseDateGteWithAllText 根据全文本从Books查找page_count大于、价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtPriceGtReleaseDateGteWithAllText 根据全文本从books表查找页数大于、价格大于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2276,11 +2760,11 @@ func DayBooksByPageCountGtPriceGtReleaseDateGteWithAllText(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceLtReleaseDateGteWithAllText 根据全文本从Books查找page_count大于、价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtPriceLtReleaseDateGteWithAllText 根据全文本从books表查找页数大于、价格小于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2294,11 +2778,11 @@ func DayBooksByPageCountGtPriceLtReleaseDateGteWithAllText(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceLteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于、价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtPriceLteReleaseDateGteWithAllText 根据全文本从books表查找页数大于、价格小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2312,12 +2796,12 @@ func DayBooksByPageCountGtPriceLteReleaseDateGteWithAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGteLteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtPriceGteLteReleaseDateGteWithAllText 根据全文本从books表查找页数大于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGt int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2331,11 +2815,11 @@ func DayBooksByPageCountGtPriceGteLteReleaseDateGteWithAllText(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGteReleaseDateGteWithAllText 根据全文本从Books查找page_count小于、价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtPriceGteReleaseDateGteWithAllText 根据全文本从books表查找页数小于、价格大于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2349,11 +2833,11 @@ func DayBooksByPageCountLtPriceGteReleaseDateGteWithAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGtReleaseDateGteWithAllText 根据全文本从Books查找page_count小于、价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtPriceGtReleaseDateGteWithAllText 根据全文本从books表查找页数小于、价格大于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2367,11 +2851,11 @@ func DayBooksByPageCountLtPriceGtReleaseDateGteWithAllText(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceLtReleaseDateGteWithAllText 根据全文本从Books查找page_count小于、价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtPriceLtReleaseDateGteWithAllText 根据全文本从books表查找页数小于、价格小于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2385,11 +2869,11 @@ func DayBooksByPageCountLtPriceLtReleaseDateGteWithAllText(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceLteReleaseDateGteWithAllText 根据全文本从Books查找page_count小于、价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtPriceLteReleaseDateGteWithAllText 根据全文本从books表查找页数小于、价格小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2403,12 +2887,12 @@ func DayBooksByPageCountLtPriceLteReleaseDateGteWithAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGteLteReleaseDateGteWithAllText 根据全文本从Books查找page_count小于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtPriceGteLteReleaseDateGteWithAllText 根据全文本从books表查找页数小于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLt int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2422,11 +2906,11 @@ func DayBooksByPageCountLtPriceGteLteReleaseDateGteWithAllText(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGteReleaseDateGteWithAllText 根据全文本从Books查找page_count小于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtePriceGteReleaseDateGteWithAllText 根据全文本从books表查找页数小于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2440,11 +2924,11 @@ func DayBooksByPageCountLtePriceGteReleaseDateGteWithAllText(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGtReleaseDateGteWithAllText 根据全文本从Books查找page_count小于等于、价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtePriceGtReleaseDateGteWithAllText 根据全文本从books表查找页数小于等于、价格大于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2458,11 +2942,11 @@ func DayBooksByPageCountLtePriceGtReleaseDateGteWithAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceLtReleaseDateGteWithAllText 根据全文本从Books查找page_count小于等于、价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtePriceLtReleaseDateGteWithAllText 根据全文本从books表查找页数小于等于、价格小于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2476,11 +2960,11 @@ func DayBooksByPageCountLtePriceLtReleaseDateGteWithAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceLteReleaseDateGteWithAllText 根据全文本从Books查找page_count小于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtePriceLteReleaseDateGteWithAllText 根据全文本从books表查找页数小于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2494,12 +2978,12 @@ func DayBooksByPageCountLtePriceLteReleaseDateGteWithAllText(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGteLteReleaseDateGteWithAllText 根据全文本从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtePriceGteLteReleaseDateGteWithAllText 根据全文本从books表查找页数小于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountLte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2513,12 +2997,12 @@ func DayBooksByPageCountLtePriceGteLteReleaseDateGteWithAllText(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLtePriceGteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于和小于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2532,12 +3016,12 @@ func DayBooksByPageCountGteLtePriceGteReleaseDateGteWithAllText(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGtReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于和小于等于、价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLtePriceGtReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于和小于等于、价格大于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2551,12 +3035,12 @@ func DayBooksByPageCountGteLtePriceGtReleaseDateGteWithAllText(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceLtReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于和小于等于、价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLtePriceLtReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于和小于等于、价格小于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceLtReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2570,12 +3054,12 @@ func DayBooksByPageCountGteLtePriceLtReleaseDateGteWithAllText(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceLteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLtePriceLteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于和小于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2589,13 +3073,13 @@ func DayBooksByPageCountGteLtePriceLteReleaseDateGteWithAllText(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAllText 根据全文本从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAllText 根据全文本从books表查找页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2609,11 +3093,11 @@ func DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAllText(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2627,11 +3111,11 @@ func DayBooksByPageCountGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// seq string 编号
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2645,11 +3129,11 @@ func DayBooksByPageCountGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// seq string 编号
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2663,11 +3147,11 @@ func DayBooksByPageCountLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLteReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// seq string 编号
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2681,12 +3165,12 @@ func DayBooksByPageCountLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLteReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2700,11 +3184,11 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
+// seq string 编号
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2718,11 +3202,11 @@ func DayBooksByPriceGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGtReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
+// seq string 编号
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2736,11 +3220,11 @@ func DayBooksByPriceGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLtReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
+// seq string 编号
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2754,11 +3238,11 @@ func DayBooksByPriceLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLteReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
+// seq string 编号
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2772,12 +3256,12 @@ func DayBooksByPriceLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGteWithAllTextSeq 根据全文本、seq从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteLteReleaseDateGteWithAllTextSeq 根据全文本、编号从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
+// seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2791,11 +3275,29 @@ func DayBooksByPriceGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAuthorClassName 根据author、class、书名从Books查找release_date为近几天的详细数据列表和总数量
-// author string author
-// class string class
+// DayBooksByReleaseDateGteWithAuthorClassClass2 根据作者、类别、子类别从books表查找发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// class2 string 子类别
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithAuthorClassClass2(es *elasticsearch.Client, author string, class string, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByReleaseDateGteWithAuthorClassName 根据作者、类别、书名从books表查找发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class string 类别
 // name string 书名
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAuthorClassName(es *elasticsearch.Client, author string, class string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2809,11 +3311,11 @@ func DayBooksByReleaseDateGteWithAuthorClassName(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGteWithAuthorClass 根据author、class从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// class string class
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGteReleaseDateGteWithAuthorClass 根据作者、类别从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2827,11 +3329,11 @@ func DayBooksByPageCountGteReleaseDateGteWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGteWithAuthorClass 根据author、class从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
-// author string author
-// class string class
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGtReleaseDateGteWithAuthorClass 根据作者、类别从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2845,11 +3347,11 @@ func DayBooksByPageCountGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGteWithAuthorClass 根据author、class从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
-// author string author
-// class string class
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountLtReleaseDateGteWithAuthorClass 根据作者、类别从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2863,11 +3365,11 @@ func DayBooksByPageCountLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGteWithAuthorClass 根据author、class从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// class string class
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountLteReleaseDateGteWithAuthorClass 根据作者、类别从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2881,12 +3383,12 @@ func DayBooksByPageCountLteReleaseDateGteWithAuthorClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGteWithAuthorClass 根据author、class从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGteLteReleaseDateGteWithAuthorClass 根据作者、类别从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2900,11 +3402,11 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGteWithAuthorClass 根据author、class从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// class string class
+// DayBooksByPriceGteReleaseDateGteWithAuthorClass 根据作者、类别从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class string 类别
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2918,11 +3420,11 @@ func DayBooksByPriceGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGteWithAuthorClass 根据author、class从Books查找价格大于、release_date为近几天的详细数据列表和总数量
-// author string author
-// class string class
+// DayBooksByPriceGtReleaseDateGteWithAuthorClass 根据作者、类别从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class string 类别
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2936,11 +3438,11 @@ func DayBooksByPriceGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGteWithAuthorClass 根据author、class从Books查找价格小于、release_date为近几天的详细数据列表和总数量
-// author string author
-// class string class
+// DayBooksByPriceLtReleaseDateGteWithAuthorClass 根据作者、类别从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class string 类别
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2954,11 +3456,11 @@ func DayBooksByPriceLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGteWithAuthorClass 根据author、class从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// class string class
+// DayBooksByPriceLteReleaseDateGteWithAuthorClass 根据作者、类别从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class string 类别
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2972,12 +3474,12 @@ func DayBooksByPriceLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGteWithAuthorClass 根据author、class从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// class string class
+// DayBooksByPriceGteLteReleaseDateGteWithAuthorClass 根据作者、类别从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -2991,11 +3493,11 @@ func DayBooksByPriceGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAuthorClassSeq 根据author、class、seq从Books查找release_date为近几天的详细数据列表和总数量
-// author string author
-// class string class
-// seq string seq
-// releaseDateNDay int release_date为近几天
+// DayBooksByReleaseDateGteWithAuthorClassSeq 根据作者、类别、编号从books表查找发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAuthorClassSeq(es *elasticsearch.Client, author string, class string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3009,11 +3511,229 @@ func DayBooksByReleaseDateGteWithAuthorClassSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGteWithAuthorName 根据author、书名从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByReleaseDateGteWithAuthorClass2Name 根据作者、子类别、书名从books表查找发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithAuthorClass2Name(es *elasticsearch.Client, author string, class2 string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLteReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteLteReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGteReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGtReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// priceGt float64 价格大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceLtReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// priceLt float64 价格小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceLteReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGteLteReleaseDateGteWithAuthorClass2 根据作者、子类别从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByReleaseDateGteWithAuthorClass2Seq 根据作者、子类别、编号从books表查找发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithAuthorClass2Seq(es *elasticsearch.Client, author string, class2 string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("author", author),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteReleaseDateGteWithAuthorName 根据作者、书名从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// name string 书名
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3027,11 +3747,11 @@ func DayBooksByPageCountGteReleaseDateGteWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGteWithAuthorName 根据author、书名从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByPageCountGtReleaseDateGteWithAuthorName 根据作者、书名从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // name string 书名
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3045,11 +3765,11 @@ func DayBooksByPageCountGtReleaseDateGteWithAuthorName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGteWithAuthorName 根据author、书名从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByPageCountLtReleaseDateGteWithAuthorName 根据作者、书名从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // name string 书名
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3063,11 +3783,11 @@ func DayBooksByPageCountLtReleaseDateGteWithAuthorName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGteWithAuthorName 根据author、书名从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByPageCountLteReleaseDateGteWithAuthorName 根据作者、书名从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // name string 书名
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3081,12 +3801,12 @@ func DayBooksByPageCountLteReleaseDateGteWithAuthorName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGteWithAuthorName 根据author、书名从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByPageCountGteLteReleaseDateGteWithAuthorName 根据作者、书名从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3100,11 +3820,11 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGteWithAuthorName 根据author、书名从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByPriceGteReleaseDateGteWithAuthorName 根据作者、书名从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // name string 书名
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3118,11 +3838,11 @@ func DayBooksByPriceGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGteWithAuthorName 根据author、书名从Books查找价格大于、release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByPriceGtReleaseDateGteWithAuthorName 根据作者、书名从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // name string 书名
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3136,11 +3856,11 @@ func DayBooksByPriceGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGteWithAuthorName 根据author、书名从Books查找价格小于、release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByPriceLtReleaseDateGteWithAuthorName 根据作者、书名从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // name string 书名
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3154,11 +3874,11 @@ func DayBooksByPriceLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGteWithAuthorName 根据author、书名从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByPriceLteReleaseDateGteWithAuthorName 根据作者、书名从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // name string 书名
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3172,12 +3892,12 @@ func DayBooksByPriceLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGteWithAuthorName 根据author、书名从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByPriceGteLteReleaseDateGteWithAuthorName 根据作者、书名从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3191,11 +3911,11 @@ func DayBooksByPriceGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithAuthorNameSeq 根据author、书名、seq从Books查找release_date为近几天的详细数据列表和总数量
-// author string author
+// DayBooksByReleaseDateGteWithAuthorNameSeq 根据作者、书名、编号从books表查找发布日期为近几天的详细数据列表和总数量
+// author string 作者
 // name string 书名
-// seq string seq
-// releaseDateNDay int release_date为近几天
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithAuthorNameSeq(es *elasticsearch.Client, author string, name string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3209,11 +3929,11 @@ func DayBooksByReleaseDateGteWithAuthorNameSeq(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceGteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3227,11 +3947,11 @@ func DayBooksByPageCountGtePriceGteReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGtReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、价格大于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceGtReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于、价格大于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3245,11 +3965,11 @@ func DayBooksByPageCountGtePriceGtReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceLtReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、价格小于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceLtReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于、价格小于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3263,11 +3983,11 @@ func DayBooksByPageCountGtePriceLtReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceLteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3281,12 +4001,12 @@ func DayBooksByPageCountGtePriceLteReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceGteLteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3300,11 +4020,11 @@ func DayBooksByPageCountGtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGteReleaseDateGteWithAuthor 根据author从Books查找page_count大于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceGteReleaseDateGteWithAuthor 根据作者从books表查找页数大于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGt int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3318,11 +4038,11 @@ func DayBooksByPageCountGtPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGtReleaseDateGteWithAuthor 根据author从Books查找page_count大于、价格大于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceGtReleaseDateGteWithAuthor 根据作者从books表查找页数大于、价格大于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGt int64 页数大于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGt int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3336,11 +4056,11 @@ func DayBooksByPageCountGtPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceLtReleaseDateGteWithAuthor 根据author从Books查找page_count大于、价格小于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceLtReleaseDateGteWithAuthor 根据作者从books表查找页数大于、价格小于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGt int64 页数大于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGt int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3354,11 +4074,11 @@ func DayBooksByPageCountGtPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceLteReleaseDateGteWithAuthor 根据作者从books表查找页数大于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGt int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3372,12 +4092,12 @@ func DayBooksByPageCountGtPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceGteLteReleaseDateGteWithAuthor 根据作者从books表查找页数大于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGt int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3391,11 +4111,11 @@ func DayBooksByPageCountGtPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGteReleaseDateGteWithAuthor 根据author从Books查找page_count小于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceGteReleaseDateGteWithAuthor 根据作者从books表查找页数小于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLt int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3409,11 +4129,11 @@ func DayBooksByPageCountLtPriceGteReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGtReleaseDateGteWithAuthor 根据author从Books查找page_count小于、价格大于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceGtReleaseDateGteWithAuthor 根据作者从books表查找页数小于、价格大于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountLt int64 页数小于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLt int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3427,11 +4147,11 @@ func DayBooksByPageCountLtPriceGtReleaseDateGteWithAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceLtReleaseDateGteWithAuthor 根据author从Books查找page_count小于、价格小于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceLtReleaseDateGteWithAuthor 根据作者从books表查找页数小于、价格小于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountLt int64 页数小于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLt int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3445,11 +4165,11 @@ func DayBooksByPageCountLtPriceLtReleaseDateGteWithAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceLteReleaseDateGteWithAuthor 根据author从Books查找page_count小于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceLteReleaseDateGteWithAuthor 根据作者从books表查找页数小于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLt int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3463,12 +4183,12 @@ func DayBooksByPageCountLtPriceLteReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count小于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceGteLteReleaseDateGteWithAuthor 根据作者从books表查找页数小于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLt int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3482,11 +4202,11 @@ func DayBooksByPageCountLtPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGteReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceGteReleaseDateGteWithAuthor 根据作者从books表查找页数小于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3500,11 +4220,11 @@ func DayBooksByPageCountLtePriceGteReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGtReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、价格大于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceGtReleaseDateGteWithAuthor 根据作者从books表查找页数小于等于、价格大于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3518,11 +4238,11 @@ func DayBooksByPageCountLtePriceGtReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceLtReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、价格小于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceLtReleaseDateGteWithAuthor 根据作者从books表查找页数小于等于、价格小于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3536,11 +4256,11 @@ func DayBooksByPageCountLtePriceLtReleaseDateGteWithAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceLteReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceLteReleaseDateGteWithAuthor 根据作者从books表查找页数小于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3554,12 +4274,12 @@ func DayBooksByPageCountLtePriceLteReleaseDateGteWithAuthor(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceGteLteReleaseDateGteWithAuthor 根据作者从books表查找页数小于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountLte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3573,12 +4293,12 @@ func DayBooksByPageCountLtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceGteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于和小于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3592,12 +4312,12 @@ func DayBooksByPageCountGteLtePriceGteReleaseDateGteWithAuthor(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGtReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、价格大于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceGtReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于和小于等于、价格大于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3611,12 +4331,12 @@ func DayBooksByPageCountGteLtePriceGtReleaseDateGteWithAuthor(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceLtReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、价格小于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceLtReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于和小于等于、价格小于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceLtReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3630,12 +4350,12 @@ func DayBooksByPageCountGteLtePriceLtReleaseDateGteWithAuthor(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceLteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于和小于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3649,13 +4369,13 @@ func DayBooksByPageCountGteLtePriceLteReleaseDateGteWithAuthor(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAuthor 根据author从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAuthor 根据作者从books表查找页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3669,11 +4389,11 @@ func DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAuthor(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGteReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3687,11 +4407,11 @@ func DayBooksByPageCountGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGteWithAuthorSeq 根据author、seq从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
-// author string author
-// seq string seq
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGtReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// seq string 编号
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3705,11 +4425,11 @@ func DayBooksByPageCountGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGteWithAuthorSeq 根据author、seq从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
-// author string author
-// seq string seq
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountLtReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// seq string 编号
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3723,11 +4443,11 @@ func DayBooksByPageCountLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// seq string seq
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountLteReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// seq string 编号
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3741,12 +4461,12 @@ func DayBooksByPageCountLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGteLteReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3760,11 +4480,11 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// seq string seq
+// DayBooksByPriceGteReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// seq string 编号
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3778,11 +4498,11 @@ func DayBooksByPriceGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGteWithAuthorSeq 根据author、seq从Books查找价格大于、release_date为近几天的详细数据列表和总数量
-// author string author
-// seq string seq
+// DayBooksByPriceGtReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// seq string 编号
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3796,11 +4516,11 @@ func DayBooksByPriceGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGteWithAuthorSeq 根据author、seq从Books查找价格小于、release_date为近几天的详细数据列表和总数量
-// author string author
-// seq string seq
+// DayBooksByPriceLtReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// seq string 编号
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3814,11 +4534,11 @@ func DayBooksByPriceLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// seq string seq
+// DayBooksByPriceLteReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// seq string 编号
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3832,12 +4552,12 @@ func DayBooksByPriceLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGteWithAuthorSeq 根据author、seq从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// author string author
-// seq string seq
+// DayBooksByPriceGteLteReleaseDateGteWithAuthorSeq 根据作者、编号从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// author string 作者
+// seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3851,11 +4571,207 @@ func DayBooksByPriceGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGteWithClassName 根据class、书名从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByReleaseDateGteWithClassClass2Name 根据类别、子类别、书名从books表查找发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithClassClass2Name(es *elasticsearch.Client, class string, class2 string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteReleaseDateGteWithClassClass2 根据类别、子类别从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtReleaseDateGteWithClassClass2 根据类别、子类别从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtReleaseDateGteWithClassClass2 根据类别、子类别从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLteReleaseDateGteWithClassClass2 根据类别、子类别从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteLteReleaseDateGteWithClassClass2 根据类别、子类别从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGteReleaseDateGteWithClassClass2 根据类别、子类别从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGtReleaseDateGteWithClassClass2 根据类别、子类别从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// priceGt float64 价格大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceLtReleaseDateGteWithClassClass2 根据类别、子类别从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// priceLt float64 价格小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceLtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceLteReleaseDateGteWithClassClass2 根据类别、子类别从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGteLteReleaseDateGteWithClassClass2 根据类别、子类别从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGteLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByReleaseDateGteWithClassClass2Seq 根据类别、子类别、编号从books表查找发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithClassClass2Seq(es *elasticsearch.Client, class string, class2 string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteReleaseDateGteWithClassName 根据类别、书名从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// name string 书名
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3869,11 +4785,11 @@ func DayBooksByPageCountGteReleaseDateGteWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGteWithClassName 根据class、书名从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByPageCountGtReleaseDateGteWithClassName 根据类别、书名从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // name string 书名
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3887,11 +4803,11 @@ func DayBooksByPageCountGtReleaseDateGteWithClassName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGteWithClassName 根据class、书名从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByPageCountLtReleaseDateGteWithClassName 根据类别、书名从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // name string 书名
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3905,11 +4821,11 @@ func DayBooksByPageCountLtReleaseDateGteWithClassName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGteWithClassName 根据class、书名从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByPageCountLteReleaseDateGteWithClassName 根据类别、书名从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // name string 书名
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3923,12 +4839,12 @@ func DayBooksByPageCountLteReleaseDateGteWithClassName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGteWithClassName 根据class、书名从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByPageCountGteLteReleaseDateGteWithClassName 根据类别、书名从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3942,11 +4858,11 @@ func DayBooksByPageCountGteLteReleaseDateGteWithClassName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGteWithClassName 根据class、书名从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByPriceGteReleaseDateGteWithClassName 根据类别、书名从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // name string 书名
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3960,11 +4876,11 @@ func DayBooksByPriceGteReleaseDateGteWithClassName(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGteWithClassName 根据class、书名从Books查找价格大于、release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByPriceGtReleaseDateGteWithClassName 根据类别、书名从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // name string 书名
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3978,11 +4894,11 @@ func DayBooksByPriceGtReleaseDateGteWithClassName(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGteWithClassName 根据class、书名从Books查找价格小于、release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByPriceLtReleaseDateGteWithClassName 根据类别、书名从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // name string 书名
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -3996,11 +4912,11 @@ func DayBooksByPriceLtReleaseDateGteWithClassName(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGteWithClassName 根据class、书名从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByPriceLteReleaseDateGteWithClassName 根据类别、书名从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // name string 书名
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4014,12 +4930,12 @@ func DayBooksByPriceLteReleaseDateGteWithClassName(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGteWithClassName 根据class、书名从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByPriceGteLteReleaseDateGteWithClassName 根据类别、书名从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4033,11 +4949,11 @@ func DayBooksByPriceGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByReleaseDateGteWithClassNameSeq 根据class、书名、seq从Books查找release_date为近几天的详细数据列表和总数量
-// class string class
+// DayBooksByReleaseDateGteWithClassNameSeq 根据类别、书名、编号从books表查找发布日期为近几天的详细数据列表和总数量
+// class string 类别
 // name string 书名
-// seq string seq
-// releaseDateNDay int release_date为近几天
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByReleaseDateGteWithClassNameSeq(es *elasticsearch.Client, class string, name string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4051,11 +4967,11 @@ func DayBooksByReleaseDateGteWithClassNameSeq(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGteReleaseDateGteWithClass 根据class从Books查找page_count大于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceGteReleaseDateGteWithClass 根据类别从books表查找页数大于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4067,11 +4983,11 @@ func DayBooksByPageCountGtePriceGteReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGtReleaseDateGteWithClass 根据class从Books查找page_count大于等于、价格大于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceGtReleaseDateGteWithClass 根据类别从books表查找页数大于等于、价格大于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4083,11 +4999,11 @@ func DayBooksByPageCountGtePriceGtReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceLtReleaseDateGteWithClass 根据class从Books查找page_count大于等于、价格小于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceLtReleaseDateGteWithClass 根据类别从books表查找页数大于等于、价格小于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4099,11 +5015,11 @@ func DayBooksByPageCountGtePriceLtReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceLteReleaseDateGteWithClass 根据class从Books查找page_count大于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceLteReleaseDateGteWithClass 根据类别从books表查找页数大于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4115,12 +5031,12 @@ func DayBooksByPageCountGtePriceLteReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGteLteReleaseDateGteWithClass 根据class从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceGteLteReleaseDateGteWithClass 根据类别从books表查找页数大于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4132,11 +5048,11 @@ func DayBooksByPageCountGtePriceGteLteReleaseDateGteWithClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGteReleaseDateGteWithClass 根据class从Books查找page_count大于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceGteReleaseDateGteWithClass 根据类别从books表查找页数大于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGt int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4148,11 +5064,11 @@ func DayBooksByPageCountGtPriceGteReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGtReleaseDateGteWithClass 根据class从Books查找page_count大于、价格大于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceGtReleaseDateGteWithClass 根据类别从books表查找页数大于、价格大于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGt int64 页数大于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGt int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4164,11 +5080,11 @@ func DayBooksByPageCountGtPriceGtReleaseDateGteWithClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceLtReleaseDateGteWithClass 根据class从Books查找page_count大于、价格小于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceLtReleaseDateGteWithClass 根据类别从books表查找页数大于、价格小于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGt int64 页数大于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGt int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4180,11 +5096,11 @@ func DayBooksByPageCountGtPriceLtReleaseDateGteWithClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceLteReleaseDateGteWithClass 根据class从Books查找page_count大于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceLteReleaseDateGteWithClass 根据类别从books表查找页数大于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGt int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4196,12 +5112,12 @@ func DayBooksByPageCountGtPriceLteReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGteLteReleaseDateGteWithClass 根据class从Books查找page_count大于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceGteLteReleaseDateGteWithClass 根据类别从books表查找页数大于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGt int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4213,11 +5129,11 @@ func DayBooksByPageCountGtPriceGteLteReleaseDateGteWithClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGteReleaseDateGteWithClass 根据class从Books查找page_count小于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceGteReleaseDateGteWithClass 根据类别从books表查找页数小于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLt int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4229,11 +5145,11 @@ func DayBooksByPageCountLtPriceGteReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGtReleaseDateGteWithClass 根据class从Books查找page_count小于、价格大于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceGtReleaseDateGteWithClass 根据类别从books表查找页数小于、价格大于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountLt int64 页数小于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLt int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4245,11 +5161,11 @@ func DayBooksByPageCountLtPriceGtReleaseDateGteWithClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceLtReleaseDateGteWithClass 根据class从Books查找page_count小于、价格小于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceLtReleaseDateGteWithClass 根据类别从books表查找页数小于、价格小于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountLt int64 页数小于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLt int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4261,11 +5177,11 @@ func DayBooksByPageCountLtPriceLtReleaseDateGteWithClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceLteReleaseDateGteWithClass 根据class从Books查找page_count小于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceLteReleaseDateGteWithClass 根据类别从books表查找页数小于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLt int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4277,12 +5193,12 @@ func DayBooksByPageCountLtPriceLteReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGteLteReleaseDateGteWithClass 根据class从Books查找page_count小于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceGteLteReleaseDateGteWithClass 根据类别从books表查找页数小于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLt int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4294,11 +5210,11 @@ func DayBooksByPageCountLtPriceGteLteReleaseDateGteWithClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGteReleaseDateGteWithClass 根据class从Books查找page_count小于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceGteReleaseDateGteWithClass 根据类别从books表查找页数小于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4310,11 +5226,11 @@ func DayBooksByPageCountLtePriceGteReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGtReleaseDateGteWithClass 根据class从Books查找page_count小于等于、价格大于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceGtReleaseDateGteWithClass 根据类别从books表查找页数小于等于、价格大于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4326,11 +5242,11 @@ func DayBooksByPageCountLtePriceGtReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceLtReleaseDateGteWithClass 根据class从Books查找page_count小于等于、价格小于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceLtReleaseDateGteWithClass 根据类别从books表查找页数小于等于、价格小于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4342,11 +5258,11 @@ func DayBooksByPageCountLtePriceLtReleaseDateGteWithClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceLteReleaseDateGteWithClass 根据class从Books查找page_count小于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceLteReleaseDateGteWithClass 根据类别从books表查找页数小于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4358,12 +5274,12 @@ func DayBooksByPageCountLtePriceLteReleaseDateGteWithClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGteLteReleaseDateGteWithClass 根据class从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceGteLteReleaseDateGteWithClass 根据类别从books表查找页数小于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountLte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4375,12 +5291,12 @@ func DayBooksByPageCountLtePriceGteLteReleaseDateGteWithClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGteReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceGteReleaseDateGteWithClass 根据类别从books表查找页数大于等于和小于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4392,12 +5308,12 @@ func DayBooksByPageCountGteLtePriceGteReleaseDateGteWithClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGtReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、价格大于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceGtReleaseDateGteWithClass 根据类别从books表查找页数大于等于和小于等于、价格大于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4409,12 +5325,12 @@ func DayBooksByPageCountGteLtePriceGtReleaseDateGteWithClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceLtReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、价格小于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceLtReleaseDateGteWithClass 根据类别从books表查找页数大于等于和小于等于、价格小于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceLtReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4426,12 +5342,12 @@ func DayBooksByPageCountGteLtePriceLtReleaseDateGteWithClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceLteReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceLteReleaseDateGteWithClass 根据类别从books表查找页数大于等于和小于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4443,13 +5359,13 @@ func DayBooksByPageCountGteLtePriceLteReleaseDateGteWithClass(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass 根据class从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass 根据类别从books表查找页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4461,11 +5377,11 @@ func DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGteWithClassSeq 根据class、seq从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGteReleaseDateGteWithClassSeq 根据类别、编号从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4477,11 +5393,11 @@ func DayBooksByPageCountGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGteWithClassSeq 根据class、seq从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
-// class string class
-// seq string seq
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGtReleaseDateGteWithClassSeq 根据类别、编号从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// seq string 编号
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4493,11 +5409,11 @@ func DayBooksByPageCountGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGteWithClassSeq 根据class、seq从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
-// class string class
-// seq string seq
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountLtReleaseDateGteWithClassSeq 根据类别、编号从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// seq string 编号
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4509,11 +5425,11 @@ func DayBooksByPageCountLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGteWithClassSeq 根据class、seq从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// seq string seq
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountLteReleaseDateGteWithClassSeq 根据类别、编号从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// seq string 编号
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4525,12 +5441,12 @@ func DayBooksByPageCountLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGteWithClassSeq 根据class、seq从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// DayBooksByPageCountGteLteReleaseDateGteWithClassSeq 根据类别、编号从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4542,11 +5458,11 @@ func DayBooksByPageCountGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGteWithClassSeq 根据class、seq从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// seq string seq
+// DayBooksByPriceGteReleaseDateGteWithClassSeq 根据类别、编号从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// seq string 编号
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4558,11 +5474,11 @@ func DayBooksByPriceGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGteWithClassSeq 根据class、seq从Books查找价格大于、release_date为近几天的详细数据列表和总数量
-// class string class
-// seq string seq
+// DayBooksByPriceGtReleaseDateGteWithClassSeq 根据类别、编号从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// seq string 编号
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4574,11 +5490,11 @@ func DayBooksByPriceGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGteWithClassSeq 根据class、seq从Books查找价格小于、release_date为近几天的详细数据列表和总数量
-// class string class
-// seq string seq
+// DayBooksByPriceLtReleaseDateGteWithClassSeq 根据类别、编号从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// seq string 编号
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4590,11 +5506,11 @@ func DayBooksByPriceLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGteWithClassSeq 根据class、seq从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// seq string seq
+// DayBooksByPriceLteReleaseDateGteWithClassSeq 根据类别、编号从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// seq string 编号
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4606,12 +5522,12 @@ func DayBooksByPriceLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGteWithClassSeq 根据class、seq从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// class string class
-// seq string seq
+// DayBooksByPriceGteLteReleaseDateGteWithClassSeq 根据类别、编号从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class string 类别
+// seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
@@ -4623,11 +5539,783 @@ func DayBooksByPriceGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGteReleaseDateGteWithName 根据书名从Books查找page_count大于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteReleaseDateGteWithClass2Name 根据子类别、书名从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
 // name string 书名
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtReleaseDateGteWithClass2Name 根据子类别、书名从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtReleaseDateGteWithClass2Name 根据子类别、书名从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLteReleaseDateGteWithClass2Name 根据子类别、书名从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteLteReleaseDateGteWithClass2Name 根据子类别、书名从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGteReleaseDateGteWithClass2Name 根据子类别、书名从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGtReleaseDateGteWithClass2Name 根据子类别、书名从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// priceGt float64 价格大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceLtReleaseDateGteWithClass2Name 根据子类别、书名从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// priceLt float64 价格小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceLtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceLteReleaseDateGteWithClass2Name 根据子类别、书名从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGteLteReleaseDateGteWithClass2Name 根据子类别、书名从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByReleaseDateGteWithClass2NameSeq 根据子类别、书名、编号从books表查找发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// seq string 编号
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByReleaseDateGteWithClass2NameSeq(es *elasticsearch.Client, class2 string, name string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	matches := []eq.Map{
+		eq.Match("name", name),
+	}
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtePriceGteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// priceGte float64 价格大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtePriceGteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtePriceGtReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于、价格大于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// priceGt float64 价格大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtePriceGtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtePriceLtReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于、价格小于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// priceLt float64 价格小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtePriceLtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtePriceLteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtePriceLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtePriceGteLteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtePriceGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtPriceGteReleaseDateGteWithClass2 根据子类别从books表查找页数大于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// priceGte float64 价格大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtPriceGteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGt int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtPriceGtReleaseDateGteWithClass2 根据子类别从books表查找页数大于、价格大于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// priceGt float64 价格大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtPriceGtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGt int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtPriceLtReleaseDateGteWithClass2 根据子类别从books表查找页数大于、价格小于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// priceLt float64 价格小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtPriceLtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGt int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtPriceLteReleaseDateGteWithClass2 根据子类别从books表查找页数大于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtPriceLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGt int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtPriceGteLteReleaseDateGteWithClass2 根据子类别从books表查找页数大于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGt int64 页数大于
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtPriceGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGt int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtPriceGteReleaseDateGteWithClass2 根据子类别从books表查找页数小于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// priceGte float64 价格大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtPriceGteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLt int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtPriceGtReleaseDateGteWithClass2 根据子类别从books表查找页数小于、价格大于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// priceGt float64 价格大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtPriceGtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLt int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtPriceLtReleaseDateGteWithClass2 根据子类别从books表查找页数小于、价格小于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// priceLt float64 价格小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtPriceLtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLt int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtPriceLteReleaseDateGteWithClass2 根据子类别从books表查找页数小于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtPriceLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLt int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtPriceGteLteReleaseDateGteWithClass2 根据子类别从books表查找页数小于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLt int64 页数小于
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtPriceGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLt int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtePriceGteReleaseDateGteWithClass2 根据子类别从books表查找页数小于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// priceGte float64 价格大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtePriceGteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtePriceGtReleaseDateGteWithClass2 根据子类别从books表查找页数小于等于、价格大于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// priceGt float64 价格大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtePriceGtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtePriceLtReleaseDateGteWithClass2 根据子类别从books表查找页数小于等于、价格小于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// priceLt float64 价格小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtePriceLtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtePriceLteReleaseDateGteWithClass2 根据子类别从books表查找页数小于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtePriceLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtePriceGteLteReleaseDateGteWithClass2 根据子类别从books表查找页数小于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountLte int64 页数小于等于
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtePriceGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountLte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteLtePriceGteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于和小于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// priceGte float64 价格大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteLtePriceGteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteLtePriceGtReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于和小于等于、价格大于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// priceGt float64 价格大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteLtePriceGtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteLtePriceLtReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于和小于等于、价格小于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// priceLt float64 价格小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteLtePriceLtReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteLtePriceLteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于和小于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteLtePriceLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass2 根据子类别从books表查找页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, class2 string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, pageCountGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLtReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, pageCountLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountLteReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("page_count", nil, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGteLteReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPageCountGteLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGteReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// priceGte float64 价格大于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGtReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// priceGt float64 价格大于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("price", nil, priceGt, nil, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceLtReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// priceLt float64 价格小于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, priceLt, nil),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceLteReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("price", nil, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPriceGteLteReleaseDateGteWithClass2Seq 根据子类别、编号从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// priceGte float64 价格大于等于
+// priceLte float64 价格小于等于
+// releaseDateNDay int 发布日期为近几天
+func DayBooksByPriceGteLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+		eq.Range("price", priceGte, nil, nil, priceLte),
+		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
+	}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(filters))}
+	return queryBooksList(es, esQuery)
+}
+
+// DayBooksByPageCountGtePriceGteReleaseDateGteWithName 根据书名从books表查找页数大于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// name string 书名
+// pageCountGte int64 页数大于等于
+// priceGte float64 价格大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4641,11 +6329,11 @@ func DayBooksByPageCountGtePriceGteReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGtReleaseDateGteWithName 根据书名从Books查找page_count大于等于、价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtePriceGtReleaseDateGteWithName 根据书名从books表查找页数大于等于、价格大于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4659,11 +6347,11 @@ func DayBooksByPageCountGtePriceGtReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceLtReleaseDateGteWithName 根据书名从Books查找page_count大于等于、价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtePriceLtReleaseDateGteWithName 根据书名从books表查找页数大于等于、价格小于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceLtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4677,11 +6365,11 @@ func DayBooksByPageCountGtePriceLtReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceLteReleaseDateGteWithName 根据书名从Books查找page_count大于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtePriceLteReleaseDateGteWithName 根据书名从books表查找页数大于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4695,12 +6383,12 @@ func DayBooksByPageCountGtePriceLteReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGteLteReleaseDateGteWithName 根据书名从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtePriceGteLteReleaseDateGteWithName 根据书名从books表查找页数大于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4714,11 +6402,11 @@ func DayBooksByPageCountGtePriceGteLteReleaseDateGteWithName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGteReleaseDateGteWithName 根据书名从Books查找page_count大于、价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtPriceGteReleaseDateGteWithName 根据书名从books表查找页数大于、价格大于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGt int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4732,11 +6420,11 @@ func DayBooksByPageCountGtPriceGteReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGtReleaseDateGteWithName 根据书名从Books查找page_count大于、价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtPriceGtReleaseDateGteWithName 根据书名从books表查找页数大于、价格大于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGt int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4750,11 +6438,11 @@ func DayBooksByPageCountGtPriceGtReleaseDateGteWithName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceLtReleaseDateGteWithName 根据书名从Books查找page_count大于、价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtPriceLtReleaseDateGteWithName 根据书名从books表查找页数大于、价格小于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceLtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGt int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4768,11 +6456,11 @@ func DayBooksByPageCountGtPriceLtReleaseDateGteWithName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceLteReleaseDateGteWithName 根据书名从Books查找page_count大于、价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtPriceLteReleaseDateGteWithName 根据书名从books表查找页数大于、价格小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGt int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4786,12 +6474,12 @@ func DayBooksByPageCountGtPriceLteReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGteLteReleaseDateGteWithName 根据书名从Books查找page_count大于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtPriceGteLteReleaseDateGteWithName 根据书名从books表查找页数大于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGt int64 page_count大于
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGt int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4805,11 +6493,11 @@ func DayBooksByPageCountGtPriceGteLteReleaseDateGteWithName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGteReleaseDateGteWithName 根据书名从Books查找page_count小于、价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtPriceGteReleaseDateGteWithName 根据书名从books表查找页数小于、价格大于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLt int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4823,11 +6511,11 @@ func DayBooksByPageCountLtPriceGteReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGtReleaseDateGteWithName 根据书名从Books查找page_count小于、价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtPriceGtReleaseDateGteWithName 根据书名从books表查找页数小于、价格大于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLt int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4841,11 +6529,11 @@ func DayBooksByPageCountLtPriceGtReleaseDateGteWithName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceLtReleaseDateGteWithName 根据书名从Books查找page_count小于、价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtPriceLtReleaseDateGteWithName 根据书名从books表查找页数小于、价格小于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceLtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLt int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4859,11 +6547,11 @@ func DayBooksByPageCountLtPriceLtReleaseDateGteWithName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceLteReleaseDateGteWithName 根据书名从Books查找page_count小于、价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtPriceLteReleaseDateGteWithName 根据书名从books表查找页数小于、价格小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLt int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4877,12 +6565,12 @@ func DayBooksByPageCountLtPriceLteReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGteLteReleaseDateGteWithName 根据书名从Books查找page_count小于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtPriceGteLteReleaseDateGteWithName 根据书名从books表查找页数小于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountLt int64 page_count小于
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLt int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4896,11 +6584,11 @@ func DayBooksByPageCountLtPriceGteLteReleaseDateGteWithName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGteReleaseDateGteWithName 根据书名从Books查找page_count小于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtePriceGteReleaseDateGteWithName 根据书名从books表查找页数小于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4914,11 +6602,11 @@ func DayBooksByPageCountLtePriceGteReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGtReleaseDateGteWithName 根据书名从Books查找page_count小于等于、价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtePriceGtReleaseDateGteWithName 根据书名从books表查找页数小于等于、价格大于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4932,11 +6620,11 @@ func DayBooksByPageCountLtePriceGtReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceLtReleaseDateGteWithName 根据书名从Books查找page_count小于等于、价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtePriceLtReleaseDateGteWithName 根据书名从books表查找页数小于等于、价格小于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceLtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4950,11 +6638,11 @@ func DayBooksByPageCountLtePriceLtReleaseDateGteWithName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceLteReleaseDateGteWithName 根据书名从Books查找page_count小于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtePriceLteReleaseDateGteWithName 根据书名从books表查找页数小于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4968,12 +6656,12 @@ func DayBooksByPageCountLtePriceLteReleaseDateGteWithName(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGteLteReleaseDateGteWithName 根据书名从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtePriceGteLteReleaseDateGteWithName 根据书名从books表查找页数小于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountLte int64 page_count小于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountLte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4987,12 +6675,12 @@ func DayBooksByPageCountLtePriceGteLteReleaseDateGteWithName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGteReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLtePriceGteReleaseDateGteWithName 根据书名从books表查找页数大于等于和小于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5006,12 +6694,12 @@ func DayBooksByPageCountGteLtePriceGteReleaseDateGteWithName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGtReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLtePriceGtReleaseDateGteWithName 根据书名从books表查找页数大于等于和小于等于、价格大于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5025,12 +6713,12 @@ func DayBooksByPageCountGteLtePriceGtReleaseDateGteWithName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceLtReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLtePriceLtReleaseDateGteWithName 根据书名从books表查找页数大于等于和小于等于、价格小于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceLtReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5044,12 +6732,12 @@ func DayBooksByPageCountGteLtePriceLtReleaseDateGteWithName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceLteReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLtePriceLteReleaseDateGteWithName 根据书名从books表查找页数大于等于和小于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5063,13 +6751,13 @@ func DayBooksByPageCountGteLtePriceLteReleaseDateGteWithName(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithName 根据书名从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithName 根据书名从books表查找页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5083,11 +6771,11 @@ func DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithName(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteReleaseDateGteWithNameSeq 根据书名、seq从Books查找page_count大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteReleaseDateGteWithNameSeq 根据书名、编号从books表查找页数大于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// releaseDateNDay int release_date为近几天
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5101,11 +6789,11 @@ func DayBooksByPageCountGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtReleaseDateGteWithNameSeq 根据书名、seq从Books查找page_count大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGtReleaseDateGteWithNameSeq 根据书名、编号从books表查找页数大于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// seq string seq
-// pageCountGt int64 page_count大于
-// releaseDateNDay int release_date为近几天
+// seq string 编号
+// pageCountGt int64 页数大于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5119,11 +6807,11 @@ func DayBooksByPageCountGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtReleaseDateGteWithNameSeq 根据书名、seq从Books查找page_count小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLtReleaseDateGteWithNameSeq 根据书名、编号从books表查找页数小于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// seq string seq
-// pageCountLt int64 page_count小于
-// releaseDateNDay int release_date为近几天
+// seq string 编号
+// pageCountLt int64 页数小于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5137,11 +6825,11 @@ func DayBooksByPageCountLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLteReleaseDateGteWithNameSeq 根据书名、seq从Books查找page_count小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountLteReleaseDateGteWithNameSeq 根据书名、编号从books表查找页数小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// seq string seq
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// seq string 编号
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5155,12 +6843,12 @@ func DayBooksByPageCountLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLteReleaseDateGteWithNameSeq 根据书名、seq从Books查找page_count大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPageCountGteLteReleaseDateGteWithNameSeq 根据书名、编号从books表查找页数大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
-// releaseDateNDay int release_date为近几天
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5174,11 +6862,11 @@ func DayBooksByPageCountGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteReleaseDateGteWithNameSeq 根据书名、seq从Books查找价格大于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteReleaseDateGteWithNameSeq 根据书名、编号从books表查找价格大于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// seq string seq
+// seq string 编号
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5192,11 +6880,11 @@ func DayBooksByPriceGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGtReleaseDateGteWithNameSeq 根据书名、seq从Books查找价格大于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGtReleaseDateGteWithNameSeq 根据书名、编号从books表查找价格大于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// seq string seq
+// seq string 编号
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5210,11 +6898,11 @@ func DayBooksByPriceGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name s
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLtReleaseDateGteWithNameSeq 根据书名、seq从Books查找价格小于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLtReleaseDateGteWithNameSeq 根据书名、编号从books表查找价格小于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// seq string seq
+// seq string 编号
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5228,11 +6916,11 @@ func DayBooksByPriceLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name s
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceLteReleaseDateGteWithNameSeq 根据书名、seq从Books查找价格小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceLteReleaseDateGteWithNameSeq 根据书名、编号从books表查找价格小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// seq string seq
+// seq string 编号
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5246,12 +6934,12 @@ func DayBooksByPriceLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPriceGteLteReleaseDateGteWithNameSeq 根据书名、seq从Books查找价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
+// DayBooksByPriceGteLteReleaseDateGteWithNameSeq 根据书名、编号从books表查找价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
 // name string 书名
-// seq string seq
+// seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPriceGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5265,11 +6953,11 @@ func DayBooksByPriceGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceGteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5281,11 +6969,11 @@ func DayBooksByPageCountGtePriceGteReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGtReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、价格大于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceGtReleaseDateGteWithSeq 根据编号从books表查找页数大于等于、价格大于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5297,11 +6985,11 @@ func DayBooksByPageCountGtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceLtReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、价格小于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceLtReleaseDateGteWithSeq 根据编号从books表查找页数大于等于、价格小于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5313,11 +7001,11 @@ func DayBooksByPageCountGtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceLteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5329,12 +7017,12 @@ func DayBooksByPageCountGtePriceLteReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtePriceGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
+// DayBooksByPageCountGtePriceGteLteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5346,11 +7034,11 @@ func DayBooksByPageCountGtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGteReleaseDateGteWithSeq 根据seq从Books查找page_count大于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceGteReleaseDateGteWithSeq 根据编号从books表查找页数大于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGt int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5362,11 +7050,11 @@ func DayBooksByPageCountGtPriceGteReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGtReleaseDateGteWithSeq 根据seq从Books查找page_count大于、价格大于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceGtReleaseDateGteWithSeq 根据编号从books表查找页数大于、价格大于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGt int64 页数大于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGt int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5378,11 +7066,11 @@ func DayBooksByPageCountGtPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceLtReleaseDateGteWithSeq 根据seq从Books查找page_count大于、价格小于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceLtReleaseDateGteWithSeq 根据编号从books表查找页数大于、价格小于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGt int64 页数大于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGt int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5394,11 +7082,11 @@ func DayBooksByPageCountGtPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceLteReleaseDateGteWithSeq 根据编号从books表查找页数大于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGt int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5410,12 +7098,12 @@ func DayBooksByPageCountGtPriceLteReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGtPriceGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGt int64 page_count大于
+// DayBooksByPageCountGtPriceGteLteReleaseDateGteWithSeq 根据编号从books表查找页数大于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGtPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGt int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5427,11 +7115,11 @@ func DayBooksByPageCountGtPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGteReleaseDateGteWithSeq 根据seq从Books查找page_count小于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceGteReleaseDateGteWithSeq 根据编号从books表查找页数小于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLt int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5443,11 +7131,11 @@ func DayBooksByPageCountLtPriceGteReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGtReleaseDateGteWithSeq 根据seq从Books查找page_count小于、价格大于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceGtReleaseDateGteWithSeq 根据编号从books表查找页数小于、价格大于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountLt int64 页数小于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLt int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5459,11 +7147,11 @@ func DayBooksByPageCountLtPriceGtReleaseDateGteWithSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceLtReleaseDateGteWithSeq 根据seq从Books查找page_count小于、价格小于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceLtReleaseDateGteWithSeq 根据编号从books表查找页数小于、价格小于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountLt int64 页数小于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLt int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5475,11 +7163,11 @@ func DayBooksByPageCountLtPriceLtReleaseDateGteWithSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceLteReleaseDateGteWithSeq 根据seq从Books查找page_count小于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceLteReleaseDateGteWithSeq 根据编号从books表查找页数小于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLt int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5491,12 +7179,12 @@ func DayBooksByPageCountLtPriceLteReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtPriceGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count小于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountLt int64 page_count小于
+// DayBooksByPageCountLtPriceGteLteReleaseDateGteWithSeq 根据编号从books表查找页数小于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLt int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5508,11 +7196,11 @@ func DayBooksByPageCountLtPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGteReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceGteReleaseDateGteWithSeq 根据编号从books表查找页数小于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5524,11 +7212,11 @@ func DayBooksByPageCountLtePriceGteReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGtReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、价格大于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceGtReleaseDateGteWithSeq 根据编号从books表查找页数小于等于、价格大于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5540,11 +7228,11 @@ func DayBooksByPageCountLtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceLtReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、价格小于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceLtReleaseDateGteWithSeq 根据编号从books表查找页数小于等于、价格小于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5556,11 +7244,11 @@ func DayBooksByPageCountLtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceLteReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceLteReleaseDateGteWithSeq 根据编号从books表查找页数小于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5572,12 +7260,12 @@ func DayBooksByPageCountLtePriceLteReleaseDateGteWithSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountLtePriceGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count小于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountLtePriceGteLteReleaseDateGteWithSeq 根据编号从books表查找页数小于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountLtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountLte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5589,12 +7277,12 @@ func DayBooksByPageCountLtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、价格大于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceGteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于和小于等于、价格大于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5606,12 +7294,12 @@ func DayBooksByPageCountGteLtePriceGteReleaseDateGteWithSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGtReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、价格大于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceGtReleaseDateGteWithSeq 根据编号从books表查找页数大于等于和小于等于、价格大于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5623,12 +7311,12 @@ func DayBooksByPageCountGteLtePriceGtReleaseDateGteWithSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceLtReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、价格小于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceLtReleaseDateGteWithSeq 根据编号从books表查找页数大于等于和小于等于、价格小于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5640,12 +7328,12 @@ func DayBooksByPageCountGteLtePriceLtReleaseDateGteWithSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、价格小于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceLteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于和小于等于、价格小于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),
@@ -5657,13 +7345,13 @@ func DayBooksByPageCountGteLtePriceLteReleaseDateGteWithSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithSeq 根据seq从Books查找page_count大于等于和小于等于、价格大于等于和小于等于、release_date为近几天的详细数据列表和总数量
-// seq string seq
-// pageCountGte int64 page_count大于等于
-// pageCountLte int64 page_count小于等于
+// DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithSeq 根据编号从books表查找页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几天的详细数据列表和总数量
+// seq string 编号
+// pageCountGte int64 页数大于等于
+// pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
-// releaseDateNDay int release_date为近几天
+// releaseDateNDay int 发布日期为近几天
 func DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("seq", seq),

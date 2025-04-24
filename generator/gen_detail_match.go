@@ -19,10 +19,6 @@ func PreDetailMatchCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 
 	// 尝试加载自定义生成配置
 	genCfg := LoadCustomGenConfig(mappingPath)
-	maxCombine := MaxCombine
-	if genCfg.MaxCombine > 0 {
-		maxCombine = genCfg.MaxCombine
-	}
 
 	// 根据配置处理全文本字段的配置
 	fields := esInfo.Fields
@@ -31,11 +27,7 @@ func PreDetailMatchCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 	}
 
 	// 根据配置文件自定义字段分组进行随机组合
-	cmbFields := combineCustom(fields, genCfg.Combine, maxCombine)
-	if len(cmbFields) == 0 { // 不存在自定义字段的配置，则全字段随机
-		cmbFields = utils.Combinations(fields, maxCombine)
-	}
-
+	cmbFields := combineCustom(fields, genCfg.Combine, genCfg.MaxCombine)
 	cmbFields = LimitCombineFilter(cmbFields, map[string]int{TypeVector: -1})
 
 	// 构造渲染模板所需的数据
@@ -54,17 +46,14 @@ func PreDetailMatchCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 
 // getDetailMatchFuncName 获取函数名称
 func getDetailMatchFuncName(structName string, fields []*FieldInfo) string {
-	fn := "Match" + structName + "By"
-	for _, f := range fields {
-		fn += f.FieldName
-	}
+	fn := "Match" + structName + "By" + GenFieldsName(fields)
 	return fn
 }
 
 // getDetailMatchFuncComment 获取函数注释
 func getDetailMatchFuncComment(structComment string, fields []*FieldInfo) string {
 	// 函数注释
-	cmt := "对" + GenFieldNames(fields)
+	cmt := "对" + GenFieldsCmt(fields)
 	cmt += "进行检索(等于)查找" + structComment + "的详细数据列表和总数量\n"
 
 	// 参数注释
@@ -89,9 +78,10 @@ func getDetailMatchQuery(fields []*FieldInfo, termInShould bool) string {
 
 	// bool部分参数
 	bq := GenBoolCond(mq, tq, termInShould)
+	esq := GenESQueryCond(bq, "")
 
 	// 拼接match和term条件
-	fq := mq + tq + bq
+	fq := mq + tq + esq
 
 	return fq
 }

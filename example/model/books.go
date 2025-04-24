@@ -4,15 +4,16 @@ package model
 
 import "time"
 
-// Books .
+// Books Books表
 type Books struct {
 	AllText     string    `json:"all_text" es:"type:text"`           // 全文本
 	AllVector   []float32 `json:"all_vector" es:"type:dense_vector"` // 全文本向量
-	Author      string    `json:"author" es:"type:text;keyword"`     // author
-	Class       string    `json:"class" es:"type:keyword"`           // class
+	Author      string    `json:"author" es:"type:text;keyword"`     // 作者
+	Class       string    `json:"class" es:"type:keyword"`           // 类别
+	Class2      string    `json:"class2" es:"type:keyword"`          // 子类别
 	Name        string    `json:"name" es:"type:text;keyword"`       // 书名
-	PageCount   int64     `json:"page_count" es:"type:long"`         // page_count
+	PageCount   int64     `json:"page_count" es:"type:long"`         // 页数
 	Price       float64   `json:"price" es:"type:float"`             // 价格
-	ReleaseDate time.Time `json:"release_date" es:"type:date"`       // release_date
-	Seq         string    `json:"seq" es:"type:keyword"`             // seq
+	ReleaseDate time.Time `json:"release_date" es:"type:date"`       // 发布日期
+	Seq         string    `json:"seq" es:"type:keyword"`             // 编号
 }

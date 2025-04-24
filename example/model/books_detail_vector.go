@@ -9,7 +9,7 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// KnnBooksByAllVector 对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVector 对全文本向量进行检索查找books表的详细数据列表和总数量
 // allVector []float32 全文本向量
 func KnnBooksByAllVector(es *elasticsearch.Client, allVector []float32) (*eq.Data, *eq.Query, error) {
 	knn := eq.Knn("all_vector", allVector)
@@ -17,7 +17,7 @@ func KnnBooksByAllVector(es *elasticsearch.Client, allVector []float32) (*eq.Dat
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllText 根据全文本过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllText 根据全文本过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllText(es *elasticsearch.Client, allText string, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -29,8 +29,8 @@ func KnnBooksByAllVectorWithAllText(es *elasticsearch.Client, allText string, al
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthor 根据author过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
+// KnnBooksByAllVectorWithAuthor 根据作者过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthor(es *elasticsearch.Client, author string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -41,8 +41,8 @@ func KnnBooksByAllVectorWithAuthor(es *elasticsearch.Client, author string, allV
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClass 根据class过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
+// KnnBooksByAllVectorWithClass 根据类别过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithClass(es *elasticsearch.Client, class string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -53,7 +53,19 @@ func KnnBooksByAllVectorWithClass(es *elasticsearch.Client, class string, allVec
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithName 根据书名过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithClass2 根据子类别过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2(es *elasticsearch.Client, class2 string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithName 根据书名过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // name string 书名
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithName(es *elasticsearch.Client, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -65,8 +77,8 @@ func KnnBooksByAllVectorWithName(es *elasticsearch.Client, name string, allVecto
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithPageCount 根据page_count过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// pageCount int64 page_count
+// KnnBooksByAllVectorWithPageCount 根据页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// pageCount int64 页数
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithPageCount(es *elasticsearch.Client, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -77,7 +89,7 @@ func KnnBooksByAllVectorWithPageCount(es *elasticsearch.Client, pageCount int64,
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithPrice 根据价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithPrice 根据价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // price float64 价格
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithPrice(es *elasticsearch.Client, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -89,8 +101,8 @@ func KnnBooksByAllVectorWithPrice(es *elasticsearch.Client, price float64, allVe
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithReleaseDate 根据release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// releaseDate time.Time release_date
+// KnnBooksByAllVectorWithReleaseDate 根据发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithReleaseDate(es *elasticsearch.Client, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -101,8 +113,8 @@ func KnnBooksByAllVectorWithReleaseDate(es *elasticsearch.Client, releaseDate ti
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithSeq 根据seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// seq string seq
+// KnnBooksByAllVectorWithSeq 根据编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithSeq(es *elasticsearch.Client, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -113,9 +125,9 @@ func KnnBooksByAllVectorWithSeq(es *elasticsearch.Client, seq string, allVector 
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextAuthor 根据全文本、author过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextAuthor 根据全文本、作者过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// author string author
+// author string 作者
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -127,9 +139,9 @@ func KnnBooksByAllVectorWithAllTextAuthor(es *elasticsearch.Client, allText stri
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextClass 根据全文本、class过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextClass 根据全文本、类别过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// class string class
+// class string 类别
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextClass(es *elasticsearch.Client, allText string, class string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -141,7 +153,21 @@ func KnnBooksByAllVectorWithAllTextClass(es *elasticsearch.Client, allText strin
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextName 根据全文本、书名过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextClass2 根据全文本、子类别过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Term("class2", class2),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithAllTextName 根据全文本、书名过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // allVector []float32 全文本向量
@@ -155,9 +181,9 @@ func KnnBooksByAllVectorWithAllTextName(es *elasticsearch.Client, allText string
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextPageCount 根据全文本、page_count过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextPageCount 根据全文本、页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// pageCount int64 page_count
+// pageCount int64 页数
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextPageCount(es *elasticsearch.Client, allText string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -169,7 +195,7 @@ func KnnBooksByAllVectorWithAllTextPageCount(es *elasticsearch.Client, allText s
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextPrice 根据全文本、价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextPrice 根据全文本、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
 // price float64 价格
 // allVector []float32 全文本向量
@@ -183,9 +209,9 @@ func KnnBooksByAllVectorWithAllTextPrice(es *elasticsearch.Client, allText strin
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextReleaseDate 根据全文本、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextReleaseDate 根据全文本、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// releaseDate time.Time release_date
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -197,9 +223,9 @@ func KnnBooksByAllVectorWithAllTextReleaseDate(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextSeq 根据全文本、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextSeq 根据全文本、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// seq string seq
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -211,9 +237,9 @@ func KnnBooksByAllVectorWithAllTextSeq(es *elasticsearch.Client, allText string,
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorClass 根据author、class过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
-// class string class
+// KnnBooksByAllVectorWithAuthorClass 根据作者、类别过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// class string 类别
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorClass(es *elasticsearch.Client, author string, class string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -225,8 +251,22 @@ func KnnBooksByAllVectorWithAuthorClass(es *elasticsearch.Client, author string,
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorName 根据author、书名过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
+// KnnBooksByAllVectorWithAuthorClass2 根据作者、子类别过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Match("author", author),
+		eq.Term("class2", class2),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithAuthorName 根据作者、书名过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
 // name string 书名
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorName(es *elasticsearch.Client, author string, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -239,9 +279,9 @@ func KnnBooksByAllVectorWithAuthorName(es *elasticsearch.Client, author string, 
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorPageCount 根据author、page_count过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
-// pageCount int64 page_count
+// KnnBooksByAllVectorWithAuthorPageCount 根据作者、页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// pageCount int64 页数
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorPageCount(es *elasticsearch.Client, author string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -253,8 +293,8 @@ func KnnBooksByAllVectorWithAuthorPageCount(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorPrice 根据author、价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
+// KnnBooksByAllVectorWithAuthorPrice 根据作者、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
 // price float64 价格
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorPrice(es *elasticsearch.Client, author string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -267,9 +307,9 @@ func KnnBooksByAllVectorWithAuthorPrice(es *elasticsearch.Client, author string,
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorReleaseDate 根据author、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
-// releaseDate time.Time release_date
+// KnnBooksByAllVectorWithAuthorReleaseDate 根据作者、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -281,9 +321,9 @@ func KnnBooksByAllVectorWithAuthorReleaseDate(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorSeq 根据author、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
-// seq string seq
+// KnnBooksByAllVectorWithAuthorSeq 根据作者、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorSeq(es *elasticsearch.Client, author string, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -295,8 +335,22 @@ func KnnBooksByAllVectorWithAuthorSeq(es *elasticsearch.Client, author string, s
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClassName 根据class、书名过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
+// KnnBooksByAllVectorWithClassClass2 根据类别、子类别过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClassClass2(es *elasticsearch.Client, class string, class2 string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClassName 根据类别、书名过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
 // name string 书名
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithClassName(es *elasticsearch.Client, class string, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -309,9 +363,9 @@ func KnnBooksByAllVectorWithClassName(es *elasticsearch.Client, class string, na
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClassPageCount 根据class、page_count过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
-// pageCount int64 page_count
+// KnnBooksByAllVectorWithClassPageCount 根据类别、页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
+// pageCount int64 页数
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithClassPageCount(es *elasticsearch.Client, class string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -323,8 +377,8 @@ func KnnBooksByAllVectorWithClassPageCount(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClassPrice 根据class、价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
+// KnnBooksByAllVectorWithClassPrice 根据类别、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
 // price float64 价格
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithClassPrice(es *elasticsearch.Client, class string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -337,9 +391,9 @@ func KnnBooksByAllVectorWithClassPrice(es *elasticsearch.Client, class string, p
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClassReleaseDate 根据class、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
-// releaseDate time.Time release_date
+// KnnBooksByAllVectorWithClassReleaseDate 根据类别、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -351,9 +405,9 @@ func KnnBooksByAllVectorWithClassReleaseDate(es *elasticsearch.Client, class str
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClassSeq 根据class、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
-// seq string seq
+// KnnBooksByAllVectorWithClassSeq 根据类别、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithClassSeq(es *elasticsearch.Client, class string, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -365,9 +419,79 @@ func KnnBooksByAllVectorWithClassSeq(es *elasticsearch.Client, class string, seq
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithNamePageCount 根据书名、page_count过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithClass2Name 根据子类别、书名过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
 // name string 书名
-// pageCount int64 page_count
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2Name(es *elasticsearch.Client, class2 string, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Match("name", name),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClass2PageCount 根据子类别、页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
+// pageCount int64 页数
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2PageCount(es *elasticsearch.Client, class2 string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("page_count", pageCount),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClass2Price 根据子类别、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
+// price float64 价格
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2Price(es *elasticsearch.Client, class2 string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("price", price),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClass2ReleaseDate 根据子类别、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
+// releaseDate time.Time 发布日期
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("release_date", releaseDate),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClass2Seq 根据子类别、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
+// seq string 编号
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithNamePageCount 根据书名、页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// name string 书名
+// pageCount int64 页数
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithNamePageCount(es *elasticsearch.Client, name string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -379,7 +503,7 @@ func KnnBooksByAllVectorWithNamePageCount(es *elasticsearch.Client, name string,
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithNamePrice 根据书名、价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithNamePrice 根据书名、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // name string 书名
 // price float64 价格
 // allVector []float32 全文本向量
@@ -393,9 +517,9 @@ func KnnBooksByAllVectorWithNamePrice(es *elasticsearch.Client, name string, pri
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithNameReleaseDate 根据书名、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithNameReleaseDate 根据书名、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // name string 书名
-// releaseDate time.Time release_date
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -407,9 +531,9 @@ func KnnBooksByAllVectorWithNameReleaseDate(es *elasticsearch.Client, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithNameSeq 根据书名、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithNameSeq 根据书名、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // name string 书名
-// seq string seq
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithNameSeq(es *elasticsearch.Client, name string, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -421,8 +545,8 @@ func KnnBooksByAllVectorWithNameSeq(es *elasticsearch.Client, name string, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithPageCountPrice 根据page_count、价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// pageCount int64 page_count
+// KnnBooksByAllVectorWithPageCountPrice 根据页数、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// pageCount int64 页数
 // price float64 价格
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -435,9 +559,9 @@ func KnnBooksByAllVectorWithPageCountPrice(es *elasticsearch.Client, pageCount i
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithPageCountReleaseDate 根据page_count、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// pageCount int64 page_count
-// releaseDate time.Time release_date
+// KnnBooksByAllVectorWithPageCountReleaseDate 根据页数、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// pageCount int64 页数
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithPageCountReleaseDate(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -449,9 +573,9 @@ func KnnBooksByAllVectorWithPageCountReleaseDate(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithPageCountSeq 根据page_count、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// pageCount int64 page_count
-// seq string seq
+// KnnBooksByAllVectorWithPageCountSeq 根据页数、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// pageCount int64 页数
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithPageCountSeq(es *elasticsearch.Client, pageCount int64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -463,9 +587,9 @@ func KnnBooksByAllVectorWithPageCountSeq(es *elasticsearch.Client, pageCount int
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithPriceReleaseDate 根据价格、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithPriceReleaseDate 根据价格、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // price float64 价格
-// releaseDate time.Time release_date
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithPriceReleaseDate(es *elasticsearch.Client, price float64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -477,9 +601,9 @@ func KnnBooksByAllVectorWithPriceReleaseDate(es *elasticsearch.Client, price flo
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithPriceSeq 根据价格、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithPriceSeq 根据价格、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // price float64 价格
-// seq string seq
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithPriceSeq(es *elasticsearch.Client, price float64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -491,9 +615,9 @@ func KnnBooksByAllVectorWithPriceSeq(es *elasticsearch.Client, price float64, se
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithReleaseDateSeq 根据release_date、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// releaseDate time.Time release_date
-// seq string seq
+// KnnBooksByAllVectorWithReleaseDateSeq 根据发布日期、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// releaseDate time.Time 发布日期
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -505,10 +629,10 @@ func KnnBooksByAllVectorWithReleaseDateSeq(es *elasticsearch.Client, releaseDate
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextAuthorClass 根据全文本、author、class过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextAuthorClass 根据全文本、作者、类别过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// class string class
+// author string 作者
+// class string 类别
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -521,9 +645,25 @@ func KnnBooksByAllVectorWithAllTextAuthorClass(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextAuthorName 根据全文本、author、书名过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextAuthorClass2 根据全文本、作者、子类别过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// author string author
+// author string 作者
+// class2 string 子类别
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithAllTextAuthorClass2(es *elasticsearch.Client, allText string, author string, class2 string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Match("author", author),
+		eq.Term("class2", class2),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithAllTextAuthorName 根据全文本、作者、书名过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// allText string 全文本
+// author string 作者
 // name string 书名
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -537,10 +677,10 @@ func KnnBooksByAllVectorWithAllTextAuthorName(es *elasticsearch.Client, allText 
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextAuthorPageCount 根据全文本、author、page_count过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextAuthorPageCount 根据全文本、作者、页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// pageCount int64 page_count
+// author string 作者
+// pageCount int64 页数
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextAuthorPageCount(es *elasticsearch.Client, allText string, author string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -553,9 +693,9 @@ func KnnBooksByAllVectorWithAllTextAuthorPageCount(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextAuthorPrice 根据全文本、author、价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextAuthorPrice 根据全文本、作者、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// author string author
+// author string 作者
 // price float64 价格
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextAuthorPrice(es *elasticsearch.Client, allText string, author string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -569,10 +709,10 @@ func KnnBooksByAllVectorWithAllTextAuthorPrice(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextAuthorReleaseDate 根据全文本、author、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextAuthorReleaseDate 根据全文本、作者、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// releaseDate time.Time release_date
+// author string 作者
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextAuthorReleaseDate(es *elasticsearch.Client, allText string, author string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -585,10 +725,10 @@ func KnnBooksByAllVectorWithAllTextAuthorReleaseDate(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextAuthorSeq 根据全文本、author、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextAuthorSeq 根据全文本、作者、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// author string author
-// seq string seq
+// author string 作者
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -601,9 +741,25 @@ func KnnBooksByAllVectorWithAllTextAuthorSeq(es *elasticsearch.Client, allText s
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextClassName 根据全文本、class、书名过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextClassClass2 根据全文本、类别、子类别过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// class string class
+// class string 类别
+// class2 string 子类别
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithAllTextClassClass2(es *elasticsearch.Client, allText string, class string, class2 string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithAllTextClassName 根据全文本、类别、书名过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// allText string 全文本
+// class string 类别
 // name string 书名
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -617,10 +773,10 @@ func KnnBooksByAllVectorWithAllTextClassName(es *elasticsearch.Client, allText s
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextClassPageCount 根据全文本、class、page_count过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextClassPageCount 根据全文本、类别、页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// pageCount int64 page_count
+// class string 类别
+// pageCount int64 页数
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextClassPageCount(es *elasticsearch.Client, allText string, class string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -633,9 +789,9 @@ func KnnBooksByAllVectorWithAllTextClassPageCount(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextClassPrice 根据全文本、class、价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextClassPrice 根据全文本、类别、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// class string class
+// class string 类别
 // price float64 价格
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextClassPrice(es *elasticsearch.Client, allText string, class string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -649,10 +805,10 @@ func KnnBooksByAllVectorWithAllTextClassPrice(es *elasticsearch.Client, allText 
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextClassReleaseDate 根据全文本、class、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextClassReleaseDate 根据全文本、类别、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// releaseDate time.Time release_date
+// class string 类别
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextClassReleaseDate(es *elasticsearch.Client, allText string, class string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -665,10 +821,10 @@ func KnnBooksByAllVectorWithAllTextClassReleaseDate(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextClassSeq 根据全文本、class、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextClassSeq 根据全文本、类别、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// class string class
-// seq string seq
+// class string 类别
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -681,10 +837,90 @@ func KnnBooksByAllVectorWithAllTextClassSeq(es *elasticsearch.Client, allText st
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextNamePageCount 根据全文本、书名、page_count过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextClass2Name 根据全文本、子类别、书名过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// name string 书名
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithAllTextClass2Name(es *elasticsearch.Client, allText string, class2 string, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Term("class2", class2),
+		eq.Match("name", name),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithAllTextClass2PageCount 根据全文本、子类别、页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// pageCount int64 页数
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithAllTextClass2PageCount(es *elasticsearch.Client, allText string, class2 string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Term("class2", class2),
+		eq.Term("page_count", pageCount),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithAllTextClass2Price 根据全文本、子类别、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// price float64 价格
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithAllTextClass2Price(es *elasticsearch.Client, allText string, class2 string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Term("class2", class2),
+		eq.Term("price", price),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithAllTextClass2ReleaseDate 根据全文本、子类别、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// releaseDate time.Time 发布日期
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithAllTextClass2ReleaseDate(es *elasticsearch.Client, allText string, class2 string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Term("class2", class2),
+		eq.Term("release_date", releaseDate),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithAllTextClass2Seq 根据全文本、子类别、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// allText string 全文本
+// class2 string 子类别
+// seq string 编号
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithAllTextClass2Seq(es *elasticsearch.Client, allText string, class2 string, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Match("all_text", allText),
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithAllTextNamePageCount 根据全文本、书名、页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// pageCount int64 page_count
+// pageCount int64 页数
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextNamePageCount(es *elasticsearch.Client, allText string, name string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -697,7 +933,7 @@ func KnnBooksByAllVectorWithAllTextNamePageCount(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextNamePrice 根据全文本、书名、价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextNamePrice 根据全文本、书名、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -713,10 +949,10 @@ func KnnBooksByAllVectorWithAllTextNamePrice(es *elasticsearch.Client, allText s
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextNameReleaseDate 根据全文本、书名、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextNameReleaseDate 根据全文本、书名、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// releaseDate time.Time release_date
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextNameReleaseDate(es *elasticsearch.Client, allText string, name string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -729,10 +965,10 @@ func KnnBooksByAllVectorWithAllTextNameReleaseDate(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextNameSeq 根据全文本、书名、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextNameSeq 根据全文本、书名、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-// seq string seq
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -745,9 +981,9 @@ func KnnBooksByAllVectorWithAllTextNameSeq(es *elasticsearch.Client, allText str
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextPageCountPrice 根据全文本、page_count、价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextPageCountPrice 根据全文本、页数、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// pageCount int64 page_count
+// pageCount int64 页数
 // price float64 价格
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextPageCountPrice(es *elasticsearch.Client, allText string, pageCount int64, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -761,10 +997,10 @@ func KnnBooksByAllVectorWithAllTextPageCountPrice(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextPageCountReleaseDate 根据全文本、page_count、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextPageCountReleaseDate 根据全文本、页数、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// pageCount int64 page_count
-// releaseDate time.Time release_date
+// pageCount int64 页数
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextPageCountReleaseDate(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -777,10 +1013,10 @@ func KnnBooksByAllVectorWithAllTextPageCountReleaseDate(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextPageCountSeq 根据全文本、page_count、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextPageCountSeq 根据全文本、页数、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// pageCount int64 page_count
-// seq string seq
+// pageCount int64 页数
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextPageCountSeq(es *elasticsearch.Client, allText string, pageCount int64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -793,10 +1029,10 @@ func KnnBooksByAllVectorWithAllTextPageCountSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextPriceReleaseDate 根据全文本、价格、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextPriceReleaseDate 根据全文本、价格、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
 // price float64 价格
-// releaseDate time.Time release_date
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextPriceReleaseDate(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -809,10 +1045,10 @@ func KnnBooksByAllVectorWithAllTextPriceReleaseDate(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextPriceSeq 根据全文本、价格、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextPriceSeq 根据全文本、价格、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
 // price float64 价格
-// seq string seq
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextPriceSeq(es *elasticsearch.Client, allText string, price float64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -825,10 +1061,10 @@ func KnnBooksByAllVectorWithAllTextPriceSeq(es *elasticsearch.Client, allText st
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAllTextReleaseDateSeq 根据全文本、release_date、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithAllTextReleaseDateSeq 根据全文本、发布日期、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
-// releaseDate time.Time release_date
-// seq string seq
+// releaseDate time.Time 发布日期
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -841,9 +1077,25 @@ func KnnBooksByAllVectorWithAllTextReleaseDateSeq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorClassName 根据author、class、书名过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
-// class string class
+// KnnBooksByAllVectorWithAuthorClassClass2 根据作者、类别、子类别过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// class2 string 子类别
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithAuthorClassClass2(es *elasticsearch.Client, author string, class string, class2 string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Match("author", author),
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithAuthorClassName 根据作者、类别、书名过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// class string 类别
 // name string 书名
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorClassName(es *elasticsearch.Client, author string, class string, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -857,10 +1109,10 @@ func KnnBooksByAllVectorWithAuthorClassName(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorClassPageCount 根据author、class、page_count过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
-// class string class
-// pageCount int64 page_count
+// KnnBooksByAllVectorWithAuthorClassPageCount 根据作者、类别、页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// pageCount int64 页数
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorClassPageCount(es *elasticsearch.Client, author string, class string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -873,9 +1125,9 @@ func KnnBooksByAllVectorWithAuthorClassPageCount(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorClassPrice 根据author、class、价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
-// class string class
+// KnnBooksByAllVectorWithAuthorClassPrice 根据作者、类别、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// class string 类别
 // price float64 价格
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorClassPrice(es *elasticsearch.Client, author string, class string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -889,10 +1141,10 @@ func KnnBooksByAllVectorWithAuthorClassPrice(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorClassReleaseDate 根据author、class、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
-// class string class
-// releaseDate time.Time release_date
+// KnnBooksByAllVectorWithAuthorClassReleaseDate 根据作者、类别、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorClassReleaseDate(es *elasticsearch.Client, author string, class string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -905,10 +1157,10 @@ func KnnBooksByAllVectorWithAuthorClassReleaseDate(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorClassSeq 根据author、class、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
-// class string class
-// seq string seq
+// KnnBooksByAllVectorWithAuthorClassSeq 根据作者、类别、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// class string 类别
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorClassSeq(es *elasticsearch.Client, author string, class string, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -921,10 +1173,90 @@ func KnnBooksByAllVectorWithAuthorClassSeq(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorNamePageCount 根据author、书名、page_count过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
+// KnnBooksByAllVectorWithAuthorClass2Name 根据作者、子类别、书名过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
 // name string 书名
-// pageCount int64 page_count
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithAuthorClass2Name(es *elasticsearch.Client, author string, class2 string, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Match("author", author),
+		eq.Term("class2", class2),
+		eq.Match("name", name),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithAuthorClass2PageCount 根据作者、子类别、页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// pageCount int64 页数
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithAuthorClass2PageCount(es *elasticsearch.Client, author string, class2 string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Match("author", author),
+		eq.Term("class2", class2),
+		eq.Term("page_count", pageCount),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithAuthorClass2Price 根据作者、子类别、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// price float64 价格
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithAuthorClass2Price(es *elasticsearch.Client, author string, class2 string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Match("author", author),
+		eq.Term("class2", class2),
+		eq.Term("price", price),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithAuthorClass2ReleaseDate 根据作者、子类别、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// releaseDate time.Time 发布日期
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithAuthorClass2ReleaseDate(es *elasticsearch.Client, author string, class2 string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Match("author", author),
+		eq.Term("class2", class2),
+		eq.Term("release_date", releaseDate),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithAuthorClass2Seq 根据作者、子类别、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// class2 string 子类别
+// seq string 编号
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithAuthorClass2Seq(es *elasticsearch.Client, author string, class2 string, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Match("author", author),
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithAuthorNamePageCount 根据作者、书名、页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// name string 书名
+// pageCount int64 页数
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorNamePageCount(es *elasticsearch.Client, author string, name string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -937,8 +1269,8 @@ func KnnBooksByAllVectorWithAuthorNamePageCount(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorNamePrice 根据author、书名、价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
+// KnnBooksByAllVectorWithAuthorNamePrice 根据作者、书名、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
 // name string 书名
 // price float64 价格
 // allVector []float32 全文本向量
@@ -953,10 +1285,10 @@ func KnnBooksByAllVectorWithAuthorNamePrice(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorNameReleaseDate 根据author、书名、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
+// KnnBooksByAllVectorWithAuthorNameReleaseDate 根据作者、书名、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
 // name string 书名
-// releaseDate time.Time release_date
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorNameReleaseDate(es *elasticsearch.Client, author string, name string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -969,10 +1301,10 @@ func KnnBooksByAllVectorWithAuthorNameReleaseDate(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorNameSeq 根据author、书名、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
+// KnnBooksByAllVectorWithAuthorNameSeq 根据作者、书名、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
 // name string 书名
-// seq string seq
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorNameSeq(es *elasticsearch.Client, author string, name string, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -985,9 +1317,9 @@ func KnnBooksByAllVectorWithAuthorNameSeq(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorPageCountPrice 根据author、page_count、价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
-// pageCount int64 page_count
+// KnnBooksByAllVectorWithAuthorPageCountPrice 根据作者、页数、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// pageCount int64 页数
 // price float64 价格
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorPageCountPrice(es *elasticsearch.Client, author string, pageCount int64, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -1001,10 +1333,10 @@ func KnnBooksByAllVectorWithAuthorPageCountPrice(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorPageCountReleaseDate 根据author、page_count、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
-// pageCount int64 page_count
-// releaseDate time.Time release_date
+// KnnBooksByAllVectorWithAuthorPageCountReleaseDate 根据作者、页数、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// pageCount int64 页数
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorPageCountReleaseDate(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1017,10 +1349,10 @@ func KnnBooksByAllVectorWithAuthorPageCountReleaseDate(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorPageCountSeq 根据author、page_count、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
-// pageCount int64 page_count
-// seq string seq
+// KnnBooksByAllVectorWithAuthorPageCountSeq 根据作者、页数、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// pageCount int64 页数
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorPageCountSeq(es *elasticsearch.Client, author string, pageCount int64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1033,10 +1365,10 @@ func KnnBooksByAllVectorWithAuthorPageCountSeq(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorPriceReleaseDate 根据author、价格、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
+// KnnBooksByAllVectorWithAuthorPriceReleaseDate 根据作者、价格、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
 // price float64 价格
-// releaseDate time.Time release_date
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorPriceReleaseDate(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1049,10 +1381,10 @@ func KnnBooksByAllVectorWithAuthorPriceReleaseDate(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorPriceSeq 根据author、价格、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
+// KnnBooksByAllVectorWithAuthorPriceSeq 根据作者、价格、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
 // price float64 价格
-// seq string seq
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorPriceSeq(es *elasticsearch.Client, author string, price float64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1065,10 +1397,10 @@ func KnnBooksByAllVectorWithAuthorPriceSeq(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithAuthorReleaseDateSeq 根据author、release_date、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// author string author
-// releaseDate time.Time release_date
-// seq string seq
+// KnnBooksByAllVectorWithAuthorReleaseDateSeq 根据作者、发布日期、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// author string 作者
+// releaseDate time.Time 发布日期
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1081,10 +1413,90 @@ func KnnBooksByAllVectorWithAuthorReleaseDateSeq(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClassNamePageCount 根据class、书名、page_count过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
+// KnnBooksByAllVectorWithClassClass2Name 根据类别、子类别、书名过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
 // name string 书名
-// pageCount int64 page_count
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClassClass2Name(es *elasticsearch.Client, class string, class2 string, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Match("name", name),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClassClass2PageCount 根据类别、子类别、页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// pageCount int64 页数
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClassClass2PageCount(es *elasticsearch.Client, class string, class2 string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Term("page_count", pageCount),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClassClass2Price 根据类别、子类别、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// price float64 价格
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClassClass2Price(es *elasticsearch.Client, class string, class2 string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Term("price", price),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClassClass2ReleaseDate 根据类别、子类别、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// releaseDate time.Time 发布日期
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClassClass2ReleaseDate(es *elasticsearch.Client, class string, class2 string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Term("release_date", releaseDate),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClassClass2Seq 根据类别、子类别、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
+// class2 string 子类别
+// seq string 编号
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClassClass2Seq(es *elasticsearch.Client, class string, class2 string, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class", class),
+		eq.Term("class2", class2),
+		eq.Term("seq", seq),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClassNamePageCount 根据类别、书名、页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
+// name string 书名
+// pageCount int64 页数
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithClassNamePageCount(es *elasticsearch.Client, class string, name string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1097,8 +1509,8 @@ func KnnBooksByAllVectorWithClassNamePageCount(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClassNamePrice 根据class、书名、价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
+// KnnBooksByAllVectorWithClassNamePrice 根据类别、书名、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
 // name string 书名
 // price float64 价格
 // allVector []float32 全文本向量
@@ -1113,10 +1525,10 @@ func KnnBooksByAllVectorWithClassNamePrice(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClassNameReleaseDate 根据class、书名、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
+// KnnBooksByAllVectorWithClassNameReleaseDate 根据类别、书名、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
 // name string 书名
-// releaseDate time.Time release_date
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithClassNameReleaseDate(es *elasticsearch.Client, class string, name string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1129,10 +1541,10 @@ func KnnBooksByAllVectorWithClassNameReleaseDate(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClassNameSeq 根据class、书名、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
+// KnnBooksByAllVectorWithClassNameSeq 根据类别、书名、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
 // name string 书名
-// seq string seq
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithClassNameSeq(es *elasticsearch.Client, class string, name string, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1145,9 +1557,9 @@ func KnnBooksByAllVectorWithClassNameSeq(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClassPageCountPrice 根据class、page_count、价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
-// pageCount int64 page_count
+// KnnBooksByAllVectorWithClassPageCountPrice 根据类别、页数、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
+// pageCount int64 页数
 // price float64 价格
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithClassPageCountPrice(es *elasticsearch.Client, class string, pageCount int64, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -1161,10 +1573,10 @@ func KnnBooksByAllVectorWithClassPageCountPrice(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClassPageCountReleaseDate 根据class、page_count、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
-// pageCount int64 page_count
-// releaseDate time.Time release_date
+// KnnBooksByAllVectorWithClassPageCountReleaseDate 根据类别、页数、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
+// pageCount int64 页数
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithClassPageCountReleaseDate(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1177,10 +1589,10 @@ func KnnBooksByAllVectorWithClassPageCountReleaseDate(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClassPageCountSeq 根据class、page_count、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
-// pageCount int64 page_count
-// seq string seq
+// KnnBooksByAllVectorWithClassPageCountSeq 根据类别、页数、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
+// pageCount int64 页数
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithClassPageCountSeq(es *elasticsearch.Client, class string, pageCount int64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1193,10 +1605,10 @@ func KnnBooksByAllVectorWithClassPageCountSeq(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClassPriceReleaseDate 根据class、价格、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
+// KnnBooksByAllVectorWithClassPriceReleaseDate 根据类别、价格、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
 // price float64 价格
-// releaseDate time.Time release_date
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithClassPriceReleaseDate(es *elasticsearch.Client, class string, price float64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1209,10 +1621,10 @@ func KnnBooksByAllVectorWithClassPriceReleaseDate(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClassPriceSeq 根据class、价格、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
+// KnnBooksByAllVectorWithClassPriceSeq 根据类别、价格、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
 // price float64 价格
-// seq string seq
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithClassPriceSeq(es *elasticsearch.Client, class string, price float64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1225,10 +1637,10 @@ func KnnBooksByAllVectorWithClassPriceSeq(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithClassReleaseDateSeq 根据class、release_date、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// class string class
-// releaseDate time.Time release_date
-// seq string seq
+// KnnBooksByAllVectorWithClassReleaseDateSeq 根据类别、发布日期、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class string 类别
+// releaseDate time.Time 发布日期
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithClassReleaseDateSeq(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1241,9 +1653,169 @@ func KnnBooksByAllVectorWithClassReleaseDateSeq(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithNamePageCountPrice 根据书名、page_count、价格过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithClass2NamePageCount 根据子类别、书名、页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
 // name string 书名
-// pageCount int64 page_count
+// pageCount int64 页数
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2NamePageCount(es *elasticsearch.Client, class2 string, name string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Match("name", name),
+		eq.Term("page_count", pageCount),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClass2NamePrice 根据子类别、书名、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// price float64 价格
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2NamePrice(es *elasticsearch.Client, class2 string, name string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Match("name", name),
+		eq.Term("price", price),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClass2NameReleaseDate 根据子类别、书名、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// releaseDate time.Time 发布日期
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2NameReleaseDate(es *elasticsearch.Client, class2 string, name string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Match("name", name),
+		eq.Term("release_date", releaseDate),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClass2NameSeq 根据子类别、书名、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
+// name string 书名
+// seq string 编号
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2NameSeq(es *elasticsearch.Client, class2 string, name string, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Match("name", name),
+		eq.Term("seq", seq),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClass2PageCountPrice 根据子类别、页数、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
+// pageCount int64 页数
+// price float64 价格
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2PageCountPrice(es *elasticsearch.Client, class2 string, pageCount int64, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("page_count", pageCount),
+		eq.Term("price", price),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClass2PageCountReleaseDate 根据子类别、页数、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
+// pageCount int64 页数
+// releaseDate time.Time 发布日期
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2PageCountReleaseDate(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("page_count", pageCount),
+		eq.Term("release_date", releaseDate),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClass2PageCountSeq 根据子类别、页数、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
+// pageCount int64 页数
+// seq string 编号
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2PageCountSeq(es *elasticsearch.Client, class2 string, pageCount int64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("page_count", pageCount),
+		eq.Term("seq", seq),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClass2PriceReleaseDate 根据子类别、价格、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
+// price float64 价格
+// releaseDate time.Time 发布日期
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2PriceReleaseDate(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("price", price),
+		eq.Term("release_date", releaseDate),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClass2PriceSeq 根据子类别、价格、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
+// price float64 价格
+// seq string 编号
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2PriceSeq(es *elasticsearch.Client, class2 string, price float64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("price", price),
+		eq.Term("seq", seq),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithClass2ReleaseDateSeq 根据子类别、发布日期、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// class2 string 子类别
+// releaseDate time.Time 发布日期
+// seq string 编号
+// allVector []float32 全文本向量
+func KnnBooksByAllVectorWithClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+	filters := []eq.Map{
+		eq.Term("class2", class2),
+		eq.Term("release_date", releaseDate),
+		eq.Term("seq", seq),
+	}
+	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(filters))))
+	esQuery := &eq.ESQuery{Query: knn}
+	return queryBooksList(es, esQuery)
+}
+
+// KnnBooksByAllVectorWithNamePageCountPrice 根据书名、页数、价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// name string 书名
+// pageCount int64 页数
 // price float64 价格
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithNamePageCountPrice(es *elasticsearch.Client, name string, pageCount int64, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
@@ -1257,10 +1829,10 @@ func KnnBooksByAllVectorWithNamePageCountPrice(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithNamePageCountReleaseDate 根据书名、page_count、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithNamePageCountReleaseDate 根据书名、页数、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // name string 书名
-// pageCount int64 page_count
-// releaseDate time.Time release_date
+// pageCount int64 页数
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithNamePageCountReleaseDate(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1273,10 +1845,10 @@ func KnnBooksByAllVectorWithNamePageCountReleaseDate(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithNamePageCountSeq 根据书名、page_count、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithNamePageCountSeq 根据书名、页数、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // name string 书名
-// pageCount int64 page_count
-// seq string seq
+// pageCount int64 页数
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithNamePageCountSeq(es *elasticsearch.Client, name string, pageCount int64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1289,10 +1861,10 @@ func KnnBooksByAllVectorWithNamePageCountSeq(es *elasticsearch.Client, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithNamePriceReleaseDate 根据书名、价格、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithNamePriceReleaseDate 根据书名、价格、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // name string 书名
 // price float64 价格
-// releaseDate time.Time release_date
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithNamePriceReleaseDate(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1305,10 +1877,10 @@ func KnnBooksByAllVectorWithNamePriceReleaseDate(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithNamePriceSeq 根据书名、价格、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithNamePriceSeq 根据书名、价格、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // name string 书名
 // price float64 价格
-// seq string seq
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithNamePriceSeq(es *elasticsearch.Client, name string, price float64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1321,10 +1893,10 @@ func KnnBooksByAllVectorWithNamePriceSeq(es *elasticsearch.Client, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithNameReleaseDateSeq 根据书名、release_date、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithNameReleaseDateSeq 根据书名、发布日期、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // name string 书名
-// releaseDate time.Time release_date
-// seq string seq
+// releaseDate time.Time 发布日期
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1337,10 +1909,10 @@ func KnnBooksByAllVectorWithNameReleaseDateSeq(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithPageCountPriceReleaseDate 根据page_count、价格、release_date过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// pageCount int64 page_count
+// KnnBooksByAllVectorWithPageCountPriceReleaseDate 根据页数、价格、发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// pageCount int64 页数
 // price float64 价格
-// releaseDate time.Time release_date
+// releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithPageCountPriceReleaseDate(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1353,10 +1925,10 @@ func KnnBooksByAllVectorWithPageCountPriceReleaseDate(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithPageCountPriceSeq 根据page_count、价格、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// pageCount int64 page_count
+// KnnBooksByAllVectorWithPageCountPriceSeq 根据页数、价格、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// pageCount int64 页数
 // price float64 价格
-// seq string seq
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithPageCountPriceSeq(es *elasticsearch.Client, pageCount int64, price float64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1369,10 +1941,10 @@ func KnnBooksByAllVectorWithPageCountPriceSeq(es *elasticsearch.Client, pageCoun
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithPageCountReleaseDateSeq 根据page_count、release_date、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
-// pageCount int64 page_count
-// releaseDate time.Time release_date
-// seq string seq
+// KnnBooksByAllVectorWithPageCountReleaseDateSeq 根据页数、发布日期、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
+// pageCount int64 页数
+// releaseDate time.Time 发布日期
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithPageCountReleaseDateSeq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
@@ -1385,10 +1957,10 @@ func KnnBooksByAllVectorWithPageCountReleaseDateSeq(es *elasticsearch.Client, pa
 	return queryBooksList(es, esQuery)
 }
 
-// KnnBooksByAllVectorWithPriceReleaseDateSeq 根据价格、release_date、seq过滤后对全文本向量进行检索查找books的详细数据列表和总数量
+// KnnBooksByAllVectorWithPriceReleaseDateSeq 根据价格、发布日期、编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // price float64 价格
-// releaseDate time.Time release_date
-// seq string seq
+// releaseDate time.Time 发布日期
+// seq string 编号
 // allVector []float32 全文本向量
 func KnnBooksByAllVectorWithPriceReleaseDateSeq(es *elasticsearch.Client, price float64, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{

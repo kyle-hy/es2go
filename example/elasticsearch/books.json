@@ -3,6 +3,9 @@
         "properties": {
             "author": {
                 "type": "text",
+                "meta": {
+                    "comment": "作者"
+                },
                 "fields": {
                     "keyword": {
                         "type": "keyword",
@@ -23,13 +26,28 @@
                 }
             },
             "seq": {
-                "type": "keyword"
+                "type": "keyword",
+                "meta": {
+                    "comment": "编号"
+                }
             },
             "class": {
-                "type": "keyword"
+                "type": "keyword",
+                "meta": {
+                    "comment": "类别"
+                }
+            },
+            "class2": {
+                "type": "keyword",
+                "meta": {
+                    "comment": "子类别"
+                }
             },
             "page_count": {
-                "type": "long"
+                "type": "long",
+                "meta": {
+                    "comment": "页数"
+                }
             },
             "price": {
                 "type": "float",
@@ -38,7 +56,10 @@
                 }
             },
             "release_date": {
-                "type": "date"
+                "type": "date",
+                "meta": {
+                    "comment": "发布日期"
+                }
             },
             "all_vector": {
                 "type": "dense_vector",

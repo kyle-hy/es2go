@@ -1,5 +1,10 @@
 {
-    "combine": [],
+    "combine": [
+        [
+            "seq",
+            "class"
+        ]
+    ],
     "cmpOptList": [],
     "maxCombine": 4,
     "termInShould": true,

@@ -2,11 +2,39 @@ package generator
 
 import (
 	"fmt"
+	"reflect"
+	"slices"
 	"sort"
 	"strings"
 
 	"github.com/kyle-hy/es2go/utils"
 )
+
+// FilterOutFields 提取fields中剩余的元素
+// mustTypes 要提取的类型,不能同时传
+// notTypes 要排除的类型,不能同时传
+func FilterOutFields(fields, cmb []*FieldInfo, mustTypes, notTypes []string) []*FieldInfo {
+	left := []*FieldInfo{}
+	for _, f := range fields {
+		found := false
+		for _, c := range cmb {
+			if f.EsFieldPath == c.EsFieldPath {
+				found = true
+				break
+			}
+		}
+
+		t := getTypeMapping(f.EsFieldType)
+		if !found {
+			if (len(mustTypes) == 0 && len(notTypes) == 0) ||
+				(len(mustTypes) > 0 && slices.Contains(mustTypes, t)) ||
+				(len(notTypes) > 0 && !slices.Contains(notTypes, t)) {
+				left = append(left, f)
+			}
+		}
+	}
+	return left
+}
 
 // GenParamCmt 生成函数参数部分的注释
 func GenParamCmt(fields []*FieldInfo) string {
@@ -18,13 +46,22 @@ func GenParamCmt(fields []*FieldInfo) string {
 	return cmt
 }
 
-// GenFieldNames 串联参数的名称
-func GenFieldNames(fields []*FieldInfo) string {
+// GenFieldsCmt 串联参数列表的注释
+func GenFieldsCmt(fields []*FieldInfo) string {
 	cmt := ""
 	for _, f := range fields {
 		cmt += f.FieldComment + "、"
 	}
 	cmt = strings.TrimSuffix(cmt, "、")
+	return cmt
+}
+
+// GenFieldsName 串联参数列表的名称
+func GenFieldsName(fields []*FieldInfo) string {
+	cmt := ""
+	for _, f := range fields {
+		cmt += f.FieldName
+	}
 	return cmt
 }
 
@@ -93,11 +130,59 @@ func GenMatchCond(fields []*FieldInfo) string {
 	return mq
 }
 
+// 聚合方式枚举
+const (
+	AggTypeTerms = "terms"
+)
+
+// GenAggWithCond 生成多个字段同时聚合
+func GenAggWithCond(fields []*FieldInfo, aggType string) string {
+	aq := ""
+	suffix := ""
+	prefix := "eq.TermsAgg"
+	for idx, f := range fields {
+		if idx > 0 {
+			prefix = ".With(eq.TermsAgg"
+			suffix = ")"
+		}
+		switch aggType {
+		case AggTypeTerms:
+			aq += fmt.Sprintf("%s(\"%s\")%s", prefix, utils.ToFirstLower(f.FieldName), suffix)
+		}
+	}
+	if len(fields) > 0 {
+		return "	aggs :=" + aq + "\n"
+	}
+	return ""
+}
+
+// GenAggNestedCond 生成多个字段嵌套聚合
+func GenAggNestedCond(fields []*FieldInfo, aggType string) string {
+	// aggs := eq.TermsAgg("zg").Nested(eq.TermsAgg("ak").Nested(eq.TermsAgg("bk")))
+	aq := ""
+	suffix := ""
+	prefix := "eq.TermsAgg"
+	for idx, f := range fields {
+		if idx > 0 {
+			prefix = ".Nested(eq.TermsAgg"
+			suffix += ")"
+		}
+		switch aggType {
+		case AggTypeTerms:
+			aq += fmt.Sprintf("%s(\"%s\")", prefix, utils.ToFirstLower(f.FieldName))
+		}
+	}
+	if len(fields) > 0 {
+		return "	aggs :=" + aq + suffix + "\n"
+	}
+	return ""
+}
+
 // GenTermCond 生成match条件
 func GenTermCond(fields []*FieldInfo) string {
 	// match部分参数
 	termCnt := 0
-	tq := "terms := []eq.Map{\n"
+	tq := "	terms := []eq.Map{\n"
 	for _, f := range fields {
 		if f.EsFieldType != "text" {
 			termCnt++
@@ -121,7 +206,7 @@ func GenBoolCond(mq, tq string, termInShould bool) string {
 	}
 
 	// 组合bool条件
-	fq := "	esQuery := &eq.ESQuery{Query: eq.Bool("
+	fq := "eq.Bool("
 	if mq != "" {
 		fq += "eq.WithMust(matches)"
 	}
@@ -133,8 +218,55 @@ func GenBoolCond(mq, tq string, termInShould bool) string {
 		}
 	}
 
-	fq += ")}"
+	fq += ")"
 	return fq
+}
+
+// GenESQueryCond 生成bool条件
+func GenESQueryCond(query, agg string) string {
+	// 组合bool条件
+	fq := "	esQuery := &eq.ESQuery{Query: " + query
+	if agg != "" {
+		fq += ", Agg: aggs"
+	}
+	fq += "}"
+	return fq
+}
+
+// IsEmptySlice 判断多重嵌套切片是否为空
+func IsEmptySlice(data any) bool {
+	val := reflect.ValueOf(data)
+	if val.Kind() != reflect.Slice {
+		return false
+	}
+
+	for i := range val.Len() {
+		elem := val.Index(i)
+
+		// 如果是 interface，要取出真正的值
+		for elem.Kind() == reflect.Interface {
+			if elem.IsNil() {
+				continue
+			}
+			elem = elem.Elem()
+		}
+
+		if elem.Kind() == reflect.Slice {
+			if !IsEmptySlice(elem.Interface()) {
+				return false
+			}
+		} else if elem.IsValid() && !IsZero(elem) {
+			return false
+		}
+	}
+
+	return true
+}
+
+// IsZero 判断是否为默认零值
+func IsZero(v reflect.Value) bool {
+	zero := reflect.Zero(v.Type()).Interface()
+	return reflect.DeepEqual(v.Interface(), zero)
 }
 
 // combineCustom 根据指定列表随机组合数组的元素
@@ -145,6 +277,12 @@ func combineCustom(items []*FieldInfo, list [][]string, maxCombine int) [][]*Fie
 	if maxCombine <= 0 {
 		maxCombine = MaxCombine
 	}
+
+	// 如果配置为空，则使用全部字段
+	if IsEmptySlice(list) {
+		return utils.Combinations(items, maxCombine)
+	}
+
 	// 过滤出字段
 	for _, names := range list {
 		fields := []*FieldInfo{}
