@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"sort"
 	"strings"
 	"text/template"
 
@@ -53,50 +52,6 @@ func PreDetailMatchCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 	return funcDatas
 }
 
-// combineCustom 根据指定列表随机组合数组的元素
-// list 字段分组，相当于将宽表拆成多个少字段的表，减少combine组合数
-func combineCustom(items []*FieldInfo, list [][]string, maxCombine int) [][]*FieldInfo {
-	var all [][]*FieldInfo
-	keyDict := map[string]int{}
-	if maxCombine <= 0 {
-		maxCombine = MaxCombine
-	}
-	// 过滤出字段
-	for _, names := range list {
-		fields := []*FieldInfo{}
-		for _, n := range names {
-			for _, i := range items {
-				if i.EsFieldPath == n {
-					fields = append(fields, i)
-				}
-			}
-		}
-		cmbs := utils.Combinations(fields, maxCombine)
-
-		// 过滤掉重复的组合
-		for _, cmb := range cmbs {
-			key := getFieldKey(cmb)
-			if _, ok := keyDict[key]; ok {
-				// 已存在组合，跳过
-				continue
-			} else {
-				keyDict[key] = 1
-				all = append(all, cmb)
-			}
-		}
-	}
-	return all
-}
-
-func getFieldKey(fields []*FieldInfo) string {
-	ks := make([]string, len(fields))
-	for _, f := range fields {
-		ks = append(ks, f.EsFieldPath)
-	}
-	sort.Strings(ks)
-	return strings.Join(ks, "")
-}
-
 // getDetailMatchFuncName 获取函数名称
 func getDetailMatchFuncName(structName string, fields []*FieldInfo) string {
 	fn := "Match" + structName + "By"
@@ -110,10 +65,6 @@ func getDetailMatchFuncName(structName string, fields []*FieldInfo) string {
 func getDetailMatchFuncComment(structComment string, fields []*FieldInfo) string {
 	// 函数注释
 	cmt := "对" + GenFieldNames(fields)
-	// for _, f := range fields {
-	// 	cmt += f.FieldComment + "、"
-	// }
-	// cmt = strings.TrimSuffix(cmt, "、")
 	cmt += "进行检索(等于)查找" + structComment + "的详细数据列表和总数量\n"
 
 	// 参数注释

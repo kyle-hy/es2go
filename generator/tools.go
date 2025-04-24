@@ -2,6 +2,7 @@ package generator
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 
 	"github.com/kyle-hy/es2go/utils"
@@ -134,4 +135,49 @@ func GenBoolCond(mq, tq string, termInShould bool) string {
 
 	fq += ")}"
 	return fq
+}
+
+// combineCustom 根据指定列表随机组合数组的元素
+// list 字段分组，相当于将宽表拆成多个少字段的表，减少combine组合数
+func combineCustom(items []*FieldInfo, list [][]string, maxCombine int) [][]*FieldInfo {
+	var all [][]*FieldInfo
+	keyDict := map[string]int{}
+	if maxCombine <= 0 {
+		maxCombine = MaxCombine
+	}
+	// 过滤出字段
+	for _, names := range list {
+		fields := []*FieldInfo{}
+		for _, n := range names {
+			for _, i := range items {
+				if i.EsFieldPath == n {
+					fields = append(fields, i)
+				}
+			}
+		}
+		cmbs := utils.Combinations(fields, maxCombine)
+
+		// 过滤掉重复的组合
+		for _, cmb := range cmbs {
+			key := getFieldsKey(cmb)
+			if _, ok := keyDict[key]; ok {
+				// 已存在组合，跳过
+				continue
+			} else {
+				keyDict[key] = 1
+				all = append(all, cmb)
+			}
+		}
+	}
+	return all
+}
+
+// getFieldsKey 将字段名排序后串联为key
+func getFieldsKey(fields []*FieldInfo) string {
+	ks := make([]string, len(fields))
+	for _, f := range fields {
+		ks = append(ks, f.EsFieldPath)
+	}
+	sort.Strings(ks)
+	return strings.Join(ks, "")
 }
