@@ -131,62 +131,23 @@ func getDetailMatchFuncParams(fields []*FieldInfo) string {
 		fp += utils.ToFirstLower(f.FieldName) + " " + f.FieldType + ", "
 	}
 	fp = strings.TrimSuffix(fp, ", ")
+	fp = GenParam(fields)
 	return fp
 }
 
 // getDetailMatchQuery 获取函数的查找条件
 func getDetailMatchQuery(fields []*FieldInfo, termInShould bool) string {
-	// 精确条件默认放到filter中
-	preciseOpt := "eq.WithFilter"
-	if termInShould {
-		preciseOpt = "eq.WithShould"
-	}
-
 	// match部分参数
-	matchCnt := 0
-	mq := "matches := []eq.Map{\n"
-	for _, f := range fields {
-		if f.EsFieldType == "text" {
-			matchCnt++
-			mq += fmt.Sprintf("		eq.Match(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
-		}
-	}
-	mq += "	}\n"
+	mq := GenMatchCond(fields)
 
-	// match部分参数
-	termCnt := 0
-	tq := "terms := []eq.Map{\n"
-	for _, f := range fields {
-		if f.EsFieldType != "text" {
-			termCnt++
-			tq += fmt.Sprintf("		eq.Term(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
-		}
-	}
-	tq += "	}\n"
+	// term部分参数
+	tq := GenTermCond(fields)
+
+	// bool部分参数
+	bq := GenBoolCond(mq, tq, termInShould)
 
 	// 拼接match和term条件
-	fq := ""
-	if matchCnt > 0 {
-		fq += mq
-	}
-	if termCnt > 0 {
-		fq += tq
-	}
-
-	// 组合bool条件
-	fq += "	esQuery := &eq.ESQuery{Query: eq.Bool("
-	if matchCnt > 0 {
-		fq += "eq.WithMust(matches)"
-	}
-	if termCnt > 0 {
-		if matchCnt > 0 {
-			fq += fmt.Sprintf(", %s(terms)", preciseOpt)
-		} else {
-			fq += fmt.Sprintf("%s(terms)", preciseOpt)
-		}
-	}
-
-	fq += ")}"
+	fq := mq + tq + bq
 
 	return fq
 }
