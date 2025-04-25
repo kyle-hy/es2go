@@ -223,7 +223,7 @@ func YearBooksByReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, rele
 // allText string 全文本
 // author string 作者
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -239,7 +239,7 @@ func YearBooksByReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allTex
 // allText string 全文本
 // class string 类别
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -255,7 +255,7 @@ func YearBooksByReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -271,7 +271,7 @@ func YearBooksByReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allTex
 // allText string 全文本
 // name string 书名
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -449,7 +449,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, a
 // allText string 全文本
 // seq string 编号
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -465,7 +465,7 @@ func YearBooksByReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText s
 // author string 作者
 // class string 类别
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -481,7 +481,7 @@ func YearBooksByReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author s
 // author string 作者
 // class2 string 子类别
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -497,7 +497,7 @@ func YearBooksByReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author 
 // author string 作者
 // name string 书名
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -675,7 +675,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, au
 // author string 作者
 // seq string 编号
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -691,7 +691,7 @@ func YearBooksByReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author str
 // class string 类别
 // class2 string 子类别
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -705,7 +705,7 @@ func YearBooksByReleaseDateGteWithClassClass2(es *elasticsearch.Client, class st
 // class string 类别
 // name string 书名
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -863,7 +863,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, cla
 // class string 类别
 // seq string 编号
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -877,7 +877,7 @@ func YearBooksByReleaseDateGteWithClassSeq(es *elasticsearch.Client, class strin
 // class2 string 子类别
 // name string 书名
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1035,7 +1035,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, cl
 // class2 string 子类别
 // seq string 编号
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -1211,7 +1211,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name
 // name string 书名
 // seq string 编号
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1730,7 +1730,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq s
 // author string 作者
 // class string 类别
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1748,7 +1748,7 @@ func YearBooksByReleaseDateGteWithAllTextAuthorClass(es *elasticsearch.Client, a
 // author string 作者
 // class2 string 子类别
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAllTextAuthorClass2(es *elasticsearch.Client, allText string, author string, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1766,7 +1766,7 @@ func YearBooksByReleaseDateGteWithAllTextAuthorClass2(es *elasticsearch.Client, 
 // author string 作者
 // name string 书名
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAllTextAuthorName(es *elasticsearch.Client, allText, author, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1784,7 +1784,7 @@ func YearBooksByReleaseDateGteWithAllTextAuthorName(es *elasticsearch.Client, al
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1802,7 +1802,7 @@ func YearBooksByPageCountGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Cl
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1820,7 +1820,7 @@ func YearBooksByPageCountGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Cli
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1838,7 +1838,7 @@ func YearBooksByPageCountLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Cli
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1857,7 +1857,7 @@ func YearBooksByPageCountLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Cl
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1875,7 +1875,7 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1893,7 +1893,7 @@ func YearBooksByPriceGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1911,7 +1911,7 @@ func YearBooksByPriceGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client,
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1929,7 +1929,7 @@ func YearBooksByPriceLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client,
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1948,7 +1948,7 @@ func YearBooksByPriceLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1966,7 +1966,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Cli
 // author string 作者
 // seq string 编号
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1984,7 +1984,7 @@ func YearBooksByReleaseDateGteWithAllTextAuthorSeq(es *elasticsearch.Client, all
 // class string 类别
 // class2 string 子类别
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAllTextClassClass2(es *elasticsearch.Client, allText string, class string, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAllTextClassClass2(es *elasticsearch.Client, allText, class, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2002,7 +2002,7 @@ func YearBooksByReleaseDateGteWithAllTextClassClass2(es *elasticsearch.Client, a
 // class string 类别
 // name string 书名
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAllTextClassName(es *elasticsearch.Client, allText, class, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2020,7 +2020,7 @@ func YearBooksByReleaseDateGteWithAllTextClassName(es *elasticsearch.Client, all
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2038,7 +2038,7 @@ func YearBooksByPageCountGteReleaseDateGteWithAllTextClass(es *elasticsearch.Cli
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2056,7 +2056,7 @@ func YearBooksByPageCountGtReleaseDateGteWithAllTextClass(es *elasticsearch.Clie
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2074,7 +2074,7 @@ func YearBooksByPageCountLtReleaseDateGteWithAllTextClass(es *elasticsearch.Clie
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2093,7 +2093,7 @@ func YearBooksByPageCountLteReleaseDateGteWithAllTextClass(es *elasticsearch.Cli
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2111,7 +2111,7 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2129,7 +2129,7 @@ func YearBooksByPriceGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client,
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2147,7 +2147,7 @@ func YearBooksByPriceGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, 
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2165,7 +2165,7 @@ func YearBooksByPriceLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, 
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2184,7 +2184,7 @@ func YearBooksByPriceLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client,
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2202,7 +2202,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Clie
 // class string 类别
 // seq string 编号
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAllTextClassSeq(es *elasticsearch.Client, allText, class, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2220,7 +2220,7 @@ func YearBooksByReleaseDateGteWithAllTextClassSeq(es *elasticsearch.Client, allT
 // class2 string 子类别
 // name string 书名
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAllTextClass2Name(es *elasticsearch.Client, allText string, class2 string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2238,7 +2238,7 @@ func YearBooksByReleaseDateGteWithAllTextClass2Name(es *elasticsearch.Client, al
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2256,7 +2256,7 @@ func YearBooksByPageCountGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Cl
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2274,7 +2274,7 @@ func YearBooksByPageCountGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Cli
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2292,7 +2292,7 @@ func YearBooksByPageCountLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Cli
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2311,7 +2311,7 @@ func YearBooksByPageCountLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Cl
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2329,7 +2329,7 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2347,7 +2347,7 @@ func YearBooksByPriceGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2365,7 +2365,7 @@ func YearBooksByPriceGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client,
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2383,7 +2383,7 @@ func YearBooksByPriceLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client,
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2402,7 +2402,7 @@ func YearBooksByPriceLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2420,7 +2420,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Cli
 // class2 string 子类别
 // seq string 编号
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAllTextClass2Seq(es *elasticsearch.Client, allText string, class2 string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2438,7 +2438,7 @@ func YearBooksByReleaseDateGteWithAllTextClass2Seq(es *elasticsearch.Client, all
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2456,7 +2456,7 @@ func YearBooksByPageCountGteReleaseDateGteWithAllTextName(es *elasticsearch.Clie
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2474,7 +2474,7 @@ func YearBooksByPageCountGtReleaseDateGteWithAllTextName(es *elasticsearch.Clien
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2492,7 +2492,7 @@ func YearBooksByPageCountLtReleaseDateGteWithAllTextName(es *elasticsearch.Clien
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2511,7 +2511,7 @@ func YearBooksByPageCountLteReleaseDateGteWithAllTextName(es *elasticsearch.Clie
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2529,7 +2529,7 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAllTextName(es *elasticsearch.C
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2547,7 +2547,7 @@ func YearBooksByPriceGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, 
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2565,7 +2565,7 @@ func YearBooksByPriceGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, a
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2583,7 +2583,7 @@ func YearBooksByPriceLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, a
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2602,7 +2602,7 @@ func YearBooksByPriceLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, 
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2620,7 +2620,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Clien
 // name string 书名
 // seq string 编号
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3098,7 +3098,7 @@ func YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAllText(es *elastics
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3116,7 +3116,7 @@ func YearBooksByPageCountGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Clien
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3134,7 +3134,7 @@ func YearBooksByPageCountGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3152,7 +3152,7 @@ func YearBooksByPageCountLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3171,7 +3171,7 @@ func YearBooksByPageCountLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Clien
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3189,7 +3189,7 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Cl
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3207,7 +3207,7 @@ func YearBooksByPriceGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, a
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3225,7 +3225,7 @@ func YearBooksByPriceGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, al
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3243,7 +3243,7 @@ func YearBooksByPriceLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, al
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3262,7 +3262,7 @@ func YearBooksByPriceLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, a
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3280,7 +3280,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client
 // class string 类别
 // class2 string 子类别
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAuthorClassClass2(es *elasticsearch.Client, author string, class string, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAuthorClassClass2(es *elasticsearch.Client, author, class, class2 string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3298,7 +3298,7 @@ func YearBooksByReleaseDateGteWithAuthorClassClass2(es *elasticsearch.Client, au
 // class string 类别
 // name string 书名
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAuthorClassName(es *elasticsearch.Client, author string, class string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAuthorClassName(es *elasticsearch.Client, author, class, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3316,7 +3316,7 @@ func YearBooksByReleaseDateGteWithAuthorClassName(es *elasticsearch.Client, auth
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3334,7 +3334,7 @@ func YearBooksByPageCountGteReleaseDateGteWithAuthorClass(es *elasticsearch.Clie
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3352,7 +3352,7 @@ func YearBooksByPageCountGtReleaseDateGteWithAuthorClass(es *elasticsearch.Clien
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3370,7 +3370,7 @@ func YearBooksByPageCountLtReleaseDateGteWithAuthorClass(es *elasticsearch.Clien
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3389,7 +3389,7 @@ func YearBooksByPageCountLteReleaseDateGteWithAuthorClass(es *elasticsearch.Clie
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3407,7 +3407,7 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.C
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3425,7 +3425,7 @@ func YearBooksByPriceGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, 
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3443,7 +3443,7 @@ func YearBooksByPriceGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, a
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3461,7 +3461,7 @@ func YearBooksByPriceLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, a
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3480,7 +3480,7 @@ func YearBooksByPriceLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, 
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3498,7 +3498,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Clien
 // class string 类别
 // seq string 编号
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAuthorClassSeq(es *elasticsearch.Client, author string, class string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAuthorClassSeq(es *elasticsearch.Client, author, class, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3516,7 +3516,7 @@ func YearBooksByReleaseDateGteWithAuthorClassSeq(es *elasticsearch.Client, autho
 // class2 string 子类别
 // name string 书名
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAuthorClass2Name(es *elasticsearch.Client, author string, class2 string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAuthorClass2Name(es *elasticsearch.Client, author, class2, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3534,7 +3534,7 @@ func YearBooksByReleaseDateGteWithAuthorClass2Name(es *elasticsearch.Client, aut
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3552,7 +3552,7 @@ func YearBooksByPageCountGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Cli
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3570,7 +3570,7 @@ func YearBooksByPageCountGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Clie
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3588,7 +3588,7 @@ func YearBooksByPageCountLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Clie
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3607,7 +3607,7 @@ func YearBooksByPageCountLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Cli
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3625,7 +3625,7 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3643,7 +3643,7 @@ func YearBooksByPriceGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client,
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3661,7 +3661,7 @@ func YearBooksByPriceGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, 
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3679,7 +3679,7 @@ func YearBooksByPriceLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, 
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3698,7 +3698,7 @@ func YearBooksByPriceLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client,
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3716,7 +3716,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Clie
 // class2 string 子类别
 // seq string 编号
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAuthorClass2Seq(es *elasticsearch.Client, author string, class2 string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3734,7 +3734,7 @@ func YearBooksByReleaseDateGteWithAuthorClass2Seq(es *elasticsearch.Client, auth
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3752,7 +3752,7 @@ func YearBooksByPageCountGteReleaseDateGteWithAuthorName(es *elasticsearch.Clien
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3770,7 +3770,7 @@ func YearBooksByPageCountGtReleaseDateGteWithAuthorName(es *elasticsearch.Client
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3788,7 +3788,7 @@ func YearBooksByPageCountLtReleaseDateGteWithAuthorName(es *elasticsearch.Client
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3807,7 +3807,7 @@ func YearBooksByPageCountLteReleaseDateGteWithAuthorName(es *elasticsearch.Clien
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3825,7 +3825,7 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Cl
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3843,7 +3843,7 @@ func YearBooksByPriceGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, a
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3861,7 +3861,7 @@ func YearBooksByPriceGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, au
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3879,7 +3879,7 @@ func YearBooksByPriceLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, au
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3898,7 +3898,7 @@ func YearBooksByPriceLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, a
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3916,7 +3916,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client
 // name string 书名
 // seq string 编号
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithAuthorNameSeq(es *elasticsearch.Client, author string, name string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithAuthorNameSeq(es *elasticsearch.Client, author, name, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -4394,7 +4394,7 @@ func YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAuthor(es *elasticse
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4412,7 +4412,7 @@ func YearBooksByPageCountGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4430,7 +4430,7 @@ func YearBooksByPageCountGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client,
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4448,7 +4448,7 @@ func YearBooksByPageCountLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client,
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4467,7 +4467,7 @@ func YearBooksByPageCountLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4485,7 +4485,7 @@ func YearBooksByPageCountGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Cli
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4503,7 +4503,7 @@ func YearBooksByPriceGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, au
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4521,7 +4521,7 @@ func YearBooksByPriceGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, aut
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4539,7 +4539,7 @@ func YearBooksByPriceLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, aut
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4558,7 +4558,7 @@ func YearBooksByPriceLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, au
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4576,7 +4576,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client,
 // class2 string 子类别
 // name string 书名
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithClassClass2Name(es *elasticsearch.Client, class string, class2 string, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithClassClass2Name(es *elasticsearch.Client, class, class2, name string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4594,7 +4594,7 @@ func YearBooksByReleaseDateGteWithClassClass2Name(es *elasticsearch.Client, clas
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4610,7 +4610,7 @@ func YearBooksByPageCountGteReleaseDateGteWithClassClass2(es *elasticsearch.Clie
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4626,7 +4626,7 @@ func YearBooksByPageCountGtReleaseDateGteWithClassClass2(es *elasticsearch.Clien
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4642,7 +4642,7 @@ func YearBooksByPageCountLtReleaseDateGteWithClassClass2(es *elasticsearch.Clien
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4659,7 +4659,7 @@ func YearBooksByPageCountLteReleaseDateGteWithClassClass2(es *elasticsearch.Clie
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4675,7 +4675,7 @@ func YearBooksByPageCountGteLteReleaseDateGteWithClassClass2(es *elasticsearch.C
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4691,7 +4691,7 @@ func YearBooksByPriceGteReleaseDateGteWithClassClass2(es *elasticsearch.Client, 
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4707,7 +4707,7 @@ func YearBooksByPriceGtReleaseDateGteWithClassClass2(es *elasticsearch.Client, c
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4723,7 +4723,7 @@ func YearBooksByPriceLtReleaseDateGteWithClassClass2(es *elasticsearch.Client, c
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4740,7 +4740,7 @@ func YearBooksByPriceLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, 
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4756,7 +4756,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithClassClass2(es *elasticsearch.Clien
 // class2 string 子类别
 // seq string 编号
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithClassClass2Seq(es *elasticsearch.Client, class string, class2 string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithClassClass2Seq(es *elasticsearch.Client, class, class2, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4772,7 +4772,7 @@ func YearBooksByReleaseDateGteWithClassClass2Seq(es *elasticsearch.Client, class
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4790,7 +4790,7 @@ func YearBooksByPageCountGteReleaseDateGteWithClassName(es *elasticsearch.Client
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGtReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4808,7 +4808,7 @@ func YearBooksByPageCountGtReleaseDateGteWithClassName(es *elasticsearch.Client,
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLtReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4826,7 +4826,7 @@ func YearBooksByPageCountLtReleaseDateGteWithClassName(es *elasticsearch.Client,
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLteReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4845,7 +4845,7 @@ func YearBooksByPageCountLteReleaseDateGteWithClassName(es *elasticsearch.Client
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4863,7 +4863,7 @@ func YearBooksByPageCountGteLteReleaseDateGteWithClassName(es *elasticsearch.Cli
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4881,7 +4881,7 @@ func YearBooksByPriceGteReleaseDateGteWithClassName(es *elasticsearch.Client, cl
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGtReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4899,7 +4899,7 @@ func YearBooksByPriceGtReleaseDateGteWithClassName(es *elasticsearch.Client, cla
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLtReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4917,7 +4917,7 @@ func YearBooksByPriceLtReleaseDateGteWithClassName(es *elasticsearch.Client, cla
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLteReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4936,7 +4936,7 @@ func YearBooksByPriceLteReleaseDateGteWithClassName(es *elasticsearch.Client, cl
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4954,7 +4954,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithClassName(es *elasticsearch.Client,
 // name string 书名
 // seq string 编号
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithClassNameSeq(es *elasticsearch.Client, class string, name string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithClassNameSeq(es *elasticsearch.Client, class, name, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5382,7 +5382,7 @@ func YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass(es *elasticsea
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5398,7 +5398,7 @@ func YearBooksByPageCountGteReleaseDateGteWithClassSeq(es *elasticsearch.Client,
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5414,7 +5414,7 @@ func YearBooksByPageCountGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, 
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5430,7 +5430,7 @@ func YearBooksByPageCountLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, 
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5447,7 +5447,7 @@ func YearBooksByPageCountLteReleaseDateGteWithClassSeq(es *elasticsearch.Client,
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5463,7 +5463,7 @@ func YearBooksByPageCountGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Clie
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5479,7 +5479,7 @@ func YearBooksByPriceGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, cla
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5495,7 +5495,7 @@ func YearBooksByPriceGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, clas
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5511,7 +5511,7 @@ func YearBooksByPriceLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, clas
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5528,7 +5528,7 @@ func YearBooksByPriceLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, cla
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5544,7 +5544,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, 
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5562,7 +5562,7 @@ func YearBooksByPageCountGteReleaseDateGteWithClass2Name(es *elasticsearch.Clien
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5580,7 +5580,7 @@ func YearBooksByPageCountGtReleaseDateGteWithClass2Name(es *elasticsearch.Client
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5598,7 +5598,7 @@ func YearBooksByPageCountLtReleaseDateGteWithClass2Name(es *elasticsearch.Client
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5617,7 +5617,7 @@ func YearBooksByPageCountLteReleaseDateGteWithClass2Name(es *elasticsearch.Clien
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5635,7 +5635,7 @@ func YearBooksByPageCountGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Cl
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5653,7 +5653,7 @@ func YearBooksByPriceGteReleaseDateGteWithClass2Name(es *elasticsearch.Client, c
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5671,7 +5671,7 @@ func YearBooksByPriceGtReleaseDateGteWithClass2Name(es *elasticsearch.Client, cl
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5689,7 +5689,7 @@ func YearBooksByPriceLtReleaseDateGteWithClass2Name(es *elasticsearch.Client, cl
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5708,7 +5708,7 @@ func YearBooksByPriceLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, c
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5726,7 +5726,7 @@ func YearBooksByPriceGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Client
 // name string 书名
 // seq string 编号
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByReleaseDateGteWithClass2NameSeq(es *elasticsearch.Client, class2 string, name string, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByReleaseDateGteWithClass2NameSeq(es *elasticsearch.Client, class2, name, seq string, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6154,7 +6154,7 @@ func YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass2(es *elasticse
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6170,7 +6170,7 @@ func YearBooksByPageCountGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6186,7 +6186,7 @@ func YearBooksByPageCountGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client,
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6202,7 +6202,7 @@ func YearBooksByPageCountLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client,
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6219,7 +6219,7 @@ func YearBooksByPageCountLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6235,7 +6235,7 @@ func YearBooksByPageCountGteLteReleaseDateGteWithClass2Seq(es *elasticsearch.Cli
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6251,7 +6251,7 @@ func YearBooksByPriceGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, cl
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6267,7 +6267,7 @@ func YearBooksByPriceGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, cla
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6283,7 +6283,7 @@ func YearBooksByPriceLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, cla
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6300,7 +6300,7 @@ func YearBooksByPriceLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, cl
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6776,7 +6776,7 @@ func YearBooksByPageCountGteLtePriceGteLteReleaseDateGteWithName(es *elasticsear
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, pageCountGte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6794,7 +6794,7 @@ func YearBooksByPageCountGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, 
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, pageCountGt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6812,7 +6812,7 @@ func YearBooksByPageCountGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, n
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, pageCountLt int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6830,7 +6830,7 @@ func YearBooksByPageCountLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, n
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6849,7 +6849,7 @@ func YearBooksByPageCountLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, 
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPageCountGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPageCountGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, pageCountGte, pageCountLte int64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6867,7 +6867,7 @@ func YearBooksByPageCountGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Clien
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, priceGte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6885,7 +6885,7 @@ func YearBooksByPriceGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, priceGt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6903,7 +6903,7 @@ func YearBooksByPriceGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name 
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, priceLt float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6921,7 +6921,7 @@ func YearBooksByPriceLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name 
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6940,7 +6940,7 @@ func YearBooksByPriceLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNYear int 发布日期为近几年
-func YearBooksByPriceGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
+func YearBooksByPriceGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, priceGte, priceLte float64, releaseDateNYear int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}

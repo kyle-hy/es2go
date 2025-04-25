@@ -240,7 +240,7 @@ func getDetailRecentFuncParams(fields []*FieldInfo, rangeTypes []string, rtype s
 
 	funcParams := utils.Cartesian(params)
 	for idx, fp := range funcParams {
-		funcParams[idx] = cfp + strings.TrimSuffix(fp, ", ")
+		funcParams[idx] = simplifyParams(cfp + strings.TrimSuffix(fp, ", "))
 	}
 	return funcParams
 }

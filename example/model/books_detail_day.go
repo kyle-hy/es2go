@@ -223,7 +223,7 @@ func DayBooksByReleaseDateGteWithSeq(es *elasticsearch.Client, seq string, relea
 // allText string 全文本
 // author string 作者
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -239,7 +239,7 @@ func DayBooksByReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText
 // allText string 全文本
 // class string 类别
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -255,7 +255,7 @@ func DayBooksByReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText 
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -271,7 +271,7 @@ func DayBooksByReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText
 // allText string 全文本
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -449,7 +449,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithAllText(es *elasticsearch.Client, al
 // allText string 全文本
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -465,7 +465,7 @@ func DayBooksByReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText st
 // author string 作者
 // class string 类别
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -481,7 +481,7 @@ func DayBooksByReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author st
 // author string 作者
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -497,7 +497,7 @@ func DayBooksByReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author s
 // author string 作者
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -675,7 +675,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithAuthor(es *elasticsearch.Client, aut
 // author string 作者
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -691,7 +691,7 @@ func DayBooksByReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author stri
 // class string 类别
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -705,7 +705,7 @@ func DayBooksByReleaseDateGteWithClassClass2(es *elasticsearch.Client, class str
 // class string 类别
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -863,7 +863,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithClass(es *elasticsearch.Client, clas
 // class string 类别
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -877,7 +877,7 @@ func DayBooksByReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string
 // class2 string 子类别
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1035,7 +1035,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithClass2(es *elasticsearch.Client, cla
 // class2 string 子类别
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -1211,7 +1211,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithName(es *elasticsearch.Client, name 
 // name string 书名
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1730,7 +1730,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithSeq(es *elasticsearch.Client, seq st
 // author string 作者
 // class string 类别
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAllTextAuthorClass(es *elasticsearch.Client, allText string, author string, class string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1748,7 +1748,7 @@ func DayBooksByReleaseDateGteWithAllTextAuthorClass(es *elasticsearch.Client, al
 // author string 作者
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAllTextAuthorClass2(es *elasticsearch.Client, allText string, author string, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1766,7 +1766,7 @@ func DayBooksByReleaseDateGteWithAllTextAuthorClass2(es *elasticsearch.Client, a
 // author string 作者
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAllTextAuthorName(es *elasticsearch.Client, allText string, author string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAllTextAuthorName(es *elasticsearch.Client, allText, author, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1784,7 +1784,7 @@ func DayBooksByReleaseDateGteWithAllTextAuthorName(es *elasticsearch.Client, all
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1802,7 +1802,7 @@ func DayBooksByPageCountGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Cli
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1820,7 +1820,7 @@ func DayBooksByPageCountGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Clie
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1838,7 +1838,7 @@ func DayBooksByPageCountLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Clie
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1857,7 +1857,7 @@ func DayBooksByPageCountLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Cli
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1875,7 +1875,7 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1893,7 +1893,7 @@ func DayBooksByPriceGteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client,
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1911,7 +1911,7 @@ func DayBooksByPriceGtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, 
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1929,7 +1929,7 @@ func DayBooksByPriceLtReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, 
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1948,7 +1948,7 @@ func DayBooksByPriceLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client,
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText string, author string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Client, allText, author string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1966,7 +1966,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithAllTextAuthor(es *elasticsearch.Clie
 // author string 作者
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAllTextAuthorSeq(es *elasticsearch.Client, allText string, author string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1984,7 +1984,7 @@ func DayBooksByReleaseDateGteWithAllTextAuthorSeq(es *elasticsearch.Client, allT
 // class string 类别
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAllTextClassClass2(es *elasticsearch.Client, allText string, class string, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAllTextClassClass2(es *elasticsearch.Client, allText, class, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2002,7 +2002,7 @@ func DayBooksByReleaseDateGteWithAllTextClassClass2(es *elasticsearch.Client, al
 // class string 类别
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAllTextClassName(es *elasticsearch.Client, allText string, class string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAllTextClassName(es *elasticsearch.Client, allText, class, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2020,7 +2020,7 @@ func DayBooksByReleaseDateGteWithAllTextClassName(es *elasticsearch.Client, allT
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2038,7 +2038,7 @@ func DayBooksByPageCountGteReleaseDateGteWithAllTextClass(es *elasticsearch.Clie
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2056,7 +2056,7 @@ func DayBooksByPageCountGtReleaseDateGteWithAllTextClass(es *elasticsearch.Clien
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2074,7 +2074,7 @@ func DayBooksByPageCountLtReleaseDateGteWithAllTextClass(es *elasticsearch.Clien
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2093,7 +2093,7 @@ func DayBooksByPageCountLteReleaseDateGteWithAllTextClass(es *elasticsearch.Clie
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2111,7 +2111,7 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.C
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2129,7 +2129,7 @@ func DayBooksByPriceGteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, 
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2147,7 +2147,7 @@ func DayBooksByPriceGtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, a
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2165,7 +2165,7 @@ func DayBooksByPriceLtReleaseDateGteWithAllTextClass(es *elasticsearch.Client, a
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2184,7 +2184,7 @@ func DayBooksByPriceLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, 
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText string, class string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Client, allText, class string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2202,7 +2202,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithAllTextClass(es *elasticsearch.Clien
 // class string 类别
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAllTextClassSeq(es *elasticsearch.Client, allText string, class string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAllTextClassSeq(es *elasticsearch.Client, allText, class, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2220,7 +2220,7 @@ func DayBooksByReleaseDateGteWithAllTextClassSeq(es *elasticsearch.Client, allTe
 // class2 string 子类别
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAllTextClass2Name(es *elasticsearch.Client, allText string, class2 string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2238,7 +2238,7 @@ func DayBooksByReleaseDateGteWithAllTextClass2Name(es *elasticsearch.Client, all
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2256,7 +2256,7 @@ func DayBooksByPageCountGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Cli
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2274,7 +2274,7 @@ func DayBooksByPageCountGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Clie
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2292,7 +2292,7 @@ func DayBooksByPageCountLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Clie
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2311,7 +2311,7 @@ func DayBooksByPageCountLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Cli
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2329,7 +2329,7 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch.
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2347,7 +2347,7 @@ func DayBooksByPriceGteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client,
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2365,7 +2365,7 @@ func DayBooksByPriceGtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, 
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2383,7 +2383,7 @@ func DayBooksByPriceLtReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, 
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2402,7 +2402,7 @@ func DayBooksByPriceLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client,
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText string, class2 string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2420,7 +2420,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithAllTextClass2(es *elasticsearch.Clie
 // class2 string 子类别
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAllTextClass2Seq(es *elasticsearch.Client, allText string, class2 string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2438,7 +2438,7 @@ func DayBooksByReleaseDateGteWithAllTextClass2Seq(es *elasticsearch.Client, allT
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2456,7 +2456,7 @@ func DayBooksByPageCountGteReleaseDateGteWithAllTextName(es *elasticsearch.Clien
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2474,7 +2474,7 @@ func DayBooksByPageCountGtReleaseDateGteWithAllTextName(es *elasticsearch.Client
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2492,7 +2492,7 @@ func DayBooksByPageCountLtReleaseDateGteWithAllTextName(es *elasticsearch.Client
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2511,7 +2511,7 @@ func DayBooksByPageCountLteReleaseDateGteWithAllTextName(es *elasticsearch.Clien
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2529,7 +2529,7 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Cl
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2547,7 +2547,7 @@ func DayBooksByPriceGteReleaseDateGteWithAllTextName(es *elasticsearch.Client, a
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2565,7 +2565,7 @@ func DayBooksByPriceGtReleaseDateGteWithAllTextName(es *elasticsearch.Client, al
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2583,7 +2583,7 @@ func DayBooksByPriceLtReleaseDateGteWithAllTextName(es *elasticsearch.Client, al
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2602,7 +2602,7 @@ func DayBooksByPriceLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, a
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText string, name string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client, allText, name string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2620,7 +2620,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithAllTextName(es *elasticsearch.Client
 // name string 书名
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAllTextNameSeq(es *elasticsearch.Client, allText string, name string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3098,7 +3098,7 @@ func DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAllText(es *elasticse
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3116,7 +3116,7 @@ func DayBooksByPageCountGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3134,7 +3134,7 @@ func DayBooksByPageCountGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client,
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3152,7 +3152,7 @@ func DayBooksByPageCountLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client,
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3171,7 +3171,7 @@ func DayBooksByPageCountLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3189,7 +3189,7 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Cli
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3207,7 +3207,7 @@ func DayBooksByPriceGteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, al
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3225,7 +3225,7 @@ func DayBooksByPriceGtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, all
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3243,7 +3243,7 @@ func DayBooksByPriceLtReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, all
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3262,7 +3262,7 @@ func DayBooksByPriceLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, al
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText string, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client, allText, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3280,7 +3280,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithAllTextSeq(es *elasticsearch.Client,
 // class string 类别
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAuthorClassClass2(es *elasticsearch.Client, author string, class string, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAuthorClassClass2(es *elasticsearch.Client, author, class, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3298,7 +3298,7 @@ func DayBooksByReleaseDateGteWithAuthorClassClass2(es *elasticsearch.Client, aut
 // class string 类别
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAuthorClassName(es *elasticsearch.Client, author string, class string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAuthorClassName(es *elasticsearch.Client, author, class, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3316,7 +3316,7 @@ func DayBooksByReleaseDateGteWithAuthorClassName(es *elasticsearch.Client, autho
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3334,7 +3334,7 @@ func DayBooksByPageCountGteReleaseDateGteWithAuthorClass(es *elasticsearch.Clien
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3352,7 +3352,7 @@ func DayBooksByPageCountGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3370,7 +3370,7 @@ func DayBooksByPageCountLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3389,7 +3389,7 @@ func DayBooksByPageCountLteReleaseDateGteWithAuthorClass(es *elasticsearch.Clien
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3407,7 +3407,7 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Cl
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3425,7 +3425,7 @@ func DayBooksByPriceGteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, a
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3443,7 +3443,7 @@ func DayBooksByPriceGtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, au
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3461,7 +3461,7 @@ func DayBooksByPriceLtReleaseDateGteWithAuthorClass(es *elasticsearch.Client, au
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3480,7 +3480,7 @@ func DayBooksByPriceLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, a
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author string, class string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client, author, class string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3498,7 +3498,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithAuthorClass(es *elasticsearch.Client
 // class string 类别
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAuthorClassSeq(es *elasticsearch.Client, author string, class string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAuthorClassSeq(es *elasticsearch.Client, author, class, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3516,7 +3516,7 @@ func DayBooksByReleaseDateGteWithAuthorClassSeq(es *elasticsearch.Client, author
 // class2 string 子类别
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAuthorClass2Name(es *elasticsearch.Client, author string, class2 string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAuthorClass2Name(es *elasticsearch.Client, author, class2, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3534,7 +3534,7 @@ func DayBooksByReleaseDateGteWithAuthorClass2Name(es *elasticsearch.Client, auth
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3552,7 +3552,7 @@ func DayBooksByPageCountGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Clie
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3570,7 +3570,7 @@ func DayBooksByPageCountGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Clien
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3588,7 +3588,7 @@ func DayBooksByPageCountLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Clien
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3607,7 +3607,7 @@ func DayBooksByPageCountLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Clie
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3625,7 +3625,7 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.C
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3643,7 +3643,7 @@ func DayBooksByPriceGteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, 
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3661,7 +3661,7 @@ func DayBooksByPriceGtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, a
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3679,7 +3679,7 @@ func DayBooksByPriceLtReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, a
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3698,7 +3698,7 @@ func DayBooksByPriceLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, 
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author string, class2 string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Client, author, class2 string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3716,7 +3716,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithAuthorClass2(es *elasticsearch.Clien
 // class2 string 子类别
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAuthorClass2Seq(es *elasticsearch.Client, author string, class2 string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3734,7 +3734,7 @@ func DayBooksByReleaseDateGteWithAuthorClass2Seq(es *elasticsearch.Client, autho
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3752,7 +3752,7 @@ func DayBooksByPageCountGteReleaseDateGteWithAuthorName(es *elasticsearch.Client
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3770,7 +3770,7 @@ func DayBooksByPageCountGtReleaseDateGteWithAuthorName(es *elasticsearch.Client,
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3788,7 +3788,7 @@ func DayBooksByPageCountLtReleaseDateGteWithAuthorName(es *elasticsearch.Client,
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3807,7 +3807,7 @@ func DayBooksByPageCountLteReleaseDateGteWithAuthorName(es *elasticsearch.Client
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3825,7 +3825,7 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Cli
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3843,7 +3843,7 @@ func DayBooksByPriceGteReleaseDateGteWithAuthorName(es *elasticsearch.Client, au
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3861,7 +3861,7 @@ func DayBooksByPriceGtReleaseDateGteWithAuthorName(es *elasticsearch.Client, aut
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3879,7 +3879,7 @@ func DayBooksByPriceLtReleaseDateGteWithAuthorName(es *elasticsearch.Client, aut
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3898,7 +3898,7 @@ func DayBooksByPriceLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, au
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author string, name string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client, author, name string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3916,7 +3916,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithAuthorName(es *elasticsearch.Client,
 // name string 书名
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithAuthorNameSeq(es *elasticsearch.Client, author string, name string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithAuthorNameSeq(es *elasticsearch.Client, author, name, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -4394,7 +4394,7 @@ func DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithAuthor(es *elasticsea
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4412,7 +4412,7 @@ func DayBooksByPageCountGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client,
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4430,7 +4430,7 @@ func DayBooksByPageCountGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, 
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4448,7 +4448,7 @@ func DayBooksByPageCountLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, 
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4467,7 +4467,7 @@ func DayBooksByPageCountLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client,
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4485,7 +4485,7 @@ func DayBooksByPageCountGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Clie
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4503,7 +4503,7 @@ func DayBooksByPriceGteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, aut
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4521,7 +4521,7 @@ func DayBooksByPriceGtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, auth
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4539,7 +4539,7 @@ func DayBooksByPriceLtReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, auth
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4558,7 +4558,7 @@ func DayBooksByPriceLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, aut
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author string, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, author, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4576,7 +4576,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithAuthorSeq(es *elasticsearch.Client, 
 // class2 string 子类别
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithClassClass2Name(es *elasticsearch.Client, class string, class2 string, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithClassClass2Name(es *elasticsearch.Client, class, class2, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4594,7 +4594,7 @@ func DayBooksByReleaseDateGteWithClassClass2Name(es *elasticsearch.Client, class
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4610,7 +4610,7 @@ func DayBooksByPageCountGteReleaseDateGteWithClassClass2(es *elasticsearch.Clien
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4626,7 +4626,7 @@ func DayBooksByPageCountGtReleaseDateGteWithClassClass2(es *elasticsearch.Client
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4642,7 +4642,7 @@ func DayBooksByPageCountLtReleaseDateGteWithClassClass2(es *elasticsearch.Client
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4659,7 +4659,7 @@ func DayBooksByPageCountLteReleaseDateGteWithClassClass2(es *elasticsearch.Clien
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4675,7 +4675,7 @@ func DayBooksByPageCountGteLteReleaseDateGteWithClassClass2(es *elasticsearch.Cl
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4691,7 +4691,7 @@ func DayBooksByPriceGteReleaseDateGteWithClassClass2(es *elasticsearch.Client, c
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4707,7 +4707,7 @@ func DayBooksByPriceGtReleaseDateGteWithClassClass2(es *elasticsearch.Client, cl
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLtReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4723,7 +4723,7 @@ func DayBooksByPriceLtReleaseDateGteWithClassClass2(es *elasticsearch.Client, cl
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4740,7 +4740,7 @@ func DayBooksByPriceLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, c
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class string, class2 string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteLteReleaseDateGteWithClassClass2(es *elasticsearch.Client, class, class2 string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4756,7 +4756,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithClassClass2(es *elasticsearch.Client
 // class2 string 子类别
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithClassClass2Seq(es *elasticsearch.Client, class string, class2 string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithClassClass2Seq(es *elasticsearch.Client, class, class2, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -4772,7 +4772,7 @@ func DayBooksByReleaseDateGteWithClassClass2Seq(es *elasticsearch.Client, class 
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4790,7 +4790,7 @@ func DayBooksByPageCountGteReleaseDateGteWithClassName(es *elasticsearch.Client,
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGtReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4808,7 +4808,7 @@ func DayBooksByPageCountGtReleaseDateGteWithClassName(es *elasticsearch.Client, 
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLtReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4826,7 +4826,7 @@ func DayBooksByPageCountLtReleaseDateGteWithClassName(es *elasticsearch.Client, 
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLteReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4845,7 +4845,7 @@ func DayBooksByPageCountLteReleaseDateGteWithClassName(es *elasticsearch.Client,
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4863,7 +4863,7 @@ func DayBooksByPageCountGteLteReleaseDateGteWithClassName(es *elasticsearch.Clie
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4881,7 +4881,7 @@ func DayBooksByPriceGteReleaseDateGteWithClassName(es *elasticsearch.Client, cla
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGtReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4899,7 +4899,7 @@ func DayBooksByPriceGtReleaseDateGteWithClassName(es *elasticsearch.Client, clas
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLtReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLtReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4917,7 +4917,7 @@ func DayBooksByPriceLtReleaseDateGteWithClassName(es *elasticsearch.Client, clas
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLteReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4936,7 +4936,7 @@ func DayBooksByPriceLteReleaseDateGteWithClassName(es *elasticsearch.Client, cla
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class string, name string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, class, name string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4954,7 +4954,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithClassName(es *elasticsearch.Client, 
 // name string 书名
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithClassNameSeq(es *elasticsearch.Client, class string, name string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithClassNameSeq(es *elasticsearch.Client, class, name, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5382,7 +5382,7 @@ func DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass(es *elasticsear
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5398,7 +5398,7 @@ func DayBooksByPageCountGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, 
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5414,7 +5414,7 @@ func DayBooksByPageCountGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, c
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5430,7 +5430,7 @@ func DayBooksByPageCountLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, c
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5447,7 +5447,7 @@ func DayBooksByPageCountLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, 
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5463,7 +5463,7 @@ func DayBooksByPageCountGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Clien
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5479,7 +5479,7 @@ func DayBooksByPriceGteReleaseDateGteWithClassSeq(es *elasticsearch.Client, clas
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5495,7 +5495,7 @@ func DayBooksByPriceGtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5511,7 +5511,7 @@ func DayBooksByPriceLtReleaseDateGteWithClassSeq(es *elasticsearch.Client, class
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5528,7 +5528,7 @@ func DayBooksByPriceLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, clas
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class string, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, class, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -5544,7 +5544,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithClassSeq(es *elasticsearch.Client, c
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5562,7 +5562,7 @@ func DayBooksByPageCountGteReleaseDateGteWithClass2Name(es *elasticsearch.Client
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5580,7 +5580,7 @@ func DayBooksByPageCountGtReleaseDateGteWithClass2Name(es *elasticsearch.Client,
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5598,7 +5598,7 @@ func DayBooksByPageCountLtReleaseDateGteWithClass2Name(es *elasticsearch.Client,
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5617,7 +5617,7 @@ func DayBooksByPageCountLteReleaseDateGteWithClass2Name(es *elasticsearch.Client
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5635,7 +5635,7 @@ func DayBooksByPageCountGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Cli
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5653,7 +5653,7 @@ func DayBooksByPriceGteReleaseDateGteWithClass2Name(es *elasticsearch.Client, cl
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5671,7 +5671,7 @@ func DayBooksByPriceGtReleaseDateGteWithClass2Name(es *elasticsearch.Client, cla
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLtReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5689,7 +5689,7 @@ func DayBooksByPriceLtReleaseDateGteWithClass2Name(es *elasticsearch.Client, cla
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5708,7 +5708,7 @@ func DayBooksByPriceLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, cl
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2 string, name string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Client, class2, name string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5726,7 +5726,7 @@ func DayBooksByPriceGteLteReleaseDateGteWithClass2Name(es *elasticsearch.Client,
 // name string 书名
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByReleaseDateGteWithClass2NameSeq(es *elasticsearch.Client, class2 string, name string, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByReleaseDateGteWithClass2NameSeq(es *elasticsearch.Client, class2, name, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6154,7 +6154,7 @@ func DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithClass2(es *elasticsea
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6170,7 +6170,7 @@ func DayBooksByPageCountGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client,
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6186,7 +6186,7 @@ func DayBooksByPageCountGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, 
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6202,7 +6202,7 @@ func DayBooksByPageCountLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, 
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6219,7 +6219,7 @@ func DayBooksByPageCountLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client,
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6235,7 +6235,7 @@ func DayBooksByPageCountGteLteReleaseDateGteWithClass2Seq(es *elasticsearch.Clie
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6251,7 +6251,7 @@ func DayBooksByPriceGteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, cla
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6267,7 +6267,7 @@ func DayBooksByPriceGtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, clas
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6283,7 +6283,7 @@ func DayBooksByPriceLtReleaseDateGteWithClass2Seq(es *elasticsearch.Client, clas
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6300,7 +6300,7 @@ func DayBooksByPriceLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, cla
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2 string, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteLteReleaseDateGteWithClass2Seq(es *elasticsearch.Client, class2, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	filters := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -6776,7 +6776,7 @@ func DayBooksByPageCountGteLtePriceGteLteReleaseDateGteWithName(es *elasticsearc
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6794,7 +6794,7 @@ func DayBooksByPageCountGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, n
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6812,7 +6812,7 @@ func DayBooksByPageCountGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, na
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6830,7 +6830,7 @@ func DayBooksByPageCountLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, na
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6849,7 +6849,7 @@ func DayBooksByPageCountLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, n
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPageCountGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPageCountGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, pageCountGte, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6867,7 +6867,7 @@ func DayBooksByPageCountGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6885,7 +6885,7 @@ func DayBooksByPriceGteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name 
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6903,7 +6903,7 @@ func DayBooksByPriceGtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name s
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6921,7 +6921,7 @@ func DayBooksByPriceLtReleaseDateGteWithNameSeq(es *elasticsearch.Client, name s
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6940,7 +6940,7 @@ func DayBooksByPriceLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name 
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
-func DayBooksByPriceGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name string, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
+func DayBooksByPriceGteLteReleaseDateGteWithNameSeq(es *elasticsearch.Client, name, seq string, priceGte, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}

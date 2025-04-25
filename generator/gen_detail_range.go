@@ -214,7 +214,7 @@ func getDetailRangeFuncParams(fields []*FieldInfo, rangeTypes []string, optList 
 
 	funcParams := utils.Cartesian(params)
 	for idx, fp := range funcParams {
-		funcParams[idx] = cfp + strings.TrimSuffix(fp, ", ")
+		funcParams[idx] = simplifyParams(cfp + strings.TrimSuffix(fp, ", "))
 	}
 	return funcParams
 }

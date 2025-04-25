@@ -65,39 +65,48 @@ func GenFieldsName(fields []*FieldInfo) string {
 	return cmt
 }
 
+func joinParams(ps [][]string) string {
+	tmp := []string{}
+	for _, p := range ps {
+		tmp = append(tmp, strings.Join(p, " "))
+	}
+	return strings.Join(tmp, ", ")
+}
+
 // simplifyParams 函数参数列表类型的简化
 func simplifyParams(paramStr string) string {
+	tmpSlice := [][]string{}
 	params := strings.Split(paramStr, ",")
-	var result []string
+	for _, param := range params {
+		fields := strings.Fields(param)
+		tmpSlice = append(tmpSlice, fields)
+	}
 
-	// 当前一组的变量名和类型
-	var currentNames []string
-	var currentType string
+	if len(tmpSlice) <= 1 {
+		return joinParams(tmpSlice)
+	}
 
-	flush := func() {
-		if len(currentNames) > 0 {
-			result = append(result, fmt.Sprintf("%s %s", strings.Join(currentNames, ", "), currentType))
-			currentNames = nil
+	simply := [][]string{}
+	for idx := range len(tmpSlice) {
+		p1 := tmpSlice[idx]
+		if idx+1 >= len(tmpSlice) {
+			simply = append(simply, p1)
+			break
+		}
+
+		p2 := tmpSlice[idx+1]
+		if len(p1) == len(p2) && len(p1) == 2 {
+			if p1[1] == p2[1] {
+				simply = append(simply, p1[:1])
+			} else {
+				simply = append(simply, p1)
+			}
+		} else {
+			simply = append(simply, p1)
 		}
 	}
 
-	for _, p := range params {
-		p = strings.TrimSpace(p)
-		parts := strings.Fields(p)
-		if len(parts) != 2 {
-			continue // 忽略格式不正确的部分
-		}
-		name, typ := parts[0], parts[1]
-
-		if typ != currentType {
-			flush()
-			currentType = typ
-		}
-		currentNames = append(currentNames, name)
-	}
-	flush()
-
-	return strings.Join(result, ", ")
+	return joinParams(simply)
 }
 
 // GenParam 生成函数参数

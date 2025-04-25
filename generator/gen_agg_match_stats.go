@@ -91,7 +91,6 @@ func getAggMatchStatsQuery(fields, termsFields []*FieldInfo, stype string) strin
 
 	// 拼接match和term条件
 	fq := mq + tq + aq + esq
-	utils.JPrint(fq)
 
 	return fq
 }

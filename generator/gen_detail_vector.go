@@ -128,7 +128,7 @@ func getDetailVectorFuncParams(fields []*FieldInfo, rangeTypes []string) string 
 	for _, f := range types {
 		fp += utils.ToFirstLower(f.FieldName) + " " + f.FieldType + ", "
 	}
-	fp = strings.TrimSuffix(fp, ", ")
+	fp = simplifyParams(strings.TrimSuffix(fp, ", "))
 	return fp
 }
 
