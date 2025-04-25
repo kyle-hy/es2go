@@ -36,9 +36,7 @@ func PreAggMatchTermsCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplDat
 		termsFields := FilterOutFields(fields, cfs, []string{TypeKeyword}, nil)
 
 		// terms的嵌套聚合分析次序是对结果哟影响的，因此只能生成一个字段的聚合，否则太多了
-		termsCmbs := utils.Combinations(termsFields, 3)
-		_ = termsCmbs
-
+		termsCmbs := utils.Combinations(termsFields, 1)
 		for _, tcmb := range termsCmbs {
 			ftd := &FuncTplData{
 				Name:    getAggMatchTermsFuncName(esInfo.StructName, cfs, tcmb),
@@ -55,7 +53,7 @@ func PreAggMatchTermsCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplDat
 
 // getAggMatchTermsFuncName 获取函数名称
 func getAggMatchTermsFuncName(structName string, fields, termsFields []*FieldInfo) string {
-	fn := "Match" + structName + "By" + GenFieldsName(fields) + "Terms" + GenFieldsName(termsFields)
+	fn := "Terms" + GenFieldsName(termsFields) + "Of" + structName + "By" + GenFieldsName(fields)
 	return fn
 }
 
@@ -89,8 +87,7 @@ func getAggMatchTermsQuery(fields, termsFields []*FieldInfo, termInShould bool) 
 	tq := GenTermCond(fields)
 
 	// agg部分参数
-	aq := GenAggWithCond(termsFields, AggTypeTerms)
-	// aq := GenAggNestedCond(termsFields, AggTypeTerms)
+	aq := GenAggWithCond(termsFields, AggFuncTerms)
 
 	// bool部分参数
 	bq := GenBoolCond(mq, tq, termInShould)

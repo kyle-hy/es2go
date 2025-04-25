@@ -9,9 +9,9 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// MatchBooksByAllTextTermsClass 根据全文本检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllText 根据全文本检索books表并分组统计类别的分布情况
 // allText string 全文本
-func MatchBooksByAllTextTermsClass(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllText(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -20,9 +20,9 @@ func MatchBooksByAllTextTermsClass(es *elasticsearch.Client, allText string) (*e
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextTermsClass2 根据全文本检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllText 根据全文本检索books表并分组统计子类别的分布情况
 // allText string 全文本
-func MatchBooksByAllTextTermsClass2(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllText(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -31,9 +31,9 @@ func MatchBooksByAllTextTermsClass2(es *elasticsearch.Client, allText string) (*
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextTermsSeq 根据全文本检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllText 根据全文本检索books表并分组统计编号的分布情况
 // allText string 全文本
-func MatchBooksByAllTextTermsSeq(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllText(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -42,53 +42,9 @@ func MatchBooksByAllTextTermsSeq(es *elasticsearch.Client, allText string) (*eq.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextTermsClassClass2 根据全文本检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-func MatchBooksByAllTextTermsClassClass2(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextTermsClassSeq 根据全文本检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-func MatchBooksByAllTextTermsClassSeq(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextTermsClass2Seq 根据全文本检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-func MatchBooksByAllTextTermsClass2Seq(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextTermsClassClass2Seq 根据全文本检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-func MatchBooksByAllTextTermsClassClass2Seq(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorTermsClass 根据作者检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthor 根据作者检索books表并分组统计类别的分布情况
 // author string 作者
-func MatchBooksByAuthorTermsClass(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthor(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -97,9 +53,9 @@ func MatchBooksByAuthorTermsClass(es *elasticsearch.Client, author string) (*eq.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorTermsClass2 根据作者检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthor 根据作者检索books表并分组统计子类别的分布情况
 // author string 作者
-func MatchBooksByAuthorTermsClass2(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthor(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -108,9 +64,9 @@ func MatchBooksByAuthorTermsClass2(es *elasticsearch.Client, author string) (*eq
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorTermsSeq 根据作者检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthor 根据作者检索books表并分组统计编号的分布情况
 // author string 作者
-func MatchBooksByAuthorTermsSeq(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthor(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -119,53 +75,9 @@ func MatchBooksByAuthorTermsSeq(es *elasticsearch.Client, author string) (*eq.Da
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorTermsClassClass2 根据作者检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-func MatchBooksByAuthorTermsClassClass2(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorTermsClassSeq 根据作者检索books表并同时统计类别、编号的分布情况
-// author string 作者
-func MatchBooksByAuthorTermsClassSeq(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorTermsClass2Seq 根据作者检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-func MatchBooksByAuthorTermsClass2Seq(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorTermsClassClass2Seq 根据作者检索books表并同时统计类别、子类别、编号的分布情况
-// author string 作者
-func MatchBooksByAuthorTermsClassClass2Seq(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassTermsClass2 根据类别检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClass 根据类别检索books表并分组统计子类别的分布情况
 // class string 类别
-func MatchBooksByClassTermsClass2(es *elasticsearch.Client, class string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClass(es *elasticsearch.Client, class string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
@@ -174,9 +86,9 @@ func MatchBooksByClassTermsClass2(es *elasticsearch.Client, class string) (*eq.D
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassTermsSeq 根据类别检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass 根据类别检索books表并分组统计编号的分布情况
 // class string 类别
-func MatchBooksByClassTermsSeq(es *elasticsearch.Client, class string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass(es *elasticsearch.Client, class string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
@@ -185,20 +97,9 @@ func MatchBooksByClassTermsSeq(es *elasticsearch.Client, class string) (*eq.Data
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassTermsClass2Seq 根据类别检索books表并同时统计子类别、编号的分布情况
-// class string 类别
-func MatchBooksByClassTermsClass2Seq(es *elasticsearch.Client, class string) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class", class),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClass2TermsClass 根据子类别检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2 根据子类别检索books表并分组统计类别的分布情况
 // class2 string 子类别
-func MatchBooksByClass2TermsClass(es *elasticsearch.Client, class2 string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2(es *elasticsearch.Client, class2 string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
@@ -207,9 +108,9 @@ func MatchBooksByClass2TermsClass(es *elasticsearch.Client, class2 string) (*eq.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2TermsSeq 根据子类别检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass2 根据子类别检索books表并分组统计编号的分布情况
 // class2 string 子类别
-func MatchBooksByClass2TermsSeq(es *elasticsearch.Client, class2 string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass2(es *elasticsearch.Client, class2 string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
@@ -218,20 +119,9 @@ func MatchBooksByClass2TermsSeq(es *elasticsearch.Client, class2 string) (*eq.Da
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2TermsClassSeq 根据子类别检索books表并同时统计类别、编号的分布情况
-// class2 string 子类别
-func MatchBooksByClass2TermsClassSeq(es *elasticsearch.Client, class2 string) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNameTermsClass 根据书名检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByName 根据书名检索books表并分组统计类别的分布情况
 // name string 书名
-func MatchBooksByNameTermsClass(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByName(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -240,9 +130,9 @@ func MatchBooksByNameTermsClass(es *elasticsearch.Client, name string) (*eq.Data
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameTermsClass2 根据书名检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByName 根据书名检索books表并分组统计子类别的分布情况
 // name string 书名
-func MatchBooksByNameTermsClass2(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByName(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -251,9 +141,9 @@ func MatchBooksByNameTermsClass2(es *elasticsearch.Client, name string) (*eq.Dat
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameTermsSeq 根据书名检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByName 根据书名检索books表并分组统计编号的分布情况
 // name string 书名
-func MatchBooksByNameTermsSeq(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByName(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -262,53 +152,9 @@ func MatchBooksByNameTermsSeq(es *elasticsearch.Client, name string) (*eq.Data, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameTermsClassClass2 根据书名检索books表并同时统计类别、子类别的分布情况
-// name string 书名
-func MatchBooksByNameTermsClassClass2(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNameTermsClassSeq 根据书名检索books表并同时统计类别、编号的分布情况
-// name string 书名
-func MatchBooksByNameTermsClassSeq(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNameTermsClass2Seq 根据书名检索books表并同时统计子类别、编号的分布情况
-// name string 书名
-func MatchBooksByNameTermsClass2Seq(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNameTermsClassClass2Seq 根据书名检索books表并同时统计类别、子类别、编号的分布情况
-// name string 书名
-func MatchBooksByNameTermsClassClass2Seq(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountTermsClass 根据页数检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByPageCount 根据页数检索books表并分组统计类别的分布情况
 // pageCount int64 页数
-func MatchBooksByPageCountTermsClass(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByPageCount(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
@@ -317,9 +163,9 @@ func MatchBooksByPageCountTermsClass(es *elasticsearch.Client, pageCount int64) 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountTermsClass2 根据页数检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByPageCount 根据页数检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
-func MatchBooksByPageCountTermsClass2(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByPageCount(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
@@ -328,9 +174,9 @@ func MatchBooksByPageCountTermsClass2(es *elasticsearch.Client, pageCount int64)
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountTermsSeq 根据页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByPageCount 根据页数检索books表并分组统计编号的分布情况
 // pageCount int64 页数
-func MatchBooksByPageCountTermsSeq(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByPageCount(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
@@ -339,53 +185,9 @@ func MatchBooksByPageCountTermsSeq(es *elasticsearch.Client, pageCount int64) (*
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountTermsClassClass2 根据页数检索books表并同时统计类别、子类别的分布情况
-// pageCount int64 页数
-func MatchBooksByPageCountTermsClassClass2(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountTermsClassSeq 根据页数检索books表并同时统计类别、编号的分布情况
-// pageCount int64 页数
-func MatchBooksByPageCountTermsClassSeq(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountTermsClass2Seq 根据页数检索books表并同时统计子类别、编号的分布情况
-// pageCount int64 页数
-func MatchBooksByPageCountTermsClass2Seq(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountTermsClassClass2Seq 根据页数检索books表并同时统计类别、子类别、编号的分布情况
-// pageCount int64 页数
-func MatchBooksByPageCountTermsClassClass2Seq(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPriceTermsClass 根据价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByPrice 根据价格检索books表并分组统计类别的分布情况
 // price float64 价格
-func MatchBooksByPriceTermsClass(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByPrice(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
@@ -394,9 +196,9 @@ func MatchBooksByPriceTermsClass(es *elasticsearch.Client, price float64) (*eq.D
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceTermsClass2 根据价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByPrice 根据价格检索books表并分组统计子类别的分布情况
 // price float64 价格
-func MatchBooksByPriceTermsClass2(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByPrice(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
@@ -405,9 +207,9 @@ func MatchBooksByPriceTermsClass2(es *elasticsearch.Client, price float64) (*eq.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceTermsSeq 根据价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByPrice 根据价格检索books表并分组统计编号的分布情况
 // price float64 价格
-func MatchBooksByPriceTermsSeq(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByPrice(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
@@ -416,53 +218,9 @@ func MatchBooksByPriceTermsSeq(es *elasticsearch.Client, price float64) (*eq.Dat
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceTermsClassClass2 根据价格检索books表并同时统计类别、子类别的分布情况
-// price float64 价格
-func MatchBooksByPriceTermsClassClass2(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPriceTermsClassSeq 根据价格检索books表并同时统计类别、编号的分布情况
-// price float64 价格
-func MatchBooksByPriceTermsClassSeq(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPriceTermsClass2Seq 根据价格检索books表并同时统计子类别、编号的分布情况
-// price float64 价格
-func MatchBooksByPriceTermsClass2Seq(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPriceTermsClassClass2Seq 根据价格检索books表并同时统计类别、子类别、编号的分布情况
-// price float64 价格
-func MatchBooksByPriceTermsClassClass2Seq(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByReleaseDateTermsClass 根据发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByReleaseDate 根据发布日期检索books表并分组统计类别的分布情况
 // releaseDate time.Time 发布日期
-func MatchBooksByReleaseDateTermsClass(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByReleaseDate(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
@@ -471,9 +229,9 @@ func MatchBooksByReleaseDateTermsClass(es *elasticsearch.Client, releaseDate tim
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateTermsClass2 根据发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByReleaseDate 根据发布日期检索books表并分组统计子类别的分布情况
 // releaseDate time.Time 发布日期
-func MatchBooksByReleaseDateTermsClass2(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByReleaseDate(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
@@ -482,9 +240,9 @@ func MatchBooksByReleaseDateTermsClass2(es *elasticsearch.Client, releaseDate ti
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateTermsSeq 根据发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByReleaseDate 根据发布日期检索books表并分组统计编号的分布情况
 // releaseDate time.Time 发布日期
-func MatchBooksByReleaseDateTermsSeq(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByReleaseDate(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
@@ -493,53 +251,9 @@ func MatchBooksByReleaseDateTermsSeq(es *elasticsearch.Client, releaseDate time.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateTermsClassClass2 根据发布日期检索books表并同时统计类别、子类别的分布情况
-// releaseDate time.Time 发布日期
-func MatchBooksByReleaseDateTermsClassClass2(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByReleaseDateTermsClassSeq 根据发布日期检索books表并同时统计类别、编号的分布情况
-// releaseDate time.Time 发布日期
-func MatchBooksByReleaseDateTermsClassSeq(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByReleaseDateTermsClass2Seq 根据发布日期检索books表并同时统计子类别、编号的分布情况
-// releaseDate time.Time 发布日期
-func MatchBooksByReleaseDateTermsClass2Seq(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByReleaseDateTermsClassClass2Seq 根据发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// releaseDate time.Time 发布日期
-func MatchBooksByReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksBySeqTermsClass 根据编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksBySeq 根据编号检索books表并分组统计类别的分布情况
 // seq string 编号
-func MatchBooksBySeqTermsClass(es *elasticsearch.Client, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksBySeq(es *elasticsearch.Client, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
@@ -548,9 +262,9 @@ func MatchBooksBySeqTermsClass(es *elasticsearch.Client, seq string) (*eq.Data, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksBySeqTermsClass2 根据编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksBySeq 根据编号检索books表并分组统计子类别的分布情况
 // seq string 编号
-func MatchBooksBySeqTermsClass2(es *elasticsearch.Client, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksBySeq(es *elasticsearch.Client, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
@@ -559,21 +273,10 @@ func MatchBooksBySeqTermsClass2(es *elasticsearch.Client, seq string) (*eq.Data,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksBySeqTermsClassClass2 根据编号检索books表并同时统计类别、子类别的分布情况
-// seq string 编号
-func MatchBooksBySeqTermsClassClass2(es *elasticsearch.Client, seq string) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorTermsClass 根据全文本、作者检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthor 根据全文本、作者检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
-func MatchBooksByAllTextAuthorTermsClass(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -583,10 +286,10 @@ func MatchBooksByAllTextAuthorTermsClass(es *elasticsearch.Client, allText, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorTermsClass2 根据全文本、作者检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthor 根据全文本、作者检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
-func MatchBooksByAllTextAuthorTermsClass2(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -596,10 +299,10 @@ func MatchBooksByAllTextAuthorTermsClass2(es *elasticsearch.Client, allText, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorTermsSeq 根据全文本、作者检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthor 根据全文本、作者检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
-func MatchBooksByAllTextAuthorTermsSeq(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -609,62 +312,10 @@ func MatchBooksByAllTextAuthorTermsSeq(es *elasticsearch.Client, allText, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorTermsClassClass2 根据全文本、作者检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-func MatchBooksByAllTextAuthorTermsClassClass2(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorTermsClassSeq 根据全文本、作者检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-func MatchBooksByAllTextAuthorTermsClassSeq(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorTermsClass2Seq 根据全文本、作者检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-func MatchBooksByAllTextAuthorTermsClass2Seq(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorTermsClassClass2Seq 根据全文本、作者检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-func MatchBooksByAllTextAuthorTermsClassClass2Seq(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClassTermsClass2 根据全文本、类别检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClass 根据全文本、类别检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
-func MatchBooksByAllTextClassTermsClass2(es *elasticsearch.Client, allText, class string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClass(es *elasticsearch.Client, allText, class string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -676,10 +327,10 @@ func MatchBooksByAllTextClassTermsClass2(es *elasticsearch.Client, allText, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassTermsSeq 根据全文本、类别检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClass 根据全文本、类别检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
-func MatchBooksByAllTextClassTermsSeq(es *elasticsearch.Client, allText, class string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClass(es *elasticsearch.Client, allText, class string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -691,25 +342,10 @@ func MatchBooksByAllTextClassTermsSeq(es *elasticsearch.Client, allText, class s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassTermsClass2Seq 根据全文本、类别检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// class string 类别
-func MatchBooksByAllTextClassTermsClass2Seq(es *elasticsearch.Client, allText, class string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClass2TermsClass 根据全文本、子类别检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2 根据全文本、子类别检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
-func MatchBooksByAllTextClass2TermsClass(es *elasticsearch.Client, allText, class2 string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -721,10 +357,10 @@ func MatchBooksByAllTextClass2TermsClass(es *elasticsearch.Client, allText, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2TermsSeq 根据全文本、子类别检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClass2 根据全文本、子类别检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
-func MatchBooksByAllTextClass2TermsSeq(es *elasticsearch.Client, allText, class2 string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -736,25 +372,10 @@ func MatchBooksByAllTextClass2TermsSeq(es *elasticsearch.Client, allText, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2TermsClassSeq 根据全文本、子类别检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// class2 string 子类别
-func MatchBooksByAllTextClass2TermsClassSeq(es *elasticsearch.Client, allText, class2 string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNameTermsClass 根据全文本、书名检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextName 根据全文本、书名检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
-func MatchBooksByAllTextNameTermsClass(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextName(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -764,10 +385,10 @@ func MatchBooksByAllTextNameTermsClass(es *elasticsearch.Client, allText, name s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameTermsClass2 根据全文本、书名检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextName 根据全文本、书名检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
-func MatchBooksByAllTextNameTermsClass2(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextName(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -777,10 +398,10 @@ func MatchBooksByAllTextNameTermsClass2(es *elasticsearch.Client, allText, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameTermsSeq 根据全文本、书名检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextName 根据全文本、书名检索books表并分组统计编号的分布情况
 // allText string 全文本
 // name string 书名
-func MatchBooksByAllTextNameTermsSeq(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextName(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -790,62 +411,10 @@ func MatchBooksByAllTextNameTermsSeq(es *elasticsearch.Client, allText, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameTermsClassClass2 根据全文本、书名检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// name string 书名
-func MatchBooksByAllTextNameTermsClassClass2(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNameTermsClassSeq 根据全文本、书名检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-func MatchBooksByAllTextNameTermsClassSeq(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNameTermsClass2Seq 根据全文本、书名检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-func MatchBooksByAllTextNameTermsClass2Seq(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNameTermsClassClass2Seq 根据全文本、书名检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-func MatchBooksByAllTextNameTermsClassClass2Seq(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountTermsClass 根据全文本、页数检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextPageCount 根据全文本、页数检索books表并分组统计类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
-func MatchBooksByAllTextPageCountTermsClass(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextPageCount(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -857,10 +426,10 @@ func MatchBooksByAllTextPageCountTermsClass(es *elasticsearch.Client, allText st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountTermsClass2 根据全文本、页数检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextPageCount 根据全文本、页数检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
-func MatchBooksByAllTextPageCountTermsClass2(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextPageCount(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -872,10 +441,10 @@ func MatchBooksByAllTextPageCountTermsClass2(es *elasticsearch.Client, allText s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountTermsSeq 根据全文本、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextPageCount 根据全文本、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
-func MatchBooksByAllTextPageCountTermsSeq(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextPageCount(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -887,70 +456,10 @@ func MatchBooksByAllTextPageCountTermsSeq(es *elasticsearch.Client, allText stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountTermsClassClass2 根据全文本、页数检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// pageCount int64 页数
-func MatchBooksByAllTextPageCountTermsClassClass2(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountTermsClassSeq 根据全文本、页数检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// pageCount int64 页数
-func MatchBooksByAllTextPageCountTermsClassSeq(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountTermsClass2Seq 根据全文本、页数检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// pageCount int64 页数
-func MatchBooksByAllTextPageCountTermsClass2Seq(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountTermsClassClass2Seq 根据全文本、页数检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// pageCount int64 页数
-func MatchBooksByAllTextPageCountTermsClassClass2Seq(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPriceTermsClass 根据全文本、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextPrice 根据全文本、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // price float64 价格
-func MatchBooksByAllTextPriceTermsClass(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextPrice(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -962,10 +471,10 @@ func MatchBooksByAllTextPriceTermsClass(es *elasticsearch.Client, allText string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceTermsClass2 根据全文本、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextPrice 根据全文本、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // price float64 价格
-func MatchBooksByAllTextPriceTermsClass2(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextPrice(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -977,10 +486,10 @@ func MatchBooksByAllTextPriceTermsClass2(es *elasticsearch.Client, allText strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceTermsSeq 根据全文本、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextPrice 根据全文本、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // price float64 价格
-func MatchBooksByAllTextPriceTermsSeq(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextPrice(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -992,70 +501,10 @@ func MatchBooksByAllTextPriceTermsSeq(es *elasticsearch.Client, allText string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceTermsClassClass2 根据全文本、价格检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// price float64 价格
-func MatchBooksByAllTextPriceTermsClassClass2(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPriceTermsClassSeq 根据全文本、价格检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// price float64 价格
-func MatchBooksByAllTextPriceTermsClassSeq(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPriceTermsClass2Seq 根据全文本、价格检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// price float64 价格
-func MatchBooksByAllTextPriceTermsClass2Seq(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPriceTermsClassClass2Seq 根据全文本、价格检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// price float64 价格
-func MatchBooksByAllTextPriceTermsClassClass2Seq(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextReleaseDateTermsClass 根据全文本、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextReleaseDate 根据全文本、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextReleaseDateTermsClass(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -1067,10 +516,10 @@ func MatchBooksByAllTextReleaseDateTermsClass(es *elasticsearch.Client, allText 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateTermsClass2 根据全文本、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextReleaseDate 根据全文本、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextReleaseDateTermsClass2(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -1082,10 +531,10 @@ func MatchBooksByAllTextReleaseDateTermsClass2(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateTermsSeq 根据全文本、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextReleaseDate 根据全文本、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextReleaseDateTermsSeq(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -1097,70 +546,10 @@ func MatchBooksByAllTextReleaseDateTermsSeq(es *elasticsearch.Client, allText st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateTermsClassClass2 根据全文本、发布日期检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextReleaseDateTermsClassClass2(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextReleaseDateTermsClassSeq 根据全文本、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextReleaseDateTermsClassSeq(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextReleaseDateTermsClass2Seq 根据全文本、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextReleaseDateTermsClassClass2Seq 根据全文本、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextSeqTermsClass 根据全文本、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextSeq 根据全文本、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // seq string 编号
-func MatchBooksByAllTextSeqTermsClass(es *elasticsearch.Client, allText, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -1172,10 +561,10 @@ func MatchBooksByAllTextSeqTermsClass(es *elasticsearch.Client, allText, seq str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextSeqTermsClass2 根据全文本、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextSeq 根据全文本、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // seq string 编号
-func MatchBooksByAllTextSeqTermsClass2(es *elasticsearch.Client, allText, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -1187,25 +576,10 @@ func MatchBooksByAllTextSeqTermsClass2(es *elasticsearch.Client, allText, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextSeqTermsClassClass2 根据全文本、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// seq string 编号
-func MatchBooksByAllTextSeqTermsClassClass2(es *elasticsearch.Client, allText, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClassTermsClass2 根据作者、类别检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClass 根据作者、类别检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
-func MatchBooksByAuthorClassTermsClass2(es *elasticsearch.Client, author, class string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClass(es *elasticsearch.Client, author, class string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1217,10 +591,10 @@ func MatchBooksByAuthorClassTermsClass2(es *elasticsearch.Client, author, class 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassTermsSeq 根据作者、类别检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClass 根据作者、类别检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
-func MatchBooksByAuthorClassTermsSeq(es *elasticsearch.Client, author, class string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClass(es *elasticsearch.Client, author, class string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1232,25 +606,10 @@ func MatchBooksByAuthorClassTermsSeq(es *elasticsearch.Client, author, class str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassTermsClass2Seq 根据作者、类别检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// class string 类别
-func MatchBooksByAuthorClassTermsClass2Seq(es *elasticsearch.Client, author, class string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClass2TermsClass 根据作者、子类别检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2 根据作者、子类别检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
-func MatchBooksByAuthorClass2TermsClass(es *elasticsearch.Client, author, class2 string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1262,10 +621,10 @@ func MatchBooksByAuthorClass2TermsClass(es *elasticsearch.Client, author, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2TermsSeq 根据作者、子类别检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClass2 根据作者、子类别检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
-func MatchBooksByAuthorClass2TermsSeq(es *elasticsearch.Client, author, class2 string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1277,25 +636,10 @@ func MatchBooksByAuthorClass2TermsSeq(es *elasticsearch.Client, author, class2 s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2TermsClassSeq 根据作者、子类别检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// class2 string 子类别
-func MatchBooksByAuthorClass2TermsClassSeq(es *elasticsearch.Client, author, class2 string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNameTermsClass 根据作者、书名检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorName 根据作者、书名检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
-func MatchBooksByAuthorNameTermsClass(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorName(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -1305,10 +649,10 @@ func MatchBooksByAuthorNameTermsClass(es *elasticsearch.Client, author, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameTermsClass2 根据作者、书名检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorName 根据作者、书名检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
-func MatchBooksByAuthorNameTermsClass2(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorName(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -1318,10 +662,10 @@ func MatchBooksByAuthorNameTermsClass2(es *elasticsearch.Client, author, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameTermsSeq 根据作者、书名检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorName 根据作者、书名检索books表并分组统计编号的分布情况
 // author string 作者
 // name string 书名
-func MatchBooksByAuthorNameTermsSeq(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorName(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -1331,62 +675,10 @@ func MatchBooksByAuthorNameTermsSeq(es *elasticsearch.Client, author, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameTermsClassClass2 根据作者、书名检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// name string 书名
-func MatchBooksByAuthorNameTermsClassClass2(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNameTermsClassSeq 根据作者、书名检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// name string 书名
-func MatchBooksByAuthorNameTermsClassSeq(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNameTermsClass2Seq 根据作者、书名检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// name string 书名
-func MatchBooksByAuthorNameTermsClass2Seq(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNameTermsClassClass2Seq 根据作者、书名检索books表并同时统计类别、子类别、编号的分布情况
-// author string 作者
-// name string 书名
-func MatchBooksByAuthorNameTermsClassClass2Seq(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountTermsClass 根据作者、页数检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorPageCount 根据作者、页数检索books表并分组统计类别的分布情况
 // author string 作者
 // pageCount int64 页数
-func MatchBooksByAuthorPageCountTermsClass(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorPageCount(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1398,10 +690,10 @@ func MatchBooksByAuthorPageCountTermsClass(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountTermsClass2 根据作者、页数检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorPageCount 根据作者、页数检索books表并分组统计子类别的分布情况
 // author string 作者
 // pageCount int64 页数
-func MatchBooksByAuthorPageCountTermsClass2(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorPageCount(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1413,10 +705,10 @@ func MatchBooksByAuthorPageCountTermsClass2(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountTermsSeq 根据作者、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorPageCount 根据作者、页数检索books表并分组统计编号的分布情况
 // author string 作者
 // pageCount int64 页数
-func MatchBooksByAuthorPageCountTermsSeq(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorPageCount(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1428,70 +720,10 @@ func MatchBooksByAuthorPageCountTermsSeq(es *elasticsearch.Client, author string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountTermsClassClass2 根据作者、页数检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// pageCount int64 页数
-func MatchBooksByAuthorPageCountTermsClassClass2(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountTermsClassSeq 根据作者、页数检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// pageCount int64 页数
-func MatchBooksByAuthorPageCountTermsClassSeq(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountTermsClass2Seq 根据作者、页数检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// pageCount int64 页数
-func MatchBooksByAuthorPageCountTermsClass2Seq(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountTermsClassClass2Seq 根据作者、页数检索books表并同时统计类别、子类别、编号的分布情况
-// author string 作者
-// pageCount int64 页数
-func MatchBooksByAuthorPageCountTermsClassClass2Seq(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPriceTermsClass 根据作者、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorPrice 根据作者、价格检索books表并分组统计类别的分布情况
 // author string 作者
 // price float64 价格
-func MatchBooksByAuthorPriceTermsClass(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorPrice(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1503,10 +735,10 @@ func MatchBooksByAuthorPriceTermsClass(es *elasticsearch.Client, author string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceTermsClass2 根据作者、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorPrice 根据作者、价格检索books表并分组统计子类别的分布情况
 // author string 作者
 // price float64 价格
-func MatchBooksByAuthorPriceTermsClass2(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorPrice(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1518,10 +750,10 @@ func MatchBooksByAuthorPriceTermsClass2(es *elasticsearch.Client, author string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceTermsSeq 根据作者、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorPrice 根据作者、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // price float64 价格
-func MatchBooksByAuthorPriceTermsSeq(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorPrice(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1533,70 +765,10 @@ func MatchBooksByAuthorPriceTermsSeq(es *elasticsearch.Client, author string, pr
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceTermsClassClass2 根据作者、价格检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// price float64 价格
-func MatchBooksByAuthorPriceTermsClassClass2(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPriceTermsClassSeq 根据作者、价格检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// price float64 价格
-func MatchBooksByAuthorPriceTermsClassSeq(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPriceTermsClass2Seq 根据作者、价格检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// price float64 价格
-func MatchBooksByAuthorPriceTermsClass2Seq(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPriceTermsClassClass2Seq 根据作者、价格检索books表并同时统计类别、子类别、编号的分布情况
-// author string 作者
-// price float64 价格
-func MatchBooksByAuthorPriceTermsClassClass2Seq(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorReleaseDateTermsClass 根据作者、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorReleaseDate 根据作者、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorReleaseDateTermsClass(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1608,10 +780,10 @@ func MatchBooksByAuthorReleaseDateTermsClass(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateTermsClass2 根据作者、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorReleaseDate 根据作者、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorReleaseDateTermsClass2(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1623,10 +795,10 @@ func MatchBooksByAuthorReleaseDateTermsClass2(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateTermsSeq 根据作者、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorReleaseDate 根据作者、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorReleaseDateTermsSeq(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1638,70 +810,10 @@ func MatchBooksByAuthorReleaseDateTermsSeq(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateTermsClassClass2 根据作者、发布日期检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorReleaseDateTermsClassClass2(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorReleaseDateTermsClassSeq 根据作者、发布日期检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorReleaseDateTermsClassSeq(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorReleaseDateTermsClass2Seq 根据作者、发布日期检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorReleaseDateTermsClass2Seq(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorReleaseDateTermsClassClass2Seq 根据作者、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// author string 作者
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorSeqTermsClass 根据作者、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorSeq 根据作者、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // seq string 编号
-func MatchBooksByAuthorSeqTermsClass(es *elasticsearch.Client, author, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorSeq(es *elasticsearch.Client, author, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1713,10 +825,10 @@ func MatchBooksByAuthorSeqTermsClass(es *elasticsearch.Client, author, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorSeqTermsClass2 根据作者、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorSeq 根据作者、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // seq string 编号
-func MatchBooksByAuthorSeqTermsClass2(es *elasticsearch.Client, author, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorSeq(es *elasticsearch.Client, author, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1728,25 +840,10 @@ func MatchBooksByAuthorSeqTermsClass2(es *elasticsearch.Client, author, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorSeqTermsClassClass2 根据作者、编号检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// seq string 编号
-func MatchBooksByAuthorSeqTermsClassClass2(es *elasticsearch.Client, author, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassClass2TermsSeq 根据类别、子类别检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassClass2 根据类别、子类别检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
-func MatchBooksByClassClass2TermsSeq(es *elasticsearch.Client, class, class2 string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassClass2(es *elasticsearch.Client, class, class2 string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -1756,10 +853,10 @@ func MatchBooksByClassClass2TermsSeq(es *elasticsearch.Client, class, class2 str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameTermsClass2 根据类别、书名检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassName 根据类别、书名检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
-func MatchBooksByClassNameTermsClass2(es *elasticsearch.Client, class, name string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassName(es *elasticsearch.Client, class, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1771,10 +868,10 @@ func MatchBooksByClassNameTermsClass2(es *elasticsearch.Client, class, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameTermsSeq 根据类别、书名检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassName 根据类别、书名检索books表并分组统计编号的分布情况
 // class string 类别
 // name string 书名
-func MatchBooksByClassNameTermsSeq(es *elasticsearch.Client, class, name string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassName(es *elasticsearch.Client, class, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1786,25 +883,10 @@ func MatchBooksByClassNameTermsSeq(es *elasticsearch.Client, class, name string)
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameTermsClass2Seq 根据类别、书名检索books表并同时统计子类别、编号的分布情况
-// class string 类别
-// name string 书名
-func MatchBooksByClassNameTermsClass2Seq(es *elasticsearch.Client, class, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassPageCountTermsClass2 根据类别、页数检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassPageCount 根据类别、页数检索books表并分组统计子类别的分布情况
 // class string 类别
 // pageCount int64 页数
-func MatchBooksByClassPageCountTermsClass2(es *elasticsearch.Client, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassPageCount(es *elasticsearch.Client, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -1814,10 +896,10 @@ func MatchBooksByClassPageCountTermsClass2(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountTermsSeq 根据类别、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassPageCount 根据类别、页数检索books表并分组统计编号的分布情况
 // class string 类别
 // pageCount int64 页数
-func MatchBooksByClassPageCountTermsSeq(es *elasticsearch.Client, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassPageCount(es *elasticsearch.Client, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -1827,23 +909,10 @@ func MatchBooksByClassPageCountTermsSeq(es *elasticsearch.Client, class string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountTermsClass2Seq 根据类别、页数检索books表并同时统计子类别、编号的分布情况
-// class string 类别
-// pageCount int64 页数
-func MatchBooksByClassPageCountTermsClass2Seq(es *elasticsearch.Client, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassPriceTermsClass2 根据类别、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassPrice 根据类别、价格检索books表并分组统计子类别的分布情况
 // class string 类别
 // price float64 价格
-func MatchBooksByClassPriceTermsClass2(es *elasticsearch.Client, class string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassPrice(es *elasticsearch.Client, class string, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
@@ -1853,10 +922,10 @@ func MatchBooksByClassPriceTermsClass2(es *elasticsearch.Client, class string, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceTermsSeq 根据类别、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassPrice 根据类别、价格检索books表并分组统计编号的分布情况
 // class string 类别
 // price float64 价格
-func MatchBooksByClassPriceTermsSeq(es *elasticsearch.Client, class string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassPrice(es *elasticsearch.Client, class string, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
@@ -1866,23 +935,10 @@ func MatchBooksByClassPriceTermsSeq(es *elasticsearch.Client, class string, pric
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceTermsClass2Seq 根据类别、价格检索books表并同时统计子类别、编号的分布情况
-// class string 类别
-// price float64 价格
-func MatchBooksByClassPriceTermsClass2Seq(es *elasticsearch.Client, class string, price float64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassReleaseDateTermsClass2 根据类别、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassReleaseDate 根据类别、发布日期检索books表并分组统计子类别的分布情况
 // class string 类别
 // releaseDate time.Time 发布日期
-func MatchBooksByClassReleaseDateTermsClass2(es *elasticsearch.Client, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
@@ -1892,10 +948,10 @@ func MatchBooksByClassReleaseDateTermsClass2(es *elasticsearch.Client, class str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateTermsSeq 根据类别、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassReleaseDate 根据类别、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // releaseDate time.Time 发布日期
-func MatchBooksByClassReleaseDateTermsSeq(es *elasticsearch.Client, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
@@ -1905,23 +961,10 @@ func MatchBooksByClassReleaseDateTermsSeq(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateTermsClass2Seq 根据类别、发布日期检索books表并同时统计子类别、编号的分布情况
-// class string 类别
-// releaseDate time.Time 发布日期
-func MatchBooksByClassReleaseDateTermsClass2Seq(es *elasticsearch.Client, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassSeqTermsClass2 根据类别、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassSeq 根据类别、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // seq string 编号
-func MatchBooksByClassSeqTermsClass2(es *elasticsearch.Client, class, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassSeq(es *elasticsearch.Client, class, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
@@ -1931,10 +974,10 @@ func MatchBooksByClassSeqTermsClass2(es *elasticsearch.Client, class, seq string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameTermsClass 根据子类别、书名检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2Name 根据子类别、书名检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
-func MatchBooksByClass2NameTermsClass(es *elasticsearch.Client, class2, name string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2Name(es *elasticsearch.Client, class2, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1946,10 +989,10 @@ func MatchBooksByClass2NameTermsClass(es *elasticsearch.Client, class2, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameTermsSeq 根据子类别、书名检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass2Name 根据子类别、书名检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // name string 书名
-func MatchBooksByClass2NameTermsSeq(es *elasticsearch.Client, class2, name string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass2Name(es *elasticsearch.Client, class2, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1961,25 +1004,10 @@ func MatchBooksByClass2NameTermsSeq(es *elasticsearch.Client, class2, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameTermsClassSeq 根据子类别、书名检索books表并同时统计类别、编号的分布情况
-// class2 string 子类别
-// name string 书名
-func MatchBooksByClass2NameTermsClassSeq(es *elasticsearch.Client, class2, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClass2PageCountTermsClass 根据子类别、页数检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2PageCount 根据子类别、页数检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByClass2PageCountTermsClass(es *elasticsearch.Client, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2PageCount(es *elasticsearch.Client, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
@@ -1989,10 +1017,10 @@ func MatchBooksByClass2PageCountTermsClass(es *elasticsearch.Client, class2 stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountTermsSeq 根据子类别、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass2PageCount 根据子类别、页数检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByClass2PageCountTermsSeq(es *elasticsearch.Client, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass2PageCount(es *elasticsearch.Client, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
@@ -2002,23 +1030,10 @@ func MatchBooksByClass2PageCountTermsSeq(es *elasticsearch.Client, class2 string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountTermsClassSeq 根据子类别、页数检索books表并同时统计类别、编号的分布情况
-// class2 string 子类别
-// pageCount int64 页数
-func MatchBooksByClass2PageCountTermsClassSeq(es *elasticsearch.Client, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClass2PriceTermsClass 根据子类别、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2Price 根据子类别、价格检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByClass2PriceTermsClass(es *elasticsearch.Client, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2Price(es *elasticsearch.Client, class2 string, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
@@ -2028,10 +1043,10 @@ func MatchBooksByClass2PriceTermsClass(es *elasticsearch.Client, class2 string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceTermsSeq 根据子类别、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass2Price 根据子类别、价格检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByClass2PriceTermsSeq(es *elasticsearch.Client, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass2Price(es *elasticsearch.Client, class2 string, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
@@ -2041,23 +1056,10 @@ func MatchBooksByClass2PriceTermsSeq(es *elasticsearch.Client, class2 string, pr
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceTermsClassSeq 根据子类别、价格检索books表并同时统计类别、编号的分布情况
-// class2 string 子类别
-// price float64 价格
-func MatchBooksByClass2PriceTermsClassSeq(es *elasticsearch.Client, class2 string, price float64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClass2ReleaseDateTermsClass 根据子类别、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2ReleaseDate 根据子类别、发布日期检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2ReleaseDateTermsClass(es *elasticsearch.Client, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
@@ -2067,10 +1069,10 @@ func MatchBooksByClass2ReleaseDateTermsClass(es *elasticsearch.Client, class2 st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateTermsSeq 根据子类别、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass2ReleaseDate 根据子类别、发布日期检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2ReleaseDateTermsSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
@@ -2080,23 +1082,10 @@ func MatchBooksByClass2ReleaseDateTermsSeq(es *elasticsearch.Client, class2 stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateTermsClassSeq 根据子类别、发布日期检索books表并同时统计类别、编号的分布情况
-// class2 string 子类别
-// releaseDate time.Time 发布日期
-func MatchBooksByClass2ReleaseDateTermsClassSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClass2SeqTermsClass 根据子类别、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2Seq 根据子类别、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // seq string 编号
-func MatchBooksByClass2SeqTermsClass(es *elasticsearch.Client, class2, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2Seq(es *elasticsearch.Client, class2, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
@@ -2106,10 +1095,10 @@ func MatchBooksByClass2SeqTermsClass(es *elasticsearch.Client, class2, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountTermsClass 根据书名、页数检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByNamePageCount 根据书名、页数检索books表并分组统计类别的分布情况
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByNamePageCountTermsClass(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByNamePageCount(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2121,10 +1110,10 @@ func MatchBooksByNamePageCountTermsClass(es *elasticsearch.Client, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountTermsClass2 根据书名、页数检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByNamePageCount 根据书名、页数检索books表并分组统计子类别的分布情况
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByNamePageCountTermsClass2(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByNamePageCount(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2136,10 +1125,10 @@ func MatchBooksByNamePageCountTermsClass2(es *elasticsearch.Client, name string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountTermsSeq 根据书名、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByNamePageCount 根据书名、页数检索books表并分组统计编号的分布情况
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByNamePageCountTermsSeq(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByNamePageCount(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2151,70 +1140,10 @@ func MatchBooksByNamePageCountTermsSeq(es *elasticsearch.Client, name string, pa
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountTermsClassClass2 根据书名、页数检索books表并同时统计类别、子类别的分布情况
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByNamePageCountTermsClassClass2(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountTermsClassSeq 根据书名、页数检索books表并同时统计类别、编号的分布情况
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByNamePageCountTermsClassSeq(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountTermsClass2Seq 根据书名、页数检索books表并同时统计子类别、编号的分布情况
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByNamePageCountTermsClass2Seq(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountTermsClassClass2Seq 根据书名、页数检索books表并同时统计类别、子类别、编号的分布情况
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByNamePageCountTermsClassClass2Seq(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePriceTermsClass 根据书名、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByNamePrice 根据书名、价格检索books表并分组统计类别的分布情况
 // name string 书名
 // price float64 价格
-func MatchBooksByNamePriceTermsClass(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByNamePrice(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2226,10 +1155,10 @@ func MatchBooksByNamePriceTermsClass(es *elasticsearch.Client, name string, pric
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceTermsClass2 根据书名、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByNamePrice 根据书名、价格检索books表并分组统计子类别的分布情况
 // name string 书名
 // price float64 价格
-func MatchBooksByNamePriceTermsClass2(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByNamePrice(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2241,10 +1170,10 @@ func MatchBooksByNamePriceTermsClass2(es *elasticsearch.Client, name string, pri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceTermsSeq 根据书名、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByNamePrice 根据书名、价格检索books表并分组统计编号的分布情况
 // name string 书名
 // price float64 价格
-func MatchBooksByNamePriceTermsSeq(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByNamePrice(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2256,70 +1185,10 @@ func MatchBooksByNamePriceTermsSeq(es *elasticsearch.Client, name string, price 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceTermsClassClass2 根据书名、价格检索books表并同时统计类别、子类别的分布情况
-// name string 书名
-// price float64 价格
-func MatchBooksByNamePriceTermsClassClass2(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePriceTermsClassSeq 根据书名、价格检索books表并同时统计类别、编号的分布情况
-// name string 书名
-// price float64 价格
-func MatchBooksByNamePriceTermsClassSeq(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePriceTermsClass2Seq 根据书名、价格检索books表并同时统计子类别、编号的分布情况
-// name string 书名
-// price float64 价格
-func MatchBooksByNamePriceTermsClass2Seq(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePriceTermsClassClass2Seq 根据书名、价格检索books表并同时统计类别、子类别、编号的分布情况
-// name string 书名
-// price float64 价格
-func MatchBooksByNamePriceTermsClassClass2Seq(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNameReleaseDateTermsClass 根据书名、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByNameReleaseDate 根据书名、发布日期检索books表并分组统计类别的分布情况
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByNameReleaseDateTermsClass(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2331,10 +1200,10 @@ func MatchBooksByNameReleaseDateTermsClass(es *elasticsearch.Client, name string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateTermsClass2 根据书名、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByNameReleaseDate 根据书名、发布日期检索books表并分组统计子类别的分布情况
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByNameReleaseDateTermsClass2(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2346,10 +1215,10 @@ func MatchBooksByNameReleaseDateTermsClass2(es *elasticsearch.Client, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateTermsSeq 根据书名、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByNameReleaseDate 根据书名、发布日期检索books表并分组统计编号的分布情况
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByNameReleaseDateTermsSeq(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2361,70 +1230,10 @@ func MatchBooksByNameReleaseDateTermsSeq(es *elasticsearch.Client, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateTermsClassClass2 根据书名、发布日期检索books表并同时统计类别、子类别的分布情况
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByNameReleaseDateTermsClassClass2(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNameReleaseDateTermsClassSeq 根据书名、发布日期检索books表并同时统计类别、编号的分布情况
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByNameReleaseDateTermsClassSeq(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNameReleaseDateTermsClass2Seq 根据书名、发布日期检索books表并同时统计子类别、编号的分布情况
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByNameReleaseDateTermsClass2Seq(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNameReleaseDateTermsClassClass2Seq 根据书名、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByNameReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNameSeqTermsClass 根据书名、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByNameSeq 根据书名、编号检索books表并分组统计类别的分布情况
 // name string 书名
 // seq string 编号
-func MatchBooksByNameSeqTermsClass(es *elasticsearch.Client, name, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByNameSeq(es *elasticsearch.Client, name, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2436,10 +1245,10 @@ func MatchBooksByNameSeqTermsClass(es *elasticsearch.Client, name, seq string) (
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameSeqTermsClass2 根据书名、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByNameSeq 根据书名、编号检索books表并分组统计子类别的分布情况
 // name string 书名
 // seq string 编号
-func MatchBooksByNameSeqTermsClass2(es *elasticsearch.Client, name, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByNameSeq(es *elasticsearch.Client, name, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -2451,25 +1260,10 @@ func MatchBooksByNameSeqTermsClass2(es *elasticsearch.Client, name, seq string) 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameSeqTermsClassClass2 根据书名、编号检索books表并同时统计类别、子类别的分布情况
-// name string 书名
-// seq string 编号
-func MatchBooksByNameSeqTermsClassClass2(es *elasticsearch.Client, name, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountPriceTermsClass 根据页数、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByPageCountPrice 根据页数、价格检索books表并分组统计类别的分布情况
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByPageCountPriceTermsClass(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
@@ -2479,10 +1273,10 @@ func MatchBooksByPageCountPriceTermsClass(es *elasticsearch.Client, pageCount in
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceTermsClass2 根据页数、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByPageCountPrice 根据页数、价格检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByPageCountPriceTermsClass2(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
@@ -2492,10 +1286,10 @@ func MatchBooksByPageCountPriceTermsClass2(es *elasticsearch.Client, pageCount i
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceTermsSeq 根据页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByPageCountPrice 根据页数、价格检索books表并分组统计编号的分布情况
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByPageCountPriceTermsSeq(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
@@ -2505,62 +1299,10 @@ func MatchBooksByPageCountPriceTermsSeq(es *elasticsearch.Client, pageCount int6
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceTermsClassClass2 根据页数、价格检索books表并同时统计类别、子类别的分布情况
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByPageCountPriceTermsClassClass2(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountPriceTermsClassSeq 根据页数、价格检索books表并同时统计类别、编号的分布情况
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByPageCountPriceTermsClassSeq(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountPriceTermsClass2Seq 根据页数、价格检索books表并同时统计子类别、编号的分布情况
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByPageCountPriceTermsClass2Seq(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountPriceTermsClassClass2Seq 根据页数、价格检索books表并同时统计类别、子类别、编号的分布情况
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByPageCountPriceTermsClassClass2Seq(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountReleaseDateTermsClass 根据页数、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByPageCountReleaseDate 根据页数、发布日期检索books表并分组统计类别的分布情况
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByPageCountReleaseDateTermsClass(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByPageCountReleaseDate(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
@@ -2570,10 +1312,10 @@ func MatchBooksByPageCountReleaseDateTermsClass(es *elasticsearch.Client, pageCo
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateTermsClass2 根据页数、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByPageCountReleaseDate 根据页数、发布日期检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByPageCountReleaseDateTermsClass2(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByPageCountReleaseDate(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
@@ -2583,10 +1325,10 @@ func MatchBooksByPageCountReleaseDateTermsClass2(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateTermsSeq 根据页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByPageCountReleaseDate 根据页数、发布日期检索books表并分组统计编号的分布情况
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByPageCountReleaseDateTermsSeq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByPageCountReleaseDate(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
@@ -2596,62 +1338,10 @@ func MatchBooksByPageCountReleaseDateTermsSeq(es *elasticsearch.Client, pageCoun
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateTermsClassClass2 根据页数、发布日期检索books表并同时统计类别、子类别的分布情况
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByPageCountReleaseDateTermsClassClass2(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountReleaseDateTermsClassSeq 根据页数、发布日期检索books表并同时统计类别、编号的分布情况
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByPageCountReleaseDateTermsClassSeq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountReleaseDateTermsClass2Seq 根据页数、发布日期检索books表并同时统计子类别、编号的分布情况
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByPageCountReleaseDateTermsClass2Seq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountReleaseDateTermsClassClass2Seq 根据页数、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByPageCountReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountSeqTermsClass 根据页数、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByPageCountSeq 根据页数、编号检索books表并分组统计类别的分布情况
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByPageCountSeqTermsClass(es *elasticsearch.Client, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByPageCountSeq(es *elasticsearch.Client, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
@@ -2661,10 +1351,10 @@ func MatchBooksByPageCountSeqTermsClass(es *elasticsearch.Client, pageCount int6
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountSeqTermsClass2 根据页数、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByPageCountSeq 根据页数、编号检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByPageCountSeqTermsClass2(es *elasticsearch.Client, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByPageCountSeq(es *elasticsearch.Client, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
@@ -2674,23 +1364,10 @@ func MatchBooksByPageCountSeqTermsClass2(es *elasticsearch.Client, pageCount int
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountSeqTermsClassClass2 根据页数、编号检索books表并同时统计类别、子类别的分布情况
-// pageCount int64 页数
-// seq string 编号
-func MatchBooksByPageCountSeqTermsClassClass2(es *elasticsearch.Client, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPriceReleaseDateTermsClass 根据价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByPriceReleaseDate 根据价格、发布日期检索books表并分组统计类别的分布情况
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByPriceReleaseDateTermsClass(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByPriceReleaseDate(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
@@ -2700,10 +1377,10 @@ func MatchBooksByPriceReleaseDateTermsClass(es *elasticsearch.Client, price floa
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateTermsClass2 根据价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByPriceReleaseDate 根据价格、发布日期检索books表并分组统计子类别的分布情况
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByPriceReleaseDateTermsClass2(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByPriceReleaseDate(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
@@ -2713,10 +1390,10 @@ func MatchBooksByPriceReleaseDateTermsClass2(es *elasticsearch.Client, price flo
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateTermsSeq 根据价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByPriceReleaseDate 根据价格、发布日期检索books表并分组统计编号的分布情况
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByPriceReleaseDateTermsSeq(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByPriceReleaseDate(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
@@ -2726,62 +1403,10 @@ func MatchBooksByPriceReleaseDateTermsSeq(es *elasticsearch.Client, price float6
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateTermsClassClass2 根据价格、发布日期检索books表并同时统计类别、子类别的分布情况
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByPriceReleaseDateTermsClassClass2(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPriceReleaseDateTermsClassSeq 根据价格、发布日期检索books表并同时统计类别、编号的分布情况
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByPriceReleaseDateTermsClassSeq(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPriceReleaseDateTermsClass2Seq 根据价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPriceReleaseDateTermsClassClass2Seq 根据价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByPriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPriceSeqTermsClass 根据价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByPriceSeq 根据价格、编号检索books表并分组统计类别的分布情况
 // price float64 价格
 // seq string 编号
-func MatchBooksByPriceSeqTermsClass(es *elasticsearch.Client, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByPriceSeq(es *elasticsearch.Client, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("seq", seq),
@@ -2791,10 +1416,10 @@ func MatchBooksByPriceSeqTermsClass(es *elasticsearch.Client, price float64, seq
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceSeqTermsClass2 根据价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByPriceSeq 根据价格、编号检索books表并分组统计子类别的分布情况
 // price float64 价格
 // seq string 编号
-func MatchBooksByPriceSeqTermsClass2(es *elasticsearch.Client, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByPriceSeq(es *elasticsearch.Client, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("seq", seq),
@@ -2804,23 +1429,10 @@ func MatchBooksByPriceSeqTermsClass2(es *elasticsearch.Client, price float64, se
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceSeqTermsClassClass2 根据价格、编号检索books表并同时统计类别、子类别的分布情况
-// price float64 价格
-// seq string 编号
-func MatchBooksByPriceSeqTermsClassClass2(es *elasticsearch.Client, price float64, seq string) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByReleaseDateSeqTermsClass 根据发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByReleaseDateSeq 根据发布日期、编号检索books表并分组统计类别的分布情况
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByReleaseDateSeqTermsClass(es *elasticsearch.Client, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
@@ -2830,10 +1442,10 @@ func MatchBooksByReleaseDateSeqTermsClass(es *elasticsearch.Client, releaseDate 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateSeqTermsClass2 根据发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByReleaseDateSeq 根据发布日期、编号检索books表并分组统计子类别的分布情况
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByReleaseDateSeqTermsClass2(es *elasticsearch.Client, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
@@ -2843,24 +1455,11 @@ func MatchBooksByReleaseDateSeqTermsClass2(es *elasticsearch.Client, releaseDate
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateSeqTermsClassClass2 根据发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorClassTermsClass2 根据全文本、作者、类别检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorClass 根据全文本、作者、类别检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
-func MatchBooksByAllTextAuthorClassTermsClass2(es *elasticsearch.Client, allText, author, class string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2873,11 +1472,11 @@ func MatchBooksByAllTextAuthorClassTermsClass2(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassTermsSeq 根据全文本、作者、类别检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorClass 根据全文本、作者、类别检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
-func MatchBooksByAllTextAuthorClassTermsSeq(es *elasticsearch.Client, allText, author, class string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2890,28 +1489,11 @@ func MatchBooksByAllTextAuthorClassTermsSeq(es *elasticsearch.Client, allText, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassTermsClass2Seq 根据全文本、作者、类别检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// class string 类别
-func MatchBooksByAllTextAuthorClassTermsClass2Seq(es *elasticsearch.Client, allText, author, class string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorClass2TermsClass 根据全文本、作者、子类别检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorClass2 根据全文本、作者、子类别检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
-func MatchBooksByAllTextAuthorClass2TermsClass(es *elasticsearch.Client, allText, author, class2 string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2924,11 +1506,11 @@ func MatchBooksByAllTextAuthorClass2TermsClass(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2TermsSeq 根据全文本、作者、子类别检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorClass2 根据全文本、作者、子类别检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
-func MatchBooksByAllTextAuthorClass2TermsSeq(es *elasticsearch.Client, allText, author, class2 string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2941,28 +1523,11 @@ func MatchBooksByAllTextAuthorClass2TermsSeq(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2TermsClassSeq 根据全文本、作者、子类别检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// class2 string 子类别
-func MatchBooksByAllTextAuthorClass2TermsClassSeq(es *elasticsearch.Client, allText, author, class2 string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNameTermsClass 根据全文本、作者、书名检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorName 根据全文本、作者、书名检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
-func MatchBooksByAllTextAuthorNameTermsClass(es *elasticsearch.Client, allText, author, name string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorName(es *elasticsearch.Client, allText, author, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2973,11 +1538,11 @@ func MatchBooksByAllTextAuthorNameTermsClass(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameTermsClass2 根据全文本、作者、书名检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorName 根据全文本、作者、书名检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
-func MatchBooksByAllTextAuthorNameTermsClass2(es *elasticsearch.Client, allText, author, name string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorName(es *elasticsearch.Client, allText, author, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2988,11 +1553,11 @@ func MatchBooksByAllTextAuthorNameTermsClass2(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameTermsSeq 根据全文本、作者、书名检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorName 根据全文本、作者、书名检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
-func MatchBooksByAllTextAuthorNameTermsSeq(es *elasticsearch.Client, allText, author, name string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorName(es *elasticsearch.Client, allText, author, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -3003,71 +1568,11 @@ func MatchBooksByAllTextAuthorNameTermsSeq(es *elasticsearch.Client, allText, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameTermsClassClass2 根据全文本、作者、书名检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-func MatchBooksByAllTextAuthorNameTermsClassClass2(es *elasticsearch.Client, allText, author, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNameTermsClassSeq 根据全文本、作者、书名检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-func MatchBooksByAllTextAuthorNameTermsClassSeq(es *elasticsearch.Client, allText, author, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNameTermsClass2Seq 根据全文本、作者、书名检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-func MatchBooksByAllTextAuthorNameTermsClass2Seq(es *elasticsearch.Client, allText, author, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNameTermsClassClass2Seq 根据全文本、作者、书名检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-func MatchBooksByAllTextAuthorNameTermsClassClass2Seq(es *elasticsearch.Client, allText, author, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPageCountTermsClass 根据全文本、作者、页数检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorPageCount 根据全文本、作者、页数检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
-func MatchBooksByAllTextAuthorPageCountTermsClass(es *elasticsearch.Client, allText, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorPageCount(es *elasticsearch.Client, allText, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -3080,11 +1585,11 @@ func MatchBooksByAllTextAuthorPageCountTermsClass(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountTermsClass2 根据全文本、作者、页数检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorPageCount 根据全文本、作者、页数检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
-func MatchBooksByAllTextAuthorPageCountTermsClass2(es *elasticsearch.Client, allText, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorPageCount(es *elasticsearch.Client, allText, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -3097,11 +1602,11 @@ func MatchBooksByAllTextAuthorPageCountTermsClass2(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountTermsSeq 根据全文本、作者、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorPageCount 根据全文本、作者、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
-func MatchBooksByAllTextAuthorPageCountTermsSeq(es *elasticsearch.Client, allText, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorPageCount(es *elasticsearch.Client, allText, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -3114,79 +1619,11 @@ func MatchBooksByAllTextAuthorPageCountTermsSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountTermsClassClass2 根据全文本、作者、页数检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-// pageCount int64 页数
-func MatchBooksByAllTextAuthorPageCountTermsClassClass2(es *elasticsearch.Client, allText, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPageCountTermsClassSeq 根据全文本、作者、页数检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// pageCount int64 页数
-func MatchBooksByAllTextAuthorPageCountTermsClassSeq(es *elasticsearch.Client, allText, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPageCountTermsClass2Seq 根据全文本、作者、页数检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// pageCount int64 页数
-func MatchBooksByAllTextAuthorPageCountTermsClass2Seq(es *elasticsearch.Client, allText, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPageCountTermsClassClass2Seq 根据全文本、作者、页数检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// pageCount int64 页数
-func MatchBooksByAllTextAuthorPageCountTermsClassClass2Seq(es *elasticsearch.Client, allText, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPriceTermsClass 根据全文本、作者、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorPrice 根据全文本、作者、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
-func MatchBooksByAllTextAuthorPriceTermsClass(es *elasticsearch.Client, allText, author string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorPrice(es *elasticsearch.Client, allText, author string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -3199,11 +1636,11 @@ func MatchBooksByAllTextAuthorPriceTermsClass(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceTermsClass2 根据全文本、作者、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorPrice 根据全文本、作者、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
-func MatchBooksByAllTextAuthorPriceTermsClass2(es *elasticsearch.Client, allText, author string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorPrice(es *elasticsearch.Client, allText, author string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -3216,11 +1653,11 @@ func MatchBooksByAllTextAuthorPriceTermsClass2(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceTermsSeq 根据全文本、作者、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorPrice 根据全文本、作者、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
-func MatchBooksByAllTextAuthorPriceTermsSeq(es *elasticsearch.Client, allText, author string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorPrice(es *elasticsearch.Client, allText, author string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -3233,79 +1670,11 @@ func MatchBooksByAllTextAuthorPriceTermsSeq(es *elasticsearch.Client, allText, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceTermsClassClass2 根据全文本、作者、价格检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-// price float64 价格
-func MatchBooksByAllTextAuthorPriceTermsClassClass2(es *elasticsearch.Client, allText, author string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPriceTermsClassSeq 根据全文本、作者、价格检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// price float64 价格
-func MatchBooksByAllTextAuthorPriceTermsClassSeq(es *elasticsearch.Client, allText, author string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPriceTermsClass2Seq 根据全文本、作者、价格检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// price float64 价格
-func MatchBooksByAllTextAuthorPriceTermsClass2Seq(es *elasticsearch.Client, allText, author string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPriceTermsClassClass2Seq 根据全文本、作者、价格检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// price float64 价格
-func MatchBooksByAllTextAuthorPriceTermsClassClass2Seq(es *elasticsearch.Client, allText, author string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorReleaseDateTermsClass 根据全文本、作者、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorReleaseDate 根据全文本、作者、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorReleaseDateTermsClass(es *elasticsearch.Client, allText, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -3318,11 +1687,11 @@ func MatchBooksByAllTextAuthorReleaseDateTermsClass(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateTermsClass2 根据全文本、作者、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorReleaseDate 根据全文本、作者、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorReleaseDateTermsClass2(es *elasticsearch.Client, allText, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -3335,11 +1704,11 @@ func MatchBooksByAllTextAuthorReleaseDateTermsClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateTermsSeq 根据全文本、作者、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorReleaseDate 根据全文本、作者、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorReleaseDateTermsSeq(es *elasticsearch.Client, allText, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -3352,79 +1721,11 @@ func MatchBooksByAllTextAuthorReleaseDateTermsSeq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateTermsClassClass2 根据全文本、作者、发布日期检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorReleaseDateTermsClassClass2(es *elasticsearch.Client, allText, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorReleaseDateTermsClassSeq 根据全文本、作者、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorReleaseDateTermsClassSeq(es *elasticsearch.Client, allText, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorReleaseDateTermsClass2Seq 根据全文本、作者、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorReleaseDateTermsClassClass2Seq 根据全文本、作者、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, allText, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorSeqTermsClass 根据全文本、作者、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorSeq 根据全文本、作者、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // seq string 编号
-func MatchBooksByAllTextAuthorSeqTermsClass(es *elasticsearch.Client, allText, author, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -3437,11 +1738,11 @@ func MatchBooksByAllTextAuthorSeqTermsClass(es *elasticsearch.Client, allText, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorSeqTermsClass2 根据全文本、作者、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorSeq 根据全文本、作者、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // seq string 编号
-func MatchBooksByAllTextAuthorSeqTermsClass2(es *elasticsearch.Client, allText, author, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -3454,28 +1755,11 @@ func MatchBooksByAllTextAuthorSeqTermsClass2(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorSeqTermsClassClass2 根据全文本、作者、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-// seq string 编号
-func MatchBooksByAllTextAuthorSeqTermsClassClass2(es *elasticsearch.Client, allText, author, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClassClass2TermsSeq 根据全文本、类别、子类别检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClassClass2 根据全文本、类别、子类别检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
-func MatchBooksByAllTextClassClass2TermsSeq(es *elasticsearch.Client, allText, class, class2 string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClassClass2(es *elasticsearch.Client, allText, class, class2 string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3488,11 +1772,11 @@ func MatchBooksByAllTextClassClass2TermsSeq(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameTermsClass2 根据全文本、类别、书名检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClassName 根据全文本、类别、书名检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
-func MatchBooksByAllTextClassNameTermsClass2(es *elasticsearch.Client, allText, class, name string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClassName(es *elasticsearch.Client, allText, class, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3505,11 +1789,11 @@ func MatchBooksByAllTextClassNameTermsClass2(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameTermsSeq 根据全文本、类别、书名检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClassName 根据全文本、类别、书名检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
-func MatchBooksByAllTextClassNameTermsSeq(es *elasticsearch.Client, allText, class, name string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClassName(es *elasticsearch.Client, allText, class, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3522,28 +1806,11 @@ func MatchBooksByAllTextClassNameTermsSeq(es *elasticsearch.Client, allText, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameTermsClass2Seq 根据全文本、类别、书名检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// class string 类别
-// name string 书名
-func MatchBooksByAllTextClassNameTermsClass2Seq(es *elasticsearch.Client, allText, class, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClassPageCountTermsClass2 根据全文本、类别、页数检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClassPageCount 根据全文本、类别、页数检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
-func MatchBooksByAllTextClassPageCountTermsClass2(es *elasticsearch.Client, allText, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClassPageCount(es *elasticsearch.Client, allText, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3556,11 +1823,11 @@ func MatchBooksByAllTextClassPageCountTermsClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountTermsSeq 根据全文本、类别、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClassPageCount 根据全文本、类别、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
-func MatchBooksByAllTextClassPageCountTermsSeq(es *elasticsearch.Client, allText, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClassPageCount(es *elasticsearch.Client, allText, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3573,28 +1840,11 @@ func MatchBooksByAllTextClassPageCountTermsSeq(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountTermsClass2Seq 根据全文本、类别、页数检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// class string 类别
-// pageCount int64 页数
-func MatchBooksByAllTextClassPageCountTermsClass2Seq(es *elasticsearch.Client, allText, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClassPriceTermsClass2 根据全文本、类别、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClassPrice 根据全文本、类别、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // price float64 价格
-func MatchBooksByAllTextClassPriceTermsClass2(es *elasticsearch.Client, allText, class string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClassPrice(es *elasticsearch.Client, allText, class string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3607,11 +1857,11 @@ func MatchBooksByAllTextClassPriceTermsClass2(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceTermsSeq 根据全文本、类别、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClassPrice 根据全文本、类别、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // price float64 价格
-func MatchBooksByAllTextClassPriceTermsSeq(es *elasticsearch.Client, allText, class string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClassPrice(es *elasticsearch.Client, allText, class string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3624,28 +1874,11 @@ func MatchBooksByAllTextClassPriceTermsSeq(es *elasticsearch.Client, allText, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceTermsClass2Seq 根据全文本、类别、价格检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// class string 类别
-// price float64 价格
-func MatchBooksByAllTextClassPriceTermsClass2Seq(es *elasticsearch.Client, allText, class string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClassReleaseDateTermsClass2 根据全文本、类别、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClassReleaseDate 根据全文本、类别、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassReleaseDateTermsClass2(es *elasticsearch.Client, allText, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allText, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3658,11 +1891,11 @@ func MatchBooksByAllTextClassReleaseDateTermsClass2(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassReleaseDateTermsSeq 根据全文本、类别、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClassReleaseDate 根据全文本、类别、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassReleaseDateTermsSeq(es *elasticsearch.Client, allText, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allText, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3675,28 +1908,11 @@ func MatchBooksByAllTextClassReleaseDateTermsSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassReleaseDateTermsClass2Seq 根据全文本、类别、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// class string 类别
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClassSeqTermsClass2 根据全文本、类别、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClassSeq 根据全文本、类别、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // seq string 编号
-func MatchBooksByAllTextClassSeqTermsClass2(es *elasticsearch.Client, allText, class, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClassSeq(es *elasticsearch.Client, allText, class, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3709,11 +1925,11 @@ func MatchBooksByAllTextClassSeqTermsClass2(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameTermsClass 根据全文本、子类别、书名检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2Name 根据全文本、子类别、书名检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
-func MatchBooksByAllTextClass2NameTermsClass(es *elasticsearch.Client, allText, class2, name string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3726,11 +1942,11 @@ func MatchBooksByAllTextClass2NameTermsClass(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameTermsSeq 根据全文本、子类别、书名检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClass2Name 根据全文本、子类别、书名检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
-func MatchBooksByAllTextClass2NameTermsSeq(es *elasticsearch.Client, allText, class2, name string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3743,28 +1959,11 @@ func MatchBooksByAllTextClass2NameTermsSeq(es *elasticsearch.Client, allText, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameTermsClassSeq 根据全文本、子类别、书名检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// class2 string 子类别
-// name string 书名
-func MatchBooksByAllTextClass2NameTermsClassSeq(es *elasticsearch.Client, allText, class2, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClass2PageCountTermsClass 根据全文本、子类别、页数检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2PageCount 根据全文本、子类别、页数检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByAllTextClass2PageCountTermsClass(es *elasticsearch.Client, allText, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2PageCount(es *elasticsearch.Client, allText, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3777,11 +1976,11 @@ func MatchBooksByAllTextClass2PageCountTermsClass(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountTermsSeq 根据全文本、子类别、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClass2PageCount 根据全文本、子类别、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByAllTextClass2PageCountTermsSeq(es *elasticsearch.Client, allText, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClass2PageCount(es *elasticsearch.Client, allText, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3794,28 +1993,11 @@ func MatchBooksByAllTextClass2PageCountTermsSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountTermsClassSeq 根据全文本、子类别、页数检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// class2 string 子类别
-// pageCount int64 页数
-func MatchBooksByAllTextClass2PageCountTermsClassSeq(es *elasticsearch.Client, allText, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClass2PriceTermsClass 根据全文本、子类别、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2Price 根据全文本、子类别、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByAllTextClass2PriceTermsClass(es *elasticsearch.Client, allText, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2Price(es *elasticsearch.Client, allText, class2 string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3828,11 +2010,11 @@ func MatchBooksByAllTextClass2PriceTermsClass(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceTermsSeq 根据全文本、子类别、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClass2Price 根据全文本、子类别、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByAllTextClass2PriceTermsSeq(es *elasticsearch.Client, allText, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClass2Price(es *elasticsearch.Client, allText, class2 string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3845,28 +2027,11 @@ func MatchBooksByAllTextClass2PriceTermsSeq(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceTermsClassSeq 根据全文本、子类别、价格检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// class2 string 子类别
-// price float64 价格
-func MatchBooksByAllTextClass2PriceTermsClassSeq(es *elasticsearch.Client, allText, class2 string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClass2ReleaseDateTermsClass 根据全文本、子类别、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2ReleaseDate 根据全文本、子类别、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2ReleaseDateTermsClass(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3879,11 +2044,11 @@ func MatchBooksByAllTextClass2ReleaseDateTermsClass(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2ReleaseDateTermsSeq 根据全文本、子类别、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClass2ReleaseDate 根据全文本、子类别、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2ReleaseDateTermsSeq(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3896,28 +2061,11 @@ func MatchBooksByAllTextClass2ReleaseDateTermsSeq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2ReleaseDateTermsClassSeq 根据全文本、子类别、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// class2 string 子类别
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2ReleaseDateTermsClassSeq(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClass2SeqTermsClass 根据全文本、子类别、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2Seq 根据全文本、子类别、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // seq string 编号
-func MatchBooksByAllTextClass2SeqTermsClass(es *elasticsearch.Client, allText, class2, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3930,11 +2078,11 @@ func MatchBooksByAllTextClass2SeqTermsClass(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountTermsClass 根据全文本、书名、页数检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextNamePageCount 根据全文本、书名、页数检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAllTextNamePageCountTermsClass(es *elasticsearch.Client, allText, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextNamePageCount(es *elasticsearch.Client, allText, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3947,11 +2095,11 @@ func MatchBooksByAllTextNamePageCountTermsClass(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountTermsClass2 根据全文本、书名、页数检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextNamePageCount 根据全文本、书名、页数检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAllTextNamePageCountTermsClass2(es *elasticsearch.Client, allText, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextNamePageCount(es *elasticsearch.Client, allText, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3964,11 +2112,11 @@ func MatchBooksByAllTextNamePageCountTermsClass2(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountTermsSeq 根据全文本、书名、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextNamePageCount 根据全文本、书名、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAllTextNamePageCountTermsSeq(es *elasticsearch.Client, allText, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextNamePageCount(es *elasticsearch.Client, allText, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3981,79 +2129,11 @@ func MatchBooksByAllTextNamePageCountTermsSeq(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountTermsClassClass2 根据全文本、书名、页数检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAllTextNamePageCountTermsClassClass2(es *elasticsearch.Client, allText, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePageCountTermsClassSeq 根据全文本、书名、页数检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAllTextNamePageCountTermsClassSeq(es *elasticsearch.Client, allText, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePageCountTermsClass2Seq 根据全文本、书名、页数检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAllTextNamePageCountTermsClass2Seq(es *elasticsearch.Client, allText, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePageCountTermsClassClass2Seq 根据全文本、书名、页数检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAllTextNamePageCountTermsClassClass2Seq(es *elasticsearch.Client, allText, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePriceTermsClass 根据全文本、书名、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextNamePrice 根据全文本、书名、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
-func MatchBooksByAllTextNamePriceTermsClass(es *elasticsearch.Client, allText, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextNamePrice(es *elasticsearch.Client, allText, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -4066,11 +2146,11 @@ func MatchBooksByAllTextNamePriceTermsClass(es *elasticsearch.Client, allText, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceTermsClass2 根据全文本、书名、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextNamePrice 根据全文本、书名、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
-func MatchBooksByAllTextNamePriceTermsClass2(es *elasticsearch.Client, allText, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextNamePrice(es *elasticsearch.Client, allText, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -4083,11 +2163,11 @@ func MatchBooksByAllTextNamePriceTermsClass2(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceTermsSeq 根据全文本、书名、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextNamePrice 根据全文本、书名、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
-func MatchBooksByAllTextNamePriceTermsSeq(es *elasticsearch.Client, allText, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextNamePrice(es *elasticsearch.Client, allText, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -4100,79 +2180,11 @@ func MatchBooksByAllTextNamePriceTermsSeq(es *elasticsearch.Client, allText, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceTermsClassClass2 根据全文本、书名、价格检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// name string 书名
-// price float64 价格
-func MatchBooksByAllTextNamePriceTermsClassClass2(es *elasticsearch.Client, allText, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePriceTermsClassSeq 根据全文本、书名、价格检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// price float64 价格
-func MatchBooksByAllTextNamePriceTermsClassSeq(es *elasticsearch.Client, allText, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePriceTermsClass2Seq 根据全文本、书名、价格检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// price float64 价格
-func MatchBooksByAllTextNamePriceTermsClass2Seq(es *elasticsearch.Client, allText, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePriceTermsClassClass2Seq 根据全文本、书名、价格检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// price float64 价格
-func MatchBooksByAllTextNamePriceTermsClassClass2Seq(es *elasticsearch.Client, allText, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNameReleaseDateTermsClass 根据全文本、书名、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextNameReleaseDate 根据全文本、书名、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextNameReleaseDateTermsClass(es *elasticsearch.Client, allText, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -4185,11 +2197,11 @@ func MatchBooksByAllTextNameReleaseDateTermsClass(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateTermsClass2 根据全文本、书名、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextNameReleaseDate 根据全文本、书名、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextNameReleaseDateTermsClass2(es *elasticsearch.Client, allText, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -4202,11 +2214,11 @@ func MatchBooksByAllTextNameReleaseDateTermsClass2(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateTermsSeq 根据全文本、书名、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextNameReleaseDate 根据全文本、书名、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextNameReleaseDateTermsSeq(es *elasticsearch.Client, allText, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -4219,79 +2231,11 @@ func MatchBooksByAllTextNameReleaseDateTermsSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateTermsClassClass2 根据全文本、书名、发布日期检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextNameReleaseDateTermsClassClass2(es *elasticsearch.Client, allText, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNameReleaseDateTermsClassSeq 根据全文本、书名、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextNameReleaseDateTermsClassSeq(es *elasticsearch.Client, allText, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNameReleaseDateTermsClass2Seq 根据全文本、书名、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextNameReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNameReleaseDateTermsClassClass2Seq 根据全文本、书名、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextNameReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, allText, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNameSeqTermsClass 根据全文本、书名、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextNameSeq 根据全文本、书名、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // seq string 编号
-func MatchBooksByAllTextNameSeqTermsClass(es *elasticsearch.Client, allText, name, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -4304,11 +2248,11 @@ func MatchBooksByAllTextNameSeqTermsClass(es *elasticsearch.Client, allText, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameSeqTermsClass2 根据全文本、书名、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextNameSeq 根据全文本、书名、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // seq string 编号
-func MatchBooksByAllTextNameSeqTermsClass2(es *elasticsearch.Client, allText, name, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -4321,28 +2265,11 @@ func MatchBooksByAllTextNameSeqTermsClass2(es *elasticsearch.Client, allText, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameSeqTermsClassClass2 根据全文本、书名、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// name string 书名
-// seq string 编号
-func MatchBooksByAllTextNameSeqTermsClassClass2(es *elasticsearch.Client, allText, name, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountPriceTermsClass 根据全文本、页数、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextPageCountPrice 根据全文本、页数、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextPageCountPriceTermsClass(es *elasticsearch.Client, allText string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextPageCountPrice(es *elasticsearch.Client, allText string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -4355,11 +2282,11 @@ func MatchBooksByAllTextPageCountPriceTermsClass(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceTermsClass2 根据全文本、页数、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextPageCountPrice 根据全文本、页数、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextPageCountPriceTermsClass2(es *elasticsearch.Client, allText string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextPageCountPrice(es *elasticsearch.Client, allText string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -4372,11 +2299,11 @@ func MatchBooksByAllTextPageCountPriceTermsClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceTermsSeq 根据全文本、页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextPageCountPrice 根据全文本、页数、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextPageCountPriceTermsSeq(es *elasticsearch.Client, allText string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextPageCountPrice(es *elasticsearch.Client, allText string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -4389,79 +2316,11 @@ func MatchBooksByAllTextPageCountPriceTermsSeq(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceTermsClassClass2 根据全文本、页数、价格检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAllTextPageCountPriceTermsClassClass2(es *elasticsearch.Client, allText string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountPriceTermsClassSeq 根据全文本、页数、价格检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAllTextPageCountPriceTermsClassSeq(es *elasticsearch.Client, allText string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountPriceTermsClass2Seq 根据全文本、页数、价格检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAllTextPageCountPriceTermsClass2Seq(es *elasticsearch.Client, allText string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountPriceTermsClassClass2Seq 根据全文本、页数、价格检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAllTextPageCountPriceTermsClassClass2Seq(es *elasticsearch.Client, allText string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountReleaseDateTermsClass 根据全文本、页数、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextPageCountReleaseDate 根据全文本、页数、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountReleaseDateTermsClass(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextPageCountReleaseDate(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -4474,11 +2333,11 @@ func MatchBooksByAllTextPageCountReleaseDateTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateTermsClass2 根据全文本、页数、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextPageCountReleaseDate 根据全文本、页数、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountReleaseDateTermsClass2(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextPageCountReleaseDate(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -4491,11 +2350,11 @@ func MatchBooksByAllTextPageCountReleaseDateTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateTermsSeq 根据全文本、页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextPageCountReleaseDate 根据全文本、页数、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountReleaseDateTermsSeq(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextPageCountReleaseDate(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -4508,79 +2367,11 @@ func MatchBooksByAllTextPageCountReleaseDateTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateTermsClassClass2 根据全文本、页数、发布日期检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountReleaseDateTermsClassClass2(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountReleaseDateTermsClassSeq 根据全文本、页数、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountReleaseDateTermsClassSeq(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountReleaseDateTermsClass2Seq 根据全文本、页数、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountReleaseDateTermsClassClass2Seq 根据全文本、页数、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountSeqTermsClass 根据全文本、页数、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextPageCountSeq 根据全文本、页数、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAllTextPageCountSeqTermsClass(es *elasticsearch.Client, allText string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextPageCountSeq(es *elasticsearch.Client, allText string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -4593,11 +2384,11 @@ func MatchBooksByAllTextPageCountSeqTermsClass(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountSeqTermsClass2 根据全文本、页数、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextPageCountSeq 根据全文本、页数、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAllTextPageCountSeqTermsClass2(es *elasticsearch.Client, allText string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextPageCountSeq(es *elasticsearch.Client, allText string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -4610,28 +2401,11 @@ func MatchBooksByAllTextPageCountSeqTermsClass2(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountSeqTermsClassClass2 根据全文本、页数、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// pageCount int64 页数
-// seq string 编号
-func MatchBooksByAllTextPageCountSeqTermsClassClass2(es *elasticsearch.Client, allText string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPriceReleaseDateTermsClass 根据全文本、价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextPriceReleaseDate 根据全文本、价格、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextPriceReleaseDateTermsClass(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextPriceReleaseDate(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -4644,11 +2418,11 @@ func MatchBooksByAllTextPriceReleaseDateTermsClass(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateTermsClass2 根据全文本、价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextPriceReleaseDate 根据全文本、价格、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextPriceReleaseDateTermsClass2(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextPriceReleaseDate(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -4661,11 +2435,11 @@ func MatchBooksByAllTextPriceReleaseDateTermsClass2(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateTermsSeq 根据全文本、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextPriceReleaseDate 根据全文本、价格、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextPriceReleaseDateTermsSeq(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextPriceReleaseDate(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -4678,79 +2452,11 @@ func MatchBooksByAllTextPriceReleaseDateTermsSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateTermsClassClass2 根据全文本、价格、发布日期检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextPriceReleaseDateTermsClassClass2(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPriceReleaseDateTermsClassSeq 根据全文本、价格、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextPriceReleaseDateTermsClassSeq(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPriceReleaseDateTermsClass2Seq 根据全文本、价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPriceReleaseDateTermsClassClass2Seq 根据全文本、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextPriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPriceSeqTermsClass 根据全文本、价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextPriceSeq 根据全文本、价格、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextPriceSeqTermsClass(es *elasticsearch.Client, allText string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextPriceSeq(es *elasticsearch.Client, allText string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -4763,11 +2469,11 @@ func MatchBooksByAllTextPriceSeqTermsClass(es *elasticsearch.Client, allText str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceSeqTermsClass2 根据全文本、价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextPriceSeq 根据全文本、价格、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextPriceSeqTermsClass2(es *elasticsearch.Client, allText string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextPriceSeq(es *elasticsearch.Client, allText string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -4780,28 +2486,11 @@ func MatchBooksByAllTextPriceSeqTermsClass2(es *elasticsearch.Client, allText st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceSeqTermsClassClass2 根据全文本、价格、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// price float64 价格
-// seq string 编号
-func MatchBooksByAllTextPriceSeqTermsClassClass2(es *elasticsearch.Client, allText string, price float64, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextReleaseDateSeqTermsClass 根据全文本、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextReleaseDateSeq 根据全文本、发布日期、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextReleaseDateSeqTermsClass(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -4814,11 +2503,11 @@ func MatchBooksByAllTextReleaseDateSeqTermsClass(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateSeqTermsClass2 根据全文本、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextReleaseDateSeq 根据全文本、发布日期、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextReleaseDateSeqTermsClass2(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -4831,28 +2520,11 @@ func MatchBooksByAllTextReleaseDateSeqTermsClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateSeqTermsClassClass2 根据全文本、发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByAllTextReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClassClass2TermsSeq 根据作者、类别、子类别检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClassClass2 根据作者、类别、子类别检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // class2 string 子类别
-func MatchBooksByAuthorClassClass2TermsSeq(es *elasticsearch.Client, author, class, class2 string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClassClass2(es *elasticsearch.Client, author, class, class2 string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4865,11 +2537,11 @@ func MatchBooksByAuthorClassClass2TermsSeq(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameTermsClass2 根据作者、类别、书名检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClassName 根据作者、类别、书名检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
-func MatchBooksByAuthorClassNameTermsClass2(es *elasticsearch.Client, author, class, name string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClassName(es *elasticsearch.Client, author, class, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -4882,11 +2554,11 @@ func MatchBooksByAuthorClassNameTermsClass2(es *elasticsearch.Client, author, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameTermsSeq 根据作者、类别、书名检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClassName 根据作者、类别、书名检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
-func MatchBooksByAuthorClassNameTermsSeq(es *elasticsearch.Client, author, class, name string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClassName(es *elasticsearch.Client, author, class, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -4899,28 +2571,11 @@ func MatchBooksByAuthorClassNameTermsSeq(es *elasticsearch.Client, author, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameTermsClass2Seq 根据作者、类别、书名检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// class string 类别
-// name string 书名
-func MatchBooksByAuthorClassNameTermsClass2Seq(es *elasticsearch.Client, author, class, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClassPageCountTermsClass2 根据作者、类别、页数检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClassPageCount 根据作者、类别、页数检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
-func MatchBooksByAuthorClassPageCountTermsClass2(es *elasticsearch.Client, author, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClassPageCount(es *elasticsearch.Client, author, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4933,11 +2588,11 @@ func MatchBooksByAuthorClassPageCountTermsClass2(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountTermsSeq 根据作者、类别、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClassPageCount 根据作者、类别、页数检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
-func MatchBooksByAuthorClassPageCountTermsSeq(es *elasticsearch.Client, author, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClassPageCount(es *elasticsearch.Client, author, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4950,28 +2605,11 @@ func MatchBooksByAuthorClassPageCountTermsSeq(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountTermsClass2Seq 根据作者、类别、页数检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// class string 类别
-// pageCount int64 页数
-func MatchBooksByAuthorClassPageCountTermsClass2Seq(es *elasticsearch.Client, author, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClassPriceTermsClass2 根据作者、类别、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClassPrice 根据作者、类别、价格检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // price float64 价格
-func MatchBooksByAuthorClassPriceTermsClass2(es *elasticsearch.Client, author, class string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClassPrice(es *elasticsearch.Client, author, class string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4984,11 +2622,11 @@ func MatchBooksByAuthorClassPriceTermsClass2(es *elasticsearch.Client, author, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceTermsSeq 根据作者、类别、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClassPrice 根据作者、类别、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // price float64 价格
-func MatchBooksByAuthorClassPriceTermsSeq(es *elasticsearch.Client, author, class string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClassPrice(es *elasticsearch.Client, author, class string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5001,28 +2639,11 @@ func MatchBooksByAuthorClassPriceTermsSeq(es *elasticsearch.Client, author, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceTermsClass2Seq 根据作者、类别、价格检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// class string 类别
-// price float64 价格
-func MatchBooksByAuthorClassPriceTermsClass2Seq(es *elasticsearch.Client, author, class string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClassReleaseDateTermsClass2 根据作者、类别、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClassReleaseDate 根据作者、类别、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassReleaseDateTermsClass2(es *elasticsearch.Client, author, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClassReleaseDate(es *elasticsearch.Client, author, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5035,11 +2656,11 @@ func MatchBooksByAuthorClassReleaseDateTermsClass2(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassReleaseDateTermsSeq 根据作者、类别、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClassReleaseDate 根据作者、类别、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassReleaseDateTermsSeq(es *elasticsearch.Client, author, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClassReleaseDate(es *elasticsearch.Client, author, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5052,28 +2673,11 @@ func MatchBooksByAuthorClassReleaseDateTermsSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassReleaseDateTermsClass2Seq 根据作者、类别、发布日期检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// class string 类别
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassReleaseDateTermsClass2Seq(es *elasticsearch.Client, author, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClassSeqTermsClass2 根据作者、类别、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClassSeq 根据作者、类别、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // seq string 编号
-func MatchBooksByAuthorClassSeqTermsClass2(es *elasticsearch.Client, author, class, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClassSeq(es *elasticsearch.Client, author, class, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5086,11 +2690,11 @@ func MatchBooksByAuthorClassSeqTermsClass2(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameTermsClass 根据作者、子类别、书名检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2Name 根据作者、子类别、书名检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
-func MatchBooksByAuthorClass2NameTermsClass(es *elasticsearch.Client, author, class2, name string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2Name(es *elasticsearch.Client, author, class2, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -5103,11 +2707,11 @@ func MatchBooksByAuthorClass2NameTermsClass(es *elasticsearch.Client, author, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameTermsSeq 根据作者、子类别、书名检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClass2Name 根据作者、子类别、书名检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
-func MatchBooksByAuthorClass2NameTermsSeq(es *elasticsearch.Client, author, class2, name string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClass2Name(es *elasticsearch.Client, author, class2, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -5120,28 +2724,11 @@ func MatchBooksByAuthorClass2NameTermsSeq(es *elasticsearch.Client, author, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameTermsClassSeq 根据作者、子类别、书名检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// class2 string 子类别
-// name string 书名
-func MatchBooksByAuthorClass2NameTermsClassSeq(es *elasticsearch.Client, author, class2, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClass2PageCountTermsClass 根据作者、子类别、页数检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2PageCount 根据作者、子类别、页数检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByAuthorClass2PageCountTermsClass(es *elasticsearch.Client, author, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2PageCount(es *elasticsearch.Client, author, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5154,11 +2741,11 @@ func MatchBooksByAuthorClass2PageCountTermsClass(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountTermsSeq 根据作者、子类别、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClass2PageCount 根据作者、子类别、页数检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByAuthorClass2PageCountTermsSeq(es *elasticsearch.Client, author, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClass2PageCount(es *elasticsearch.Client, author, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5171,28 +2758,11 @@ func MatchBooksByAuthorClass2PageCountTermsSeq(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountTermsClassSeq 根据作者、子类别、页数检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// class2 string 子类别
-// pageCount int64 页数
-func MatchBooksByAuthorClass2PageCountTermsClassSeq(es *elasticsearch.Client, author, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClass2PriceTermsClass 根据作者、子类别、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2Price 根据作者、子类别、价格检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByAuthorClass2PriceTermsClass(es *elasticsearch.Client, author, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2Price(es *elasticsearch.Client, author, class2 string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5205,11 +2775,11 @@ func MatchBooksByAuthorClass2PriceTermsClass(es *elasticsearch.Client, author, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceTermsSeq 根据作者、子类别、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClass2Price 根据作者、子类别、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByAuthorClass2PriceTermsSeq(es *elasticsearch.Client, author, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClass2Price(es *elasticsearch.Client, author, class2 string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5222,28 +2792,11 @@ func MatchBooksByAuthorClass2PriceTermsSeq(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceTermsClassSeq 根据作者、子类别、价格检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// class2 string 子类别
-// price float64 价格
-func MatchBooksByAuthorClass2PriceTermsClassSeq(es *elasticsearch.Client, author, class2 string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClass2ReleaseDateTermsClass 根据作者、子类别、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2ReleaseDate 根据作者、子类别、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2ReleaseDateTermsClass(es *elasticsearch.Client, author, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5256,11 +2809,11 @@ func MatchBooksByAuthorClass2ReleaseDateTermsClass(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2ReleaseDateTermsSeq 根据作者、子类别、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClass2ReleaseDate 根据作者、子类别、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2ReleaseDateTermsSeq(es *elasticsearch.Client, author, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5273,28 +2826,11 @@ func MatchBooksByAuthorClass2ReleaseDateTermsSeq(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2ReleaseDateTermsClassSeq 根据作者、子类别、发布日期检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// class2 string 子类别
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2ReleaseDateTermsClassSeq(es *elasticsearch.Client, author, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClass2SeqTermsClass 根据作者、子类别、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2Seq 根据作者、子类别、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // seq string 编号
-func MatchBooksByAuthorClass2SeqTermsClass(es *elasticsearch.Client, author, class2, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5307,11 +2843,11 @@ func MatchBooksByAuthorClass2SeqTermsClass(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountTermsClass 根据作者、书名、页数检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorNamePageCount 根据作者、书名、页数检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAuthorNamePageCountTermsClass(es *elasticsearch.Client, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorNamePageCount(es *elasticsearch.Client, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -5324,11 +2860,11 @@ func MatchBooksByAuthorNamePageCountTermsClass(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountTermsClass2 根据作者、书名、页数检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorNamePageCount 根据作者、书名、页数检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAuthorNamePageCountTermsClass2(es *elasticsearch.Client, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorNamePageCount(es *elasticsearch.Client, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -5341,11 +2877,11 @@ func MatchBooksByAuthorNamePageCountTermsClass2(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountTermsSeq 根据作者、书名、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorNamePageCount 根据作者、书名、页数检索books表并分组统计编号的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAuthorNamePageCountTermsSeq(es *elasticsearch.Client, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorNamePageCount(es *elasticsearch.Client, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -5358,79 +2894,11 @@ func MatchBooksByAuthorNamePageCountTermsSeq(es *elasticsearch.Client, author, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountTermsClassClass2 根据作者、书名、页数检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAuthorNamePageCountTermsClassClass2(es *elasticsearch.Client, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePageCountTermsClassSeq 根据作者、书名、页数检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAuthorNamePageCountTermsClassSeq(es *elasticsearch.Client, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePageCountTermsClass2Seq 根据作者、书名、页数检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAuthorNamePageCountTermsClass2Seq(es *elasticsearch.Client, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePageCountTermsClassClass2Seq 根据作者、书名、页数检索books表并同时统计类别、子类别、编号的分布情况
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAuthorNamePageCountTermsClassClass2Seq(es *elasticsearch.Client, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePriceTermsClass 根据作者、书名、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorNamePrice 根据作者、书名、价格检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
-func MatchBooksByAuthorNamePriceTermsClass(es *elasticsearch.Client, author, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorNamePrice(es *elasticsearch.Client, author, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -5443,11 +2911,11 @@ func MatchBooksByAuthorNamePriceTermsClass(es *elasticsearch.Client, author, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceTermsClass2 根据作者、书名、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorNamePrice 根据作者、书名、价格检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
-func MatchBooksByAuthorNamePriceTermsClass2(es *elasticsearch.Client, author, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorNamePrice(es *elasticsearch.Client, author, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -5460,11 +2928,11 @@ func MatchBooksByAuthorNamePriceTermsClass2(es *elasticsearch.Client, author, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceTermsSeq 根据作者、书名、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorNamePrice 根据作者、书名、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
-func MatchBooksByAuthorNamePriceTermsSeq(es *elasticsearch.Client, author, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorNamePrice(es *elasticsearch.Client, author, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -5477,79 +2945,11 @@ func MatchBooksByAuthorNamePriceTermsSeq(es *elasticsearch.Client, author, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceTermsClassClass2 根据作者、书名、价格检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// name string 书名
-// price float64 价格
-func MatchBooksByAuthorNamePriceTermsClassClass2(es *elasticsearch.Client, author, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePriceTermsClassSeq 根据作者、书名、价格检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// name string 书名
-// price float64 价格
-func MatchBooksByAuthorNamePriceTermsClassSeq(es *elasticsearch.Client, author, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePriceTermsClass2Seq 根据作者、书名、价格检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// name string 书名
-// price float64 价格
-func MatchBooksByAuthorNamePriceTermsClass2Seq(es *elasticsearch.Client, author, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePriceTermsClassClass2Seq 根据作者、书名、价格检索books表并同时统计类别、子类别、编号的分布情况
-// author string 作者
-// name string 书名
-// price float64 价格
-func MatchBooksByAuthorNamePriceTermsClassClass2Seq(es *elasticsearch.Client, author, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNameReleaseDateTermsClass 根据作者、书名、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorNameReleaseDate 根据作者、书名、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorNameReleaseDateTermsClass(es *elasticsearch.Client, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -5562,11 +2962,11 @@ func MatchBooksByAuthorNameReleaseDateTermsClass(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateTermsClass2 根据作者、书名、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorNameReleaseDate 根据作者、书名、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorNameReleaseDateTermsClass2(es *elasticsearch.Client, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -5579,11 +2979,11 @@ func MatchBooksByAuthorNameReleaseDateTermsClass2(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateTermsSeq 根据作者、书名、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorNameReleaseDate 根据作者、书名、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorNameReleaseDateTermsSeq(es *elasticsearch.Client, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -5596,79 +2996,11 @@ func MatchBooksByAuthorNameReleaseDateTermsSeq(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateTermsClassClass2 根据作者、书名、发布日期检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorNameReleaseDateTermsClassClass2(es *elasticsearch.Client, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNameReleaseDateTermsClassSeq 根据作者、书名、发布日期检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorNameReleaseDateTermsClassSeq(es *elasticsearch.Client, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNameReleaseDateTermsClass2Seq 根据作者、书名、发布日期检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorNameReleaseDateTermsClass2Seq(es *elasticsearch.Client, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNameReleaseDateTermsClassClass2Seq 根据作者、书名、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// author string 作者
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorNameReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNameSeqTermsClass 根据作者、书名、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorNameSeq 根据作者、书名、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // seq string 编号
-func MatchBooksByAuthorNameSeqTermsClass(es *elasticsearch.Client, author, name, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -5681,11 +3013,11 @@ func MatchBooksByAuthorNameSeqTermsClass(es *elasticsearch.Client, author, name,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameSeqTermsClass2 根据作者、书名、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorNameSeq 根据作者、书名、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // seq string 编号
-func MatchBooksByAuthorNameSeqTermsClass2(es *elasticsearch.Client, author, name, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -5698,28 +3030,11 @@ func MatchBooksByAuthorNameSeqTermsClass2(es *elasticsearch.Client, author, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameSeqTermsClassClass2 根据作者、书名、编号检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// name string 书名
-// seq string 编号
-func MatchBooksByAuthorNameSeqTermsClassClass2(es *elasticsearch.Client, author, name, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountPriceTermsClass 根据作者、页数、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorPageCountPrice 根据作者、页数、价格检索books表并分组统计类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAuthorPageCountPriceTermsClass(es *elasticsearch.Client, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorPageCountPrice(es *elasticsearch.Client, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5732,11 +3047,11 @@ func MatchBooksByAuthorPageCountPriceTermsClass(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceTermsClass2 根据作者、页数、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorPageCountPrice 根据作者、页数、价格检索books表并分组统计子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAuthorPageCountPriceTermsClass2(es *elasticsearch.Client, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorPageCountPrice(es *elasticsearch.Client, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5749,11 +3064,11 @@ func MatchBooksByAuthorPageCountPriceTermsClass2(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceTermsSeq 根据作者、页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorPageCountPrice 根据作者、页数、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAuthorPageCountPriceTermsSeq(es *elasticsearch.Client, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorPageCountPrice(es *elasticsearch.Client, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5766,79 +3081,11 @@ func MatchBooksByAuthorPageCountPriceTermsSeq(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceTermsClassClass2 根据作者、页数、价格检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAuthorPageCountPriceTermsClassClass2(es *elasticsearch.Client, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountPriceTermsClassSeq 根据作者、页数、价格检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAuthorPageCountPriceTermsClassSeq(es *elasticsearch.Client, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountPriceTermsClass2Seq 根据作者、页数、价格检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAuthorPageCountPriceTermsClass2Seq(es *elasticsearch.Client, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountPriceTermsClassClass2Seq 根据作者、页数、价格检索books表并同时统计类别、子类别、编号的分布情况
-// author string 作者
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAuthorPageCountPriceTermsClassClass2Seq(es *elasticsearch.Client, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountReleaseDateTermsClass 根据作者、页数、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorPageCountReleaseDate 根据作者、页数、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountReleaseDateTermsClass(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorPageCountReleaseDate(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5851,11 +3098,11 @@ func MatchBooksByAuthorPageCountReleaseDateTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateTermsClass2 根据作者、页数、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorPageCountReleaseDate 根据作者、页数、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountReleaseDateTermsClass2(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorPageCountReleaseDate(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5868,11 +3115,11 @@ func MatchBooksByAuthorPageCountReleaseDateTermsClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateTermsSeq 根据作者、页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorPageCountReleaseDate 根据作者、页数、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountReleaseDateTermsSeq(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorPageCountReleaseDate(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5885,79 +3132,11 @@ func MatchBooksByAuthorPageCountReleaseDateTermsSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateTermsClassClass2 根据作者、页数、发布日期检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountReleaseDateTermsClassClass2(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountReleaseDateTermsClassSeq 根据作者、页数、发布日期检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountReleaseDateTermsClassSeq(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountReleaseDateTermsClass2Seq 根据作者、页数、发布日期检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountReleaseDateTermsClass2Seq(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountReleaseDateTermsClassClass2Seq 根据作者、页数、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// author string 作者
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountSeqTermsClass 根据作者、页数、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorPageCountSeq 根据作者、页数、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAuthorPageCountSeqTermsClass(es *elasticsearch.Client, author string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorPageCountSeq(es *elasticsearch.Client, author string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5970,11 +3149,11 @@ func MatchBooksByAuthorPageCountSeqTermsClass(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountSeqTermsClass2 根据作者、页数、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorPageCountSeq 根据作者、页数、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAuthorPageCountSeqTermsClass2(es *elasticsearch.Client, author string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorPageCountSeq(es *elasticsearch.Client, author string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -5987,28 +3166,11 @@ func MatchBooksByAuthorPageCountSeqTermsClass2(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountSeqTermsClassClass2 根据作者、页数、编号检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// pageCount int64 页数
-// seq string 编号
-func MatchBooksByAuthorPageCountSeqTermsClassClass2(es *elasticsearch.Client, author string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPriceReleaseDateTermsClass 根据作者、价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorPriceReleaseDate 根据作者、价格、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorPriceReleaseDateTermsClass(es *elasticsearch.Client, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorPriceReleaseDate(es *elasticsearch.Client, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -6021,11 +3183,11 @@ func MatchBooksByAuthorPriceReleaseDateTermsClass(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateTermsClass2 根据作者、价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorPriceReleaseDate 根据作者、价格、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorPriceReleaseDateTermsClass2(es *elasticsearch.Client, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorPriceReleaseDate(es *elasticsearch.Client, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -6038,11 +3200,11 @@ func MatchBooksByAuthorPriceReleaseDateTermsClass2(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateTermsSeq 根据作者、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorPriceReleaseDate 根据作者、价格、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorPriceReleaseDateTermsSeq(es *elasticsearch.Client, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorPriceReleaseDate(es *elasticsearch.Client, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -6055,79 +3217,11 @@ func MatchBooksByAuthorPriceReleaseDateTermsSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateTermsClassClass2 根据作者、价格、发布日期检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorPriceReleaseDateTermsClassClass2(es *elasticsearch.Client, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPriceReleaseDateTermsClassSeq 根据作者、价格、发布日期检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorPriceReleaseDateTermsClassSeq(es *elasticsearch.Client, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPriceReleaseDateTermsClass2Seq 根据作者、价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPriceReleaseDateTermsClassClass2Seq 根据作者、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// author string 作者
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorPriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPriceSeqTermsClass 根据作者、价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorPriceSeq 根据作者、价格、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // price float64 价格
 // seq string 编号
-func MatchBooksByAuthorPriceSeqTermsClass(es *elasticsearch.Client, author string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorPriceSeq(es *elasticsearch.Client, author string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -6140,11 +3234,11 @@ func MatchBooksByAuthorPriceSeqTermsClass(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceSeqTermsClass2 根据作者、价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorPriceSeq 根据作者、价格、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // price float64 价格
 // seq string 编号
-func MatchBooksByAuthorPriceSeqTermsClass2(es *elasticsearch.Client, author string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorPriceSeq(es *elasticsearch.Client, author string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -6157,28 +3251,11 @@ func MatchBooksByAuthorPriceSeqTermsClass2(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceSeqTermsClassClass2 根据作者、价格、编号检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// price float64 价格
-// seq string 编号
-func MatchBooksByAuthorPriceSeqTermsClassClass2(es *elasticsearch.Client, author string, price float64, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorReleaseDateSeqTermsClass 根据作者、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorReleaseDateSeq 根据作者、发布日期、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorReleaseDateSeqTermsClass(es *elasticsearch.Client, author string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -6191,11 +3268,11 @@ func MatchBooksByAuthorReleaseDateSeqTermsClass(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateSeqTermsClass2 根据作者、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorReleaseDateSeq 根据作者、发布日期、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorReleaseDateSeqTermsClass2(es *elasticsearch.Client, author string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -6208,28 +3285,11 @@ func MatchBooksByAuthorReleaseDateSeqTermsClass2(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateSeqTermsClassClass2 根据作者、发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByAuthorReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, author string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassClass2NameTermsSeq 根据类别、子类别、书名检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassClass2Name 根据类别、子类别、书名检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // name string 书名
-func MatchBooksByClassClass2NameTermsSeq(es *elasticsearch.Client, class, class2, name string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassClass2Name(es *elasticsearch.Client, class, class2, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6242,11 +3302,11 @@ func MatchBooksByClassClass2NameTermsSeq(es *elasticsearch.Client, class, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PageCountTermsSeq 根据类别、子类别、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassClass2PageCount 根据类别、子类别、页数检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByClassClass2PageCountTermsSeq(es *elasticsearch.Client, class, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassClass2PageCount(es *elasticsearch.Client, class, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -6257,11 +3317,11 @@ func MatchBooksByClassClass2PageCountTermsSeq(es *elasticsearch.Client, class, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PriceTermsSeq 根据类别、子类别、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassClass2Price 根据类别、子类别、价格检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByClassClass2PriceTermsSeq(es *elasticsearch.Client, class, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassClass2Price(es *elasticsearch.Client, class, class2 string, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -6272,11 +3332,11 @@ func MatchBooksByClassClass2PriceTermsSeq(es *elasticsearch.Client, class, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2ReleaseDateTermsSeq 根据类别、子类别、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassClass2ReleaseDate 根据类别、子类别、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByClassClass2ReleaseDateTermsSeq(es *elasticsearch.Client, class, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassClass2ReleaseDate(es *elasticsearch.Client, class, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -6287,11 +3347,11 @@ func MatchBooksByClassClass2ReleaseDateTermsSeq(es *elasticsearch.Client, class,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountTermsClass2 根据类别、书名、页数检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassNamePageCount 根据类别、书名、页数检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByClassNamePageCountTermsClass2(es *elasticsearch.Client, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassNamePageCount(es *elasticsearch.Client, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6304,11 +3364,11 @@ func MatchBooksByClassNamePageCountTermsClass2(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountTermsSeq 根据类别、书名、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassNamePageCount 根据类别、书名、页数检索books表并分组统计编号的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByClassNamePageCountTermsSeq(es *elasticsearch.Client, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassNamePageCount(es *elasticsearch.Client, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6321,28 +3381,11 @@ func MatchBooksByClassNamePageCountTermsSeq(es *elasticsearch.Client, class, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountTermsClass2Seq 根据类别、书名、页数检索books表并同时统计子类别、编号的分布情况
-// class string 类别
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByClassNamePageCountTermsClass2Seq(es *elasticsearch.Client, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassNamePriceTermsClass2 根据类别、书名、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassNamePrice 根据类别、书名、价格检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // price float64 价格
-func MatchBooksByClassNamePriceTermsClass2(es *elasticsearch.Client, class, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassNamePrice(es *elasticsearch.Client, class, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6355,11 +3398,11 @@ func MatchBooksByClassNamePriceTermsClass2(es *elasticsearch.Client, class, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceTermsSeq 根据类别、书名、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassNamePrice 根据类别、书名、价格检索books表并分组统计编号的分布情况
 // class string 类别
 // name string 书名
 // price float64 价格
-func MatchBooksByClassNamePriceTermsSeq(es *elasticsearch.Client, class, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassNamePrice(es *elasticsearch.Client, class, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6372,28 +3415,11 @@ func MatchBooksByClassNamePriceTermsSeq(es *elasticsearch.Client, class, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceTermsClass2Seq 根据类别、书名、价格检索books表并同时统计子类别、编号的分布情况
-// class string 类别
-// name string 书名
-// price float64 价格
-func MatchBooksByClassNamePriceTermsClass2Seq(es *elasticsearch.Client, class, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassNameReleaseDateTermsClass2 根据类别、书名、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassNameReleaseDate 根据类别、书名、发布日期检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByClassNameReleaseDateTermsClass2(es *elasticsearch.Client, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassNameReleaseDate(es *elasticsearch.Client, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6406,11 +3432,11 @@ func MatchBooksByClassNameReleaseDateTermsClass2(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameReleaseDateTermsSeq 根据类别、书名、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassNameReleaseDate 根据类别、书名、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByClassNameReleaseDateTermsSeq(es *elasticsearch.Client, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassNameReleaseDate(es *elasticsearch.Client, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6423,28 +3449,11 @@ func MatchBooksByClassNameReleaseDateTermsSeq(es *elasticsearch.Client, class, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameReleaseDateTermsClass2Seq 根据类别、书名、发布日期检索books表并同时统计子类别、编号的分布情况
-// class string 类别
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByClassNameReleaseDateTermsClass2Seq(es *elasticsearch.Client, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassNameSeqTermsClass2 根据类别、书名、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassNameSeq 根据类别、书名、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // seq string 编号
-func MatchBooksByClassNameSeqTermsClass2(es *elasticsearch.Client, class, name, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassNameSeq(es *elasticsearch.Client, class, name, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6457,11 +3466,11 @@ func MatchBooksByClassNameSeqTermsClass2(es *elasticsearch.Client, class, name, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPriceTermsClass2 根据类别、页数、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassPageCountPrice 根据类别、页数、价格检索books表并分组统计子类别的分布情况
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByClassPageCountPriceTermsClass2(es *elasticsearch.Client, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassPageCountPrice(es *elasticsearch.Client, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -6472,11 +3481,11 @@ func MatchBooksByClassPageCountPriceTermsClass2(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPriceTermsSeq 根据类别、页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassPageCountPrice 根据类别、页数、价格检索books表并分组统计编号的分布情况
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByClassPageCountPriceTermsSeq(es *elasticsearch.Client, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassPageCountPrice(es *elasticsearch.Client, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -6487,26 +3496,11 @@ func MatchBooksByClassPageCountPriceTermsSeq(es *elasticsearch.Client, class str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPriceTermsClass2Seq 根据类别、页数、价格检索books表并同时统计子类别、编号的分布情况
-// class string 类别
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByClassPageCountPriceTermsClass2Seq(es *elasticsearch.Client, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassPageCountReleaseDateTermsClass2 根据类别、页数、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassPageCountReleaseDate 根据类别、页数、发布日期检索books表并分组统计子类别的分布情况
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByClassPageCountReleaseDateTermsClass2(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassPageCountReleaseDate(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -6517,11 +3511,11 @@ func MatchBooksByClassPageCountReleaseDateTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountReleaseDateTermsSeq 根据类别、页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassPageCountReleaseDate 根据类别、页数、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByClassPageCountReleaseDateTermsSeq(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassPageCountReleaseDate(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -6532,26 +3526,11 @@ func MatchBooksByClassPageCountReleaseDateTermsSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountReleaseDateTermsClass2Seq 根据类别、页数、发布日期检索books表并同时统计子类别、编号的分布情况
-// class string 类别
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByClassPageCountReleaseDateTermsClass2Seq(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassPageCountSeqTermsClass2 根据类别、页数、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassPageCountSeq 根据类别、页数、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByClassPageCountSeqTermsClass2(es *elasticsearch.Client, class string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassPageCountSeq(es *elasticsearch.Client, class string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -6562,11 +3541,11 @@ func MatchBooksByClassPageCountSeqTermsClass2(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceReleaseDateTermsClass2 根据类别、价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassPriceReleaseDate 根据类别、价格、发布日期检索books表并分组统计子类别的分布情况
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClassPriceReleaseDateTermsClass2(es *elasticsearch.Client, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassPriceReleaseDate(es *elasticsearch.Client, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
@@ -6577,11 +3556,11 @@ func MatchBooksByClassPriceReleaseDateTermsClass2(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceReleaseDateTermsSeq 根据类别、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassPriceReleaseDate 根据类别、价格、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClassPriceReleaseDateTermsSeq(es *elasticsearch.Client, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassPriceReleaseDate(es *elasticsearch.Client, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
@@ -6592,26 +3571,11 @@ func MatchBooksByClassPriceReleaseDateTermsSeq(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceReleaseDateTermsClass2Seq 根据类别、价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// class string 类别
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByClassPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassPriceSeqTermsClass2 根据类别、价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassPriceSeq 根据类别、价格、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // price float64 价格
 // seq string 编号
-func MatchBooksByClassPriceSeqTermsClass2(es *elasticsearch.Client, class string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassPriceSeq(es *elasticsearch.Client, class string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
@@ -6622,11 +3586,11 @@ func MatchBooksByClassPriceSeqTermsClass2(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateSeqTermsClass2 根据类别、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassReleaseDateSeq 根据类别、发布日期、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClassReleaseDateSeqTermsClass2(es *elasticsearch.Client, class string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassReleaseDateSeq(es *elasticsearch.Client, class string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
@@ -6637,11 +3601,11 @@ func MatchBooksByClassReleaseDateSeqTermsClass2(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountTermsClass 根据子类别、书名、页数检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2NamePageCount 根据子类别、书名、页数检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByClass2NamePageCountTermsClass(es *elasticsearch.Client, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2NamePageCount(es *elasticsearch.Client, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6654,11 +3618,11 @@ func MatchBooksByClass2NamePageCountTermsClass(es *elasticsearch.Client, class2,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountTermsSeq 根据子类别、书名、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass2NamePageCount 根据子类别、书名、页数检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByClass2NamePageCountTermsSeq(es *elasticsearch.Client, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass2NamePageCount(es *elasticsearch.Client, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6671,28 +3635,11 @@ func MatchBooksByClass2NamePageCountTermsSeq(es *elasticsearch.Client, class2, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountTermsClassSeq 根据子类别、书名、页数检索books表并同时统计类别、编号的分布情况
-// class2 string 子类别
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByClass2NamePageCountTermsClassSeq(es *elasticsearch.Client, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClass2NamePriceTermsClass 根据子类别、书名、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2NamePrice 根据子类别、书名、价格检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // price float64 价格
-func MatchBooksByClass2NamePriceTermsClass(es *elasticsearch.Client, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2NamePrice(es *elasticsearch.Client, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6705,11 +3652,11 @@ func MatchBooksByClass2NamePriceTermsClass(es *elasticsearch.Client, class2, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceTermsSeq 根据子类别、书名、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass2NamePrice 根据子类别、书名、价格检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // name string 书名
 // price float64 价格
-func MatchBooksByClass2NamePriceTermsSeq(es *elasticsearch.Client, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass2NamePrice(es *elasticsearch.Client, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6722,28 +3669,11 @@ func MatchBooksByClass2NamePriceTermsSeq(es *elasticsearch.Client, class2, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceTermsClassSeq 根据子类别、书名、价格检索books表并同时统计类别、编号的分布情况
-// class2 string 子类别
-// name string 书名
-// price float64 价格
-func MatchBooksByClass2NamePriceTermsClassSeq(es *elasticsearch.Client, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClass2NameReleaseDateTermsClass 根据子类别、书名、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2NameReleaseDate 根据子类别、书名、发布日期检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2NameReleaseDateTermsClass(es *elasticsearch.Client, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6756,11 +3686,11 @@ func MatchBooksByClass2NameReleaseDateTermsClass(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameReleaseDateTermsSeq 根据子类别、书名、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass2NameReleaseDate 根据子类别、书名、发布日期检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2NameReleaseDateTermsSeq(es *elasticsearch.Client, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6773,28 +3703,11 @@ func MatchBooksByClass2NameReleaseDateTermsSeq(es *elasticsearch.Client, class2,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameReleaseDateTermsClassSeq 根据子类别、书名、发布日期检索books表并同时统计类别、编号的分布情况
-// class2 string 子类别
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByClass2NameReleaseDateTermsClassSeq(es *elasticsearch.Client, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClass2NameSeqTermsClass 根据子类别、书名、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2NameSeq 根据子类别、书名、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // seq string 编号
-func MatchBooksByClass2NameSeqTermsClass(es *elasticsearch.Client, class2, name, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2NameSeq(es *elasticsearch.Client, class2, name, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -6807,11 +3720,11 @@ func MatchBooksByClass2NameSeqTermsClass(es *elasticsearch.Client, class2, name,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPriceTermsClass 根据子类别、页数、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2PageCountPrice 根据子类别、页数、价格检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByClass2PageCountPriceTermsClass(es *elasticsearch.Client, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2PageCountPrice(es *elasticsearch.Client, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
@@ -6822,11 +3735,11 @@ func MatchBooksByClass2PageCountPriceTermsClass(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPriceTermsSeq 根据子类别、页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass2PageCountPrice 根据子类别、页数、价格检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByClass2PageCountPriceTermsSeq(es *elasticsearch.Client, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass2PageCountPrice(es *elasticsearch.Client, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
@@ -6837,26 +3750,11 @@ func MatchBooksByClass2PageCountPriceTermsSeq(es *elasticsearch.Client, class2 s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPriceTermsClassSeq 根据子类别、页数、价格检索books表并同时统计类别、编号的分布情况
-// class2 string 子类别
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByClass2PageCountPriceTermsClassSeq(es *elasticsearch.Client, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClass2PageCountReleaseDateTermsClass 根据子类别、页数、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2PageCountReleaseDate 根据子类别、页数、发布日期检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2PageCountReleaseDateTermsClass(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2PageCountReleaseDate(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
@@ -6867,11 +3765,11 @@ func MatchBooksByClass2PageCountReleaseDateTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountReleaseDateTermsSeq 根据子类别、页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass2PageCountReleaseDate 根据子类别、页数、发布日期检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2PageCountReleaseDateTermsSeq(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass2PageCountReleaseDate(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
@@ -6882,26 +3780,11 @@ func MatchBooksByClass2PageCountReleaseDateTermsSeq(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountReleaseDateTermsClassSeq 根据子类别、页数、发布日期检索books表并同时统计类别、编号的分布情况
-// class2 string 子类别
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByClass2PageCountReleaseDateTermsClassSeq(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClass2PageCountSeqTermsClass 根据子类别、页数、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2PageCountSeq 根据子类别、页数、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByClass2PageCountSeqTermsClass(es *elasticsearch.Client, class2 string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2PageCountSeq(es *elasticsearch.Client, class2 string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
@@ -6912,11 +3795,11 @@ func MatchBooksByClass2PageCountSeqTermsClass(es *elasticsearch.Client, class2 s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceReleaseDateTermsClass 根据子类别、价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2PriceReleaseDate 根据子类别、价格、发布日期检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2PriceReleaseDateTermsClass(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2PriceReleaseDate(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
@@ -6927,11 +3810,11 @@ func MatchBooksByClass2PriceReleaseDateTermsClass(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceReleaseDateTermsSeq 根据子类别、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass2PriceReleaseDate 根据子类别、价格、发布日期检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2PriceReleaseDateTermsSeq(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass2PriceReleaseDate(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
@@ -6942,26 +3825,11 @@ func MatchBooksByClass2PriceReleaseDateTermsSeq(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceReleaseDateTermsClassSeq 根据子类别、价格、发布日期检索books表并同时统计类别、编号的分布情况
-// class2 string 子类别
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByClass2PriceReleaseDateTermsClassSeq(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClass2PriceSeqTermsClass 根据子类别、价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2PriceSeq 根据子类别、价格、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
-func MatchBooksByClass2PriceSeqTermsClass(es *elasticsearch.Client, class2 string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2PriceSeq(es *elasticsearch.Client, class2 string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
@@ -6972,11 +3840,11 @@ func MatchBooksByClass2PriceSeqTermsClass(es *elasticsearch.Client, class2 strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateSeqTermsClass 根据子类别、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2ReleaseDateSeq 根据子类别、发布日期、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClass2ReleaseDateSeqTermsClass(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
@@ -6987,11 +3855,11 @@ func MatchBooksByClass2ReleaseDateSeqTermsClass(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceTermsClass 根据书名、页数、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByNamePageCountPrice 根据书名、页数、价格检索books表并分组统计类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByNamePageCountPriceTermsClass(es *elasticsearch.Client, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByNamePageCountPrice(es *elasticsearch.Client, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -7004,11 +3872,11 @@ func MatchBooksByNamePageCountPriceTermsClass(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceTermsClass2 根据书名、页数、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByNamePageCountPrice 根据书名、页数、价格检索books表并分组统计子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByNamePageCountPriceTermsClass2(es *elasticsearch.Client, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByNamePageCountPrice(es *elasticsearch.Client, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -7021,11 +3889,11 @@ func MatchBooksByNamePageCountPriceTermsClass2(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceTermsSeq 根据书名、页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByNamePageCountPrice 根据书名、页数、价格检索books表并分组统计编号的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByNamePageCountPriceTermsSeq(es *elasticsearch.Client, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByNamePageCountPrice(es *elasticsearch.Client, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -7038,79 +3906,11 @@ func MatchBooksByNamePageCountPriceTermsSeq(es *elasticsearch.Client, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceTermsClassClass2 根据书名、页数、价格检索books表并同时统计类别、子类别的分布情况
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByNamePageCountPriceTermsClassClass2(es *elasticsearch.Client, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountPriceTermsClassSeq 根据书名、页数、价格检索books表并同时统计类别、编号的分布情况
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByNamePageCountPriceTermsClassSeq(es *elasticsearch.Client, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountPriceTermsClass2Seq 根据书名、页数、价格检索books表并同时统计子类别、编号的分布情况
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByNamePageCountPriceTermsClass2Seq(es *elasticsearch.Client, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountPriceTermsClassClass2Seq 根据书名、页数、价格检索books表并同时统计类别、子类别、编号的分布情况
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByNamePageCountPriceTermsClassClass2Seq(es *elasticsearch.Client, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountReleaseDateTermsClass 根据书名、页数、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByNamePageCountReleaseDate 根据书名、页数、发布日期检索books表并分组统计类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountReleaseDateTermsClass(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByNamePageCountReleaseDate(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -7123,11 +3923,11 @@ func MatchBooksByNamePageCountReleaseDateTermsClass(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateTermsClass2 根据书名、页数、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByNamePageCountReleaseDate 根据书名、页数、发布日期检索books表并分组统计子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountReleaseDateTermsClass2(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByNamePageCountReleaseDate(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -7140,11 +3940,11 @@ func MatchBooksByNamePageCountReleaseDateTermsClass2(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateTermsSeq 根据书名、页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByNamePageCountReleaseDate 根据书名、页数、发布日期检索books表并分组统计编号的分布情况
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountReleaseDateTermsSeq(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByNamePageCountReleaseDate(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -7157,79 +3957,11 @@ func MatchBooksByNamePageCountReleaseDateTermsSeq(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateTermsClassClass2 根据书名、页数、发布日期检索books表并同时统计类别、子类别的分布情况
-// name string 书名
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountReleaseDateTermsClassClass2(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountReleaseDateTermsClassSeq 根据书名、页数、发布日期检索books表并同时统计类别、编号的分布情况
-// name string 书名
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountReleaseDateTermsClassSeq(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountReleaseDateTermsClass2Seq 根据书名、页数、发布日期检索books表并同时统计子类别、编号的分布情况
-// name string 书名
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountReleaseDateTermsClass2Seq(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountReleaseDateTermsClassClass2Seq 根据书名、页数、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// name string 书名
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountSeqTermsClass 根据书名、页数、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByNamePageCountSeq 根据书名、页数、编号检索books表并分组统计类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByNamePageCountSeqTermsClass(es *elasticsearch.Client, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByNamePageCountSeq(es *elasticsearch.Client, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -7242,11 +3974,11 @@ func MatchBooksByNamePageCountSeqTermsClass(es *elasticsearch.Client, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountSeqTermsClass2 根据书名、页数、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByNamePageCountSeq 根据书名、页数、编号检索books表并分组统计子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByNamePageCountSeqTermsClass2(es *elasticsearch.Client, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByNamePageCountSeq(es *elasticsearch.Client, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -7259,28 +3991,11 @@ func MatchBooksByNamePageCountSeqTermsClass2(es *elasticsearch.Client, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountSeqTermsClassClass2 根据书名、页数、编号检索books表并同时统计类别、子类别的分布情况
-// name string 书名
-// pageCount int64 页数
-// seq string 编号
-func MatchBooksByNamePageCountSeqTermsClassClass2(es *elasticsearch.Client, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePriceReleaseDateTermsClass 根据书名、价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByNamePriceReleaseDate 根据书名、价格、发布日期检索books表并分组统计类别的分布情况
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByNamePriceReleaseDateTermsClass(es *elasticsearch.Client, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByNamePriceReleaseDate(es *elasticsearch.Client, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -7293,11 +4008,11 @@ func MatchBooksByNamePriceReleaseDateTermsClass(es *elasticsearch.Client, name s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateTermsClass2 根据书名、价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByNamePriceReleaseDate 根据书名、价格、发布日期检索books表并分组统计子类别的分布情况
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByNamePriceReleaseDateTermsClass2(es *elasticsearch.Client, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByNamePriceReleaseDate(es *elasticsearch.Client, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -7310,11 +4025,11 @@ func MatchBooksByNamePriceReleaseDateTermsClass2(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateTermsSeq 根据书名、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByNamePriceReleaseDate 根据书名、价格、发布日期检索books表并分组统计编号的分布情况
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByNamePriceReleaseDateTermsSeq(es *elasticsearch.Client, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByNamePriceReleaseDate(es *elasticsearch.Client, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -7327,79 +4042,11 @@ func MatchBooksByNamePriceReleaseDateTermsSeq(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateTermsClassClass2 根据书名、价格、发布日期检索books表并同时统计类别、子类别的分布情况
-// name string 书名
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByNamePriceReleaseDateTermsClassClass2(es *elasticsearch.Client, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePriceReleaseDateTermsClassSeq 根据书名、价格、发布日期检索books表并同时统计类别、编号的分布情况
-// name string 书名
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByNamePriceReleaseDateTermsClassSeq(es *elasticsearch.Client, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePriceReleaseDateTermsClass2Seq 根据书名、价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// name string 书名
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByNamePriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePriceReleaseDateTermsClassClass2Seq 根据书名、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// name string 书名
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByNamePriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePriceSeqTermsClass 根据书名、价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByNamePriceSeq 根据书名、价格、编号检索books表并分组统计类别的分布情况
 // name string 书名
 // price float64 价格
 // seq string 编号
-func MatchBooksByNamePriceSeqTermsClass(es *elasticsearch.Client, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByNamePriceSeq(es *elasticsearch.Client, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -7412,11 +4059,11 @@ func MatchBooksByNamePriceSeqTermsClass(es *elasticsearch.Client, name string, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceSeqTermsClass2 根据书名、价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByNamePriceSeq 根据书名、价格、编号检索books表并分组统计子类别的分布情况
 // name string 书名
 // price float64 价格
 // seq string 编号
-func MatchBooksByNamePriceSeqTermsClass2(es *elasticsearch.Client, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByNamePriceSeq(es *elasticsearch.Client, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -7429,28 +4076,11 @@ func MatchBooksByNamePriceSeqTermsClass2(es *elasticsearch.Client, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceSeqTermsClassClass2 根据书名、价格、编号检索books表并同时统计类别、子类别的分布情况
-// name string 书名
-// price float64 价格
-// seq string 编号
-func MatchBooksByNamePriceSeqTermsClassClass2(es *elasticsearch.Client, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNameReleaseDateSeqTermsClass 根据书名、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByNameReleaseDateSeq 根据书名、发布日期、编号检索books表并分组统计类别的分布情况
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByNameReleaseDateSeqTermsClass(es *elasticsearch.Client, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -7463,11 +4093,11 @@ func MatchBooksByNameReleaseDateSeqTermsClass(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateSeqTermsClass2 根据书名、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByNameReleaseDateSeq 根据书名、发布日期、编号检索books表并分组统计子类别的分布情况
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByNameReleaseDateSeqTermsClass2(es *elasticsearch.Client, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -7480,28 +4110,11 @@ func MatchBooksByNameReleaseDateSeqTermsClass2(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateSeqTermsClassClass2 根据书名、发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// name string 书名
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByNameReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountPriceReleaseDateTermsClass 根据页数、价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByPageCountPriceReleaseDate 根据页数、价格、发布日期检索books表并分组统计类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByPageCountPriceReleaseDateTermsClass(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByPageCountPriceReleaseDate(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
@@ -7512,11 +4125,11 @@ func MatchBooksByPageCountPriceReleaseDateTermsClass(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDateTermsClass2 根据页数、价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByPageCountPriceReleaseDate 根据页数、价格、发布日期检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByPageCountPriceReleaseDateTermsClass2(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByPageCountPriceReleaseDate(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
@@ -7527,11 +4140,11 @@ func MatchBooksByPageCountPriceReleaseDateTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDateTermsSeq 根据页数、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByPageCountPriceReleaseDate 根据页数、价格、发布日期检索books表并分组统计编号的分布情况
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByPageCountPriceReleaseDateTermsSeq(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByPageCountPriceReleaseDate(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
@@ -7542,71 +4155,11 @@ func MatchBooksByPageCountPriceReleaseDateTermsSeq(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDateTermsClassClass2 根据页数、价格、发布日期检索books表并同时统计类别、子类别的分布情况
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByPageCountPriceReleaseDateTermsClassClass2(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountPriceReleaseDateTermsClassSeq 根据页数、价格、发布日期检索books表并同时统计类别、编号的分布情况
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByPageCountPriceReleaseDateTermsClassSeq(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountPriceReleaseDateTermsClass2Seq 根据页数、价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByPageCountPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountPriceReleaseDateTermsClassClass2Seq 根据页数、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByPageCountPriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountPriceSeqTermsClass 根据页数、价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByPageCountPriceSeq 根据页数、价格、编号检索books表并分组统计类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByPageCountPriceSeqTermsClass(es *elasticsearch.Client, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByPageCountPriceSeq(es *elasticsearch.Client, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
@@ -7617,11 +4170,11 @@ func MatchBooksByPageCountPriceSeqTermsClass(es *elasticsearch.Client, pageCount
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceSeqTermsClass2 根据页数、价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByPageCountPriceSeq 根据页数、价格、编号检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByPageCountPriceSeqTermsClass2(es *elasticsearch.Client, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByPageCountPriceSeq(es *elasticsearch.Client, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
@@ -7632,26 +4185,11 @@ func MatchBooksByPageCountPriceSeqTermsClass2(es *elasticsearch.Client, pageCoun
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceSeqTermsClassClass2 根据页数、价格、编号检索books表并同时统计类别、子类别的分布情况
-// pageCount int64 页数
-// price float64 价格
-// seq string 编号
-func MatchBooksByPageCountPriceSeqTermsClassClass2(es *elasticsearch.Client, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountReleaseDateSeqTermsClass 根据页数、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByPageCountReleaseDateSeq 根据页数、发布日期、编号检索books表并分组统计类别的分布情况
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByPageCountReleaseDateSeqTermsClass(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByPageCountReleaseDateSeq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
@@ -7662,11 +4200,11 @@ func MatchBooksByPageCountReleaseDateSeqTermsClass(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateSeqTermsClass2 根据页数、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByPageCountReleaseDateSeq 根据页数、发布日期、编号检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByPageCountReleaseDateSeqTermsClass2(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByPageCountReleaseDateSeq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
@@ -7677,26 +4215,11 @@ func MatchBooksByPageCountReleaseDateSeqTermsClass2(es *elasticsearch.Client, pa
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateSeqTermsClassClass2 根据页数、发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByPageCountReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPriceReleaseDateSeqTermsClass 根据价格、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByPriceReleaseDateSeq 根据价格、发布日期、编号检索books表并分组统计类别的分布情况
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByPriceReleaseDateSeqTermsClass(es *elasticsearch.Client, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByPriceReleaseDateSeq(es *elasticsearch.Client, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
@@ -7707,11 +4230,11 @@ func MatchBooksByPriceReleaseDateSeqTermsClass(es *elasticsearch.Client, price f
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateSeqTermsClass2 根据价格、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByPriceReleaseDateSeq 根据价格、发布日期、编号检索books表并分组统计子类别的分布情况
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByPriceReleaseDateSeqTermsClass2(es *elasticsearch.Client, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByPriceReleaseDateSeq(es *elasticsearch.Client, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
@@ -7722,27 +4245,12 @@ func MatchBooksByPriceReleaseDateSeqTermsClass2(es *elasticsearch.Client, price 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateSeqTermsClassClass2 根据价格、发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// price float64 价格
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByPriceReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorClassClass2TermsSeq 根据全文本、作者、类别、子类别检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorClassClass2 根据全文本、作者、类别、子类别检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
 // class2 string 子类别
-func MatchBooksByAllTextAuthorClassClass2TermsSeq(es *elasticsearch.Client, allText, author, class, class2 string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, allText, author, class, class2 string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -7756,12 +4264,12 @@ func MatchBooksByAllTextAuthorClassClass2TermsSeq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassNameTermsClass2 根据全文本、作者、类别、书名检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorClassName 根据全文本、作者、类别、书名检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
 // name string 书名
-func MatchBooksByAllTextAuthorClassNameTermsClass2(es *elasticsearch.Client, allText, author, class, name string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, author, class, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -7775,12 +4283,12 @@ func MatchBooksByAllTextAuthorClassNameTermsClass2(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassNameTermsSeq 根据全文本、作者、类别、书名检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorClassName 根据全文本、作者、类别、书名检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
 // name string 书名
-func MatchBooksByAllTextAuthorClassNameTermsSeq(es *elasticsearch.Client, allText, author, class, name string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, author, class, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -7794,31 +4302,12 @@ func MatchBooksByAllTextAuthorClassNameTermsSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassNameTermsClass2Seq 根据全文本、作者、类别、书名检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// class string 类别
-// name string 书名
-func MatchBooksByAllTextAuthorClassNameTermsClass2Seq(es *elasticsearch.Client, allText, author, class, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorClassPageCountTermsClass2 根据全文本、作者、类别、页数检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorClassPageCount 根据全文本、作者、类别、页数检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
 // pageCount int64 页数
-func MatchBooksByAllTextAuthorClassPageCountTermsClass2(es *elasticsearch.Client, allText, author, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorClassPageCount(es *elasticsearch.Client, allText, author, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -7832,12 +4321,12 @@ func MatchBooksByAllTextAuthorClassPageCountTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassPageCountTermsSeq 根据全文本、作者、类别、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorClassPageCount 根据全文本、作者、类别、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
 // pageCount int64 页数
-func MatchBooksByAllTextAuthorClassPageCountTermsSeq(es *elasticsearch.Client, allText, author, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorClassPageCount(es *elasticsearch.Client, allText, author, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -7851,31 +4340,12 @@ func MatchBooksByAllTextAuthorClassPageCountTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassPageCountTermsClass2Seq 根据全文本、作者、类别、页数检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// class string 类别
-// pageCount int64 页数
-func MatchBooksByAllTextAuthorClassPageCountTermsClass2Seq(es *elasticsearch.Client, allText, author, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorClassPriceTermsClass2 根据全文本、作者、类别、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorClassPrice 根据全文本、作者、类别、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
 // price float64 价格
-func MatchBooksByAllTextAuthorClassPriceTermsClass2(es *elasticsearch.Client, allText, author, class string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorClassPrice(es *elasticsearch.Client, allText, author, class string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -7889,12 +4359,12 @@ func MatchBooksByAllTextAuthorClassPriceTermsClass2(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassPriceTermsSeq 根据全文本、作者、类别、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorClassPrice 根据全文本、作者、类别、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
 // price float64 价格
-func MatchBooksByAllTextAuthorClassPriceTermsSeq(es *elasticsearch.Client, allText, author, class string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorClassPrice(es *elasticsearch.Client, allText, author, class string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -7908,31 +4378,12 @@ func MatchBooksByAllTextAuthorClassPriceTermsSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassPriceTermsClass2Seq 根据全文本、作者、类别、价格检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// class string 类别
-// price float64 价格
-func MatchBooksByAllTextAuthorClassPriceTermsClass2Seq(es *elasticsearch.Client, allText, author, class string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorClassReleaseDateTermsClass2 根据全文本、作者、类别、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorClassReleaseDate 根据全文本、作者、类别、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorClassReleaseDateTermsClass2(es *elasticsearch.Client, allText, author, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client, allText, author, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -7946,12 +4397,12 @@ func MatchBooksByAllTextAuthorClassReleaseDateTermsClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassReleaseDateTermsSeq 根据全文本、作者、类别、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorClassReleaseDate 根据全文本、作者、类别、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorClassReleaseDateTermsSeq(es *elasticsearch.Client, allText, author, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client, allText, author, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -7965,31 +4416,12 @@ func MatchBooksByAllTextAuthorClassReleaseDateTermsSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassReleaseDateTermsClass2Seq 根据全文本、作者、类别、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// class string 类别
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorClassReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText, author, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorClassSeqTermsClass2 根据全文本、作者、类别、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorClassSeq 根据全文本、作者、类别、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // class string 类别
 // seq string 编号
-func MatchBooksByAllTextAuthorClassSeqTermsClass2(es *elasticsearch.Client, allText, author, class, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allText, author, class, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8003,12 +4435,12 @@ func MatchBooksByAllTextAuthorClassSeqTermsClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2NameTermsClass 根据全文本、作者、子类别、书名检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorClass2Name 根据全文本、作者、子类别、书名检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // name string 书名
-func MatchBooksByAllTextAuthorClass2NameTermsClass(es *elasticsearch.Client, allText, author, class2, name string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allText, author, class2, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8022,12 +4454,12 @@ func MatchBooksByAllTextAuthorClass2NameTermsClass(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2NameTermsSeq 根据全文本、作者、子类别、书名检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorClass2Name 根据全文本、作者、子类别、书名检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // name string 书名
-func MatchBooksByAllTextAuthorClass2NameTermsSeq(es *elasticsearch.Client, allText, author, class2, name string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allText, author, class2, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8041,31 +4473,12 @@ func MatchBooksByAllTextAuthorClass2NameTermsSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2NameTermsClassSeq 根据全文本、作者、子类别、书名检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// class2 string 子类别
-// name string 书名
-func MatchBooksByAllTextAuthorClass2NameTermsClassSeq(es *elasticsearch.Client, allText, author, class2, name string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorClass2PageCountTermsClass 根据全文本、作者、子类别、页数检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorClass2PageCount 根据全文本、作者、子类别、页数检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByAllTextAuthorClass2PageCountTermsClass(es *elasticsearch.Client, allText, author, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorClass2PageCount(es *elasticsearch.Client, allText, author, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8079,12 +4492,12 @@ func MatchBooksByAllTextAuthorClass2PageCountTermsClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2PageCountTermsSeq 根据全文本、作者、子类别、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorClass2PageCount 根据全文本、作者、子类别、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByAllTextAuthorClass2PageCountTermsSeq(es *elasticsearch.Client, allText, author, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorClass2PageCount(es *elasticsearch.Client, allText, author, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8098,31 +4511,12 @@ func MatchBooksByAllTextAuthorClass2PageCountTermsSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2PageCountTermsClassSeq 根据全文本、作者、子类别、页数检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// class2 string 子类别
-// pageCount int64 页数
-func MatchBooksByAllTextAuthorClass2PageCountTermsClassSeq(es *elasticsearch.Client, allText, author, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorClass2PriceTermsClass 根据全文本、作者、子类别、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorClass2Price 根据全文本、作者、子类别、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByAllTextAuthorClass2PriceTermsClass(es *elasticsearch.Client, allText, author, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorClass2Price(es *elasticsearch.Client, allText, author, class2 string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8136,12 +4530,12 @@ func MatchBooksByAllTextAuthorClass2PriceTermsClass(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2PriceTermsSeq 根据全文本、作者、子类别、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorClass2Price 根据全文本、作者、子类别、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByAllTextAuthorClass2PriceTermsSeq(es *elasticsearch.Client, allText, author, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorClass2Price(es *elasticsearch.Client, allText, author, class2 string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8155,31 +4549,12 @@ func MatchBooksByAllTextAuthorClass2PriceTermsSeq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2PriceTermsClassSeq 根据全文本、作者、子类别、价格检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// class2 string 子类别
-// price float64 价格
-func MatchBooksByAllTextAuthorClass2PriceTermsClassSeq(es *elasticsearch.Client, allText, author, class2 string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorClass2ReleaseDateTermsClass 根据全文本、作者、子类别、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorClass2ReleaseDate 根据全文本、作者、子类别、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorClass2ReleaseDateTermsClass(es *elasticsearch.Client, allText, author, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Client, allText, author, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8193,12 +4568,12 @@ func MatchBooksByAllTextAuthorClass2ReleaseDateTermsClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2ReleaseDateTermsSeq 根据全文本、作者、子类别、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorClass2ReleaseDate 根据全文本、作者、子类别、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorClass2ReleaseDateTermsSeq(es *elasticsearch.Client, allText, author, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Client, allText, author, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8212,31 +4587,12 @@ func MatchBooksByAllTextAuthorClass2ReleaseDateTermsSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2ReleaseDateTermsClassSeq 根据全文本、作者、子类别、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// class2 string 子类别
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorClass2ReleaseDateTermsClassSeq(es *elasticsearch.Client, allText, author, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorClass2SeqTermsClass 根据全文本、作者、子类别、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorClass2Seq 根据全文本、作者、子类别、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // seq string 编号
-func MatchBooksByAllTextAuthorClass2SeqTermsClass(es *elasticsearch.Client, allText, author, class2, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allText, author, class2, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8250,12 +4606,12 @@ func MatchBooksByAllTextAuthorClass2SeqTermsClass(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePageCountTermsClass 根据全文本、作者、书名、页数检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorNamePageCount 根据全文本、作者、书名、页数检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAllTextAuthorNamePageCountTermsClass(es *elasticsearch.Client, allText, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorNamePageCount(es *elasticsearch.Client, allText, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8269,12 +4625,12 @@ func MatchBooksByAllTextAuthorNamePageCountTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePageCountTermsClass2 根据全文本、作者、书名、页数检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorNamePageCount 根据全文本、作者、书名、页数检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAllTextAuthorNamePageCountTermsClass2(es *elasticsearch.Client, allText, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorNamePageCount(es *elasticsearch.Client, allText, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8288,12 +4644,12 @@ func MatchBooksByAllTextAuthorNamePageCountTermsClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePageCountTermsSeq 根据全文本、作者、书名、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorNamePageCount 根据全文本、作者、书名、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAllTextAuthorNamePageCountTermsSeq(es *elasticsearch.Client, allText, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorNamePageCount(es *elasticsearch.Client, allText, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8307,88 +4663,12 @@ func MatchBooksByAllTextAuthorNamePageCountTermsSeq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePageCountTermsClassClass2 根据全文本、作者、书名、页数检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAllTextAuthorNamePageCountTermsClassClass2(es *elasticsearch.Client, allText, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNamePageCountTermsClassSeq 根据全文本、作者、书名、页数检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAllTextAuthorNamePageCountTermsClassSeq(es *elasticsearch.Client, allText, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNamePageCountTermsClass2Seq 根据全文本、作者、书名、页数检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAllTextAuthorNamePageCountTermsClass2Seq(es *elasticsearch.Client, allText, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNamePageCountTermsClassClass2Seq 根据全文本、作者、书名、页数检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAllTextAuthorNamePageCountTermsClassClass2Seq(es *elasticsearch.Client, allText, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNamePriceTermsClass 根据全文本、作者、书名、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorNamePrice 根据全文本、作者、书名、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
 // price float64 价格
-func MatchBooksByAllTextAuthorNamePriceTermsClass(es *elasticsearch.Client, allText, author, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorNamePrice(es *elasticsearch.Client, allText, author, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8402,12 +4682,12 @@ func MatchBooksByAllTextAuthorNamePriceTermsClass(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePriceTermsClass2 根据全文本、作者、书名、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorNamePrice 根据全文本、作者、书名、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
 // price float64 价格
-func MatchBooksByAllTextAuthorNamePriceTermsClass2(es *elasticsearch.Client, allText, author, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorNamePrice(es *elasticsearch.Client, allText, author, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8421,12 +4701,12 @@ func MatchBooksByAllTextAuthorNamePriceTermsClass2(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePriceTermsSeq 根据全文本、作者、书名、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorNamePrice 根据全文本、作者、书名、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
 // price float64 价格
-func MatchBooksByAllTextAuthorNamePriceTermsSeq(es *elasticsearch.Client, allText, author, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorNamePrice(es *elasticsearch.Client, allText, author, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8440,88 +4720,12 @@ func MatchBooksByAllTextAuthorNamePriceTermsSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePriceTermsClassClass2 根据全文本、作者、书名、价格检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-// price float64 价格
-func MatchBooksByAllTextAuthorNamePriceTermsClassClass2(es *elasticsearch.Client, allText, author, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNamePriceTermsClassSeq 根据全文本、作者、书名、价格检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-// price float64 价格
-func MatchBooksByAllTextAuthorNamePriceTermsClassSeq(es *elasticsearch.Client, allText, author, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNamePriceTermsClass2Seq 根据全文本、作者、书名、价格检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-// price float64 价格
-func MatchBooksByAllTextAuthorNamePriceTermsClass2Seq(es *elasticsearch.Client, allText, author, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNamePriceTermsClassClass2Seq 根据全文本、作者、书名、价格检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-// price float64 价格
-func MatchBooksByAllTextAuthorNamePriceTermsClassClass2Seq(es *elasticsearch.Client, allText, author, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNameReleaseDateTermsClass 根据全文本、作者、书名、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorNameReleaseDate 根据全文本、作者、书名、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorNameReleaseDateTermsClass(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8535,12 +4739,12 @@ func MatchBooksByAllTextAuthorNameReleaseDateTermsClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameReleaseDateTermsClass2 根据全文本、作者、书名、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorNameReleaseDate 根据全文本、作者、书名、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorNameReleaseDateTermsClass2(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8554,12 +4758,12 @@ func MatchBooksByAllTextAuthorNameReleaseDateTermsClass2(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameReleaseDateTermsSeq 根据全文本、作者、书名、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorNameReleaseDate 根据全文本、作者、书名、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorNameReleaseDateTermsSeq(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8573,88 +4777,12 @@ func MatchBooksByAllTextAuthorNameReleaseDateTermsSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameReleaseDateTermsClassClass2 根据全文本、作者、书名、发布日期检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorNameReleaseDateTermsClassClass2(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNameReleaseDateTermsClassSeq 根据全文本、作者、书名、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorNameReleaseDateTermsClassSeq(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNameReleaseDateTermsClass2Seq 根据全文本、作者、书名、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorNameReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNameReleaseDateTermsClassClass2Seq 根据全文本、作者、书名、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorNameReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorNameSeqTermsClass 根据全文本、作者、书名、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorNameSeq 根据全文本、作者、书名、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
 // seq string 编号
-func MatchBooksByAllTextAuthorNameSeqTermsClass(es *elasticsearch.Client, allText, author, name, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author, name, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8668,12 +4796,12 @@ func MatchBooksByAllTextAuthorNameSeqTermsClass(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameSeqTermsClass2 根据全文本、作者、书名、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorNameSeq 根据全文本、作者、书名、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // name string 书名
 // seq string 编号
-func MatchBooksByAllTextAuthorNameSeqTermsClass2(es *elasticsearch.Client, allText, author, name, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author, name, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8687,31 +4815,12 @@ func MatchBooksByAllTextAuthorNameSeqTermsClass2(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameSeqTermsClassClass2 根据全文本、作者、书名、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-// name string 书名
-// seq string 编号
-func MatchBooksByAllTextAuthorNameSeqTermsClassClass2(es *elasticsearch.Client, allText, author, name, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPageCountPriceTermsClass 根据全文本、作者、页数、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorPageCountPrice 根据全文本、作者、页数、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextAuthorPageCountPriceTermsClass(es *elasticsearch.Client, allText, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorPageCountPrice(es *elasticsearch.Client, allText, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8725,12 +4834,12 @@ func MatchBooksByAllTextAuthorPageCountPriceTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountPriceTermsClass2 根据全文本、作者、页数、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorPageCountPrice 根据全文本、作者、页数、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextAuthorPageCountPriceTermsClass2(es *elasticsearch.Client, allText, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorPageCountPrice(es *elasticsearch.Client, allText, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8744,12 +4853,12 @@ func MatchBooksByAllTextAuthorPageCountPriceTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountPriceTermsSeq 根据全文本、作者、页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorPageCountPrice 根据全文本、作者、页数、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextAuthorPageCountPriceTermsSeq(es *elasticsearch.Client, allText, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorPageCountPrice(es *elasticsearch.Client, allText, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8763,88 +4872,12 @@ func MatchBooksByAllTextAuthorPageCountPriceTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountPriceTermsClassClass2 根据全文本、作者、页数、价格检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAllTextAuthorPageCountPriceTermsClassClass2(es *elasticsearch.Client, allText, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPageCountPriceTermsClassSeq 根据全文本、作者、页数、价格检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAllTextAuthorPageCountPriceTermsClassSeq(es *elasticsearch.Client, allText, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPageCountPriceTermsClass2Seq 根据全文本、作者、页数、价格检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAllTextAuthorPageCountPriceTermsClass2Seq(es *elasticsearch.Client, allText, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPageCountPriceTermsClassClass2Seq 根据全文本、作者、页数、价格检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAllTextAuthorPageCountPriceTermsClassClass2Seq(es *elasticsearch.Client, allText, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass 根据全文本、作者、页数、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorPageCountReleaseDate 根据全文本、作者、页数、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass(es *elasticsearch.Client, allText, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorPageCountReleaseDate(es *elasticsearch.Client, allText, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8858,12 +4891,12 @@ func MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass2 根据全文本、作者、页数、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorPageCountReleaseDate 根据全文本、作者、页数、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass2(es *elasticsearch.Client, allText, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorPageCountReleaseDate(es *elasticsearch.Client, allText, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8877,12 +4910,12 @@ func MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass2(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountReleaseDateTermsSeq 根据全文本、作者、页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorPageCountReleaseDate 根据全文本、作者、页数、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPageCountReleaseDateTermsSeq(es *elasticsearch.Client, allText, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorPageCountReleaseDate(es *elasticsearch.Client, allText, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8896,88 +4929,12 @@ func MatchBooksByAllTextAuthorPageCountReleaseDateTermsSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClassClass2 根据全文本、作者、页数、发布日期检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPageCountReleaseDateTermsClassClass2(es *elasticsearch.Client, allText, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClassSeq 根据全文本、作者、页数、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPageCountReleaseDateTermsClassSeq(es *elasticsearch.Client, allText, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass2Seq 根据全文本、作者、页数、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPageCountReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPageCountReleaseDateTermsClassClass2Seq 根据全文本、作者、页数、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPageCountReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, allText, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPageCountSeqTermsClass 根据全文本、作者、页数、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorPageCountSeq 根据全文本、作者、页数、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAllTextAuthorPageCountSeqTermsClass(es *elasticsearch.Client, allText, author string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorPageCountSeq(es *elasticsearch.Client, allText, author string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -8991,12 +4948,12 @@ func MatchBooksByAllTextAuthorPageCountSeqTermsClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountSeqTermsClass2 根据全文本、作者、页数、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorPageCountSeq 根据全文本、作者、页数、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAllTextAuthorPageCountSeqTermsClass2(es *elasticsearch.Client, allText, author string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorPageCountSeq(es *elasticsearch.Client, allText, author string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -9010,31 +4967,12 @@ func MatchBooksByAllTextAuthorPageCountSeqTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountSeqTermsClassClass2 根据全文本、作者、页数、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-// pageCount int64 页数
-// seq string 编号
-func MatchBooksByAllTextAuthorPageCountSeqTermsClassClass2(es *elasticsearch.Client, allText, author string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPriceReleaseDateTermsClass 根据全文本、作者、价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorPriceReleaseDate 根据全文本、作者、价格、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPriceReleaseDateTermsClass(es *elasticsearch.Client, allText, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorPriceReleaseDate(es *elasticsearch.Client, allText, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -9048,12 +4986,12 @@ func MatchBooksByAllTextAuthorPriceReleaseDateTermsClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceReleaseDateTermsClass2 根据全文本、作者、价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorPriceReleaseDate 根据全文本、作者、价格、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPriceReleaseDateTermsClass2(es *elasticsearch.Client, allText, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorPriceReleaseDate(es *elasticsearch.Client, allText, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -9067,12 +5005,12 @@ func MatchBooksByAllTextAuthorPriceReleaseDateTermsClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceReleaseDateTermsSeq 根据全文本、作者、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextAuthorPriceReleaseDate 根据全文本、作者、价格、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPriceReleaseDateTermsSeq(es *elasticsearch.Client, allText, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextAuthorPriceReleaseDate(es *elasticsearch.Client, allText, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -9086,88 +5024,12 @@ func MatchBooksByAllTextAuthorPriceReleaseDateTermsSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceReleaseDateTermsClassClass2 根据全文本、作者、价格、发布日期检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPriceReleaseDateTermsClassClass2(es *elasticsearch.Client, allText, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPriceReleaseDateTermsClassSeq 根据全文本、作者、价格、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPriceReleaseDateTermsClassSeq(es *elasticsearch.Client, allText, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPriceReleaseDateTermsClass2Seq 根据全文本、作者、价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPriceReleaseDateTermsClassClass2Seq 根据全文本、作者、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// author string 作者
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, allText, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorPriceSeqTermsClass 根据全文本、作者、价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorPriceSeq 根据全文本、作者、价格、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextAuthorPriceSeqTermsClass(es *elasticsearch.Client, allText, author string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client, allText, author string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -9181,12 +5043,12 @@ func MatchBooksByAllTextAuthorPriceSeqTermsClass(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceSeqTermsClass2 根据全文本、作者、价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorPriceSeq 根据全文本、作者、价格、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextAuthorPriceSeqTermsClass2(es *elasticsearch.Client, allText, author string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client, allText, author string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -9200,31 +5062,12 @@ func MatchBooksByAllTextAuthorPriceSeqTermsClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceSeqTermsClassClass2 根据全文本、作者、价格、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-// price float64 价格
-// seq string 编号
-func MatchBooksByAllTextAuthorPriceSeqTermsClassClass2(es *elasticsearch.Client, allText, author string, price float64, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextAuthorReleaseDateSeqTermsClass 根据全文本、作者、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextAuthorReleaseDateSeq 根据全文本、作者、发布日期、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextAuthorReleaseDateSeqTermsClass(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -9238,12 +5081,12 @@ func MatchBooksByAllTextAuthorReleaseDateSeqTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateSeqTermsClass2 根据全文本、作者、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextAuthorReleaseDateSeq 根据全文本、作者、发布日期、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextAuthorReleaseDateSeqTermsClass2(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -9257,31 +5100,12 @@ func MatchBooksByAllTextAuthorReleaseDateSeqTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateSeqTermsClassClass2 根据全文本、作者、发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// author string 作者
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByAllTextAuthorReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClassClass2NameTermsSeq 根据全文本、类别、子类别、书名检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClassClass2Name 根据全文本、类别、子类别、书名检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // name string 书名
-func MatchBooksByAllTextClassClass2NameTermsSeq(es *elasticsearch.Client, allText, class, class2, name string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClassClass2Name(es *elasticsearch.Client, allText, class, class2, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -9295,12 +5119,12 @@ func MatchBooksByAllTextClassClass2NameTermsSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2PageCountTermsSeq 根据全文本、类别、子类别、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClassClass2PageCount 根据全文本、类别、子类别、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByAllTextClassClass2PageCountTermsSeq(es *elasticsearch.Client, allText, class, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClassClass2PageCount(es *elasticsearch.Client, allText, class, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -9314,12 +5138,12 @@ func MatchBooksByAllTextClassClass2PageCountTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2PriceTermsSeq 根据全文本、类别、子类别、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClassClass2Price 根据全文本、类别、子类别、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByAllTextClassClass2PriceTermsSeq(es *elasticsearch.Client, allText, class, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClassClass2Price(es *elasticsearch.Client, allText, class, class2 string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -9333,12 +5157,12 @@ func MatchBooksByAllTextClassClass2PriceTermsSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2ReleaseDateTermsSeq 根据全文本、类别、子类别、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClassClass2ReleaseDate 根据全文本、类别、子类别、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassClass2ReleaseDateTermsSeq(es *elasticsearch.Client, allText, class, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Client, allText, class, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -9352,12 +5176,12 @@ func MatchBooksByAllTextClassClass2ReleaseDateTermsSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNamePageCountTermsClass2 根据全文本、类别、书名、页数检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClassNamePageCount 根据全文本、类别、书名、页数检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAllTextClassNamePageCountTermsClass2(es *elasticsearch.Client, allText, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClassNamePageCount(es *elasticsearch.Client, allText, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -9371,12 +5195,12 @@ func MatchBooksByAllTextClassNamePageCountTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNamePageCountTermsSeq 根据全文本、类别、书名、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClassNamePageCount 根据全文本、类别、书名、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAllTextClassNamePageCountTermsSeq(es *elasticsearch.Client, allText, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClassNamePageCount(es *elasticsearch.Client, allText, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -9390,31 +5214,12 @@ func MatchBooksByAllTextClassNamePageCountTermsSeq(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNamePageCountTermsClass2Seq 根据全文本、类别、书名、页数检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// class string 类别
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAllTextClassNamePageCountTermsClass2Seq(es *elasticsearch.Client, allText, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClassNamePriceTermsClass2 根据全文本、类别、书名、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClassNamePrice 根据全文本、类别、书名、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
 // price float64 价格
-func MatchBooksByAllTextClassNamePriceTermsClass2(es *elasticsearch.Client, allText, class, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClassNamePrice(es *elasticsearch.Client, allText, class, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -9428,12 +5233,12 @@ func MatchBooksByAllTextClassNamePriceTermsClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNamePriceTermsSeq 根据全文本、类别、书名、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClassNamePrice 根据全文本、类别、书名、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
 // price float64 价格
-func MatchBooksByAllTextClassNamePriceTermsSeq(es *elasticsearch.Client, allText, class, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClassNamePrice(es *elasticsearch.Client, allText, class, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -9447,31 +5252,12 @@ func MatchBooksByAllTextClassNamePriceTermsSeq(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNamePriceTermsClass2Seq 根据全文本、类别、书名、价格检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// class string 类别
-// name string 书名
-// price float64 价格
-func MatchBooksByAllTextClassNamePriceTermsClass2Seq(es *elasticsearch.Client, allText, class, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClassNameReleaseDateTermsClass2 根据全文本、类别、书名、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClassNameReleaseDate 根据全文本、类别、书名、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassNameReleaseDateTermsClass2(es *elasticsearch.Client, allText, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, allText, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -9485,12 +5271,12 @@ func MatchBooksByAllTextClassNameReleaseDateTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameReleaseDateTermsSeq 根据全文本、类别、书名、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClassNameReleaseDate 根据全文本、类别、书名、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassNameReleaseDateTermsSeq(es *elasticsearch.Client, allText, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, allText, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -9504,31 +5290,12 @@ func MatchBooksByAllTextClassNameReleaseDateTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameReleaseDateTermsClass2Seq 根据全文本、类别、书名、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// class string 类别
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassNameReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClassNameSeqTermsClass2 根据全文本、类别、书名、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClassNameSeq 根据全文本、类别、书名、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // name string 书名
 // seq string 编号
-func MatchBooksByAllTextClassNameSeqTermsClass2(es *elasticsearch.Client, allText, class, name, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText, class, name, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -9542,12 +5309,12 @@ func MatchBooksByAllTextClassNameSeqTermsClass2(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountPriceTermsClass2 根据全文本、类别、页数、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClassPageCountPrice 根据全文本、类别、页数、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextClassPageCountPriceTermsClass2(es *elasticsearch.Client, allText, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClassPageCountPrice(es *elasticsearch.Client, allText, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -9561,12 +5328,12 @@ func MatchBooksByAllTextClassPageCountPriceTermsClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountPriceTermsSeq 根据全文本、类别、页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClassPageCountPrice 根据全文本、类别、页数、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextClassPageCountPriceTermsSeq(es *elasticsearch.Client, allText, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClassPageCountPrice(es *elasticsearch.Client, allText, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -9580,31 +5347,12 @@ func MatchBooksByAllTextClassPageCountPriceTermsSeq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountPriceTermsClass2Seq 根据全文本、类别、页数、价格检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// class string 类别
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAllTextClassPageCountPriceTermsClass2Seq(es *elasticsearch.Client, allText, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClassPageCountReleaseDateTermsClass2 根据全文本、类别、页数、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClassPageCountReleaseDate 根据全文本、类别、页数、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassPageCountReleaseDateTermsClass2(es *elasticsearch.Client, allText, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClassPageCountReleaseDate(es *elasticsearch.Client, allText, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -9618,12 +5366,12 @@ func MatchBooksByAllTextClassPageCountReleaseDateTermsClass2(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountReleaseDateTermsSeq 根据全文本、类别、页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClassPageCountReleaseDate 根据全文本、类别、页数、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassPageCountReleaseDateTermsSeq(es *elasticsearch.Client, allText, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClassPageCountReleaseDate(es *elasticsearch.Client, allText, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -9637,31 +5385,12 @@ func MatchBooksByAllTextClassPageCountReleaseDateTermsSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountReleaseDateTermsClass2Seq 根据全文本、类别、页数、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// class string 类别
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassPageCountReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClassPageCountSeqTermsClass2 根据全文本、类别、页数、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClassPageCountSeq 根据全文本、类别、页数、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAllTextClassPageCountSeqTermsClass2(es *elasticsearch.Client, allText, class string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClassPageCountSeq(es *elasticsearch.Client, allText, class string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -9675,12 +5404,12 @@ func MatchBooksByAllTextClassPageCountSeqTermsClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceReleaseDateTermsClass2 根据全文本、类别、价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClassPriceReleaseDate 根据全文本、类别、价格、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassPriceReleaseDateTermsClass2(es *elasticsearch.Client, allText, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClassPriceReleaseDate(es *elasticsearch.Client, allText, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -9694,12 +5423,12 @@ func MatchBooksByAllTextClassPriceReleaseDateTermsClass2(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceReleaseDateTermsSeq 根据全文本、类别、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClassPriceReleaseDate 根据全文本、类别、价格、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassPriceReleaseDateTermsSeq(es *elasticsearch.Client, allText, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClassPriceReleaseDate(es *elasticsearch.Client, allText, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -9713,31 +5442,12 @@ func MatchBooksByAllTextClassPriceReleaseDateTermsSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceReleaseDateTermsClass2Seq 根据全文本、类别、价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// class string 类别
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClassPriceSeqTermsClass2 根据全文本、类别、价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClassPriceSeq 根据全文本、类别、价格、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextClassPriceSeqTermsClass2(es *elasticsearch.Client, allText, class string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClassPriceSeq(es *elasticsearch.Client, allText, class string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -9751,12 +5461,12 @@ func MatchBooksByAllTextClassPriceSeqTermsClass2(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassReleaseDateSeqTermsClass2 根据全文本、类别、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextClassReleaseDateSeq 根据全文本、类别、发布日期、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextClassReleaseDateSeqTermsClass2(es *elasticsearch.Client, allText, class string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, class string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -9770,12 +5480,12 @@ func MatchBooksByAllTextClassReleaseDateSeqTermsClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NamePageCountTermsClass 根据全文本、子类别、书名、页数检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2NamePageCount 根据全文本、子类别、书名、页数检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAllTextClass2NamePageCountTermsClass(es *elasticsearch.Client, allText, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2NamePageCount(es *elasticsearch.Client, allText, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -9789,12 +5499,12 @@ func MatchBooksByAllTextClass2NamePageCountTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NamePageCountTermsSeq 根据全文本、子类别、书名、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClass2NamePageCount 根据全文本、子类别、书名、页数检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAllTextClass2NamePageCountTermsSeq(es *elasticsearch.Client, allText, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClass2NamePageCount(es *elasticsearch.Client, allText, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -9808,31 +5518,12 @@ func MatchBooksByAllTextClass2NamePageCountTermsSeq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NamePageCountTermsClassSeq 根据全文本、子类别、书名、页数检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// class2 string 子类别
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAllTextClass2NamePageCountTermsClassSeq(es *elasticsearch.Client, allText, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClass2NamePriceTermsClass 根据全文本、子类别、书名、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2NamePrice 根据全文本、子类别、书名、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // price float64 价格
-func MatchBooksByAllTextClass2NamePriceTermsClass(es *elasticsearch.Client, allText, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2NamePrice(es *elasticsearch.Client, allText, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -9846,12 +5537,12 @@ func MatchBooksByAllTextClass2NamePriceTermsClass(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NamePriceTermsSeq 根据全文本、子类别、书名、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClass2NamePrice 根据全文本、子类别、书名、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // price float64 价格
-func MatchBooksByAllTextClass2NamePriceTermsSeq(es *elasticsearch.Client, allText, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClass2NamePrice(es *elasticsearch.Client, allText, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -9865,31 +5556,12 @@ func MatchBooksByAllTextClass2NamePriceTermsSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NamePriceTermsClassSeq 根据全文本、子类别、书名、价格检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// class2 string 子类别
-// name string 书名
-// price float64 价格
-func MatchBooksByAllTextClass2NamePriceTermsClassSeq(es *elasticsearch.Client, allText, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClass2NameReleaseDateTermsClass 根据全文本、子类别、书名、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2NameReleaseDate 根据全文本、子类别、书名、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2NameReleaseDateTermsClass(es *elasticsearch.Client, allText, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client, allText, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -9903,12 +5575,12 @@ func MatchBooksByAllTextClass2NameReleaseDateTermsClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameReleaseDateTermsSeq 根据全文本、子类别、书名、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClass2NameReleaseDate 根据全文本、子类别、书名、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2NameReleaseDateTermsSeq(es *elasticsearch.Client, allText, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client, allText, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -9922,31 +5594,12 @@ func MatchBooksByAllTextClass2NameReleaseDateTermsSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameReleaseDateTermsClassSeq 根据全文本、子类别、书名、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// class2 string 子类别
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2NameReleaseDateTermsClassSeq(es *elasticsearch.Client, allText, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClass2NameSeqTermsClass 根据全文本、子类别、书名、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2NameSeq 根据全文本、子类别、书名、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // seq string 编号
-func MatchBooksByAllTextClass2NameSeqTermsClass(es *elasticsearch.Client, allText, class2, name, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allText, class2, name, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -9960,12 +5613,12 @@ func MatchBooksByAllTextClass2NameSeqTermsClass(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountPriceTermsClass 根据全文本、子类别、页数、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2PageCountPrice 根据全文本、子类别、页数、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextClass2PageCountPriceTermsClass(es *elasticsearch.Client, allText, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2PageCountPrice(es *elasticsearch.Client, allText, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -9979,12 +5632,12 @@ func MatchBooksByAllTextClass2PageCountPriceTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountPriceTermsSeq 根据全文本、子类别、页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClass2PageCountPrice 根据全文本、子类别、页数、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextClass2PageCountPriceTermsSeq(es *elasticsearch.Client, allText, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClass2PageCountPrice(es *elasticsearch.Client, allText, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -9998,31 +5651,12 @@ func MatchBooksByAllTextClass2PageCountPriceTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountPriceTermsClassSeq 根据全文本、子类别、页数、价格检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// class2 string 子类别
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAllTextClass2PageCountPriceTermsClassSeq(es *elasticsearch.Client, allText, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClass2PageCountReleaseDateTermsClass 根据全文本、子类别、页数、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2PageCountReleaseDate 根据全文本、子类别、页数、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2PageCountReleaseDateTermsClass(es *elasticsearch.Client, allText, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2PageCountReleaseDate(es *elasticsearch.Client, allText, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -10036,12 +5670,12 @@ func MatchBooksByAllTextClass2PageCountReleaseDateTermsClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountReleaseDateTermsSeq 根据全文本、子类别、页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClass2PageCountReleaseDate 根据全文本、子类别、页数、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2PageCountReleaseDateTermsSeq(es *elasticsearch.Client, allText, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClass2PageCountReleaseDate(es *elasticsearch.Client, allText, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -10055,31 +5689,12 @@ func MatchBooksByAllTextClass2PageCountReleaseDateTermsSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountReleaseDateTermsClassSeq 根据全文本、子类别、页数、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// class2 string 子类别
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2PageCountReleaseDateTermsClassSeq(es *elasticsearch.Client, allText, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClass2PageCountSeqTermsClass 根据全文本、子类别、页数、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2PageCountSeq 根据全文本、子类别、页数、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAllTextClass2PageCountSeqTermsClass(es *elasticsearch.Client, allText, class2 string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2PageCountSeq(es *elasticsearch.Client, allText, class2 string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -10093,12 +5708,12 @@ func MatchBooksByAllTextClass2PageCountSeqTermsClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceReleaseDateTermsClass 根据全文本、子类别、价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2PriceReleaseDate 根据全文本、子类别、价格、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2PriceReleaseDateTermsClass(es *elasticsearch.Client, allText, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2PriceReleaseDate(es *elasticsearch.Client, allText, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -10112,12 +5727,12 @@ func MatchBooksByAllTextClass2PriceReleaseDateTermsClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceReleaseDateTermsSeq 根据全文本、子类别、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextClass2PriceReleaseDate 根据全文本、子类别、价格、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2PriceReleaseDateTermsSeq(es *elasticsearch.Client, allText, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextClass2PriceReleaseDate(es *elasticsearch.Client, allText, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -10131,31 +5746,12 @@ func MatchBooksByAllTextClass2PriceReleaseDateTermsSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceReleaseDateTermsClassSeq 根据全文本、子类别、价格、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// class2 string 子类别
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2PriceReleaseDateTermsClassSeq(es *elasticsearch.Client, allText, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextClass2PriceSeqTermsClass 根据全文本、子类别、价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2PriceSeq 根据全文本、子类别、价格、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextClass2PriceSeqTermsClass(es *elasticsearch.Client, allText, class2 string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2PriceSeq(es *elasticsearch.Client, allText, class2 string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -10169,12 +5765,12 @@ func MatchBooksByAllTextClass2PriceSeqTermsClass(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2ReleaseDateSeqTermsClass 根据全文本、子类别、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextClass2ReleaseDateSeq 根据全文本、子类别、发布日期、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextClass2ReleaseDateSeqTermsClass(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -10188,12 +5784,12 @@ func MatchBooksByAllTextClass2ReleaseDateSeqTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountPriceTermsClass 根据全文本、书名、页数、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextNamePageCountPrice 根据全文本、书名、页数、价格检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextNamePageCountPriceTermsClass(es *elasticsearch.Client, allText, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextNamePageCountPrice(es *elasticsearch.Client, allText, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -10207,12 +5803,12 @@ func MatchBooksByAllTextNamePageCountPriceTermsClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountPriceTermsClass2 根据全文本、书名、页数、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextNamePageCountPrice 根据全文本、书名、页数、价格检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextNamePageCountPriceTermsClass2(es *elasticsearch.Client, allText, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextNamePageCountPrice(es *elasticsearch.Client, allText, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -10226,12 +5822,12 @@ func MatchBooksByAllTextNamePageCountPriceTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountPriceTermsSeq 根据全文本、书名、页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextNamePageCountPrice 根据全文本、书名、页数、价格检索books表并分组统计编号的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextNamePageCountPriceTermsSeq(es *elasticsearch.Client, allText, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextNamePageCountPrice(es *elasticsearch.Client, allText, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -10245,88 +5841,12 @@ func MatchBooksByAllTextNamePageCountPriceTermsSeq(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountPriceTermsClassClass2 根据全文本、书名、页数、价格检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAllTextNamePageCountPriceTermsClassClass2(es *elasticsearch.Client, allText, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePageCountPriceTermsClassSeq 根据全文本、书名、页数、价格检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAllTextNamePageCountPriceTermsClassSeq(es *elasticsearch.Client, allText, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePageCountPriceTermsClass2Seq 根据全文本、书名、页数、价格检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAllTextNamePageCountPriceTermsClass2Seq(es *elasticsearch.Client, allText, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePageCountPriceTermsClassClass2Seq 根据全文本、书名、页数、价格检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAllTextNamePageCountPriceTermsClassClass2Seq(es *elasticsearch.Client, allText, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePageCountReleaseDateTermsClass 根据全文本、书名、页数、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextNamePageCountReleaseDate 根据全文本、书名、页数、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePageCountReleaseDateTermsClass(es *elasticsearch.Client, allText, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextNamePageCountReleaseDate(es *elasticsearch.Client, allText, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -10340,12 +5860,12 @@ func MatchBooksByAllTextNamePageCountReleaseDateTermsClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountReleaseDateTermsClass2 根据全文本、书名、页数、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextNamePageCountReleaseDate 根据全文本、书名、页数、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePageCountReleaseDateTermsClass2(es *elasticsearch.Client, allText, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextNamePageCountReleaseDate(es *elasticsearch.Client, allText, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -10359,12 +5879,12 @@ func MatchBooksByAllTextNamePageCountReleaseDateTermsClass2(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountReleaseDateTermsSeq 根据全文本、书名、页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextNamePageCountReleaseDate 根据全文本、书名、页数、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePageCountReleaseDateTermsSeq(es *elasticsearch.Client, allText, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextNamePageCountReleaseDate(es *elasticsearch.Client, allText, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -10378,88 +5898,12 @@ func MatchBooksByAllTextNamePageCountReleaseDateTermsSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountReleaseDateTermsClassClass2 根据全文本、书名、页数、发布日期检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// name string 书名
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePageCountReleaseDateTermsClassClass2(es *elasticsearch.Client, allText, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePageCountReleaseDateTermsClassSeq 根据全文本、书名、页数、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePageCountReleaseDateTermsClassSeq(es *elasticsearch.Client, allText, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePageCountReleaseDateTermsClass2Seq 根据全文本、书名、页数、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePageCountReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePageCountReleaseDateTermsClassClass2Seq 根据全文本、书名、页数、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePageCountReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, allText, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePageCountSeqTermsClass 根据全文本、书名、页数、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextNamePageCountSeq 根据全文本、书名、页数、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAllTextNamePageCountSeqTermsClass(es *elasticsearch.Client, allText, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextNamePageCountSeq(es *elasticsearch.Client, allText, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -10473,12 +5917,12 @@ func MatchBooksByAllTextNamePageCountSeqTermsClass(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountSeqTermsClass2 根据全文本、书名、页数、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextNamePageCountSeq 根据全文本、书名、页数、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAllTextNamePageCountSeqTermsClass2(es *elasticsearch.Client, allText, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextNamePageCountSeq(es *elasticsearch.Client, allText, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -10492,31 +5936,12 @@ func MatchBooksByAllTextNamePageCountSeqTermsClass2(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountSeqTermsClassClass2 根据全文本、书名、页数、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// name string 书名
-// pageCount int64 页数
-// seq string 编号
-func MatchBooksByAllTextNamePageCountSeqTermsClassClass2(es *elasticsearch.Client, allText, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePriceReleaseDateTermsClass 根据全文本、书名、价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextNamePriceReleaseDate 根据全文本、书名、价格、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePriceReleaseDateTermsClass(es *elasticsearch.Client, allText, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextNamePriceReleaseDate(es *elasticsearch.Client, allText, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -10530,12 +5955,12 @@ func MatchBooksByAllTextNamePriceReleaseDateTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceReleaseDateTermsClass2 根据全文本、书名、价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextNamePriceReleaseDate 根据全文本、书名、价格、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePriceReleaseDateTermsClass2(es *elasticsearch.Client, allText, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextNamePriceReleaseDate(es *elasticsearch.Client, allText, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -10549,12 +5974,12 @@ func MatchBooksByAllTextNamePriceReleaseDateTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceReleaseDateTermsSeq 根据全文本、书名、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextNamePriceReleaseDate 根据全文本、书名、价格、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePriceReleaseDateTermsSeq(es *elasticsearch.Client, allText, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextNamePriceReleaseDate(es *elasticsearch.Client, allText, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -10568,88 +5993,12 @@ func MatchBooksByAllTextNamePriceReleaseDateTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceReleaseDateTermsClassClass2 根据全文本、书名、价格、发布日期检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// name string 书名
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePriceReleaseDateTermsClassClass2(es *elasticsearch.Client, allText, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePriceReleaseDateTermsClassSeq 根据全文本、书名、价格、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePriceReleaseDateTermsClassSeq(es *elasticsearch.Client, allText, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePriceReleaseDateTermsClass2Seq 根据全文本、书名、价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePriceReleaseDateTermsClassClass2Seq 根据全文本、书名、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// name string 书名
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, allText, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNamePriceSeqTermsClass 根据全文本、书名、价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextNamePriceSeq 根据全文本、书名、价格、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextNamePriceSeqTermsClass(es *elasticsearch.Client, allText, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextNamePriceSeq(es *elasticsearch.Client, allText, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -10663,12 +6012,12 @@ func MatchBooksByAllTextNamePriceSeqTermsClass(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceSeqTermsClass2 根据全文本、书名、价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextNamePriceSeq 根据全文本、书名、价格、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextNamePriceSeqTermsClass2(es *elasticsearch.Client, allText, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextNamePriceSeq(es *elasticsearch.Client, allText, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -10682,31 +6031,12 @@ func MatchBooksByAllTextNamePriceSeqTermsClass2(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceSeqTermsClassClass2 根据全文本、书名、价格、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// name string 书名
-// price float64 价格
-// seq string 编号
-func MatchBooksByAllTextNamePriceSeqTermsClassClass2(es *elasticsearch.Client, allText, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextNameReleaseDateSeqTermsClass 根据全文本、书名、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextNameReleaseDateSeq 根据全文本、书名、发布日期、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextNameReleaseDateSeqTermsClass(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -10720,12 +6050,12 @@ func MatchBooksByAllTextNameReleaseDateSeqTermsClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateSeqTermsClass2 根据全文本、书名、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextNameReleaseDateSeq 根据全文本、书名、发布日期、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextNameReleaseDateSeqTermsClass2(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -10739,31 +6069,12 @@ func MatchBooksByAllTextNameReleaseDateSeqTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateSeqTermsClassClass2 根据全文本、书名、发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// name string 书名
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByAllTextNameReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountPriceReleaseDateTermsClass 根据全文本、页数、价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextPageCountPriceReleaseDate 根据全文本、页数、价格、发布日期检索books表并分组统计类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountPriceReleaseDateTermsClass(es *elasticsearch.Client, allText string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextPageCountPriceReleaseDate(es *elasticsearch.Client, allText string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -10777,12 +6088,12 @@ func MatchBooksByAllTextPageCountPriceReleaseDateTermsClass(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceReleaseDateTermsClass2 根据全文本、页数、价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextPageCountPriceReleaseDate 根据全文本、页数、价格、发布日期检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountPriceReleaseDateTermsClass2(es *elasticsearch.Client, allText string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextPageCountPriceReleaseDate(es *elasticsearch.Client, allText string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -10796,12 +6107,12 @@ func MatchBooksByAllTextPageCountPriceReleaseDateTermsClass2(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceReleaseDateTermsSeq 根据全文本、页数、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAllTextPageCountPriceReleaseDate 根据全文本、页数、价格、发布日期检索books表并分组统计编号的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountPriceReleaseDateTermsSeq(es *elasticsearch.Client, allText string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAllTextPageCountPriceReleaseDate(es *elasticsearch.Client, allText string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -10815,88 +6126,12 @@ func MatchBooksByAllTextPageCountPriceReleaseDateTermsSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceReleaseDateTermsClassClass2 根据全文本、页数、价格、发布日期检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountPriceReleaseDateTermsClassClass2(es *elasticsearch.Client, allText string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountPriceReleaseDateTermsClassSeq 根据全文本、页数、价格、发布日期检索books表并同时统计类别、编号的分布情况
-// allText string 全文本
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountPriceReleaseDateTermsClassSeq(es *elasticsearch.Client, allText string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountPriceReleaseDateTermsClass2Seq 根据全文本、页数、价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// allText string 全文本
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, allText string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountPriceReleaseDateTermsClassClass2Seq 根据全文本、页数、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// allText string 全文本
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountPriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, allText string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountPriceSeqTermsClass 根据全文本、页数、价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextPageCountPriceSeq 根据全文本、页数、价格、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextPageCountPriceSeqTermsClass(es *elasticsearch.Client, allText string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextPageCountPriceSeq(es *elasticsearch.Client, allText string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -10910,12 +6145,12 @@ func MatchBooksByAllTextPageCountPriceSeqTermsClass(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceSeqTermsClass2 根据全文本、页数、价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextPageCountPriceSeq 根据全文本、页数、价格、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextPageCountPriceSeqTermsClass2(es *elasticsearch.Client, allText string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextPageCountPriceSeq(es *elasticsearch.Client, allText string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -10929,31 +6164,12 @@ func MatchBooksByAllTextPageCountPriceSeqTermsClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceSeqTermsClassClass2 根据全文本、页数、价格、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// pageCount int64 页数
-// price float64 价格
-// seq string 编号
-func MatchBooksByAllTextPageCountPriceSeqTermsClassClass2(es *elasticsearch.Client, allText string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPageCountReleaseDateSeqTermsClass 根据全文本、页数、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextPageCountReleaseDateSeq 根据全文本、页数、发布日期、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextPageCountReleaseDateSeqTermsClass(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextPageCountReleaseDateSeq(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -10967,12 +6183,12 @@ func MatchBooksByAllTextPageCountReleaseDateSeqTermsClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateSeqTermsClass2 根据全文本、页数、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextPageCountReleaseDateSeq 根据全文本、页数、发布日期、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextPageCountReleaseDateSeqTermsClass2(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextPageCountReleaseDateSeq(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -10986,31 +6202,12 @@ func MatchBooksByAllTextPageCountReleaseDateSeqTermsClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateSeqTermsClassClass2 根据全文本、页数、发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByAllTextPageCountReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAllTextPriceReleaseDateSeqTermsClass 根据全文本、价格、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAllTextPriceReleaseDateSeq 根据全文本、价格、发布日期、编号检索books表并分组统计类别的分布情况
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextPriceReleaseDateSeqTermsClass(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAllTextPriceReleaseDateSeq(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -11024,12 +6221,12 @@ func MatchBooksByAllTextPriceReleaseDateSeqTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateSeqTermsClass2 根据全文本、价格、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAllTextPriceReleaseDateSeq 根据全文本、价格、发布日期、编号检索books表并分组统计子类别的分布情况
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextPriceReleaseDateSeqTermsClass2(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAllTextPriceReleaseDateSeq(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -11043,31 +6240,12 @@ func MatchBooksByAllTextPriceReleaseDateSeqTermsClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateSeqTermsClassClass2 根据全文本、价格、发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// allText string 全文本
-// price float64 价格
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByAllTextPriceReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("all_text", allText),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClassClass2NameTermsSeq 根据作者、类别、子类别、书名检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClassClass2Name 根据作者、类别、子类别、书名检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // name string 书名
-func MatchBooksByAuthorClassClass2NameTermsSeq(es *elasticsearch.Client, author, class, class2, name string) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClassClass2Name(es *elasticsearch.Client, author, class, class2, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11081,12 +6259,12 @@ func MatchBooksByAuthorClassClass2NameTermsSeq(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2PageCountTermsSeq 根据作者、类别、子类别、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClassClass2PageCount 根据作者、类别、子类别、页数检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByAuthorClassClass2PageCountTermsSeq(es *elasticsearch.Client, author, class, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClassClass2PageCount(es *elasticsearch.Client, author, class, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11100,12 +6278,12 @@ func MatchBooksByAuthorClassClass2PageCountTermsSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2PriceTermsSeq 根据作者、类别、子类别、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClassClass2Price 根据作者、类别、子类别、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByAuthorClassClass2PriceTermsSeq(es *elasticsearch.Client, author, class, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClassClass2Price(es *elasticsearch.Client, author, class, class2 string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11119,12 +6297,12 @@ func MatchBooksByAuthorClassClass2PriceTermsSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2ReleaseDateTermsSeq 根据作者、类别、子类别、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClassClass2ReleaseDate 根据作者、类别、子类别、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassClass2ReleaseDateTermsSeq(es *elasticsearch.Client, author, class, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client, author, class, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11138,12 +6316,12 @@ func MatchBooksByAuthorClassClass2ReleaseDateTermsSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNamePageCountTermsClass2 根据作者、类别、书名、页数检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClassNamePageCount 根据作者、类别、书名、页数检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAuthorClassNamePageCountTermsClass2(es *elasticsearch.Client, author, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClassNamePageCount(es *elasticsearch.Client, author, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11157,12 +6335,12 @@ func MatchBooksByAuthorClassNamePageCountTermsClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNamePageCountTermsSeq 根据作者、类别、书名、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClassNamePageCount 根据作者、类别、书名、页数检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAuthorClassNamePageCountTermsSeq(es *elasticsearch.Client, author, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClassNamePageCount(es *elasticsearch.Client, author, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11176,31 +6354,12 @@ func MatchBooksByAuthorClassNamePageCountTermsSeq(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNamePageCountTermsClass2Seq 根据作者、类别、书名、页数检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// class string 类别
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAuthorClassNamePageCountTermsClass2Seq(es *elasticsearch.Client, author, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClassNamePriceTermsClass2 根据作者、类别、书名、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClassNamePrice 根据作者、类别、书名、价格检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
 // price float64 价格
-func MatchBooksByAuthorClassNamePriceTermsClass2(es *elasticsearch.Client, author, class, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClassNamePrice(es *elasticsearch.Client, author, class, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11214,12 +6373,12 @@ func MatchBooksByAuthorClassNamePriceTermsClass2(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNamePriceTermsSeq 根据作者、类别、书名、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClassNamePrice 根据作者、类别、书名、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
 // price float64 价格
-func MatchBooksByAuthorClassNamePriceTermsSeq(es *elasticsearch.Client, author, class, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClassNamePrice(es *elasticsearch.Client, author, class, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11233,31 +6392,12 @@ func MatchBooksByAuthorClassNamePriceTermsSeq(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNamePriceTermsClass2Seq 根据作者、类别、书名、价格检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// class string 类别
-// name string 书名
-// price float64 价格
-func MatchBooksByAuthorClassNamePriceTermsClass2Seq(es *elasticsearch.Client, author, class, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClassNameReleaseDateTermsClass2 根据作者、类别、书名、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClassNameReleaseDate 根据作者、类别、书名、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassNameReleaseDateTermsClass2(es *elasticsearch.Client, author, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, author, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11271,12 +6411,12 @@ func MatchBooksByAuthorClassNameReleaseDateTermsClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameReleaseDateTermsSeq 根据作者、类别、书名、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClassNameReleaseDate 根据作者、类别、书名、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassNameReleaseDateTermsSeq(es *elasticsearch.Client, author, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, author, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11290,31 +6430,12 @@ func MatchBooksByAuthorClassNameReleaseDateTermsSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameReleaseDateTermsClass2Seq 根据作者、类别、书名、发布日期检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// class string 类别
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassNameReleaseDateTermsClass2Seq(es *elasticsearch.Client, author, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClassNameSeqTermsClass2 根据作者、类别、书名、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClassNameSeq 根据作者、类别、书名、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // name string 书名
 // seq string 编号
-func MatchBooksByAuthorClassNameSeqTermsClass2(es *elasticsearch.Client, author, class, name, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, class, name, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11328,12 +6449,12 @@ func MatchBooksByAuthorClassNameSeqTermsClass2(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountPriceTermsClass2 根据作者、类别、页数、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClassPageCountPrice 根据作者、类别、页数、价格检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAuthorClassPageCountPriceTermsClass2(es *elasticsearch.Client, author, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClassPageCountPrice(es *elasticsearch.Client, author, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11347,12 +6468,12 @@ func MatchBooksByAuthorClassPageCountPriceTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountPriceTermsSeq 根据作者、类别、页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClassPageCountPrice 根据作者、类别、页数、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAuthorClassPageCountPriceTermsSeq(es *elasticsearch.Client, author, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClassPageCountPrice(es *elasticsearch.Client, author, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11366,31 +6487,12 @@ func MatchBooksByAuthorClassPageCountPriceTermsSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountPriceTermsClass2Seq 根据作者、类别、页数、价格检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// class string 类别
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAuthorClassPageCountPriceTermsClass2Seq(es *elasticsearch.Client, author, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClassPageCountReleaseDateTermsClass2 根据作者、类别、页数、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClassPageCountReleaseDate 根据作者、类别、页数、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassPageCountReleaseDateTermsClass2(es *elasticsearch.Client, author, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClassPageCountReleaseDate(es *elasticsearch.Client, author, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11404,12 +6506,12 @@ func MatchBooksByAuthorClassPageCountReleaseDateTermsClass2(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountReleaseDateTermsSeq 根据作者、类别、页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClassPageCountReleaseDate 根据作者、类别、页数、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassPageCountReleaseDateTermsSeq(es *elasticsearch.Client, author, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClassPageCountReleaseDate(es *elasticsearch.Client, author, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11423,31 +6525,12 @@ func MatchBooksByAuthorClassPageCountReleaseDateTermsSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountReleaseDateTermsClass2Seq 根据作者、类别、页数、发布日期检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// class string 类别
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassPageCountReleaseDateTermsClass2Seq(es *elasticsearch.Client, author, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClassPageCountSeqTermsClass2 根据作者、类别、页数、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClassPageCountSeq 根据作者、类别、页数、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAuthorClassPageCountSeqTermsClass2(es *elasticsearch.Client, author, class string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClassPageCountSeq(es *elasticsearch.Client, author, class string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11461,12 +6544,12 @@ func MatchBooksByAuthorClassPageCountSeqTermsClass2(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceReleaseDateTermsClass2 根据作者、类别、价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClassPriceReleaseDate 根据作者、类别、价格、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassPriceReleaseDateTermsClass2(es *elasticsearch.Client, author, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClassPriceReleaseDate(es *elasticsearch.Client, author, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11480,12 +6563,12 @@ func MatchBooksByAuthorClassPriceReleaseDateTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceReleaseDateTermsSeq 根据作者、类别、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClassPriceReleaseDate 根据作者、类别、价格、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassPriceReleaseDateTermsSeq(es *elasticsearch.Client, author, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClassPriceReleaseDate(es *elasticsearch.Client, author, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11499,31 +6582,12 @@ func MatchBooksByAuthorClassPriceReleaseDateTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceReleaseDateTermsClass2Seq 根据作者、类别、价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// class string 类别
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, author, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClassPriceSeqTermsClass2 根据作者、类别、价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClassPriceSeq 根据作者、类别、价格、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // price float64 价格
 // seq string 编号
-func MatchBooksByAuthorClassPriceSeqTermsClass2(es *elasticsearch.Client, author, class string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClassPriceSeq(es *elasticsearch.Client, author, class string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11537,12 +6601,12 @@ func MatchBooksByAuthorClassPriceSeqTermsClass2(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassReleaseDateSeqTermsClass2 根据作者、类别、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorClassReleaseDateSeq 根据作者、类别、发布日期、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorClassReleaseDateSeqTermsClass2(es *elasticsearch.Client, author, class string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, class string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11556,12 +6620,12 @@ func MatchBooksByAuthorClassReleaseDateSeqTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NamePageCountTermsClass 根据作者、子类别、书名、页数检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2NamePageCount 根据作者、子类别、书名、页数检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAuthorClass2NamePageCountTermsClass(es *elasticsearch.Client, author, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2NamePageCount(es *elasticsearch.Client, author, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11575,12 +6639,12 @@ func MatchBooksByAuthorClass2NamePageCountTermsClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NamePageCountTermsSeq 根据作者、子类别、书名、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClass2NamePageCount 根据作者、子类别、书名、页数检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAuthorClass2NamePageCountTermsSeq(es *elasticsearch.Client, author, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClass2NamePageCount(es *elasticsearch.Client, author, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11594,31 +6658,12 @@ func MatchBooksByAuthorClass2NamePageCountTermsSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NamePageCountTermsClassSeq 根据作者、子类别、书名、页数检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// class2 string 子类别
-// name string 书名
-// pageCount int64 页数
-func MatchBooksByAuthorClass2NamePageCountTermsClassSeq(es *elasticsearch.Client, author, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClass2NamePriceTermsClass 根据作者、子类别、书名、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2NamePrice 根据作者、子类别、书名、价格检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // price float64 价格
-func MatchBooksByAuthorClass2NamePriceTermsClass(es *elasticsearch.Client, author, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2NamePrice(es *elasticsearch.Client, author, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11632,12 +6677,12 @@ func MatchBooksByAuthorClass2NamePriceTermsClass(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NamePriceTermsSeq 根据作者、子类别、书名、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClass2NamePrice 根据作者、子类别、书名、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // price float64 价格
-func MatchBooksByAuthorClass2NamePriceTermsSeq(es *elasticsearch.Client, author, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClass2NamePrice(es *elasticsearch.Client, author, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11651,31 +6696,12 @@ func MatchBooksByAuthorClass2NamePriceTermsSeq(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NamePriceTermsClassSeq 根据作者、子类别、书名、价格检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// class2 string 子类别
-// name string 书名
-// price float64 价格
-func MatchBooksByAuthorClass2NamePriceTermsClassSeq(es *elasticsearch.Client, author, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClass2NameReleaseDateTermsClass 根据作者、子类别、书名、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2NameReleaseDate 根据作者、子类别、书名、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2NameReleaseDateTermsClass(es *elasticsearch.Client, author, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, author, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11689,12 +6715,12 @@ func MatchBooksByAuthorClass2NameReleaseDateTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameReleaseDateTermsSeq 根据作者、子类别、书名、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClass2NameReleaseDate 根据作者、子类别、书名、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2NameReleaseDateTermsSeq(es *elasticsearch.Client, author, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, author, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11708,31 +6734,12 @@ func MatchBooksByAuthorClass2NameReleaseDateTermsSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameReleaseDateTermsClassSeq 根据作者、子类别、书名、发布日期检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// class2 string 子类别
-// name string 书名
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2NameReleaseDateTermsClassSeq(es *elasticsearch.Client, author, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClass2NameSeqTermsClass 根据作者、子类别、书名、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2NameSeq 根据作者、子类别、书名、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // seq string 编号
-func MatchBooksByAuthorClass2NameSeqTermsClass(es *elasticsearch.Client, author, class2, name, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author, class2, name, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11746,12 +6753,12 @@ func MatchBooksByAuthorClass2NameSeqTermsClass(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountPriceTermsClass 根据作者、子类别、页数、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2PageCountPrice 根据作者、子类别、页数、价格检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAuthorClass2PageCountPriceTermsClass(es *elasticsearch.Client, author, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2PageCountPrice(es *elasticsearch.Client, author, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11765,12 +6772,12 @@ func MatchBooksByAuthorClass2PageCountPriceTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountPriceTermsSeq 根据作者、子类别、页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClass2PageCountPrice 根据作者、子类别、页数、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAuthorClass2PageCountPriceTermsSeq(es *elasticsearch.Client, author, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClass2PageCountPrice(es *elasticsearch.Client, author, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11784,31 +6791,12 @@ func MatchBooksByAuthorClass2PageCountPriceTermsSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountPriceTermsClassSeq 根据作者、子类别、页数、价格检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// class2 string 子类别
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAuthorClass2PageCountPriceTermsClassSeq(es *elasticsearch.Client, author, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClass2PageCountReleaseDateTermsClass 根据作者、子类别、页数、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2PageCountReleaseDate 根据作者、子类别、页数、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2PageCountReleaseDateTermsClass(es *elasticsearch.Client, author, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2PageCountReleaseDate(es *elasticsearch.Client, author, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11822,12 +6810,12 @@ func MatchBooksByAuthorClass2PageCountReleaseDateTermsClass(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountReleaseDateTermsSeq 根据作者、子类别、页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClass2PageCountReleaseDate 根据作者、子类别、页数、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2PageCountReleaseDateTermsSeq(es *elasticsearch.Client, author, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClass2PageCountReleaseDate(es *elasticsearch.Client, author, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11841,31 +6829,12 @@ func MatchBooksByAuthorClass2PageCountReleaseDateTermsSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountReleaseDateTermsClassSeq 根据作者、子类别、页数、发布日期检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// class2 string 子类别
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2PageCountReleaseDateTermsClassSeq(es *elasticsearch.Client, author, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClass2PageCountSeqTermsClass 根据作者、子类别、页数、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2PageCountSeq 根据作者、子类别、页数、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAuthorClass2PageCountSeqTermsClass(es *elasticsearch.Client, author, class2 string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2PageCountSeq(es *elasticsearch.Client, author, class2 string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11879,12 +6848,12 @@ func MatchBooksByAuthorClass2PageCountSeqTermsClass(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceReleaseDateTermsClass 根据作者、子类别、价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2PriceReleaseDate 根据作者、子类别、价格、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2PriceReleaseDateTermsClass(es *elasticsearch.Client, author, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2PriceReleaseDate(es *elasticsearch.Client, author, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11898,12 +6867,12 @@ func MatchBooksByAuthorClass2PriceReleaseDateTermsClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceReleaseDateTermsSeq 根据作者、子类别、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorClass2PriceReleaseDate 根据作者、子类别、价格、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2PriceReleaseDateTermsSeq(es *elasticsearch.Client, author, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorClass2PriceReleaseDate(es *elasticsearch.Client, author, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11917,31 +6886,12 @@ func MatchBooksByAuthorClass2PriceReleaseDateTermsSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceReleaseDateTermsClassSeq 根据作者、子类别、价格、发布日期检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// class2 string 子类别
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2PriceReleaseDateTermsClassSeq(es *elasticsearch.Client, author, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorClass2PriceSeqTermsClass 根据作者、子类别、价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2PriceSeq 根据作者、子类别、价格、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
-func MatchBooksByAuthorClass2PriceSeqTermsClass(es *elasticsearch.Client, author, class2 string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2PriceSeq(es *elasticsearch.Client, author, class2 string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11955,12 +6905,12 @@ func MatchBooksByAuthorClass2PriceSeqTermsClass(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2ReleaseDateSeqTermsClass 根据作者、子类别、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorClass2ReleaseDateSeq 根据作者、子类别、发布日期、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorClass2ReleaseDateSeqTermsClass(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -11974,12 +6924,12 @@ func MatchBooksByAuthorClass2ReleaseDateSeqTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountPriceTermsClass 根据作者、书名、页数、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorNamePageCountPrice 根据作者、书名、页数、价格检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAuthorNamePageCountPriceTermsClass(es *elasticsearch.Client, author, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorNamePageCountPrice(es *elasticsearch.Client, author, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -11993,12 +6943,12 @@ func MatchBooksByAuthorNamePageCountPriceTermsClass(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountPriceTermsClass2 根据作者、书名、页数、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorNamePageCountPrice 根据作者、书名、页数、价格检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAuthorNamePageCountPriceTermsClass2(es *elasticsearch.Client, author, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorNamePageCountPrice(es *elasticsearch.Client, author, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -12012,12 +6962,12 @@ func MatchBooksByAuthorNamePageCountPriceTermsClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountPriceTermsSeq 根据作者、书名、页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorNamePageCountPrice 根据作者、书名、页数、价格检索books表并分组统计编号的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAuthorNamePageCountPriceTermsSeq(es *elasticsearch.Client, author, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorNamePageCountPrice(es *elasticsearch.Client, author, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -12031,88 +6981,12 @@ func MatchBooksByAuthorNamePageCountPriceTermsSeq(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountPriceTermsClassClass2 根据作者、书名、页数、价格检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAuthorNamePageCountPriceTermsClassClass2(es *elasticsearch.Client, author, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePageCountPriceTermsClassSeq 根据作者、书名、页数、价格检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAuthorNamePageCountPriceTermsClassSeq(es *elasticsearch.Client, author, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePageCountPriceTermsClass2Seq 根据作者、书名、页数、价格检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAuthorNamePageCountPriceTermsClass2Seq(es *elasticsearch.Client, author, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePageCountPriceTermsClassClass2Seq 根据作者、书名、页数、价格检索books表并同时统计类别、子类别、编号的分布情况
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByAuthorNamePageCountPriceTermsClassClass2Seq(es *elasticsearch.Client, author, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePageCountReleaseDateTermsClass 根据作者、书名、页数、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorNamePageCountReleaseDate 根据作者、书名、页数、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePageCountReleaseDateTermsClass(es *elasticsearch.Client, author, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorNamePageCountReleaseDate(es *elasticsearch.Client, author, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -12126,12 +7000,12 @@ func MatchBooksByAuthorNamePageCountReleaseDateTermsClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountReleaseDateTermsClass2 根据作者、书名、页数、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorNamePageCountReleaseDate 根据作者、书名、页数、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePageCountReleaseDateTermsClass2(es *elasticsearch.Client, author, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorNamePageCountReleaseDate(es *elasticsearch.Client, author, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -12145,12 +7019,12 @@ func MatchBooksByAuthorNamePageCountReleaseDateTermsClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountReleaseDateTermsSeq 根据作者、书名、页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorNamePageCountReleaseDate 根据作者、书名、页数、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePageCountReleaseDateTermsSeq(es *elasticsearch.Client, author, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorNamePageCountReleaseDate(es *elasticsearch.Client, author, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -12164,88 +7038,12 @@ func MatchBooksByAuthorNamePageCountReleaseDateTermsSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountReleaseDateTermsClassClass2 根据作者、书名、页数、发布日期检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePageCountReleaseDateTermsClassClass2(es *elasticsearch.Client, author, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePageCountReleaseDateTermsClassSeq 根据作者、书名、页数、发布日期检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePageCountReleaseDateTermsClassSeq(es *elasticsearch.Client, author, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePageCountReleaseDateTermsClass2Seq 根据作者、书名、页数、发布日期检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePageCountReleaseDateTermsClass2Seq(es *elasticsearch.Client, author, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePageCountReleaseDateTermsClassClass2Seq 根据作者、书名、页数、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePageCountReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, author, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePageCountSeqTermsClass 根据作者、书名、页数、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorNamePageCountSeq 根据作者、书名、页数、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAuthorNamePageCountSeqTermsClass(es *elasticsearch.Client, author, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorNamePageCountSeq(es *elasticsearch.Client, author, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -12259,12 +7057,12 @@ func MatchBooksByAuthorNamePageCountSeqTermsClass(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountSeqTermsClass2 根据作者、书名、页数、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorNamePageCountSeq 根据作者、书名、页数、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAuthorNamePageCountSeqTermsClass2(es *elasticsearch.Client, author, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorNamePageCountSeq(es *elasticsearch.Client, author, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -12278,31 +7076,12 @@ func MatchBooksByAuthorNamePageCountSeqTermsClass2(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountSeqTermsClassClass2 根据作者、书名、页数、编号检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// name string 书名
-// pageCount int64 页数
-// seq string 编号
-func MatchBooksByAuthorNamePageCountSeqTermsClassClass2(es *elasticsearch.Client, author, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePriceReleaseDateTermsClass 根据作者、书名、价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorNamePriceReleaseDate 根据作者、书名、价格、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePriceReleaseDateTermsClass(es *elasticsearch.Client, author, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorNamePriceReleaseDate(es *elasticsearch.Client, author, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -12316,12 +7095,12 @@ func MatchBooksByAuthorNamePriceReleaseDateTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceReleaseDateTermsClass2 根据作者、书名、价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorNamePriceReleaseDate 根据作者、书名、价格、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePriceReleaseDateTermsClass2(es *elasticsearch.Client, author, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorNamePriceReleaseDate(es *elasticsearch.Client, author, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -12335,12 +7114,12 @@ func MatchBooksByAuthorNamePriceReleaseDateTermsClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceReleaseDateTermsSeq 根据作者、书名、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorNamePriceReleaseDate 根据作者、书名、价格、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePriceReleaseDateTermsSeq(es *elasticsearch.Client, author, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorNamePriceReleaseDate(es *elasticsearch.Client, author, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -12354,88 +7133,12 @@ func MatchBooksByAuthorNamePriceReleaseDateTermsSeq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceReleaseDateTermsClassClass2 根据作者、书名、价格、发布日期检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// name string 书名
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePriceReleaseDateTermsClassClass2(es *elasticsearch.Client, author, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePriceReleaseDateTermsClassSeq 根据作者、书名、价格、发布日期检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// name string 书名
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePriceReleaseDateTermsClassSeq(es *elasticsearch.Client, author, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePriceReleaseDateTermsClass2Seq 根据作者、书名、价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// name string 书名
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, author, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePriceReleaseDateTermsClassClass2Seq 根据作者、书名、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// author string 作者
-// name string 书名
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, author, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNamePriceSeqTermsClass 根据作者、书名、价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorNamePriceSeq 根据作者、书名、价格、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
 // seq string 编号
-func MatchBooksByAuthorNamePriceSeqTermsClass(es *elasticsearch.Client, author, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorNamePriceSeq(es *elasticsearch.Client, author, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -12449,12 +7152,12 @@ func MatchBooksByAuthorNamePriceSeqTermsClass(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceSeqTermsClass2 根据作者、书名、价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorNamePriceSeq 根据作者、书名、价格、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // price float64 价格
 // seq string 编号
-func MatchBooksByAuthorNamePriceSeqTermsClass2(es *elasticsearch.Client, author, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorNamePriceSeq(es *elasticsearch.Client, author, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -12468,31 +7171,12 @@ func MatchBooksByAuthorNamePriceSeqTermsClass2(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceSeqTermsClassClass2 根据作者、书名、价格、编号检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// name string 书名
-// price float64 价格
-// seq string 编号
-func MatchBooksByAuthorNamePriceSeqTermsClassClass2(es *elasticsearch.Client, author, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorNameReleaseDateSeqTermsClass 根据作者、书名、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorNameReleaseDateSeq 根据作者、书名、发布日期、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorNameReleaseDateSeqTermsClass(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -12506,12 +7190,12 @@ func MatchBooksByAuthorNameReleaseDateSeqTermsClass(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateSeqTermsClass2 根据作者、书名、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorNameReleaseDateSeq 根据作者、书名、发布日期、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorNameReleaseDateSeqTermsClass2(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -12525,31 +7209,12 @@ func MatchBooksByAuthorNameReleaseDateSeqTermsClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateSeqTermsClassClass2 根据作者、书名、发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// name string 书名
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByAuthorNameReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountPriceReleaseDateTermsClass 根据作者、页数、价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorPageCountPriceReleaseDate 根据作者、页数、价格、发布日期检索books表并分组统计类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountPriceReleaseDateTermsClass(es *elasticsearch.Client, author string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorPageCountPriceReleaseDate(es *elasticsearch.Client, author string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -12563,12 +7228,12 @@ func MatchBooksByAuthorPageCountPriceReleaseDateTermsClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceReleaseDateTermsClass2 根据作者、页数、价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorPageCountPriceReleaseDate 根据作者、页数、价格、发布日期检索books表并分组统计子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountPriceReleaseDateTermsClass2(es *elasticsearch.Client, author string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorPageCountPriceReleaseDate(es *elasticsearch.Client, author string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -12582,12 +7247,12 @@ func MatchBooksByAuthorPageCountPriceReleaseDateTermsClass2(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceReleaseDateTermsSeq 根据作者、页数、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByAuthorPageCountPriceReleaseDate 根据作者、页数、价格、发布日期检索books表并分组统计编号的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountPriceReleaseDateTermsSeq(es *elasticsearch.Client, author string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByAuthorPageCountPriceReleaseDate(es *elasticsearch.Client, author string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -12601,88 +7266,12 @@ func MatchBooksByAuthorPageCountPriceReleaseDateTermsSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceReleaseDateTermsClassClass2 根据作者、页数、价格、发布日期检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountPriceReleaseDateTermsClassClass2(es *elasticsearch.Client, author string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountPriceReleaseDateTermsClassSeq 根据作者、页数、价格、发布日期检索books表并同时统计类别、编号的分布情况
-// author string 作者
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountPriceReleaseDateTermsClassSeq(es *elasticsearch.Client, author string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountPriceReleaseDateTermsClass2Seq 根据作者、页数、价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// author string 作者
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, author string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountPriceReleaseDateTermsClassClass2Seq 根据作者、页数、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// author string 作者
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountPriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, author string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountPriceSeqTermsClass 根据作者、页数、价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorPageCountPriceSeq 根据作者、页数、价格、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByAuthorPageCountPriceSeqTermsClass(es *elasticsearch.Client, author string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorPageCountPriceSeq(es *elasticsearch.Client, author string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -12696,12 +7285,12 @@ func MatchBooksByAuthorPageCountPriceSeqTermsClass(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceSeqTermsClass2 根据作者、页数、价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorPageCountPriceSeq 根据作者、页数、价格、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByAuthorPageCountPriceSeqTermsClass2(es *elasticsearch.Client, author string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorPageCountPriceSeq(es *elasticsearch.Client, author string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -12715,31 +7304,12 @@ func MatchBooksByAuthorPageCountPriceSeqTermsClass2(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceSeqTermsClassClass2 根据作者、页数、价格、编号检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// pageCount int64 页数
-// price float64 价格
-// seq string 编号
-func MatchBooksByAuthorPageCountPriceSeqTermsClassClass2(es *elasticsearch.Client, author string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPageCountReleaseDateSeqTermsClass 根据作者、页数、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorPageCountReleaseDateSeq 根据作者、页数、发布日期、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorPageCountReleaseDateSeqTermsClass(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorPageCountReleaseDateSeq(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -12753,12 +7323,12 @@ func MatchBooksByAuthorPageCountReleaseDateSeqTermsClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateSeqTermsClass2 根据作者、页数、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorPageCountReleaseDateSeq 根据作者、页数、发布日期、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorPageCountReleaseDateSeqTermsClass2(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorPageCountReleaseDateSeq(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -12772,31 +7342,12 @@ func MatchBooksByAuthorPageCountReleaseDateSeqTermsClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateSeqTermsClassClass2 根据作者、页数、发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByAuthorPageCountReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByAuthorPriceReleaseDateSeqTermsClass 根据作者、价格、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByAuthorPriceReleaseDateSeq 根据作者、价格、发布日期、编号检索books表并分组统计类别的分布情况
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorPriceReleaseDateSeqTermsClass(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByAuthorPriceReleaseDateSeq(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -12810,12 +7361,12 @@ func MatchBooksByAuthorPriceReleaseDateSeqTermsClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateSeqTermsClass2 根据作者、价格、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByAuthorPriceReleaseDateSeq 根据作者、价格、发布日期、编号检索books表并分组统计子类别的分布情况
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorPriceReleaseDateSeqTermsClass2(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByAuthorPriceReleaseDateSeq(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -12829,31 +7380,12 @@ func MatchBooksByAuthorPriceReleaseDateSeqTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateSeqTermsClassClass2 根据作者、价格、发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// author string 作者
-// price float64 价格
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByAuthorPriceReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("author", author),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassClass2NamePageCountTermsSeq 根据类别、子类别、书名、页数检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassClass2NamePageCount 根据类别、子类别、书名、页数检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByClassClass2NamePageCountTermsSeq(es *elasticsearch.Client, class, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassClass2NamePageCount(es *elasticsearch.Client, class, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -12867,12 +7399,12 @@ func MatchBooksByClassClass2NamePageCountTermsSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2NamePriceTermsSeq 根据类别、子类别、书名、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassClass2NamePrice 根据类别、子类别、书名、价格检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // price float64 价格
-func MatchBooksByClassClass2NamePriceTermsSeq(es *elasticsearch.Client, class, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassClass2NamePrice(es *elasticsearch.Client, class, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -12886,12 +7418,12 @@ func MatchBooksByClassClass2NamePriceTermsSeq(es *elasticsearch.Client, class, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2NameReleaseDateTermsSeq 根据类别、子类别、书名、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassClass2NameReleaseDate 根据类别、子类别、书名、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByClassClass2NameReleaseDateTermsSeq(es *elasticsearch.Client, class, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, class, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -12905,12 +7437,12 @@ func MatchBooksByClassClass2NameReleaseDateTermsSeq(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PageCountPriceTermsSeq 根据类别、子类别、页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassClass2PageCountPrice 根据类别、子类别、页数、价格检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByClassClass2PageCountPriceTermsSeq(es *elasticsearch.Client, class, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassClass2PageCountPrice(es *elasticsearch.Client, class, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -12922,12 +7454,12 @@ func MatchBooksByClassClass2PageCountPriceTermsSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PageCountReleaseDateTermsSeq 根据类别、子类别、页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassClass2PageCountReleaseDate 根据类别、子类别、页数、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByClassClass2PageCountReleaseDateTermsSeq(es *elasticsearch.Client, class, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassClass2PageCountReleaseDate(es *elasticsearch.Client, class, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -12939,12 +7471,12 @@ func MatchBooksByClassClass2PageCountReleaseDateTermsSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PriceReleaseDateTermsSeq 根据类别、子类别、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassClass2PriceReleaseDate 根据类别、子类别、价格、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClassClass2PriceReleaseDateTermsSeq(es *elasticsearch.Client, class, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassClass2PriceReleaseDate(es *elasticsearch.Client, class, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -12956,12 +7488,12 @@ func MatchBooksByClassClass2PriceReleaseDateTermsSeq(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountPriceTermsClass2 根据类别、书名、页数、价格检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassNamePageCountPrice 根据类别、书名、页数、价格检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByClassNamePageCountPriceTermsClass2(es *elasticsearch.Client, class, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassNamePageCountPrice(es *elasticsearch.Client, class, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -12975,12 +7507,12 @@ func MatchBooksByClassNamePageCountPriceTermsClass2(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountPriceTermsSeq 根据类别、书名、页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassNamePageCountPrice 根据类别、书名、页数、价格检索books表并分组统计编号的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByClassNamePageCountPriceTermsSeq(es *elasticsearch.Client, class, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassNamePageCountPrice(es *elasticsearch.Client, class, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -12994,31 +7526,12 @@ func MatchBooksByClassNamePageCountPriceTermsSeq(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountPriceTermsClass2Seq 根据类别、书名、页数、价格检索books表并同时统计子类别、编号的分布情况
-// class string 类别
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByClassNamePageCountPriceTermsClass2Seq(es *elasticsearch.Client, class, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassNamePageCountReleaseDateTermsClass2 根据类别、书名、页数、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassNamePageCountReleaseDate 根据类别、书名、页数、发布日期检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByClassNamePageCountReleaseDateTermsClass2(es *elasticsearch.Client, class, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassNamePageCountReleaseDate(es *elasticsearch.Client, class, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13032,12 +7545,12 @@ func MatchBooksByClassNamePageCountReleaseDateTermsClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountReleaseDateTermsSeq 根据类别、书名、页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassNamePageCountReleaseDate 根据类别、书名、页数、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByClassNamePageCountReleaseDateTermsSeq(es *elasticsearch.Client, class, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassNamePageCountReleaseDate(es *elasticsearch.Client, class, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13051,31 +7564,12 @@ func MatchBooksByClassNamePageCountReleaseDateTermsSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountReleaseDateTermsClass2Seq 根据类别、书名、页数、发布日期检索books表并同时统计子类别、编号的分布情况
-// class string 类别
-// name string 书名
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByClassNamePageCountReleaseDateTermsClass2Seq(es *elasticsearch.Client, class, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassNamePageCountSeqTermsClass2 根据类别、书名、页数、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassNamePageCountSeq 根据类别、书名、页数、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByClassNamePageCountSeqTermsClass2(es *elasticsearch.Client, class, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassNamePageCountSeq(es *elasticsearch.Client, class, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13089,12 +7583,12 @@ func MatchBooksByClassNamePageCountSeqTermsClass2(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceReleaseDateTermsClass2 根据类别、书名、价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassNamePriceReleaseDate 根据类别、书名、价格、发布日期检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClassNamePriceReleaseDateTermsClass2(es *elasticsearch.Client, class, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassNamePriceReleaseDate(es *elasticsearch.Client, class, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13108,12 +7602,12 @@ func MatchBooksByClassNamePriceReleaseDateTermsClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceReleaseDateTermsSeq 根据类别、书名、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassNamePriceReleaseDate 根据类别、书名、价格、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClassNamePriceReleaseDateTermsSeq(es *elasticsearch.Client, class, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassNamePriceReleaseDate(es *elasticsearch.Client, class, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13127,31 +7621,12 @@ func MatchBooksByClassNamePriceReleaseDateTermsSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceReleaseDateTermsClass2Seq 根据类别、书名、价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// class string 类别
-// name string 书名
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByClassNamePriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, class, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassNamePriceSeqTermsClass2 根据类别、书名、价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassNamePriceSeq 根据类别、书名、价格、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // price float64 价格
 // seq string 编号
-func MatchBooksByClassNamePriceSeqTermsClass2(es *elasticsearch.Client, class, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassNamePriceSeq(es *elasticsearch.Client, class, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13165,12 +7640,12 @@ func MatchBooksByClassNamePriceSeqTermsClass2(es *elasticsearch.Client, class, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameReleaseDateSeqTermsClass2 根据类别、书名、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassNameReleaseDateSeq 根据类别、书名、发布日期、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClassNameReleaseDateSeqTermsClass2(es *elasticsearch.Client, class, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13184,12 +7659,12 @@ func MatchBooksByClassNameReleaseDateSeqTermsClass2(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPriceReleaseDateTermsClass2 根据类别、页数、价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassPageCountPriceReleaseDate 根据类别、页数、价格、发布日期检索books表并分组统计子类别的分布情况
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClassPageCountPriceReleaseDateTermsClass2(es *elasticsearch.Client, class string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassPageCountPriceReleaseDate(es *elasticsearch.Client, class string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -13201,12 +7676,12 @@ func MatchBooksByClassPageCountPriceReleaseDateTermsClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPriceReleaseDateTermsSeq 根据类别、页数、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClassPageCountPriceReleaseDate 根据类别、页数、价格、发布日期检索books表并分组统计编号的分布情况
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClassPageCountPriceReleaseDateTermsSeq(es *elasticsearch.Client, class string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClassPageCountPriceReleaseDate(es *elasticsearch.Client, class string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -13218,29 +7693,12 @@ func MatchBooksByClassPageCountPriceReleaseDateTermsSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPriceReleaseDateTermsClass2Seq 根据类别、页数、价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// class string 类别
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByClassPageCountPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, class string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class", class),
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClassPageCountPriceSeqTermsClass2 根据类别、页数、价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassPageCountPriceSeq 根据类别、页数、价格、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByClassPageCountPriceSeqTermsClass2(es *elasticsearch.Client, class string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassPageCountPriceSeq(es *elasticsearch.Client, class string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -13252,12 +7710,12 @@ func MatchBooksByClassPageCountPriceSeqTermsClass2(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountReleaseDateSeqTermsClass2 根据类别、页数、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassPageCountReleaseDateSeq 根据类别、页数、发布日期、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClassPageCountReleaseDateSeqTermsClass2(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassPageCountReleaseDateSeq(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -13269,12 +7727,12 @@ func MatchBooksByClassPageCountReleaseDateSeqTermsClass2(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceReleaseDateSeqTermsClass2 根据类别、价格、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByClassPriceReleaseDateSeq 根据类别、价格、发布日期、编号检索books表并分组统计子类别的分布情况
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClassPriceReleaseDateSeqTermsClass2(es *elasticsearch.Client, class string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByClassPriceReleaseDateSeq(es *elasticsearch.Client, class string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
@@ -13286,12 +7744,12 @@ func MatchBooksByClassPriceReleaseDateSeqTermsClass2(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountPriceTermsClass 根据子类别、书名、页数、价格检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2NamePageCountPrice 根据子类别、书名、页数、价格检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByClass2NamePageCountPriceTermsClass(es *elasticsearch.Client, class2, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2NamePageCountPrice(es *elasticsearch.Client, class2, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13305,12 +7763,12 @@ func MatchBooksByClass2NamePageCountPriceTermsClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountPriceTermsSeq 根据子类别、书名、页数、价格检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass2NamePageCountPrice 根据子类别、书名、页数、价格检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByClass2NamePageCountPriceTermsSeq(es *elasticsearch.Client, class2, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass2NamePageCountPrice(es *elasticsearch.Client, class2, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13324,31 +7782,12 @@ func MatchBooksByClass2NamePageCountPriceTermsSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountPriceTermsClassSeq 根据子类别、书名、页数、价格检索books表并同时统计类别、编号的分布情况
-// class2 string 子类别
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-func MatchBooksByClass2NamePageCountPriceTermsClassSeq(es *elasticsearch.Client, class2, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClass2NamePageCountReleaseDateTermsClass 根据子类别、书名、页数、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2NamePageCountReleaseDate 根据子类别、书名、页数、发布日期检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2NamePageCountReleaseDateTermsClass(es *elasticsearch.Client, class2, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2NamePageCountReleaseDate(es *elasticsearch.Client, class2, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13362,12 +7801,12 @@ func MatchBooksByClass2NamePageCountReleaseDateTermsClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountReleaseDateTermsSeq 根据子类别、书名、页数、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass2NamePageCountReleaseDate 根据子类别、书名、页数、发布日期检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2NamePageCountReleaseDateTermsSeq(es *elasticsearch.Client, class2, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass2NamePageCountReleaseDate(es *elasticsearch.Client, class2, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13381,31 +7820,12 @@ func MatchBooksByClass2NamePageCountReleaseDateTermsSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountReleaseDateTermsClassSeq 根据子类别、书名、页数、发布日期检索books表并同时统计类别、编号的分布情况
-// class2 string 子类别
-// name string 书名
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-func MatchBooksByClass2NamePageCountReleaseDateTermsClassSeq(es *elasticsearch.Client, class2, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClass2NamePageCountSeqTermsClass 根据子类别、书名、页数、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2NamePageCountSeq 根据子类别、书名、页数、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByClass2NamePageCountSeqTermsClass(es *elasticsearch.Client, class2, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2NamePageCountSeq(es *elasticsearch.Client, class2, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13419,12 +7839,12 @@ func MatchBooksByClass2NamePageCountSeqTermsClass(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceReleaseDateTermsClass 根据子类别、书名、价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2NamePriceReleaseDate 根据子类别、书名、价格、发布日期检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2NamePriceReleaseDateTermsClass(es *elasticsearch.Client, class2, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2NamePriceReleaseDate(es *elasticsearch.Client, class2, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13438,12 +7858,12 @@ func MatchBooksByClass2NamePriceReleaseDateTermsClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceReleaseDateTermsSeq 根据子类别、书名、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass2NamePriceReleaseDate 根据子类别、书名、价格、发布日期检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2NamePriceReleaseDateTermsSeq(es *elasticsearch.Client, class2, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass2NamePriceReleaseDate(es *elasticsearch.Client, class2, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13457,31 +7877,12 @@ func MatchBooksByClass2NamePriceReleaseDateTermsSeq(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceReleaseDateTermsClassSeq 根据子类别、书名、价格、发布日期检索books表并同时统计类别、编号的分布情况
-// class2 string 子类别
-// name string 书名
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByClass2NamePriceReleaseDateTermsClassSeq(es *elasticsearch.Client, class2, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClass2NamePriceSeqTermsClass 根据子类别、书名、价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2NamePriceSeq 根据子类别、书名、价格、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // price float64 价格
 // seq string 编号
-func MatchBooksByClass2NamePriceSeqTermsClass(es *elasticsearch.Client, class2, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2NamePriceSeq(es *elasticsearch.Client, class2, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13495,12 +7896,12 @@ func MatchBooksByClass2NamePriceSeqTermsClass(es *elasticsearch.Client, class2, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameReleaseDateSeqTermsClass 根据子类别、书名、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2NameReleaseDateSeq 根据子类别、书名、发布日期、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClass2NameReleaseDateSeqTermsClass(es *elasticsearch.Client, class2, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, class2, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13514,12 +7915,12 @@ func MatchBooksByClass2NameReleaseDateSeqTermsClass(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPriceReleaseDateTermsClass 根据子类别、页数、价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2PageCountPriceReleaseDate 根据子类别、页数、价格、发布日期检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2PageCountPriceReleaseDateTermsClass(es *elasticsearch.Client, class2 string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2PageCountPriceReleaseDate(es *elasticsearch.Client, class2 string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
@@ -13531,12 +7932,12 @@ func MatchBooksByClass2PageCountPriceReleaseDateTermsClass(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPriceReleaseDateTermsSeq 根据子类别、页数、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByClass2PageCountPriceReleaseDate 根据子类别、页数、价格、发布日期检索books表并分组统计编号的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2PageCountPriceReleaseDateTermsSeq(es *elasticsearch.Client, class2 string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByClass2PageCountPriceReleaseDate(es *elasticsearch.Client, class2 string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
@@ -13548,29 +7949,12 @@ func MatchBooksByClass2PageCountPriceReleaseDateTermsSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPriceReleaseDateTermsClassSeq 根据子类别、页数、价格、发布日期检索books表并同时统计类别、编号的分布情况
-// class2 string 子类别
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByClass2PageCountPriceReleaseDateTermsClassSeq(es *elasticsearch.Client, class2 string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("class2", class2),
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByClass2PageCountPriceSeqTermsClass 根据子类别、页数、价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2PageCountPriceSeq 根据子类别、页数、价格、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByClass2PageCountPriceSeqTermsClass(es *elasticsearch.Client, class2 string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2PageCountPriceSeq(es *elasticsearch.Client, class2 string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
@@ -13582,12 +7966,12 @@ func MatchBooksByClass2PageCountPriceSeqTermsClass(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountReleaseDateSeqTermsClass 根据子类别、页数、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2PageCountReleaseDateSeq 根据子类别、页数、发布日期、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClass2PageCountReleaseDateSeqTermsClass(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2PageCountReleaseDateSeq(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
@@ -13599,12 +7983,12 @@ func MatchBooksByClass2PageCountReleaseDateSeqTermsClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceReleaseDateSeqTermsClass 根据子类别、价格、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByClass2PriceReleaseDateSeq 根据子类别、价格、发布日期、编号检索books表并分组统计类别的分布情况
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClass2PriceReleaseDateSeqTermsClass(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByClass2PriceReleaseDateSeq(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
@@ -13616,12 +8000,12 @@ func MatchBooksByClass2PriceReleaseDateSeqTermsClass(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceReleaseDateTermsClass 根据书名、页数、价格、发布日期检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByNamePageCountPriceReleaseDate 根据书名、页数、价格、发布日期检索books表并分组统计类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountPriceReleaseDateTermsClass(es *elasticsearch.Client, name string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByNamePageCountPriceReleaseDate(es *elasticsearch.Client, name string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13635,12 +8019,12 @@ func MatchBooksByNamePageCountPriceReleaseDateTermsClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceReleaseDateTermsClass2 根据书名、页数、价格、发布日期检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByNamePageCountPriceReleaseDate 根据书名、页数、价格、发布日期检索books表并分组统计子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountPriceReleaseDateTermsClass2(es *elasticsearch.Client, name string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByNamePageCountPriceReleaseDate(es *elasticsearch.Client, name string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13654,12 +8038,12 @@ func MatchBooksByNamePageCountPriceReleaseDateTermsClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceReleaseDateTermsSeq 根据书名、页数、价格、发布日期检索books表并分组统计编号的分布情况
+// TermsSeqOfBooksByNamePageCountPriceReleaseDate 根据书名、页数、价格、发布日期检索books表并分组统计编号的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountPriceReleaseDateTermsSeq(es *elasticsearch.Client, name string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+func TermsSeqOfBooksByNamePageCountPriceReleaseDate(es *elasticsearch.Client, name string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13673,88 +8057,12 @@ func MatchBooksByNamePageCountPriceReleaseDateTermsSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceReleaseDateTermsClassClass2 根据书名、页数、价格、发布日期检索books表并同时统计类别、子类别的分布情况
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountPriceReleaseDateTermsClassClass2(es *elasticsearch.Client, name string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountPriceReleaseDateTermsClassSeq 根据书名、页数、价格、发布日期检索books表并同时统计类别、编号的分布情况
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountPriceReleaseDateTermsClassSeq(es *elasticsearch.Client, name string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountPriceReleaseDateTermsClass2Seq 根据书名、页数、价格、发布日期检索books表并同时统计子类别、编号的分布情况
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountPriceReleaseDateTermsClass2Seq(es *elasticsearch.Client, name string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class2").With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountPriceReleaseDateTermsClassClass2Seq 根据书名、页数、价格、发布日期检索books表并同时统计类别、子类别、编号的分布情况
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountPriceReleaseDateTermsClassClass2Seq(es *elasticsearch.Client, name string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2")).With(eq.TermsAgg("seq"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountPriceSeqTermsClass 根据书名、页数、价格、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByNamePageCountPriceSeq 根据书名、页数、价格、编号检索books表并分组统计类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByNamePageCountPriceSeqTermsClass(es *elasticsearch.Client, name string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByNamePageCountPriceSeq(es *elasticsearch.Client, name string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13768,12 +8076,12 @@ func MatchBooksByNamePageCountPriceSeqTermsClass(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceSeqTermsClass2 根据书名、页数、价格、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByNamePageCountPriceSeq 根据书名、页数、价格、编号检索books表并分组统计子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByNamePageCountPriceSeqTermsClass2(es *elasticsearch.Client, name string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByNamePageCountPriceSeq(es *elasticsearch.Client, name string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13787,31 +8095,12 @@ func MatchBooksByNamePageCountPriceSeqTermsClass2(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceSeqTermsClassClass2 根据书名、页数、价格、编号检索books表并同时统计类别、子类别的分布情况
-// name string 书名
-// pageCount int64 页数
-// price float64 价格
-// seq string 编号
-func MatchBooksByNamePageCountPriceSeqTermsClassClass2(es *elasticsearch.Client, name string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePageCountReleaseDateSeqTermsClass 根据书名、页数、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByNamePageCountReleaseDateSeq 根据书名、页数、发布日期、编号检索books表并分组统计类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByNamePageCountReleaseDateSeqTermsClass(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByNamePageCountReleaseDateSeq(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13825,12 +8114,12 @@ func MatchBooksByNamePageCountReleaseDateSeqTermsClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateSeqTermsClass2 根据书名、页数、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByNamePageCountReleaseDateSeq 根据书名、页数、发布日期、编号检索books表并分组统计子类别的分布情况
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByNamePageCountReleaseDateSeqTermsClass2(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByNamePageCountReleaseDateSeq(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13844,31 +8133,12 @@ func MatchBooksByNamePageCountReleaseDateSeqTermsClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateSeqTermsClassClass2 根据书名、页数、发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// name string 书名
-// pageCount int64 页数
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByNamePageCountReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByNamePriceReleaseDateSeqTermsClass 根据书名、价格、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByNamePriceReleaseDateSeq 根据书名、价格、发布日期、编号检索books表并分组统计类别的分布情况
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByNamePriceReleaseDateSeqTermsClass(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByNamePriceReleaseDateSeq(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13882,12 +8152,12 @@ func MatchBooksByNamePriceReleaseDateSeqTermsClass(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateSeqTermsClass2 根据书名、价格、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByNamePriceReleaseDateSeq 根据书名、价格、发布日期、编号检索books表并分组统计子类别的分布情况
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByNamePriceReleaseDateSeqTermsClass2(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByNamePriceReleaseDateSeq(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -13901,31 +8171,12 @@ func MatchBooksByNamePriceReleaseDateSeqTermsClass2(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateSeqTermsClassClass2 根据书名、价格、发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// name string 书名
-// price float64 价格
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByNamePriceReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	matches := []eq.Map{
-		eq.Match("name", name),
-	}
-	terms := []eq.Map{
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountPriceReleaseDateSeqTermsClass 根据页数、价格、发布日期、编号检索books表并分组统计类别的分布情况
+// TermsClassOfBooksByPageCountPriceReleaseDateSeq 根据页数、价格、发布日期、编号检索books表并分组统计类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByPageCountPriceReleaseDateSeqTermsClass(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClassOfBooksByPageCountPriceReleaseDateSeq(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
@@ -13937,12 +8188,12 @@ func MatchBooksByPageCountPriceReleaseDateSeqTermsClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDateSeqTermsClass2 根据页数、价格、发布日期、编号检索books表并分组统计子类别的分布情况
+// TermsClass2OfBooksByPageCountPriceReleaseDateSeq 根据页数、价格、发布日期、编号检索books表并分组统计子类别的分布情况
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByPageCountPriceReleaseDateSeqTermsClass2(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+func TermsClass2OfBooksByPageCountPriceReleaseDateSeq(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
@@ -13950,23 +8201,6 @@ func MatchBooksByPageCountPriceReleaseDateSeqTermsClass2(es *elasticsearch.Clien
 		eq.Term("seq", seq),
 	}
 	aggs := eq.TermsAgg("class2")
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
-	return queryBooksList(es, esQuery)
-}
-
-// MatchBooksByPageCountPriceReleaseDateSeqTermsClassClass2 根据页数、价格、发布日期、编号检索books表并同时统计类别、子类别的分布情况
-// pageCount int64 页数
-// price float64 价格
-// releaseDate time.Time 发布日期
-// seq string 编号
-func MatchBooksByPageCountPriceReleaseDateSeqTermsClassClass2(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
-	terms := []eq.Map{
-		eq.Term("page_count", pageCount),
-		eq.Term("price", price),
-		eq.Term("release_date", releaseDate),
-		eq.Term("seq", seq),
-	}
-	aggs := eq.TermsAgg("class").With(eq.TermsAgg("class2"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }

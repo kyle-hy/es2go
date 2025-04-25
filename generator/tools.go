@@ -130,55 +130,29 @@ func GenMatchCond(fields []*FieldInfo) string {
 	return mq
 }
 
-// 聚合方式枚举
-const (
-	AggTypeTerms = "terms"
-)
+// GenFilterCond 生成Filter条件
+func GenFilterCond(fields []*FieldInfo) string {
+	// match部分参数
+	filterCnt := 0
+	fq := "	filters:= []eq.Map{\n"
+	for _, f := range fields {
+		filterCnt++
+		if f.EsFieldType != "text" {
+			fq += fmt.Sprintf("		eq.Term(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
+		}
+		if f.EsFieldType == "text" {
+			fq += fmt.Sprintf("		eq.Match(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
+		}
+	}
+	fq += "	}\n"
 
-// GenAggWithCond 生成多个字段同时聚合
-func GenAggWithCond(fields []*FieldInfo, aggType string) string {
-	aq := ""
-	suffix := ""
-	prefix := "eq.TermsAgg"
-	for idx, f := range fields {
-		if idx > 0 {
-			prefix = ".With(eq.TermsAgg"
-			suffix = ")"
-		}
-		switch aggType {
-		case AggTypeTerms:
-			aq += fmt.Sprintf("%s(\"%s\")%s", prefix, utils.ToFirstLower(f.FieldName), suffix)
-		}
+	if filterCnt == 0 {
+		return ""
 	}
-	if len(fields) > 0 {
-		return "	aggs :=" + aq + "\n"
-	}
-	return ""
+	return fq
 }
 
-// GenAggNestedCond 生成多个字段嵌套聚合
-func GenAggNestedCond(fields []*FieldInfo, aggType string) string {
-	// aggs := eq.TermsAgg("zg").Nested(eq.TermsAgg("ak").Nested(eq.TermsAgg("bk")))
-	aq := ""
-	suffix := ""
-	prefix := "eq.TermsAgg"
-	for idx, f := range fields {
-		if idx > 0 {
-			prefix = ".Nested(eq.TermsAgg"
-			suffix += ")"
-		}
-		switch aggType {
-		case AggTypeTerms:
-			aq += fmt.Sprintf("%s(\"%s\")", prefix, utils.ToFirstLower(f.FieldName))
-		}
-	}
-	if len(fields) > 0 {
-		return "	aggs :=" + aq + suffix + "\n"
-	}
-	return ""
-}
-
-// GenTermCond 生成match条件
+// GenTermCond 生成term条件
 func GenTermCond(fields []*FieldInfo) string {
 	// match部分参数
 	termCnt := 0
@@ -188,6 +162,7 @@ func GenTermCond(fields []*FieldInfo) string {
 			termCnt++
 			tq += fmt.Sprintf("		eq.Term(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
 		}
+
 	}
 	tq += "	}\n"
 
@@ -195,6 +170,48 @@ func GenTermCond(fields []*FieldInfo) string {
 		return ""
 	}
 	return tq
+}
+
+// 聚合方式枚举
+const (
+	AggFuncTerms = "eq.TermsAgg"
+)
+
+// GenAggWithCond 生成多个字段同时聚合
+func GenAggWithCond(fields []*FieldInfo, aggFunc string) string {
+	aq := ""
+	suffix := ""
+	prefix := aggFunc
+	for idx, f := range fields {
+		if idx > 0 {
+			prefix = ".With(" + aggFunc
+			suffix = ")"
+		}
+		aq += fmt.Sprintf("%s(\"%s\")%s", prefix, utils.ToFirstLower(f.FieldName), suffix)
+	}
+	if len(fields) > 0 {
+		return "	aggs :=" + aq + "\n"
+	}
+	return ""
+}
+
+// GenAggNestedCond 生成多个字段嵌套聚合
+func GenAggNestedCond(fields []*FieldInfo, aggFunc string) string {
+	// aggs := eq.TermsAgg("zg").Nested(eq.TermsAgg("ak").Nested(eq.TermsAgg("bk")))
+	aq := ""
+	suffix := ""
+	prefix := aggFunc
+	for idx, f := range fields {
+		if idx > 0 {
+			prefix = ".Nested(" + aggFunc
+			suffix += ")"
+		}
+		aq += fmt.Sprintf("%s(\"%s\")", prefix, utils.ToFirstLower(f.FieldName))
+	}
+	if len(fields) > 0 {
+		return "	aggs :=" + aq + suffix + "\n"
+	}
+	return ""
 }
 
 // GenBoolCond 生成bool条件
