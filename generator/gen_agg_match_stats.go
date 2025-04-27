@@ -60,7 +60,7 @@ func getAggMatchStatsFuncName(structName string, fields, termsFields []*FieldInf
 // getAggMatchStatsFuncComment 获取函数注释
 func getAggMatchStatsFuncComment(structComment string, fields, termsFields []*FieldInfo, stype string) string {
 	// 函数注释
-	cmt := "根据" + GenFieldsCmt(fields) + "检索" + structComment + "并计算" + GenFieldsCmt(termsFields) + "的" + statNames[stype] + "\n"
+	cmt := "根据" + GenFieldsCmt(fields) + "检索" + structComment + "并计算" + GenFieldsCmt(termsFields) + "的" + StatNames[stype] + "\n"
 
 	// 参数注释
 	cmt += GenParamCmt(fields)
@@ -82,7 +82,7 @@ func getAggMatchStatsQuery(fields, termsFields []*FieldInfo, stype string) strin
 	tq := GenTermCond(fields)
 
 	// agg部分参数
-	aq := GenAggWithCond(termsFields, statsFuncs[stype])
+	aq := GenAggWithCond(termsFields, StatsFuncs[stype])
 	// aq := GenAggNestedCond(termsFields, AggTypeTerms)
 
 	// bool部分参数
@@ -95,15 +95,9 @@ func getAggMatchStatsQuery(fields, termsFields []*FieldInfo, stype string) strin
 	return fq
 }
 
-var (
-	statsTypes = []string{"Avg", "Sum", "Min", "Max", "Stats"}
-	statNames  = map[string]string{"Avg": "平均值", "Sum": "总和", "Min": "最小值", "Max": "最大值", "Stats": "统计信息"}
-	statsFuncs = map[string]string{"Avg": "eq.AvgAgg", "Sum": "eq.SumAgg", "Min": "eq.MinAgg", "Max": "eq.MaxAgg", "Stats": "eq.StatsAgg"}
-)
-
 // GenEsAggMatchStats 生成es检索后聚合分析
 func GenEsAggMatchStats(mappingPath, outputPath string, esInfo *EsModelInfo) error {
-	for _, stype := range statsTypes {
+	for _, stype := range StatsTypes {
 		// 预处理渲染所需的内容
 		funcData := PreAggMatchStatsCond(mappingPath, esInfo, stype)
 		detailData := DetailTplData{

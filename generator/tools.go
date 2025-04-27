@@ -236,11 +236,6 @@ func GenTermCond(fields []*FieldInfo) string {
 	return tq
 }
 
-// 聚合方式枚举
-const (
-	AggFuncTerms = "eq.TermsAgg"
-)
-
 // GenAggWithCond 生成多个字段同时聚合
 func GenAggWithCond(fields []*FieldInfo, aggFunc string) string {
 	aq := ""
