@@ -14,7 +14,7 @@ import (
 // 生成数值和日期字段范围查找的代码
 
 // PreAggRangeStatsCond 使用go代码预处理渲染需要的一些逻辑，template脚本调试困难
-func PreAggRangeStatsCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData {
+func PreAggRangeStatsCond(mappingPath string, esInfo *EsModelInfo, stype string) []*FuncTplData {
 	funcDatas := []*FuncTplData{}
 
 	// 尝试加载自定义生成配置
@@ -40,15 +40,16 @@ func PreAggRangeStatsCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplDat
 	// 字段随机组合
 	for _, cfs := range mustFileds {
 		// 筛选出做聚合分析的类型的字段
-		termsFields := FilterOutFields(fields, cfs, []string{TypeKeyword}, nil)
+		statsFields := FilterOutFields(fields, cfs, []string{TypeNumber}, nil)
 
 		// terms的嵌套聚合分析次序是对结果哟影响的，因此只能生成一个字段的聚合，否则太多了
-		termsCmbs := utils.Combinations(termsFields, 1)
+		termsCmbs := utils.Combinations(statsFields, 1)
 		for _, tcmb := range termsCmbs {
-			names := getAggRangeStatsFuncName(esInfo.StructName, cfs, tcmb, rangeTypes, genCfg.CmpOptList)
-			comments := getAggRangeStatsFuncComment(esInfo.StructComment, cfs, tcmb, rangeTypes, genCfg.CmpOptList)
+			names := getAggRangeStatsFuncName(esInfo.StructName, cfs, tcmb, rangeTypes, genCfg.CmpOptList, stype)
+			comments := getAggRangeStatsFuncComment(esInfo.StructComment, cfs, tcmb, rangeTypes, genCfg.CmpOptList, stype)
 			params := getAggRangeStatsFuncParams(cfs, rangeTypes, genCfg.CmpOptList)
-			queries := getAggRangeStatsQuery(cfs, tcmb, rangeTypes, genCfg.TermInShould, genCfg.CmpOptList)
+			queries := getAggRangeStatsQuery(cfs, tcmb, rangeTypes, genCfg.TermInShould, genCfg.CmpOptList, stype)
+
 			for idx := range len(names) {
 				ftd := &FuncTplData{
 					Name:    names[idx],
@@ -65,7 +66,7 @@ func PreAggRangeStatsCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplDat
 }
 
 // getAggRangeStatsFuncName 获取函数名称
-func getAggRangeStatsFuncName(structName string, fields, termsFields []*FieldInfo, rangeTypes []string, optList [][]string) []string {
+func getAggRangeStatsFuncName(structName string, fields, termsFields []*FieldInfo, rangeTypes []string, optList [][]string, stype string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
@@ -92,7 +93,7 @@ func getAggRangeStatsFuncName(structName string, fields, termsFields []*FieldInf
 	}
 
 	names := []string{}
-	fn := "Terms" + GenFieldsName(termsFields) + "Of" + structName + "By"
+	fn := stype + GenFieldsName(termsFields) + "Of" + structName + "By"
 	// 多字段之间的两两组合
 	fopts := utils.Cartesian(fieldOpts)
 	for _, fopt := range fopts {
@@ -102,14 +103,9 @@ func getAggRangeStatsFuncName(structName string, fields, termsFields []*FieldInf
 }
 
 // getAggRangeStatsFuncComment 获取函数注释
-func getAggRangeStatsFuncComment(structComment string, fields, termsFields []*FieldInfo, rangeTypes []string, optList [][]string) []string {
+func getAggRangeStatsFuncComment(structComment string, fields, termsFields []*FieldInfo, rangeTypes []string, optList [][]string, stype string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
-	}
-
-	statCmt := "并分组统计"
-	if len(termsFields) > 1 {
-		statCmt = "并同时统计"
 	}
 
 	// 函数注释部分
@@ -140,7 +136,7 @@ func getAggRangeStatsFuncComment(structComment string, fields, termsFields []*Fi
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
 		fopt = strings.TrimSuffix(fopt, "、")
-		fcmt := otherComment + fopt + "检索" + structComment + statCmt + GenFieldsCmt(termsFields) + "的分布情况\n"
+		fcmt := otherComment + fopt + "检索" + structComment + "并计算" + GenFieldsCmt(termsFields) + "的" + StatNames[stype] + "\n"
 		funcCmts = append(funcCmts, fcmt)
 	}
 
@@ -213,7 +209,7 @@ func getAggRangeStatsFuncParams(fields []*FieldInfo, rangeTypes []string, optLis
 }
 
 // getAggRangeStatsQuery 获取函数的查找条件
-func getAggRangeStatsQuery(fields, termsFields []*FieldInfo, rangeTypes []string, termInShould bool, optList [][]string) []string {
+func getAggRangeStatsQuery(fields, termsFields []*FieldInfo, rangeTypes []string, termInShould bool, optList [][]string, stype string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
@@ -223,7 +219,7 @@ func getAggRangeStatsQuery(fields, termsFields []*FieldInfo, rangeTypes []string
 	mq := GenMatchCond(other)
 
 	// agg部分参数
-	aq := GenAggWithCond(termsFields, AggFuncTerms)
+	aq := GenAggWithCond(termsFields, StatsFuncs[stype])
 
 	// term部分和range部分组合
 	termRanges := GenTermRangeCond(other, types, optList)
@@ -245,40 +241,43 @@ func getAggRangeStatsQuery(fields, termsFields []*FieldInfo, rangeTypes []string
 
 // GenEsAggRangeStats 生成es检索详情
 func GenEsAggRangeStats(mappingPath, outputPath string, esInfo *EsModelInfo) error {
-	// 预处理渲染所需的内容
-	funcData := PreAggRangeStatsCond(mappingPath, esInfo)
-	detailData := DetailTplData{
-		PackageName:   esInfo.PackageName,
-		StructName:    esInfo.StructName,
-		StructComment: esInfo.StructComment,
-		IndexName:     esInfo.IndexName,
-		FuncDatas:     funcData,
-	}
+	for _, stype := range StatsTypes {
+		// 预处理渲染所需的内容
+		funcData := PreAggRangeStatsCond(mappingPath, esInfo, stype)
+		detailData := DetailTplData{
+			PackageName:   esInfo.PackageName,
+			StructName:    esInfo.StructName,
+			StructComment: esInfo.StructComment,
+			IndexName:     esInfo.IndexName,
+			FuncDatas:     funcData,
+		}
 
-	// 创建 FuncMap，将函数名映射到 Go 函数
-	funcMap := template.FuncMap{
-		"FirstLine": utils.FirstLine,
-	}
+		// 创建 FuncMap，将函数名映射到 Go 函数
+		funcMap := template.FuncMap{
+			"FirstLine": utils.FirstLine,
+		}
 
-	// 渲染
-	tmpl, err := template.New("structDatail").Funcs(funcMap).Parse(DetailTpl)
-	var buf bytes.Buffer
-	err = tmpl.Execute(&buf, detailData)
-	if err != nil {
-		fmt.Println(err)
-		return err
-	}
+		// 渲染
+		tmpl, err := template.New("structDatail").Funcs(funcMap).Parse(DetailTpl)
+		var buf bytes.Buffer
+		err = tmpl.Execute(&buf, detailData)
+		if err != nil {
+			fmt.Println(err)
+			return err
+		}
 
-	// 写入文件
-	outputPath = strings.Replace(outputPath, ".go", "_agg_range_terms.go", -1)
-	err = os.WriteFile(outputPath, buf.Bytes(), 0644)
-	if err != nil {
-		return fmt.Errorf("Failed to write output file %s: %v", outputPath, err)
-	}
+		// 写入文件
+		suffix := fmt.Sprintf("_agg_range_%s.go", strings.ToLower(stype))
+		output := strings.Replace(outputPath, ".go", suffix, -1)
+		err = os.WriteFile(output, buf.Bytes(), 0644)
+		if err != nil {
+			return fmt.Errorf("Failed to write output file %s: %v", output, err)
+		}
 
-	// 调用go格式化工具格式化代码
-	cmd := exec.Command("goimports", "-w", outputPath)
-	cmd.Run()
+		// 调用go格式化工具格式化代码
+		cmd := exec.Command("goimports", "-w", output)
+		cmd.Run()
+	}
 
 	return nil
 }
