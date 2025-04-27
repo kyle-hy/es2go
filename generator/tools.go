@@ -161,6 +161,61 @@ func GenFilterCond(fields []*FieldInfo) string {
 	return fq
 }
 
+// GenTermRangeCond 生成term与range随机组合的条件
+func GenTermRangeCond(fields, rangeFields []*FieldInfo, optList [][]string) []string {
+	// match部分参数
+	termCnt := 0
+	terms := ""
+	for _, f := range fields {
+		if f.EsFieldType != "text" {
+			termCnt++
+			terms += fmt.Sprintf("		eq.Term(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
+		}
+
+	}
+
+	// 范围比较部分
+	if len(optList) == 0 {
+		optList = CmpOptList
+	}
+	ranges := [][]string{}
+	for _, f := range rangeFields {
+		tmps := []string{}
+		for _, opts := range optList {
+			tmp := ""
+			gte, gt, lt, lte := "nil", "nil", "nil", "nil"
+			for _, opt := range opts {
+				switch opt {
+				case GTE:
+					gte = utils.ToFirstLower(f.FieldName) + opt
+				case GT:
+					gt = utils.ToFirstLower(f.FieldName + opt)
+				case LT:
+					lt = utils.ToFirstLower(f.FieldName + opt)
+				case LTE:
+					lte = utils.ToFirstLower(f.FieldName + opt)
+				}
+			}
+			tmp += fmt.Sprintf("		eq.Range(\"%s\", %s, %s, %s, %s),\n", f.EsFieldPath, gte, gt, lt, lte)
+			tmps = append(tmps, tmp)
+		}
+		ranges = append(ranges, tmps)
+	}
+
+	// 范围条件的随机组合
+	funcRanges := utils.Cartesian(ranges)
+
+	// 串联terms和范围条件组合
+	for idx, rq := range funcRanges {
+		tq := "	terms := []eq.Map{\n"
+		tq += terms + rq
+		tq += "	}\n"
+		funcRanges[idx] = tq
+	}
+
+	return funcRanges
+}
+
 // GenTermCond 生成term条件
 func GenTermCond(fields []*FieldInfo) string {
 	// match部分参数
@@ -300,9 +355,6 @@ func IsZero(v reflect.Value) bool {
 func combineCustom(items []*FieldInfo, list [][]string, maxCombine int) [][]*FieldInfo {
 	var all [][]*FieldInfo
 	keyDict := map[string]int{}
-	if maxCombine <= 0 {
-		maxCombine = MaxCombine
-	}
 
 	// 如果配置为空，则使用全部字段
 	if IsEmptySlice(list) {

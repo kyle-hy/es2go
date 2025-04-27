@@ -5,8 +5,6 @@ import (
 	"log"
 	"os"
 	"strings"
-
-	"github.com/kyle-hy/es2go/utils"
 )
 
 // GenConfig 生成器配置
@@ -34,18 +32,18 @@ func LoadCustomGenConfig(mappingPath string) *GenConfig {
 	cfg := &GenConfig{}
 	filePath := getCfgPathByMapping(mappingPath)
 	data, err := os.ReadFile(filePath)
-	if err != nil {
-		return cfg
+	if err == nil {
+		log.Printf("custom config: %s", filePath)
+		err = json.Unmarshal(data, cfg)
+		if err != nil {
+			log.Printf("Error unmarshalling JSON from custom generate config %s: %v", filePath, err)
+		}
 	}
 
-	err = json.Unmarshal(data, cfg)
-	if err != nil {
-		log.Printf("Error unmarshalling JSON from custom generate config %s: %v", filePath, err)
-		return cfg
+	// 使用全局配置修正缺省配置项
+	if cfg.MaxCombine <= 0 {
+		cfg.MaxCombine = MaxCombine
 	}
 
-	log.Printf("custom config: %s", filePath)
-
-	utils.JPrint(cfg)
 	return cfg
 }

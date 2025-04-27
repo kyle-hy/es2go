@@ -64,6 +64,7 @@ func main() {
 	// 生成聚合分析代码
 	gen.GenEsAggMatchTerms(*inputPath, *outputPath, esInfo)
 	gen.GenEsAggMatchStats(*inputPath, *outputPath, esInfo)
+	gen.GenEsAggRangeTerms(*inputPath, *outputPath, esInfo)
 }
 
 // nullableString is a helper function to treat flag.String values as nullable.
