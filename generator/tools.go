@@ -10,10 +10,10 @@ import (
 	"github.com/kyle-hy/es2go/utils"
 )
 
-// FilterOutFields 提取fields中剩余的元素
+// FilterOutByTypes 根据子字段列表及指定的类型，过滤出剩余的字段
 // mustTypes 要提取的类型,不能同时传
 // notTypes 要排除的类型,不能同时传
-func FilterOutFields(fields, cmb []*FieldInfo, mustTypes, notTypes []string) []*FieldInfo {
+func FilterOutByTypes(fields, cmb []*FieldInfo, mustTypes, notTypes []string) []*FieldInfo {
 	left := []*FieldInfo{}
 	for _, f := range fields {
 		found := false
@@ -29,6 +29,31 @@ func FilterOutFields(fields, cmb []*FieldInfo, mustTypes, notTypes []string) []*
 			if (len(mustTypes) == 0 && len(notTypes) == 0) ||
 				(len(mustTypes) > 0 && slices.Contains(mustTypes, t)) ||
 				(len(notTypes) > 0 && !slices.Contains(notTypes, t)) {
+				left = append(left, f)
+			}
+		}
+	}
+	return left
+}
+
+// FilterOutByName 根据子字段列表及指定的名称，过滤出剩余的字段
+// mustTypes 要提取的类型,不能同时传
+// notTypes 要排除的类型,不能同时传
+func FilterOutByName(fields, cmb []*FieldInfo, mustNames, notNames []string) []*FieldInfo {
+	left := []*FieldInfo{}
+	for _, f := range fields {
+		found := false
+		for _, c := range cmb {
+			if f.EsFieldPath == c.EsFieldPath {
+				found = true
+				break
+			}
+		}
+
+		if !found {
+			if (len(mustNames) == 0 && len(notNames) == 0) ||
+				(len(mustNames) > 0 && slices.Contains(mustNames, f.EsFieldPath)) ||
+				(len(notNames) > 0 && !slices.Contains(notNames, f.EsFieldPath)) {
 				left = append(left, f)
 			}
 		}

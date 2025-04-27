@@ -1,13 +1,15 @@
 {
-    "combine": [
-        [
-            "seq",
-            "class"
-        ]
-    ],
+    "combine": [],
     "cmpOptList": [],
+    "termsFields": [
+        "seq",
+        "class"
+    ],
+    "notTermsFields": [],
+    "statsFields": [],
+    "notStatsFields": [],
     "maxCombine": 4,
-    "termInShould": true,
+    "termInShould": false,
     "allTextField": "all_text",
-    "allTextFieldOnly": true
+    "allTextFieldOnly": false
 }

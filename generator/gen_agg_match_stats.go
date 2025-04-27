@@ -33,7 +33,10 @@ func PreAggMatchStatsCond(mappingPath string, esInfo *EsModelInfo, stype string)
 	// 构造渲染模板所需的数据
 	for _, cfs := range cmbFields {
 		// 筛选出做聚合分析的类型的字段
-		statsFields := FilterOutFields(fields, cfs, []string{TypeNumber}, nil)
+		statsFields := FilterOutByTypes(fields, cfs, []string{TypeNumber}, nil)
+
+		// 过滤出配置文件指定的聚合字段
+		statsFields = FilterOutByName(statsFields, cfs, genCfg.StatsFields, genCfg.NotStatsFields)
 
 		// terms的嵌套聚合分析次序是对结果哟影响的，因此只能生成一个字段的聚合，否则太多了
 		statsCmbs := utils.Combinations(statsFields, 1)
