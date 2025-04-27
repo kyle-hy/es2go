@@ -1,10 +1,12 @@
 {
     "combine": [],
     "cmpOptList": [],
-    "termsFields": [
+    "rangeFields": [],
+    "notRangeFields": [
         "seq",
         "class"
     ],
+    "termsFields": [],
     "notTermsFields": [],
     "statsFields": [],
     "notStatsFields": [],

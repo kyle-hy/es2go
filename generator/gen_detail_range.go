@@ -27,7 +27,8 @@ func PreDetailRangeCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 	}
 
 	// 根据配置文件自定义字段分组进行随机组合
-	cmbFields := combineCustom(fields, genCfg.Combine, genCfg.MaxCombine)
+	fields = FilterOutByName(fields, nil, genCfg.RangeFields, genCfg.NotRangeFields)
+	cmbFields := CombineCustom(fields, genCfg.Combine, genCfg.MaxCombine)
 
 	// 过滤出满足类型限制的组合
 	cmbLimit := map[string]int{TypeNumber: 1, TypeDate: 1, TypeVector: -1}

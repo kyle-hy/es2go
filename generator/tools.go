@@ -370,9 +370,9 @@ func IsZero(v reflect.Value) bool {
 	return reflect.DeepEqual(v.Interface(), zero)
 }
 
-// combineCustom 根据指定列表随机组合数组的元素
+// CombineCustom 根据指定列表随机组合数组的元素
 // list 字段分组，相当于将宽表拆成多个少字段的表，减少combine组合数
-func combineCustom(items []*FieldInfo, list [][]string, maxCombine int) [][]*FieldInfo {
+func CombineCustom(items []*FieldInfo, list [][]string, maxCombine int) [][]*FieldInfo {
 	var all [][]*FieldInfo
 	keyDict := map[string]int{}
 

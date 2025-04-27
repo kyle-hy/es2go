@@ -27,7 +27,7 @@ func PreDetailMatchCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData 
 	}
 
 	// 根据配置文件自定义字段分组进行随机组合
-	cmbFields := combineCustom(fields, genCfg.Combine, genCfg.MaxCombine)
+	cmbFields := CombineCustom(fields, genCfg.Combine, genCfg.MaxCombine)
 	cmbFields = LimitCombineFilter(cmbFields, map[string]int{TypeVector: -1})
 
 	// 构造渲染模板所需的数据

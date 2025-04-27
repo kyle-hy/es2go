@@ -22,11 +22,15 @@ type GenConfig struct {
 	AllTextField     string `json:"allTextField"`     // 合并全部文本后的字段名，该字段不作为过滤条件
 	AllTextFieldOnly bool   `json:"allTextFieldOnly"` // 合并全部文本后的字段,是否只对该字段做文本检索
 
-	// 分组统计的配置
+	// 范围查询的字段配置
+	RangeFields    []string `json:"rangeFields"`    // 做范围查询的字段
+	NotRangeFields []string `json:"notRangeFields"` // 不做范围查询的字段
+
+	// 分组统计的字段配置
 	TermsFields    []string `json:"termsFields"`    // 做分组统计的字段
 	NotTermsFields []string `json:"notTermsFields"` // 不做分组统计的字段
 
-	// 统计信息的配置
+	// 统计信息的字段配置
 	StatsFields    []string `json:"statsFields"`    // 做统计的字段
 	NotStatsFields []string `json:"notStatsFields"` // 不做统计的字段
 }

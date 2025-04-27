@@ -31,7 +31,7 @@ func PreDetailVectorCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData
 	}
 
 	// 根据配置文件自定义字段分组进行随机组合
-	cmbFields := combineCustom(fields, genCfg.Combine, maxCombine)
+	cmbFields := CombineCustom(fields, genCfg.Combine, maxCombine)
 	if len(cmbFields) == 0 { // 不存在自定义字段的配置，则全字段随机
 		cmbFields = utils.Combinations(fields, maxCombine)
 	}
