@@ -4,6 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"reflect"
+	"runtime"
 	"sync"
 	"time"
 
@@ -16,6 +18,20 @@ func GetOrDefault[T any](ptr *T, defaultVal T) T {
 		return *ptr
 	}
 	return defaultVal
+}
+
+// FuncName 获取函数名称
+func FuncName(f any) string {
+	// 获取函数的反射值
+	functionValue := reflect.ValueOf(f)
+
+	// 检查是否为函数类型
+	if functionValue.Kind() == reflect.Func {
+		// 获取函数的名称
+		functionName := runtime.FuncForPC(functionValue.Pointer()).Name()
+		return functionName
+	}
+	return ""
 }
 
 // GenFunc 代码生成函数定义
@@ -95,20 +111,20 @@ func main() {
 
 	// 并发执行各种代码生成函数
 	var wg sync.WaitGroup
-	wrap := func(idx int, f GenFunc, inputPath, outputPath string, esInfo *gen.EsModelInfo) {
+	wrap := func(f GenFunc, inputPath, outputPath string, esInfo *gen.EsModelInfo) {
 		defer wg.Done()
 		tn := time.Now()
 		f(inputPath, outputPath, esInfo)
-		fmt.Printf("func:%d  %v\n", idx, time.Now().Sub(tn))
+		fmt.Printf("%s:  %v\n", FuncName(f), time.Now().Sub(tn))
 	}
-	for idx, gf := range genFuncs {
+	for _, gf := range genFuncs {
 		wg.Add(1)
-		go wrap(idx, gf, *inputPath, *outputPath, esInfo)
+		go wrap(gf, *inputPath, *outputPath, esInfo)
 	}
 	wg.Wait()
 
 	te := time.Now()
-	fmt.Println(te.Sub(tn))
+	fmt.Println("total: ", te.Sub(tn))
 }
 
 // nullableString is a helper function to treat flag.String values as nullable.
