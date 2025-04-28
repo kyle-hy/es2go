@@ -62,22 +62,26 @@ func FilterOutByName(fields, cmb []*FieldInfo, mustNames, notNames []string) []*
 }
 
 // GenParamCmt 生成函数参数部分的注释
-func GenParamCmt(fields []*FieldInfo) string {
+func GenParamCmt(fields []*FieldInfo, trimSuffix bool) string {
 	cmt := ""
 	for _, f := range fields {
 		cmt += "// " + utils.ToFirstLower(f.FieldName) + " " + f.FieldType + " " + f.FieldComment + "\n"
 	}
-	cmt = strings.TrimSuffix(cmt, "\n")
+	if trimSuffix {
+		cmt = strings.TrimSuffix(cmt, "\n")
+	}
 	return cmt
 }
 
 // GenFieldsCmt 串联参数列表的注释
-func GenFieldsCmt(fields []*FieldInfo) string {
+func GenFieldsCmt(fields []*FieldInfo, trimSuffix bool) string {
 	cmt := ""
 	for _, f := range fields {
 		cmt += f.FieldComment + "、"
 	}
-	cmt = strings.TrimSuffix(cmt, "、")
+	if trimSuffix {
+		cmt = strings.TrimSuffix(cmt, "、")
+	}
 	return cmt
 }
 
@@ -135,12 +139,14 @@ func simplifyParams(paramStr string) string {
 }
 
 // GenParam 生成函数参数
-func GenParam(fields []*FieldInfo) string {
+func GenParam(fields []*FieldInfo, trimSuffix bool) string {
 	fp := ""
 	for _, f := range fields {
 		fp += utils.ToFirstLower(f.FieldName) + " " + f.FieldType + ", "
 	}
-	fp = strings.TrimSuffix(fp, ", ")
+	if trimSuffix {
+		fp = strings.TrimSuffix(fp, ", ")
+	}
 	return simplifyParams(fp)
 
 }

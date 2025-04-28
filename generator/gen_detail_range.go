@@ -123,7 +123,7 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeT
 	otherComment := ""
 	// 串联过滤条件的字段名
 	if len(other) > 0 {
-		otherComment = "根据" + GenFieldsCmt(other)
+		otherComment = "根据" + GenFieldsCmt(other, true)
 	}
 
 	fieldCmts := [][]string{}

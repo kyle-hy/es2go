@@ -50,18 +50,18 @@ func getDetailMatchFuncName(structName string, fields []*FieldInfo) string {
 // getDetailMatchFuncComment 获取函数注释
 func getDetailMatchFuncComment(structComment string, fields []*FieldInfo) string {
 	// 函数注释
-	cmt := "对" + GenFieldsCmt(fields)
+	cmt := "对" + GenFieldsCmt(fields, true)
 	cmt += "进行检索(等于)查找" + structComment + "的详细数据列表和总数量\n"
 
 	// 参数注释
-	cmt += GenParamCmt(fields)
+	cmt += GenParamCmt(fields, true)
 
 	return cmt
 }
 
 // getDetailMatchFuncParams 获取函数参数列表
 func getDetailMatchFuncParams(fields []*FieldInfo) string {
-	fp := GenParam(fields)
+	fp := GenParam(fields, true)
 	return fp
 }
 

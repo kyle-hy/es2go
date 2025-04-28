@@ -117,7 +117,7 @@ func getAggRangeTermsFuncComment(structComment string, fields, termsFields []*Fi
 	otherComment := "根据"
 	// 串联过滤条件的字段名
 	if len(other) > 0 {
-		otherComment += GenFieldsCmt(other) + "、"
+		otherComment += GenFieldsCmt(other, false)
 	}
 
 	// 范围查询字段比较方式
@@ -140,7 +140,7 @@ func getAggRangeTermsFuncComment(structComment string, fields, termsFields []*Fi
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
 		fopt = strings.TrimSuffix(fopt, "、")
-		fcmt := otherComment + fopt + "检索" + structComment + statCmt + GenFieldsCmt(termsFields) + "的分布情况\n"
+		fcmt := otherComment + fopt + "检索" + structComment + statCmt + GenFieldsCmt(termsFields, true) + "的分布情况\n"
 		funcCmts = append(funcCmts, fcmt)
 	}
 

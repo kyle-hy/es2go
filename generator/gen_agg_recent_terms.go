@@ -131,7 +131,7 @@ func getAggRecentTermsFuncComment(structComment string, fields, termsFields []*F
 	otherComment := "根据"
 	// 串联过滤条件的字段名
 	if len(other) > 0 {
-		otherComment += GenFieldsCmt(other) + "、"
+		otherComment += GenFieldsCmt(other, false)
 	}
 
 	fieldCmts := [][]string{}
@@ -162,7 +162,7 @@ func getAggRecentTermsFuncComment(structComment string, fields, termsFields []*F
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
 		fopt = strings.TrimSuffix(fopt, "、")
-		funcCmts = append(funcCmts, otherComment+fopt+"检索"+structComment+statCmt+GenFieldsCmt(termsFields)+"的分布情况\n")
+		funcCmts = append(funcCmts, otherComment+fopt+"检索"+structComment+statCmt+GenFieldsCmt(termsFields, true)+"的分布情况\n")
 	}
 
 	// 参数注释部分

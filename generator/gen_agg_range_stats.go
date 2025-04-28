@@ -114,7 +114,7 @@ func getAggRangeStatsFuncComment(structComment string, fields, termsFields []*Fi
 	otherComment := "根据"
 	// 串联过滤条件的字段名
 	if len(other) > 0 {
-		otherComment += GenFieldsCmt(other) + "、"
+		otherComment += GenFieldsCmt(other, false)
 	}
 
 	// 范围查询字段比较方式
@@ -137,7 +137,7 @@ func getAggRangeStatsFuncComment(structComment string, fields, termsFields []*Fi
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
 		fopt = strings.TrimSuffix(fopt, "、")
-		fcmt := otherComment + fopt + "检索" + structComment + "并计算" + GenFieldsCmt(termsFields) + "的" + StatNames[stype] + "\n"
+		fcmt := otherComment + fopt + "检索" + structComment + "并计算" + GenFieldsCmt(termsFields, true) + "的" + StatNames[stype] + "\n"
 		funcCmts = append(funcCmts, fcmt)
 	}
 
@@ -181,10 +181,7 @@ func getAggRangeStatsFuncParams(fields []*FieldInfo, rangeTypes []string, optLis
 
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	// 过滤条件参数
-	cfp := ""
-	for _, f := range other {
-		cfp += utils.ToFirstLower(f.FieldName) + " " + f.FieldType + ", "
-	}
+	cfp := GenParam(other, false)
 
 	// 范围条件参数
 	params := [][]string{}

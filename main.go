@@ -78,21 +78,6 @@ func main() {
 	}
 
 	tn := time.Now()
-
-	// // 生成详情查找函数接口
-	// gen.GenEsDetailMatch(*inputPath, *outputPath, esInfo)
-	// gen.GenEsDetailRange(*inputPath, *outputPath, esInfo)
-	// gen.GenEsDetailRecent(*inputPath, *outputPath, esInfo)
-	// gen.GenEsDetailVector(*inputPath, *outputPath, esInfo)
-
-	// // 生成聚合分析代码
-	// gen.GenEsAggMatchTerms(*inputPath, *outputPath, esInfo)
-	// gen.GenEsAggMatchStats(*inputPath, *outputPath, esInfo)
-	// gen.GenEsAggRangeTerms(*inputPath, *outputPath, esInfo)
-	// gen.GenEsAggRangeStats(*inputPath, *outputPath, esInfo)
-	// gen.GenEsAggRecentTerms(*inputPath, *outputPath, esInfo)
-	// gen.GenEsAggRecentStats(*inputPath, *outputPath, esInfo)
-
 	genFuncs := []GenFunc{
 		// 生成详情查找函数接口
 		gen.GenEsDetailMatch,

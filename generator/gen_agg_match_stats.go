@@ -60,16 +60,16 @@ func getAggMatchStatsFuncName(structName string, fields, termsFields []*FieldInf
 // getAggMatchStatsFuncComment 获取函数注释
 func getAggMatchStatsFuncComment(structComment string, fields, termsFields []*FieldInfo, stype string) string {
 	// 函数注释
-	cmt := "根据" + GenFieldsCmt(fields) + "检索" + structComment + "并计算" + GenFieldsCmt(termsFields) + "的" + StatNames[stype] + "\n"
+	cmt := "根据" + GenFieldsCmt(fields, true) + "检索" + structComment + "并计算" + GenFieldsCmt(termsFields, true) + "的" + StatNames[stype] + "\n"
 
 	// 参数注释
-	cmt += GenParamCmt(fields)
+	cmt += GenParamCmt(fields, true)
 	return cmt
 }
 
 // getAggMatchStatsFuncParams 获取函数参数列表
 func getAggMatchStatsFuncParams(fields []*FieldInfo) string {
-	fp := GenParam(fields)
+	fp := GenParam(fields, true)
 	return fp
 }
 
