@@ -147,21 +147,11 @@ func GenParam(fields []*FieldInfo) string {
 
 // GenMatchCond 生成match条件
 func GenMatchCond(fields []*FieldInfo) string {
-	// match部分参数
-	matchCnt := 0
-	mq := "matches := []eq.Map{\n"
-	for _, f := range fields {
-		if f.EsFieldType == "text" {
-			matchCnt++
-			mq += fmt.Sprintf("		eq.Match(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
-		}
+	eqm := eqMatches(fields)
+	if eqm != "" {
+		return "matches := []eq.Map{\n" + eqm + "}\n"
 	}
-	mq += "	}\n"
-
-	if matchCnt == 0 {
-		return ""
-	}
-	return mq
+	return ""
 }
 
 // GenFilterCond 生成Filter条件
@@ -188,44 +178,11 @@ func GenFilterCond(fields []*FieldInfo) string {
 
 // GenTermRangeCond 生成term与range随机组合的条件
 func GenTermRangeCond(fields, rangeFields []*FieldInfo, optList [][]string) []string {
-	// match部分参数
-	termCnt := 0
-	terms := ""
-	for _, f := range fields {
-		if f.EsFieldType != "text" {
-			termCnt++
-			terms += fmt.Sprintf("		eq.Term(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
-		}
-
-	}
+	// term部分参数
+	terms := eqTerms(fields)
 
 	// 范围比较部分
-	if len(optList) == 0 {
-		optList = CmpOptList
-	}
-	ranges := [][]string{}
-	for _, f := range rangeFields {
-		tmps := []string{}
-		for _, opts := range optList {
-			tmp := ""
-			gte, gt, lt, lte := "nil", "nil", "nil", "nil"
-			for _, opt := range opts {
-				switch opt {
-				case GTE:
-					gte = utils.ToFirstLower(f.FieldName) + opt
-				case GT:
-					gt = utils.ToFirstLower(f.FieldName + opt)
-				case LT:
-					lt = utils.ToFirstLower(f.FieldName + opt)
-				case LTE:
-					lte = utils.ToFirstLower(f.FieldName + opt)
-				}
-			}
-			tmp += fmt.Sprintf("		eq.Range(\"%s\", %s, %s, %s, %s),\n", f.EsFieldPath, gte, gt, lt, lte)
-			tmps = append(tmps, tmp)
-		}
-		ranges = append(ranges, tmps)
-	}
+	ranges := eqRanges(rangeFields, optList, nil)
 
 	// 范围条件的随机组合
 	funcRanges := utils.Cartesian(ranges)
@@ -243,22 +200,11 @@ func GenTermRangeCond(fields, rangeFields []*FieldInfo, optList [][]string) []st
 
 // GenTermCond 生成term条件
 func GenTermCond(fields []*FieldInfo) string {
-	// match部分参数
-	termCnt := 0
-	tq := "	terms := []eq.Map{\n"
-	for _, f := range fields {
-		if f.EsFieldType != "text" {
-			termCnt++
-			tq += fmt.Sprintf("		eq.Term(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
-		}
-
+	eqm := eqTerms(fields)
+	if eqm != "" {
+		return "terms := []eq.Map{\n" + eqm + "}\n"
 	}
-	tq += "	}\n"
-
-	if termCnt == 0 {
-		return ""
-	}
-	return tq
+	return ""
 }
 
 // GenAggWithCond 生成多个字段同时聚合
@@ -416,4 +362,82 @@ func getFieldsKey(fields []*FieldInfo) string {
 	}
 	sort.Strings(ks)
 	return strings.Join(ks, "")
+}
+
+// term条件列表
+func eqTerms(fields []*FieldInfo) string {
+	tq := ""
+	for _, f := range fields {
+		if f.EsFieldType != "text" {
+			tq += fmt.Sprintf("		eq.Term(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
+		}
+	}
+	return tq
+}
+
+// match条件列表
+func eqMatches(fields []*FieldInfo) string {
+	mq := ""
+	for _, f := range fields {
+		if f.EsFieldType == "text" {
+			mq += fmt.Sprintf("		eq.Match(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
+		}
+	}
+	return mq
+}
+
+// range条件
+func eqRanges(fields []*FieldInfo, optList [][]string, limitTypes []string) [][]string {
+	if len(optList) == 0 {
+		optList = CmpOptList
+	}
+	ranges := [][]string{}
+	for _, f := range fields {
+		// 如果存在类型限制
+		if len(limitTypes) > 0 && !slices.Contains(limitTypes, getTypeMapping(f.EsFieldType)) {
+			continue
+		}
+
+		tmps := []string{}
+		for _, opts := range optList {
+			tmp := ""
+			gte, gt, lt, lte := "nil", "nil", "nil", "nil"
+			for _, opt := range opts {
+				switch opt {
+				case GTE:
+					gte = utils.ToFirstLower(f.FieldName) + opt
+				case GT:
+					gt = utils.ToFirstLower(f.FieldName + opt)
+				case LT:
+					lt = utils.ToFirstLower(f.FieldName + opt)
+				case LTE:
+					lte = utils.ToFirstLower(f.FieldName + opt)
+				}
+			}
+			tmp += fmt.Sprintf("		eq.Range(\"%s\", %s, %s, %s, %s),\n", f.EsFieldPath, gte, gt, lt, lte)
+			tmps = append(tmps, tmp)
+		}
+		ranges = append(ranges, tmps)
+	}
+	return ranges
+}
+
+// 近期查询条件
+func eqRecents(fields []*FieldInfo, rtype string, limitTypes []string) [][]string {
+	ranges := [][]string{}
+	for _, f := range fields {
+		// 如果存在类型限制
+		if len(limitTypes) > 0 && !slices.Contains(limitTypes, getTypeMapping(f.EsFieldType)) {
+			continue
+		}
+		tmps := []string{}
+		tmp := ""
+		gte, gt, lt, lte := "nil", "nil", "nil", "nil"
+		gte = utils.ToFirstLower(f.FieldName) + fmt.Sprintf("N%s", rtype)
+		gte = fmt.Sprintf("fmt.Sprintf(\"%s\", %s)", RecentFormat[rtype], gte)
+		tmp += fmt.Sprintf("		eq.Range(\"%s\", %s, %s, %s, %s),\n", f.EsFieldPath, gte, gt, lt, lte)
+		tmps = append(tmps, tmp)
+		ranges = append(ranges, tmps)
+	}
+	return ranges
 }

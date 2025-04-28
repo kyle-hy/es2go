@@ -7,6 +7,13 @@ var (
 	StatsFuncs = map[string]string{"Avg": AggFuncAvg, "Sum": AggFuncSum, "Min": AggFuncMin, "Max": AggFuncMax, "Stats": AggFuncStats}
 )
 
+// 近期时间聚合
+var (
+	RecentTypes  = []string{"Day", "Week", "Month", "Quarter", "Year"}
+	RecentNames  = map[string]string{"Day": "为近几天", "Week": "为近几周", "Month": "为近几个月", "Quarter": "为近几个季度", "Year": "为近几年"}
+	RecentFormat = map[string]string{"Day": "now-%dd/d", "Week": "now-%dw/w", "Month": "now-%dM/M", "Quarter": "now-%dQ/Q", "Year": "now-%dy/y"}
+)
+
 // 聚合方式枚举
 const (
 	AggFuncTerms = "eq.TermsAgg" // 分组统计

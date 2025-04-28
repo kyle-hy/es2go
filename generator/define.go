@@ -148,9 +148,13 @@ func FieldFilterByTypes(comb []*FieldInfo, mustTypes []string) (types []*FieldIn
 }
 
 // RetainTextFieldByName 提取指定名称的text字段
-func RetainTextFieldByName(comb []*FieldInfo, name string) (fields []*FieldInfo) {
+func RetainTextFieldByName(comb []*FieldInfo, allTextFieldOnly bool, fieldName string) (fields []*FieldInfo) {
+	if !allTextFieldOnly || fieldName == "" {
+		return comb
+	}
+
 	for _, f := range comb {
-		if TypeText == getTypeMapping(f.EsFieldType) && f.EsFieldPath != name {
+		if TypeText == getTypeMapping(f.EsFieldType) && f.EsFieldPath != fieldName {
 			continue
 		}
 		fields = append(fields, f)

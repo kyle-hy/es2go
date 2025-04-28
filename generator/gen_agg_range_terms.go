@@ -21,10 +21,7 @@ func PreAggRangeTermsCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplDat
 	genCfg := LoadCustomGenConfig(mappingPath)
 
 	// 根据配置处理全文本字段的配置
-	fields := esInfo.Fields
-	if genCfg.AllTextFieldOnly && genCfg.AllTextField != "" {
-		fields = RetainTextFieldByName(esInfo.Fields, genCfg.AllTextField)
-	}
+	fields := RetainTextFieldByName(esInfo.Fields, genCfg.AllTextFieldOnly, genCfg.AllTextField)
 
 	// 根据配置文件自定义字段分组进行随机组合
 	cmbFields := CombineCustom(fields, genCfg.Combine, genCfg.MaxCombine-1)
@@ -217,10 +214,6 @@ func getAggRangeTermsFuncParams(fields []*FieldInfo, rangeTypes []string, optLis
 
 // getAggRangeTermsQuery 获取函数的查找条件
 func getAggRangeTermsQuery(fields, termsFields []*FieldInfo, rangeTypes []string, termInShould bool, optList [][]string) []string {
-	if len(optList) == 0 {
-		optList = CmpOptList
-	}
-
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	// match部分参数
 	mq := GenMatchCond(other)

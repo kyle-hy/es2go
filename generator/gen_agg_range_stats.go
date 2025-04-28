@@ -23,7 +23,7 @@ func PreAggRangeStatsCond(mappingPath string, esInfo *EsModelInfo, stype string)
 	// 根据配置处理全文本字段的配置
 	fields := esInfo.Fields
 	if genCfg.AllTextFieldOnly && genCfg.AllTextField != "" {
-		fields = RetainTextFieldByName(esInfo.Fields, genCfg.AllTextField)
+		fields = RetainTextFieldByName(esInfo.Fields, genCfg.AllTextFieldOnly, genCfg.AllTextField)
 	}
 
 	// 根据配置文件自定义字段分组进行随机组合

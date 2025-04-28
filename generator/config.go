@@ -9,7 +9,7 @@ import (
 
 // GenConfig 生成器配置
 type GenConfig struct {
-	MaxCombine   int  `json:"maxCombine"`   // 最大组合的字段数
+	MaxCombine   int  `json:"maxCombine"`   // 最大组合的字段数，已经结合默认值处理
 	TermInShould bool `json:"termInShould"` // 精确条件放在should中可选过滤，评分
 
 	// 数值比较方式的配置

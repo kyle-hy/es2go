@@ -13,25 +13,18 @@ import (
 
 // 生成对时间字段近期查找的代码,数值字段范围查找
 
-// PreDetailRecentCond 使用go代码预处理渲染需要的一些逻辑，template脚本调试困难
-func PreDetailRecentCond(mappingPath string, esInfo *EsModelInfo, rtype string) []*FuncTplData {
+// PreAggRecentTermsCond 使用go代码预处理渲染需要的一些逻辑，template脚本调试困难
+func PreAggRecentTermsCond(mappingPath string, esInfo *EsModelInfo, rtype string) []*FuncTplData {
 	funcDatas := []*FuncTplData{}
 
 	// 尝试加载自定义生成配置
 	genCfg := LoadCustomGenConfig(mappingPath)
-	maxCombine := MaxCombine
-	if genCfg.MaxCombine > 0 {
-		maxCombine = genCfg.MaxCombine
-	}
 
 	// 根据配置处理全文本字段的配置
 	fields := RetainTextFieldByName(esInfo.Fields, genCfg.AllTextFieldOnly, genCfg.AllTextField)
 
 	// 根据配置文件自定义字段分组进行随机组合
-	cmbFields := CombineCustom(fields, genCfg.Combine, maxCombine)
-	if len(cmbFields) == 0 { // 不存在自定义字段的配置，则全字段随机
-		cmbFields = utils.Combinations(fields, maxCombine)
-	}
+	cmbFields := CombineCustom(fields, genCfg.Combine, genCfg.MaxCombine-1)
 
 	// 过滤出满足类型限制的组合
 	cmbLimit := map[string]int{TypeNumber: 2, TypeDate: 1, TypeVector: -1}
@@ -43,26 +36,36 @@ func PreDetailRecentCond(mappingPath string, esInfo *EsModelInfo, rtype string) 
 
 	// 字段随机组合
 	for _, cfs := range mustFileds {
-		names := getDetailRecentFuncName(esInfo.StructName, cfs, rangeTypes, rtype, genCfg.CmpOptList)
-		comments := getDetailRecentFuncComment(esInfo.StructComment, cfs, rangeTypes, rtype, genCfg.CmpOptList)
-		params := getDetailRecentFuncParams(cfs, rangeTypes, rtype, genCfg.CmpOptList)
-		queries := getDetailRecentQuery(cfs, rangeTypes, genCfg.TermInShould, rtype, genCfg.CmpOptList)
-		for idx := range len(names) {
-			ftd := &FuncTplData{
-				Name:    names[idx],
-				Comment: comments[idx],
-				Params:  params[idx],
-				Query:   queries[idx],
+		// 筛选出做聚合分析的类型的字段
+		termsFields := FilterOutByTypes(fields, cfs, []string{TypeKeyword}, nil)
+
+		// 过滤出配置文件指定的聚合字段
+		termsFields = FilterOutByName(termsFields, cfs, genCfg.TermsFields, genCfg.NotTermsFields)
+
+		// terms的嵌套聚合分析次序是对结果哟影响的，因此只能生成一个字段的聚合，否则太多了
+		termsCmbs := utils.Combinations(termsFields, 1)
+		for _, tcmb := range termsCmbs {
+			names := getAggRecentTermsFuncName(esInfo.StructName, cfs, tcmb, rangeTypes, rtype, genCfg.CmpOptList)
+			comments := getAggRecentTermsFuncComment(esInfo.StructComment, cfs, tcmb, rangeTypes, rtype, genCfg.CmpOptList)
+			params := getAggRecentTermsFuncParams(cfs, rangeTypes, rtype, genCfg.CmpOptList)
+			queries := getAggRecentTermsQuery(cfs, tcmb, rangeTypes, genCfg.TermInShould, rtype, genCfg.CmpOptList)
+			for idx := range len(names) {
+				ftd := &FuncTplData{
+					Name:    names[idx],
+					Comment: comments[idx],
+					Params:  params[idx],
+					Query:   queries[idx],
+				}
+				funcDatas = append(funcDatas, ftd)
 			}
-			funcDatas = append(funcDatas, ftd)
 		}
 	}
 
 	return funcDatas
 }
 
-// getDetailRecentFuncName 获取函数名称
-func getDetailRecentFuncName(structName string, fields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
+// getAggRecentTermsFuncName 获取函数名称
+func getAggRecentTermsFuncName(structName string, fields, termsFields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
@@ -70,7 +73,6 @@ func getDetailRecentFuncName(structName string, fields []*FieldInfo, rangeTypes 
 	otherName := ""
 	// 串联过滤条件的字段名
 	if len(other) > 0 {
-		otherName = "With"
 		for _, f := range other {
 			otherName += f.FieldName
 		}
@@ -102,30 +104,34 @@ func getDetailRecentFuncName(structName string, fields []*FieldInfo, rangeTypes 
 	}
 
 	names := []string{}
-	fn := rtype + structName + "By"
+	fn := "Terms" + GenFieldsName(termsFields) + "Of" + rtype + structName + "By" + otherName
 	// 多字段之间的两两组合
 	fopts := utils.Cartesian(fieldOpts)
 	for _, fopt := range fopts {
-		names = append(names, fn+fopt+otherName)
+		names = append(names, fn+fopt)
 	}
 	return names
 }
 
-// getDetailRecentFuncComment 获取函数注释
-func getDetailRecentFuncComment(structComment string, fields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
+// 根据发布日期大于等于和小于等于检索books表并分组统计类别的分布情况
+
+// getAggRecentTermsFuncComment 获取函数注释
+func getAggRecentTermsFuncComment(structComment string, fields, termsFields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
+
+	statCmt := "并分组统计"
+	if len(termsFields) > 1 {
+		statCmt = "并同时统计"
+	}
+
 	// 函数注释部分
 	types, other := FieldFilterByTypes(fields, rangeTypes)
-	otherComment := ""
+	otherComment := "根据"
 	// 串联过滤条件的字段名
 	if len(other) > 0 {
-		otherComment = "根据"
-		for _, f := range other {
-			otherComment += f.FieldComment + "、"
-		}
-		otherComment = strings.TrimSuffix(otherComment, "、")
+		otherComment += GenFieldsCmt(other) + "、"
 	}
 
 	fieldCmts := [][]string{}
@@ -153,11 +159,10 @@ func getDetailRecentFuncComment(structComment string, fields []*FieldInfo, range
 		}
 	}
 	funcCmts := []string{}
-	fn := "从" + structComment + "查找"
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
 		fopt = strings.TrimSuffix(fopt, "、")
-		funcCmts = append(funcCmts, otherComment+fn+fopt+"的详细数据列表和总数量\n")
+		funcCmts = append(funcCmts, otherComment+fopt+"检索"+structComment+statCmt+GenFieldsCmt(termsFields)+"的分布情况\n")
 	}
 
 	// 参数注释部分
@@ -199,8 +204,8 @@ func getDetailRecentFuncComment(structComment string, fields []*FieldInfo, range
 	return funcCmts
 }
 
-// getDetailRecentFuncParams 获取函数参数列表
-func getDetailRecentFuncParams(fields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
+// getAggRecentTermsFuncParams 获取函数参数列表
+func getAggRecentTermsFuncParams(fields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
@@ -242,96 +247,48 @@ func getDetailRecentFuncParams(fields []*FieldInfo, rangeTypes []string, rtype s
 	return funcParams
 }
 
-// getDetailRecentQuery 获取函数的查找条件
-func getDetailRecentQuery(fields []*FieldInfo, rangeTypes []string, termInShould bool, rtype string, optList [][]string) []string {
+// getAggRecentTermsQuery 获取函数的查找条件
+func getAggRecentTermsQuery(fields, termsFields []*FieldInfo, rangeTypes []string, termInShould bool, rtype string, optList [][]string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
-	}
-	// 精确条件默认放到filter中
-	preciseOpt := "eq.WithFilter"
-	if termInShould {
-		preciseOpt = "eq.WithShould"
 	}
 
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	// match部分参数
-	matchCnt := 0
-	mq := "matches := []eq.Map{\n"
-	for _, f := range other {
-		if f.EsFieldType == "text" {
-			matchCnt++
-			mq += fmt.Sprintf("		eq.Match(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
-		}
-	}
-	mq += "	}\n"
+	mq := GenMatchCond(other)
 
-	// match部分参数
-	termCnt := 0
-	tq := ""
-	for _, f := range other {
-		if f.EsFieldType != "text" {
-			termCnt++
-			tq += fmt.Sprintf("		eq.Term(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
-		}
-	}
+	// agg部分参数
+	aq := GenAggWithCond(termsFields, AggFuncTerms)
 
-	ranges := [][]string{}
-	for _, f := range types {
-		if getTypeMapping(f.EsFieldType) == TypeNumber {
-			tmps := []string{}
-			for _, opts := range optList {
-				tmp := ""
-				gte, gt, lt, lte := "nil", "nil", "nil", "nil"
-				for _, opt := range opts {
-					switch opt {
-					case GTE:
-						gte = utils.ToFirstLower(f.FieldName) + opt
-					case GT:
-						gt = utils.ToFirstLower(f.FieldName + opt)
-					case LT:
-						lt = utils.ToFirstLower(f.FieldName + opt)
-					case LTE:
-						lte = utils.ToFirstLower(f.FieldName + opt)
-					}
-				}
-				tmp += fmt.Sprintf("		eq.Range(\"%s\", %s, %s, %s, %s),\n", f.EsFieldPath, gte, gt, lt, lte)
-				tmps = append(tmps, tmp)
-			}
-			ranges = append(ranges, tmps)
-		} else if getTypeMapping(f.EsFieldType) == TypeDate {
-			tmps := []string{}
-			tmp := ""
-			gte, gt, lt, lte := "nil", "nil", "nil", "nil"
-			gte = utils.ToFirstLower(f.FieldName) + fmt.Sprintf("N%s", rtype)
-			gte = fmt.Sprintf("fmt.Sprintf(\"%s\", %s)", RecentFormat[rtype], gte)
-			tmp += fmt.Sprintf("		eq.Range(\"%s\", %s, %s, %s, %s),\n", f.EsFieldPath, gte, gt, lt, lte)
-			tmps = append(tmps, tmp)
-			ranges = append(ranges, tmps)
-		}
-	}
+	// term部分参数
+	eqt := eqTerms(other)
 
+	// 范围条件部分
+	ranges := eqRanges(types, optList, []string{TypeNumber})                // 数值的氛围条件
+	ranges = append(ranges, eqRecents(types, rtype, []string{TypeDate})...) // 日期的近期条件
 	funcRanges := utils.Cartesian(ranges)
 	for idx, fq := range funcRanges {
-		fq := "filters := []eq.Map{\n" + tq + fq + "	}\n"
-		if matchCnt > 0 {
-			fq = mq + fq
-			qfmt := `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), %s(filters))}`
-			fq += fmt.Sprintf(qfmt, preciseOpt)
-		} else {
-			qfmt := `	esQuery := &eq.ESQuery{Query: eq.Bool(%s(filters))}`
-			fq += fmt.Sprintf(qfmt, preciseOpt)
-		}
+		tq := "terms := []eq.Map{\n" + eqt + fq + "}\n"
+		// bool部分
+		bq := GenBoolCond(mq, tq, termInShould)
+
+		// esquery部分
+		esq := GenESQueryCond(bq, aq)
+
+		// 拼接match,term和agg条件
+		fq := mq + tq + aq + esq
+
 		funcRanges[idx] = fq
 	}
 
 	return funcRanges
 }
 
-// GenEsDetailRecent 生成es检索详情
-func GenEsDetailRecent(mappingPath, outputPath string, esInfo *EsModelInfo) error {
+// GenEsAggRecentTerms 生成es检索详情
+func GenEsAggRecentTerms(mappingPath, outputPath string, esInfo *EsModelInfo) error {
 	for _, rtype := range RecentTypes {
 		// 预处理渲染所需的内容
-		funcData := PreDetailRecentCond(mappingPath, esInfo, rtype)
+		funcData := PreAggRecentTermsCond(mappingPath, esInfo, rtype)
 		detailData := DetailTplData{
 			PackageName:   esInfo.PackageName,
 			StructName:    esInfo.StructName,
@@ -355,7 +312,7 @@ func GenEsDetailRecent(mappingPath, outputPath string, esInfo *EsModelInfo) erro
 		}
 
 		// 写入文件
-		suffix := fmt.Sprintf("_detail_%s.go", strings.ToLower(rtype))
+		suffix := fmt.Sprintf("_agg_%s_terms.go", strings.ToLower(rtype))
 		output := strings.Replace(outputPath, ".go", suffix, -1)
 		err = os.WriteFile(output, buf.Bytes(), 0644)
 		if err != nil {
