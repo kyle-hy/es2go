@@ -63,17 +63,11 @@ func getDetailVectorFuncName(structName string, fields []*FieldInfo, rangeTypes 
 	otherName := ""
 	// 串联过滤条件的字段名
 	if len(other) > 0 {
-		otherName = "With"
-		for _, f := range other {
-			otherName += f.FieldName
-		}
+		otherName = "With" + GenFieldsName(other)
 	}
 
 	// 各字段与比较符号列表的串联
-	knnName := "By"
-	for _, f := range types {
-		knnName += f.FieldName
-	}
+	knnName := "By" + GenFieldsName(types)
 
 	fn := "Knn" + structName + knnName + otherName
 
@@ -86,84 +80,38 @@ func getDetailVectorFuncComment(structComment string, fields []*FieldInfo, range
 	funcCmt := "对"
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	if len(other) > 0 {
-		otherCmt := "根据"
-		for _, f := range other {
-			otherCmt += f.FieldComment + "、"
-		}
-		otherCmt = strings.TrimSuffix(otherCmt, "、")
+		otherCmt := "根据" + GenFieldsCmt(other, true)
 		otherCmt += "过滤后"
 		funcCmt = otherCmt + funcCmt
 	}
 
-	for _, f := range types {
-		funcCmt += f.FieldComment + "、"
-	}
-	funcCmt = strings.TrimSuffix(funcCmt, "、")
-
+	funcCmt += GenFieldsCmt(types, true)
 	funcCmt += "进行检索查找" + structComment + "的详细数据列表和总数量\n"
 
 	// 参数注释部分
-	paramCmt := ""
-	for _, f := range other {
-		paramCmt += "// " + utils.ToFirstLower(f.FieldName) + " " + f.FieldType + " " + f.FieldComment + "\n"
-	}
-
+	paramCmt := GenParamCmt(other, false)
 	// 范围条件部分
-	for _, f := range types {
-		paramCmt += "// " + utils.ToFirstLower(f.FieldName) + " " + f.FieldType + " " + f.FieldComment + "\n"
-	}
-	paramCmt = strings.TrimSuffix(paramCmt, "\n")
-
+	paramCmt += GenParamCmt(types, true)
 	funcCmt += paramCmt
 	return funcCmt
 }
 
 // getDetailVectorFuncParams 获取函数参数列表
 func getDetailVectorFuncParams(fields []*FieldInfo, rangeTypes []string) string {
-	fp := ""
 	types, other := FieldFilterByTypes(fields, rangeTypes)
-	for _, f := range other {
-		fp += utils.ToFirstLower(f.FieldName) + " " + f.FieldType + ", "
-	}
-	for _, f := range types {
-		fp += utils.ToFirstLower(f.FieldName) + " " + f.FieldType + ", "
-	}
-	fp = simplifyParams(strings.TrimSuffix(fp, ", "))
+	fp := GenParam(other, false)
+	fp += GenParam(types, true)
 	return fp
 }
 
 // getDetailVectorQuery 获取函数的查找条件
 func getDetailVectorQuery(fields []*FieldInfo, termInShould bool, rangeTypes []string) string {
 	types, other := FieldFilterByTypes(fields, rangeTypes)
-	mq := ""
-	preciseOpt := ""
-	if len(other) > 0 {
-		// 过滤条件部分参数
-		mq = "filters:= []eq.Map{\n"
-		for _, f := range other {
-			if f.EsFieldType == "text" {
-				mq += fmt.Sprintf("		eq.Match(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
-			} else {
-				mq += fmt.Sprintf("		eq.Term(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
-			}
-		}
-		mq += "}\n"
-
-		// 精确条件默认放到filter中
-		preciseOpt = ", eq.WithFilter(eq.Bool(eq.WithMust(filters)))"
-		if termInShould {
-			preciseOpt = ", eq.WithFilter(eq.Bool(eq.WithShould(filters)))"
-		}
-	}
-
-	// 向量匹配部分参数
-	f := types[0]
-	kqFmt := `	knn := eq.Knn("%s", %s%s)`
-	kq := fmt.Sprintf(kqFmt+"\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName), preciseOpt)
-
-	vq := mq + kq
-	vq += "	esQuery := &eq.ESQuery{Query: knn}"
-	return vq
+	mq := GenFilterCond(other) // 过滤条件
+	bq := GenBoolCond(mq, "", termInShould)
+	kq := GenKnnCond(types, bq)
+	esq := GenESQueryCond("knn", "")
+	return mq + kq + esq
 }
 
 // GenEsDetailVector 生成es检索详情

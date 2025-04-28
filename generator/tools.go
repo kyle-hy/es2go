@@ -164,7 +164,7 @@ func GenMatchCond(fields []*FieldInfo) string {
 func GenFilterCond(fields []*FieldInfo) string {
 	// match部分参数
 	filterCnt := 0
-	fq := "	filters:= []eq.Map{\n"
+	fq := "matches := []eq.Map{\n"
 	for _, f := range fields {
 		filterCnt++
 		if f.EsFieldType != "text" {
@@ -213,6 +213,22 @@ func GenTermCond(fields []*FieldInfo) string {
 	return ""
 }
 
+// GenKnnCond 生成knn条件
+func GenKnnCond(fields []*FieldInfo, boolQuery string) string {
+	if len(fields) == 0 {
+		return ""
+	}
+
+	if boolQuery != "" {
+		boolQuery = fmt.Sprintf(", eq.WithFilter(%s)", boolQuery)
+	}
+
+	f := fields[0]
+	kqFmt := `knn := eq.Knn("%s", %s %s)`
+	kq := fmt.Sprintf(kqFmt+"\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName), boolQuery)
+	return kq
+}
+
 // GenAggWithCond 生成多个字段同时聚合
 func GenAggWithCond(fields []*FieldInfo, aggFunc string) string {
 	aq := ""
@@ -252,6 +268,10 @@ func GenAggNestedCond(fields []*FieldInfo, aggFunc string) string {
 
 // GenBoolCond 生成bool条件
 func GenBoolCond(mq, tq string, termInShould bool) string {
+	if mq == "" && tq == "" {
+		return ""
+	}
+
 	// 精确条件默认放到filter中
 	preciseOpt := "eq.WithFilter"
 	if termInShould {
