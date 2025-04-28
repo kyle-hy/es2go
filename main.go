@@ -2,7 +2,10 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
+	"sync"
+	"time"
 
 	gen "github.com/kyle-hy/es2go/generator"
 )
@@ -14,6 +17,9 @@ func GetOrDefault[T any](ptr *T, defaultVal T) T {
 	}
 	return defaultVal
 }
+
+// GenFunc 代码生成函数定义
+type GenFunc func(input, output string, esInfo *gen.EsModelInfo) error
 
 func main() {
 	// required arguments
@@ -55,19 +61,54 @@ func main() {
 		log.Fatalf("Failed to generate data model: %v", err)
 	}
 
-	// 生成详情查找函数接口
-	gen.GenEsDetailMatch(*inputPath, *outputPath, esInfo)
-	gen.GenEsDetailRange(*inputPath, *outputPath, esInfo)
-	gen.GenEsDetailRecent(*inputPath, *outputPath, esInfo)
-	gen.GenEsDetailVector(*inputPath, *outputPath, esInfo)
+	tn := time.Now()
 
-	// 生成聚合分析代码
-	gen.GenEsAggMatchTerms(*inputPath, *outputPath, esInfo)
-	gen.GenEsAggMatchStats(*inputPath, *outputPath, esInfo)
-	gen.GenEsAggRangeTerms(*inputPath, *outputPath, esInfo)
-	gen.GenEsAggRangeStats(*inputPath, *outputPath, esInfo)
-	gen.GenEsAggRecentTerms(*inputPath, *outputPath, esInfo)
-	gen.GenEsAggRecentStats(*inputPath, *outputPath, esInfo)
+	// // 生成详情查找函数接口
+	// gen.GenEsDetailMatch(*inputPath, *outputPath, esInfo)
+	// gen.GenEsDetailRange(*inputPath, *outputPath, esInfo)
+	// gen.GenEsDetailRecent(*inputPath, *outputPath, esInfo)
+	// gen.GenEsDetailVector(*inputPath, *outputPath, esInfo)
+
+	// // 生成聚合分析代码
+	// gen.GenEsAggMatchTerms(*inputPath, *outputPath, esInfo)
+	// gen.GenEsAggMatchStats(*inputPath, *outputPath, esInfo)
+	// gen.GenEsAggRangeTerms(*inputPath, *outputPath, esInfo)
+	// gen.GenEsAggRangeStats(*inputPath, *outputPath, esInfo)
+	// gen.GenEsAggRecentTerms(*inputPath, *outputPath, esInfo)
+	// gen.GenEsAggRecentStats(*inputPath, *outputPath, esInfo)
+
+	genFuncs := []GenFunc{
+		// 生成详情查找函数接口
+		gen.GenEsDetailMatch,
+		gen.GenEsDetailRange,
+		gen.GenEsDetailRecent,
+		gen.GenEsDetailVector,
+
+		// 生成聚合分析代码
+		gen.GenEsAggMatchTerms,
+		gen.GenEsAggMatchStats,
+		gen.GenEsAggRangeTerms,
+		gen.GenEsAggRangeStats,
+		gen.GenEsAggRecentTerms,
+		gen.GenEsAggRecentStats,
+	}
+
+	// 并发执行各种代码生成函数
+	var wg sync.WaitGroup
+	wrap := func(idx int, f GenFunc, inputPath, outputPath string, esInfo *gen.EsModelInfo) {
+		defer wg.Done()
+		tn := time.Now()
+		f(inputPath, outputPath, esInfo)
+		fmt.Printf("func:%d  %v\n", idx, time.Now().Sub(tn))
+	}
+	for idx, gf := range genFuncs {
+		wg.Add(1)
+		go wrap(idx, gf, *inputPath, *outputPath, esInfo)
+	}
+	wg.Wait()
+
+	te := time.Now()
+	fmt.Println(te.Sub(tn))
 }
 
 // nullableString is a helper function to treat flag.String values as nullable.
