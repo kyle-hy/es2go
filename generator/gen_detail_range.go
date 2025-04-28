@@ -183,32 +183,12 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeT
 
 // getDetailRangeFuncParams 获取函数参数列表
 func getDetailRangeFuncParams(fields []*FieldInfo, rangeTypes []string, optList [][]string) []string {
-	if len(optList) == 0 {
-		optList = CmpOptList
-	}
-
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	// 过滤条件参数
-	cfp := ""
-	for _, f := range other {
-		cfp += utils.ToFirstLower(f.FieldName) + " " + f.FieldType + ", "
-	}
+	cfp := GenParam(other, false)
 
 	// 范围条件参数
-	params := [][]string{}
-	for _, f := range types {
-		tmps := []string{}
-		for _, opts := range optList {
-			tmp := ""
-			for _, opt := range opts {
-				tmp += utils.ToFirstLower(f.FieldName) + opt + ", "
-			}
-			tmp = strings.TrimSuffix(tmp, ", ")
-			tmp += " " + f.FieldType + ", "
-			tmps = append(tmps, tmp)
-		}
-		params = append(params, tmps)
-	}
+	params := GenRangeParam(types, optList, nil)
 
 	funcParams := utils.Cartesian(params)
 	for idx, fp := range funcParams {

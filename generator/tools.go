@@ -73,6 +73,28 @@ func GenParamCmt(fields []*FieldInfo, trimSuffix bool) string {
 	return cmt
 }
 
+// GenRangeParamCmt 生成函数范围查询参数部分的注释
+func GenRangeParamCmt(fields []*FieldInfo, optList [][]string) [][]string {
+	if len(optList) == 0 {
+		optList = CmpOptList
+	}
+
+	// 范围条件部分
+	fieldParamCmts := [][]string{}
+	for _, f := range fields {
+		tmps := []string{}
+		for _, opts := range optList {
+			tmp := " "
+			for _, opt := range opts {
+				tmp += "// " + utils.ToFirstLower(f.FieldName) + opt + " " + f.FieldType + " " + f.FieldComment + CmpOptNames[opt] + "\n"
+			}
+			tmps = append(tmps, tmp)
+		}
+		fieldParamCmts = append(fieldParamCmts, tmps)
+	}
+	return fieldParamCmts
+}
+
 // GenFieldsCmt 串联参数列表的注释
 func GenFieldsCmt(fields []*FieldInfo, trimSuffix bool) string {
 	cmt := ""
@@ -149,6 +171,51 @@ func GenParam(fields []*FieldInfo, trimSuffix bool) string {
 	}
 	return simplifyParams(fp)
 
+}
+
+// GenRecentParam 生成近期查询参数
+func GenRecentParam(fields []*FieldInfo, rtype string, optList [][]string, limitTypes []string) [][]string {
+	params := [][]string{}
+	for _, f := range fields {
+		// 如果存在类型限制
+		if len(limitTypes) > 0 && !slices.Contains(limitTypes, getTypeMapping(f.EsFieldType)) {
+			continue
+		}
+		tmps := []string{}
+		tmp := ""
+		tmp += utils.ToFirstLower(f.FieldName) + fmt.Sprintf("N%s", rtype) + " int, "
+		tmps = append(tmps, tmp)
+		params = append(params, tmps)
+	}
+	return params
+}
+
+// GenRangeParam 生成函数氛围查询参数
+func GenRangeParam(fields []*FieldInfo, optList [][]string, limitTypes []string) [][]string {
+	if len(optList) == 0 {
+		optList = CmpOptList
+	}
+
+	// 范围条件参数
+	params := [][]string{}
+	for _, f := range fields {
+		// 如果存在类型限制
+		if len(limitTypes) > 0 && !slices.Contains(limitTypes, getTypeMapping(f.EsFieldType)) {
+			continue
+		}
+		tmps := []string{}
+		for _, opts := range optList {
+			tmp := ""
+			for _, opt := range opts {
+				tmp += utils.ToFirstLower(f.FieldName) + opt + ", "
+			}
+			tmp = strings.TrimSuffix(tmp, ", ")
+			tmp += " " + f.FieldType + ", "
+			tmps = append(tmps, tmp)
+		}
+		params = append(params, tmps)
+	}
+	return params
 }
 
 // GenMatchCond 生成match条件

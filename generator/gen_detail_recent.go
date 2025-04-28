@@ -70,10 +70,7 @@ func getDetailRecentFuncName(structName string, fields []*FieldInfo, rangeTypes 
 	otherName := ""
 	// 串联过滤条件的字段名
 	if len(other) > 0 {
-		otherName = "With"
-		for _, f := range other {
-			otherName += f.FieldName
-		}
+		otherName = "With" + GenFieldsName(other)
 	}
 
 	// 各字段与比较符号列表的串联
@@ -121,11 +118,7 @@ func getDetailRecentFuncComment(structComment string, fields []*FieldInfo, range
 	otherComment := ""
 	// 串联过滤条件的字段名
 	if len(other) > 0 {
-		otherComment = "根据"
-		for _, f := range other {
-			otherComment += f.FieldComment + "、"
-		}
-		otherComment = strings.TrimSuffix(otherComment, "、")
+		otherComment = "根据" + GenFieldsCmt(other, true)
 	}
 
 	fieldCmts := [][]string{}
@@ -161,10 +154,7 @@ func getDetailRecentFuncComment(structComment string, fields []*FieldInfo, range
 	}
 
 	// 参数注释部分
-	filterParam := ""
-	for _, f := range other { // 过滤条件部分
-		filterParam += "// " + utils.ToFirstLower(f.FieldName) + " " + f.FieldType + " " + f.FieldComment + "\n"
-	}
+	filterParam := GenParamCmt(other, false)
 
 	// 范围条件部分
 	fieldParamCmts := [][]string{}
@@ -206,34 +196,11 @@ func getDetailRecentFuncParams(fields []*FieldInfo, rangeTypes []string, rtype s
 	}
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	// 过滤条件参数
-	cfp := ""
-	for _, f := range other {
-		cfp += utils.ToFirstLower(f.FieldName) + " " + f.FieldType + ", "
-	}
+	cfp := GenParam(other, false)
 
 	// 范围条件参数
-	params := [][]string{}
-	for _, f := range types {
-		if getTypeMapping(f.EsFieldType) == TypeNumber {
-			tmps := []string{}
-			for _, opts := range optList {
-				tmp := ""
-				for _, opt := range opts {
-					tmp += utils.ToFirstLower(f.FieldName) + opt + ", "
-				}
-				tmp = strings.TrimSuffix(tmp, ", ")
-				tmp += " " + f.FieldType + ", "
-				tmps = append(tmps, tmp)
-			}
-			params = append(params, tmps)
-		} else if getTypeMapping(f.EsFieldType) == TypeDate {
-			tmps := []string{}
-			tmp := ""
-			tmp += utils.ToFirstLower(f.FieldName) + fmt.Sprintf("N%s", rtype) + " int, "
-			tmps = append(tmps, tmp)
-			params = append(params, tmps)
-		}
-	}
+	params := GenRangeParam(types, optList, []string{TypeNumber})
+	params = append(params, GenRecentParam(types, rtype, optList, []string{TypeDate})...)
 
 	funcParams := utils.Cartesian(params)
 	for idx, fp := range funcParams {
@@ -255,65 +222,17 @@ func getDetailRecentQuery(fields []*FieldInfo, rangeTypes []string, termInShould
 
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	// match部分参数
-	matchCnt := 0
-	mq := "matches := []eq.Map{\n"
-	for _, f := range other {
-		if f.EsFieldType == "text" {
-			matchCnt++
-			mq += fmt.Sprintf("		eq.Match(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
-		}
-	}
-	mq += "	}\n"
+	mq := GenMatchCond(other)
 
-	// match部分参数
-	termCnt := 0
-	tq := ""
-	for _, f := range other {
-		if f.EsFieldType != "text" {
-			termCnt++
-			tq += fmt.Sprintf("		eq.Term(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
-		}
-	}
+	// term部分参数
+	tq := eqTerms(other)
 
-	ranges := [][]string{}
-	for _, f := range types {
-		if getTypeMapping(f.EsFieldType) == TypeNumber {
-			tmps := []string{}
-			for _, opts := range optList {
-				tmp := ""
-				gte, gt, lt, lte := "nil", "nil", "nil", "nil"
-				for _, opt := range opts {
-					switch opt {
-					case GTE:
-						gte = utils.ToFirstLower(f.FieldName) + opt
-					case GT:
-						gt = utils.ToFirstLower(f.FieldName + opt)
-					case LT:
-						lt = utils.ToFirstLower(f.FieldName + opt)
-					case LTE:
-						lte = utils.ToFirstLower(f.FieldName + opt)
-					}
-				}
-				tmp += fmt.Sprintf("		eq.Range(\"%s\", %s, %s, %s, %s),\n", f.EsFieldPath, gte, gt, lt, lte)
-				tmps = append(tmps, tmp)
-			}
-			ranges = append(ranges, tmps)
-		} else if getTypeMapping(f.EsFieldType) == TypeDate {
-			tmps := []string{}
-			tmp := ""
-			gte, gt, lt, lte := "nil", "nil", "nil", "nil"
-			gte = utils.ToFirstLower(f.FieldName) + fmt.Sprintf("N%s", rtype)
-			gte = fmt.Sprintf("fmt.Sprintf(\"%s\", %s)", RecentFormat[rtype], gte)
-			tmp += fmt.Sprintf("		eq.Range(\"%s\", %s, %s, %s, %s),\n", f.EsFieldPath, gte, gt, lt, lte)
-			tmps = append(tmps, tmp)
-			ranges = append(ranges, tmps)
-		}
-	}
-
+	ranges := eqRanges(types, optList, []string{TypeNumber})                // 数值的氛围条件
+	ranges = append(ranges, eqRecents(types, rtype, []string{TypeDate})...) // 日期的近期条件
 	funcRanges := utils.Cartesian(ranges)
 	for idx, fq := range funcRanges {
 		fq := "filters := []eq.Map{\n" + tq + fq + "	}\n"
-		if matchCnt > 0 {
+		if mq != "" {
 			fq = mq + fq
 			qfmt := `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), %s(filters))}`
 			fq += fmt.Sprintf(qfmt, preciseOpt)

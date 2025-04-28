@@ -214,28 +214,8 @@ func getAggRecentStatsFuncParams(fields []*FieldInfo, rangeTypes []string, rtype
 	}
 
 	// 范围条件参数
-	params := [][]string{}
-	for _, f := range types {
-		if getTypeMapping(f.EsFieldType) == TypeNumber {
-			tmps := []string{}
-			for _, opts := range optList {
-				tmp := ""
-				for _, opt := range opts {
-					tmp += utils.ToFirstLower(f.FieldName) + opt + ", "
-				}
-				tmp = strings.TrimSuffix(tmp, ", ")
-				tmp += " " + f.FieldType + ", "
-				tmps = append(tmps, tmp)
-			}
-			params = append(params, tmps)
-		} else if getTypeMapping(f.EsFieldType) == TypeDate {
-			tmps := []string{}
-			tmp := ""
-			tmp += utils.ToFirstLower(f.FieldName) + fmt.Sprintf("N%s", rtype) + " int, "
-			tmps = append(tmps, tmp)
-			params = append(params, tmps)
-		}
-	}
+	params := GenRangeParam(types, optList, []string{TypeNumber})
+	params = append(params, GenRecentParam(types, rtype, optList, []string{TypeDate})...)
 
 	funcParams := utils.Cartesian(params)
 	for idx, fp := range funcParams {
