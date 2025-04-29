@@ -115,21 +115,7 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeT
 		otherComment = "根据" + GenFieldsCmt(other, true)
 	}
 
-	fieldCmts := [][]string{}
-	for _, f := range types {
-		tmps := []string{}
-		for _, opts := range optList {
-			tmp := f.FieldComment
-			for _, opt := range opts {
-				tmp += CmpOptNames[opt] + "和"
-			}
-			tmp = strings.TrimSuffix(tmp, "和")
-			tmp += "、"
-			tmps = append(tmps, tmp)
-		}
-		fieldCmts = append(fieldCmts, tmps)
-	}
-
+	fieldCmts := GenRangeFuncParamCmt(types, optList, nil)
 	funcCmts := []string{}
 	fn := "从" + structComment + "查找"
 	fopts := utils.Cartesian(fieldCmts)
@@ -139,28 +125,13 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeT
 	}
 
 	// 参数注释部分
-	// 过滤条件部分
-	filterParam := ""
-	for _, f := range other {
-		filterParam += "// " + utils.ToFirstLower(f.FieldName) + " " + f.FieldType + " " + f.FieldComment + "\n"
-	}
+	filterParam := GenParamCmt(other, false)
 
 	// 范围条件部分
-	fieldParamCmts := [][]string{}
-	for _, f := range types {
-		tmps := []string{}
-		for _, opts := range optList {
-			tmp := " "
-			for _, opt := range opts {
-				tmp += "// " + utils.ToFirstLower(f.FieldName) + opt + " " + f.FieldType + " " + f.FieldComment + CmpOptNames[opt] + "\n"
-			}
-			tmps = append(tmps, tmp)
-		}
-		fieldParamCmts = append(fieldParamCmts, tmps)
-	}
-	paramOpts := utils.Cartesian(fieldParamCmts)
+	fieldParamCmts := GenRangeParamCmt(types, optList, nil)
 
 	// 函数注释和参数注释合并
+	paramOpts := utils.Cartesian(fieldParamCmts)
 	if len(funcCmts) == len(paramOpts) {
 		for idx, fc := range funcCmts {
 			funcCmts[idx] = fc + filterParam + strings.TrimSuffix(paramOpts[idx], "\n")

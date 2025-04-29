@@ -100,6 +100,52 @@ func GenRangeParamCmt(fields []*FieldInfo, optList [][]string, limitTypes []stri
 	return fieldParamCmts
 }
 
+// GenRangeFuncParamCmt 生成范围查询函数名的参数部分的注释
+func GenRangeFuncParamCmt(fields []*FieldInfo, optList [][]string, limitTypes []string) [][]string {
+	if len(optList) == 0 {
+		optList = CmpOptList
+	}
+
+	// 范围条件部分
+	fieldCmts := [][]string{}
+	for _, f := range fields {
+		// 如果存在类型限制
+		if len(limitTypes) > 0 && !slices.Contains(limitTypes, getTypeMapping(f.EsFieldType)) {
+			continue
+		}
+
+		tmps := []string{}
+		for _, opts := range optList {
+			tmp := f.FieldComment
+			for _, opt := range opts {
+				tmp += CmpOptNames[opt] + "和"
+			}
+			tmp = strings.TrimSuffix(tmp, "和")
+			tmp += "、"
+			tmps = append(tmps, tmp)
+		}
+		fieldCmts = append(fieldCmts, tmps)
+	}
+	return fieldCmts
+}
+
+// GenRecentFuncParamCmt 生成近期查询参数名的参数部分注释
+func GenRecentFuncParamCmt(fields []*FieldInfo, rtype string, optList [][]string, limitTypes []string) [][]string {
+	fieldCmts := [][]string{}
+	for _, f := range fields {
+		// 如果存在类型限制
+		if len(limitTypes) > 0 && !slices.Contains(limitTypes, getTypeMapping(f.EsFieldType)) {
+			continue
+		}
+		tmps := []string{}
+		tmp := f.FieldComment
+		tmp += RecentNames[rtype]
+		tmps = append(tmps, tmp)
+		fieldCmts = append(fieldCmts, tmps)
+	}
+	return fieldCmts
+}
+
 // GenFieldsCmt 串联参数列表的注释
 func GenFieldsCmt(fields []*FieldInfo, trimSuffix bool) string {
 	cmt := ""
