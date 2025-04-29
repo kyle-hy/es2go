@@ -73,30 +73,8 @@ func getDetailRecentFuncName(structName string, fields []*FieldInfo, rangeTypes 
 		otherName = "With" + GenFieldsName(other)
 	}
 
-	// 各字段与比较符号列表的串联
-	fieldOpts := [][]string{}
-	for _, f := range types {
-		if getTypeMapping(f.EsFieldType) == TypeNumber {
-			// 数值的多种比较
-			tmps := []string{}
-			for _, opts := range optList {
-				tmp := f.FieldName
-				for _, opt := range opts {
-					tmp += opt
-				}
-				tmps = append(tmps, tmp)
-			}
-			fieldOpts = append(fieldOpts, tmps)
-		} else if getTypeMapping(f.EsFieldType) == TypeDate {
-			// 日期的近期查找
-			tmps := []string{}
-			tmp := f.FieldName
-			tmp += GTE
-			tmps = append(tmps, tmp)
-			fieldOpts = append(fieldOpts, tmps)
-		}
-
-	}
+	fieldOpts := GenRangeFieldName(types, optList, []string{TypeNumber})
+	fieldOpts = append(fieldOpts, GenRangeFieldName(types, [][]string{{GTE}}, []string{TypeDate})...)
 
 	names := []string{}
 	fn := rtype + structName + "By"

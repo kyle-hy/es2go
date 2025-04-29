@@ -74,7 +74,7 @@ func GenParamCmt(fields []*FieldInfo, trimSuffix bool) string {
 }
 
 // GenRangeParamCmt 生成函数范围查询参数部分的注释
-func GenRangeParamCmt(fields []*FieldInfo, optList [][]string) [][]string {
+func GenRangeParamCmt(fields []*FieldInfo, optList [][]string, limitTypes []string) [][]string {
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
@@ -82,6 +82,11 @@ func GenRangeParamCmt(fields []*FieldInfo, optList [][]string) [][]string {
 	// 范围条件部分
 	fieldParamCmts := [][]string{}
 	for _, f := range fields {
+		// 如果存在类型限制
+		if len(limitTypes) > 0 && !slices.Contains(limitTypes, getTypeMapping(f.EsFieldType)) {
+			continue
+		}
+
 		tmps := []string{}
 		for _, opts := range optList {
 			tmp := " "
@@ -190,6 +195,22 @@ func GenRecentParam(fields []*FieldInfo, rtype string, optList [][]string, limit
 	return params
 }
 
+// GenRecentParamCmt 生成近期查询参数的注释
+func GenRecentParamCmt(fields []*FieldInfo, rtype string, optList [][]string, limitTypes []string) [][]string {
+	params := [][]string{}
+	for _, f := range fields {
+		// 如果存在类型限制
+		if len(limitTypes) > 0 && !slices.Contains(limitTypes, getTypeMapping(f.EsFieldType)) {
+			continue
+		}
+		tmps := []string{}
+		tmp := "// " + utils.ToFirstLower(f.FieldName) + fmt.Sprintf("N%s", rtype) + " int " + f.FieldComment + RecentNames[rtype] + "\n"
+		tmps = append(tmps, tmp)
+		params = append(params, tmps)
+	}
+	return params
+}
+
 // GenRangeParam 生成函数氛围查询参数
 func GenRangeParam(fields []*FieldInfo, optList [][]string, limitTypes []string) [][]string {
 	if len(optList) == 0 {
@@ -216,6 +237,33 @@ func GenRangeParam(fields []*FieldInfo, optList [][]string, limitTypes []string)
 		params = append(params, tmps)
 	}
 	return params
+}
+
+// GenRangeFieldName 生成函数名称的字段名部分
+func GenRangeFieldName(fields []*FieldInfo, optList [][]string, limitTypes []string) [][]string {
+	if len(optList) == 0 {
+		optList = CmpOptList
+	}
+
+	// 范围条件参数
+	fieldOpts := [][]string{}
+	for _, f := range fields {
+		// 如果存在类型限制
+		if len(limitTypes) > 0 && !slices.Contains(limitTypes, getTypeMapping(f.EsFieldType)) {
+			continue
+		}
+		// 数值的多种比较
+		tmps := []string{}
+		for _, opts := range optList {
+			tmp := f.FieldName
+			for _, opt := range opts {
+				tmp += opt
+			}
+			tmps = append(tmps, tmp)
+		}
+		fieldOpts = append(fieldOpts, tmps)
+	}
+	return fieldOpts
 }
 
 // GenMatchCond 生成match条件

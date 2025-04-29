@@ -81,29 +81,8 @@ func getAggRecentStatsFuncName(structName string, fields, termsFields []*FieldIn
 	}
 
 	// 各字段与比较符号列表的串联
-	fieldOpts := [][]string{}
-	for _, f := range types {
-		if getTypeMapping(f.EsFieldType) == TypeNumber {
-			// 数值的多种比较
-			tmps := []string{}
-			for _, opts := range optList {
-				tmp := f.FieldName
-				for _, opt := range opts {
-					tmp += opt
-				}
-				tmps = append(tmps, tmp)
-			}
-			fieldOpts = append(fieldOpts, tmps)
-		} else if getTypeMapping(f.EsFieldType) == TypeDate {
-			// 日期的近期查找
-			tmps := []string{}
-			tmp := f.FieldName
-			tmp += GTE
-			tmps = append(tmps, tmp)
-			fieldOpts = append(fieldOpts, tmps)
-		}
-
-	}
+	fieldOpts := GenRangeFieldName(types, optList, []string{TypeNumber})
+	fieldOpts = append(fieldOpts, GenRangeFieldName(types, [][]string{{GTE}}, []string{TypeDate})...)
 
 	names := []string{}
 	fn := stype + GenFieldsName(termsFields) + "Of" + rtype + structName + "By" + otherName
@@ -163,32 +142,11 @@ func getAggRecentStatsFuncComment(structComment string, fields, termsFields []*F
 	}
 
 	// 参数注释部分
-	filterParam := ""
-	for _, f := range other { // 过滤条件部分
-		filterParam += "// " + utils.ToFirstLower(f.FieldName) + " " + f.FieldType + " " + f.FieldComment + "\n"
-	}
+	filterParam := GenParamCmt(other, false)
 
 	// 范围条件部分
-	fieldParamCmts := [][]string{}
-	for _, f := range types {
-		if getTypeMapping(f.EsFieldType) == TypeNumber {
-			tmps := []string{}
-			for _, opts := range optList {
-				tmp := " "
-				for _, opt := range opts {
-					tmp += "// " + utils.ToFirstLower(f.FieldName) + opt + " " + f.FieldType + " " + f.FieldComment + CmpOptNames[opt] + "\n"
-				}
-				tmps = append(tmps, tmp)
-			}
-			fieldParamCmts = append(fieldParamCmts, tmps)
-		} else if getTypeMapping(f.EsFieldType) == TypeDate {
-			tmps := []string{}
-			tmp := " "
-			tmp += "// " + utils.ToFirstLower(f.FieldName) + fmt.Sprintf("N%s", rtype) + " int " + f.FieldComment + RecentNames[rtype] + "\n"
-			tmps = append(tmps, tmp)
-			fieldParamCmts = append(fieldParamCmts, tmps)
-		}
-	}
+	fieldParamCmts := GenRangeParamCmt(types, optList, []string{TypeNumber})
+	fieldParamCmts = append(fieldParamCmts, GenRecentParamCmt(types, rtype, optList, []string{TypeDate})...)
 	paramOpts := utils.Cartesian(fieldParamCmts)
 
 	// 函数注释和参数注释合并

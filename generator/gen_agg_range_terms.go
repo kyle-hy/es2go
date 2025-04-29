@@ -149,7 +149,7 @@ func getAggRangeTermsFuncComment(structComment string, fields, termsFields []*Fi
 	filterParam := GenParamCmt(other, false)
 
 	// 范围条件部分
-	fieldParamCmts := GenRangeParamCmt(types, optList)
+	fieldParamCmts := GenRangeParamCmt(types, optList, nil)
 
 	// 函数注释和参数注释合并
 	paramOpts := utils.Cartesian(fieldParamCmts)

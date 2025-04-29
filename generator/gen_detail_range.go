@@ -89,18 +89,7 @@ func getDetailRangeFuncName(structName string, fields []*FieldInfo, rangeTypes [
 	}
 
 	// 各字段与比较符号列表的串联
-	fieldOpts := [][]string{}
-	for _, f := range types {
-		tmps := []string{}
-		for _, opts := range optList {
-			tmp := f.FieldName
-			for _, opt := range opts {
-				tmp += opt
-			}
-			tmps = append(tmps, tmp)
-		}
-		fieldOpts = append(fieldOpts, tmps)
-	}
+	fieldOpts := GenRangeFieldName(types, optList, nil)
 
 	names := []string{}
 	fn := "Range" + structName + "By"
