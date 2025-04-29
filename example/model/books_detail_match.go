@@ -9,7 +9,7 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// MatchBooksByAllText 对全文本进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllText 根据全文本进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 func MatchBooksByAllText(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -19,7 +19,7 @@ func MatchBooksByAllText(es *elasticsearch.Client, allText string) (*eq.Data, *e
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthor 对作者进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthor 根据作者进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 func MatchBooksByAuthor(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -29,7 +29,7 @@ func MatchBooksByAuthor(es *elasticsearch.Client, author string) (*eq.Data, *eq.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass 对类别进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass 根据类别进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 func MatchBooksByClass(es *elasticsearch.Client, class string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -39,7 +39,7 @@ func MatchBooksByClass(es *elasticsearch.Client, class string) (*eq.Data, *eq.Qu
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2 对子类别进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2 根据子类别进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 func MatchBooksByClass2(es *elasticsearch.Client, class2 string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -49,7 +49,7 @@ func MatchBooksByClass2(es *elasticsearch.Client, class2 string) (*eq.Data, *eq.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByName 对书名进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByName 根据书名进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 func MatchBooksByName(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -59,7 +59,7 @@ func MatchBooksByName(es *elasticsearch.Client, name string) (*eq.Data, *eq.Quer
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCount 对页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByPageCount 根据页数进行检索(等于)查找books表的详细数据列表和总数量
 // pageCount int64 页数
 func MatchBooksByPageCount(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -69,7 +69,7 @@ func MatchBooksByPageCount(es *elasticsearch.Client, pageCount int64) (*eq.Data,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPrice 对价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByPrice 根据价格进行检索(等于)查找books表的详细数据列表和总数量
 // price float64 价格
 func MatchBooksByPrice(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -79,7 +79,7 @@ func MatchBooksByPrice(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Q
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDate 对发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByReleaseDate 根据发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // releaseDate time.Time 发布日期
 func MatchBooksByReleaseDate(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -89,7 +89,7 @@ func MatchBooksByReleaseDate(es *elasticsearch.Client, releaseDate time.Time) (*
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksBySeq 对编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksBySeq 根据编号进行检索(等于)查找books表的详细数据列表和总数量
 // seq string 编号
 func MatchBooksBySeq(es *elasticsearch.Client, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -99,7 +99,7 @@ func MatchBooksBySeq(es *elasticsearch.Client, seq string) (*eq.Data, *eq.Query,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthor 对全文本、作者进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthor 根据全文本、作者进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 func MatchBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
@@ -111,7 +111,7 @@ func MatchBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string)
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass 对全文本、类别进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass 根据全文本、类别进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 func MatchBooksByAllTextClass(es *elasticsearch.Client, allText, class string) (*eq.Data, *eq.Query, error) {
@@ -125,7 +125,7 @@ func MatchBooksByAllTextClass(es *elasticsearch.Client, allText, class string) (
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2 对全文本、子类别进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2 根据全文本、子类别进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 func MatchBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string) (*eq.Data, *eq.Query, error) {
@@ -139,7 +139,7 @@ func MatchBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string)
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextName 对全文本、书名进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextName 根据全文本、书名进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 func MatchBooksByAllTextName(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
@@ -151,7 +151,7 @@ func MatchBooksByAllTextName(es *elasticsearch.Client, allText, name string) (*e
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCount 对全文本、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextPageCount 根据全文本、页数进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // pageCount int64 页数
 func MatchBooksByAllTextPageCount(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -165,7 +165,7 @@ func MatchBooksByAllTextPageCount(es *elasticsearch.Client, allText string, page
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPrice 对全文本、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextPrice 根据全文本、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // price float64 价格
 func MatchBooksByAllTextPrice(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
@@ -179,7 +179,7 @@ func MatchBooksByAllTextPrice(es *elasticsearch.Client, allText string, price fl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDate 对全文本、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextReleaseDate 根据全文本、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // releaseDate time.Time 发布日期
 func MatchBooksByAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -193,7 +193,7 @@ func MatchBooksByAllTextReleaseDate(es *elasticsearch.Client, allText string, re
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextSeq 对全文本、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextSeq 根据全文本、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // seq string 编号
 func MatchBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string) (*eq.Data, *eq.Query, error) {
@@ -207,7 +207,7 @@ func MatchBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string) (*eq.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass 对作者、类别进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass 根据作者、类别进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 func MatchBooksByAuthorClass(es *elasticsearch.Client, author, class string) (*eq.Data, *eq.Query, error) {
@@ -221,7 +221,7 @@ func MatchBooksByAuthorClass(es *elasticsearch.Client, author, class string) (*e
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2 对作者、子类别进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2 根据作者、子类别进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 func MatchBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string) (*eq.Data, *eq.Query, error) {
@@ -235,7 +235,7 @@ func MatchBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string) (
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorName 对作者、书名进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorName 根据作者、书名进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // name string 书名
 func MatchBooksByAuthorName(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
@@ -247,7 +247,7 @@ func MatchBooksByAuthorName(es *elasticsearch.Client, author, name string) (*eq.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCount 对作者、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorPageCount 根据作者、页数进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // pageCount int64 页数
 func MatchBooksByAuthorPageCount(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -261,7 +261,7 @@ func MatchBooksByAuthorPageCount(es *elasticsearch.Client, author string, pageCo
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPrice 对作者、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorPrice 根据作者、价格进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // price float64 价格
 func MatchBooksByAuthorPrice(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
@@ -275,7 +275,7 @@ func MatchBooksByAuthorPrice(es *elasticsearch.Client, author string, price floa
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDate 对作者、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorReleaseDate 根据作者、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // releaseDate time.Time 发布日期
 func MatchBooksByAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -289,7 +289,7 @@ func MatchBooksByAuthorReleaseDate(es *elasticsearch.Client, author string, rele
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorSeq 对作者、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorSeq 根据作者、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // seq string 编号
 func MatchBooksByAuthorSeq(es *elasticsearch.Client, author, seq string) (*eq.Data, *eq.Query, error) {
@@ -303,7 +303,7 @@ func MatchBooksByAuthorSeq(es *elasticsearch.Client, author, seq string) (*eq.Da
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2 对类别、子类别进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2 根据类别、子类别进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 func MatchBooksByClassClass2(es *elasticsearch.Client, class, class2 string) (*eq.Data, *eq.Query, error) {
@@ -315,7 +315,7 @@ func MatchBooksByClassClass2(es *elasticsearch.Client, class, class2 string) (*e
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassName 对类别、书名进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassName 根据类别、书名进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // name string 书名
 func MatchBooksByClassName(es *elasticsearch.Client, class, name string) (*eq.Data, *eq.Query, error) {
@@ -329,7 +329,7 @@ func MatchBooksByClassName(es *elasticsearch.Client, class, name string) (*eq.Da
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCount 对类别、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassPageCount 根据类别、页数进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // pageCount int64 页数
 func MatchBooksByClassPageCount(es *elasticsearch.Client, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -341,7 +341,7 @@ func MatchBooksByClassPageCount(es *elasticsearch.Client, class string, pageCoun
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPrice 对类别、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassPrice 根据类别、价格进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // price float64 价格
 func MatchBooksByClassPrice(es *elasticsearch.Client, class string, price float64) (*eq.Data, *eq.Query, error) {
@@ -353,7 +353,7 @@ func MatchBooksByClassPrice(es *elasticsearch.Client, class string, price float6
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDate 对类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassReleaseDate 根据类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // releaseDate time.Time 发布日期
 func MatchBooksByClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -365,7 +365,7 @@ func MatchBooksByClassReleaseDate(es *elasticsearch.Client, class string, releas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassSeq 对类别、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassSeq 根据类别、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // seq string 编号
 func MatchBooksByClassSeq(es *elasticsearch.Client, class, seq string) (*eq.Data, *eq.Query, error) {
@@ -377,7 +377,7 @@ func MatchBooksByClassSeq(es *elasticsearch.Client, class, seq string) (*eq.Data
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2Name 对子类别、书名进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2Name 根据子类别、书名进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // name string 书名
 func MatchBooksByClass2Name(es *elasticsearch.Client, class2, name string) (*eq.Data, *eq.Query, error) {
@@ -391,7 +391,7 @@ func MatchBooksByClass2Name(es *elasticsearch.Client, class2, name string) (*eq.
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCount 对子类别、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2PageCount 根据子类别、页数进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // pageCount int64 页数
 func MatchBooksByClass2PageCount(es *elasticsearch.Client, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -403,7 +403,7 @@ func MatchBooksByClass2PageCount(es *elasticsearch.Client, class2 string, pageCo
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2Price 对子类别、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2Price 根据子类别、价格进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // price float64 价格
 func MatchBooksByClass2Price(es *elasticsearch.Client, class2 string, price float64) (*eq.Data, *eq.Query, error) {
@@ -415,7 +415,7 @@ func MatchBooksByClass2Price(es *elasticsearch.Client, class2 string, price floa
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDate 对子类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2ReleaseDate 根据子类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 func MatchBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -427,7 +427,7 @@ func MatchBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 string, rele
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2Seq 对子类别、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2Seq 根据子类别、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // seq string 编号
 func MatchBooksByClass2Seq(es *elasticsearch.Client, class2, seq string) (*eq.Data, *eq.Query, error) {
@@ -439,7 +439,7 @@ func MatchBooksByClass2Seq(es *elasticsearch.Client, class2, seq string) (*eq.Da
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCount 对书名、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByNamePageCount 根据书名、页数进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // pageCount int64 页数
 func MatchBooksByNamePageCount(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -453,7 +453,7 @@ func MatchBooksByNamePageCount(es *elasticsearch.Client, name string, pageCount 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePrice 对书名、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByNamePrice 根据书名、价格进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // price float64 价格
 func MatchBooksByNamePrice(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
@@ -467,7 +467,7 @@ func MatchBooksByNamePrice(es *elasticsearch.Client, name string, price float64)
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDate 对书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByNameReleaseDate 根据书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // releaseDate time.Time 发布日期
 func MatchBooksByNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -481,7 +481,7 @@ func MatchBooksByNameReleaseDate(es *elasticsearch.Client, name string, releaseD
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameSeq 对书名、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByNameSeq 根据书名、编号进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // seq string 编号
 func MatchBooksByNameSeq(es *elasticsearch.Client, name, seq string) (*eq.Data, *eq.Query, error) {
@@ -495,7 +495,7 @@ func MatchBooksByNameSeq(es *elasticsearch.Client, name, seq string) (*eq.Data, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPrice 对页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByPageCountPrice 根据页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // pageCount int64 页数
 // price float64 价格
 func MatchBooksByPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
@@ -507,7 +507,7 @@ func MatchBooksByPageCountPrice(es *elasticsearch.Client, pageCount int64, price
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDate 对页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByPageCountReleaseDate 根据页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 func MatchBooksByPageCountReleaseDate(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -519,7 +519,7 @@ func MatchBooksByPageCountReleaseDate(es *elasticsearch.Client, pageCount int64,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountSeq 对页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByPageCountSeq 根据页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // pageCount int64 页数
 // seq string 编号
 func MatchBooksByPageCountSeq(es *elasticsearch.Client, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
@@ -531,7 +531,7 @@ func MatchBooksByPageCountSeq(es *elasticsearch.Client, pageCount int64, seq str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDate 对价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByPriceReleaseDate 根据价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // price float64 价格
 // releaseDate time.Time 发布日期
 func MatchBooksByPriceReleaseDate(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
@@ -543,7 +543,7 @@ func MatchBooksByPriceReleaseDate(es *elasticsearch.Client, price float64, relea
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceSeq 对价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByPriceSeq 根据价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // price float64 价格
 // seq string 编号
 func MatchBooksByPriceSeq(es *elasticsearch.Client, price float64, seq string) (*eq.Data, *eq.Query, error) {
@@ -555,7 +555,7 @@ func MatchBooksByPriceSeq(es *elasticsearch.Client, price float64, seq string) (
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateSeq 对发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByReleaseDateSeq 根据发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // releaseDate time.Time 发布日期
 // seq string 编号
 func MatchBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
@@ -567,7 +567,7 @@ func MatchBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass 对全文本、作者、类别进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorClass 根据全文本、作者、类别进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -583,7 +583,7 @@ func MatchBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, author, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2 对全文本、作者、子类别进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorClass2 根据全文本、作者、子类别进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -599,7 +599,7 @@ func MatchBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorName 对全文本、作者、书名进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorName 根据全文本、作者、书名进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -613,7 +613,7 @@ func MatchBooksByAllTextAuthorName(es *elasticsearch.Client, allText, author, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCount 对全文本、作者、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorPageCount 根据全文本、作者、页数进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -629,7 +629,7 @@ func MatchBooksByAllTextAuthorPageCount(es *elasticsearch.Client, allText, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPrice 对全文本、作者、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorPrice 根据全文本、作者、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -645,7 +645,7 @@ func MatchBooksByAllTextAuthorPrice(es *elasticsearch.Client, allText, author st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDate 对全文本、作者、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorReleaseDate 根据全文本、作者、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
@@ -661,7 +661,7 @@ func MatchBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorSeq 对全文本、作者、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorSeq 根据全文本、作者、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // seq string 编号
@@ -677,7 +677,7 @@ func MatchBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2 对全文本、类别、子类别进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassClass2 根据全文本、类别、子类别进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -693,7 +693,7 @@ func MatchBooksByAllTextClassClass2(es *elasticsearch.Client, allText, class, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassName 对全文本、类别、书名进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassName 根据全文本、类别、书名进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -709,7 +709,7 @@ func MatchBooksByAllTextClassName(es *elasticsearch.Client, allText, class, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCount 对全文本、类别、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassPageCount 根据全文本、类别、页数进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -725,7 +725,7 @@ func MatchBooksByAllTextClassPageCount(es *elasticsearch.Client, allText, class 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPrice 对全文本、类别、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassPrice 根据全文本、类别、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // price float64 价格
@@ -741,7 +741,7 @@ func MatchBooksByAllTextClassPrice(es *elasticsearch.Client, allText, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassReleaseDate 对全文本、类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassReleaseDate 根据全文本、类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
@@ -757,7 +757,7 @@ func MatchBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allText, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassSeq 对全文本、类别、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassSeq 根据全文本、类别、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // seq string 编号
@@ -773,7 +773,7 @@ func MatchBooksByAllTextClassSeq(es *elasticsearch.Client, allText, class, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2Name 对全文本、子类别、书名进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2Name 根据全文本、子类别、书名进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -789,7 +789,7 @@ func MatchBooksByAllTextClass2Name(es *elasticsearch.Client, allText, class2, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCount 对全文本、子类别、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2PageCount 根据全文本、子类别、页数进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -805,7 +805,7 @@ func MatchBooksByAllTextClass2PageCount(es *elasticsearch.Client, allText, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2Price 对全文本、子类别、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2Price 根据全文本、子类别、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
@@ -821,7 +821,7 @@ func MatchBooksByAllTextClass2Price(es *elasticsearch.Client, allText, class2 st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2ReleaseDate 对全文本、子类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2ReleaseDate 根据全文本、子类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
@@ -837,7 +837,7 @@ func MatchBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2Seq 对全文本、子类别、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2Seq 根据全文本、子类别、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 // seq string 编号
@@ -853,7 +853,7 @@ func MatchBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCount 对全文本、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextNamePageCount 根据全文本、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -869,7 +869,7 @@ func MatchBooksByAllTextNamePageCount(es *elasticsearch.Client, allText, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePrice 对全文本、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextNamePrice 根据全文本、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -885,7 +885,7 @@ func MatchBooksByAllTextNamePrice(es *elasticsearch.Client, allText, name string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDate 对全文本、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextNameReleaseDate 根据全文本、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -901,7 +901,7 @@ func MatchBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameSeq 对全文本、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextNameSeq 根据全文本、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // seq string 编号
@@ -917,7 +917,7 @@ func MatchBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name, seq str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPrice 对全文本、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextPageCountPrice 根据全文本、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -933,7 +933,7 @@ func MatchBooksByAllTextPageCountPrice(es *elasticsearch.Client, allText string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDate 对全文本、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextPageCountReleaseDate 根据全文本、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -949,7 +949,7 @@ func MatchBooksByAllTextPageCountReleaseDate(es *elasticsearch.Client, allText s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountSeq 对全文本、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextPageCountSeq 根据全文本、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // pageCount int64 页数
 // seq string 编号
@@ -965,7 +965,7 @@ func MatchBooksByAllTextPageCountSeq(es *elasticsearch.Client, allText string, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDate 对全文本、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextPriceReleaseDate 根据全文本、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -981,7 +981,7 @@ func MatchBooksByAllTextPriceReleaseDate(es *elasticsearch.Client, allText strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceSeq 对全文本、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextPriceSeq 根据全文本、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // price float64 价格
 // seq string 编号
@@ -997,7 +997,7 @@ func MatchBooksByAllTextPriceSeq(es *elasticsearch.Client, allText string, price
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateSeq 对全文本、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextReleaseDateSeq 根据全文本、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -1013,7 +1013,7 @@ func MatchBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2 对作者、类别、子类别进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassClass2 根据作者、类别、子类别进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -1029,7 +1029,7 @@ func MatchBooksByAuthorClassClass2(es *elasticsearch.Client, author, class, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassName 对作者、类别、书名进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassName 根据作者、类别、书名进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // name string 书名
@@ -1045,7 +1045,7 @@ func MatchBooksByAuthorClassName(es *elasticsearch.Client, author, class, name s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCount 对作者、类别、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassPageCount 根据作者、类别、页数进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -1061,7 +1061,7 @@ func MatchBooksByAuthorClassPageCount(es *elasticsearch.Client, author, class st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPrice 对作者、类别、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassPrice 根据作者、类别、价格进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // price float64 价格
@@ -1077,7 +1077,7 @@ func MatchBooksByAuthorClassPrice(es *elasticsearch.Client, author, class string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassReleaseDate 对作者、类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassReleaseDate 根据作者、类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
@@ -1093,7 +1093,7 @@ func MatchBooksByAuthorClassReleaseDate(es *elasticsearch.Client, author, class 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassSeq 对作者、类别、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassSeq 根据作者、类别、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // seq string 编号
@@ -1109,7 +1109,7 @@ func MatchBooksByAuthorClassSeq(es *elasticsearch.Client, author, class, seq str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2Name 对作者、子类别、书名进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2Name 根据作者、子类别、书名进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -1125,7 +1125,7 @@ func MatchBooksByAuthorClass2Name(es *elasticsearch.Client, author, class2, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCount 对作者、子类别、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2PageCount 根据作者、子类别、页数进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -1141,7 +1141,7 @@ func MatchBooksByAuthorClass2PageCount(es *elasticsearch.Client, author, class2 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2Price 对作者、子类别、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2Price 根据作者、子类别、价格进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 // price float64 价格
@@ -1157,7 +1157,7 @@ func MatchBooksByAuthorClass2Price(es *elasticsearch.Client, author, class2 stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2ReleaseDate 对作者、子类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2ReleaseDate 根据作者、子类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
@@ -1173,7 +1173,7 @@ func MatchBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2Seq 对作者、子类别、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2Seq 根据作者、子类别、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 // seq string 编号
@@ -1189,7 +1189,7 @@ func MatchBooksByAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCount 对作者、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorNamePageCount 根据作者、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -1205,7 +1205,7 @@ func MatchBooksByAuthorNamePageCount(es *elasticsearch.Client, author, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePrice 对作者、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorNamePrice 根据作者、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -1221,7 +1221,7 @@ func MatchBooksByAuthorNamePrice(es *elasticsearch.Client, author, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDate 对作者、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorNameReleaseDate 根据作者、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -1237,7 +1237,7 @@ func MatchBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameSeq 对作者、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorNameSeq 根据作者、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // name string 书名
 // seq string 编号
@@ -1253,7 +1253,7 @@ func MatchBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPrice 对作者、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorPageCountPrice 根据作者、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -1269,7 +1269,7 @@ func MatchBooksByAuthorPageCountPrice(es *elasticsearch.Client, author string, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDate 对作者、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorPageCountReleaseDate 根据作者、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -1285,7 +1285,7 @@ func MatchBooksByAuthorPageCountReleaseDate(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountSeq 对作者、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorPageCountSeq 根据作者、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
@@ -1301,7 +1301,7 @@ func MatchBooksByAuthorPageCountSeq(es *elasticsearch.Client, author string, pag
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDate 对作者、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorPriceReleaseDate 根据作者、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -1317,7 +1317,7 @@ func MatchBooksByAuthorPriceReleaseDate(es *elasticsearch.Client, author string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceSeq 对作者、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorPriceSeq 根据作者、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // price float64 价格
 // seq string 编号
@@ -1333,7 +1333,7 @@ func MatchBooksByAuthorPriceSeq(es *elasticsearch.Client, author string, price f
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateSeq 对作者、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorReleaseDateSeq 根据作者、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -1349,7 +1349,7 @@ func MatchBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, r
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2Name 对类别、子类别、书名进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2Name 根据类别、子类别、书名进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -1365,7 +1365,7 @@ func MatchBooksByClassClass2Name(es *elasticsearch.Client, class, class2, name s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PageCount 对类别、子类别、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2PageCount 根据类别、子类别、页数进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
@@ -1379,7 +1379,7 @@ func MatchBooksByClassClass2PageCount(es *elasticsearch.Client, class, class2 st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2Price 对类别、子类别、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2Price 根据类别、子类别、价格进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 // price float64 价格
@@ -1393,7 +1393,7 @@ func MatchBooksByClassClass2Price(es *elasticsearch.Client, class, class2 string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2ReleaseDate 对类别、子类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2ReleaseDate 根据类别、子类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
@@ -1407,7 +1407,7 @@ func MatchBooksByClassClass2ReleaseDate(es *elasticsearch.Client, class, class2 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2Seq 对类别、子类别、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2Seq 根据类别、子类别、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 // seq string 编号
@@ -1421,7 +1421,7 @@ func MatchBooksByClassClass2Seq(es *elasticsearch.Client, class, class2, seq str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCount 对类别、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassNamePageCount 根据类别、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -1437,7 +1437,7 @@ func MatchBooksByClassNamePageCount(es *elasticsearch.Client, class, name string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePrice 对类别、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassNamePrice 根据类别、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // name string 书名
 // price float64 价格
@@ -1453,7 +1453,7 @@ func MatchBooksByClassNamePrice(es *elasticsearch.Client, class, name string, pr
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameReleaseDate 对类别、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassNameReleaseDate 根据类别、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -1469,7 +1469,7 @@ func MatchBooksByClassNameReleaseDate(es *elasticsearch.Client, class, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameSeq 对类别、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassNameSeq 根据类别、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // name string 书名
 // seq string 编号
@@ -1485,7 +1485,7 @@ func MatchBooksByClassNameSeq(es *elasticsearch.Client, class, name, seq string)
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPrice 对类别、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassPageCountPrice 根据类别、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
@@ -1499,7 +1499,7 @@ func MatchBooksByClassPageCountPrice(es *elasticsearch.Client, class string, pag
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountReleaseDate 对类别、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassPageCountReleaseDate 根据类别、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -1513,7 +1513,7 @@ func MatchBooksByClassPageCountReleaseDate(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountSeq 对类别、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassPageCountSeq 根据类别、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // pageCount int64 页数
 // seq string 编号
@@ -1527,7 +1527,7 @@ func MatchBooksByClassPageCountSeq(es *elasticsearch.Client, class string, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceReleaseDate 对类别、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassPriceReleaseDate 根据类别、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -1541,7 +1541,7 @@ func MatchBooksByClassPriceReleaseDate(es *elasticsearch.Client, class string, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceSeq 对类别、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassPriceSeq 根据类别、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // price float64 价格
 // seq string 编号
@@ -1555,7 +1555,7 @@ func MatchBooksByClassPriceSeq(es *elasticsearch.Client, class string, price flo
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateSeq 对类别、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassReleaseDateSeq 根据类别、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -1569,7 +1569,7 @@ func MatchBooksByClassReleaseDateSeq(es *elasticsearch.Client, class string, rel
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCount 对子类别、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2NamePageCount 根据子类别、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -1585,7 +1585,7 @@ func MatchBooksByClass2NamePageCount(es *elasticsearch.Client, class2, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePrice 对子类别、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2NamePrice 根据子类别、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // name string 书名
 // price float64 价格
@@ -1601,7 +1601,7 @@ func MatchBooksByClass2NamePrice(es *elasticsearch.Client, class2, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameReleaseDate 对子类别、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2NameReleaseDate 根据子类别、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -1617,7 +1617,7 @@ func MatchBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameSeq 对子类别、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2NameSeq 根据子类别、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // name string 书名
 // seq string 编号
@@ -1633,7 +1633,7 @@ func MatchBooksByClass2NameSeq(es *elasticsearch.Client, class2, name, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPrice 对子类别、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2PageCountPrice 根据子类别、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
@@ -1647,7 +1647,7 @@ func MatchBooksByClass2PageCountPrice(es *elasticsearch.Client, class2 string, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountReleaseDate 对子类别、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2PageCountReleaseDate 根据子类别、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -1661,7 +1661,7 @@ func MatchBooksByClass2PageCountReleaseDate(es *elasticsearch.Client, class2 str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountSeq 对子类别、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2PageCountSeq 根据子类别、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
@@ -1675,7 +1675,7 @@ func MatchBooksByClass2PageCountSeq(es *elasticsearch.Client, class2 string, pag
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceReleaseDate 对子类别、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2PriceReleaseDate 根据子类别、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -1689,7 +1689,7 @@ func MatchBooksByClass2PriceReleaseDate(es *elasticsearch.Client, class2 string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceSeq 对子类别、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2PriceSeq 根据子类别、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
@@ -1703,7 +1703,7 @@ func MatchBooksByClass2PriceSeq(es *elasticsearch.Client, class2 string, price f
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateSeq 对子类别、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2ReleaseDateSeq 根据子类别、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -1717,7 +1717,7 @@ func MatchBooksByClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, r
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPrice 对书名、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByNamePageCountPrice 根据书名、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -1733,7 +1733,7 @@ func MatchBooksByNamePageCountPrice(es *elasticsearch.Client, name string, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDate 对书名、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByNamePageCountReleaseDate 根据书名、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -1749,7 +1749,7 @@ func MatchBooksByNamePageCountReleaseDate(es *elasticsearch.Client, name string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountSeq 对书名、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByNamePageCountSeq 根据书名、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
@@ -1765,7 +1765,7 @@ func MatchBooksByNamePageCountSeq(es *elasticsearch.Client, name string, pageCou
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDate 对书名、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByNamePriceReleaseDate 根据书名、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -1781,7 +1781,7 @@ func MatchBooksByNamePriceReleaseDate(es *elasticsearch.Client, name string, pri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceSeq 对书名、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByNamePriceSeq 根据书名、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // price float64 价格
 // seq string 编号
@@ -1797,7 +1797,7 @@ func MatchBooksByNamePriceSeq(es *elasticsearch.Client, name string, price float
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateSeq 对书名、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByNameReleaseDateSeq 根据书名、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -1813,7 +1813,7 @@ func MatchBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, relea
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDate 对页数、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByPageCountPriceReleaseDate 根据页数、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -1827,7 +1827,7 @@ func MatchBooksByPageCountPriceReleaseDate(es *elasticsearch.Client, pageCount i
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceSeq 对页数、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByPageCountPriceSeq 根据页数、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
@@ -1841,7 +1841,7 @@ func MatchBooksByPageCountPriceSeq(es *elasticsearch.Client, pageCount int64, pr
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateSeq 对页数、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByPageCountReleaseDateSeq 根据页数、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -1855,7 +1855,7 @@ func MatchBooksByPageCountReleaseDateSeq(es *elasticsearch.Client, pageCount int
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateSeq 对价格、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByPriceReleaseDateSeq 根据价格、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
@@ -1869,7 +1869,7 @@ func MatchBooksByPriceReleaseDateSeq(es *elasticsearch.Client, price float64, re
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassClass2 对全文本、作者、类别、子类别进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorClassClass2 根据全文本、作者、类别、子类别进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1887,7 +1887,7 @@ func MatchBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, allText, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassName 对全文本、作者、类别、书名进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorClassName 根据全文本、作者、类别、书名进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1905,7 +1905,7 @@ func MatchBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassPageCount 对全文本、作者、类别、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorClassPageCount 根据全文本、作者、类别、页数进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1923,7 +1923,7 @@ func MatchBooksByAllTextAuthorClassPageCount(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassPrice 对全文本、作者、类别、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorClassPrice 根据全文本、作者、类别、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1941,7 +1941,7 @@ func MatchBooksByAllTextAuthorClassPrice(es *elasticsearch.Client, allText, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassReleaseDate 对全文本、作者、类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorClassReleaseDate 根据全文本、作者、类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1959,7 +1959,7 @@ func MatchBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassSeq 对全文本、作者、类别、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorClassSeq 根据全文本、作者、类别、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1977,7 +1977,7 @@ func MatchBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allText, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2Name 对全文本、作者、子类别、书名进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorClass2Name 根据全文本、作者、子类别、书名进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -1995,7 +1995,7 @@ func MatchBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allText, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2PageCount 对全文本、作者、子类别、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorClass2PageCount 根据全文本、作者、子类别、页数进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -2013,7 +2013,7 @@ func MatchBooksByAllTextAuthorClass2PageCount(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2Price 对全文本、作者、子类别、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorClass2Price 根据全文本、作者、子类别、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -2031,7 +2031,7 @@ func MatchBooksByAllTextAuthorClass2Price(es *elasticsearch.Client, allText, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2ReleaseDate 对全文本、作者、子类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorClass2ReleaseDate 根据全文本、作者、子类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -2049,7 +2049,7 @@ func MatchBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2Seq 对全文本、作者、子类别、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorClass2Seq 根据全文本、作者、子类别、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -2067,7 +2067,7 @@ func MatchBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allText, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePageCount 对全文本、作者、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorNamePageCount 根据全文本、作者、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -2085,7 +2085,7 @@ func MatchBooksByAllTextAuthorNamePageCount(es *elasticsearch.Client, allText, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNamePrice 对全文本、作者、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorNamePrice 根据全文本、作者、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -2103,7 +2103,7 @@ func MatchBooksByAllTextAuthorNamePrice(es *elasticsearch.Client, allText, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameReleaseDate 对全文本、作者、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorNameReleaseDate 根据全文本、作者、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -2121,7 +2121,7 @@ func MatchBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameSeq 对全文本、作者、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorNameSeq 根据全文本、作者、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -2139,7 +2139,7 @@ func MatchBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountPrice 对全文本、作者、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorPageCountPrice 根据全文本、作者、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -2157,7 +2157,7 @@ func MatchBooksByAllTextAuthorPageCountPrice(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountReleaseDate 对全文本、作者、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorPageCountReleaseDate 根据全文本、作者、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -2175,7 +2175,7 @@ func MatchBooksByAllTextAuthorPageCountReleaseDate(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountSeq 对全文本、作者、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorPageCountSeq 根据全文本、作者、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -2193,7 +2193,7 @@ func MatchBooksByAllTextAuthorPageCountSeq(es *elasticsearch.Client, allText, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceReleaseDate 对全文本、作者、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorPriceReleaseDate 根据全文本、作者、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -2211,7 +2211,7 @@ func MatchBooksByAllTextAuthorPriceReleaseDate(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceSeq 对全文本、作者、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorPriceSeq 根据全文本、作者、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -2229,7 +2229,7 @@ func MatchBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client, allText, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateSeq 对全文本、作者、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextAuthorReleaseDateSeq 根据全文本、作者、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
@@ -2247,7 +2247,7 @@ func MatchBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2Name 对全文本、类别、子类别、书名进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassClass2Name 根据全文本、类别、子类别、书名进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -2265,7 +2265,7 @@ func MatchBooksByAllTextClassClass2Name(es *elasticsearch.Client, allText, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2PageCount 对全文本、类别、子类别、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassClass2PageCount 根据全文本、类别、子类别、页数进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -2283,7 +2283,7 @@ func MatchBooksByAllTextClassClass2PageCount(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2Price 对全文本、类别、子类别、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassClass2Price 根据全文本、类别、子类别、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -2301,7 +2301,7 @@ func MatchBooksByAllTextClassClass2Price(es *elasticsearch.Client, allText, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2ReleaseDate 对全文本、类别、子类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassClass2ReleaseDate 根据全文本、类别、子类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -2319,7 +2319,7 @@ func MatchBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2Seq 对全文本、类别、子类别、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassClass2Seq 根据全文本、类别、子类别、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -2337,7 +2337,7 @@ func MatchBooksByAllTextClassClass2Seq(es *elasticsearch.Client, allText, class,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNamePageCount 对全文本、类别、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassNamePageCount 根据全文本、类别、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -2355,7 +2355,7 @@ func MatchBooksByAllTextClassNamePageCount(es *elasticsearch.Client, allText, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNamePrice 对全文本、类别、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassNamePrice 根据全文本、类别、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -2373,7 +2373,7 @@ func MatchBooksByAllTextClassNamePrice(es *elasticsearch.Client, allText, class,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameReleaseDate 对全文本、类别、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassNameReleaseDate 根据全文本、类别、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -2391,7 +2391,7 @@ func MatchBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameSeq 对全文本、类别、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassNameSeq 根据全文本、类别、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -2409,7 +2409,7 @@ func MatchBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText, class, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountPrice 对全文本、类别、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassPageCountPrice 根据全文本、类别、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -2427,7 +2427,7 @@ func MatchBooksByAllTextClassPageCountPrice(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountReleaseDate 对全文本、类别、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassPageCountReleaseDate 根据全文本、类别、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -2445,7 +2445,7 @@ func MatchBooksByAllTextClassPageCountReleaseDate(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountSeq 对全文本、类别、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassPageCountSeq 根据全文本、类别、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -2463,7 +2463,7 @@ func MatchBooksByAllTextClassPageCountSeq(es *elasticsearch.Client, allText, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceReleaseDate 对全文本、类别、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassPriceReleaseDate 根据全文本、类别、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // price float64 价格
@@ -2481,7 +2481,7 @@ func MatchBooksByAllTextClassPriceReleaseDate(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceSeq 对全文本、类别、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassPriceSeq 根据全文本、类别、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // price float64 价格
@@ -2499,7 +2499,7 @@ func MatchBooksByAllTextClassPriceSeq(es *elasticsearch.Client, allText, class s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassReleaseDateSeq 对全文本、类别、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClassReleaseDateSeq 根据全文本、类别、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
@@ -2517,7 +2517,7 @@ func MatchBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NamePageCount 对全文本、子类别、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2NamePageCount 根据全文本、子类别、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -2535,7 +2535,7 @@ func MatchBooksByAllTextClass2NamePageCount(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NamePrice 对全文本、子类别、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2NamePrice 根据全文本、子类别、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -2553,7 +2553,7 @@ func MatchBooksByAllTextClass2NamePrice(es *elasticsearch.Client, allText, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameReleaseDate 对全文本、子类别、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2NameReleaseDate 根据全文本、子类别、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -2571,7 +2571,7 @@ func MatchBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameSeq 对全文本、子类别、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2NameSeq 根据全文本、子类别、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -2589,7 +2589,7 @@ func MatchBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allText, class2,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountPrice 对全文本、子类别、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2PageCountPrice 根据全文本、子类别、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -2607,7 +2607,7 @@ func MatchBooksByAllTextClass2PageCountPrice(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountReleaseDate 对全文本、子类别、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2PageCountReleaseDate 根据全文本、子类别、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -2625,7 +2625,7 @@ func MatchBooksByAllTextClass2PageCountReleaseDate(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountSeq 对全文本、子类别、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2PageCountSeq 根据全文本、子类别、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -2643,7 +2643,7 @@ func MatchBooksByAllTextClass2PageCountSeq(es *elasticsearch.Client, allText, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceReleaseDate 对全文本、子类别、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2PriceReleaseDate 根据全文本、子类别、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
@@ -2661,7 +2661,7 @@ func MatchBooksByAllTextClass2PriceReleaseDate(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceSeq 对全文本、子类别、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2PriceSeq 根据全文本、子类别、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
@@ -2679,7 +2679,7 @@ func MatchBooksByAllTextClass2PriceSeq(es *elasticsearch.Client, allText, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2ReleaseDateSeq 对全文本、子类别、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextClass2ReleaseDateSeq 根据全文本、子类别、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
@@ -2697,7 +2697,7 @@ func MatchBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountPrice 对全文本、书名、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextNamePageCountPrice 根据全文本、书名、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -2715,7 +2715,7 @@ func MatchBooksByAllTextNamePageCountPrice(es *elasticsearch.Client, allText, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountReleaseDate 对全文本、书名、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextNamePageCountReleaseDate 根据全文本、书名、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -2733,7 +2733,7 @@ func MatchBooksByAllTextNamePageCountReleaseDate(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountSeq 对全文本、书名、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextNamePageCountSeq 根据全文本、书名、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -2751,7 +2751,7 @@ func MatchBooksByAllTextNamePageCountSeq(es *elasticsearch.Client, allText, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceReleaseDate 对全文本、书名、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextNamePriceReleaseDate 根据全文本、书名、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -2769,7 +2769,7 @@ func MatchBooksByAllTextNamePriceReleaseDate(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceSeq 对全文本、书名、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextNamePriceSeq 根据全文本、书名、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -2787,7 +2787,7 @@ func MatchBooksByAllTextNamePriceSeq(es *elasticsearch.Client, allText, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateSeq 对全文本、书名、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextNameReleaseDateSeq 根据全文本、书名、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -2805,7 +2805,7 @@ func MatchBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceReleaseDate 对全文本、页数、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextPageCountPriceReleaseDate 根据全文本、页数、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -2823,7 +2823,7 @@ func MatchBooksByAllTextPageCountPriceReleaseDate(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountPriceSeq 对全文本、页数、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextPageCountPriceSeq 根据全文本、页数、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -2841,7 +2841,7 @@ func MatchBooksByAllTextPageCountPriceSeq(es *elasticsearch.Client, allText stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateSeq 对全文本、页数、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextPageCountReleaseDateSeq 根据全文本、页数、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -2859,7 +2859,7 @@ func MatchBooksByAllTextPageCountReleaseDateSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateSeq 对全文本、价格、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAllTextPriceReleaseDateSeq 根据全文本、价格、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -2877,7 +2877,7 @@ func MatchBooksByAllTextPriceReleaseDateSeq(es *elasticsearch.Client, allText st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2Name 对作者、类别、子类别、书名进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassClass2Name 根据作者、类别、子类别、书名进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -2895,7 +2895,7 @@ func MatchBooksByAuthorClassClass2Name(es *elasticsearch.Client, author, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2PageCount 对作者、类别、子类别、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassClass2PageCount 根据作者、类别、子类别、页数进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -2913,7 +2913,7 @@ func MatchBooksByAuthorClassClass2PageCount(es *elasticsearch.Client, author, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2Price 对作者、类别、子类别、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassClass2Price 根据作者、类别、子类别、价格进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -2931,7 +2931,7 @@ func MatchBooksByAuthorClassClass2Price(es *elasticsearch.Client, author, class,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2ReleaseDate 对作者、类别、子类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassClass2ReleaseDate 根据作者、类别、子类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -2949,7 +2949,7 @@ func MatchBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2Seq 对作者、类别、子类别、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassClass2Seq 根据作者、类别、子类别、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -2967,7 +2967,7 @@ func MatchBooksByAuthorClassClass2Seq(es *elasticsearch.Client, author, class, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNamePageCount 对作者、类别、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassNamePageCount 根据作者、类别、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // name string 书名
@@ -2985,7 +2985,7 @@ func MatchBooksByAuthorClassNamePageCount(es *elasticsearch.Client, author, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNamePrice 对作者、类别、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassNamePrice 根据作者、类别、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // name string 书名
@@ -3003,7 +3003,7 @@ func MatchBooksByAuthorClassNamePrice(es *elasticsearch.Client, author, class, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameReleaseDate 对作者、类别、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassNameReleaseDate 根据作者、类别、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // name string 书名
@@ -3021,7 +3021,7 @@ func MatchBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, author, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameSeq 对作者、类别、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassNameSeq 根据作者、类别、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // name string 书名
@@ -3039,7 +3039,7 @@ func MatchBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, class, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountPrice 对作者、类别、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassPageCountPrice 根据作者、类别、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -3057,7 +3057,7 @@ func MatchBooksByAuthorClassPageCountPrice(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountReleaseDate 对作者、类别、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassPageCountReleaseDate 根据作者、类别、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -3075,7 +3075,7 @@ func MatchBooksByAuthorClassPageCountReleaseDate(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountSeq 对作者、类别、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassPageCountSeq 根据作者、类别、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -3093,7 +3093,7 @@ func MatchBooksByAuthorClassPageCountSeq(es *elasticsearch.Client, author, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceReleaseDate 对作者、类别、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassPriceReleaseDate 根据作者、类别、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // price float64 价格
@@ -3111,7 +3111,7 @@ func MatchBooksByAuthorClassPriceReleaseDate(es *elasticsearch.Client, author, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceSeq 对作者、类别、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassPriceSeq 根据作者、类别、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // price float64 价格
@@ -3129,7 +3129,7 @@ func MatchBooksByAuthorClassPriceSeq(es *elasticsearch.Client, author, class str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassReleaseDateSeq 对作者、类别、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClassReleaseDateSeq 根据作者、类别、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
@@ -3147,7 +3147,7 @@ func MatchBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NamePageCount 对作者、子类别、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2NamePageCount 根据作者、子类别、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -3165,7 +3165,7 @@ func MatchBooksByAuthorClass2NamePageCount(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NamePrice 对作者、子类别、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2NamePrice 根据作者、子类别、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -3183,7 +3183,7 @@ func MatchBooksByAuthorClass2NamePrice(es *elasticsearch.Client, author, class2,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameReleaseDate 对作者、子类别、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2NameReleaseDate 根据作者、子类别、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -3201,7 +3201,7 @@ func MatchBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, author, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameSeq 对作者、子类别、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2NameSeq 根据作者、子类别、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -3219,7 +3219,7 @@ func MatchBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author, class2, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountPrice 对作者、子类别、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2PageCountPrice 根据作者、子类别、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -3237,7 +3237,7 @@ func MatchBooksByAuthorClass2PageCountPrice(es *elasticsearch.Client, author, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountReleaseDate 对作者、子类别、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2PageCountReleaseDate 根据作者、子类别、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -3255,7 +3255,7 @@ func MatchBooksByAuthorClass2PageCountReleaseDate(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountSeq 对作者、子类别、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2PageCountSeq 根据作者、子类别、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -3273,7 +3273,7 @@ func MatchBooksByAuthorClass2PageCountSeq(es *elasticsearch.Client, author, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceReleaseDate 对作者、子类别、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2PriceReleaseDate 根据作者、子类别、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 // price float64 价格
@@ -3291,7 +3291,7 @@ func MatchBooksByAuthorClass2PriceReleaseDate(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceSeq 对作者、子类别、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2PriceSeq 根据作者、子类别、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 // price float64 价格
@@ -3309,7 +3309,7 @@ func MatchBooksByAuthorClass2PriceSeq(es *elasticsearch.Client, author, class2 s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2ReleaseDateSeq 对作者、子类别、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorClass2ReleaseDateSeq 根据作者、子类别、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
@@ -3327,7 +3327,7 @@ func MatchBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, author, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountPrice 对作者、书名、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorNamePageCountPrice 根据作者、书名、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -3345,7 +3345,7 @@ func MatchBooksByAuthorNamePageCountPrice(es *elasticsearch.Client, author, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountReleaseDate 对作者、书名、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorNamePageCountReleaseDate 根据作者、书名、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -3363,7 +3363,7 @@ func MatchBooksByAuthorNamePageCountReleaseDate(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountSeq 对作者、书名、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorNamePageCountSeq 根据作者、书名、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -3381,7 +3381,7 @@ func MatchBooksByAuthorNamePageCountSeq(es *elasticsearch.Client, author, name s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceReleaseDate 对作者、书名、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorNamePriceReleaseDate 根据作者、书名、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -3399,7 +3399,7 @@ func MatchBooksByAuthorNamePriceReleaseDate(es *elasticsearch.Client, author, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceSeq 对作者、书名、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorNamePriceSeq 根据作者、书名、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -3417,7 +3417,7 @@ func MatchBooksByAuthorNamePriceSeq(es *elasticsearch.Client, author, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateSeq 对作者、书名、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorNameReleaseDateSeq 根据作者、书名、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -3435,7 +3435,7 @@ func MatchBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceReleaseDate 对作者、页数、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorPageCountPriceReleaseDate 根据作者、页数、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -3453,7 +3453,7 @@ func MatchBooksByAuthorPageCountPriceReleaseDate(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountPriceSeq 对作者、页数、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorPageCountPriceSeq 根据作者、页数、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -3471,7 +3471,7 @@ func MatchBooksByAuthorPageCountPriceSeq(es *elasticsearch.Client, author string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateSeq 对作者、页数、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorPageCountReleaseDateSeq 根据作者、页数、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -3489,7 +3489,7 @@ func MatchBooksByAuthorPageCountReleaseDateSeq(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateSeq 对作者、价格、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByAuthorPriceReleaseDateSeq 根据作者、价格、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -3507,7 +3507,7 @@ func MatchBooksByAuthorPriceReleaseDateSeq(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2NamePageCount 对类别、子类别、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2NamePageCount 根据类别、子类别、书名、页数进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -3525,7 +3525,7 @@ func MatchBooksByClassClass2NamePageCount(es *elasticsearch.Client, class, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2NamePrice 对类别、子类别、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2NamePrice 根据类别、子类别、书名、价格进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -3543,7 +3543,7 @@ func MatchBooksByClassClass2NamePrice(es *elasticsearch.Client, class, class2, n
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2NameReleaseDate 对类别、子类别、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2NameReleaseDate 根据类别、子类别、书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -3561,7 +3561,7 @@ func MatchBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, class, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2NameSeq 对类别、子类别、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2NameSeq 根据类别、子类别、书名、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -3579,7 +3579,7 @@ func MatchBooksByClassClass2NameSeq(es *elasticsearch.Client, class, class2, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PageCountPrice 对类别、子类别、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2PageCountPrice 根据类别、子类别、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
@@ -3595,7 +3595,7 @@ func MatchBooksByClassClass2PageCountPrice(es *elasticsearch.Client, class, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PageCountReleaseDate 对类别、子类别、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2PageCountReleaseDate 根据类别、子类别、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
@@ -3611,7 +3611,7 @@ func MatchBooksByClassClass2PageCountReleaseDate(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PageCountSeq 对类别、子类别、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2PageCountSeq 根据类别、子类别、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
@@ -3627,7 +3627,7 @@ func MatchBooksByClassClass2PageCountSeq(es *elasticsearch.Client, class, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PriceReleaseDate 对类别、子类别、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2PriceReleaseDate 根据类别、子类别、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 // price float64 价格
@@ -3643,7 +3643,7 @@ func MatchBooksByClassClass2PriceReleaseDate(es *elasticsearch.Client, class, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PriceSeq 对类别、子类别、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2PriceSeq 根据类别、子类别、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 // price float64 价格
@@ -3659,7 +3659,7 @@ func MatchBooksByClassClass2PriceSeq(es *elasticsearch.Client, class, class2 str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2ReleaseDateSeq 对类别、子类别、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassClass2ReleaseDateSeq 根据类别、子类别、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
@@ -3675,7 +3675,7 @@ func MatchBooksByClassClass2ReleaseDateSeq(es *elasticsearch.Client, class, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountPrice 对类别、书名、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassNamePageCountPrice 根据类别、书名、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -3693,7 +3693,7 @@ func MatchBooksByClassNamePageCountPrice(es *elasticsearch.Client, class, name s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountReleaseDate 对类别、书名、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassNamePageCountReleaseDate 根据类别、书名、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -3711,7 +3711,7 @@ func MatchBooksByClassNamePageCountReleaseDate(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountSeq 对类别、书名、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassNamePageCountSeq 根据类别、书名、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -3729,7 +3729,7 @@ func MatchBooksByClassNamePageCountSeq(es *elasticsearch.Client, class, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceReleaseDate 对类别、书名、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassNamePriceReleaseDate 根据类别、书名、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // name string 书名
 // price float64 价格
@@ -3747,7 +3747,7 @@ func MatchBooksByClassNamePriceReleaseDate(es *elasticsearch.Client, class, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceSeq 对类别、书名、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassNamePriceSeq 根据类别、书名、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // name string 书名
 // price float64 价格
@@ -3765,7 +3765,7 @@ func MatchBooksByClassNamePriceSeq(es *elasticsearch.Client, class, name string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameReleaseDateSeq 对类别、书名、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassNameReleaseDateSeq 根据类别、书名、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -3783,7 +3783,7 @@ func MatchBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPriceReleaseDate 对类别、页数、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassPageCountPriceReleaseDate 根据类别、页数、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
@@ -3799,7 +3799,7 @@ func MatchBooksByClassPageCountPriceReleaseDate(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountPriceSeq 对类别、页数、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassPageCountPriceSeq 根据类别、页数、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
@@ -3815,7 +3815,7 @@ func MatchBooksByClassPageCountPriceSeq(es *elasticsearch.Client, class string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountReleaseDateSeq 对类别、页数、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassPageCountReleaseDateSeq 根据类别、页数、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -3831,7 +3831,7 @@ func MatchBooksByClassPageCountReleaseDateSeq(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceReleaseDateSeq 对类别、价格、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClassPriceReleaseDateSeq 根据类别、价格、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -3847,7 +3847,7 @@ func MatchBooksByClassPriceReleaseDateSeq(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountPrice 对子类别、书名、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2NamePageCountPrice 根据子类别、书名、页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -3865,7 +3865,7 @@ func MatchBooksByClass2NamePageCountPrice(es *elasticsearch.Client, class2, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountReleaseDate 对子类别、书名、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2NamePageCountReleaseDate 根据子类别、书名、页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -3883,7 +3883,7 @@ func MatchBooksByClass2NamePageCountReleaseDate(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountSeq 对子类别、书名、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2NamePageCountSeq 根据子类别、书名、页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -3901,7 +3901,7 @@ func MatchBooksByClass2NamePageCountSeq(es *elasticsearch.Client, class2, name s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceReleaseDate 对子类别、书名、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2NamePriceReleaseDate 根据子类别、书名、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // name string 书名
 // price float64 价格
@@ -3919,7 +3919,7 @@ func MatchBooksByClass2NamePriceReleaseDate(es *elasticsearch.Client, class2, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceSeq 对子类别、书名、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2NamePriceSeq 根据子类别、书名、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // name string 书名
 // price float64 价格
@@ -3937,7 +3937,7 @@ func MatchBooksByClass2NamePriceSeq(es *elasticsearch.Client, class2, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameReleaseDateSeq 对子类别、书名、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2NameReleaseDateSeq 根据子类别、书名、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
@@ -3955,7 +3955,7 @@ func MatchBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, class2, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPriceReleaseDate 对子类别、页数、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2PageCountPriceReleaseDate 根据子类别、页数、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
@@ -3971,7 +3971,7 @@ func MatchBooksByClass2PageCountPriceReleaseDate(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountPriceSeq 对子类别、页数、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2PageCountPriceSeq 根据子类别、页数、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
@@ -3987,7 +3987,7 @@ func MatchBooksByClass2PageCountPriceSeq(es *elasticsearch.Client, class2 string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountReleaseDateSeq 对子类别、页数、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2PageCountReleaseDateSeq 根据子类别、页数、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -4003,7 +4003,7 @@ func MatchBooksByClass2PageCountReleaseDateSeq(es *elasticsearch.Client, class2 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceReleaseDateSeq 对子类别、价格、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByClass2PriceReleaseDateSeq 根据子类别、价格、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -4019,7 +4019,7 @@ func MatchBooksByClass2PriceReleaseDateSeq(es *elasticsearch.Client, class2 stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceReleaseDate 对书名、页数、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByNamePageCountPriceReleaseDate 根据书名、页数、价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -4037,7 +4037,7 @@ func MatchBooksByNamePageCountPriceReleaseDate(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountPriceSeq 对书名、页数、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByNamePageCountPriceSeq 根据书名、页数、价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -4055,7 +4055,7 @@ func MatchBooksByNamePageCountPriceSeq(es *elasticsearch.Client, name string, pa
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateSeq 对书名、页数、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByNamePageCountReleaseDateSeq 根据书名、页数、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
@@ -4073,7 +4073,7 @@ func MatchBooksByNamePageCountReleaseDateSeq(es *elasticsearch.Client, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateSeq 对书名、价格、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByNamePriceReleaseDateSeq 根据书名、价格、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
@@ -4091,7 +4091,7 @@ func MatchBooksByNamePriceReleaseDateSeq(es *elasticsearch.Client, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountPriceReleaseDateSeq 对页数、价格、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
+// MatchBooksByPageCountPriceReleaseDateSeq 根据页数、价格、发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期

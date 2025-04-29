@@ -50,7 +50,7 @@ func getDetailMatchFuncName(structName string, fields []*FieldInfo) string {
 // getDetailMatchFuncComment 获取函数注释
 func getDetailMatchFuncComment(structComment string, fields []*FieldInfo) string {
 	// 函数注释
-	cmt := "对" + GenFieldsCmt(fields, true)
+	cmt := "根据" + GenFieldsCmt(fields, true)
 	cmt += "进行检索(等于)查找" + structComment + "的详细数据列表和总数量\n"
 
 	// 参数注释
@@ -75,7 +75,7 @@ func getDetailMatchQuery(fields []*FieldInfo, termInShould bool) string {
 
 	// bool部分参数
 	bq := GenBoolCond(mq, tq, termInShould)
-	esq := GenESQueryCond(bq, "")
+	esq := GenESQueryCond(bq, "", "", "")
 
 	// 拼接match和term条件
 	fq := mq + tq + esq

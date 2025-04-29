@@ -30,6 +30,10 @@ type GenConfig struct {
 	TermsFields    []string `json:"termsFields"`    // 做分组统计的字段
 	NotTermsFields []string `json:"notTermsFields"` // 不做分组统计的字段
 
+	// topN详情的字段配置
+	TopNFields    []string `json:"topNFields"`    // 做TopN查询的字段
+	NotTopNFields []string `json:"notTopNFields"` // 不做TopN查询的字段
+
 	// 统计信息的字段配置
 	StatsFields    []string `json:"statsFields"`    // 做统计的字段
 	NotStatsFields []string `json:"notStatsFields"` // 不做统计的字段

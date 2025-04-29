@@ -91,7 +91,7 @@ func getAggMatchTermsQuery(fields, termsFields []*FieldInfo, termInShould bool) 
 
 	// bool部分参数
 	bq := GenBoolCond(mq, tq, termInShould)
-	esq := GenESQueryCond(bq, aq)
+	esq := GenESQueryCond(bq, aq, "", "")
 
 	// 拼接match和term条件
 	fq := mq + tq + aq + esq

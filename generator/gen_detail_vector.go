@@ -110,7 +110,7 @@ func getDetailVectorQuery(fields []*FieldInfo, termInShould bool, rangeTypes []s
 	mq := GenFilterCond(other) // 过滤条件
 	bq := GenBoolCond(mq, "", termInShould)
 	kq := GenKnnCond(types, bq)
-	esq := GenESQueryCond("knn", "")
+	esq := GenESQueryCond("knn", "", "", "")
 	return mq + kq + esq
 }
 

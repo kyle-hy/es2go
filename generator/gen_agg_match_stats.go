@@ -87,7 +87,7 @@ func getAggMatchStatsQuery(fields, termsFields []*FieldInfo, stype string) strin
 
 	// bool部分参数
 	bq := GenBoolCond(mq, tq, false)
-	esq := GenESQueryCond(bq, aq)
+	esq := GenESQueryCond(bq, aq, "", "")
 
 	// 拼接match和term条件
 	fq := mq + tq + aq + esq

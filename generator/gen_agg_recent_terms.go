@@ -186,7 +186,7 @@ func getAggRecentTermsQuery(fields, termsFields []*FieldInfo, rangeTypes []strin
 		bq := GenBoolCond(mq, tq, termInShould)
 
 		// esquery部分
-		esq := GenESQueryCond(bq, aq)
+		esq := GenESQueryCond(bq, aq, "", "")
 
 		// 拼接match,term和agg条件
 		fq := mq + tq + aq + esq

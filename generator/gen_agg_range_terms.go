@@ -170,7 +170,7 @@ func getAggRangeTermsQuery(fields, termsFields []*FieldInfo, rangeTypes []string
 		bq := GenBoolCond(mq, trq, termInShould)
 
 		// esquery部分
-		esq := GenESQueryCond(bq, aq)
+		esq := GenESQueryCond(bq, aq, "", "")
 
 		// 拼接match,term和agg条件
 		fq := mq + trq + aq + esq

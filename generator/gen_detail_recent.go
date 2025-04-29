@@ -166,7 +166,7 @@ func getDetailRecentQuery(fields []*FieldInfo, rangeTypes []string, termInShould
 	for idx, fq := range funcRanges {
 		fq = WrapTermCond(tq + fq)
 		bq := GenBoolCond(mq, fq, termInShould)
-		esq := GenESQueryCond(bq, "")
+		esq := GenESQueryCond(bq, "", "", "")
 		funcRanges[idx] = mq + fq + esq
 	}
 

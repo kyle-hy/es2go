@@ -7,6 +7,13 @@ var (
 	StatsFuncs = map[string]string{"Avg": AggFuncAvg, "Sum": AggFuncSum, "Min": AggFuncMin, "Max": AggFuncMax, "Stats": AggFuncStats}
 )
 
+// 数值极值统计
+var (
+	TopTypes = []string{"MaxN", "MinN"}
+	TopNames = map[string]string{"MaxN": "最大", "MinN": "最小"}
+	TopOrder = map[string]string{"MaxN": "desc", "MinN": "asc"}
+)
+
 // 近期时间聚合
 var (
 	RecentTypes  = []string{"Day", "Week", "Month", "Quarter", "Year"}

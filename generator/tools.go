@@ -374,6 +374,12 @@ func GenTermCond(fields []*FieldInfo) string {
 	return ""
 }
 
+// GenSortCond 生成sort条件
+func GenSortCond(fields []*FieldInfo, topOpt string) string {
+	eqs := eqSorts(fields, TopOrder[topOpt]) + "\n"
+	return "sorts := " + eqs
+}
+
 // WrapTermCond 封装term条件为map
 func WrapTermCond(fields string) string {
 	if fields != "" {
@@ -465,11 +471,23 @@ func GenBoolCond(mq, tq string, termInShould bool) string {
 }
 
 // GenESQueryCond 生成bool条件
-func GenESQueryCond(query, agg string) string {
+func GenESQueryCond(query, agg, sort, size string) string {
 	// 组合bool条件
-	fq := "	esQuery := &eq.ESQuery{Query: " + query
+	fq := "	esQuery := &eq.ESQuery{Query: "
+	if query != "" {
+		fq += query
+	}
+
 	if agg != "" {
 		fq += ", Agg: aggs"
+	}
+
+	if sort != "" {
+		fq += ", Sort: sorts"
+	}
+
+	if size != "" {
+		fq += ", Size: size"
 	}
 	fq += "}"
 	return fq
@@ -566,6 +584,17 @@ func eqTerms(fields []*FieldInfo) string {
 		if f.EsFieldType != "text" {
 			tq += fmt.Sprintf("		eq.Term(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
 		}
+	}
+	return tq
+}
+
+// sort条件列表
+func eqSorts(fields []*FieldInfo, order string) string {
+	tq := ""
+	sf := "eq.Sort"
+	for _, f := range fields {
+		tq += fmt.Sprintf("%s(\"%s\", \"%s\")", sf, f.EsFieldPath, order)
+		sf = ".With"
 	}
 	return tq
 }

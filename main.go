@@ -85,6 +85,9 @@ func main() {
 		gen.GenEsDetailRecent,
 		gen.GenEsDetailVector,
 
+		// top N 查询
+		gen.GenEsDetailMatchTopN,
+
 		// 生成聚合分析代码
 		gen.GenEsAggMatchTerms,
 		gen.GenEsAggMatchStats,
