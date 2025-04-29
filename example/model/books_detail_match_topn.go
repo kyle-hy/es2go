@@ -9,8 +9,9 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// MatchBooksByAllTextMaxNPageCount 根据全文本进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextMaxNPageCount 根据全文本检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
+// size int 前N条记录
 func MatchBooksByAllTextMaxNPageCount(es *elasticsearch.Client, allText string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -20,8 +21,9 @@ func MatchBooksByAllTextMaxNPageCount(es *elasticsearch.Client, allText string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextMinNPageCount 根据全文本进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextMinNPageCount 根据全文本检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
+// size int 前N条记录
 func MatchBooksByAllTextMinNPageCount(es *elasticsearch.Client, allText string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -31,8 +33,9 @@ func MatchBooksByAllTextMinNPageCount(es *elasticsearch.Client, allText string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextMaxNPrice 根据全文本进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextMaxNPrice 根据全文本检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
+// size int 前N条记录
 func MatchBooksByAllTextMaxNPrice(es *elasticsearch.Client, allText string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -42,8 +45,9 @@ func MatchBooksByAllTextMaxNPrice(es *elasticsearch.Client, allText string, size
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextMinNPrice 根据全文本进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextMinNPrice 根据全文本检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
+// size int 前N条记录
 func MatchBooksByAllTextMinNPrice(es *elasticsearch.Client, allText string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -53,8 +57,9 @@ func MatchBooksByAllTextMinNPrice(es *elasticsearch.Client, allText string, size
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorMaxNPageCount 根据作者进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorMaxNPageCount 根据作者检索books表中页数最大的前N条详细数据列表
 // author string 作者
+// size int 前N条记录
 func MatchBooksByAuthorMaxNPageCount(es *elasticsearch.Client, author string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -64,8 +69,9 @@ func MatchBooksByAuthorMaxNPageCount(es *elasticsearch.Client, author string, si
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorMinNPageCount 根据作者进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorMinNPageCount 根据作者检索books表中页数最小的前N条详细数据列表
 // author string 作者
+// size int 前N条记录
 func MatchBooksByAuthorMinNPageCount(es *elasticsearch.Client, author string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -75,8 +81,9 @@ func MatchBooksByAuthorMinNPageCount(es *elasticsearch.Client, author string, si
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorMaxNPrice 根据作者进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorMaxNPrice 根据作者检索books表中价格最大的前N条详细数据列表
 // author string 作者
+// size int 前N条记录
 func MatchBooksByAuthorMaxNPrice(es *elasticsearch.Client, author string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -86,8 +93,9 @@ func MatchBooksByAuthorMaxNPrice(es *elasticsearch.Client, author string, size i
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorMinNPrice 根据作者进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorMinNPrice 根据作者检索books表中价格最小的前N条详细数据列表
 // author string 作者
+// size int 前N条记录
 func MatchBooksByAuthorMinNPrice(es *elasticsearch.Client, author string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -97,8 +105,9 @@ func MatchBooksByAuthorMinNPrice(es *elasticsearch.Client, author string, size i
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassMaxNPageCount 根据类别进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassMaxNPageCount 根据类别检索books表中页数最大的前N条详细数据列表
 // class string 类别
+// size int 前N条记录
 func MatchBooksByClassMaxNPageCount(es *elasticsearch.Client, class string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -108,8 +117,9 @@ func MatchBooksByClassMaxNPageCount(es *elasticsearch.Client, class string, size
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassMinNPageCount 根据类别进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassMinNPageCount 根据类别检索books表中页数最小的前N条详细数据列表
 // class string 类别
+// size int 前N条记录
 func MatchBooksByClassMinNPageCount(es *elasticsearch.Client, class string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -119,8 +129,9 @@ func MatchBooksByClassMinNPageCount(es *elasticsearch.Client, class string, size
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassMaxNPrice 根据类别进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassMaxNPrice 根据类别检索books表中价格最大的前N条详细数据列表
 // class string 类别
+// size int 前N条记录
 func MatchBooksByClassMaxNPrice(es *elasticsearch.Client, class string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -130,8 +141,9 @@ func MatchBooksByClassMaxNPrice(es *elasticsearch.Client, class string, size int
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassMinNPrice 根据类别进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassMinNPrice 根据类别检索books表中价格最小的前N条详细数据列表
 // class string 类别
+// size int 前N条记录
 func MatchBooksByClassMinNPrice(es *elasticsearch.Client, class string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -141,8 +153,9 @@ func MatchBooksByClassMinNPrice(es *elasticsearch.Client, class string, size int
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2MaxNPageCount 根据子类别进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClass2MaxNPageCount 根据子类别检索books表中页数最大的前N条详细数据列表
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByClass2MaxNPageCount(es *elasticsearch.Client, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -152,8 +165,9 @@ func MatchBooksByClass2MaxNPageCount(es *elasticsearch.Client, class2 string, si
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2MinNPageCount 根据子类别进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClass2MinNPageCount 根据子类别检索books表中页数最小的前N条详细数据列表
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByClass2MinNPageCount(es *elasticsearch.Client, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -163,8 +177,9 @@ func MatchBooksByClass2MinNPageCount(es *elasticsearch.Client, class2 string, si
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2MaxNPrice 根据子类别进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClass2MaxNPrice 根据子类别检索books表中价格最大的前N条详细数据列表
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByClass2MaxNPrice(es *elasticsearch.Client, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -174,8 +189,9 @@ func MatchBooksByClass2MaxNPrice(es *elasticsearch.Client, class2 string, size i
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2MinNPrice 根据子类别进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClass2MinNPrice 根据子类别检索books表中价格最小的前N条详细数据列表
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByClass2MinNPrice(es *elasticsearch.Client, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -185,8 +201,9 @@ func MatchBooksByClass2MinNPrice(es *elasticsearch.Client, class2 string, size i
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameMaxNPageCount 根据书名进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByNameMaxNPageCount 根据书名检索books表中页数最大的前N条详细数据列表
 // name string 书名
+// size int 前N条记录
 func MatchBooksByNameMaxNPageCount(es *elasticsearch.Client, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -196,8 +213,9 @@ func MatchBooksByNameMaxNPageCount(es *elasticsearch.Client, name string, size i
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameMinNPageCount 根据书名进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByNameMinNPageCount 根据书名检索books表中页数最小的前N条详细数据列表
 // name string 书名
+// size int 前N条记录
 func MatchBooksByNameMinNPageCount(es *elasticsearch.Client, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -207,8 +225,9 @@ func MatchBooksByNameMinNPageCount(es *elasticsearch.Client, name string, size i
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameMaxNPrice 根据书名进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByNameMaxNPrice 根据书名检索books表中价格最大的前N条详细数据列表
 // name string 书名
+// size int 前N条记录
 func MatchBooksByNameMaxNPrice(es *elasticsearch.Client, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -218,8 +237,9 @@ func MatchBooksByNameMaxNPrice(es *elasticsearch.Client, name string, size int) 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameMinNPrice 根据书名进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByNameMinNPrice 根据书名检索books表中价格最小的前N条详细数据列表
 // name string 书名
+// size int 前N条记录
 func MatchBooksByNameMinNPrice(es *elasticsearch.Client, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -229,8 +249,9 @@ func MatchBooksByNameMinNPrice(es *elasticsearch.Client, name string, size int) 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountMaxNPrice 根据页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByPageCountMaxNPrice 根据页数检索books表中价格最大的前N条详细数据列表
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByPageCountMaxNPrice(es *elasticsearch.Client, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
@@ -240,8 +261,9 @@ func MatchBooksByPageCountMaxNPrice(es *elasticsearch.Client, pageCount int64, s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountMinNPrice 根据页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByPageCountMinNPrice 根据页数检索books表中价格最小的前N条详细数据列表
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByPageCountMinNPrice(es *elasticsearch.Client, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
@@ -251,8 +273,9 @@ func MatchBooksByPageCountMinNPrice(es *elasticsearch.Client, pageCount int64, s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceMaxNPageCount 根据价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByPriceMaxNPageCount 根据价格检索books表中页数最大的前N条详细数据列表
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByPriceMaxNPageCount(es *elasticsearch.Client, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
@@ -262,8 +285,9 @@ func MatchBooksByPriceMaxNPageCount(es *elasticsearch.Client, price float64, siz
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceMinNPageCount 根据价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByPriceMinNPageCount 根据价格检索books表中页数最小的前N条详细数据列表
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByPriceMinNPageCount(es *elasticsearch.Client, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
@@ -273,8 +297,9 @@ func MatchBooksByPriceMinNPageCount(es *elasticsearch.Client, price float64, siz
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateMaxNPageCount 根据发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByReleaseDateMaxNPageCount 根据发布日期检索books表中页数最大的前N条详细数据列表
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByReleaseDateMaxNPageCount(es *elasticsearch.Client, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
@@ -284,8 +309,9 @@ func MatchBooksByReleaseDateMaxNPageCount(es *elasticsearch.Client, releaseDate 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateMinNPageCount 根据发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByReleaseDateMinNPageCount 根据发布日期检索books表中页数最小的前N条详细数据列表
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByReleaseDateMinNPageCount(es *elasticsearch.Client, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
@@ -295,8 +321,9 @@ func MatchBooksByReleaseDateMinNPageCount(es *elasticsearch.Client, releaseDate 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateMaxNPrice 根据发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByReleaseDateMaxNPrice 根据发布日期检索books表中价格最大的前N条详细数据列表
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByReleaseDateMaxNPrice(es *elasticsearch.Client, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
@@ -306,8 +333,9 @@ func MatchBooksByReleaseDateMaxNPrice(es *elasticsearch.Client, releaseDate time
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateMinNPrice 根据发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByReleaseDateMinNPrice 根据发布日期检索books表中价格最小的前N条详细数据列表
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByReleaseDateMinNPrice(es *elasticsearch.Client, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
@@ -317,8 +345,9 @@ func MatchBooksByReleaseDateMinNPrice(es *elasticsearch.Client, releaseDate time
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksBySeqMaxNPageCount 根据编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksBySeqMaxNPageCount 根据编号检索books表中页数最大的前N条详细数据列表
 // seq string 编号
+// size int 前N条记录
 func MatchBooksBySeqMaxNPageCount(es *elasticsearch.Client, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
@@ -328,8 +357,9 @@ func MatchBooksBySeqMaxNPageCount(es *elasticsearch.Client, seq string, size int
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksBySeqMinNPageCount 根据编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksBySeqMinNPageCount 根据编号检索books表中页数最小的前N条详细数据列表
 // seq string 编号
+// size int 前N条记录
 func MatchBooksBySeqMinNPageCount(es *elasticsearch.Client, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
@@ -339,8 +369,9 @@ func MatchBooksBySeqMinNPageCount(es *elasticsearch.Client, seq string, size int
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksBySeqMaxNPrice 根据编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksBySeqMaxNPrice 根据编号检索books表中价格最大的前N条详细数据列表
 // seq string 编号
+// size int 前N条记录
 func MatchBooksBySeqMaxNPrice(es *elasticsearch.Client, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
@@ -350,8 +381,9 @@ func MatchBooksBySeqMaxNPrice(es *elasticsearch.Client, seq string, size int) (*
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksBySeqMinNPrice 根据编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksBySeqMinNPrice 根据编号检索books表中价格最小的前N条详细数据列表
 // seq string 编号
+// size int 前N条记录
 func MatchBooksBySeqMinNPrice(es *elasticsearch.Client, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
@@ -361,9 +393,10 @@ func MatchBooksBySeqMinNPrice(es *elasticsearch.Client, seq string, size int) (*
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorMaxNPageCount 根据全文本、作者进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextAuthorMaxNPageCount 根据全文本、作者检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // author string 作者
+// size int 前N条记录
 func MatchBooksByAllTextAuthorMaxNPageCount(es *elasticsearch.Client, allText, author string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -374,9 +407,10 @@ func MatchBooksByAllTextAuthorMaxNPageCount(es *elasticsearch.Client, allText, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorMinNPageCount 根据全文本、作者进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextAuthorMinNPageCount 根据全文本、作者检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // author string 作者
+// size int 前N条记录
 func MatchBooksByAllTextAuthorMinNPageCount(es *elasticsearch.Client, allText, author string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -387,9 +421,10 @@ func MatchBooksByAllTextAuthorMinNPageCount(es *elasticsearch.Client, allText, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorMaxNPrice 根据全文本、作者进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextAuthorMaxNPrice 根据全文本、作者检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // author string 作者
+// size int 前N条记录
 func MatchBooksByAllTextAuthorMaxNPrice(es *elasticsearch.Client, allText, author string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -400,9 +435,10 @@ func MatchBooksByAllTextAuthorMaxNPrice(es *elasticsearch.Client, allText, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorMinNPrice 根据全文本、作者进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextAuthorMinNPrice 根据全文本、作者检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // author string 作者
+// size int 前N条记录
 func MatchBooksByAllTextAuthorMinNPrice(es *elasticsearch.Client, allText, author string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -413,9 +449,10 @@ func MatchBooksByAllTextAuthorMinNPrice(es *elasticsearch.Client, allText, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassMaxNPageCount 根据全文本、类别进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextClassMaxNPageCount 根据全文本、类别检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // class string 类别
+// size int 前N条记录
 func MatchBooksByAllTextClassMaxNPageCount(es *elasticsearch.Client, allText, class string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -428,9 +465,10 @@ func MatchBooksByAllTextClassMaxNPageCount(es *elasticsearch.Client, allText, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassMinNPageCount 根据全文本、类别进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextClassMinNPageCount 根据全文本、类别检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // class string 类别
+// size int 前N条记录
 func MatchBooksByAllTextClassMinNPageCount(es *elasticsearch.Client, allText, class string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -443,9 +481,10 @@ func MatchBooksByAllTextClassMinNPageCount(es *elasticsearch.Client, allText, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassMaxNPrice 根据全文本、类别进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextClassMaxNPrice 根据全文本、类别检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // class string 类别
+// size int 前N条记录
 func MatchBooksByAllTextClassMaxNPrice(es *elasticsearch.Client, allText, class string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -458,9 +497,10 @@ func MatchBooksByAllTextClassMaxNPrice(es *elasticsearch.Client, allText, class 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassMinNPrice 根据全文本、类别进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextClassMinNPrice 根据全文本、类别检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // class string 类别
+// size int 前N条记录
 func MatchBooksByAllTextClassMinNPrice(es *elasticsearch.Client, allText, class string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -473,9 +513,10 @@ func MatchBooksByAllTextClassMinNPrice(es *elasticsearch.Client, allText, class 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2MaxNPageCount 根据全文本、子类别进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextClass2MaxNPageCount 根据全文本、子类别检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAllTextClass2MaxNPageCount(es *elasticsearch.Client, allText, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -488,9 +529,10 @@ func MatchBooksByAllTextClass2MaxNPageCount(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2MinNPageCount 根据全文本、子类别进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextClass2MinNPageCount 根据全文本、子类别检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAllTextClass2MinNPageCount(es *elasticsearch.Client, allText, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -503,9 +545,10 @@ func MatchBooksByAllTextClass2MinNPageCount(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2MaxNPrice 根据全文本、子类别进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextClass2MaxNPrice 根据全文本、子类别检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAllTextClass2MaxNPrice(es *elasticsearch.Client, allText, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -518,9 +561,10 @@ func MatchBooksByAllTextClass2MaxNPrice(es *elasticsearch.Client, allText, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2MinNPrice 根据全文本、子类别进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextClass2MinNPrice 根据全文本、子类别检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAllTextClass2MinNPrice(es *elasticsearch.Client, allText, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -533,9 +577,10 @@ func MatchBooksByAllTextClass2MinNPrice(es *elasticsearch.Client, allText, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameMaxNPageCount 根据全文本、书名进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextNameMaxNPageCount 根据全文本、书名检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextNameMaxNPageCount(es *elasticsearch.Client, allText, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -546,9 +591,10 @@ func MatchBooksByAllTextNameMaxNPageCount(es *elasticsearch.Client, allText, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameMinNPageCount 根据全文本、书名进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextNameMinNPageCount 根据全文本、书名检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextNameMinNPageCount(es *elasticsearch.Client, allText, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -559,9 +605,10 @@ func MatchBooksByAllTextNameMinNPageCount(es *elasticsearch.Client, allText, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameMaxNPrice 根据全文本、书名进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextNameMaxNPrice 根据全文本、书名检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextNameMaxNPrice(es *elasticsearch.Client, allText, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -572,9 +619,10 @@ func MatchBooksByAllTextNameMaxNPrice(es *elasticsearch.Client, allText, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameMinNPrice 根据全文本、书名进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextNameMinNPrice 根据全文本、书名检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextNameMinNPrice(es *elasticsearch.Client, allText, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -585,9 +633,10 @@ func MatchBooksByAllTextNameMinNPrice(es *elasticsearch.Client, allText, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountMaxNPrice 根据全文本、页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextPageCountMaxNPrice 根据全文本、页数检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAllTextPageCountMaxNPrice(es *elasticsearch.Client, allText string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -600,9 +649,10 @@ func MatchBooksByAllTextPageCountMaxNPrice(es *elasticsearch.Client, allText str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountMinNPrice 根据全文本、页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextPageCountMinNPrice 根据全文本、页数检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAllTextPageCountMinNPrice(es *elasticsearch.Client, allText string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -615,9 +665,10 @@ func MatchBooksByAllTextPageCountMinNPrice(es *elasticsearch.Client, allText str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceMaxNPageCount 根据全文本、价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextPriceMaxNPageCount 根据全文本、价格检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAllTextPriceMaxNPageCount(es *elasticsearch.Client, allText string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -630,9 +681,10 @@ func MatchBooksByAllTextPriceMaxNPageCount(es *elasticsearch.Client, allText str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceMinNPageCount 根据全文本、价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextPriceMinNPageCount 根据全文本、价格检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAllTextPriceMinNPageCount(es *elasticsearch.Client, allText string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -645,9 +697,10 @@ func MatchBooksByAllTextPriceMinNPageCount(es *elasticsearch.Client, allText str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateMaxNPageCount 根据全文本、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextReleaseDateMaxNPageCount 根据全文本、发布日期检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextReleaseDateMaxNPageCount(es *elasticsearch.Client, allText string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -660,9 +713,10 @@ func MatchBooksByAllTextReleaseDateMaxNPageCount(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateMinNPageCount 根据全文本、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextReleaseDateMinNPageCount 根据全文本、发布日期检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextReleaseDateMinNPageCount(es *elasticsearch.Client, allText string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -675,9 +729,10 @@ func MatchBooksByAllTextReleaseDateMinNPageCount(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateMaxNPrice 根据全文本、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextReleaseDateMaxNPrice 根据全文本、发布日期检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextReleaseDateMaxNPrice(es *elasticsearch.Client, allText string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -690,9 +745,10 @@ func MatchBooksByAllTextReleaseDateMaxNPrice(es *elasticsearch.Client, allText s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateMinNPrice 根据全文本、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextReleaseDateMinNPrice 根据全文本、发布日期检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextReleaseDateMinNPrice(es *elasticsearch.Client, allText string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -705,9 +761,10 @@ func MatchBooksByAllTextReleaseDateMinNPrice(es *elasticsearch.Client, allText s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextSeqMaxNPageCount 根据全文本、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextSeqMaxNPageCount 根据全文本、编号检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextSeqMaxNPageCount(es *elasticsearch.Client, allText, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -720,9 +777,10 @@ func MatchBooksByAllTextSeqMaxNPageCount(es *elasticsearch.Client, allText, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextSeqMinNPageCount 根据全文本、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextSeqMinNPageCount 根据全文本、编号检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextSeqMinNPageCount(es *elasticsearch.Client, allText, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -735,9 +793,10 @@ func MatchBooksByAllTextSeqMinNPageCount(es *elasticsearch.Client, allText, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextSeqMaxNPrice 根据全文本、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextSeqMaxNPrice 根据全文本、编号检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextSeqMaxNPrice(es *elasticsearch.Client, allText, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -750,9 +809,10 @@ func MatchBooksByAllTextSeqMaxNPrice(es *elasticsearch.Client, allText, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextSeqMinNPrice 根据全文本、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextSeqMinNPrice 根据全文本、编号检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextSeqMinNPrice(es *elasticsearch.Client, allText, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -765,9 +825,10 @@ func MatchBooksByAllTextSeqMinNPrice(es *elasticsearch.Client, allText, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassMaxNPageCount 根据作者、类别进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorClassMaxNPageCount 根据作者、类别检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // class string 类别
+// size int 前N条记录
 func MatchBooksByAuthorClassMaxNPageCount(es *elasticsearch.Client, author, class string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -780,9 +841,10 @@ func MatchBooksByAuthorClassMaxNPageCount(es *elasticsearch.Client, author, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassMinNPageCount 根据作者、类别进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorClassMinNPageCount 根据作者、类别检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // class string 类别
+// size int 前N条记录
 func MatchBooksByAuthorClassMinNPageCount(es *elasticsearch.Client, author, class string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -795,9 +857,10 @@ func MatchBooksByAuthorClassMinNPageCount(es *elasticsearch.Client, author, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassMaxNPrice 根据作者、类别进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorClassMaxNPrice 根据作者、类别检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // class string 类别
+// size int 前N条记录
 func MatchBooksByAuthorClassMaxNPrice(es *elasticsearch.Client, author, class string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -810,9 +873,10 @@ func MatchBooksByAuthorClassMaxNPrice(es *elasticsearch.Client, author, class st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassMinNPrice 根据作者、类别进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorClassMinNPrice 根据作者、类别检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // class string 类别
+// size int 前N条记录
 func MatchBooksByAuthorClassMinNPrice(es *elasticsearch.Client, author, class string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -825,9 +889,10 @@ func MatchBooksByAuthorClassMinNPrice(es *elasticsearch.Client, author, class st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2MaxNPageCount 根据作者、子类别进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorClass2MaxNPageCount 根据作者、子类别检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAuthorClass2MaxNPageCount(es *elasticsearch.Client, author, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -840,9 +905,10 @@ func MatchBooksByAuthorClass2MaxNPageCount(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2MinNPageCount 根据作者、子类别进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorClass2MinNPageCount 根据作者、子类别检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAuthorClass2MinNPageCount(es *elasticsearch.Client, author, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -855,9 +921,10 @@ func MatchBooksByAuthorClass2MinNPageCount(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2MaxNPrice 根据作者、子类别进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorClass2MaxNPrice 根据作者、子类别检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAuthorClass2MaxNPrice(es *elasticsearch.Client, author, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -870,9 +937,10 @@ func MatchBooksByAuthorClass2MaxNPrice(es *elasticsearch.Client, author, class2 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2MinNPrice 根据作者、子类别进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorClass2MinNPrice 根据作者、子类别检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAuthorClass2MinNPrice(es *elasticsearch.Client, author, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -885,9 +953,10 @@ func MatchBooksByAuthorClass2MinNPrice(es *elasticsearch.Client, author, class2 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameMaxNPageCount 根据作者、书名进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorNameMaxNPageCount 根据作者、书名检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAuthorNameMaxNPageCount(es *elasticsearch.Client, author, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -898,9 +967,10 @@ func MatchBooksByAuthorNameMaxNPageCount(es *elasticsearch.Client, author, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameMinNPageCount 根据作者、书名进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorNameMinNPageCount 根据作者、书名检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAuthorNameMinNPageCount(es *elasticsearch.Client, author, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -911,9 +981,10 @@ func MatchBooksByAuthorNameMinNPageCount(es *elasticsearch.Client, author, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameMaxNPrice 根据作者、书名进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorNameMaxNPrice 根据作者、书名检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAuthorNameMaxNPrice(es *elasticsearch.Client, author, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -924,9 +995,10 @@ func MatchBooksByAuthorNameMaxNPrice(es *elasticsearch.Client, author, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameMinNPrice 根据作者、书名进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorNameMinNPrice 根据作者、书名检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAuthorNameMinNPrice(es *elasticsearch.Client, author, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -937,9 +1009,10 @@ func MatchBooksByAuthorNameMinNPrice(es *elasticsearch.Client, author, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountMaxNPrice 根据作者、页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorPageCountMaxNPrice 根据作者、页数检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAuthorPageCountMaxNPrice(es *elasticsearch.Client, author string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -952,9 +1025,10 @@ func MatchBooksByAuthorPageCountMaxNPrice(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountMinNPrice 根据作者、页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorPageCountMinNPrice 根据作者、页数检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAuthorPageCountMinNPrice(es *elasticsearch.Client, author string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -967,9 +1041,10 @@ func MatchBooksByAuthorPageCountMinNPrice(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceMaxNPageCount 根据作者、价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorPriceMaxNPageCount 根据作者、价格检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAuthorPriceMaxNPageCount(es *elasticsearch.Client, author string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -982,9 +1057,10 @@ func MatchBooksByAuthorPriceMaxNPageCount(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceMinNPageCount 根据作者、价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorPriceMinNPageCount 根据作者、价格检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAuthorPriceMinNPageCount(es *elasticsearch.Client, author string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -997,9 +1073,10 @@ func MatchBooksByAuthorPriceMinNPageCount(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateMaxNPageCount 根据作者、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorReleaseDateMaxNPageCount 根据作者、发布日期检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorReleaseDateMaxNPageCount(es *elasticsearch.Client, author string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -1012,9 +1089,10 @@ func MatchBooksByAuthorReleaseDateMaxNPageCount(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateMinNPageCount 根据作者、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorReleaseDateMinNPageCount 根据作者、发布日期检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorReleaseDateMinNPageCount(es *elasticsearch.Client, author string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -1027,9 +1105,10 @@ func MatchBooksByAuthorReleaseDateMinNPageCount(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateMaxNPrice 根据作者、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorReleaseDateMaxNPrice 根据作者、发布日期检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorReleaseDateMaxNPrice(es *elasticsearch.Client, author string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -1042,9 +1121,10 @@ func MatchBooksByAuthorReleaseDateMaxNPrice(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateMinNPrice 根据作者、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorReleaseDateMinNPrice 根据作者、发布日期检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorReleaseDateMinNPrice(es *elasticsearch.Client, author string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -1057,9 +1137,10 @@ func MatchBooksByAuthorReleaseDateMinNPrice(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorSeqMaxNPageCount 根据作者、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorSeqMaxNPageCount 根据作者、编号检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorSeqMaxNPageCount(es *elasticsearch.Client, author, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -1072,9 +1153,10 @@ func MatchBooksByAuthorSeqMaxNPageCount(es *elasticsearch.Client, author, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorSeqMinNPageCount 根据作者、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorSeqMinNPageCount 根据作者、编号检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorSeqMinNPageCount(es *elasticsearch.Client, author, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -1087,9 +1169,10 @@ func MatchBooksByAuthorSeqMinNPageCount(es *elasticsearch.Client, author, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorSeqMaxNPrice 根据作者、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorSeqMaxNPrice 根据作者、编号检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorSeqMaxNPrice(es *elasticsearch.Client, author, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -1102,9 +1185,10 @@ func MatchBooksByAuthorSeqMaxNPrice(es *elasticsearch.Client, author, seq string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorSeqMinNPrice 根据作者、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorSeqMinNPrice 根据作者、编号检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorSeqMinNPrice(es *elasticsearch.Client, author, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -1117,9 +1201,10 @@ func MatchBooksByAuthorSeqMinNPrice(es *elasticsearch.Client, author, seq string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2MaxNPageCount 根据类别、子类别进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassClass2MaxNPageCount 根据类别、子类别检索books表中页数最大的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByClassClass2MaxNPageCount(es *elasticsearch.Client, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1130,9 +1215,10 @@ func MatchBooksByClassClass2MaxNPageCount(es *elasticsearch.Client, class, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2MinNPageCount 根据类别、子类别进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassClass2MinNPageCount 根据类别、子类别检索books表中页数最小的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByClassClass2MinNPageCount(es *elasticsearch.Client, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1143,9 +1229,10 @@ func MatchBooksByClassClass2MinNPageCount(es *elasticsearch.Client, class, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2MaxNPrice 根据类别、子类别进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassClass2MaxNPrice 根据类别、子类别检索books表中价格最大的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByClassClass2MaxNPrice(es *elasticsearch.Client, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1156,9 +1243,10 @@ func MatchBooksByClassClass2MaxNPrice(es *elasticsearch.Client, class, class2 st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2MinNPrice 根据类别、子类别进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassClass2MinNPrice 根据类别、子类别检索books表中价格最小的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByClassClass2MinNPrice(es *elasticsearch.Client, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1169,9 +1257,10 @@ func MatchBooksByClassClass2MinNPrice(es *elasticsearch.Client, class, class2 st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameMaxNPageCount 根据类别、书名进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassNameMaxNPageCount 根据类别、书名检索books表中页数最大的前N条详细数据列表
 // class string 类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByClassNameMaxNPageCount(es *elasticsearch.Client, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1184,9 +1273,10 @@ func MatchBooksByClassNameMaxNPageCount(es *elasticsearch.Client, class, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameMinNPageCount 根据类别、书名进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassNameMinNPageCount 根据类别、书名检索books表中页数最小的前N条详细数据列表
 // class string 类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByClassNameMinNPageCount(es *elasticsearch.Client, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1199,9 +1289,10 @@ func MatchBooksByClassNameMinNPageCount(es *elasticsearch.Client, class, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameMaxNPrice 根据类别、书名进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassNameMaxNPrice 根据类别、书名检索books表中价格最大的前N条详细数据列表
 // class string 类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByClassNameMaxNPrice(es *elasticsearch.Client, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1214,9 +1305,10 @@ func MatchBooksByClassNameMaxNPrice(es *elasticsearch.Client, class, name string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameMinNPrice 根据类别、书名进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassNameMinNPrice 根据类别、书名检索books表中价格最小的前N条详细数据列表
 // class string 类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByClassNameMinNPrice(es *elasticsearch.Client, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1229,9 +1321,10 @@ func MatchBooksByClassNameMinNPrice(es *elasticsearch.Client, class, name string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountMaxNPrice 根据类别、页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassPageCountMaxNPrice 根据类别、页数检索books表中价格最大的前N条详细数据列表
 // class string 类别
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByClassPageCountMaxNPrice(es *elasticsearch.Client, class string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1242,9 +1335,10 @@ func MatchBooksByClassPageCountMaxNPrice(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountMinNPrice 根据类别、页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassPageCountMinNPrice 根据类别、页数检索books表中价格最小的前N条详细数据列表
 // class string 类别
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByClassPageCountMinNPrice(es *elasticsearch.Client, class string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1255,9 +1349,10 @@ func MatchBooksByClassPageCountMinNPrice(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceMaxNPageCount 根据类别、价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassPriceMaxNPageCount 根据类别、价格检索books表中页数最大的前N条详细数据列表
 // class string 类别
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByClassPriceMaxNPageCount(es *elasticsearch.Client, class string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1268,9 +1363,10 @@ func MatchBooksByClassPriceMaxNPageCount(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceMinNPageCount 根据类别、价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassPriceMinNPageCount 根据类别、价格检索books表中页数最小的前N条详细数据列表
 // class string 类别
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByClassPriceMinNPageCount(es *elasticsearch.Client, class string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1281,9 +1377,10 @@ func MatchBooksByClassPriceMinNPageCount(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateMaxNPageCount 根据类别、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassReleaseDateMaxNPageCount 根据类别、发布日期检索books表中页数最大的前N条详细数据列表
 // class string 类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassReleaseDateMaxNPageCount(es *elasticsearch.Client, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1294,9 +1391,10 @@ func MatchBooksByClassReleaseDateMaxNPageCount(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateMinNPageCount 根据类别、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassReleaseDateMinNPageCount 根据类别、发布日期检索books表中页数最小的前N条详细数据列表
 // class string 类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassReleaseDateMinNPageCount(es *elasticsearch.Client, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1307,9 +1405,10 @@ func MatchBooksByClassReleaseDateMinNPageCount(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateMaxNPrice 根据类别、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassReleaseDateMaxNPrice 根据类别、发布日期检索books表中价格最大的前N条详细数据列表
 // class string 类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassReleaseDateMaxNPrice(es *elasticsearch.Client, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1320,9 +1419,10 @@ func MatchBooksByClassReleaseDateMaxNPrice(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateMinNPrice 根据类别、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassReleaseDateMinNPrice 根据类别、发布日期检索books表中价格最小的前N条详细数据列表
 // class string 类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassReleaseDateMinNPrice(es *elasticsearch.Client, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1333,9 +1433,10 @@ func MatchBooksByClassReleaseDateMinNPrice(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassSeqMaxNPageCount 根据类别、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassSeqMaxNPageCount 根据类别、编号检索books表中页数最大的前N条详细数据列表
 // class string 类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassSeqMaxNPageCount(es *elasticsearch.Client, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1346,9 +1447,10 @@ func MatchBooksByClassSeqMaxNPageCount(es *elasticsearch.Client, class, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassSeqMinNPageCount 根据类别、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassSeqMinNPageCount 根据类别、编号检索books表中页数最小的前N条详细数据列表
 // class string 类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassSeqMinNPageCount(es *elasticsearch.Client, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1359,9 +1461,10 @@ func MatchBooksByClassSeqMinNPageCount(es *elasticsearch.Client, class, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassSeqMaxNPrice 根据类别、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassSeqMaxNPrice 根据类别、编号检索books表中价格最大的前N条详细数据列表
 // class string 类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassSeqMaxNPrice(es *elasticsearch.Client, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1372,9 +1475,10 @@ func MatchBooksByClassSeqMaxNPrice(es *elasticsearch.Client, class, seq string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassSeqMinNPrice 根据类别、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassSeqMinNPrice 根据类别、编号检索books表中价格最小的前N条详细数据列表
 // class string 类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassSeqMinNPrice(es *elasticsearch.Client, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1385,9 +1489,10 @@ func MatchBooksByClassSeqMinNPrice(es *elasticsearch.Client, class, seq string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameMaxNPageCount 根据子类别、书名进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClass2NameMaxNPageCount 根据子类别、书名检索books表中页数最大的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByClass2NameMaxNPageCount(es *elasticsearch.Client, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1400,9 +1505,10 @@ func MatchBooksByClass2NameMaxNPageCount(es *elasticsearch.Client, class2, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameMinNPageCount 根据子类别、书名进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClass2NameMinNPageCount 根据子类别、书名检索books表中页数最小的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByClass2NameMinNPageCount(es *elasticsearch.Client, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1415,9 +1521,10 @@ func MatchBooksByClass2NameMinNPageCount(es *elasticsearch.Client, class2, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameMaxNPrice 根据子类别、书名进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClass2NameMaxNPrice 根据子类别、书名检索books表中价格最大的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByClass2NameMaxNPrice(es *elasticsearch.Client, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1430,9 +1537,10 @@ func MatchBooksByClass2NameMaxNPrice(es *elasticsearch.Client, class2, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameMinNPrice 根据子类别、书名进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClass2NameMinNPrice 根据子类别、书名检索books表中价格最小的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByClass2NameMinNPrice(es *elasticsearch.Client, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1445,9 +1553,10 @@ func MatchBooksByClass2NameMinNPrice(es *elasticsearch.Client, class2, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountMaxNPrice 根据子类别、页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClass2PageCountMaxNPrice 根据子类别、页数检索books表中价格最大的前N条详细数据列表
 // class2 string 子类别
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByClass2PageCountMaxNPrice(es *elasticsearch.Client, class2 string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1458,9 +1567,10 @@ func MatchBooksByClass2PageCountMaxNPrice(es *elasticsearch.Client, class2 strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountMinNPrice 根据子类别、页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClass2PageCountMinNPrice 根据子类别、页数检索books表中价格最小的前N条详细数据列表
 // class2 string 子类别
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByClass2PageCountMinNPrice(es *elasticsearch.Client, class2 string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1471,9 +1581,10 @@ func MatchBooksByClass2PageCountMinNPrice(es *elasticsearch.Client, class2 strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceMaxNPageCount 根据子类别、价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClass2PriceMaxNPageCount 根据子类别、价格检索books表中页数最大的前N条详细数据列表
 // class2 string 子类别
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByClass2PriceMaxNPageCount(es *elasticsearch.Client, class2 string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1484,9 +1595,10 @@ func MatchBooksByClass2PriceMaxNPageCount(es *elasticsearch.Client, class2 strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceMinNPageCount 根据子类别、价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClass2PriceMinNPageCount 根据子类别、价格检索books表中页数最小的前N条详细数据列表
 // class2 string 子类别
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByClass2PriceMinNPageCount(es *elasticsearch.Client, class2 string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1497,9 +1609,10 @@ func MatchBooksByClass2PriceMinNPageCount(es *elasticsearch.Client, class2 strin
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateMaxNPageCount 根据子类别、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClass2ReleaseDateMaxNPageCount 根据子类别、发布日期检索books表中页数最大的前N条详细数据列表
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClass2ReleaseDateMaxNPageCount(es *elasticsearch.Client, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1510,9 +1623,10 @@ func MatchBooksByClass2ReleaseDateMaxNPageCount(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateMinNPageCount 根据子类别、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClass2ReleaseDateMinNPageCount 根据子类别、发布日期检索books表中页数最小的前N条详细数据列表
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClass2ReleaseDateMinNPageCount(es *elasticsearch.Client, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1523,9 +1637,10 @@ func MatchBooksByClass2ReleaseDateMinNPageCount(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateMaxNPrice 根据子类别、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClass2ReleaseDateMaxNPrice 根据子类别、发布日期检索books表中价格最大的前N条详细数据列表
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClass2ReleaseDateMaxNPrice(es *elasticsearch.Client, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1536,9 +1651,10 @@ func MatchBooksByClass2ReleaseDateMaxNPrice(es *elasticsearch.Client, class2 str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateMinNPrice 根据子类别、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClass2ReleaseDateMinNPrice 根据子类别、发布日期检索books表中价格最小的前N条详细数据列表
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClass2ReleaseDateMinNPrice(es *elasticsearch.Client, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1549,9 +1665,10 @@ func MatchBooksByClass2ReleaseDateMinNPrice(es *elasticsearch.Client, class2 str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2SeqMaxNPageCount 根据子类别、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClass2SeqMaxNPageCount 根据子类别、编号检索books表中页数最大的前N条详细数据列表
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2SeqMaxNPageCount(es *elasticsearch.Client, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1562,9 +1679,10 @@ func MatchBooksByClass2SeqMaxNPageCount(es *elasticsearch.Client, class2, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2SeqMinNPageCount 根据子类别、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClass2SeqMinNPageCount 根据子类别、编号检索books表中页数最小的前N条详细数据列表
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2SeqMinNPageCount(es *elasticsearch.Client, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1575,9 +1693,10 @@ func MatchBooksByClass2SeqMinNPageCount(es *elasticsearch.Client, class2, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2SeqMaxNPrice 根据子类别、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClass2SeqMaxNPrice 根据子类别、编号检索books表中价格最大的前N条详细数据列表
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2SeqMaxNPrice(es *elasticsearch.Client, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1588,9 +1707,10 @@ func MatchBooksByClass2SeqMaxNPrice(es *elasticsearch.Client, class2, seq string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2SeqMinNPrice 根据子类别、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClass2SeqMinNPrice 根据子类别、编号检索books表中价格最小的前N条详细数据列表
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2SeqMinNPrice(es *elasticsearch.Client, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1601,9 +1721,10 @@ func MatchBooksByClass2SeqMinNPrice(es *elasticsearch.Client, class2, seq string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountMaxNPrice 根据书名、页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByNamePageCountMaxNPrice 根据书名、页数检索books表中价格最大的前N条详细数据列表
 // name string 书名
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByNamePageCountMaxNPrice(es *elasticsearch.Client, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1616,9 +1737,10 @@ func MatchBooksByNamePageCountMaxNPrice(es *elasticsearch.Client, name string, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountMinNPrice 根据书名、页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByNamePageCountMinNPrice 根据书名、页数检索books表中价格最小的前N条详细数据列表
 // name string 书名
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByNamePageCountMinNPrice(es *elasticsearch.Client, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1631,9 +1753,10 @@ func MatchBooksByNamePageCountMinNPrice(es *elasticsearch.Client, name string, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceMaxNPageCount 根据书名、价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByNamePriceMaxNPageCount 根据书名、价格检索books表中页数最大的前N条详细数据列表
 // name string 书名
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByNamePriceMaxNPageCount(es *elasticsearch.Client, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1646,9 +1769,10 @@ func MatchBooksByNamePriceMaxNPageCount(es *elasticsearch.Client, name string, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceMinNPageCount 根据书名、价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByNamePriceMinNPageCount 根据书名、价格检索books表中页数最小的前N条详细数据列表
 // name string 书名
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByNamePriceMinNPageCount(es *elasticsearch.Client, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1661,9 +1785,10 @@ func MatchBooksByNamePriceMinNPageCount(es *elasticsearch.Client, name string, p
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateMaxNPageCount 根据书名、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByNameReleaseDateMaxNPageCount 根据书名、发布日期检索books表中页数最大的前N条详细数据列表
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByNameReleaseDateMaxNPageCount(es *elasticsearch.Client, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1676,9 +1801,10 @@ func MatchBooksByNameReleaseDateMaxNPageCount(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateMinNPageCount 根据书名、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByNameReleaseDateMinNPageCount 根据书名、发布日期检索books表中页数最小的前N条详细数据列表
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByNameReleaseDateMinNPageCount(es *elasticsearch.Client, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1691,9 +1817,10 @@ func MatchBooksByNameReleaseDateMinNPageCount(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateMaxNPrice 根据书名、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByNameReleaseDateMaxNPrice 根据书名、发布日期检索books表中价格最大的前N条详细数据列表
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByNameReleaseDateMaxNPrice(es *elasticsearch.Client, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1706,9 +1833,10 @@ func MatchBooksByNameReleaseDateMaxNPrice(es *elasticsearch.Client, name string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateMinNPrice 根据书名、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByNameReleaseDateMinNPrice 根据书名、发布日期检索books表中价格最小的前N条详细数据列表
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByNameReleaseDateMinNPrice(es *elasticsearch.Client, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1721,9 +1849,10 @@ func MatchBooksByNameReleaseDateMinNPrice(es *elasticsearch.Client, name string,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameSeqMaxNPageCount 根据书名、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByNameSeqMaxNPageCount 根据书名、编号检索books表中页数最大的前N条详细数据列表
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByNameSeqMaxNPageCount(es *elasticsearch.Client, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1736,9 +1865,10 @@ func MatchBooksByNameSeqMaxNPageCount(es *elasticsearch.Client, name, seq string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameSeqMinNPageCount 根据书名、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByNameSeqMinNPageCount 根据书名、编号检索books表中页数最小的前N条详细数据列表
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByNameSeqMinNPageCount(es *elasticsearch.Client, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1751,9 +1881,10 @@ func MatchBooksByNameSeqMinNPageCount(es *elasticsearch.Client, name, seq string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameSeqMaxNPrice 根据书名、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByNameSeqMaxNPrice 根据书名、编号检索books表中价格最大的前N条详细数据列表
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByNameSeqMaxNPrice(es *elasticsearch.Client, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1766,9 +1897,10 @@ func MatchBooksByNameSeqMaxNPrice(es *elasticsearch.Client, name, seq string, si
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameSeqMinNPrice 根据书名、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByNameSeqMinNPrice 根据书名、编号检索books表中价格最小的前N条详细数据列表
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByNameSeqMinNPrice(es *elasticsearch.Client, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1781,9 +1913,10 @@ func MatchBooksByNameSeqMinNPrice(es *elasticsearch.Client, name, seq string, si
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateMaxNPrice 根据页数、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByPageCountReleaseDateMaxNPrice 根据页数、发布日期检索books表中价格最大的前N条详细数据列表
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByPageCountReleaseDateMaxNPrice(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
@@ -1794,9 +1927,10 @@ func MatchBooksByPageCountReleaseDateMaxNPrice(es *elasticsearch.Client, pageCou
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateMinNPrice 根据页数、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByPageCountReleaseDateMinNPrice 根据页数、发布日期检索books表中价格最小的前N条详细数据列表
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByPageCountReleaseDateMinNPrice(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
@@ -1807,9 +1941,10 @@ func MatchBooksByPageCountReleaseDateMinNPrice(es *elasticsearch.Client, pageCou
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountSeqMaxNPrice 根据页数、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByPageCountSeqMaxNPrice 根据页数、编号检索books表中价格最大的前N条详细数据列表
 // pageCount int64 页数
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByPageCountSeqMaxNPrice(es *elasticsearch.Client, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
@@ -1820,9 +1955,10 @@ func MatchBooksByPageCountSeqMaxNPrice(es *elasticsearch.Client, pageCount int64
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountSeqMinNPrice 根据页数、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByPageCountSeqMinNPrice 根据页数、编号检索books表中价格最小的前N条详细数据列表
 // pageCount int64 页数
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByPageCountSeqMinNPrice(es *elasticsearch.Client, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
@@ -1833,9 +1969,10 @@ func MatchBooksByPageCountSeqMinNPrice(es *elasticsearch.Client, pageCount int64
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateMaxNPageCount 根据价格、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByPriceReleaseDateMaxNPageCount 根据价格、发布日期检索books表中页数最大的前N条详细数据列表
 // price float64 价格
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByPriceReleaseDateMaxNPageCount(es *elasticsearch.Client, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
@@ -1846,9 +1983,10 @@ func MatchBooksByPriceReleaseDateMaxNPageCount(es *elasticsearch.Client, price f
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateMinNPageCount 根据价格、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByPriceReleaseDateMinNPageCount 根据价格、发布日期检索books表中页数最小的前N条详细数据列表
 // price float64 价格
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByPriceReleaseDateMinNPageCount(es *elasticsearch.Client, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
@@ -1859,9 +1997,10 @@ func MatchBooksByPriceReleaseDateMinNPageCount(es *elasticsearch.Client, price f
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceSeqMaxNPageCount 根据价格、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByPriceSeqMaxNPageCount 根据价格、编号检索books表中页数最大的前N条详细数据列表
 // price float64 价格
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByPriceSeqMaxNPageCount(es *elasticsearch.Client, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
@@ -1872,9 +2011,10 @@ func MatchBooksByPriceSeqMaxNPageCount(es *elasticsearch.Client, price float64, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceSeqMinNPageCount 根据价格、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByPriceSeqMinNPageCount 根据价格、编号检索books表中页数最小的前N条详细数据列表
 // price float64 价格
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByPriceSeqMinNPageCount(es *elasticsearch.Client, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
@@ -1885,9 +2025,10 @@ func MatchBooksByPriceSeqMinNPageCount(es *elasticsearch.Client, price float64, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateSeqMaxNPageCount 根据发布日期、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByReleaseDateSeqMaxNPageCount 根据发布日期、编号检索books表中页数最大的前N条详细数据列表
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByReleaseDateSeqMaxNPageCount(es *elasticsearch.Client, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
@@ -1898,9 +2039,10 @@ func MatchBooksByReleaseDateSeqMaxNPageCount(es *elasticsearch.Client, releaseDa
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateSeqMinNPageCount 根据发布日期、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByReleaseDateSeqMinNPageCount 根据发布日期、编号检索books表中页数最小的前N条详细数据列表
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByReleaseDateSeqMinNPageCount(es *elasticsearch.Client, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
@@ -1911,9 +2053,10 @@ func MatchBooksByReleaseDateSeqMinNPageCount(es *elasticsearch.Client, releaseDa
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateSeqMaxNPrice 根据发布日期、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByReleaseDateSeqMaxNPrice 根据发布日期、编号检索books表中价格最大的前N条详细数据列表
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByReleaseDateSeqMaxNPrice(es *elasticsearch.Client, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
@@ -1924,9 +2067,10 @@ func MatchBooksByReleaseDateSeqMaxNPrice(es *elasticsearch.Client, releaseDate t
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByReleaseDateSeqMinNPrice 根据发布日期、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByReleaseDateSeqMinNPrice 根据发布日期、编号检索books表中价格最小的前N条详细数据列表
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByReleaseDateSeqMinNPrice(es *elasticsearch.Client, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
@@ -1937,10 +2081,11 @@ func MatchBooksByReleaseDateSeqMinNPrice(es *elasticsearch.Client, releaseDate t
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassMaxNPageCount 根据全文本、作者、类别进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextAuthorClassMaxNPageCount 根据全文本、作者、类别检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // class string 类别
+// size int 前N条记录
 func MatchBooksByAllTextAuthorClassMaxNPageCount(es *elasticsearch.Client, allText, author, class string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1954,10 +2099,11 @@ func MatchBooksByAllTextAuthorClassMaxNPageCount(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassMinNPageCount 根据全文本、作者、类别进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextAuthorClassMinNPageCount 根据全文本、作者、类别检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // class string 类别
+// size int 前N条记录
 func MatchBooksByAllTextAuthorClassMinNPageCount(es *elasticsearch.Client, allText, author, class string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1971,10 +2117,11 @@ func MatchBooksByAllTextAuthorClassMinNPageCount(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassMaxNPrice 根据全文本、作者、类别进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextAuthorClassMaxNPrice 根据全文本、作者、类别检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // class string 类别
+// size int 前N条记录
 func MatchBooksByAllTextAuthorClassMaxNPrice(es *elasticsearch.Client, allText, author, class string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -1988,10 +2135,11 @@ func MatchBooksByAllTextAuthorClassMaxNPrice(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClassMinNPrice 根据全文本、作者、类别进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextAuthorClassMinNPrice 根据全文本、作者、类别检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // class string 类别
+// size int 前N条记录
 func MatchBooksByAllTextAuthorClassMinNPrice(es *elasticsearch.Client, allText, author, class string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2005,10 +2153,11 @@ func MatchBooksByAllTextAuthorClassMinNPrice(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2MaxNPageCount 根据全文本、作者、子类别进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextAuthorClass2MaxNPageCount 根据全文本、作者、子类别检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAllTextAuthorClass2MaxNPageCount(es *elasticsearch.Client, allText, author, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2022,10 +2171,11 @@ func MatchBooksByAllTextAuthorClass2MaxNPageCount(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2MinNPageCount 根据全文本、作者、子类别进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextAuthorClass2MinNPageCount 根据全文本、作者、子类别检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAllTextAuthorClass2MinNPageCount(es *elasticsearch.Client, allText, author, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2039,10 +2189,11 @@ func MatchBooksByAllTextAuthorClass2MinNPageCount(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2MaxNPrice 根据全文本、作者、子类别进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextAuthorClass2MaxNPrice 根据全文本、作者、子类别检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAllTextAuthorClass2MaxNPrice(es *elasticsearch.Client, allText, author, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2056,10 +2207,11 @@ func MatchBooksByAllTextAuthorClass2MaxNPrice(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorClass2MinNPrice 根据全文本、作者、子类别进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextAuthorClass2MinNPrice 根据全文本、作者、子类别检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAllTextAuthorClass2MinNPrice(es *elasticsearch.Client, allText, author, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2073,10 +2225,11 @@ func MatchBooksByAllTextAuthorClass2MinNPrice(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameMaxNPageCount 根据全文本、作者、书名进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextAuthorNameMaxNPageCount 根据全文本、作者、书名检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextAuthorNameMaxNPageCount(es *elasticsearch.Client, allText, author, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2088,10 +2241,11 @@ func MatchBooksByAllTextAuthorNameMaxNPageCount(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameMinNPageCount 根据全文本、作者、书名进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextAuthorNameMinNPageCount 根据全文本、作者、书名检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextAuthorNameMinNPageCount(es *elasticsearch.Client, allText, author, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2103,10 +2257,11 @@ func MatchBooksByAllTextAuthorNameMinNPageCount(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameMaxNPrice 根据全文本、作者、书名进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextAuthorNameMaxNPrice 根据全文本、作者、书名检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextAuthorNameMaxNPrice(es *elasticsearch.Client, allText, author, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2118,10 +2273,11 @@ func MatchBooksByAllTextAuthorNameMaxNPrice(es *elasticsearch.Client, allText, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorNameMinNPrice 根据全文本、作者、书名进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextAuthorNameMinNPrice 根据全文本、作者、书名检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextAuthorNameMinNPrice(es *elasticsearch.Client, allText, author, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2133,10 +2289,11 @@ func MatchBooksByAllTextAuthorNameMinNPrice(es *elasticsearch.Client, allText, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountMaxNPrice 根据全文本、作者、页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextAuthorPageCountMaxNPrice 根据全文本、作者、页数检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAllTextAuthorPageCountMaxNPrice(es *elasticsearch.Client, allText, author string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2150,10 +2307,11 @@ func MatchBooksByAllTextAuthorPageCountMaxNPrice(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPageCountMinNPrice 根据全文本、作者、页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextAuthorPageCountMinNPrice 根据全文本、作者、页数检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAllTextAuthorPageCountMinNPrice(es *elasticsearch.Client, allText, author string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2167,10 +2325,11 @@ func MatchBooksByAllTextAuthorPageCountMinNPrice(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceMaxNPageCount 根据全文本、作者、价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextAuthorPriceMaxNPageCount 根据全文本、作者、价格检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAllTextAuthorPriceMaxNPageCount(es *elasticsearch.Client, allText, author string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2184,10 +2343,11 @@ func MatchBooksByAllTextAuthorPriceMaxNPageCount(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorPriceMinNPageCount 根据全文本、作者、价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextAuthorPriceMinNPageCount 根据全文本、作者、价格检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAllTextAuthorPriceMinNPageCount(es *elasticsearch.Client, allText, author string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2201,10 +2361,11 @@ func MatchBooksByAllTextAuthorPriceMinNPageCount(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateMaxNPageCount 根据全文本、作者、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextAuthorReleaseDateMaxNPageCount 根据全文本、作者、发布日期检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextAuthorReleaseDateMaxNPageCount(es *elasticsearch.Client, allText, author string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2218,10 +2379,11 @@ func MatchBooksByAllTextAuthorReleaseDateMaxNPageCount(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateMinNPageCount 根据全文本、作者、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextAuthorReleaseDateMinNPageCount 根据全文本、作者、发布日期检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextAuthorReleaseDateMinNPageCount(es *elasticsearch.Client, allText, author string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2235,10 +2397,11 @@ func MatchBooksByAllTextAuthorReleaseDateMinNPageCount(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateMaxNPrice 根据全文本、作者、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextAuthorReleaseDateMaxNPrice 根据全文本、作者、发布日期检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextAuthorReleaseDateMaxNPrice(es *elasticsearch.Client, allText, author string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2252,10 +2415,11 @@ func MatchBooksByAllTextAuthorReleaseDateMaxNPrice(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorReleaseDateMinNPrice 根据全文本、作者、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextAuthorReleaseDateMinNPrice 根据全文本、作者、发布日期检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextAuthorReleaseDateMinNPrice(es *elasticsearch.Client, allText, author string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2269,10 +2433,11 @@ func MatchBooksByAllTextAuthorReleaseDateMinNPrice(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorSeqMaxNPageCount 根据全文本、作者、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextAuthorSeqMaxNPageCount 根据全文本、作者、编号检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextAuthorSeqMaxNPageCount(es *elasticsearch.Client, allText, author, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2286,10 +2451,11 @@ func MatchBooksByAllTextAuthorSeqMaxNPageCount(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorSeqMinNPageCount 根据全文本、作者、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextAuthorSeqMinNPageCount 根据全文本、作者、编号检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextAuthorSeqMinNPageCount(es *elasticsearch.Client, allText, author, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2303,10 +2469,11 @@ func MatchBooksByAllTextAuthorSeqMinNPageCount(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorSeqMaxNPrice 根据全文本、作者、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextAuthorSeqMaxNPrice 根据全文本、作者、编号检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextAuthorSeqMaxNPrice(es *elasticsearch.Client, allText, author, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2320,10 +2487,11 @@ func MatchBooksByAllTextAuthorSeqMaxNPrice(es *elasticsearch.Client, allText, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextAuthorSeqMinNPrice 根据全文本、作者、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextAuthorSeqMinNPrice 根据全文本、作者、编号检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // author string 作者
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextAuthorSeqMinNPrice(es *elasticsearch.Client, allText, author, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2337,10 +2505,11 @@ func MatchBooksByAllTextAuthorSeqMinNPrice(es *elasticsearch.Client, allText, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2MaxNPageCount 根据全文本、类别、子类别进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextClassClass2MaxNPageCount 根据全文本、类别、子类别检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAllTextClassClass2MaxNPageCount(es *elasticsearch.Client, allText, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2354,10 +2523,11 @@ func MatchBooksByAllTextClassClass2MaxNPageCount(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2MinNPageCount 根据全文本、类别、子类别进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextClassClass2MinNPageCount 根据全文本、类别、子类别检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAllTextClassClass2MinNPageCount(es *elasticsearch.Client, allText, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2371,10 +2541,11 @@ func MatchBooksByAllTextClassClass2MinNPageCount(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2MaxNPrice 根据全文本、类别、子类别进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextClassClass2MaxNPrice 根据全文本、类别、子类别检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAllTextClassClass2MaxNPrice(es *elasticsearch.Client, allText, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2388,10 +2559,11 @@ func MatchBooksByAllTextClassClass2MaxNPrice(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassClass2MinNPrice 根据全文本、类别、子类别进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextClassClass2MinNPrice 根据全文本、类别、子类别检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAllTextClassClass2MinNPrice(es *elasticsearch.Client, allText, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2405,10 +2577,11 @@ func MatchBooksByAllTextClassClass2MinNPrice(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameMaxNPageCount 根据全文本、类别、书名进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextClassNameMaxNPageCount 根据全文本、类别、书名检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextClassNameMaxNPageCount(es *elasticsearch.Client, allText, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2422,10 +2595,11 @@ func MatchBooksByAllTextClassNameMaxNPageCount(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameMinNPageCount 根据全文本、类别、书名进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextClassNameMinNPageCount 根据全文本、类别、书名检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextClassNameMinNPageCount(es *elasticsearch.Client, allText, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2439,10 +2613,11 @@ func MatchBooksByAllTextClassNameMinNPageCount(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameMaxNPrice 根据全文本、类别、书名进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextClassNameMaxNPrice 根据全文本、类别、书名检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextClassNameMaxNPrice(es *elasticsearch.Client, allText, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2456,10 +2631,11 @@ func MatchBooksByAllTextClassNameMaxNPrice(es *elasticsearch.Client, allText, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassNameMinNPrice 根据全文本、类别、书名进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextClassNameMinNPrice 根据全文本、类别、书名检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextClassNameMinNPrice(es *elasticsearch.Client, allText, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2473,10 +2649,11 @@ func MatchBooksByAllTextClassNameMinNPrice(es *elasticsearch.Client, allText, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountMaxNPrice 根据全文本、类别、页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextClassPageCountMaxNPrice 根据全文本、类别、页数检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAllTextClassPageCountMaxNPrice(es *elasticsearch.Client, allText, class string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2490,10 +2667,11 @@ func MatchBooksByAllTextClassPageCountMaxNPrice(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPageCountMinNPrice 根据全文本、类别、页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextClassPageCountMinNPrice 根据全文本、类别、页数检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAllTextClassPageCountMinNPrice(es *elasticsearch.Client, allText, class string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2507,10 +2685,11 @@ func MatchBooksByAllTextClassPageCountMinNPrice(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceMaxNPageCount 根据全文本、类别、价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextClassPriceMaxNPageCount 根据全文本、类别、价格检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAllTextClassPriceMaxNPageCount(es *elasticsearch.Client, allText, class string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2524,10 +2703,11 @@ func MatchBooksByAllTextClassPriceMaxNPageCount(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassPriceMinNPageCount 根据全文本、类别、价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextClassPriceMinNPageCount 根据全文本、类别、价格检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAllTextClassPriceMinNPageCount(es *elasticsearch.Client, allText, class string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2541,10 +2721,11 @@ func MatchBooksByAllTextClassPriceMinNPageCount(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassReleaseDateMaxNPageCount 根据全文本、类别、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextClassReleaseDateMaxNPageCount 根据全文本、类别、发布日期检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextClassReleaseDateMaxNPageCount(es *elasticsearch.Client, allText, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2558,10 +2739,11 @@ func MatchBooksByAllTextClassReleaseDateMaxNPageCount(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassReleaseDateMinNPageCount 根据全文本、类别、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextClassReleaseDateMinNPageCount 根据全文本、类别、发布日期检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextClassReleaseDateMinNPageCount(es *elasticsearch.Client, allText, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2575,10 +2757,11 @@ func MatchBooksByAllTextClassReleaseDateMinNPageCount(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassReleaseDateMaxNPrice 根据全文本、类别、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextClassReleaseDateMaxNPrice 根据全文本、类别、发布日期检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextClassReleaseDateMaxNPrice(es *elasticsearch.Client, allText, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2592,10 +2775,11 @@ func MatchBooksByAllTextClassReleaseDateMaxNPrice(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassReleaseDateMinNPrice 根据全文本、类别、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextClassReleaseDateMinNPrice 根据全文本、类别、发布日期检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextClassReleaseDateMinNPrice(es *elasticsearch.Client, allText, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2609,10 +2793,11 @@ func MatchBooksByAllTextClassReleaseDateMinNPrice(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassSeqMaxNPageCount 根据全文本、类别、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextClassSeqMaxNPageCount 根据全文本、类别、编号检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextClassSeqMaxNPageCount(es *elasticsearch.Client, allText, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2626,10 +2811,11 @@ func MatchBooksByAllTextClassSeqMaxNPageCount(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassSeqMinNPageCount 根据全文本、类别、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextClassSeqMinNPageCount 根据全文本、类别、编号检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextClassSeqMinNPageCount(es *elasticsearch.Client, allText, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2643,10 +2829,11 @@ func MatchBooksByAllTextClassSeqMinNPageCount(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassSeqMaxNPrice 根据全文本、类别、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextClassSeqMaxNPrice 根据全文本、类别、编号检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextClassSeqMaxNPrice(es *elasticsearch.Client, allText, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2660,10 +2847,11 @@ func MatchBooksByAllTextClassSeqMaxNPrice(es *elasticsearch.Client, allText, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClassSeqMinNPrice 根据全文本、类别、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextClassSeqMinNPrice 根据全文本、类别、编号检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // class string 类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextClassSeqMinNPrice(es *elasticsearch.Client, allText, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2677,10 +2865,11 @@ func MatchBooksByAllTextClassSeqMinNPrice(es *elasticsearch.Client, allText, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameMaxNPageCount 根据全文本、子类别、书名进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextClass2NameMaxNPageCount 根据全文本、子类别、书名检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextClass2NameMaxNPageCount(es *elasticsearch.Client, allText, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2694,10 +2883,11 @@ func MatchBooksByAllTextClass2NameMaxNPageCount(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameMinNPageCount 根据全文本、子类别、书名进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextClass2NameMinNPageCount 根据全文本、子类别、书名检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextClass2NameMinNPageCount(es *elasticsearch.Client, allText, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2711,10 +2901,11 @@ func MatchBooksByAllTextClass2NameMinNPageCount(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameMaxNPrice 根据全文本、子类别、书名进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextClass2NameMaxNPrice 根据全文本、子类别、书名检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextClass2NameMaxNPrice(es *elasticsearch.Client, allText, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2728,10 +2919,11 @@ func MatchBooksByAllTextClass2NameMaxNPrice(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2NameMinNPrice 根据全文本、子类别、书名进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextClass2NameMinNPrice 根据全文本、子类别、书名检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAllTextClass2NameMinNPrice(es *elasticsearch.Client, allText, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2745,10 +2937,11 @@ func MatchBooksByAllTextClass2NameMinNPrice(es *elasticsearch.Client, allText, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountMaxNPrice 根据全文本、子类别、页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextClass2PageCountMaxNPrice 根据全文本、子类别、页数检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAllTextClass2PageCountMaxNPrice(es *elasticsearch.Client, allText, class2 string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2762,10 +2955,11 @@ func MatchBooksByAllTextClass2PageCountMaxNPrice(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PageCountMinNPrice 根据全文本、子类别、页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextClass2PageCountMinNPrice 根据全文本、子类别、页数检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAllTextClass2PageCountMinNPrice(es *elasticsearch.Client, allText, class2 string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2779,10 +2973,11 @@ func MatchBooksByAllTextClass2PageCountMinNPrice(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceMaxNPageCount 根据全文本、子类别、价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextClass2PriceMaxNPageCount 根据全文本、子类别、价格检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAllTextClass2PriceMaxNPageCount(es *elasticsearch.Client, allText, class2 string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2796,10 +2991,11 @@ func MatchBooksByAllTextClass2PriceMaxNPageCount(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2PriceMinNPageCount 根据全文本、子类别、价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextClass2PriceMinNPageCount 根据全文本、子类别、价格检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAllTextClass2PriceMinNPageCount(es *elasticsearch.Client, allText, class2 string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2813,10 +3009,11 @@ func MatchBooksByAllTextClass2PriceMinNPageCount(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2ReleaseDateMaxNPageCount 根据全文本、子类别、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextClass2ReleaseDateMaxNPageCount 根据全文本、子类别、发布日期检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextClass2ReleaseDateMaxNPageCount(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2830,10 +3027,11 @@ func MatchBooksByAllTextClass2ReleaseDateMaxNPageCount(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2ReleaseDateMinNPageCount 根据全文本、子类别、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextClass2ReleaseDateMinNPageCount 根据全文本、子类别、发布日期检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextClass2ReleaseDateMinNPageCount(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2847,10 +3045,11 @@ func MatchBooksByAllTextClass2ReleaseDateMinNPageCount(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2ReleaseDateMaxNPrice 根据全文本、子类别、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextClass2ReleaseDateMaxNPrice 根据全文本、子类别、发布日期检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextClass2ReleaseDateMaxNPrice(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2864,10 +3063,11 @@ func MatchBooksByAllTextClass2ReleaseDateMaxNPrice(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2ReleaseDateMinNPrice 根据全文本、子类别、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextClass2ReleaseDateMinNPrice 根据全文本、子类别、发布日期检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextClass2ReleaseDateMinNPrice(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2881,10 +3081,11 @@ func MatchBooksByAllTextClass2ReleaseDateMinNPrice(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2SeqMaxNPageCount 根据全文本、子类别、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextClass2SeqMaxNPageCount 根据全文本、子类别、编号检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextClass2SeqMaxNPageCount(es *elasticsearch.Client, allText, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2898,10 +3099,11 @@ func MatchBooksByAllTextClass2SeqMaxNPageCount(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2SeqMinNPageCount 根据全文本、子类别、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextClass2SeqMinNPageCount 根据全文本、子类别、编号检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextClass2SeqMinNPageCount(es *elasticsearch.Client, allText, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2915,10 +3117,11 @@ func MatchBooksByAllTextClass2SeqMinNPageCount(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2SeqMaxNPrice 根据全文本、子类别、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextClass2SeqMaxNPrice 根据全文本、子类别、编号检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextClass2SeqMaxNPrice(es *elasticsearch.Client, allText, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2932,10 +3135,11 @@ func MatchBooksByAllTextClass2SeqMaxNPrice(es *elasticsearch.Client, allText, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextClass2SeqMinNPrice 根据全文本、子类别、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextClass2SeqMinNPrice 根据全文本、子类别、编号检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextClass2SeqMinNPrice(es *elasticsearch.Client, allText, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2949,10 +3153,11 @@ func MatchBooksByAllTextClass2SeqMinNPrice(es *elasticsearch.Client, allText, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountMaxNPrice 根据全文本、书名、页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextNamePageCountMaxNPrice 根据全文本、书名、页数检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAllTextNamePageCountMaxNPrice(es *elasticsearch.Client, allText, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2966,10 +3171,11 @@ func MatchBooksByAllTextNamePageCountMaxNPrice(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePageCountMinNPrice 根据全文本、书名、页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextNamePageCountMinNPrice 根据全文本、书名、页数检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAllTextNamePageCountMinNPrice(es *elasticsearch.Client, allText, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -2983,10 +3189,11 @@ func MatchBooksByAllTextNamePageCountMinNPrice(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceMaxNPageCount 根据全文本、书名、价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextNamePriceMaxNPageCount 根据全文本、书名、价格检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // name string 书名
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAllTextNamePriceMaxNPageCount(es *elasticsearch.Client, allText, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3000,10 +3207,11 @@ func MatchBooksByAllTextNamePriceMaxNPageCount(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNamePriceMinNPageCount 根据全文本、书名、价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextNamePriceMinNPageCount 根据全文本、书名、价格检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // name string 书名
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAllTextNamePriceMinNPageCount(es *elasticsearch.Client, allText, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3017,10 +3225,11 @@ func MatchBooksByAllTextNamePriceMinNPageCount(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateMaxNPageCount 根据全文本、书名、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextNameReleaseDateMaxNPageCount 根据全文本、书名、发布日期检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextNameReleaseDateMaxNPageCount(es *elasticsearch.Client, allText, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3034,10 +3243,11 @@ func MatchBooksByAllTextNameReleaseDateMaxNPageCount(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateMinNPageCount 根据全文本、书名、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextNameReleaseDateMinNPageCount 根据全文本、书名、发布日期检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextNameReleaseDateMinNPageCount(es *elasticsearch.Client, allText, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3051,10 +3261,11 @@ func MatchBooksByAllTextNameReleaseDateMinNPageCount(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateMaxNPrice 根据全文本、书名、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextNameReleaseDateMaxNPrice 根据全文本、书名、发布日期检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextNameReleaseDateMaxNPrice(es *elasticsearch.Client, allText, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3068,10 +3279,11 @@ func MatchBooksByAllTextNameReleaseDateMaxNPrice(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameReleaseDateMinNPrice 根据全文本、书名、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextNameReleaseDateMinNPrice 根据全文本、书名、发布日期检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextNameReleaseDateMinNPrice(es *elasticsearch.Client, allText, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3085,10 +3297,11 @@ func MatchBooksByAllTextNameReleaseDateMinNPrice(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameSeqMaxNPageCount 根据全文本、书名、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextNameSeqMaxNPageCount 根据全文本、书名、编号检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextNameSeqMaxNPageCount(es *elasticsearch.Client, allText, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3102,10 +3315,11 @@ func MatchBooksByAllTextNameSeqMaxNPageCount(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameSeqMinNPageCount 根据全文本、书名、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextNameSeqMinNPageCount 根据全文本、书名、编号检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextNameSeqMinNPageCount(es *elasticsearch.Client, allText, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3119,10 +3333,11 @@ func MatchBooksByAllTextNameSeqMinNPageCount(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameSeqMaxNPrice 根据全文本、书名、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextNameSeqMaxNPrice 根据全文本、书名、编号检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextNameSeqMaxNPrice(es *elasticsearch.Client, allText, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3136,10 +3351,11 @@ func MatchBooksByAllTextNameSeqMaxNPrice(es *elasticsearch.Client, allText, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextNameSeqMinNPrice 根据全文本、书名、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextNameSeqMinNPrice 根据全文本、书名、编号检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextNameSeqMinNPrice(es *elasticsearch.Client, allText, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3153,10 +3369,11 @@ func MatchBooksByAllTextNameSeqMinNPrice(es *elasticsearch.Client, allText, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateMaxNPrice 根据全文本、页数、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextPageCountReleaseDateMaxNPrice 根据全文本、页数、发布日期检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextPageCountReleaseDateMaxNPrice(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3170,10 +3387,11 @@ func MatchBooksByAllTextPageCountReleaseDateMaxNPrice(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountReleaseDateMinNPrice 根据全文本、页数、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextPageCountReleaseDateMinNPrice 根据全文本、页数、发布日期检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextPageCountReleaseDateMinNPrice(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3187,10 +3405,11 @@ func MatchBooksByAllTextPageCountReleaseDateMinNPrice(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountSeqMaxNPrice 根据全文本、页数、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextPageCountSeqMaxNPrice 根据全文本、页数、编号检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // pageCount int64 页数
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextPageCountSeqMaxNPrice(es *elasticsearch.Client, allText string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3204,10 +3423,11 @@ func MatchBooksByAllTextPageCountSeqMaxNPrice(es *elasticsearch.Client, allText 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPageCountSeqMinNPrice 根据全文本、页数、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextPageCountSeqMinNPrice 根据全文本、页数、编号检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // pageCount int64 页数
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextPageCountSeqMinNPrice(es *elasticsearch.Client, allText string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3221,10 +3441,11 @@ func MatchBooksByAllTextPageCountSeqMinNPrice(es *elasticsearch.Client, allText 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateMaxNPageCount 根据全文本、价格、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextPriceReleaseDateMaxNPageCount 根据全文本、价格、发布日期检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextPriceReleaseDateMaxNPageCount(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3238,10 +3459,11 @@ func MatchBooksByAllTextPriceReleaseDateMaxNPageCount(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceReleaseDateMinNPageCount 根据全文本、价格、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextPriceReleaseDateMinNPageCount 根据全文本、价格、发布日期检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAllTextPriceReleaseDateMinNPageCount(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3255,10 +3477,11 @@ func MatchBooksByAllTextPriceReleaseDateMinNPageCount(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceSeqMaxNPageCount 根据全文本、价格、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextPriceSeqMaxNPageCount 根据全文本、价格、编号检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // price float64 价格
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextPriceSeqMaxNPageCount(es *elasticsearch.Client, allText string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3272,10 +3495,11 @@ func MatchBooksByAllTextPriceSeqMaxNPageCount(es *elasticsearch.Client, allText 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextPriceSeqMinNPageCount 根据全文本、价格、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextPriceSeqMinNPageCount 根据全文本、价格、编号检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // price float64 价格
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextPriceSeqMinNPageCount(es *elasticsearch.Client, allText string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3289,10 +3513,11 @@ func MatchBooksByAllTextPriceSeqMinNPageCount(es *elasticsearch.Client, allText 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateSeqMaxNPageCount 根据全文本、发布日期、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAllTextReleaseDateSeqMaxNPageCount 根据全文本、发布日期、编号检索books表中页数最大的前N条详细数据列表
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextReleaseDateSeqMaxNPageCount(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3306,10 +3531,11 @@ func MatchBooksByAllTextReleaseDateSeqMaxNPageCount(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateSeqMinNPageCount 根据全文本、发布日期、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAllTextReleaseDateSeqMinNPageCount 根据全文本、发布日期、编号检索books表中页数最小的前N条详细数据列表
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextReleaseDateSeqMinNPageCount(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3323,10 +3549,11 @@ func MatchBooksByAllTextReleaseDateSeqMinNPageCount(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateSeqMaxNPrice 根据全文本、发布日期、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAllTextReleaseDateSeqMaxNPrice 根据全文本、发布日期、编号检索books表中价格最大的前N条详细数据列表
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextReleaseDateSeqMaxNPrice(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3340,10 +3567,11 @@ func MatchBooksByAllTextReleaseDateSeqMaxNPrice(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAllTextReleaseDateSeqMinNPrice 根据全文本、发布日期、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAllTextReleaseDateSeqMinNPrice 根据全文本、发布日期、编号检索books表中价格最小的前N条详细数据列表
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAllTextReleaseDateSeqMinNPrice(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -3357,10 +3585,11 @@ func MatchBooksByAllTextReleaseDateSeqMinNPrice(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2MaxNPageCount 根据作者、类别、子类别进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorClassClass2MaxNPageCount 根据作者、类别、子类别检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // class string 类别
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAuthorClassClass2MaxNPageCount(es *elasticsearch.Client, author, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3374,10 +3603,11 @@ func MatchBooksByAuthorClassClass2MaxNPageCount(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2MinNPageCount 根据作者、类别、子类别进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorClassClass2MinNPageCount 根据作者、类别、子类别检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // class string 类别
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAuthorClassClass2MinNPageCount(es *elasticsearch.Client, author, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3391,10 +3621,11 @@ func MatchBooksByAuthorClassClass2MinNPageCount(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2MaxNPrice 根据作者、类别、子类别进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorClassClass2MaxNPrice 根据作者、类别、子类别检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // class string 类别
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAuthorClassClass2MaxNPrice(es *elasticsearch.Client, author, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3408,10 +3639,11 @@ func MatchBooksByAuthorClassClass2MaxNPrice(es *elasticsearch.Client, author, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassClass2MinNPrice 根据作者、类别、子类别进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorClassClass2MinNPrice 根据作者、类别、子类别检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // class string 类别
 // class2 string 子类别
+// size int 前N条记录
 func MatchBooksByAuthorClassClass2MinNPrice(es *elasticsearch.Client, author, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3425,10 +3657,11 @@ func MatchBooksByAuthorClassClass2MinNPrice(es *elasticsearch.Client, author, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameMaxNPageCount 根据作者、类别、书名进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorClassNameMaxNPageCount 根据作者、类别、书名检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // class string 类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAuthorClassNameMaxNPageCount(es *elasticsearch.Client, author, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3442,10 +3675,11 @@ func MatchBooksByAuthorClassNameMaxNPageCount(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameMinNPageCount 根据作者、类别、书名进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorClassNameMinNPageCount 根据作者、类别、书名检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // class string 类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAuthorClassNameMinNPageCount(es *elasticsearch.Client, author, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3459,10 +3693,11 @@ func MatchBooksByAuthorClassNameMinNPageCount(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameMaxNPrice 根据作者、类别、书名进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorClassNameMaxNPrice 根据作者、类别、书名检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // class string 类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAuthorClassNameMaxNPrice(es *elasticsearch.Client, author, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3476,10 +3711,11 @@ func MatchBooksByAuthorClassNameMaxNPrice(es *elasticsearch.Client, author, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassNameMinNPrice 根据作者、类别、书名进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorClassNameMinNPrice 根据作者、类别、书名检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // class string 类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAuthorClassNameMinNPrice(es *elasticsearch.Client, author, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3493,10 +3729,11 @@ func MatchBooksByAuthorClassNameMinNPrice(es *elasticsearch.Client, author, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountMaxNPrice 根据作者、类别、页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorClassPageCountMaxNPrice 根据作者、类别、页数检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // class string 类别
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAuthorClassPageCountMaxNPrice(es *elasticsearch.Client, author, class string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3510,10 +3747,11 @@ func MatchBooksByAuthorClassPageCountMaxNPrice(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPageCountMinNPrice 根据作者、类别、页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorClassPageCountMinNPrice 根据作者、类别、页数检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // class string 类别
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAuthorClassPageCountMinNPrice(es *elasticsearch.Client, author, class string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3527,10 +3765,11 @@ func MatchBooksByAuthorClassPageCountMinNPrice(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceMaxNPageCount 根据作者、类别、价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorClassPriceMaxNPageCount 根据作者、类别、价格检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // class string 类别
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAuthorClassPriceMaxNPageCount(es *elasticsearch.Client, author, class string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3544,10 +3783,11 @@ func MatchBooksByAuthorClassPriceMaxNPageCount(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassPriceMinNPageCount 根据作者、类别、价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorClassPriceMinNPageCount 根据作者、类别、价格检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // class string 类别
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAuthorClassPriceMinNPageCount(es *elasticsearch.Client, author, class string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3561,10 +3801,11 @@ func MatchBooksByAuthorClassPriceMinNPageCount(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassReleaseDateMaxNPageCount 根据作者、类别、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorClassReleaseDateMaxNPageCount 根据作者、类别、发布日期检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorClassReleaseDateMaxNPageCount(es *elasticsearch.Client, author, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3578,10 +3819,11 @@ func MatchBooksByAuthorClassReleaseDateMaxNPageCount(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassReleaseDateMinNPageCount 根据作者、类别、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorClassReleaseDateMinNPageCount 根据作者、类别、发布日期检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorClassReleaseDateMinNPageCount(es *elasticsearch.Client, author, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3595,10 +3837,11 @@ func MatchBooksByAuthorClassReleaseDateMinNPageCount(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassReleaseDateMaxNPrice 根据作者、类别、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorClassReleaseDateMaxNPrice 根据作者、类别、发布日期检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorClassReleaseDateMaxNPrice(es *elasticsearch.Client, author, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3612,10 +3855,11 @@ func MatchBooksByAuthorClassReleaseDateMaxNPrice(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassReleaseDateMinNPrice 根据作者、类别、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorClassReleaseDateMinNPrice 根据作者、类别、发布日期检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorClassReleaseDateMinNPrice(es *elasticsearch.Client, author, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3629,10 +3873,11 @@ func MatchBooksByAuthorClassReleaseDateMinNPrice(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassSeqMaxNPageCount 根据作者、类别、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorClassSeqMaxNPageCount 根据作者、类别、编号检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // class string 类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorClassSeqMaxNPageCount(es *elasticsearch.Client, author, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3646,10 +3891,11 @@ func MatchBooksByAuthorClassSeqMaxNPageCount(es *elasticsearch.Client, author, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassSeqMinNPageCount 根据作者、类别、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorClassSeqMinNPageCount 根据作者、类别、编号检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // class string 类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorClassSeqMinNPageCount(es *elasticsearch.Client, author, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3663,10 +3909,11 @@ func MatchBooksByAuthorClassSeqMinNPageCount(es *elasticsearch.Client, author, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassSeqMaxNPrice 根据作者、类别、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorClassSeqMaxNPrice 根据作者、类别、编号检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // class string 类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorClassSeqMaxNPrice(es *elasticsearch.Client, author, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3680,10 +3927,11 @@ func MatchBooksByAuthorClassSeqMaxNPrice(es *elasticsearch.Client, author, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClassSeqMinNPrice 根据作者、类别、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorClassSeqMinNPrice 根据作者、类别、编号检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // class string 类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorClassSeqMinNPrice(es *elasticsearch.Client, author, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3697,10 +3945,11 @@ func MatchBooksByAuthorClassSeqMinNPrice(es *elasticsearch.Client, author, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameMaxNPageCount 根据作者、子类别、书名进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorClass2NameMaxNPageCount 根据作者、子类别、书名检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAuthorClass2NameMaxNPageCount(es *elasticsearch.Client, author, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3714,10 +3963,11 @@ func MatchBooksByAuthorClass2NameMaxNPageCount(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameMinNPageCount 根据作者、子类别、书名进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorClass2NameMinNPageCount 根据作者、子类别、书名检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAuthorClass2NameMinNPageCount(es *elasticsearch.Client, author, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3731,10 +3981,11 @@ func MatchBooksByAuthorClass2NameMinNPageCount(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameMaxNPrice 根据作者、子类别、书名进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorClass2NameMaxNPrice 根据作者、子类别、书名检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAuthorClass2NameMaxNPrice(es *elasticsearch.Client, author, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3748,10 +3999,11 @@ func MatchBooksByAuthorClass2NameMaxNPrice(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2NameMinNPrice 根据作者、子类别、书名进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorClass2NameMinNPrice 根据作者、子类别、书名检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByAuthorClass2NameMinNPrice(es *elasticsearch.Client, author, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3765,10 +4017,11 @@ func MatchBooksByAuthorClass2NameMinNPrice(es *elasticsearch.Client, author, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountMaxNPrice 根据作者、子类别、页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorClass2PageCountMaxNPrice 根据作者、子类别、页数检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAuthorClass2PageCountMaxNPrice(es *elasticsearch.Client, author, class2 string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3782,10 +4035,11 @@ func MatchBooksByAuthorClass2PageCountMaxNPrice(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PageCountMinNPrice 根据作者、子类别、页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorClass2PageCountMinNPrice 根据作者、子类别、页数检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAuthorClass2PageCountMinNPrice(es *elasticsearch.Client, author, class2 string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3799,10 +4053,11 @@ func MatchBooksByAuthorClass2PageCountMinNPrice(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceMaxNPageCount 根据作者、子类别、价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorClass2PriceMaxNPageCount 根据作者、子类别、价格检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAuthorClass2PriceMaxNPageCount(es *elasticsearch.Client, author, class2 string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3816,10 +4071,11 @@ func MatchBooksByAuthorClass2PriceMaxNPageCount(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2PriceMinNPageCount 根据作者、子类别、价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorClass2PriceMinNPageCount 根据作者、子类别、价格检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAuthorClass2PriceMinNPageCount(es *elasticsearch.Client, author, class2 string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3833,10 +4089,11 @@ func MatchBooksByAuthorClass2PriceMinNPageCount(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2ReleaseDateMaxNPageCount 根据作者、子类别、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorClass2ReleaseDateMaxNPageCount 根据作者、子类别、发布日期检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorClass2ReleaseDateMaxNPageCount(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3850,10 +4107,11 @@ func MatchBooksByAuthorClass2ReleaseDateMaxNPageCount(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2ReleaseDateMinNPageCount 根据作者、子类别、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorClass2ReleaseDateMinNPageCount 根据作者、子类别、发布日期检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorClass2ReleaseDateMinNPageCount(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3867,10 +4125,11 @@ func MatchBooksByAuthorClass2ReleaseDateMinNPageCount(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2ReleaseDateMaxNPrice 根据作者、子类别、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorClass2ReleaseDateMaxNPrice 根据作者、子类别、发布日期检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorClass2ReleaseDateMaxNPrice(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3884,10 +4143,11 @@ func MatchBooksByAuthorClass2ReleaseDateMaxNPrice(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2ReleaseDateMinNPrice 根据作者、子类别、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorClass2ReleaseDateMinNPrice 根据作者、子类别、发布日期检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorClass2ReleaseDateMinNPrice(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3901,10 +4161,11 @@ func MatchBooksByAuthorClass2ReleaseDateMinNPrice(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2SeqMaxNPageCount 根据作者、子类别、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorClass2SeqMaxNPageCount 根据作者、子类别、编号检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorClass2SeqMaxNPageCount(es *elasticsearch.Client, author, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3918,10 +4179,11 @@ func MatchBooksByAuthorClass2SeqMaxNPageCount(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2SeqMinNPageCount 根据作者、子类别、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorClass2SeqMinNPageCount 根据作者、子类别、编号检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorClass2SeqMinNPageCount(es *elasticsearch.Client, author, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3935,10 +4197,11 @@ func MatchBooksByAuthorClass2SeqMinNPageCount(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2SeqMaxNPrice 根据作者、子类别、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorClass2SeqMaxNPrice 根据作者、子类别、编号检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorClass2SeqMaxNPrice(es *elasticsearch.Client, author, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3952,10 +4215,11 @@ func MatchBooksByAuthorClass2SeqMaxNPrice(es *elasticsearch.Client, author, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorClass2SeqMinNPrice 根据作者、子类别、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorClass2SeqMinNPrice 根据作者、子类别、编号检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorClass2SeqMinNPrice(es *elasticsearch.Client, author, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3969,10 +4233,11 @@ func MatchBooksByAuthorClass2SeqMinNPrice(es *elasticsearch.Client, author, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountMaxNPrice 根据作者、书名、页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorNamePageCountMaxNPrice 根据作者、书名、页数检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // name string 书名
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAuthorNamePageCountMaxNPrice(es *elasticsearch.Client, author, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -3986,10 +4251,11 @@ func MatchBooksByAuthorNamePageCountMaxNPrice(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePageCountMinNPrice 根据作者、书名、页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorNamePageCountMinNPrice 根据作者、书名、页数检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // name string 书名
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByAuthorNamePageCountMinNPrice(es *elasticsearch.Client, author, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4003,10 +4269,11 @@ func MatchBooksByAuthorNamePageCountMinNPrice(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceMaxNPageCount 根据作者、书名、价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorNamePriceMaxNPageCount 根据作者、书名、价格检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // name string 书名
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAuthorNamePriceMaxNPageCount(es *elasticsearch.Client, author, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4020,10 +4287,11 @@ func MatchBooksByAuthorNamePriceMaxNPageCount(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNamePriceMinNPageCount 根据作者、书名、价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorNamePriceMinNPageCount 根据作者、书名、价格检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // name string 书名
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByAuthorNamePriceMinNPageCount(es *elasticsearch.Client, author, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4037,10 +4305,11 @@ func MatchBooksByAuthorNamePriceMinNPageCount(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateMaxNPageCount 根据作者、书名、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorNameReleaseDateMaxNPageCount 根据作者、书名、发布日期检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorNameReleaseDateMaxNPageCount(es *elasticsearch.Client, author, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4054,10 +4323,11 @@ func MatchBooksByAuthorNameReleaseDateMaxNPageCount(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateMinNPageCount 根据作者、书名、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorNameReleaseDateMinNPageCount 根据作者、书名、发布日期检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorNameReleaseDateMinNPageCount(es *elasticsearch.Client, author, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4071,10 +4341,11 @@ func MatchBooksByAuthorNameReleaseDateMinNPageCount(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateMaxNPrice 根据作者、书名、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorNameReleaseDateMaxNPrice 根据作者、书名、发布日期检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorNameReleaseDateMaxNPrice(es *elasticsearch.Client, author, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4088,10 +4359,11 @@ func MatchBooksByAuthorNameReleaseDateMaxNPrice(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameReleaseDateMinNPrice 根据作者、书名、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorNameReleaseDateMinNPrice 根据作者、书名、发布日期检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorNameReleaseDateMinNPrice(es *elasticsearch.Client, author, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4105,10 +4377,11 @@ func MatchBooksByAuthorNameReleaseDateMinNPrice(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameSeqMaxNPageCount 根据作者、书名、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorNameSeqMaxNPageCount 根据作者、书名、编号检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorNameSeqMaxNPageCount(es *elasticsearch.Client, author, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4122,10 +4395,11 @@ func MatchBooksByAuthorNameSeqMaxNPageCount(es *elasticsearch.Client, author, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameSeqMinNPageCount 根据作者、书名、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorNameSeqMinNPageCount 根据作者、书名、编号检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorNameSeqMinNPageCount(es *elasticsearch.Client, author, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4139,10 +4413,11 @@ func MatchBooksByAuthorNameSeqMinNPageCount(es *elasticsearch.Client, author, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameSeqMaxNPrice 根据作者、书名、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorNameSeqMaxNPrice 根据作者、书名、编号检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorNameSeqMaxNPrice(es *elasticsearch.Client, author, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4156,10 +4431,11 @@ func MatchBooksByAuthorNameSeqMaxNPrice(es *elasticsearch.Client, author, name, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorNameSeqMinNPrice 根据作者、书名、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorNameSeqMinNPrice 根据作者、书名、编号检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorNameSeqMinNPrice(es *elasticsearch.Client, author, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4173,10 +4449,11 @@ func MatchBooksByAuthorNameSeqMinNPrice(es *elasticsearch.Client, author, name, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateMaxNPrice 根据作者、页数、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorPageCountReleaseDateMaxNPrice 根据作者、页数、发布日期检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorPageCountReleaseDateMaxNPrice(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4190,10 +4467,11 @@ func MatchBooksByAuthorPageCountReleaseDateMaxNPrice(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountReleaseDateMinNPrice 根据作者、页数、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorPageCountReleaseDateMinNPrice 根据作者、页数、发布日期检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorPageCountReleaseDateMinNPrice(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4207,10 +4485,11 @@ func MatchBooksByAuthorPageCountReleaseDateMinNPrice(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountSeqMaxNPrice 根据作者、页数、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorPageCountSeqMaxNPrice 根据作者、页数、编号检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorPageCountSeqMaxNPrice(es *elasticsearch.Client, author string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4224,10 +4503,11 @@ func MatchBooksByAuthorPageCountSeqMaxNPrice(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPageCountSeqMinNPrice 根据作者、页数、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorPageCountSeqMinNPrice 根据作者、页数、编号检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorPageCountSeqMinNPrice(es *elasticsearch.Client, author string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4241,10 +4521,11 @@ func MatchBooksByAuthorPageCountSeqMinNPrice(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateMaxNPageCount 根据作者、价格、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorPriceReleaseDateMaxNPageCount 根据作者、价格、发布日期检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorPriceReleaseDateMaxNPageCount(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4258,10 +4539,11 @@ func MatchBooksByAuthorPriceReleaseDateMaxNPageCount(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceReleaseDateMinNPageCount 根据作者、价格、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorPriceReleaseDateMinNPageCount 根据作者、价格、发布日期检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByAuthorPriceReleaseDateMinNPageCount(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4275,10 +4557,11 @@ func MatchBooksByAuthorPriceReleaseDateMinNPageCount(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceSeqMaxNPageCount 根据作者、价格、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorPriceSeqMaxNPageCount 根据作者、价格、编号检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // price float64 价格
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorPriceSeqMaxNPageCount(es *elasticsearch.Client, author string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4292,10 +4575,11 @@ func MatchBooksByAuthorPriceSeqMaxNPageCount(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorPriceSeqMinNPageCount 根据作者、价格、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorPriceSeqMinNPageCount 根据作者、价格、编号检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // price float64 价格
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorPriceSeqMinNPageCount(es *elasticsearch.Client, author string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4309,10 +4593,11 @@ func MatchBooksByAuthorPriceSeqMinNPageCount(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateSeqMaxNPageCount 根据作者、发布日期、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByAuthorReleaseDateSeqMaxNPageCount 根据作者、发布日期、编号检索books表中页数最大的前N条详细数据列表
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorReleaseDateSeqMaxNPageCount(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4326,10 +4611,11 @@ func MatchBooksByAuthorReleaseDateSeqMaxNPageCount(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateSeqMinNPageCount 根据作者、发布日期、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByAuthorReleaseDateSeqMinNPageCount 根据作者、发布日期、编号检索books表中页数最小的前N条详细数据列表
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorReleaseDateSeqMinNPageCount(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4343,10 +4629,11 @@ func MatchBooksByAuthorReleaseDateSeqMinNPageCount(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateSeqMaxNPrice 根据作者、发布日期、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByAuthorReleaseDateSeqMaxNPrice 根据作者、发布日期、编号检索books表中价格最大的前N条详细数据列表
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorReleaseDateSeqMaxNPrice(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4360,10 +4647,11 @@ func MatchBooksByAuthorReleaseDateSeqMaxNPrice(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByAuthorReleaseDateSeqMinNPrice 根据作者、发布日期、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByAuthorReleaseDateSeqMinNPrice 根据作者、发布日期、编号检索books表中价格最小的前N条详细数据列表
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByAuthorReleaseDateSeqMinNPrice(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -4377,10 +4665,11 @@ func MatchBooksByAuthorReleaseDateSeqMinNPrice(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2NameMaxNPageCount 根据类别、子类别、书名进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassClass2NameMaxNPageCount 根据类别、子类别、书名检索books表中页数最大的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByClassClass2NameMaxNPageCount(es *elasticsearch.Client, class, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4394,10 +4683,11 @@ func MatchBooksByClassClass2NameMaxNPageCount(es *elasticsearch.Client, class, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2NameMinNPageCount 根据类别、子类别、书名进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassClass2NameMinNPageCount 根据类别、子类别、书名检索books表中页数最小的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByClassClass2NameMinNPageCount(es *elasticsearch.Client, class, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4411,10 +4701,11 @@ func MatchBooksByClassClass2NameMinNPageCount(es *elasticsearch.Client, class, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2NameMaxNPrice 根据类别、子类别、书名进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassClass2NameMaxNPrice 根据类别、子类别、书名检索books表中价格最大的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByClassClass2NameMaxNPrice(es *elasticsearch.Client, class, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4428,10 +4719,11 @@ func MatchBooksByClassClass2NameMaxNPrice(es *elasticsearch.Client, class, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2NameMinNPrice 根据类别、子类别、书名进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassClass2NameMinNPrice 根据类别、子类别、书名检索books表中价格最小的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // name string 书名
+// size int 前N条记录
 func MatchBooksByClassClass2NameMinNPrice(es *elasticsearch.Client, class, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4445,10 +4737,11 @@ func MatchBooksByClassClass2NameMinNPrice(es *elasticsearch.Client, class, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PageCountMaxNPrice 根据类别、子类别、页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassClass2PageCountMaxNPrice 根据类别、子类别、页数检索books表中价格最大的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByClassClass2PageCountMaxNPrice(es *elasticsearch.Client, class, class2 string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4460,10 +4753,11 @@ func MatchBooksByClassClass2PageCountMaxNPrice(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PageCountMinNPrice 根据类别、子类别、页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassClass2PageCountMinNPrice 根据类别、子类别、页数检索books表中价格最小的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByClassClass2PageCountMinNPrice(es *elasticsearch.Client, class, class2 string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4475,10 +4769,11 @@ func MatchBooksByClassClass2PageCountMinNPrice(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PriceMaxNPageCount 根据类别、子类别、价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassClass2PriceMaxNPageCount 根据类别、子类别、价格检索books表中页数最大的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByClassClass2PriceMaxNPageCount(es *elasticsearch.Client, class, class2 string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4490,10 +4785,11 @@ func MatchBooksByClassClass2PriceMaxNPageCount(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2PriceMinNPageCount 根据类别、子类别、价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassClass2PriceMinNPageCount 根据类别、子类别、价格检索books表中页数最小的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByClassClass2PriceMinNPageCount(es *elasticsearch.Client, class, class2 string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4505,10 +4801,11 @@ func MatchBooksByClassClass2PriceMinNPageCount(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2ReleaseDateMaxNPageCount 根据类别、子类别、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassClass2ReleaseDateMaxNPageCount 根据类别、子类别、发布日期检索books表中页数最大的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassClass2ReleaseDateMaxNPageCount(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4520,10 +4817,11 @@ func MatchBooksByClassClass2ReleaseDateMaxNPageCount(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2ReleaseDateMinNPageCount 根据类别、子类别、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassClass2ReleaseDateMinNPageCount 根据类别、子类别、发布日期检索books表中页数最小的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassClass2ReleaseDateMinNPageCount(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4535,10 +4833,11 @@ func MatchBooksByClassClass2ReleaseDateMinNPageCount(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2ReleaseDateMaxNPrice 根据类别、子类别、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassClass2ReleaseDateMaxNPrice 根据类别、子类别、发布日期检索books表中价格最大的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassClass2ReleaseDateMaxNPrice(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4550,10 +4849,11 @@ func MatchBooksByClassClass2ReleaseDateMaxNPrice(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2ReleaseDateMinNPrice 根据类别、子类别、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassClass2ReleaseDateMinNPrice 根据类别、子类别、发布日期检索books表中价格最小的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassClass2ReleaseDateMinNPrice(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4565,10 +4865,11 @@ func MatchBooksByClassClass2ReleaseDateMinNPrice(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2SeqMaxNPageCount 根据类别、子类别、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassClass2SeqMaxNPageCount 根据类别、子类别、编号检索books表中页数最大的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassClass2SeqMaxNPageCount(es *elasticsearch.Client, class, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4580,10 +4881,11 @@ func MatchBooksByClassClass2SeqMaxNPageCount(es *elasticsearch.Client, class, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2SeqMinNPageCount 根据类别、子类别、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassClass2SeqMinNPageCount 根据类别、子类别、编号检索books表中页数最小的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassClass2SeqMinNPageCount(es *elasticsearch.Client, class, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4595,10 +4897,11 @@ func MatchBooksByClassClass2SeqMinNPageCount(es *elasticsearch.Client, class, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2SeqMaxNPrice 根据类别、子类别、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassClass2SeqMaxNPrice 根据类别、子类别、编号检索books表中价格最大的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassClass2SeqMaxNPrice(es *elasticsearch.Client, class, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4610,10 +4913,11 @@ func MatchBooksByClassClass2SeqMaxNPrice(es *elasticsearch.Client, class, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassClass2SeqMinNPrice 根据类别、子类别、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassClass2SeqMinNPrice 根据类别、子类别、编号检索books表中价格最小的前N条详细数据列表
 // class string 类别
 // class2 string 子类别
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassClass2SeqMinNPrice(es *elasticsearch.Client, class, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4625,10 +4929,11 @@ func MatchBooksByClassClass2SeqMinNPrice(es *elasticsearch.Client, class, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountMaxNPrice 根据类别、书名、页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassNamePageCountMaxNPrice 根据类别、书名、页数检索books表中价格最大的前N条详细数据列表
 // class string 类别
 // name string 书名
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByClassNamePageCountMaxNPrice(es *elasticsearch.Client, class, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4642,10 +4947,11 @@ func MatchBooksByClassNamePageCountMaxNPrice(es *elasticsearch.Client, class, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePageCountMinNPrice 根据类别、书名、页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassNamePageCountMinNPrice 根据类别、书名、页数检索books表中价格最小的前N条详细数据列表
 // class string 类别
 // name string 书名
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByClassNamePageCountMinNPrice(es *elasticsearch.Client, class, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4659,10 +4965,11 @@ func MatchBooksByClassNamePageCountMinNPrice(es *elasticsearch.Client, class, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceMaxNPageCount 根据类别、书名、价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassNamePriceMaxNPageCount 根据类别、书名、价格检索books表中页数最大的前N条详细数据列表
 // class string 类别
 // name string 书名
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByClassNamePriceMaxNPageCount(es *elasticsearch.Client, class, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4676,10 +4983,11 @@ func MatchBooksByClassNamePriceMaxNPageCount(es *elasticsearch.Client, class, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNamePriceMinNPageCount 根据类别、书名、价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassNamePriceMinNPageCount 根据类别、书名、价格检索books表中页数最小的前N条详细数据列表
 // class string 类别
 // name string 书名
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByClassNamePriceMinNPageCount(es *elasticsearch.Client, class, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4693,10 +5001,11 @@ func MatchBooksByClassNamePriceMinNPageCount(es *elasticsearch.Client, class, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameReleaseDateMaxNPageCount 根据类别、书名、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassNameReleaseDateMaxNPageCount 根据类别、书名、发布日期检索books表中页数最大的前N条详细数据列表
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassNameReleaseDateMaxNPageCount(es *elasticsearch.Client, class, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4710,10 +5019,11 @@ func MatchBooksByClassNameReleaseDateMaxNPageCount(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameReleaseDateMinNPageCount 根据类别、书名、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassNameReleaseDateMinNPageCount 根据类别、书名、发布日期检索books表中页数最小的前N条详细数据列表
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassNameReleaseDateMinNPageCount(es *elasticsearch.Client, class, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4727,10 +5037,11 @@ func MatchBooksByClassNameReleaseDateMinNPageCount(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameReleaseDateMaxNPrice 根据类别、书名、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassNameReleaseDateMaxNPrice 根据类别、书名、发布日期检索books表中价格最大的前N条详细数据列表
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassNameReleaseDateMaxNPrice(es *elasticsearch.Client, class, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4744,10 +5055,11 @@ func MatchBooksByClassNameReleaseDateMaxNPrice(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameReleaseDateMinNPrice 根据类别、书名、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassNameReleaseDateMinNPrice 根据类别、书名、发布日期检索books表中价格最小的前N条详细数据列表
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassNameReleaseDateMinNPrice(es *elasticsearch.Client, class, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4761,10 +5073,11 @@ func MatchBooksByClassNameReleaseDateMinNPrice(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameSeqMaxNPageCount 根据类别、书名、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassNameSeqMaxNPageCount 根据类别、书名、编号检索books表中页数最大的前N条详细数据列表
 // class string 类别
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassNameSeqMaxNPageCount(es *elasticsearch.Client, class, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4778,10 +5091,11 @@ func MatchBooksByClassNameSeqMaxNPageCount(es *elasticsearch.Client, class, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameSeqMinNPageCount 根据类别、书名、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassNameSeqMinNPageCount 根据类别、书名、编号检索books表中页数最小的前N条详细数据列表
 // class string 类别
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassNameSeqMinNPageCount(es *elasticsearch.Client, class, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4795,10 +5109,11 @@ func MatchBooksByClassNameSeqMinNPageCount(es *elasticsearch.Client, class, name
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameSeqMaxNPrice 根据类别、书名、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassNameSeqMaxNPrice 根据类别、书名、编号检索books表中价格最大的前N条详细数据列表
 // class string 类别
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassNameSeqMaxNPrice(es *elasticsearch.Client, class, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4812,10 +5127,11 @@ func MatchBooksByClassNameSeqMaxNPrice(es *elasticsearch.Client, class, name, se
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassNameSeqMinNPrice 根据类别、书名、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassNameSeqMinNPrice 根据类别、书名、编号检索books表中价格最小的前N条详细数据列表
 // class string 类别
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassNameSeqMinNPrice(es *elasticsearch.Client, class, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -4829,10 +5145,11 @@ func MatchBooksByClassNameSeqMinNPrice(es *elasticsearch.Client, class, name, se
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountReleaseDateMaxNPrice 根据类别、页数、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassPageCountReleaseDateMaxNPrice 根据类别、页数、发布日期检索books表中价格最大的前N条详细数据列表
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassPageCountReleaseDateMaxNPrice(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4844,10 +5161,11 @@ func MatchBooksByClassPageCountReleaseDateMaxNPrice(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountReleaseDateMinNPrice 根据类别、页数、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassPageCountReleaseDateMinNPrice 根据类别、页数、发布日期检索books表中价格最小的前N条详细数据列表
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassPageCountReleaseDateMinNPrice(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4859,10 +5177,11 @@ func MatchBooksByClassPageCountReleaseDateMinNPrice(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountSeqMaxNPrice 根据类别、页数、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassPageCountSeqMaxNPrice 根据类别、页数、编号检索books表中价格最大的前N条详细数据列表
 // class string 类别
 // pageCount int64 页数
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassPageCountSeqMaxNPrice(es *elasticsearch.Client, class string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4874,10 +5193,11 @@ func MatchBooksByClassPageCountSeqMaxNPrice(es *elasticsearch.Client, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPageCountSeqMinNPrice 根据类别、页数、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassPageCountSeqMinNPrice 根据类别、页数、编号检索books表中价格最小的前N条详细数据列表
 // class string 类别
 // pageCount int64 页数
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassPageCountSeqMinNPrice(es *elasticsearch.Client, class string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4889,10 +5209,11 @@ func MatchBooksByClassPageCountSeqMinNPrice(es *elasticsearch.Client, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceReleaseDateMaxNPageCount 根据类别、价格、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassPriceReleaseDateMaxNPageCount 根据类别、价格、发布日期检索books表中页数最大的前N条详细数据列表
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassPriceReleaseDateMaxNPageCount(es *elasticsearch.Client, class string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4904,10 +5225,11 @@ func MatchBooksByClassPriceReleaseDateMaxNPageCount(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceReleaseDateMinNPageCount 根据类别、价格、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassPriceReleaseDateMinNPageCount 根据类别、价格、发布日期检索books表中页数最小的前N条详细数据列表
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClassPriceReleaseDateMinNPageCount(es *elasticsearch.Client, class string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4919,10 +5241,11 @@ func MatchBooksByClassPriceReleaseDateMinNPageCount(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceSeqMaxNPageCount 根据类别、价格、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassPriceSeqMaxNPageCount 根据类别、价格、编号检索books表中页数最大的前N条详细数据列表
 // class string 类别
 // price float64 价格
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassPriceSeqMaxNPageCount(es *elasticsearch.Client, class string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4934,10 +5257,11 @@ func MatchBooksByClassPriceSeqMaxNPageCount(es *elasticsearch.Client, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassPriceSeqMinNPageCount 根据类别、价格、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassPriceSeqMinNPageCount 根据类别、价格、编号检索books表中页数最小的前N条详细数据列表
 // class string 类别
 // price float64 价格
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassPriceSeqMinNPageCount(es *elasticsearch.Client, class string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4949,10 +5273,11 @@ func MatchBooksByClassPriceSeqMinNPageCount(es *elasticsearch.Client, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateSeqMaxNPageCount 根据类别、发布日期、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClassReleaseDateSeqMaxNPageCount 根据类别、发布日期、编号检索books表中页数最大的前N条详细数据列表
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassReleaseDateSeqMaxNPageCount(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4964,10 +5289,11 @@ func MatchBooksByClassReleaseDateSeqMaxNPageCount(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateSeqMinNPageCount 根据类别、发布日期、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClassReleaseDateSeqMinNPageCount 根据类别、发布日期、编号检索books表中页数最小的前N条详细数据列表
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassReleaseDateSeqMinNPageCount(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4979,10 +5305,11 @@ func MatchBooksByClassReleaseDateSeqMinNPageCount(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateSeqMaxNPrice 根据类别、发布日期、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClassReleaseDateSeqMaxNPrice 根据类别、发布日期、编号检索books表中价格最大的前N条详细数据列表
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassReleaseDateSeqMaxNPrice(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -4994,10 +5321,11 @@ func MatchBooksByClassReleaseDateSeqMaxNPrice(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClassReleaseDateSeqMinNPrice 根据类别、发布日期、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClassReleaseDateSeqMinNPrice 根据类别、发布日期、编号检索books表中价格最小的前N条详细数据列表
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClassReleaseDateSeqMinNPrice(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -5009,10 +5337,11 @@ func MatchBooksByClassReleaseDateSeqMinNPrice(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountMaxNPrice 根据子类别、书名、页数进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClass2NamePageCountMaxNPrice 根据子类别、书名、页数检索books表中价格最大的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByClass2NamePageCountMaxNPrice(es *elasticsearch.Client, class2, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5026,10 +5355,11 @@ func MatchBooksByClass2NamePageCountMaxNPrice(es *elasticsearch.Client, class2, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePageCountMinNPrice 根据子类别、书名、页数进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClass2NamePageCountMinNPrice 根据子类别、书名、页数检索books表中价格最小的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
+// size int 前N条记录
 func MatchBooksByClass2NamePageCountMinNPrice(es *elasticsearch.Client, class2, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5043,10 +5373,11 @@ func MatchBooksByClass2NamePageCountMinNPrice(es *elasticsearch.Client, class2, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceMaxNPageCount 根据子类别、书名、价格进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClass2NamePriceMaxNPageCount 根据子类别、书名、价格检索books表中页数最大的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByClass2NamePriceMaxNPageCount(es *elasticsearch.Client, class2, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5060,10 +5391,11 @@ func MatchBooksByClass2NamePriceMaxNPageCount(es *elasticsearch.Client, class2, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NamePriceMinNPageCount 根据子类别、书名、价格进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClass2NamePriceMinNPageCount 根据子类别、书名、价格检索books表中页数最小的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
 // price float64 价格
+// size int 前N条记录
 func MatchBooksByClass2NamePriceMinNPageCount(es *elasticsearch.Client, class2, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5077,10 +5409,11 @@ func MatchBooksByClass2NamePriceMinNPageCount(es *elasticsearch.Client, class2, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameReleaseDateMaxNPageCount 根据子类别、书名、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClass2NameReleaseDateMaxNPageCount 根据子类别、书名、发布日期检索books表中页数最大的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClass2NameReleaseDateMaxNPageCount(es *elasticsearch.Client, class2, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5094,10 +5427,11 @@ func MatchBooksByClass2NameReleaseDateMaxNPageCount(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameReleaseDateMinNPageCount 根据子类别、书名、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClass2NameReleaseDateMinNPageCount 根据子类别、书名、发布日期检索books表中页数最小的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClass2NameReleaseDateMinNPageCount(es *elasticsearch.Client, class2, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5111,10 +5445,11 @@ func MatchBooksByClass2NameReleaseDateMinNPageCount(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameReleaseDateMaxNPrice 根据子类别、书名、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClass2NameReleaseDateMaxNPrice 根据子类别、书名、发布日期检索books表中价格最大的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClass2NameReleaseDateMaxNPrice(es *elasticsearch.Client, class2, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5128,10 +5463,11 @@ func MatchBooksByClass2NameReleaseDateMaxNPrice(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameReleaseDateMinNPrice 根据子类别、书名、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClass2NameReleaseDateMinNPrice 根据子类别、书名、发布日期检索books表中价格最小的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClass2NameReleaseDateMinNPrice(es *elasticsearch.Client, class2, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5145,10 +5481,11 @@ func MatchBooksByClass2NameReleaseDateMinNPrice(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameSeqMaxNPageCount 根据子类别、书名、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClass2NameSeqMaxNPageCount 根据子类别、书名、编号检索books表中页数最大的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2NameSeqMaxNPageCount(es *elasticsearch.Client, class2, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5162,10 +5499,11 @@ func MatchBooksByClass2NameSeqMaxNPageCount(es *elasticsearch.Client, class2, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameSeqMinNPageCount 根据子类别、书名、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClass2NameSeqMinNPageCount 根据子类别、书名、编号检索books表中页数最小的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2NameSeqMinNPageCount(es *elasticsearch.Client, class2, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5179,10 +5517,11 @@ func MatchBooksByClass2NameSeqMinNPageCount(es *elasticsearch.Client, class2, na
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameSeqMaxNPrice 根据子类别、书名、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClass2NameSeqMaxNPrice 根据子类别、书名、编号检索books表中价格最大的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2NameSeqMaxNPrice(es *elasticsearch.Client, class2, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5196,10 +5535,11 @@ func MatchBooksByClass2NameSeqMaxNPrice(es *elasticsearch.Client, class2, name, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2NameSeqMinNPrice 根据子类别、书名、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClass2NameSeqMinNPrice 根据子类别、书名、编号检索books表中价格最小的前N条详细数据列表
 // class2 string 子类别
 // name string 书名
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2NameSeqMinNPrice(es *elasticsearch.Client, class2, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5213,10 +5553,11 @@ func MatchBooksByClass2NameSeqMinNPrice(es *elasticsearch.Client, class2, name, 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountReleaseDateMaxNPrice 根据子类别、页数、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClass2PageCountReleaseDateMaxNPrice 根据子类别、页数、发布日期检索books表中价格最大的前N条详细数据列表
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClass2PageCountReleaseDateMaxNPrice(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -5228,10 +5569,11 @@ func MatchBooksByClass2PageCountReleaseDateMaxNPrice(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountReleaseDateMinNPrice 根据子类别、页数、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClass2PageCountReleaseDateMinNPrice 根据子类别、页数、发布日期检索books表中价格最小的前N条详细数据列表
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClass2PageCountReleaseDateMinNPrice(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -5243,10 +5585,11 @@ func MatchBooksByClass2PageCountReleaseDateMinNPrice(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountSeqMaxNPrice 根据子类别、页数、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClass2PageCountSeqMaxNPrice 根据子类别、页数、编号检索books表中价格最大的前N条详细数据列表
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2PageCountSeqMaxNPrice(es *elasticsearch.Client, class2 string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -5258,10 +5601,11 @@ func MatchBooksByClass2PageCountSeqMaxNPrice(es *elasticsearch.Client, class2 st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PageCountSeqMinNPrice 根据子类别、页数、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClass2PageCountSeqMinNPrice 根据子类别、页数、编号检索books表中价格最小的前N条详细数据列表
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2PageCountSeqMinNPrice(es *elasticsearch.Client, class2 string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -5273,10 +5617,11 @@ func MatchBooksByClass2PageCountSeqMinNPrice(es *elasticsearch.Client, class2 st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceReleaseDateMaxNPageCount 根据子类别、价格、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClass2PriceReleaseDateMaxNPageCount 根据子类别、价格、发布日期检索books表中页数最大的前N条详细数据列表
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClass2PriceReleaseDateMaxNPageCount(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -5288,10 +5633,11 @@ func MatchBooksByClass2PriceReleaseDateMaxNPageCount(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceReleaseDateMinNPageCount 根据子类别、价格、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClass2PriceReleaseDateMinNPageCount 根据子类别、价格、发布日期检索books表中页数最小的前N条详细数据列表
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByClass2PriceReleaseDateMinNPageCount(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -5303,10 +5649,11 @@ func MatchBooksByClass2PriceReleaseDateMinNPageCount(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceSeqMaxNPageCount 根据子类别、价格、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClass2PriceSeqMaxNPageCount 根据子类别、价格、编号检索books表中页数最大的前N条详细数据列表
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2PriceSeqMaxNPageCount(es *elasticsearch.Client, class2 string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -5318,10 +5665,11 @@ func MatchBooksByClass2PriceSeqMaxNPageCount(es *elasticsearch.Client, class2 st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2PriceSeqMinNPageCount 根据子类别、价格、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClass2PriceSeqMinNPageCount 根据子类别、价格、编号检索books表中页数最小的前N条详细数据列表
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2PriceSeqMinNPageCount(es *elasticsearch.Client, class2 string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -5333,10 +5681,11 @@ func MatchBooksByClass2PriceSeqMinNPageCount(es *elasticsearch.Client, class2 st
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateSeqMaxNPageCount 根据子类别、发布日期、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByClass2ReleaseDateSeqMaxNPageCount 根据子类别、发布日期、编号检索books表中页数最大的前N条详细数据列表
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2ReleaseDateSeqMaxNPageCount(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -5348,10 +5697,11 @@ func MatchBooksByClass2ReleaseDateSeqMaxNPageCount(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateSeqMinNPageCount 根据子类别、发布日期、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByClass2ReleaseDateSeqMinNPageCount 根据子类别、发布日期、编号检索books表中页数最小的前N条详细数据列表
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2ReleaseDateSeqMinNPageCount(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -5363,10 +5713,11 @@ func MatchBooksByClass2ReleaseDateSeqMinNPageCount(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateSeqMaxNPrice 根据子类别、发布日期、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByClass2ReleaseDateSeqMaxNPrice 根据子类别、发布日期、编号检索books表中价格最大的前N条详细数据列表
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2ReleaseDateSeqMaxNPrice(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -5378,10 +5729,11 @@ func MatchBooksByClass2ReleaseDateSeqMaxNPrice(es *elasticsearch.Client, class2 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByClass2ReleaseDateSeqMinNPrice 根据子类别、发布日期、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByClass2ReleaseDateSeqMinNPrice 根据子类别、发布日期、编号检索books表中价格最小的前N条详细数据列表
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByClass2ReleaseDateSeqMinNPrice(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -5393,10 +5745,11 @@ func MatchBooksByClass2ReleaseDateSeqMinNPrice(es *elasticsearch.Client, class2 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateMaxNPrice 根据书名、页数、发布日期进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByNamePageCountReleaseDateMaxNPrice 根据书名、页数、发布日期检索books表中价格最大的前N条详细数据列表
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByNamePageCountReleaseDateMaxNPrice(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5410,10 +5763,11 @@ func MatchBooksByNamePageCountReleaseDateMaxNPrice(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountReleaseDateMinNPrice 根据书名、页数、发布日期进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByNamePageCountReleaseDateMinNPrice 根据书名、页数、发布日期检索books表中价格最小的前N条详细数据列表
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByNamePageCountReleaseDateMinNPrice(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5427,10 +5781,11 @@ func MatchBooksByNamePageCountReleaseDateMinNPrice(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountSeqMaxNPrice 根据书名、页数、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByNamePageCountSeqMaxNPrice 根据书名、页数、编号检索books表中价格最大的前N条详细数据列表
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByNamePageCountSeqMaxNPrice(es *elasticsearch.Client, name string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5444,10 +5799,11 @@ func MatchBooksByNamePageCountSeqMaxNPrice(es *elasticsearch.Client, name string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePageCountSeqMinNPrice 根据书名、页数、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByNamePageCountSeqMinNPrice 根据书名、页数、编号检索books表中价格最小的前N条详细数据列表
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByNamePageCountSeqMinNPrice(es *elasticsearch.Client, name string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5461,10 +5817,11 @@ func MatchBooksByNamePageCountSeqMinNPrice(es *elasticsearch.Client, name string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateMaxNPageCount 根据书名、价格、发布日期进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByNamePriceReleaseDateMaxNPageCount 根据书名、价格、发布日期检索books表中页数最大的前N条详细数据列表
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByNamePriceReleaseDateMaxNPageCount(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5478,10 +5835,11 @@ func MatchBooksByNamePriceReleaseDateMaxNPageCount(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceReleaseDateMinNPageCount 根据书名、价格、发布日期进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByNamePriceReleaseDateMinNPageCount 根据书名、价格、发布日期检索books表中页数最小的前N条详细数据列表
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
+// size int 前N条记录
 func MatchBooksByNamePriceReleaseDateMinNPageCount(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5495,10 +5853,11 @@ func MatchBooksByNamePriceReleaseDateMinNPageCount(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceSeqMaxNPageCount 根据书名、价格、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByNamePriceSeqMaxNPageCount 根据书名、价格、编号检索books表中页数最大的前N条详细数据列表
 // name string 书名
 // price float64 价格
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByNamePriceSeqMaxNPageCount(es *elasticsearch.Client, name string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5512,10 +5871,11 @@ func MatchBooksByNamePriceSeqMaxNPageCount(es *elasticsearch.Client, name string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNamePriceSeqMinNPageCount 根据书名、价格、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByNamePriceSeqMinNPageCount 根据书名、价格、编号检索books表中页数最小的前N条详细数据列表
 // name string 书名
 // price float64 价格
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByNamePriceSeqMinNPageCount(es *elasticsearch.Client, name string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5529,10 +5889,11 @@ func MatchBooksByNamePriceSeqMinNPageCount(es *elasticsearch.Client, name string
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateSeqMaxNPageCount 根据书名、发布日期、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByNameReleaseDateSeqMaxNPageCount 根据书名、发布日期、编号检索books表中页数最大的前N条详细数据列表
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByNameReleaseDateSeqMaxNPageCount(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5546,10 +5907,11 @@ func MatchBooksByNameReleaseDateSeqMaxNPageCount(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateSeqMinNPageCount 根据书名、发布日期、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByNameReleaseDateSeqMinNPageCount 根据书名、发布日期、编号检索books表中页数最小的前N条详细数据列表
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByNameReleaseDateSeqMinNPageCount(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5563,10 +5925,11 @@ func MatchBooksByNameReleaseDateSeqMinNPageCount(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateSeqMaxNPrice 根据书名、发布日期、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByNameReleaseDateSeqMaxNPrice 根据书名、发布日期、编号检索books表中价格最大的前N条详细数据列表
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByNameReleaseDateSeqMaxNPrice(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5580,10 +5943,11 @@ func MatchBooksByNameReleaseDateSeqMaxNPrice(es *elasticsearch.Client, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByNameReleaseDateSeqMinNPrice 根据书名、发布日期、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByNameReleaseDateSeqMinNPrice 根据书名、发布日期、编号检索books表中价格最小的前N条详细数据列表
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByNameReleaseDateSeqMinNPrice(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -5597,10 +5961,11 @@ func MatchBooksByNameReleaseDateSeqMinNPrice(es *elasticsearch.Client, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateSeqMaxNPrice 根据页数、发布日期、编号进行检索(等于)查找books表价格最大的前N条详细数据列表
+// MatchBooksByPageCountReleaseDateSeqMaxNPrice 根据页数、发布日期、编号检索books表中价格最大的前N条详细数据列表
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByPageCountReleaseDateSeqMaxNPrice(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
@@ -5612,10 +5977,11 @@ func MatchBooksByPageCountReleaseDateSeqMaxNPrice(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPageCountReleaseDateSeqMinNPrice 根据页数、发布日期、编号进行检索(等于)查找books表价格最小的前N条详细数据列表
+// MatchBooksByPageCountReleaseDateSeqMinNPrice 根据页数、发布日期、编号检索books表中价格最小的前N条详细数据列表
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByPageCountReleaseDateSeqMinNPrice(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
@@ -5627,10 +5993,11 @@ func MatchBooksByPageCountReleaseDateSeqMinNPrice(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateSeqMaxNPageCount 根据价格、发布日期、编号进行检索(等于)查找books表页数最大的前N条详细数据列表
+// MatchBooksByPriceReleaseDateSeqMaxNPageCount 根据价格、发布日期、编号检索books表中页数最大的前N条详细数据列表
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByPriceReleaseDateSeqMaxNPageCount(es *elasticsearch.Client, price float64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
@@ -5642,10 +6009,11 @@ func MatchBooksByPriceReleaseDateSeqMaxNPageCount(es *elasticsearch.Client, pric
 	return queryBooksList(es, esQuery)
 }
 
-// MatchBooksByPriceReleaseDateSeqMinNPageCount 根据价格、发布日期、编号进行检索(等于)查找books表页数最小的前N条详细数据列表
+// MatchBooksByPriceReleaseDateSeqMinNPageCount 根据价格、发布日期、编号检索books表中页数最小的前N条详细数据列表
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
+// size int 前N条记录
 func MatchBooksByPriceReleaseDateSeqMinNPageCount(es *elasticsearch.Client, price float64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),

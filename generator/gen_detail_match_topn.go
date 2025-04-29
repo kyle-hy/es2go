@@ -38,9 +38,9 @@ func PreDetailMatchTopNCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplD
 		// 只生成一个字段的排序，否则太多了
 		topCmbs := utils.Combinations(topFields, 1)
 		for _, tcmb := range topCmbs {
-			names := getDetailMatchTopNFuncName(esInfo.StructName, cfs, tcmb, TopTypes)
-			comments := getDetailMatchTopNFuncComment(esInfo.StructComment, cfs, tcmb, TopTypes)
-			queries := getDetailMatchTopNQuery(cfs, tcmb, TopTypes, genCfg.TermInShould)
+			names := getDetailMatchTopNFuncName(esInfo.StructName, cfs, tcmb)
+			comments := getDetailMatchTopNFuncComment(esInfo.StructComment, cfs, tcmb)
+			queries := getDetailMatchTopNQuery(cfs, tcmb, genCfg.TermInShould)
 			for idx := range len(names) {
 				ftd := &FuncTplData{
 					Name:    names[idx],
@@ -58,9 +58,9 @@ func PreDetailMatchTopNCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplD
 }
 
 // getDetailMatchTopNFuncName 获取函数名称
-func getDetailMatchTopNFuncName(structName string, fields, topFields []*FieldInfo, topOptList []string) []string {
+func getDetailMatchTopNFuncName(structName string, fields, topFields []*FieldInfo) []string {
 	names := []string{}
-	for _, topOpt := range topOptList {
+	for _, topOpt := range TopTypes {
 		fn := "Match" + structName + "By" + GenFieldsName(fields) + topOpt + GenFieldsName(topFields)
 		names = append(names, fn)
 	}
@@ -69,15 +69,15 @@ func getDetailMatchTopNFuncName(structName string, fields, topFields []*FieldInf
 }
 
 // getDetailMatchTopNFuncComment 获取函数注释
-func getDetailMatchTopNFuncComment(structComment string, fields, topFields []*FieldInfo, topOptList []string) []string {
+func getDetailMatchTopNFuncComment(structComment string, fields, topFields []*FieldInfo) []string {
 	cmts := []string{}
-	for _, topOpt := range topOptList {
+	for _, topOpt := range TopTypes {
 		// 函数注释
 		cmt := "根据" + GenFieldsCmt(fields, true)
-		cmt += "进行检索(等于)查找" + structComment + GenFieldsCmt(topFields, true) + TopNames[topOpt] + "的前N条详细数据列表\n"
+		cmt += "检索" + structComment + "中" + GenFieldsCmt(topFields, true) + TopNames[topOpt] + "的前N条详细数据列表\n"
 
 		// 参数注释
-		cmt += GenParamCmt(fields, true)
+		cmt += GenParamCmt(fields, false) + "// size int 前N条记录"
 		cmts = append(cmts, cmt)
 	}
 
@@ -91,9 +91,9 @@ func getDetailMatchTopNFuncParams(fields []*FieldInfo) string {
 }
 
 // getDetailMatchTopNQuery 获取函数的查找条件
-func getDetailMatchTopNQuery(fields, topFields []*FieldInfo, topOptList []string, termInShould bool) []string {
+func getDetailMatchTopNQuery(fields, topFields []*FieldInfo, termInShould bool) []string {
 	queries := []string{}
-	for _, topOpt := range topOptList {
+	for _, topOpt := range TopTypes {
 		// match部分参数
 		mq := GenMatchCond(fields)
 

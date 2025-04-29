@@ -11,27 +11,18 @@ import (
 	"github.com/kyle-hy/es2go/utils"
 )
 
-// 生成对时间字段近期查找的代码,数值字段范围查找
-
-// PreDetailRecentCond 使用go代码预处理渲染需要的一些逻辑，template脚本调试困难
-func PreDetailRecentCond(mappingPath string, esInfo *EsModelInfo, rtype string) []*FuncTplData {
+// PreDetailRecentTopNCond 使用go代码预处理渲染需要的一些逻辑，template脚本调试困难
+func PreDetailRecentTopNCond(mappingPath string, esInfo *EsModelInfo, rtype string) []*FuncTplData {
 	funcDatas := []*FuncTplData{}
 
 	// 尝试加载自定义生成配置
 	genCfg := LoadCustomGenConfig(mappingPath)
-	maxCombine := MaxCombine
-	if genCfg.MaxCombine > 0 {
-		maxCombine = genCfg.MaxCombine
-	}
 
 	// 根据配置处理全文本字段的配置
 	fields := RetainTextFieldByName(esInfo.Fields, genCfg.AllTextFieldOnly, genCfg.AllTextField)
 
 	// 根据配置文件自定义字段分组进行随机组合
-	cmbFields := CombineCustom(fields, genCfg.Combine, maxCombine)
-	if len(cmbFields) == 0 { // 不存在自定义字段的配置，则全字段随机
-		cmbFields = utils.Combinations(fields, maxCombine)
-	}
+	cmbFields := CombineCustom(fields, genCfg.Combine, genCfg.MaxCombine-1)
 
 	// 过滤出满足类型限制的组合
 	cmbLimit := map[string]int{TypeNumber: 2, TypeDate: 1, TypeVector: -1}
@@ -43,26 +34,36 @@ func PreDetailRecentCond(mappingPath string, esInfo *EsModelInfo, rtype string) 
 
 	// 字段随机组合
 	for _, cfs := range mustFileds {
-		names := getDetailRecentFuncName(esInfo.StructName, cfs, rangeTypes, rtype, genCfg.CmpOptList)
-		comments := getDetailRecentFuncComment(esInfo.StructComment, cfs, rangeTypes, rtype, genCfg.CmpOptList)
-		params := getDetailRecentFuncParams(cfs, rangeTypes, rtype, genCfg.CmpOptList)
-		queries := getDetailRecentQuery(cfs, rangeTypes, genCfg.TermInShould, rtype, genCfg.CmpOptList)
-		for idx := range len(names) {
-			ftd := &FuncTplData{
-				Name:    names[idx],
-				Comment: comments[idx],
-				Params:  params[idx],
-				Query:   queries[idx],
+		// 筛选出做聚合分析的类型的字段
+		topFields := FilterOutByTypes(fields, cfs, []string{TypeNumber}, nil)
+
+		// 过滤出配置文件指定的聚合字段
+		topFields = FilterOutByName(topFields, cfs, genCfg.TermsFields, genCfg.NotTermsFields)
+
+		// 只生成一个字段的排序，否则太多了
+		topCmbs := utils.Combinations(topFields, 1)
+		for _, tcmb := range topCmbs {
+			names := getDetailRecentTopNFuncName(esInfo.StructName, cfs, tcmb, rangeTypes, rtype, genCfg.CmpOptList)
+			comments := getDetailRecentTopNFuncComment(esInfo.StructComment, cfs, tcmb, rangeTypes, rtype, genCfg.CmpOptList)
+			params := getDetailRecentTopNFuncParams(cfs, rangeTypes, rtype, genCfg.CmpOptList)
+			queries := getDetailRecentTopNQuery(cfs, tcmb, rangeTypes, genCfg.TermInShould, rtype, genCfg.CmpOptList)
+			for idx := range len(names) {
+				ftd := &FuncTplData{
+					Name:    names[idx],
+					Comment: comments[idx],
+					Params:  params[idx/2],
+					Query:   queries[idx],
+				}
+				funcDatas = append(funcDatas, ftd)
 			}
-			funcDatas = append(funcDatas, ftd)
 		}
 	}
 
 	return funcDatas
 }
 
-// getDetailRecentFuncName 获取函数名称
-func getDetailRecentFuncName(structName string, fields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
+// getDetailRecentTopNFuncName 获取函数名称
+func getDetailRecentTopNFuncName(structName string, fields, topFields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
@@ -81,32 +82,31 @@ func getDetailRecentFuncName(structName string, fields []*FieldInfo, rangeTypes 
 	// 多字段之间的两两组合
 	fopts := utils.Cartesian(fieldOpts)
 	for _, fopt := range fopts {
-		names = append(names, fn+fopt+otherName)
+		for _, topOpt := range TopTypes {
+			names = append(names, fn+fopt+otherName+topOpt+GenFieldsName(topFields))
+		}
 	}
 	return names
 }
 
-// getDetailRecentFuncComment 获取函数注释
-func getDetailRecentFuncComment(structComment string, fields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
+// getDetailRecentTopNFuncComment 获取函数注释
+func getDetailRecentTopNFuncComment(structComment string, fields, topFields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
 	// 函数注释部分
 	types, other := FieldFilterByTypes(fields, rangeTypes)
-	otherComment := ""
-	// 串联过滤条件的字段名
-	if len(other) > 0 {
-		otherComment = "根据" + GenFieldsCmt(other, true)
-	}
-
+	otherComment := "根据" + GenFieldsCmt(other, false)
 	fieldCmts := GenRangeFuncParamCmt(types, optList, []string{TypeNumber})
 	fieldCmts = append(fieldCmts, GenRecentFuncParamCmt(types, rtype, optList, []string{TypeDate})...)
 	funcCmts := []string{}
-	fn := "从" + structComment + "查找"
+	fn := "检索" + structComment + "中"
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
 		fopt = strings.TrimSuffix(fopt, "、")
-		funcCmts = append(funcCmts, otherComment+fn+fopt+"的详细数据列表和总数量\n")
+		for _, topOpt := range TopTypes {
+			funcCmts = append(funcCmts, otherComment+fopt+fn+GenFieldsCmt(topFields, true)+TopNames[topOpt]+"的前N条详细数据列表\n")
+		}
 	}
 
 	// 参数注释部分
@@ -118,17 +118,17 @@ func getDetailRecentFuncComment(structComment string, fields []*FieldInfo, range
 	paramOpts := utils.Cartesian(fieldParamCmts)
 
 	// 函数注释和参数注释合并
-	if len(funcCmts) == len(paramOpts) {
+	if len(funcCmts) == 2*len(paramOpts) {
 		for idx, fc := range funcCmts {
-			funcCmts[idx] = fc + filterParam + strings.TrimSuffix(paramOpts[idx], "\n")
+			funcCmts[idx] = fc + filterParam + paramOpts[idx/2] + "// size int 前N条记录"
 		}
 	}
 
 	return funcCmts
 }
 
-// getDetailRecentFuncParams 获取函数参数列表
-func getDetailRecentFuncParams(fields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
+// getDetailRecentTopNFuncParams 获取函数参数列表
+func getDetailRecentTopNFuncParams(fields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
@@ -142,38 +142,42 @@ func getDetailRecentFuncParams(fields []*FieldInfo, rangeTypes []string, rtype s
 
 	funcParams := utils.Cartesian(params)
 	for idx, fp := range funcParams {
-		funcParams[idx] = simplifyParams(cfp + strings.TrimSuffix(fp, ", "))
+		funcParams[idx] = simplifyParams(cfp + fp + "size int")
 	}
 	return funcParams
 }
 
-// getDetailRecentQuery 获取函数的查找条件
-func getDetailRecentQuery(fields []*FieldInfo, rangeTypes []string, termInShould bool, rtype string, optList [][]string) []string {
+// getDetailRecentTopNQuery 获取函数的查找条件
+func getDetailRecentTopNQuery(fields, topFields []*FieldInfo, rangeTypes []string, termInShould bool, rtype string, optList [][]string) []string {
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	// match部分参数
 	mq := GenMatchCond(other)
 
 	// term部分参数
-	tq := eqTerms(other)
+	eqt := eqTerms(other)
 
 	ranges := eqRanges(types, optList, []string{TypeNumber})                // 数值的氛围条件
 	ranges = append(ranges, eqRecents(types, rtype, []string{TypeDate})...) // 日期的近期条件
 	funcRanges := utils.Cartesian(ranges)
-	for idx, fq := range funcRanges {
-		fq = WrapTermCond(tq + fq)
-		bq := GenBoolCond(mq, fq, termInShould)
-		esq := GenESQueryCond(bq, "", "", "")
-		funcRanges[idx] = mq + fq + esq
+	queries := []string{}
+	for _, fq := range funcRanges {
+		for _, topOpt := range TopTypes {
+			tq := WrapTermCond(eqt + fq)
+			bq := GenBoolCond(mq, tq, termInShould)
+			sq := GenSortCond(topFields, topOpt) // sort部分参数
+			esq := GenESQueryCond(bq, "", sq, "size")
+			queries = append(queries, mq+tq+sq+esq)
+		}
 	}
 
-	return funcRanges
+	return queries
 }
 
-// GenEsDetailRecent 生成es检索详情
-func GenEsDetailRecent(mappingPath, outputPath string, esInfo *EsModelInfo) error {
+// GenEsDetailRecentTopN 生成es检索详情
+func GenEsDetailRecentTopN(mappingPath, outputPath string, esInfo *EsModelInfo) error {
 	for _, rtype := range RecentTypes {
 		// 预处理渲染所需的内容
-		funcData := PreDetailRecentCond(mappingPath, esInfo, rtype)
+		funcData := PreDetailRecentTopNCond(mappingPath, esInfo, rtype)
 		detailData := DetailTplData{
 			PackageName:   esInfo.PackageName,
 			StructName:    esInfo.StructName,
@@ -197,7 +201,7 @@ func GenEsDetailRecent(mappingPath, outputPath string, esInfo *EsModelInfo) erro
 		}
 
 		// 写入文件
-		suffix := fmt.Sprintf("_detail_%s.go", strings.ToLower(rtype))
+		suffix := fmt.Sprintf("_detail_%s_topn.go", strings.ToLower(rtype))
 		output := strings.Replace(outputPath, ".go", suffix, -1)
 		err = os.WriteFile(output, buf.Bytes(), 0644)
 		if err != nil {
