@@ -162,71 +162,21 @@ func getDetailRangeQuery(fields []*FieldInfo, rangeTypes []string, termInShould 
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
-
-	// 精确条件默认放到filter中
-	preciseOpt := "eq.WithFilter"
-	if termInShould {
-		preciseOpt = "eq.WithShould"
-	}
-
 	types, other := FieldFilterByTypes(fields, rangeTypes)
-	// match部分参数
-	matchCnt := 0
-	mq := "matches := []eq.Map{\n"
-	for _, f := range other {
-		if f.EsFieldType == "text" {
-			matchCnt++
-			mq += fmt.Sprintf("		eq.Match(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
-		}
-	}
-	mq += "	}\n"
 
-	// match部分参数
-	termCnt := 0
-	tq := ""
-	for _, f := range other {
-		if f.EsFieldType != "text" {
-			termCnt++
-			tq += fmt.Sprintf("		eq.Term(\"%s\", %s),\n", f.EsFieldPath, utils.ToFirstLower(f.FieldName))
-		}
-	}
+	// match部分参数map
+	mq := GenMatchCond(other)
 
-	ranges := [][]string{}
-	for _, f := range types {
-		tmps := []string{}
-		for _, opts := range optList {
-			tmp := ""
-			gte, gt, lt, lte := "nil", "nil", "nil", "nil"
-			for _, opt := range opts {
-				switch opt {
-				case GTE:
-					gte = utils.ToFirstLower(f.FieldName) + opt
-				case GT:
-					gt = utils.ToFirstLower(f.FieldName + opt)
-				case LT:
-					lt = utils.ToFirstLower(f.FieldName + opt)
-				case LTE:
-					lte = utils.ToFirstLower(f.FieldName + opt)
-				}
-			}
-			tmp += fmt.Sprintf("		eq.Range(\"%s\", %s, %s, %s, %s),\n", f.EsFieldPath, gte, gt, lt, lte)
-			tmps = append(tmps, tmp)
-		}
-		ranges = append(ranges, tmps)
-	}
+	// term部分条件
+	tq := eqTerms(other)
 
+	ranges := eqRanges(types, optList, nil)
 	funcRanges := utils.Cartesian(ranges)
 	for idx, fq := range funcRanges {
-		fq := "filters := []eq.Map{\n" + tq + fq + "	}\n"
-		if matchCnt > 0 {
-			fq = mq + fq
-			qfmt := `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), %s(filters))}`
-			fq += fmt.Sprintf(qfmt, preciseOpt)
-		} else {
-			qfmt := `	esQuery := &eq.ESQuery{Query: eq.Bool(%s(filters))}`
-			fq += fmt.Sprintf(qfmt, preciseOpt)
-		}
-		funcRanges[idx] = fq
+		fq = WrapTermCond(tq + fq)
+		bq := GenBoolCond(mq, fq, termInShould)
+		esq := GenESQueryCond(bq, "")
+		funcRanges[idx] = mq + fq + esq
 	}
 
 	return funcRanges

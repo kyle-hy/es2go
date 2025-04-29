@@ -374,6 +374,14 @@ func GenTermCond(fields []*FieldInfo) string {
 	return ""
 }
 
+// WrapTermCond 封装term条件为map
+func WrapTermCond(fields string) string {
+	if fields != "" {
+		return "terms := []eq.Map{\n" + fields + "}\n"
+	}
+	return ""
+}
+
 // GenKnnCond 生成knn条件
 func GenKnnCond(fields []*FieldInfo, boolQuery string) string {
 	if len(fields) == 0 {

@@ -152,11 +152,6 @@ func getDetailRecentQuery(fields []*FieldInfo, rangeTypes []string, termInShould
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
-	// 精确条件默认放到filter中
-	preciseOpt := "eq.WithFilter"
-	if termInShould {
-		preciseOpt = "eq.WithShould"
-	}
 
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	// match部分参数
@@ -169,16 +164,10 @@ func getDetailRecentQuery(fields []*FieldInfo, rangeTypes []string, termInShould
 	ranges = append(ranges, eqRecents(types, rtype, []string{TypeDate})...) // 日期的近期条件
 	funcRanges := utils.Cartesian(ranges)
 	for idx, fq := range funcRanges {
-		fq := "filters := []eq.Map{\n" + tq + fq + "	}\n"
-		if mq != "" {
-			fq = mq + fq
-			qfmt := `	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), %s(filters))}`
-			fq += fmt.Sprintf(qfmt, preciseOpt)
-		} else {
-			qfmt := `	esQuery := &eq.ESQuery{Query: eq.Bool(%s(filters))}`
-			fq += fmt.Sprintf(qfmt, preciseOpt)
-		}
-		funcRanges[idx] = fq
+		fq = WrapTermCond(tq + fq)
+		bq := GenBoolCond(mq, fq, termInShould)
+		esq := GenESQueryCond(bq, "")
+		funcRanges[idx] = mq + fq + esq
 	}
 
 	return funcRanges
