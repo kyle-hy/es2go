@@ -80,18 +80,7 @@ func getAggRangeStatsFuncName(structName string, fields, termsFields []*FieldInf
 	}
 
 	// 各字段与比较符号列表的串联
-	fieldOpts := [][]string{}
-	for _, f := range types {
-		tmps := []string{}
-		for _, opts := range optList {
-			tmp := f.FieldName
-			for _, opt := range opts {
-				tmp += opt
-			}
-			tmps = append(tmps, tmp)
-		}
-		fieldOpts = append(fieldOpts, tmps)
-	}
+	fieldOpts := GenRangeFieldName(types, optList, nil)
 
 	names := []string{}
 	fn := stype + GenFieldsName(termsFields) + "Of" + structName + "By"
@@ -118,20 +107,7 @@ func getAggRangeStatsFuncComment(structComment string, fields, termsFields []*Fi
 	}
 
 	// 范围查询字段比较方式
-	fieldCmts := [][]string{}
-	for _, f := range types {
-		tmps := []string{}
-		for _, opts := range optList {
-			tmp := f.FieldComment
-			for _, opt := range opts {
-				tmp += CmpOptNames[opt] + "和"
-			}
-			tmp = strings.TrimSuffix(tmp, "和")
-			tmp += "、"
-			tmps = append(tmps, tmp)
-		}
-		fieldCmts = append(fieldCmts, tmps)
-	}
+	fieldCmts := GenRangeFuncParamCmt(types, optList, nil)
 
 	funcCmts := []string{}
 	fopts := utils.Cartesian(fieldCmts)

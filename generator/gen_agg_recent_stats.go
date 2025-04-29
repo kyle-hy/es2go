@@ -110,30 +110,8 @@ func getAggRecentStatsFuncComment(structComment string, fields, termsFields []*F
 		otherComment += GenFieldsCmt(other, false)
 	}
 
-	fieldCmts := [][]string{}
-	for _, f := range types {
-		if getTypeMapping(f.EsFieldType) == TypeNumber {
-			// 数值的多种比较
-			tmps := []string{}
-			for _, opts := range optList {
-				tmp := f.FieldComment
-				for _, opt := range opts {
-					tmp += CmpOptNames[opt] + "和"
-				}
-				tmp = strings.TrimSuffix(tmp, "和")
-				tmp += "、"
-				tmps = append(tmps, tmp)
-			}
-			fieldCmts = append(fieldCmts, tmps)
-		} else if getTypeMapping(f.EsFieldType) == TypeDate {
-			// 日期的近期查找
-			tmps := []string{}
-			tmp := f.FieldComment
-			tmp += RecentNames[rtype]
-			tmps = append(tmps, tmp)
-			fieldCmts = append(fieldCmts, tmps)
-		}
-	}
+	fieldCmts := GenRangeFuncParamCmt(types, optList, []string{TypeNumber})
+	fieldCmts = append(fieldCmts, GenRecentFuncParamCmt(types, rtype, optList, []string{TypeDate})...)
 	funcCmts := []string{}
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
