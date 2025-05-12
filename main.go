@@ -93,6 +93,7 @@ func main() {
 		// 生成聚合分析代码
 		gen.GenEsAggMatchTerms,
 		gen.GenEsAggMatchStats,
+		gen.GenEsAggMatchHist,
 		gen.GenEsAggRangeTerms,
 		gen.GenEsAggRangeStats,
 		gen.GenEsAggRecentTerms,

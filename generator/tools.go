@@ -422,6 +422,30 @@ func GenAggWithCond(fields []*FieldInfo, aggFunc string) string {
 	return ""
 }
 
+// GenAggWithCondOpt 生成多个字段同时聚合
+func GenAggWithCondOpt(fields []*FieldInfo, aggFunc, aggOpt string) string {
+	aq := ""
+	suffix := ""
+	prefix := aggFunc
+
+	// 修正属性参数格式
+	if aggOpt != "" && !strings.HasPrefix(aggOpt, ", ") {
+		aggOpt = ", " + aggOpt
+	}
+
+	for idx, f := range fields {
+		if idx > 0 {
+			prefix = ".With(" + aggFunc
+			suffix = ")"
+		}
+		aq += fmt.Sprintf("%s(\"%s\"%s)%s", prefix, utils.ToFirstLower(f.FieldName), aggOpt, suffix)
+	}
+	if len(fields) > 0 {
+		return "	aggs :=" + aq + "\n"
+	}
+	return ""
+}
+
 // GenAggNestedCond 生成多个字段嵌套聚合
 func GenAggNestedCond(fields []*FieldInfo, aggFunc string) string {
 	// aggs := eq.TermsAgg("zg").Nested(eq.TermsAgg("ak").Nested(eq.TermsAgg("bk")))
