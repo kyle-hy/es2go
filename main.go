@@ -94,8 +94,11 @@ func main() {
 		gen.GenEsAggMatchTerms,
 		gen.GenEsAggMatchStats,
 		gen.GenEsAggMatchHist,
+
 		gen.GenEsAggRangeTerms,
 		gen.GenEsAggRangeStats,
+		gen.GenEsAggRangeHist,
+
 		gen.GenEsAggRecentTerms,
 		gen.GenEsAggRecentStats,
 	}

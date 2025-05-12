@@ -35,7 +35,7 @@ func PreAggMatchHistCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData
 		// 过滤出配置文件指定的聚合字段
 		statsFields = FilterOutByName(statsFields, cfs, genCfg.StatsFields, genCfg.NotStatsFields)
 
-		// terms的嵌套聚合分析次序是对结果哟影响的，因此只能生成一个字段的聚合，否则太多了
+		// histogram的聚合分析
 		statsCmbs := utils.Combinations(statsFields, 1)
 		for _, scmb := range statsCmbs {
 			ftd := &FuncTplData{

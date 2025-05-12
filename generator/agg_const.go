@@ -21,22 +21,23 @@ var (
 	RecentFormat = map[string]string{"Day": "now-%dd/d", "Week": "now-%dw/w", "Month": "now-%dM/M", "Quarter": "now-%dQ/Q", "Year": "now-%dy/y"}
 )
 
-// 数值直方图统计聚合
+// 日期直方图统计聚合
 var (
-	HistTypes = []string{"Avg", "Sum", "Min", "Max", "Stats"}
-	HistNames = map[string]string{"Avg": "平均值", "Sum": "总和", "Min": "最小值", "Max": "最大值", "Stats": "统计信息"}
-	HistFuncs = map[string]string{"Avg": AggFuncAvg, "Sum": AggFuncSum, "Min": AggFuncMin, "Max": AggFuncMax, "Stats": AggFuncStats}
+	DateHistTypes = []string{"Minute", "Hour", "Day", "Week", "Month", "Quarter", "Year"}
+	DateHistNames = map[string]string{"Minute": "", "Hour": "", "Day": "", "Week": "", "Month": "", "Quarter": "", "Year": ""}
+	DateHistFuncs = map[string]string{"Avg": AggFuncAvg, "Sum": AggFuncSum, "Min": AggFuncMin, "Max": AggFuncMax, "Stats": AggFuncStats}
 )
 
 // 聚合方式枚举
 const (
-	AggFuncTerms = "eq.TermsAgg"     // 分组统计
-	AggFuncAvg   = "eq.AvgAgg"       // 计算均值
-	AggFuncSum   = "eq.SumAgg"       // 计算总和
-	AggFuncMin   = "eq.MinAgg"       // 计算最小值
-	AggFuncMax   = "eq.MaxAgg"       // 计算最大值
-	AggFuncStats = "eq.StatsAgg"     // 计算统计信息
-	AggFuncHist  = "eq.HistogramAgg" // 直方图统计信息
+	AggFuncTerms    = "eq.TermsAgg"         // 分组统计
+	AggFuncAvg      = "eq.AvgAgg"           // 计算均值
+	AggFuncSum      = "eq.SumAgg"           // 计算总和
+	AggFuncMin      = "eq.MinAgg"           // 计算最小值
+	AggFuncMax      = "eq.MaxAgg"           // 计算最大值
+	AggFuncStats    = "eq.StatsAgg"         // 计算统计信息
+	AggFuncHist     = "eq.HistogramAgg"     // 直方图统计
+	AggFuncDateHist = "eq.DateHistogramAgg" // 日期直方图统计
 
 	AggOptInterval = "eq.WithInterval(histInterval)" // 桶聚合的间隔
 )
