@@ -91,16 +91,21 @@ func main() {
 		gen.GenEsDetailRecentTopN,
 
 		// 生成聚合分析代码
+
+		// 字段匹配聚合
 		gen.GenEsAggMatchTerms,
 		gen.GenEsAggMatchStats,
 		gen.GenEsAggMatchHist,
 
+		// 范围查询聚合
 		gen.GenEsAggRangeTerms,
 		gen.GenEsAggRangeStats,
 		gen.GenEsAggRangeHist,
 
+		// 近期日期聚合
 		gen.GenEsAggRecentTerms,
 		gen.GenEsAggRecentStats,
+		gen.GenEsAggRecentHist,
 	}
 
 	// 并发执行各种代码生成函数

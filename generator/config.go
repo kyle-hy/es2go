@@ -37,6 +37,10 @@ type GenConfig struct {
 	// 统计信息的字段配置
 	StatsFields    []string `json:"statsFields"`    // 做统计的字段
 	NotStatsFields []string `json:"notStatsFields"` // 不做统计的字段
+
+	// 数值直方图统计字段配置
+	HistFields    []string `json:"histFields"`    // 做直方图统计的字段
+	NotHistFields []string `json:"notHistFields"` // 不做直方图统计的字段
 }
 
 // getCfgPathByMapping 根据Mapping文件的配置路径获取自定义的配置文件路径

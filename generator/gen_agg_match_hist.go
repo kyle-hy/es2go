@@ -33,7 +33,7 @@ func PreAggMatchHistCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData
 		statsFields := FilterOutByTypes(fields, cfs, []string{TypeNumber}, nil)
 
 		// 过滤出配置文件指定的聚合字段
-		statsFields = FilterOutByName(statsFields, cfs, genCfg.StatsFields, genCfg.NotStatsFields)
+		statsFields = FilterOutByName(statsFields, cfs, genCfg.HistFields, genCfg.NotHistFields)
 
 		// histogram的聚合分析
 		statsCmbs := utils.Combinations(statsFields, 1)
