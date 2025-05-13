@@ -111,7 +111,7 @@ func getAggRangeDateHistFuncComment(structComment string, fields, termsFields []
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
 		fopt = strings.TrimSuffix(fopt, "、")
-		fcmt := otherComment + fopt + "检索" + structComment + "并按" + GenFieldsCmt(termsFields, true) + "统计" + DateHistNames[dhtype] + "的直方图分布\n"
+		fcmt := otherComment + fopt + "检索" + structComment + "并按" + GenFieldsCmt(termsFields, true) + "统计" + DateHistNames[dhtype] + "的数量直方图分布\n"
 		funcCmts = append(funcCmts, fcmt)
 	}
 

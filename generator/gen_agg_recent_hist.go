@@ -115,7 +115,7 @@ func getAggRecentHistFuncComment(structComment string, fields, termsFields []*Fi
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
 		fopt = strings.TrimSuffix(fopt, "、")
-		funcCmts = append(funcCmts, otherComment+fopt+"检索"+structComment+statCmt+GenFieldsCmt(termsFields, true)+"的直方图分布\n")
+		funcCmts = append(funcCmts, otherComment+fopt+"检索"+structComment+statCmt+GenFieldsCmt(termsFields, true)+"的数量直方图分布\n")
 	}
 
 	// 参数注释部分

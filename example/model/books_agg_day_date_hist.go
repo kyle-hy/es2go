@@ -9,7 +9,7 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// MinuteHistOfDayBooksByReleaseDateGte 根据发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByReleaseDateGte 根据发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // releaseDateNDay int 发布日期为近几天
 func MinuteHistOfDayBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -20,7 +20,7 @@ func MinuteHistOfDayBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateN
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByReleaseDateGte 根据发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByReleaseDateGte 根据发布日期为近几天检索books表并统计每小时的数量直方图分布
 // releaseDateNDay int 发布日期为近几天
 func HourHistOfDayBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -31,7 +31,7 @@ func HourHistOfDayBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNDa
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByReleaseDateGte 根据发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByReleaseDateGte 根据发布日期为近几天检索books表并统计每天的数量直方图分布
 // releaseDateNDay int 发布日期为近几天
 func DayHistOfDayBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -42,7 +42,7 @@ func DayHistOfDayBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNDay
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // releaseDateNDay int 发布日期为近几天
 func MinuteHistOfDayBooksByAllTextReleaseDateGte(es *elasticsearch.Client, allText string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -57,7 +57,7 @@ func MinuteHistOfDayBooksByAllTextReleaseDateGte(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // releaseDateNDay int 发布日期为近几天
 func HourHistOfDayBooksByAllTextReleaseDateGte(es *elasticsearch.Client, allText string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -72,7 +72,7 @@ func HourHistOfDayBooksByAllTextReleaseDateGte(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // releaseDateNDay int 发布日期为近几天
 func DayHistOfDayBooksByAllTextReleaseDateGte(es *elasticsearch.Client, allText string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -87,7 +87,7 @@ func DayHistOfDayBooksByAllTextReleaseDateGte(es *elasticsearch.Client, allText 
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAuthorReleaseDateGte 根据作者、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAuthorReleaseDateGte 根据作者、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // author string 作者
 // releaseDateNDay int 发布日期为近几天
 func MinuteHistOfDayBooksByAuthorReleaseDateGte(es *elasticsearch.Client, author string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -102,7 +102,7 @@ func MinuteHistOfDayBooksByAuthorReleaseDateGte(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAuthorReleaseDateGte 根据作者、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAuthorReleaseDateGte 根据作者、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // author string 作者
 // releaseDateNDay int 发布日期为近几天
 func HourHistOfDayBooksByAuthorReleaseDateGte(es *elasticsearch.Client, author string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -117,7 +117,7 @@ func HourHistOfDayBooksByAuthorReleaseDateGte(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAuthorReleaseDateGte 根据作者、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAuthorReleaseDateGte 根据作者、发布日期为近几天检索books表并统计每天的数量直方图分布
 // author string 作者
 // releaseDateNDay int 发布日期为近几天
 func DayHistOfDayBooksByAuthorReleaseDateGte(es *elasticsearch.Client, author string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -132,7 +132,7 @@ func DayHistOfDayBooksByAuthorReleaseDateGte(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClassReleaseDateGte 根据类别、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClassReleaseDateGte 根据类别、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class string 类别
 // releaseDateNDay int 发布日期为近几天
 func MinuteHistOfDayBooksByClassReleaseDateGte(es *elasticsearch.Client, class string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -145,7 +145,7 @@ func MinuteHistOfDayBooksByClassReleaseDateGte(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClassReleaseDateGte 根据类别、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClassReleaseDateGte 根据类别、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class string 类别
 // releaseDateNDay int 发布日期为近几天
 func HourHistOfDayBooksByClassReleaseDateGte(es *elasticsearch.Client, class string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -158,7 +158,7 @@ func HourHistOfDayBooksByClassReleaseDateGte(es *elasticsearch.Client, class str
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClassReleaseDateGte 根据类别、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClassReleaseDateGte 根据类别、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class string 类别
 // releaseDateNDay int 发布日期为近几天
 func DayHistOfDayBooksByClassReleaseDateGte(es *elasticsearch.Client, class string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -171,7 +171,7 @@ func DayHistOfDayBooksByClassReleaseDateGte(es *elasticsearch.Client, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
 func MinuteHistOfDayBooksByClass2ReleaseDateGte(es *elasticsearch.Client, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -184,7 +184,7 @@ func MinuteHistOfDayBooksByClass2ReleaseDateGte(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
 func HourHistOfDayBooksByClass2ReleaseDateGte(es *elasticsearch.Client, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -197,7 +197,7 @@ func HourHistOfDayBooksByClass2ReleaseDateGte(es *elasticsearch.Client, class2 s
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
 func DayHistOfDayBooksByClass2ReleaseDateGte(es *elasticsearch.Client, class2 string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -210,7 +210,7 @@ func DayHistOfDayBooksByClass2ReleaseDateGte(es *elasticsearch.Client, class2 st
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByNameReleaseDateGte 根据书名、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByNameReleaseDateGte 根据书名、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
 func MinuteHistOfDayBooksByNameReleaseDateGte(es *elasticsearch.Client, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -225,7 +225,7 @@ func MinuteHistOfDayBooksByNameReleaseDateGte(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByNameReleaseDateGte 根据书名、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByNameReleaseDateGte 根据书名、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
 func HourHistOfDayBooksByNameReleaseDateGte(es *elasticsearch.Client, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -240,7 +240,7 @@ func HourHistOfDayBooksByNameReleaseDateGte(es *elasticsearch.Client, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByNameReleaseDateGte 根据书名、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByNameReleaseDateGte 根据书名、发布日期为近几天检索books表并统计每天的数量直方图分布
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
 func DayHistOfDayBooksByNameReleaseDateGte(es *elasticsearch.Client, name string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -255,7 +255,7 @@ func DayHistOfDayBooksByNameReleaseDateGte(es *elasticsearch.Client, name string
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
 func MinuteHistOfDayBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -268,7 +268,7 @@ func MinuteHistOfDayBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
 func MinuteHistOfDayBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -281,7 +281,7 @@ func MinuteHistOfDayBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
 func MinuteHistOfDayBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -294,7 +294,7 @@ func MinuteHistOfDayBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
 func MinuteHistOfDayBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -307,7 +307,7 @@ func MinuteHistOfDayBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -321,7 +321,7 @@ func MinuteHistOfDayBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
 func HourHistOfDayBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -334,7 +334,7 @@ func HourHistOfDayBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pa
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
 func HourHistOfDayBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -347,7 +347,7 @@ func HourHistOfDayBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
 func HourHistOfDayBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -360,7 +360,7 @@ func HourHistOfDayBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
 func HourHistOfDayBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -373,7 +373,7 @@ func HourHistOfDayBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pa
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -387,7 +387,7 @@ func HourHistOfDayBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
 func DayHistOfDayBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -400,7 +400,7 @@ func DayHistOfDayBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
 func DayHistOfDayBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -413,7 +413,7 @@ func DayHistOfDayBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
 func DayHistOfDayBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -426,7 +426,7 @@ func DayHistOfDayBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
 func DayHistOfDayBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -439,7 +439,7 @@ func DayHistOfDayBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -453,7 +453,7 @@ func DayHistOfDayBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
 func MinuteHistOfDayBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -466,7 +466,7 @@ func MinuteHistOfDayBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, pric
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
 func MinuteHistOfDayBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -479,7 +479,7 @@ func MinuteHistOfDayBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, price
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
 func MinuteHistOfDayBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -492,7 +492,7 @@ func MinuteHistOfDayBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, price
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
 func MinuteHistOfDayBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -505,7 +505,7 @@ func MinuteHistOfDayBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, pric
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -519,7 +519,7 @@ func MinuteHistOfDayBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
 func HourHistOfDayBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -532,7 +532,7 @@ func HourHistOfDayBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceG
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
 func HourHistOfDayBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -545,7 +545,7 @@ func HourHistOfDayBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
 func HourHistOfDayBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -558,7 +558,7 @@ func HourHistOfDayBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
 func HourHistOfDayBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -571,7 +571,7 @@ func HourHistOfDayBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceL
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -585,7 +585,7 @@ func HourHistOfDayBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client, pri
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
 func DayHistOfDayBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceGte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -598,7 +598,7 @@ func DayHistOfDayBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceGt
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
 func DayHistOfDayBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -611,7 +611,7 @@ func DayHistOfDayBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt 
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
 func DayHistOfDayBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -624,7 +624,7 @@ func DayHistOfDayBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt 
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
 func DayHistOfDayBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLte float64, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -637,7 +637,7 @@ func DayHistOfDayBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLt
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -651,7 +651,7 @@ func DayHistOfDayBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client, pric
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksBySeqReleaseDateGte 根据编号、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksBySeqReleaseDateGte 根据编号、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
 func MinuteHistOfDayBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -664,7 +664,7 @@ func MinuteHistOfDayBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksBySeqReleaseDateGte 根据编号、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksBySeqReleaseDateGte 根据编号、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
 func HourHistOfDayBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -677,7 +677,7 @@ func HourHistOfDayBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq string,
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksBySeqReleaseDateGte 根据编号、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksBySeqReleaseDateGte 根据编号、发布日期为近几天检索books表并统计每天的数量直方图分布
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
 func DayHistOfDayBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq string, releaseDateNDay int) (*eq.Data, *eq.Query, error) {
@@ -690,7 +690,7 @@ func DayHistOfDayBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq string, 
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateNDay int 发布日期为近几天
@@ -707,7 +707,7 @@ func MinuteHistOfDayBooksByAllTextAuthorReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateNDay int 发布日期为近几天
@@ -724,7 +724,7 @@ func HourHistOfDayBooksByAllTextAuthorReleaseDateGte(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateNDay int 发布日期为近几天
@@ -741,7 +741,7 @@ func DayHistOfDayBooksByAllTextAuthorReleaseDateGte(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateNDay int 发布日期为近几天
@@ -758,7 +758,7 @@ func MinuteHistOfDayBooksByAllTextClassReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateNDay int 发布日期为近几天
@@ -775,7 +775,7 @@ func HourHistOfDayBooksByAllTextClassReleaseDateGte(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateNDay int 发布日期为近几天
@@ -792,7 +792,7 @@ func DayHistOfDayBooksByAllTextClassReleaseDateGte(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
@@ -809,7 +809,7 @@ func MinuteHistOfDayBooksByAllTextClass2ReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
@@ -826,7 +826,7 @@ func HourHistOfDayBooksByAllTextClass2ReleaseDateGte(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
@@ -843,7 +843,7 @@ func DayHistOfDayBooksByAllTextClass2ReleaseDateGte(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
@@ -860,7 +860,7 @@ func MinuteHistOfDayBooksByAllTextNameReleaseDateGte(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
@@ -877,7 +877,7 @@ func HourHistOfDayBooksByAllTextNameReleaseDateGte(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
@@ -894,7 +894,7 @@ func DayHistOfDayBooksByAllTextNameReleaseDateGte(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -911,7 +911,7 @@ func MinuteHistOfDayBooksByAllTextPageCountGteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -928,7 +928,7 @@ func MinuteHistOfDayBooksByAllTextPageCountGtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -945,7 +945,7 @@ func MinuteHistOfDayBooksByAllTextPageCountLtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -962,7 +962,7 @@ func MinuteHistOfDayBooksByAllTextPageCountLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -980,7 +980,7 @@ func MinuteHistOfDayBooksByAllTextPageCountGteLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -997,7 +997,7 @@ func HourHistOfDayBooksByAllTextPageCountGteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -1014,7 +1014,7 @@ func HourHistOfDayBooksByAllTextPageCountGtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -1031,7 +1031,7 @@ func HourHistOfDayBooksByAllTextPageCountLtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1048,7 +1048,7 @@ func HourHistOfDayBooksByAllTextPageCountLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1066,7 +1066,7 @@ func HourHistOfDayBooksByAllTextPageCountGteLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1083,7 +1083,7 @@ func DayHistOfDayBooksByAllTextPageCountGteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -1100,7 +1100,7 @@ func DayHistOfDayBooksByAllTextPageCountGtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -1117,7 +1117,7 @@ func DayHistOfDayBooksByAllTextPageCountLtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1134,7 +1134,7 @@ func DayHistOfDayBooksByAllTextPageCountLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1152,7 +1152,7 @@ func DayHistOfDayBooksByAllTextPageCountGteLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1169,7 +1169,7 @@ func MinuteHistOfDayBooksByAllTextPriceGteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -1186,7 +1186,7 @@ func MinuteHistOfDayBooksByAllTextPriceGtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -1203,7 +1203,7 @@ func MinuteHistOfDayBooksByAllTextPriceLtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1220,7 +1220,7 @@ func MinuteHistOfDayBooksByAllTextPriceLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1238,7 +1238,7 @@ func MinuteHistOfDayBooksByAllTextPriceGteLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1255,7 +1255,7 @@ func HourHistOfDayBooksByAllTextPriceGteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -1272,7 +1272,7 @@ func HourHistOfDayBooksByAllTextPriceGtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -1289,7 +1289,7 @@ func HourHistOfDayBooksByAllTextPriceLtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1306,7 +1306,7 @@ func HourHistOfDayBooksByAllTextPriceLteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1324,7 +1324,7 @@ func HourHistOfDayBooksByAllTextPriceGteLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1341,7 +1341,7 @@ func DayHistOfDayBooksByAllTextPriceGteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -1358,7 +1358,7 @@ func DayHistOfDayBooksByAllTextPriceGtReleaseDateGte(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -1375,7 +1375,7 @@ func DayHistOfDayBooksByAllTextPriceLtReleaseDateGte(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1392,7 +1392,7 @@ func DayHistOfDayBooksByAllTextPriceLteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1410,7 +1410,7 @@ func DayHistOfDayBooksByAllTextPriceGteLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
@@ -1427,7 +1427,7 @@ func MinuteHistOfDayBooksByAllTextSeqReleaseDateGte(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
@@ -1444,7 +1444,7 @@ func HourHistOfDayBooksByAllTextSeqReleaseDateGte(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几天检索books表并统计每天的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
@@ -1461,7 +1461,7 @@ func DayHistOfDayBooksByAllTextSeqReleaseDateGte(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateNDay int 发布日期为近几天
@@ -1478,7 +1478,7 @@ func MinuteHistOfDayBooksByAuthorClassReleaseDateGte(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateNDay int 发布日期为近几天
@@ -1495,7 +1495,7 @@ func HourHistOfDayBooksByAuthorClassReleaseDateGte(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几天检索books表并统计每天的数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateNDay int 发布日期为近几天
@@ -1512,7 +1512,7 @@ func DayHistOfDayBooksByAuthorClassReleaseDateGte(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
@@ -1529,7 +1529,7 @@ func MinuteHistOfDayBooksByAuthorClass2ReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
@@ -1546,7 +1546,7 @@ func HourHistOfDayBooksByAuthorClass2ReleaseDateGte(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几天检索books表并统计每天的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
@@ -1563,7 +1563,7 @@ func DayHistOfDayBooksByAuthorClass2ReleaseDateGte(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
@@ -1580,7 +1580,7 @@ func MinuteHistOfDayBooksByAuthorNameReleaseDateGte(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
@@ -1597,7 +1597,7 @@ func HourHistOfDayBooksByAuthorNameReleaseDateGte(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几天检索books表并统计每天的数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
@@ -1614,7 +1614,7 @@ func DayHistOfDayBooksByAuthorNameReleaseDateGte(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1631,7 +1631,7 @@ func MinuteHistOfDayBooksByAuthorPageCountGteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -1648,7 +1648,7 @@ func MinuteHistOfDayBooksByAuthorPageCountGtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -1665,7 +1665,7 @@ func MinuteHistOfDayBooksByAuthorPageCountLtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1682,7 +1682,7 @@ func MinuteHistOfDayBooksByAuthorPageCountLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1700,7 +1700,7 @@ func MinuteHistOfDayBooksByAuthorPageCountGteLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1717,7 +1717,7 @@ func HourHistOfDayBooksByAuthorPageCountGteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -1734,7 +1734,7 @@ func HourHistOfDayBooksByAuthorPageCountGtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -1751,7 +1751,7 @@ func HourHistOfDayBooksByAuthorPageCountLtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1768,7 +1768,7 @@ func HourHistOfDayBooksByAuthorPageCountLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1786,7 +1786,7 @@ func HourHistOfDayBooksByAuthorPageCountGteLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1803,7 +1803,7 @@ func DayHistOfDayBooksByAuthorPageCountGteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -1820,7 +1820,7 @@ func DayHistOfDayBooksByAuthorPageCountGtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -1837,7 +1837,7 @@ func DayHistOfDayBooksByAuthorPageCountLtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1854,7 +1854,7 @@ func DayHistOfDayBooksByAuthorPageCountLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1872,7 +1872,7 @@ func DayHistOfDayBooksByAuthorPageCountGteLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1889,7 +1889,7 @@ func MinuteHistOfDayBooksByAuthorPriceGteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -1906,7 +1906,7 @@ func MinuteHistOfDayBooksByAuthorPriceGtReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -1923,7 +1923,7 @@ func MinuteHistOfDayBooksByAuthorPriceLtReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1940,7 +1940,7 @@ func MinuteHistOfDayBooksByAuthorPriceLteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1958,7 +1958,7 @@ func MinuteHistOfDayBooksByAuthorPriceGteLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -1975,7 +1975,7 @@ func HourHistOfDayBooksByAuthorPriceGteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -1992,7 +1992,7 @@ func HourHistOfDayBooksByAuthorPriceGtReleaseDateGte(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -2009,7 +2009,7 @@ func HourHistOfDayBooksByAuthorPriceLtReleaseDateGte(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2026,7 +2026,7 @@ func HourHistOfDayBooksByAuthorPriceLteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2044,7 +2044,7 @@ func HourHistOfDayBooksByAuthorPriceGteLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2061,7 +2061,7 @@ func DayHistOfDayBooksByAuthorPriceGteReleaseDateGte(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -2078,7 +2078,7 @@ func DayHistOfDayBooksByAuthorPriceGtReleaseDateGte(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -2095,7 +2095,7 @@ func DayHistOfDayBooksByAuthorPriceLtReleaseDateGte(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2112,7 +2112,7 @@ func DayHistOfDayBooksByAuthorPriceLteReleaseDateGte(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2130,7 +2130,7 @@ func DayHistOfDayBooksByAuthorPriceGteLteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
@@ -2147,7 +2147,7 @@ func MinuteHistOfDayBooksByAuthorSeqReleaseDateGte(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
@@ -2164,7 +2164,7 @@ func HourHistOfDayBooksByAuthorSeqReleaseDateGte(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几天检索books表并统计每天的数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
@@ -2181,7 +2181,7 @@ func DayHistOfDayBooksByAuthorSeqReleaseDateGte(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
@@ -2196,7 +2196,7 @@ func MinuteHistOfDayBooksByClassClass2ReleaseDateGte(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
@@ -2211,7 +2211,7 @@ func HourHistOfDayBooksByClassClass2ReleaseDateGte(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateNDay int 发布日期为近几天
@@ -2226,7 +2226,7 @@ func DayHistOfDayBooksByClassClass2ReleaseDateGte(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
@@ -2243,7 +2243,7 @@ func MinuteHistOfDayBooksByClassNameReleaseDateGte(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
@@ -2260,7 +2260,7 @@ func HourHistOfDayBooksByClassNameReleaseDateGte(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
@@ -2277,7 +2277,7 @@ func DayHistOfDayBooksByClassNameReleaseDateGte(es *elasticsearch.Client, class,
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2292,7 +2292,7 @@ func MinuteHistOfDayBooksByClassPageCountGteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -2307,7 +2307,7 @@ func MinuteHistOfDayBooksByClassPageCountGtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -2322,7 +2322,7 @@ func MinuteHistOfDayBooksByClassPageCountLtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2337,7 +2337,7 @@ func MinuteHistOfDayBooksByClassPageCountLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2353,7 +2353,7 @@ func MinuteHistOfDayBooksByClassPageCountGteLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2368,7 +2368,7 @@ func HourHistOfDayBooksByClassPageCountGteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -2383,7 +2383,7 @@ func HourHistOfDayBooksByClassPageCountGtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -2398,7 +2398,7 @@ func HourHistOfDayBooksByClassPageCountLtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2413,7 +2413,7 @@ func HourHistOfDayBooksByClassPageCountLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2429,7 +2429,7 @@ func HourHistOfDayBooksByClassPageCountGteLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2444,7 +2444,7 @@ func DayHistOfDayBooksByClassPageCountGteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -2459,7 +2459,7 @@ func DayHistOfDayBooksByClassPageCountGtReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -2474,7 +2474,7 @@ func DayHistOfDayBooksByClassPageCountLtReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2489,7 +2489,7 @@ func DayHistOfDayBooksByClassPageCountLteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2505,7 +2505,7 @@ func DayHistOfDayBooksByClassPageCountGteLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2520,7 +2520,7 @@ func MinuteHistOfDayBooksByClassPriceGteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -2535,7 +2535,7 @@ func MinuteHistOfDayBooksByClassPriceGtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -2550,7 +2550,7 @@ func MinuteHistOfDayBooksByClassPriceLtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2565,7 +2565,7 @@ func MinuteHistOfDayBooksByClassPriceLteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2581,7 +2581,7 @@ func MinuteHistOfDayBooksByClassPriceGteLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2596,7 +2596,7 @@ func HourHistOfDayBooksByClassPriceGteReleaseDateGte(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -2611,7 +2611,7 @@ func HourHistOfDayBooksByClassPriceGtReleaseDateGte(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -2626,7 +2626,7 @@ func HourHistOfDayBooksByClassPriceLtReleaseDateGte(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2641,7 +2641,7 @@ func HourHistOfDayBooksByClassPriceLteReleaseDateGte(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2657,7 +2657,7 @@ func HourHistOfDayBooksByClassPriceGteLteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2672,7 +2672,7 @@ func DayHistOfDayBooksByClassPriceGteReleaseDateGte(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -2687,7 +2687,7 @@ func DayHistOfDayBooksByClassPriceGtReleaseDateGte(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -2702,7 +2702,7 @@ func DayHistOfDayBooksByClassPriceLtReleaseDateGte(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2717,7 +2717,7 @@ func DayHistOfDayBooksByClassPriceLteReleaseDateGte(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2733,7 +2733,7 @@ func DayHistOfDayBooksByClassPriceGteLteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
@@ -2748,7 +2748,7 @@ func MinuteHistOfDayBooksByClassSeqReleaseDateGte(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
@@ -2763,7 +2763,7 @@ func HourHistOfDayBooksByClassSeqReleaseDateGte(es *elasticsearch.Client, class,
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
@@ -2778,7 +2778,7 @@ func DayHistOfDayBooksByClassSeqReleaseDateGte(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
@@ -2795,7 +2795,7 @@ func MinuteHistOfDayBooksByClass2NameReleaseDateGte(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
@@ -2812,7 +2812,7 @@ func HourHistOfDayBooksByClass2NameReleaseDateGte(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateNDay int 发布日期为近几天
@@ -2829,7 +2829,7 @@ func DayHistOfDayBooksByClass2NameReleaseDateGte(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2844,7 +2844,7 @@ func MinuteHistOfDayBooksByClass2PageCountGteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -2859,7 +2859,7 @@ func MinuteHistOfDayBooksByClass2PageCountGtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -2874,7 +2874,7 @@ func MinuteHistOfDayBooksByClass2PageCountLtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2889,7 +2889,7 @@ func MinuteHistOfDayBooksByClass2PageCountLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2905,7 +2905,7 @@ func MinuteHistOfDayBooksByClass2PageCountGteLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2920,7 +2920,7 @@ func HourHistOfDayBooksByClass2PageCountGteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -2935,7 +2935,7 @@ func HourHistOfDayBooksByClass2PageCountGtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -2950,7 +2950,7 @@ func HourHistOfDayBooksByClass2PageCountLtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2965,7 +2965,7 @@ func HourHistOfDayBooksByClass2PageCountLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2981,7 +2981,7 @@ func HourHistOfDayBooksByClass2PageCountGteLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -2996,7 +2996,7 @@ func DayHistOfDayBooksByClass2PageCountGteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -3011,7 +3011,7 @@ func DayHistOfDayBooksByClass2PageCountGtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -3026,7 +3026,7 @@ func DayHistOfDayBooksByClass2PageCountLtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3041,7 +3041,7 @@ func DayHistOfDayBooksByClass2PageCountLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -3057,7 +3057,7 @@ func DayHistOfDayBooksByClass2PageCountGteLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3072,7 +3072,7 @@ func MinuteHistOfDayBooksByClass2PriceGteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -3087,7 +3087,7 @@ func MinuteHistOfDayBooksByClass2PriceGtReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -3102,7 +3102,7 @@ func MinuteHistOfDayBooksByClass2PriceLtReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3117,7 +3117,7 @@ func MinuteHistOfDayBooksByClass2PriceLteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -3133,7 +3133,7 @@ func MinuteHistOfDayBooksByClass2PriceGteLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3148,7 +3148,7 @@ func HourHistOfDayBooksByClass2PriceGteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -3163,7 +3163,7 @@ func HourHistOfDayBooksByClass2PriceGtReleaseDateGte(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -3178,7 +3178,7 @@ func HourHistOfDayBooksByClass2PriceLtReleaseDateGte(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3193,7 +3193,7 @@ func HourHistOfDayBooksByClass2PriceLteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -3209,7 +3209,7 @@ func HourHistOfDayBooksByClass2PriceGteLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3224,7 +3224,7 @@ func DayHistOfDayBooksByClass2PriceGteReleaseDateGte(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -3239,7 +3239,7 @@ func DayHistOfDayBooksByClass2PriceGtReleaseDateGte(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -3254,7 +3254,7 @@ func DayHistOfDayBooksByClass2PriceLtReleaseDateGte(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3269,7 +3269,7 @@ func DayHistOfDayBooksByClass2PriceLteReleaseDateGte(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -3285,7 +3285,7 @@ func DayHistOfDayBooksByClass2PriceGteLteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
@@ -3300,7 +3300,7 @@ func MinuteHistOfDayBooksByClass2SeqReleaseDateGte(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
@@ -3315,7 +3315,7 @@ func HourHistOfDayBooksByClass2SeqReleaseDateGte(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几天检索books表并统计每天的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
@@ -3330,7 +3330,7 @@ func DayHistOfDayBooksByClass2SeqReleaseDateGte(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3347,7 +3347,7 @@ func MinuteHistOfDayBooksByNamePageCountGteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -3364,7 +3364,7 @@ func MinuteHistOfDayBooksByNamePageCountGtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -3381,7 +3381,7 @@ func MinuteHistOfDayBooksByNamePageCountLtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3398,7 +3398,7 @@ func MinuteHistOfDayBooksByNamePageCountLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -3416,7 +3416,7 @@ func MinuteHistOfDayBooksByNamePageCountGteLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3433,7 +3433,7 @@ func HourHistOfDayBooksByNamePageCountGteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -3450,7 +3450,7 @@ func HourHistOfDayBooksByNamePageCountGtReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -3467,7 +3467,7 @@ func HourHistOfDayBooksByNamePageCountLtReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3484,7 +3484,7 @@ func HourHistOfDayBooksByNamePageCountLteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -3502,7 +3502,7 @@ func HourHistOfDayBooksByNamePageCountGteLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3519,7 +3519,7 @@ func DayHistOfDayBooksByNamePageCountGteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -3536,7 +3536,7 @@ func DayHistOfDayBooksByNamePageCountGtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -3553,7 +3553,7 @@ func DayHistOfDayBooksByNamePageCountLtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3570,7 +3570,7 @@ func DayHistOfDayBooksByNamePageCountLteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -3588,7 +3588,7 @@ func DayHistOfDayBooksByNamePageCountGteLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3605,7 +3605,7 @@ func MinuteHistOfDayBooksByNamePriceGteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -3622,7 +3622,7 @@ func MinuteHistOfDayBooksByNamePriceGtReleaseDateGte(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -3639,7 +3639,7 @@ func MinuteHistOfDayBooksByNamePriceLtReleaseDateGte(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3656,7 +3656,7 @@ func MinuteHistOfDayBooksByNamePriceLteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -3674,7 +3674,7 @@ func MinuteHistOfDayBooksByNamePriceGteLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3691,7 +3691,7 @@ func HourHistOfDayBooksByNamePriceGteReleaseDateGte(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -3708,7 +3708,7 @@ func HourHistOfDayBooksByNamePriceGtReleaseDateGte(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -3725,7 +3725,7 @@ func HourHistOfDayBooksByNamePriceLtReleaseDateGte(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3742,7 +3742,7 @@ func HourHistOfDayBooksByNamePriceLteReleaseDateGte(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -3760,7 +3760,7 @@ func HourHistOfDayBooksByNamePriceGteLteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3777,7 +3777,7 @@ func DayHistOfDayBooksByNamePriceGteReleaseDateGte(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -3794,7 +3794,7 @@ func DayHistOfDayBooksByNamePriceGtReleaseDateGte(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -3811,7 +3811,7 @@ func DayHistOfDayBooksByNamePriceLtReleaseDateGte(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3828,7 +3828,7 @@ func DayHistOfDayBooksByNamePriceLteReleaseDateGte(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -3846,7 +3846,7 @@ func DayHistOfDayBooksByNamePriceGteLteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
@@ -3863,7 +3863,7 @@ func MinuteHistOfDayBooksByNameSeqReleaseDateGte(es *elasticsearch.Client, name,
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
@@ -3880,7 +3880,7 @@ func HourHistOfDayBooksByNameSeqReleaseDateGte(es *elasticsearch.Client, name, s
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几天检索books表并统计每天的数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateNDay int 发布日期为近几天
@@ -3897,7 +3897,7 @@ func DayHistOfDayBooksByNameSeqReleaseDateGte(es *elasticsearch.Client, name, se
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGtePriceGteReleaseDateGte 根据页数大于等于、价格大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGtePriceGteReleaseDateGte 根据页数大于等于、价格大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3912,7 +3912,7 @@ func MinuteHistOfDayBooksByPageCountGtePriceGteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGtePriceGtReleaseDateGte 根据页数大于等于、价格大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGtePriceGtReleaseDateGte 根据页数大于等于、价格大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -3927,7 +3927,7 @@ func MinuteHistOfDayBooksByPageCountGtePriceGtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGtePriceLtReleaseDateGte 根据页数大于等于、价格小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGtePriceLtReleaseDateGte 根据页数大于等于、价格小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -3942,7 +3942,7 @@ func MinuteHistOfDayBooksByPageCountGtePriceLtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGtePriceLteReleaseDateGte 根据页数大于等于、价格小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGtePriceLteReleaseDateGte 根据页数大于等于、价格小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3957,7 +3957,7 @@ func MinuteHistOfDayBooksByPageCountGtePriceLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGtePriceGteLteReleaseDateGte 根据页数大于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGtePriceGteLteReleaseDateGte 根据页数大于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -3973,7 +3973,7 @@ func MinuteHistOfDayBooksByPageCountGtePriceGteLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGtPriceGteReleaseDateGte 根据页数大于、价格大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGtPriceGteReleaseDateGte 根据页数大于、价格大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -3988,7 +3988,7 @@ func MinuteHistOfDayBooksByPageCountGtPriceGteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGtPriceGtReleaseDateGte 根据页数大于、价格大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGtPriceGtReleaseDateGte 根据页数大于、价格大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGt int64 页数大于
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -4003,7 +4003,7 @@ func MinuteHistOfDayBooksByPageCountGtPriceGtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGtPriceLtReleaseDateGte 根据页数大于、价格小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGtPriceLtReleaseDateGte 根据页数大于、价格小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGt int64 页数大于
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -4018,7 +4018,7 @@ func MinuteHistOfDayBooksByPageCountGtPriceLtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGtPriceLteReleaseDateGte 根据页数大于、价格小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGtPriceLteReleaseDateGte 根据页数大于、价格小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4033,7 +4033,7 @@ func MinuteHistOfDayBooksByPageCountGtPriceLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGtPriceGteLteReleaseDateGte 根据页数大于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGtPriceGteLteReleaseDateGte 根据页数大于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4049,7 +4049,7 @@ func MinuteHistOfDayBooksByPageCountGtPriceGteLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountLtPriceGteReleaseDateGte 根据页数小于、价格大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountLtPriceGteReleaseDateGte 根据页数小于、价格大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4064,7 +4064,7 @@ func MinuteHistOfDayBooksByPageCountLtPriceGteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountLtPriceGtReleaseDateGte 根据页数小于、价格大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountLtPriceGtReleaseDateGte 根据页数小于、价格大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountLt int64 页数小于
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -4079,7 +4079,7 @@ func MinuteHistOfDayBooksByPageCountLtPriceGtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountLtPriceLtReleaseDateGte 根据页数小于、价格小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountLtPriceLtReleaseDateGte 根据页数小于、价格小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountLt int64 页数小于
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -4094,7 +4094,7 @@ func MinuteHistOfDayBooksByPageCountLtPriceLtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountLtPriceLteReleaseDateGte 根据页数小于、价格小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountLtPriceLteReleaseDateGte 根据页数小于、价格小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4109,7 +4109,7 @@ func MinuteHistOfDayBooksByPageCountLtPriceLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountLtPriceGteLteReleaseDateGte 根据页数小于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountLtPriceGteLteReleaseDateGte 根据页数小于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4125,7 +4125,7 @@ func MinuteHistOfDayBooksByPageCountLtPriceGteLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountLtePriceGteReleaseDateGte 根据页数小于等于、价格大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountLtePriceGteReleaseDateGte 根据页数小于等于、价格大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4140,7 +4140,7 @@ func MinuteHistOfDayBooksByPageCountLtePriceGteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountLtePriceGtReleaseDateGte 根据页数小于等于、价格大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountLtePriceGtReleaseDateGte 根据页数小于等于、价格大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -4155,7 +4155,7 @@ func MinuteHistOfDayBooksByPageCountLtePriceGtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountLtePriceLtReleaseDateGte 根据页数小于等于、价格小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountLtePriceLtReleaseDateGte 根据页数小于等于、价格小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -4170,7 +4170,7 @@ func MinuteHistOfDayBooksByPageCountLtePriceLtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountLtePriceLteReleaseDateGte 根据页数小于等于、价格小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountLtePriceLteReleaseDateGte 根据页数小于等于、价格小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4185,7 +4185,7 @@ func MinuteHistOfDayBooksByPageCountLtePriceLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountLtePriceGteLteReleaseDateGte 根据页数小于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountLtePriceGteLteReleaseDateGte 根据页数小于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4201,7 +4201,7 @@ func MinuteHistOfDayBooksByPageCountLtePriceGteLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGteLtePriceGteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGteLtePriceGteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
@@ -4217,7 +4217,7 @@ func MinuteHistOfDayBooksByPageCountGteLtePriceGteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGteLtePriceGtReleaseDateGte 根据页数大于等于和小于等于、价格大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGteLtePriceGtReleaseDateGte 根据页数大于等于和小于等于、价格大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
@@ -4233,7 +4233,7 @@ func MinuteHistOfDayBooksByPageCountGteLtePriceGtReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGteLtePriceLtReleaseDateGte 根据页数大于等于和小于等于、价格小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGteLtePriceLtReleaseDateGte 根据页数大于等于和小于等于、价格小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
@@ -4249,7 +4249,7 @@ func MinuteHistOfDayBooksByPageCountGteLtePriceLtReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGteLtePriceLteReleaseDateGte 根据页数大于等于和小于等于、价格小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGteLtePriceLteReleaseDateGte 根据页数大于等于和小于等于、价格小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
@@ -4265,7 +4265,7 @@ func MinuteHistOfDayBooksByPageCountGteLtePriceLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksByPageCountGteLtePriceGteLteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksByPageCountGteLtePriceGteLteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
@@ -4282,7 +4282,7 @@ func MinuteHistOfDayBooksByPageCountGteLtePriceGteLteReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGtePriceGteReleaseDateGte 根据页数大于等于、价格大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGtePriceGteReleaseDateGte 根据页数大于等于、价格大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4297,7 +4297,7 @@ func HourHistOfDayBooksByPageCountGtePriceGteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGtePriceGtReleaseDateGte 根据页数大于等于、价格大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGtePriceGtReleaseDateGte 根据页数大于等于、价格大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -4312,7 +4312,7 @@ func HourHistOfDayBooksByPageCountGtePriceGtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGtePriceLtReleaseDateGte 根据页数大于等于、价格小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGtePriceLtReleaseDateGte 根据页数大于等于、价格小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -4327,7 +4327,7 @@ func HourHistOfDayBooksByPageCountGtePriceLtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGtePriceLteReleaseDateGte 根据页数大于等于、价格小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGtePriceLteReleaseDateGte 根据页数大于等于、价格小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4342,7 +4342,7 @@ func HourHistOfDayBooksByPageCountGtePriceLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGtePriceGteLteReleaseDateGte 根据页数大于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGtePriceGteLteReleaseDateGte 根据页数大于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4358,7 +4358,7 @@ func HourHistOfDayBooksByPageCountGtePriceGteLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGtPriceGteReleaseDateGte 根据页数大于、价格大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGtPriceGteReleaseDateGte 根据页数大于、价格大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4373,7 +4373,7 @@ func HourHistOfDayBooksByPageCountGtPriceGteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGtPriceGtReleaseDateGte 根据页数大于、价格大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGtPriceGtReleaseDateGte 根据页数大于、价格大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGt int64 页数大于
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -4388,7 +4388,7 @@ func HourHistOfDayBooksByPageCountGtPriceGtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGtPriceLtReleaseDateGte 根据页数大于、价格小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGtPriceLtReleaseDateGte 根据页数大于、价格小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGt int64 页数大于
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -4403,7 +4403,7 @@ func HourHistOfDayBooksByPageCountGtPriceLtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGtPriceLteReleaseDateGte 根据页数大于、价格小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGtPriceLteReleaseDateGte 根据页数大于、价格小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4418,7 +4418,7 @@ func HourHistOfDayBooksByPageCountGtPriceLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGtPriceGteLteReleaseDateGte 根据页数大于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGtPriceGteLteReleaseDateGte 根据页数大于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4434,7 +4434,7 @@ func HourHistOfDayBooksByPageCountGtPriceGteLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountLtPriceGteReleaseDateGte 根据页数小于、价格大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountLtPriceGteReleaseDateGte 根据页数小于、价格大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4449,7 +4449,7 @@ func HourHistOfDayBooksByPageCountLtPriceGteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountLtPriceGtReleaseDateGte 根据页数小于、价格大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountLtPriceGtReleaseDateGte 根据页数小于、价格大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountLt int64 页数小于
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -4464,7 +4464,7 @@ func HourHistOfDayBooksByPageCountLtPriceGtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountLtPriceLtReleaseDateGte 根据页数小于、价格小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountLtPriceLtReleaseDateGte 根据页数小于、价格小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountLt int64 页数小于
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -4479,7 +4479,7 @@ func HourHistOfDayBooksByPageCountLtPriceLtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountLtPriceLteReleaseDateGte 根据页数小于、价格小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountLtPriceLteReleaseDateGte 根据页数小于、价格小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4494,7 +4494,7 @@ func HourHistOfDayBooksByPageCountLtPriceLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountLtPriceGteLteReleaseDateGte 根据页数小于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountLtPriceGteLteReleaseDateGte 根据页数小于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4510,7 +4510,7 @@ func HourHistOfDayBooksByPageCountLtPriceGteLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountLtePriceGteReleaseDateGte 根据页数小于等于、价格大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountLtePriceGteReleaseDateGte 根据页数小于等于、价格大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4525,7 +4525,7 @@ func HourHistOfDayBooksByPageCountLtePriceGteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountLtePriceGtReleaseDateGte 根据页数小于等于、价格大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountLtePriceGtReleaseDateGte 根据页数小于等于、价格大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -4540,7 +4540,7 @@ func HourHistOfDayBooksByPageCountLtePriceGtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountLtePriceLtReleaseDateGte 根据页数小于等于、价格小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountLtePriceLtReleaseDateGte 根据页数小于等于、价格小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -4555,7 +4555,7 @@ func HourHistOfDayBooksByPageCountLtePriceLtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountLtePriceLteReleaseDateGte 根据页数小于等于、价格小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountLtePriceLteReleaseDateGte 根据页数小于等于、价格小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4570,7 +4570,7 @@ func HourHistOfDayBooksByPageCountLtePriceLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountLtePriceGteLteReleaseDateGte 根据页数小于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountLtePriceGteLteReleaseDateGte 根据页数小于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4586,7 +4586,7 @@ func HourHistOfDayBooksByPageCountLtePriceGteLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGteLtePriceGteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGteLtePriceGteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
@@ -4602,7 +4602,7 @@ func HourHistOfDayBooksByPageCountGteLtePriceGteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGteLtePriceGtReleaseDateGte 根据页数大于等于和小于等于、价格大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGteLtePriceGtReleaseDateGte 根据页数大于等于和小于等于、价格大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
@@ -4618,7 +4618,7 @@ func HourHistOfDayBooksByPageCountGteLtePriceGtReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGteLtePriceLtReleaseDateGte 根据页数大于等于和小于等于、价格小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGteLtePriceLtReleaseDateGte 根据页数大于等于和小于等于、价格小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
@@ -4634,7 +4634,7 @@ func HourHistOfDayBooksByPageCountGteLtePriceLtReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGteLtePriceLteReleaseDateGte 根据页数大于等于和小于等于、价格小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGteLtePriceLteReleaseDateGte 根据页数大于等于和小于等于、价格小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
@@ -4650,7 +4650,7 @@ func HourHistOfDayBooksByPageCountGteLtePriceLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksByPageCountGteLtePriceGteLteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksByPageCountGteLtePriceGteLteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
@@ -4667,7 +4667,7 @@ func HourHistOfDayBooksByPageCountGteLtePriceGteLteReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGtePriceGteReleaseDateGte 根据页数大于等于、价格大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGtePriceGteReleaseDateGte 根据页数大于等于、价格大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4682,7 +4682,7 @@ func DayHistOfDayBooksByPageCountGtePriceGteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGtePriceGtReleaseDateGte 根据页数大于等于、价格大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGtePriceGtReleaseDateGte 根据页数大于等于、价格大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -4697,7 +4697,7 @@ func DayHistOfDayBooksByPageCountGtePriceGtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGtePriceLtReleaseDateGte 根据页数大于等于、价格小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGtePriceLtReleaseDateGte 根据页数大于等于、价格小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -4712,7 +4712,7 @@ func DayHistOfDayBooksByPageCountGtePriceLtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGtePriceLteReleaseDateGte 根据页数大于等于、价格小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGtePriceLteReleaseDateGte 根据页数大于等于、价格小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4727,7 +4727,7 @@ func DayHistOfDayBooksByPageCountGtePriceLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGtePriceGteLteReleaseDateGte 根据页数大于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGtePriceGteLteReleaseDateGte 根据页数大于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4743,7 +4743,7 @@ func DayHistOfDayBooksByPageCountGtePriceGteLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGtPriceGteReleaseDateGte 根据页数大于、价格大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGtPriceGteReleaseDateGte 根据页数大于、价格大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4758,7 +4758,7 @@ func DayHistOfDayBooksByPageCountGtPriceGteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGtPriceGtReleaseDateGte 根据页数大于、价格大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGtPriceGtReleaseDateGte 根据页数大于、价格大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGt int64 页数大于
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -4773,7 +4773,7 @@ func DayHistOfDayBooksByPageCountGtPriceGtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGtPriceLtReleaseDateGte 根据页数大于、价格小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGtPriceLtReleaseDateGte 根据页数大于、价格小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGt int64 页数大于
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -4788,7 +4788,7 @@ func DayHistOfDayBooksByPageCountGtPriceLtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGtPriceLteReleaseDateGte 根据页数大于、价格小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGtPriceLteReleaseDateGte 根据页数大于、价格小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4803,7 +4803,7 @@ func DayHistOfDayBooksByPageCountGtPriceLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGtPriceGteLteReleaseDateGte 根据页数大于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGtPriceGteLteReleaseDateGte 根据页数大于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4819,7 +4819,7 @@ func DayHistOfDayBooksByPageCountGtPriceGteLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountLtPriceGteReleaseDateGte 根据页数小于、价格大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountLtPriceGteReleaseDateGte 根据页数小于、价格大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4834,7 +4834,7 @@ func DayHistOfDayBooksByPageCountLtPriceGteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountLtPriceGtReleaseDateGte 根据页数小于、价格大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountLtPriceGtReleaseDateGte 根据页数小于、价格大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountLt int64 页数小于
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -4849,7 +4849,7 @@ func DayHistOfDayBooksByPageCountLtPriceGtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountLtPriceLtReleaseDateGte 根据页数小于、价格小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountLtPriceLtReleaseDateGte 根据页数小于、价格小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountLt int64 页数小于
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -4864,7 +4864,7 @@ func DayHistOfDayBooksByPageCountLtPriceLtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountLtPriceLteReleaseDateGte 根据页数小于、价格小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountLtPriceLteReleaseDateGte 根据页数小于、价格小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4879,7 +4879,7 @@ func DayHistOfDayBooksByPageCountLtPriceLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountLtPriceGteLteReleaseDateGte 根据页数小于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountLtPriceGteLteReleaseDateGte 根据页数小于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4895,7 +4895,7 @@ func DayHistOfDayBooksByPageCountLtPriceGteLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountLtePriceGteReleaseDateGte 根据页数小于等于、价格大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountLtePriceGteReleaseDateGte 根据页数小于等于、价格大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4910,7 +4910,7 @@ func DayHistOfDayBooksByPageCountLtePriceGteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountLtePriceGtReleaseDateGte 根据页数小于等于、价格大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountLtePriceGtReleaseDateGte 根据页数小于等于、价格大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -4925,7 +4925,7 @@ func DayHistOfDayBooksByPageCountLtePriceGtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountLtePriceLtReleaseDateGte 根据页数小于等于、价格小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountLtePriceLtReleaseDateGte 根据页数小于等于、价格小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -4940,7 +4940,7 @@ func DayHistOfDayBooksByPageCountLtePriceLtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountLtePriceLteReleaseDateGte 根据页数小于等于、价格小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountLtePriceLteReleaseDateGte 根据页数小于等于、价格小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -4955,7 +4955,7 @@ func DayHistOfDayBooksByPageCountLtePriceLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountLtePriceGteLteReleaseDateGte 根据页数小于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountLtePriceGteLteReleaseDateGte 根据页数小于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4971,7 +4971,7 @@ func DayHistOfDayBooksByPageCountLtePriceGteLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGteLtePriceGteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGteLtePriceGteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
@@ -4987,7 +4987,7 @@ func DayHistOfDayBooksByPageCountGteLtePriceGteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGteLtePriceGtReleaseDateGte 根据页数大于等于和小于等于、价格大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGteLtePriceGtReleaseDateGte 根据页数大于等于和小于等于、价格大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
@@ -5003,7 +5003,7 @@ func DayHistOfDayBooksByPageCountGteLtePriceGtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGteLtePriceLtReleaseDateGte 根据页数大于等于和小于等于、价格小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGteLtePriceLtReleaseDateGte 根据页数大于等于和小于等于、价格小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
@@ -5019,7 +5019,7 @@ func DayHistOfDayBooksByPageCountGteLtePriceLtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGteLtePriceLteReleaseDateGte 根据页数大于等于和小于等于、价格小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGteLtePriceLteReleaseDateGte 根据页数大于等于和小于等于、价格小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
@@ -5035,7 +5035,7 @@ func DayHistOfDayBooksByPageCountGteLtePriceLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksByPageCountGteLtePriceGteLteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksByPageCountGteLtePriceGteLteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
@@ -5052,7 +5052,7 @@ func DayHistOfDayBooksByPageCountGteLtePriceGteLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -5067,7 +5067,7 @@ func MinuteHistOfDayBooksBySeqPageCountGteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -5082,7 +5082,7 @@ func MinuteHistOfDayBooksBySeqPageCountGtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -5097,7 +5097,7 @@ func MinuteHistOfDayBooksBySeqPageCountLtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -5112,7 +5112,7 @@ func MinuteHistOfDayBooksBySeqPageCountLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -5128,7 +5128,7 @@ func MinuteHistOfDayBooksBySeqPageCountGteLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -5143,7 +5143,7 @@ func HourHistOfDayBooksBySeqPageCountGteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -5158,7 +5158,7 @@ func HourHistOfDayBooksBySeqPageCountGtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -5173,7 +5173,7 @@ func HourHistOfDayBooksBySeqPageCountLtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -5188,7 +5188,7 @@ func HourHistOfDayBooksBySeqPageCountLteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -5204,7 +5204,7 @@ func HourHistOfDayBooksBySeqPageCountGteLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -5219,7 +5219,7 @@ func DayHistOfDayBooksBySeqPageCountGteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNDay int 发布日期为近几天
@@ -5234,7 +5234,7 @@ func DayHistOfDayBooksBySeqPageCountGtReleaseDateGte(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNDay int 发布日期为近几天
@@ -5249,7 +5249,7 @@ func DayHistOfDayBooksBySeqPageCountLtReleaseDateGte(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -5264,7 +5264,7 @@ func DayHistOfDayBooksBySeqPageCountLteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -5280,7 +5280,7 @@ func DayHistOfDayBooksBySeqPageCountGteLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -5295,7 +5295,7 @@ func MinuteHistOfDayBooksBySeqPriceGteReleaseDateGte(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -5310,7 +5310,7 @@ func MinuteHistOfDayBooksBySeqPriceGtReleaseDateGte(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -5325,7 +5325,7 @@ func MinuteHistOfDayBooksBySeqPriceLtReleaseDateGte(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -5340,7 +5340,7 @@ func MinuteHistOfDayBooksBySeqPriceLteReleaseDateGte(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// MinuteHistOfDayBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的直方图分布
+// MinuteHistOfDayBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几天检索books表并统计每分钟的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -5356,7 +5356,7 @@ func MinuteHistOfDayBooksBySeqPriceGteLteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -5371,7 +5371,7 @@ func HourHistOfDayBooksBySeqPriceGteReleaseDateGte(es *elasticsearch.Client, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -5386,7 +5386,7 @@ func HourHistOfDayBooksBySeqPriceGtReleaseDateGte(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -5401,7 +5401,7 @@ func HourHistOfDayBooksBySeqPriceLtReleaseDateGte(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -5416,7 +5416,7 @@ func HourHistOfDayBooksBySeqPriceLteReleaseDateGte(es *elasticsearch.Client, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HourHistOfDayBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的直方图分布
+// HourHistOfDayBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几天检索books表并统计每小时的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -5432,7 +5432,7 @@ func HourHistOfDayBooksBySeqPriceGteLteReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNDay int 发布日期为近几天
@@ -5447,7 +5447,7 @@ func DayHistOfDayBooksBySeqPriceGteReleaseDateGte(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNDay int 发布日期为近几天
@@ -5462,7 +5462,7 @@ func DayHistOfDayBooksBySeqPriceGtReleaseDateGte(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNDay int 发布日期为近几天
@@ -5477,7 +5477,7 @@ func DayHistOfDayBooksBySeqPriceLtReleaseDateGte(es *elasticsearch.Client, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNDay int 发布日期为近几天
@@ -5492,7 +5492,7 @@ func DayHistOfDayBooksBySeqPriceLteReleaseDateGte(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// DayHistOfDayBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的直方图分布
+// DayHistOfDayBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几天检索books表并统计每天的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于

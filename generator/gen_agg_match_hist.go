@@ -60,7 +60,7 @@ func getAggMatchHistFuncName(structName string, fields, termsFields []*FieldInfo
 // getAggMatchHistFuncComment 获取函数注释
 func getAggMatchHistFuncComment(structComment string, fields, termsFields []*FieldInfo) string {
 	// 函数注释
-	cmt := "根据" + GenFieldsCmt(fields, true) + "检索" + structComment + "并统计" + GenFieldsCmt(termsFields, true) + "的直方图分布\n"
+	cmt := "根据" + GenFieldsCmt(fields, true) + "检索" + structComment + "并统计" + GenFieldsCmt(termsFields, true) + "的数量直方图分布\n"
 
 	// 参数注释
 	cmt += GenParamCmt(fields, false)

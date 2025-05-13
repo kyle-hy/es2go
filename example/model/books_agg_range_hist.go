@@ -9,7 +9,7 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// HistPriceOfBooksByPageCountGte 根据页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGte 根据页数大于等于检索books表并统计价格的数量直方图分布
 // pageCountGte int64 页数大于等于
 // histInterval float64 桶聚合的价格间隔
 func HistPriceOfBooksByPageCountGte(es *elasticsearch.Client, pageCountGte int64, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -21,7 +21,7 @@ func HistPriceOfBooksByPageCountGte(es *elasticsearch.Client, pageCountGte int64
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGt 根据页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGt 根据页数大于检索books表并统计价格的数量直方图分布
 // pageCountGt int64 页数大于
 // histInterval float64 桶聚合的价格间隔
 func HistPriceOfBooksByPageCountGt(es *elasticsearch.Client, pageCountGt int64, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -33,7 +33,7 @@ func HistPriceOfBooksByPageCountGt(es *elasticsearch.Client, pageCountGt int64, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLt 根据页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLt 根据页数小于检索books表并统计价格的数量直方图分布
 // pageCountLt int64 页数小于
 // histInterval float64 桶聚合的价格间隔
 func HistPriceOfBooksByPageCountLt(es *elasticsearch.Client, pageCountLt int64, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -45,7 +45,7 @@ func HistPriceOfBooksByPageCountLt(es *elasticsearch.Client, pageCountLt int64, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLte 根据页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLte 根据页数小于等于检索books表并统计价格的数量直方图分布
 // pageCountLte int64 页数小于等于
 // histInterval float64 桶聚合的价格间隔
 func HistPriceOfBooksByPageCountLte(es *elasticsearch.Client, pageCountLte int64, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -57,7 +57,7 @@ func HistPriceOfBooksByPageCountLte(es *elasticsearch.Client, pageCountLte int64
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLte 根据页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLte 根据页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -70,7 +70,7 @@ func HistPriceOfBooksByPageCountGteLte(es *elasticsearch.Client, pageCountGte, p
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGte 根据价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGte 根据价格大于等于检索books表并统计页数的数量直方图分布
 // priceGte float64 价格大于等于
 // histInterval float64 桶聚合的页数间隔
 func HistPageCountOfBooksByPriceGte(es *elasticsearch.Client, priceGte, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -82,7 +82,7 @@ func HistPageCountOfBooksByPriceGte(es *elasticsearch.Client, priceGte, histInte
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGt 根据价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGt 根据价格大于检索books表并统计页数的数量直方图分布
 // priceGt float64 价格大于
 // histInterval float64 桶聚合的页数间隔
 func HistPageCountOfBooksByPriceGt(es *elasticsearch.Client, priceGt, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -94,7 +94,7 @@ func HistPageCountOfBooksByPriceGt(es *elasticsearch.Client, priceGt, histInterv
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLt 根据价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLt 根据价格小于检索books表并统计页数的数量直方图分布
 // priceLt float64 价格小于
 // histInterval float64 桶聚合的页数间隔
 func HistPageCountOfBooksByPriceLt(es *elasticsearch.Client, priceLt, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -106,7 +106,7 @@ func HistPageCountOfBooksByPriceLt(es *elasticsearch.Client, priceLt, histInterv
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLte 根据价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLte 根据价格小于等于检索books表并统计页数的数量直方图分布
 // priceLte float64 价格小于等于
 // histInterval float64 桶聚合的页数间隔
 func HistPageCountOfBooksByPriceLte(es *elasticsearch.Client, priceLte, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -118,7 +118,7 @@ func HistPageCountOfBooksByPriceLte(es *elasticsearch.Client, priceLte, histInte
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLte 根据价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLte 根据价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -131,7 +131,7 @@ func HistPageCountOfBooksByPriceGteLte(es *elasticsearch.Client, priceGte, price
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGte 根据发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGte 根据发布日期大于等于检索books表并统计页数的数量直方图分布
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的页数间隔
 func HistPageCountOfBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateGte time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -143,7 +143,7 @@ func HistPageCountOfBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateG
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGt 根据发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGt 根据发布日期大于检索books表并统计页数的数量直方图分布
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的页数间隔
 func HistPageCountOfBooksByReleaseDateGt(es *elasticsearch.Client, releaseDateGt time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -155,7 +155,7 @@ func HistPageCountOfBooksByReleaseDateGt(es *elasticsearch.Client, releaseDateGt
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLt 根据发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLt 根据发布日期小于检索books表并统计页数的数量直方图分布
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的页数间隔
 func HistPageCountOfBooksByReleaseDateLt(es *elasticsearch.Client, releaseDateLt time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -167,7 +167,7 @@ func HistPageCountOfBooksByReleaseDateLt(es *elasticsearch.Client, releaseDateLt
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLte 根据发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLte 根据发布日期小于等于检索books表并统计页数的数量直方图分布
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的页数间隔
 func HistPageCountOfBooksByReleaseDateLte(es *elasticsearch.Client, releaseDateLte time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -179,7 +179,7 @@ func HistPageCountOfBooksByReleaseDateLte(es *elasticsearch.Client, releaseDateL
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLte 根据发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLte 根据发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -192,7 +192,7 @@ func HistPageCountOfBooksByReleaseDateGteLte(es *elasticsearch.Client, releaseDa
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGte 根据发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGte 根据发布日期大于等于检索books表并统计价格的数量直方图分布
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的价格间隔
 func HistPriceOfBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateGte time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -204,7 +204,7 @@ func HistPriceOfBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateGte t
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGt 根据发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGt 根据发布日期大于检索books表并统计价格的数量直方图分布
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的价格间隔
 func HistPriceOfBooksByReleaseDateGt(es *elasticsearch.Client, releaseDateGt time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -216,7 +216,7 @@ func HistPriceOfBooksByReleaseDateGt(es *elasticsearch.Client, releaseDateGt tim
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLt 根据发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLt 根据发布日期小于检索books表并统计价格的数量直方图分布
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的价格间隔
 func HistPriceOfBooksByReleaseDateLt(es *elasticsearch.Client, releaseDateLt time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -228,7 +228,7 @@ func HistPriceOfBooksByReleaseDateLt(es *elasticsearch.Client, releaseDateLt tim
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLte 根据发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLte 根据发布日期小于等于检索books表并统计价格的数量直方图分布
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的价格间隔
 func HistPriceOfBooksByReleaseDateLte(es *elasticsearch.Client, releaseDateLte time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -240,7 +240,7 @@ func HistPriceOfBooksByReleaseDateLte(es *elasticsearch.Client, releaseDateLte t
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLte 根据发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLte 根据发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -253,7 +253,7 @@ func HistPriceOfBooksByReleaseDateGteLte(es *elasticsearch.Client, releaseDateGt
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteAllText 根据全文本、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteAllText 根据全文本、页数大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -269,7 +269,7 @@ func HistPriceOfBooksByPageCountGteAllText(es *elasticsearch.Client, allText str
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtAllText 根据全文本、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtAllText 根据全文本、页数大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGt int64 页数大于
 // histInterval float64 桶聚合的价格间隔
@@ -285,7 +285,7 @@ func HistPriceOfBooksByPageCountGtAllText(es *elasticsearch.Client, allText stri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtAllText 根据全文本、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtAllText 根据全文本、页数小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountLt int64 页数小于
 // histInterval float64 桶聚合的价格间隔
@@ -301,7 +301,7 @@ func HistPriceOfBooksByPageCountLtAllText(es *elasticsearch.Client, allText stri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteAllText 根据全文本、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteAllText 根据全文本、页数小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -317,7 +317,7 @@ func HistPriceOfBooksByPageCountLteAllText(es *elasticsearch.Client, allText str
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteAllText 根据全文本、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteAllText 根据全文本、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -334,7 +334,7 @@ func HistPriceOfBooksByPageCountGteLteAllText(es *elasticsearch.Client, allText 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteAllText 根据全文本、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteAllText 根据全文本、价格大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -350,7 +350,7 @@ func HistPageCountOfBooksByPriceGteAllText(es *elasticsearch.Client, allText str
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtAllText 根据全文本、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtAllText 根据全文本、价格大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGt float64 价格大于
 // histInterval float64 桶聚合的页数间隔
@@ -366,7 +366,7 @@ func HistPageCountOfBooksByPriceGtAllText(es *elasticsearch.Client, allText stri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtAllText 根据全文本、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtAllText 根据全文本、价格小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceLt float64 价格小于
 // histInterval float64 桶聚合的页数间隔
@@ -382,7 +382,7 @@ func HistPageCountOfBooksByPriceLtAllText(es *elasticsearch.Client, allText stri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteAllText 根据全文本、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteAllText 根据全文本、价格小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceLte float64 价格小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -398,7 +398,7 @@ func HistPageCountOfBooksByPriceLteAllText(es *elasticsearch.Client, allText str
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteAllText 根据全文本、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteAllText 根据全文本、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -415,7 +415,7 @@ func HistPageCountOfBooksByPriceGteLteAllText(es *elasticsearch.Client, allText 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteAllText 根据全文本、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteAllText 根据全文本、发布日期大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -431,7 +431,7 @@ func HistPageCountOfBooksByReleaseDateGteAllText(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtAllText 根据全文本、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtAllText 根据全文本、发布日期大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的页数间隔
@@ -447,7 +447,7 @@ func HistPageCountOfBooksByReleaseDateGtAllText(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtAllText 根据全文本、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtAllText 根据全文本、发布日期小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的页数间隔
@@ -463,7 +463,7 @@ func HistPageCountOfBooksByReleaseDateLtAllText(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteAllText 根据全文本、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteAllText 根据全文本、发布日期小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -479,7 +479,7 @@ func HistPageCountOfBooksByReleaseDateLteAllText(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteAllText 根据全文本、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteAllText 根据全文本、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -496,7 +496,7 @@ func HistPageCountOfBooksByReleaseDateGteLteAllText(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteAllText 根据全文本、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteAllText 根据全文本、发布日期大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -512,7 +512,7 @@ func HistPriceOfBooksByReleaseDateGteAllText(es *elasticsearch.Client, allText s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtAllText 根据全文本、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtAllText 根据全文本、发布日期大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的价格间隔
@@ -528,7 +528,7 @@ func HistPriceOfBooksByReleaseDateGtAllText(es *elasticsearch.Client, allText st
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtAllText 根据全文本、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtAllText 根据全文本、发布日期小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的价格间隔
@@ -544,7 +544,7 @@ func HistPriceOfBooksByReleaseDateLtAllText(es *elasticsearch.Client, allText st
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteAllText 根据全文本、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteAllText 根据全文本、发布日期小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -560,7 +560,7 @@ func HistPriceOfBooksByReleaseDateLteAllText(es *elasticsearch.Client, allText s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteAllText 根据全文本、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteAllText 根据全文本、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -577,7 +577,7 @@ func HistPriceOfBooksByReleaseDateGteLteAllText(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteAuthor 根据作者、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteAuthor 根据作者、页数大于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -593,7 +593,7 @@ func HistPriceOfBooksByPageCountGteAuthor(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtAuthor 根据作者、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtAuthor 根据作者、页数大于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGt int64 页数大于
 // histInterval float64 桶聚合的价格间隔
@@ -609,7 +609,7 @@ func HistPriceOfBooksByPageCountGtAuthor(es *elasticsearch.Client, author string
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtAuthor 根据作者、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtAuthor 根据作者、页数小于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountLt int64 页数小于
 // histInterval float64 桶聚合的价格间隔
@@ -625,7 +625,7 @@ func HistPriceOfBooksByPageCountLtAuthor(es *elasticsearch.Client, author string
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteAuthor 根据作者、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteAuthor 根据作者、页数小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountLte int64 页数小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -641,7 +641,7 @@ func HistPriceOfBooksByPageCountLteAuthor(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteAuthor 根据作者、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteAuthor 根据作者、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -658,7 +658,7 @@ func HistPriceOfBooksByPageCountGteLteAuthor(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteAuthor 根据作者、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteAuthor 根据作者、价格大于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -674,7 +674,7 @@ func HistPageCountOfBooksByPriceGteAuthor(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtAuthor 根据作者、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtAuthor 根据作者、价格大于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGt float64 价格大于
 // histInterval float64 桶聚合的页数间隔
@@ -690,7 +690,7 @@ func HistPageCountOfBooksByPriceGtAuthor(es *elasticsearch.Client, author string
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtAuthor 根据作者、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtAuthor 根据作者、价格小于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceLt float64 价格小于
 // histInterval float64 桶聚合的页数间隔
@@ -706,7 +706,7 @@ func HistPageCountOfBooksByPriceLtAuthor(es *elasticsearch.Client, author string
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteAuthor 根据作者、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteAuthor 根据作者、价格小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceLte float64 价格小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -722,7 +722,7 @@ func HistPageCountOfBooksByPriceLteAuthor(es *elasticsearch.Client, author strin
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteAuthor 根据作者、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteAuthor 根据作者、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -739,7 +739,7 @@ func HistPageCountOfBooksByPriceGteLteAuthor(es *elasticsearch.Client, author st
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteAuthor 根据作者、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteAuthor 根据作者、发布日期大于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -755,7 +755,7 @@ func HistPageCountOfBooksByReleaseDateGteAuthor(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtAuthor 根据作者、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtAuthor 根据作者、发布日期大于检索books表并统计页数的数量直方图分布
 // author string 作者
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的页数间隔
@@ -771,7 +771,7 @@ func HistPageCountOfBooksByReleaseDateGtAuthor(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtAuthor 根据作者、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtAuthor 根据作者、发布日期小于检索books表并统计页数的数量直方图分布
 // author string 作者
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的页数间隔
@@ -787,7 +787,7 @@ func HistPageCountOfBooksByReleaseDateLtAuthor(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteAuthor 根据作者、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteAuthor 根据作者、发布日期小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -803,7 +803,7 @@ func HistPageCountOfBooksByReleaseDateLteAuthor(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteAuthor 根据作者、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteAuthor 根据作者、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -820,7 +820,7 @@ func HistPageCountOfBooksByReleaseDateGteLteAuthor(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteAuthor 根据作者、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteAuthor 根据作者、发布日期大于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -836,7 +836,7 @@ func HistPriceOfBooksByReleaseDateGteAuthor(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtAuthor 根据作者、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtAuthor 根据作者、发布日期大于检索books表并统计价格的数量直方图分布
 // author string 作者
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的价格间隔
@@ -852,7 +852,7 @@ func HistPriceOfBooksByReleaseDateGtAuthor(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtAuthor 根据作者、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtAuthor 根据作者、发布日期小于检索books表并统计价格的数量直方图分布
 // author string 作者
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的价格间隔
@@ -868,7 +868,7 @@ func HistPriceOfBooksByReleaseDateLtAuthor(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteAuthor 根据作者、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteAuthor 根据作者、发布日期小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -884,7 +884,7 @@ func HistPriceOfBooksByReleaseDateLteAuthor(es *elasticsearch.Client, author str
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteAuthor 根据作者、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteAuthor 根据作者、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -901,7 +901,7 @@ func HistPriceOfBooksByReleaseDateGteLteAuthor(es *elasticsearch.Client, author 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteClass 根据类别、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteClass 根据类别、页数大于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -915,7 +915,7 @@ func HistPriceOfBooksByPageCountGteClass(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtClass 根据类别、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtClass 根据类别、页数大于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGt int64 页数大于
 // histInterval float64 桶聚合的价格间隔
@@ -929,7 +929,7 @@ func HistPriceOfBooksByPageCountGtClass(es *elasticsearch.Client, class string, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtClass 根据类别、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtClass 根据类别、页数小于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountLt int64 页数小于
 // histInterval float64 桶聚合的价格间隔
@@ -943,7 +943,7 @@ func HistPriceOfBooksByPageCountLtClass(es *elasticsearch.Client, class string, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteClass 根据类别、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteClass 根据类别、页数小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountLte int64 页数小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -957,7 +957,7 @@ func HistPriceOfBooksByPageCountLteClass(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteClass 根据类别、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteClass 根据类别、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -972,7 +972,7 @@ func HistPriceOfBooksByPageCountGteLteClass(es *elasticsearch.Client, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteClass 根据类别、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteClass 根据类别、价格大于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -986,7 +986,7 @@ func HistPageCountOfBooksByPriceGteClass(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtClass 根据类别、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtClass 根据类别、价格大于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGt float64 价格大于
 // histInterval float64 桶聚合的页数间隔
@@ -1000,7 +1000,7 @@ func HistPageCountOfBooksByPriceGtClass(es *elasticsearch.Client, class string, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtClass 根据类别、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtClass 根据类别、价格小于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceLt float64 价格小于
 // histInterval float64 桶聚合的页数间隔
@@ -1014,7 +1014,7 @@ func HistPageCountOfBooksByPriceLtClass(es *elasticsearch.Client, class string, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteClass 根据类别、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteClass 根据类别、价格小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceLte float64 价格小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -1028,7 +1028,7 @@ func HistPageCountOfBooksByPriceLteClass(es *elasticsearch.Client, class string,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteClass 根据类别、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteClass 根据类别、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1043,7 +1043,7 @@ func HistPageCountOfBooksByPriceGteLteClass(es *elasticsearch.Client, class stri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteClass 根据类别、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteClass 根据类别、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -1057,7 +1057,7 @@ func HistPageCountOfBooksByReleaseDateGteClass(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtClass 根据类别、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtClass 根据类别、发布日期大于检索books表并统计页数的数量直方图分布
 // class string 类别
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的页数间隔
@@ -1071,7 +1071,7 @@ func HistPageCountOfBooksByReleaseDateGtClass(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtClass 根据类别、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtClass 根据类别、发布日期小于检索books表并统计页数的数量直方图分布
 // class string 类别
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的页数间隔
@@ -1085,7 +1085,7 @@ func HistPageCountOfBooksByReleaseDateLtClass(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteClass 根据类别、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteClass 根据类别、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -1099,7 +1099,7 @@ func HistPageCountOfBooksByReleaseDateLteClass(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteClass 根据类别、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteClass 根据类别、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -1114,7 +1114,7 @@ func HistPageCountOfBooksByReleaseDateGteLteClass(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteClass 根据类别、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteClass 根据类别、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1128,7 +1128,7 @@ func HistPriceOfBooksByReleaseDateGteClass(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtClass 根据类别、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtClass 根据类别、发布日期大于检索books表并统计价格的数量直方图分布
 // class string 类别
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的价格间隔
@@ -1142,7 +1142,7 @@ func HistPriceOfBooksByReleaseDateGtClass(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtClass 根据类别、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtClass 根据类别、发布日期小于检索books表并统计价格的数量直方图分布
 // class string 类别
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的价格间隔
@@ -1156,7 +1156,7 @@ func HistPriceOfBooksByReleaseDateLtClass(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteClass 根据类别、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteClass 根据类别、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1170,7 +1170,7 @@ func HistPriceOfBooksByReleaseDateLteClass(es *elasticsearch.Client, class strin
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteClass 根据类别、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteClass 根据类别、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -1185,7 +1185,7 @@ func HistPriceOfBooksByReleaseDateGteLteClass(es *elasticsearch.Client, class st
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteClass2 根据子类别、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteClass2 根据子类别、页数大于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1199,7 +1199,7 @@ func HistPriceOfBooksByPageCountGteClass2(es *elasticsearch.Client, class2 strin
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtClass2 根据子类别、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtClass2 根据子类别、页数大于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // histInterval float64 桶聚合的价格间隔
@@ -1213,7 +1213,7 @@ func HistPriceOfBooksByPageCountGtClass2(es *elasticsearch.Client, class2 string
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtClass2 根据子类别、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtClass2 根据子类别、页数小于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // histInterval float64 桶聚合的价格间隔
@@ -1227,7 +1227,7 @@ func HistPriceOfBooksByPageCountLtClass2(es *elasticsearch.Client, class2 string
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteClass2 根据子类别、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteClass2 根据子类别、页数小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1241,7 +1241,7 @@ func HistPriceOfBooksByPageCountLteClass2(es *elasticsearch.Client, class2 strin
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteClass2 根据子类别、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteClass2 根据子类别、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1256,7 +1256,7 @@ func HistPriceOfBooksByPageCountGteLteClass2(es *elasticsearch.Client, class2 st
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteClass2 根据子类别、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteClass2 根据子类别、价格大于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -1270,7 +1270,7 @@ func HistPageCountOfBooksByPriceGteClass2(es *elasticsearch.Client, class2 strin
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtClass2 根据子类别、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtClass2 根据子类别、价格大于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGt float64 价格大于
 // histInterval float64 桶聚合的页数间隔
@@ -1284,7 +1284,7 @@ func HistPageCountOfBooksByPriceGtClass2(es *elasticsearch.Client, class2 string
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtClass2 根据子类别、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtClass2 根据子类别、价格小于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceLt float64 价格小于
 // histInterval float64 桶聚合的页数间隔
@@ -1298,7 +1298,7 @@ func HistPageCountOfBooksByPriceLtClass2(es *elasticsearch.Client, class2 string
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteClass2 根据子类别、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteClass2 根据子类别、价格小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -1312,7 +1312,7 @@ func HistPageCountOfBooksByPriceLteClass2(es *elasticsearch.Client, class2 strin
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteClass2 根据子类别、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteClass2 根据子类别、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1327,7 +1327,7 @@ func HistPageCountOfBooksByPriceGteLteClass2(es *elasticsearch.Client, class2 st
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteClass2 根据子类别、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteClass2 根据子类别、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -1341,7 +1341,7 @@ func HistPageCountOfBooksByReleaseDateGteClass2(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtClass2 根据子类别、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtClass2 根据子类别、发布日期大于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的页数间隔
@@ -1355,7 +1355,7 @@ func HistPageCountOfBooksByReleaseDateGtClass2(es *elasticsearch.Client, class2 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtClass2 根据子类别、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtClass2 根据子类别、发布日期小于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的页数间隔
@@ -1369,7 +1369,7 @@ func HistPageCountOfBooksByReleaseDateLtClass2(es *elasticsearch.Client, class2 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteClass2 根据子类别、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteClass2 根据子类别、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -1383,7 +1383,7 @@ func HistPageCountOfBooksByReleaseDateLteClass2(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteClass2 根据子类别、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteClass2 根据子类别、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -1398,7 +1398,7 @@ func HistPageCountOfBooksByReleaseDateGteLteClass2(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteClass2 根据子类别、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteClass2 根据子类别、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1412,7 +1412,7 @@ func HistPriceOfBooksByReleaseDateGteClass2(es *elasticsearch.Client, class2 str
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtClass2 根据子类别、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtClass2 根据子类别、发布日期大于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的价格间隔
@@ -1426,7 +1426,7 @@ func HistPriceOfBooksByReleaseDateGtClass2(es *elasticsearch.Client, class2 stri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtClass2 根据子类别、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtClass2 根据子类别、发布日期小于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的价格间隔
@@ -1440,7 +1440,7 @@ func HistPriceOfBooksByReleaseDateLtClass2(es *elasticsearch.Client, class2 stri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteClass2 根据子类别、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteClass2 根据子类别、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1454,7 +1454,7 @@ func HistPriceOfBooksByReleaseDateLteClass2(es *elasticsearch.Client, class2 str
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteClass2 根据子类别、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteClass2 根据子类别、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -1469,7 +1469,7 @@ func HistPriceOfBooksByReleaseDateGteLteClass2(es *elasticsearch.Client, class2 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteName 根据书名、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteName 根据书名、页数大于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1485,7 +1485,7 @@ func HistPriceOfBooksByPageCountGteName(es *elasticsearch.Client, name string, p
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtName 根据书名、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtName 根据书名、页数大于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGt int64 页数大于
 // histInterval float64 桶聚合的价格间隔
@@ -1501,7 +1501,7 @@ func HistPriceOfBooksByPageCountGtName(es *elasticsearch.Client, name string, pa
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtName 根据书名、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtName 根据书名、页数小于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountLt int64 页数小于
 // histInterval float64 桶聚合的价格间隔
@@ -1517,7 +1517,7 @@ func HistPriceOfBooksByPageCountLtName(es *elasticsearch.Client, name string, pa
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteName 根据书名、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteName 根据书名、页数小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountLte int64 页数小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1533,7 +1533,7 @@ func HistPriceOfBooksByPageCountLteName(es *elasticsearch.Client, name string, p
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteName 根据书名、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteName 根据书名、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1550,7 +1550,7 @@ func HistPriceOfBooksByPageCountGteLteName(es *elasticsearch.Client, name string
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteName 根据书名、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteName 根据书名、价格大于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -1566,7 +1566,7 @@ func HistPageCountOfBooksByPriceGteName(es *elasticsearch.Client, name string, p
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtName 根据书名、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtName 根据书名、价格大于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGt float64 价格大于
 // histInterval float64 桶聚合的页数间隔
@@ -1582,7 +1582,7 @@ func HistPageCountOfBooksByPriceGtName(es *elasticsearch.Client, name string, pr
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtName 根据书名、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtName 根据书名、价格小于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceLt float64 价格小于
 // histInterval float64 桶聚合的页数间隔
@@ -1598,7 +1598,7 @@ func HistPageCountOfBooksByPriceLtName(es *elasticsearch.Client, name string, pr
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteName 根据书名、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteName 根据书名、价格小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceLte float64 价格小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -1614,7 +1614,7 @@ func HistPageCountOfBooksByPriceLteName(es *elasticsearch.Client, name string, p
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteName 根据书名、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteName 根据书名、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1631,7 +1631,7 @@ func HistPageCountOfBooksByPriceGteLteName(es *elasticsearch.Client, name string
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteName 根据书名、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteName 根据书名、发布日期大于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -1647,7 +1647,7 @@ func HistPageCountOfBooksByReleaseDateGteName(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtName 根据书名、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtName 根据书名、发布日期大于检索books表并统计页数的数量直方图分布
 // name string 书名
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的页数间隔
@@ -1663,7 +1663,7 @@ func HistPageCountOfBooksByReleaseDateGtName(es *elasticsearch.Client, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtName 根据书名、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtName 根据书名、发布日期小于检索books表并统计页数的数量直方图分布
 // name string 书名
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的页数间隔
@@ -1679,7 +1679,7 @@ func HistPageCountOfBooksByReleaseDateLtName(es *elasticsearch.Client, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteName 根据书名、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteName 根据书名、发布日期小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -1695,7 +1695,7 @@ func HistPageCountOfBooksByReleaseDateLteName(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteName 根据书名、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteName 根据书名、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -1712,7 +1712,7 @@ func HistPageCountOfBooksByReleaseDateGteLteName(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteName 根据书名、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteName 根据书名、发布日期大于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1728,7 +1728,7 @@ func HistPriceOfBooksByReleaseDateGteName(es *elasticsearch.Client, name string,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtName 根据书名、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtName 根据书名、发布日期大于检索books表并统计价格的数量直方图分布
 // name string 书名
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的价格间隔
@@ -1744,7 +1744,7 @@ func HistPriceOfBooksByReleaseDateGtName(es *elasticsearch.Client, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtName 根据书名、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtName 根据书名、发布日期小于检索books表并统计价格的数量直方图分布
 // name string 书名
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的价格间隔
@@ -1760,7 +1760,7 @@ func HistPriceOfBooksByReleaseDateLtName(es *elasticsearch.Client, name string, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteName 根据书名、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteName 根据书名、发布日期小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1776,7 +1776,7 @@ func HistPriceOfBooksByReleaseDateLteName(es *elasticsearch.Client, name string,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteName 根据书名、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteName 根据书名、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -1793,7 +1793,7 @@ func HistPriceOfBooksByReleaseDateGteLteName(es *elasticsearch.Client, name stri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // pageCountGte int64 页数大于等于
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1807,7 +1807,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGt 根据页数大于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGt 根据页数大于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // pageCountGte int64 页数大于等于
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的价格间隔
@@ -1821,7 +1821,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGt(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateLt 根据页数大于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateLt 根据页数大于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // pageCountGte int64 页数大于等于
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的价格间隔
@@ -1835,7 +1835,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateLt(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateLte 根据页数大于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateLte 根据页数大于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // pageCountGte int64 页数大于等于
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1849,7 +1849,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateLte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGteLte 根据页数大于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGteLte 根据页数大于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // pageCountGte int64 页数大于等于
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -1864,7 +1864,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGteLte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // pageCountGt int64 页数大于
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1878,7 +1878,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGt 根据页数大于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGt 根据页数大于、发布日期大于检索books表并统计价格的数量直方图分布
 // pageCountGt int64 页数大于
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的价格间隔
@@ -1892,7 +1892,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGt(es *elasticsearch.Client, pageCo
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateLt 根据页数大于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateLt 根据页数大于、发布日期小于检索books表并统计价格的数量直方图分布
 // pageCountGt int64 页数大于
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的价格间隔
@@ -1906,7 +1906,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateLt(es *elasticsearch.Client, pageCo
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateLte 根据页数大于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateLte 根据页数大于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // pageCountGt int64 页数大于
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1920,7 +1920,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateLte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGteLte 根据页数大于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGteLte 根据页数大于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // pageCountGt int64 页数大于
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -1935,7 +1935,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGteLte(es *elasticsearch.Client, pa
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // pageCountLt int64 页数小于
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1949,7 +1949,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGt 根据页数小于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGt 根据页数小于、发布日期大于检索books表并统计价格的数量直方图分布
 // pageCountLt int64 页数小于
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的价格间隔
@@ -1963,7 +1963,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGt(es *elasticsearch.Client, pageCo
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateLt 根据页数小于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateLt 根据页数小于、发布日期小于检索books表并统计价格的数量直方图分布
 // pageCountLt int64 页数小于
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的价格间隔
@@ -1977,7 +1977,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateLt(es *elasticsearch.Client, pageCo
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateLte 根据页数小于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateLte 根据页数小于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // pageCountLt int64 页数小于
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -1991,7 +1991,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateLte(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGteLte 根据页数小于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGteLte 根据页数小于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // pageCountLt int64 页数小于
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -2006,7 +2006,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGteLte(es *elasticsearch.Client, pa
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -2020,7 +2020,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGt 根据页数小于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGt 根据页数小于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // pageCountLte int64 页数小于等于
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的价格间隔
@@ -2034,7 +2034,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGt(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateLt 根据页数小于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateLt 根据页数小于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // pageCountLte int64 页数小于等于
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的价格间隔
@@ -2048,7 +2048,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateLt(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateLte 根据页数小于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateLte 根据页数小于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // pageCountLte int64 页数小于等于
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -2062,7 +2062,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateLte(es *elasticsearch.Client, page
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGteLte 根据页数小于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGteLte 根据页数小于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -2077,7 +2077,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGteLte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -2092,7 +2092,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGt 根据页数大于等于和小于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGt 根据页数大于等于和小于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateGt time.Time 发布日期大于
@@ -2107,7 +2107,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGt(es *elasticsearch.Client, pa
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateLt 根据页数大于等于和小于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateLt 根据页数大于等于和小于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateLt time.Time 发布日期小于
@@ -2122,7 +2122,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateLt(es *elasticsearch.Client, pa
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateLte 根据页数大于等于和小于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateLte 根据页数大于等于和小于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -2137,7 +2137,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateLte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGteLte 根据页数大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGteLte 根据页数大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -2153,7 +2153,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGteLte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteSeq 根据编号、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteSeq 根据编号、页数大于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -2167,7 +2167,7 @@ func HistPriceOfBooksByPageCountGteSeq(es *elasticsearch.Client, seq string, pag
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtSeq 根据编号、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtSeq 根据编号、页数大于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGt int64 页数大于
 // histInterval float64 桶聚合的价格间隔
@@ -2181,7 +2181,7 @@ func HistPriceOfBooksByPageCountGtSeq(es *elasticsearch.Client, seq string, page
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtSeq 根据编号、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtSeq 根据编号、页数小于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountLt int64 页数小于
 // histInterval float64 桶聚合的价格间隔
@@ -2195,7 +2195,7 @@ func HistPriceOfBooksByPageCountLtSeq(es *elasticsearch.Client, seq string, page
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteSeq 根据编号、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteSeq 根据编号、页数小于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -2209,7 +2209,7 @@ func HistPriceOfBooksByPageCountLteSeq(es *elasticsearch.Client, seq string, pag
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteSeq 根据编号、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteSeq 根据编号、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2224,7 +2224,7 @@ func HistPriceOfBooksByPageCountGteLteSeq(es *elasticsearch.Client, seq string, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -2238,7 +2238,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, pric
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGt 根据价格大于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGt 根据价格大于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // priceGte float64 价格大于等于
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的页数间隔
@@ -2252,7 +2252,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGt(es *elasticsearch.Client, price
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateLt 根据价格大于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateLt 根据价格大于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // priceGte float64 价格大于等于
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的页数间隔
@@ -2266,7 +2266,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateLt(es *elasticsearch.Client, price
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateLte 根据价格大于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateLte 根据价格大于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // priceGte float64 价格大于等于
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -2280,7 +2280,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateLte(es *elasticsearch.Client, pric
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGteLte 根据价格大于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGteLte 根据价格大于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -2295,7 +2295,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGteLte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGte 根据价格大于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGte 根据价格大于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // priceGt float64 价格大于
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -2309,7 +2309,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, price
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGt 根据价格大于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGt 根据价格大于、发布日期大于检索books表并统计页数的数量直方图分布
 // priceGt float64 价格大于
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的页数间隔
@@ -2323,7 +2323,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGt(es *elasticsearch.Client, priceG
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateLt 根据价格大于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateLt 根据价格大于、发布日期小于检索books表并统计页数的数量直方图分布
 // priceGt float64 价格大于
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的页数间隔
@@ -2337,7 +2337,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateLt(es *elasticsearch.Client, priceG
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateLte 根据价格大于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateLte 根据价格大于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // priceGt float64 价格大于
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -2351,7 +2351,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateLte(es *elasticsearch.Client, price
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGteLte 根据价格大于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGteLte 根据价格大于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // priceGt float64 价格大于
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -2366,7 +2366,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGteLte(es *elasticsearch.Client, pr
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGte 根据价格小于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGte 根据价格小于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // priceLt float64 价格小于
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -2380,7 +2380,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, price
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGt 根据价格小于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGt 根据价格小于、发布日期大于检索books表并统计页数的数量直方图分布
 // priceLt float64 价格小于
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的页数间隔
@@ -2394,7 +2394,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGt(es *elasticsearch.Client, priceL
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateLt 根据价格小于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateLt 根据价格小于、发布日期小于检索books表并统计页数的数量直方图分布
 // priceLt float64 价格小于
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的页数间隔
@@ -2408,7 +2408,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateLt(es *elasticsearch.Client, priceL
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateLte 根据价格小于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateLte 根据价格小于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // priceLt float64 价格小于
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -2422,7 +2422,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateLte(es *elasticsearch.Client, price
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGteLte 根据价格小于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGteLte 根据价格小于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // priceLt float64 价格小于
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -2437,7 +2437,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGteLte(es *elasticsearch.Client, pr
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -2451,7 +2451,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, pric
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGt 根据价格小于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGt 根据价格小于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // priceLte float64 价格小于等于
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的页数间隔
@@ -2465,7 +2465,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGt(es *elasticsearch.Client, price
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateLt 根据价格小于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateLt 根据价格小于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // priceLte float64 价格小于等于
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的页数间隔
@@ -2479,7 +2479,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateLt(es *elasticsearch.Client, price
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateLte 根据价格小于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateLte 根据价格小于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // priceLte float64 价格小于等于
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -2493,7 +2493,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateLte(es *elasticsearch.Client, pric
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGteLte 根据价格小于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGteLte 根据价格小于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -2508,7 +2508,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGteLte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -2523,7 +2523,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGt 根据价格大于等于和小于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGt 根据价格大于等于和小于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateGt time.Time 发布日期大于
@@ -2538,7 +2538,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGt(es *elasticsearch.Client, pr
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateLt 根据价格大于等于和小于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateLt 根据价格大于等于和小于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateLt time.Time 发布日期小于
@@ -2553,7 +2553,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateLt(es *elasticsearch.Client, pr
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateLte 根据价格大于等于和小于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateLte 根据价格大于等于和小于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -2568,7 +2568,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateLte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGteLte 根据价格大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGteLte 根据价格大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -2584,7 +2584,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGteLte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteSeq 根据编号、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteSeq 根据编号、价格大于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -2598,7 +2598,7 @@ func HistPageCountOfBooksByPriceGteSeq(es *elasticsearch.Client, seq string, pri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtSeq 根据编号、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtSeq 根据编号、价格大于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGt float64 价格大于
 // histInterval float64 桶聚合的页数间隔
@@ -2612,7 +2612,7 @@ func HistPageCountOfBooksByPriceGtSeq(es *elasticsearch.Client, seq string, pric
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtSeq 根据编号、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtSeq 根据编号、价格小于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceLt float64 价格小于
 // histInterval float64 桶聚合的页数间隔
@@ -2626,7 +2626,7 @@ func HistPageCountOfBooksByPriceLtSeq(es *elasticsearch.Client, seq string, pric
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteSeq 根据编号、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteSeq 根据编号、价格小于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceLte float64 价格小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -2640,7 +2640,7 @@ func HistPageCountOfBooksByPriceLteSeq(es *elasticsearch.Client, seq string, pri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteSeq 根据编号、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteSeq 根据编号、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2655,7 +2655,7 @@ func HistPageCountOfBooksByPriceGteLteSeq(es *elasticsearch.Client, seq string, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteSeq 根据编号、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteSeq 根据编号、发布日期大于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的页数间隔
@@ -2669,7 +2669,7 @@ func HistPageCountOfBooksByReleaseDateGteSeq(es *elasticsearch.Client, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtSeq 根据编号、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtSeq 根据编号、发布日期大于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的页数间隔
@@ -2683,7 +2683,7 @@ func HistPageCountOfBooksByReleaseDateGtSeq(es *elasticsearch.Client, seq string
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtSeq 根据编号、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtSeq 根据编号、发布日期小于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的页数间隔
@@ -2697,7 +2697,7 @@ func HistPageCountOfBooksByReleaseDateLtSeq(es *elasticsearch.Client, seq string
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteSeq 根据编号、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteSeq 根据编号、发布日期小于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的页数间隔
@@ -2711,7 +2711,7 @@ func HistPageCountOfBooksByReleaseDateLteSeq(es *elasticsearch.Client, seq strin
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteSeq 根据编号、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteSeq 根据编号、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -2726,7 +2726,7 @@ func HistPageCountOfBooksByReleaseDateGteLteSeq(es *elasticsearch.Client, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteSeq 根据编号、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteSeq 根据编号、发布日期大于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
 // histInterval float64 桶聚合的价格间隔
@@ -2740,7 +2740,7 @@ func HistPriceOfBooksByReleaseDateGteSeq(es *elasticsearch.Client, seq string, r
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtSeq 根据编号、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtSeq 根据编号、发布日期大于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // releaseDateGt time.Time 发布日期大于
 // histInterval float64 桶聚合的价格间隔
@@ -2754,7 +2754,7 @@ func HistPriceOfBooksByReleaseDateGtSeq(es *elasticsearch.Client, seq string, re
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtSeq 根据编号、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtSeq 根据编号、发布日期小于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // releaseDateLt time.Time 发布日期小于
 // histInterval float64 桶聚合的价格间隔
@@ -2768,7 +2768,7 @@ func HistPriceOfBooksByReleaseDateLtSeq(es *elasticsearch.Client, seq string, re
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteSeq 根据编号、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteSeq 根据编号、发布日期小于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // releaseDateLte time.Time 发布日期小于等于
 // histInterval float64 桶聚合的价格间隔
@@ -2782,7 +2782,7 @@ func HistPriceOfBooksByReleaseDateLteSeq(es *elasticsearch.Client, seq string, r
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteSeq 根据编号、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteSeq 根据编号、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -2797,7 +2797,7 @@ func HistPriceOfBooksByReleaseDateGteLteSeq(es *elasticsearch.Client, seq string
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteAllTextAuthor 根据全文本、作者、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteAllTextAuthor 根据全文本、作者、页数大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // author string 作者
 // pageCountGte int64 页数大于等于
@@ -2815,7 +2815,7 @@ func HistPriceOfBooksByPageCountGteAllTextAuthor(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtAllTextAuthor 根据全文本、作者、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtAllTextAuthor 根据全文本、作者、页数大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // author string 作者
 // pageCountGt int64 页数大于
@@ -2833,7 +2833,7 @@ func HistPriceOfBooksByPageCountGtAllTextAuthor(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtAllTextAuthor 根据全文本、作者、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtAllTextAuthor 根据全文本、作者、页数小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // author string 作者
 // pageCountLt int64 页数小于
@@ -2851,7 +2851,7 @@ func HistPriceOfBooksByPageCountLtAllTextAuthor(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteAllTextAuthor 根据全文本、作者、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteAllTextAuthor 根据全文本、作者、页数小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // author string 作者
 // pageCountLte int64 页数小于等于
@@ -2869,7 +2869,7 @@ func HistPriceOfBooksByPageCountLteAllTextAuthor(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteAllTextAuthor 根据全文本、作者、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteAllTextAuthor 根据全文本、作者、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // author string 作者
 // pageCountGte int64 页数大于等于
@@ -2888,7 +2888,7 @@ func HistPriceOfBooksByPageCountGteLteAllTextAuthor(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteAllTextAuthor 根据全文本、作者、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteAllTextAuthor 根据全文本、作者、价格大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // author string 作者
 // priceGte float64 价格大于等于
@@ -2906,7 +2906,7 @@ func HistPageCountOfBooksByPriceGteAllTextAuthor(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtAllTextAuthor 根据全文本、作者、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtAllTextAuthor 根据全文本、作者、价格大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // author string 作者
 // priceGt float64 价格大于
@@ -2924,7 +2924,7 @@ func HistPageCountOfBooksByPriceGtAllTextAuthor(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtAllTextAuthor 根据全文本、作者、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtAllTextAuthor 根据全文本、作者、价格小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // author string 作者
 // priceLt float64 价格小于
@@ -2942,7 +2942,7 @@ func HistPageCountOfBooksByPriceLtAllTextAuthor(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteAllTextAuthor 根据全文本、作者、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteAllTextAuthor 根据全文本、作者、价格小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // author string 作者
 // priceLte float64 价格小于等于
@@ -2960,7 +2960,7 @@ func HistPageCountOfBooksByPriceLteAllTextAuthor(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteAllTextAuthor 根据全文本、作者、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteAllTextAuthor 根据全文本、作者、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // author string 作者
 // priceGte float64 价格大于等于
@@ -2979,7 +2979,7 @@ func HistPageCountOfBooksByPriceGteLteAllTextAuthor(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteAllTextAuthor 根据全文本、作者、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteAllTextAuthor 根据全文本、作者、发布日期大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateGte time.Time 发布日期大于等于
@@ -2997,7 +2997,7 @@ func HistPageCountOfBooksByReleaseDateGteAllTextAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtAllTextAuthor 根据全文本、作者、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtAllTextAuthor 根据全文本、作者、发布日期大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateGt time.Time 发布日期大于
@@ -3015,7 +3015,7 @@ func HistPageCountOfBooksByReleaseDateGtAllTextAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtAllTextAuthor 根据全文本、作者、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtAllTextAuthor 根据全文本、作者、发布日期小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateLt time.Time 发布日期小于
@@ -3033,7 +3033,7 @@ func HistPageCountOfBooksByReleaseDateLtAllTextAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteAllTextAuthor 根据全文本、作者、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteAllTextAuthor 根据全文本、作者、发布日期小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateLte time.Time 发布日期小于等于
@@ -3051,7 +3051,7 @@ func HistPageCountOfBooksByReleaseDateLteAllTextAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteAllTextAuthor 根据全文本、作者、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteAllTextAuthor 根据全文本、作者、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateGte time.Time 发布日期大于等于
@@ -3070,7 +3070,7 @@ func HistPageCountOfBooksByReleaseDateGteLteAllTextAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteAllTextAuthor 根据全文本、作者、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteAllTextAuthor 根据全文本、作者、发布日期大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateGte time.Time 发布日期大于等于
@@ -3088,7 +3088,7 @@ func HistPriceOfBooksByReleaseDateGteAllTextAuthor(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtAllTextAuthor 根据全文本、作者、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtAllTextAuthor 根据全文本、作者、发布日期大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateGt time.Time 发布日期大于
@@ -3106,7 +3106,7 @@ func HistPriceOfBooksByReleaseDateGtAllTextAuthor(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtAllTextAuthor 根据全文本、作者、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtAllTextAuthor 根据全文本、作者、发布日期小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateLt time.Time 发布日期小于
@@ -3124,7 +3124,7 @@ func HistPriceOfBooksByReleaseDateLtAllTextAuthor(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteAllTextAuthor 根据全文本、作者、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteAllTextAuthor 根据全文本、作者、发布日期小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateLte time.Time 发布日期小于等于
@@ -3142,7 +3142,7 @@ func HistPriceOfBooksByReleaseDateLteAllTextAuthor(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteAllTextAuthor 根据全文本、作者、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteAllTextAuthor 根据全文本、作者、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateGte time.Time 发布日期大于等于
@@ -3161,7 +3161,7 @@ func HistPriceOfBooksByReleaseDateGteLteAllTextAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteAllTextClass 根据全文本、类别、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteAllTextClass 根据全文本、类别、页数大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class string 类别
 // pageCountGte int64 页数大于等于
@@ -3179,7 +3179,7 @@ func HistPriceOfBooksByPageCountGteAllTextClass(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtAllTextClass 根据全文本、类别、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtAllTextClass 根据全文本、类别、页数大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class string 类别
 // pageCountGt int64 页数大于
@@ -3197,7 +3197,7 @@ func HistPriceOfBooksByPageCountGtAllTextClass(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtAllTextClass 根据全文本、类别、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtAllTextClass 根据全文本、类别、页数小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class string 类别
 // pageCountLt int64 页数小于
@@ -3215,7 +3215,7 @@ func HistPriceOfBooksByPageCountLtAllTextClass(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteAllTextClass 根据全文本、类别、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteAllTextClass 根据全文本、类别、页数小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class string 类别
 // pageCountLte int64 页数小于等于
@@ -3233,7 +3233,7 @@ func HistPriceOfBooksByPageCountLteAllTextClass(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteAllTextClass 根据全文本、类别、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteAllTextClass 根据全文本、类别、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class string 类别
 // pageCountGte int64 页数大于等于
@@ -3252,7 +3252,7 @@ func HistPriceOfBooksByPageCountGteLteAllTextClass(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteAllTextClass 根据全文本、类别、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteAllTextClass 根据全文本、类别、价格大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class string 类别
 // priceGte float64 价格大于等于
@@ -3270,7 +3270,7 @@ func HistPageCountOfBooksByPriceGteAllTextClass(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtAllTextClass 根据全文本、类别、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtAllTextClass 根据全文本、类别、价格大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class string 类别
 // priceGt float64 价格大于
@@ -3288,7 +3288,7 @@ func HistPageCountOfBooksByPriceGtAllTextClass(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtAllTextClass 根据全文本、类别、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtAllTextClass 根据全文本、类别、价格小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class string 类别
 // priceLt float64 价格小于
@@ -3306,7 +3306,7 @@ func HistPageCountOfBooksByPriceLtAllTextClass(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteAllTextClass 根据全文本、类别、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteAllTextClass 根据全文本、类别、价格小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class string 类别
 // priceLte float64 价格小于等于
@@ -3324,7 +3324,7 @@ func HistPageCountOfBooksByPriceLteAllTextClass(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteAllTextClass 根据全文本、类别、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteAllTextClass 根据全文本、类别、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class string 类别
 // priceGte float64 价格大于等于
@@ -3343,7 +3343,7 @@ func HistPageCountOfBooksByPriceGteLteAllTextClass(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteAllTextClass 根据全文本、类别、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteAllTextClass 根据全文本、类别、发布日期大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -3361,7 +3361,7 @@ func HistPageCountOfBooksByReleaseDateGteAllTextClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtAllTextClass 根据全文本、类别、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtAllTextClass 根据全文本、类别、发布日期大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateGt time.Time 发布日期大于
@@ -3379,7 +3379,7 @@ func HistPageCountOfBooksByReleaseDateGtAllTextClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtAllTextClass 根据全文本、类别、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtAllTextClass 根据全文本、类别、发布日期小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateLt time.Time 发布日期小于
@@ -3397,7 +3397,7 @@ func HistPageCountOfBooksByReleaseDateLtAllTextClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteAllTextClass 根据全文本、类别、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteAllTextClass 根据全文本、类别、发布日期小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateLte time.Time 发布日期小于等于
@@ -3415,7 +3415,7 @@ func HistPageCountOfBooksByReleaseDateLteAllTextClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteAllTextClass 根据全文本、类别、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteAllTextClass 根据全文本、类别、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -3434,7 +3434,7 @@ func HistPageCountOfBooksByReleaseDateGteLteAllTextClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteAllTextClass 根据全文本、类别、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteAllTextClass 根据全文本、类别、发布日期大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -3452,7 +3452,7 @@ func HistPriceOfBooksByReleaseDateGteAllTextClass(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtAllTextClass 根据全文本、类别、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtAllTextClass 根据全文本、类别、发布日期大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateGt time.Time 发布日期大于
@@ -3470,7 +3470,7 @@ func HistPriceOfBooksByReleaseDateGtAllTextClass(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtAllTextClass 根据全文本、类别、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtAllTextClass 根据全文本、类别、发布日期小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateLt time.Time 发布日期小于
@@ -3488,7 +3488,7 @@ func HistPriceOfBooksByReleaseDateLtAllTextClass(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteAllTextClass 根据全文本、类别、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteAllTextClass 根据全文本、类别、发布日期小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateLte time.Time 发布日期小于等于
@@ -3506,7 +3506,7 @@ func HistPriceOfBooksByReleaseDateLteAllTextClass(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteAllTextClass 根据全文本、类别、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteAllTextClass 根据全文本、类别、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -3525,7 +3525,7 @@ func HistPriceOfBooksByReleaseDateGteLteAllTextClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteAllTextClass2 根据全文本、子类别、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteAllTextClass2 根据全文本、子类别、页数大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
@@ -3543,7 +3543,7 @@ func HistPriceOfBooksByPageCountGteAllTextClass2(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtAllTextClass2 根据全文本、子类别、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtAllTextClass2 根据全文本、子类别、页数大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // pageCountGt int64 页数大于
@@ -3561,7 +3561,7 @@ func HistPriceOfBooksByPageCountGtAllTextClass2(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtAllTextClass2 根据全文本、子类别、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtAllTextClass2 根据全文本、子类别、页数小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // pageCountLt int64 页数小于
@@ -3579,7 +3579,7 @@ func HistPriceOfBooksByPageCountLtAllTextClass2(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteAllTextClass2 根据全文本、子类别、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteAllTextClass2 根据全文本、子类别、页数小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
@@ -3597,7 +3597,7 @@ func HistPriceOfBooksByPageCountLteAllTextClass2(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteAllTextClass2 根据全文本、子类别、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteAllTextClass2 根据全文本、子类别、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
@@ -3616,7 +3616,7 @@ func HistPriceOfBooksByPageCountGteLteAllTextClass2(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteAllTextClass2 根据全文本、子类别、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteAllTextClass2 根据全文本、子类别、价格大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // priceGte float64 价格大于等于
@@ -3634,7 +3634,7 @@ func HistPageCountOfBooksByPriceGteAllTextClass2(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtAllTextClass2 根据全文本、子类别、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtAllTextClass2 根据全文本、子类别、价格大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // priceGt float64 价格大于
@@ -3652,7 +3652,7 @@ func HistPageCountOfBooksByPriceGtAllTextClass2(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtAllTextClass2 根据全文本、子类别、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtAllTextClass2 根据全文本、子类别、价格小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // priceLt float64 价格小于
@@ -3670,7 +3670,7 @@ func HistPageCountOfBooksByPriceLtAllTextClass2(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteAllTextClass2 根据全文本、子类别、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteAllTextClass2 根据全文本、子类别、价格小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // priceLte float64 价格小于等于
@@ -3688,7 +3688,7 @@ func HistPageCountOfBooksByPriceLteAllTextClass2(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteAllTextClass2 根据全文本、子类别、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteAllTextClass2 根据全文本、子类别、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // priceGte float64 价格大于等于
@@ -3707,7 +3707,7 @@ func HistPageCountOfBooksByPriceGteLteAllTextClass2(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteAllTextClass2 根据全文本、子类别、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteAllTextClass2 根据全文本、子类别、发布日期大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -3725,7 +3725,7 @@ func HistPageCountOfBooksByReleaseDateGteAllTextClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtAllTextClass2 根据全文本、子类别、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtAllTextClass2 根据全文本、子类别、发布日期大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateGt time.Time 发布日期大于
@@ -3743,7 +3743,7 @@ func HistPageCountOfBooksByReleaseDateGtAllTextClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtAllTextClass2 根据全文本、子类别、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtAllTextClass2 根据全文本、子类别、发布日期小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateLt time.Time 发布日期小于
@@ -3761,7 +3761,7 @@ func HistPageCountOfBooksByReleaseDateLtAllTextClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteAllTextClass2 根据全文本、子类别、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteAllTextClass2 根据全文本、子类别、发布日期小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateLte time.Time 发布日期小于等于
@@ -3779,7 +3779,7 @@ func HistPageCountOfBooksByReleaseDateLteAllTextClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteAllTextClass2 根据全文本、子类别、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteAllTextClass2 根据全文本、子类别、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -3798,7 +3798,7 @@ func HistPageCountOfBooksByReleaseDateGteLteAllTextClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteAllTextClass2 根据全文本、子类别、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteAllTextClass2 根据全文本、子类别、发布日期大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -3816,7 +3816,7 @@ func HistPriceOfBooksByReleaseDateGteAllTextClass2(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtAllTextClass2 根据全文本、子类别、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtAllTextClass2 根据全文本、子类别、发布日期大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateGt time.Time 发布日期大于
@@ -3834,7 +3834,7 @@ func HistPriceOfBooksByReleaseDateGtAllTextClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtAllTextClass2 根据全文本、子类别、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtAllTextClass2 根据全文本、子类别、发布日期小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateLt time.Time 发布日期小于
@@ -3852,7 +3852,7 @@ func HistPriceOfBooksByReleaseDateLtAllTextClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteAllTextClass2 根据全文本、子类别、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteAllTextClass2 根据全文本、子类别、发布日期小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateLte time.Time 发布日期小于等于
@@ -3870,7 +3870,7 @@ func HistPriceOfBooksByReleaseDateLteAllTextClass2(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteAllTextClass2 根据全文本、子类别、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteAllTextClass2 根据全文本、子类别、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -3889,7 +3889,7 @@ func HistPriceOfBooksByReleaseDateGteLteAllTextClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteAllTextName 根据全文本、书名、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteAllTextName 根据全文本、书名、页数大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // name string 书名
 // pageCountGte int64 页数大于等于
@@ -3907,7 +3907,7 @@ func HistPriceOfBooksByPageCountGteAllTextName(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtAllTextName 根据全文本、书名、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtAllTextName 根据全文本、书名、页数大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // name string 书名
 // pageCountGt int64 页数大于
@@ -3925,7 +3925,7 @@ func HistPriceOfBooksByPageCountGtAllTextName(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtAllTextName 根据全文本、书名、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtAllTextName 根据全文本、书名、页数小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // name string 书名
 // pageCountLt int64 页数小于
@@ -3943,7 +3943,7 @@ func HistPriceOfBooksByPageCountLtAllTextName(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteAllTextName 根据全文本、书名、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteAllTextName 根据全文本、书名、页数小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // name string 书名
 // pageCountLte int64 页数小于等于
@@ -3961,7 +3961,7 @@ func HistPriceOfBooksByPageCountLteAllTextName(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteAllTextName 根据全文本、书名、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteAllTextName 根据全文本、书名、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // name string 书名
 // pageCountGte int64 页数大于等于
@@ -3980,7 +3980,7 @@ func HistPriceOfBooksByPageCountGteLteAllTextName(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteAllTextName 根据全文本、书名、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteAllTextName 根据全文本、书名、价格大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // name string 书名
 // priceGte float64 价格大于等于
@@ -3998,7 +3998,7 @@ func HistPageCountOfBooksByPriceGteAllTextName(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtAllTextName 根据全文本、书名、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtAllTextName 根据全文本、书名、价格大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // name string 书名
 // priceGt float64 价格大于
@@ -4016,7 +4016,7 @@ func HistPageCountOfBooksByPriceGtAllTextName(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtAllTextName 根据全文本、书名、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtAllTextName 根据全文本、书名、价格小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // name string 书名
 // priceLt float64 价格小于
@@ -4034,7 +4034,7 @@ func HistPageCountOfBooksByPriceLtAllTextName(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteAllTextName 根据全文本、书名、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteAllTextName 根据全文本、书名、价格小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // name string 书名
 // priceLte float64 价格小于等于
@@ -4052,7 +4052,7 @@ func HistPageCountOfBooksByPriceLteAllTextName(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteAllTextName 根据全文本、书名、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteAllTextName 根据全文本、书名、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // name string 书名
 // priceGte float64 价格大于等于
@@ -4071,7 +4071,7 @@ func HistPageCountOfBooksByPriceGteLteAllTextName(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteAllTextName 根据全文本、书名、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteAllTextName 根据全文本、书名、发布日期大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -4089,7 +4089,7 @@ func HistPageCountOfBooksByReleaseDateGteAllTextName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtAllTextName 根据全文本、书名、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtAllTextName 根据全文本、书名、发布日期大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateGt time.Time 发布日期大于
@@ -4107,7 +4107,7 @@ func HistPageCountOfBooksByReleaseDateGtAllTextName(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtAllTextName 根据全文本、书名、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtAllTextName 根据全文本、书名、发布日期小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateLt time.Time 发布日期小于
@@ -4125,7 +4125,7 @@ func HistPageCountOfBooksByReleaseDateLtAllTextName(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteAllTextName 根据全文本、书名、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteAllTextName 根据全文本、书名、发布日期小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateLte time.Time 发布日期小于等于
@@ -4143,7 +4143,7 @@ func HistPageCountOfBooksByReleaseDateLteAllTextName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteAllTextName 根据全文本、书名、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteAllTextName 根据全文本、书名、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -4162,7 +4162,7 @@ func HistPageCountOfBooksByReleaseDateGteLteAllTextName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteAllTextName 根据全文本、书名、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteAllTextName 根据全文本、书名、发布日期大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -4180,7 +4180,7 @@ func HistPriceOfBooksByReleaseDateGteAllTextName(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtAllTextName 根据全文本、书名、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtAllTextName 根据全文本、书名、发布日期大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateGt time.Time 发布日期大于
@@ -4198,7 +4198,7 @@ func HistPriceOfBooksByReleaseDateGtAllTextName(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtAllTextName 根据全文本、书名、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtAllTextName 根据全文本、书名、发布日期小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateLt time.Time 发布日期小于
@@ -4216,7 +4216,7 @@ func HistPriceOfBooksByReleaseDateLtAllTextName(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteAllTextName 根据全文本、书名、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteAllTextName 根据全文本、书名、发布日期小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateLte time.Time 发布日期小于等于
@@ -4234,7 +4234,7 @@ func HistPriceOfBooksByReleaseDateLteAllTextName(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteAllTextName 根据全文本、书名、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteAllTextName 根据全文本、书名、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -4253,7 +4253,7 @@ func HistPriceOfBooksByReleaseDateGteLteAllTextName(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGteAllText 根据全文本、页数大于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGteAllText 根据全文本、页数大于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -4271,7 +4271,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGteAllText(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGtAllText 根据全文本、页数大于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGtAllText 根据全文本、页数大于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // releaseDateGt time.Time 发布日期大于
@@ -4289,7 +4289,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGtAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateLtAllText 根据全文本、页数大于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateLtAllText 根据全文本、页数大于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // releaseDateLt time.Time 发布日期小于
@@ -4307,7 +4307,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateLtAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateLteAllText 根据全文本、页数大于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateLteAllText 根据全文本、页数大于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -4325,7 +4325,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateLteAllText(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGteLteAllText 根据全文本、页数大于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGteLteAllText 根据全文本、页数大于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -4344,7 +4344,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGteLteAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGteAllText 根据全文本、页数大于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGteAllText 根据全文本、页数大于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGt int64 页数大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -4362,7 +4362,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGteAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGtAllText 根据全文本、页数大于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGtAllText 根据全文本、页数大于、发布日期大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGt int64 页数大于
 // releaseDateGt time.Time 发布日期大于
@@ -4380,7 +4380,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGtAllText(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateLtAllText 根据全文本、页数大于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateLtAllText 根据全文本、页数大于、发布日期小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGt int64 页数大于
 // releaseDateLt time.Time 发布日期小于
@@ -4398,7 +4398,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateLtAllText(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateLteAllText 根据全文本、页数大于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateLteAllText 根据全文本、页数大于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGt int64 页数大于
 // releaseDateLte time.Time 发布日期小于等于
@@ -4416,7 +4416,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateLteAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGteLteAllText 根据全文本、页数大于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGteLteAllText 根据全文本、页数大于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGt int64 页数大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -4435,7 +4435,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGteLteAllText(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGteAllText 根据全文本、页数小于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGteAllText 根据全文本、页数小于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountLt int64 页数小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -4453,7 +4453,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGteAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGtAllText 根据全文本、页数小于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGtAllText 根据全文本、页数小于、发布日期大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountLt int64 页数小于
 // releaseDateGt time.Time 发布日期大于
@@ -4471,7 +4471,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGtAllText(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateLtAllText 根据全文本、页数小于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateLtAllText 根据全文本、页数小于、发布日期小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountLt int64 页数小于
 // releaseDateLt time.Time 发布日期小于
@@ -4489,7 +4489,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateLtAllText(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateLteAllText 根据全文本、页数小于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateLteAllText 根据全文本、页数小于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountLt int64 页数小于
 // releaseDateLte time.Time 发布日期小于等于
@@ -4507,7 +4507,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateLteAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGteLteAllText 根据全文本、页数小于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGteLteAllText 根据全文本、页数小于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountLt int64 页数小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -4526,7 +4526,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGteLteAllText(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGteAllText 根据全文本、页数小于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGteAllText 根据全文本、页数小于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -4544,7 +4544,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGteAllText(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGtAllText 根据全文本、页数小于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGtAllText 根据全文本、页数小于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // releaseDateGt time.Time 发布日期大于
@@ -4562,7 +4562,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGtAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateLtAllText 根据全文本、页数小于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateLtAllText 根据全文本、页数小于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // releaseDateLt time.Time 发布日期小于
@@ -4580,7 +4580,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateLtAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateLteAllText 根据全文本、页数小于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateLteAllText 根据全文本、页数小于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -4598,7 +4598,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateLteAllText(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGteLteAllText 根据全文本、页数小于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGteLteAllText 根据全文本、页数小于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -4617,7 +4617,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGteLteAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGteAllText 根据全文本、页数大于等于和小于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGteAllText 根据全文本、页数大于等于和小于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -4636,7 +4636,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGteAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGtAllText 根据全文本、页数大于等于和小于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGtAllText 根据全文本、页数大于等于和小于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -4655,7 +4655,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGtAllText(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateLtAllText 根据全文本、页数大于等于和小于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateLtAllText 根据全文本、页数大于等于和小于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -4674,7 +4674,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateLtAllText(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateLteAllText 根据全文本、页数大于等于和小于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateLteAllText 根据全文本、页数大于等于和小于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -4693,7 +4693,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateLteAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGteLteAllText 根据全文本、页数大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGteLteAllText 根据全文本、页数大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -4713,7 +4713,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGteLteAllText(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteAllTextSeq 根据全文本、编号、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteAllTextSeq 根据全文本、编号、页数大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // pageCountGte int64 页数大于等于
@@ -4731,7 +4731,7 @@ func HistPriceOfBooksByPageCountGteAllTextSeq(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtAllTextSeq 根据全文本、编号、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtAllTextSeq 根据全文本、编号、页数大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // pageCountGt int64 页数大于
@@ -4749,7 +4749,7 @@ func HistPriceOfBooksByPageCountGtAllTextSeq(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtAllTextSeq 根据全文本、编号、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtAllTextSeq 根据全文本、编号、页数小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // pageCountLt int64 页数小于
@@ -4767,7 +4767,7 @@ func HistPriceOfBooksByPageCountLtAllTextSeq(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteAllTextSeq 根据全文本、编号、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteAllTextSeq 根据全文本、编号、页数小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // pageCountLte int64 页数小于等于
@@ -4785,7 +4785,7 @@ func HistPriceOfBooksByPageCountLteAllTextSeq(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteAllTextSeq 根据全文本、编号、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteAllTextSeq 根据全文本、编号、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // pageCountGte int64 页数大于等于
@@ -4804,7 +4804,7 @@ func HistPriceOfBooksByPageCountGteLteAllTextSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGteAllText 根据全文本、价格大于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGteAllText 根据全文本、价格大于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -4822,7 +4822,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGteAllText(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGtAllText 根据全文本、价格大于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGtAllText 根据全文本、价格大于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // releaseDateGt time.Time 发布日期大于
@@ -4840,7 +4840,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGtAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateLtAllText 根据全文本、价格大于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateLtAllText 根据全文本、价格大于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // releaseDateLt time.Time 发布日期小于
@@ -4858,7 +4858,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateLtAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateLteAllText 根据全文本、价格大于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateLteAllText 根据全文本、价格大于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -4876,7 +4876,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateLteAllText(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGteLteAllText 根据全文本、价格大于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGteLteAllText 根据全文本、价格大于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -4895,7 +4895,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGteLteAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGteAllText 根据全文本、价格大于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGteAllText 根据全文本、价格大于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGt float64 价格大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -4913,7 +4913,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGteAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGtAllText 根据全文本、价格大于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGtAllText 根据全文本、价格大于、发布日期大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGt float64 价格大于
 // releaseDateGt time.Time 发布日期大于
@@ -4931,7 +4931,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGtAllText(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateLtAllText 根据全文本、价格大于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateLtAllText 根据全文本、价格大于、发布日期小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGt float64 价格大于
 // releaseDateLt time.Time 发布日期小于
@@ -4949,7 +4949,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateLtAllText(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateLteAllText 根据全文本、价格大于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateLteAllText 根据全文本、价格大于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGt float64 价格大于
 // releaseDateLte time.Time 发布日期小于等于
@@ -4967,7 +4967,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateLteAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGteLteAllText 根据全文本、价格大于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGteLteAllText 根据全文本、价格大于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGt float64 价格大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -4986,7 +4986,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGteLteAllText(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGteAllText 根据全文本、价格小于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGteAllText 根据全文本、价格小于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceLt float64 价格小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -5004,7 +5004,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGteAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGtAllText 根据全文本、价格小于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGtAllText 根据全文本、价格小于、发布日期大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceLt float64 价格小于
 // releaseDateGt time.Time 发布日期大于
@@ -5022,7 +5022,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGtAllText(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateLtAllText 根据全文本、价格小于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateLtAllText 根据全文本、价格小于、发布日期小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceLt float64 价格小于
 // releaseDateLt time.Time 发布日期小于
@@ -5040,7 +5040,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateLtAllText(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateLteAllText 根据全文本、价格小于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateLteAllText 根据全文本、价格小于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceLt float64 价格小于
 // releaseDateLte time.Time 发布日期小于等于
@@ -5058,7 +5058,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateLteAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGteLteAllText 根据全文本、价格小于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGteLteAllText 根据全文本、价格小于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceLt float64 价格小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -5077,7 +5077,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGteLteAllText(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGteAllText 根据全文本、价格小于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGteAllText 根据全文本、价格小于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -5095,7 +5095,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGteAllText(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGtAllText 根据全文本、价格小于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGtAllText 根据全文本、价格小于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceLte float64 价格小于等于
 // releaseDateGt time.Time 发布日期大于
@@ -5113,7 +5113,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGtAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateLtAllText 根据全文本、价格小于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateLtAllText 根据全文本、价格小于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceLte float64 价格小于等于
 // releaseDateLt time.Time 发布日期小于
@@ -5131,7 +5131,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateLtAllText(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateLteAllText 根据全文本、价格小于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateLteAllText 根据全文本、价格小于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceLte float64 价格小于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -5149,7 +5149,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateLteAllText(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGteLteAllText 根据全文本、价格小于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGteLteAllText 根据全文本、价格小于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -5168,7 +5168,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGteLteAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGteAllText 根据全文本、价格大于等于和小于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGteAllText 根据全文本、价格大于等于和小于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -5187,7 +5187,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGteAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGtAllText 根据全文本、价格大于等于和小于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGtAllText 根据全文本、价格大于等于和小于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -5206,7 +5206,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGtAllText(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateLtAllText 根据全文本、价格大于等于和小于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateLtAllText 根据全文本、价格大于等于和小于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -5225,7 +5225,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateLtAllText(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateLteAllText 根据全文本、价格大于等于和小于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateLteAllText 根据全文本、价格大于等于和小于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -5244,7 +5244,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateLteAllText(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGteLteAllText 根据全文本、价格大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGteLteAllText 根据全文本、价格大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -5264,7 +5264,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGteLteAllText(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteAllTextSeq 根据全文本、编号、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteAllTextSeq 根据全文本、编号、价格大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // priceGte float64 价格大于等于
@@ -5282,7 +5282,7 @@ func HistPageCountOfBooksByPriceGteAllTextSeq(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtAllTextSeq 根据全文本、编号、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtAllTextSeq 根据全文本、编号、价格大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // priceGt float64 价格大于
@@ -5300,7 +5300,7 @@ func HistPageCountOfBooksByPriceGtAllTextSeq(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtAllTextSeq 根据全文本、编号、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtAllTextSeq 根据全文本、编号、价格小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // priceLt float64 价格小于
@@ -5318,7 +5318,7 @@ func HistPageCountOfBooksByPriceLtAllTextSeq(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteAllTextSeq 根据全文本、编号、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteAllTextSeq 根据全文本、编号、价格小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // priceLte float64 价格小于等于
@@ -5336,7 +5336,7 @@ func HistPageCountOfBooksByPriceLteAllTextSeq(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteAllTextSeq 根据全文本、编号、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteAllTextSeq 根据全文本、编号、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // priceGte float64 价格大于等于
@@ -5355,7 +5355,7 @@ func HistPageCountOfBooksByPriceGteLteAllTextSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteAllTextSeq 根据全文本、编号、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteAllTextSeq 根据全文本、编号、发布日期大于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -5373,7 +5373,7 @@ func HistPageCountOfBooksByReleaseDateGteAllTextSeq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtAllTextSeq 根据全文本、编号、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtAllTextSeq 根据全文本、编号、发布日期大于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateGt time.Time 发布日期大于
@@ -5391,7 +5391,7 @@ func HistPageCountOfBooksByReleaseDateGtAllTextSeq(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtAllTextSeq 根据全文本、编号、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtAllTextSeq 根据全文本、编号、发布日期小于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateLt time.Time 发布日期小于
@@ -5409,7 +5409,7 @@ func HistPageCountOfBooksByReleaseDateLtAllTextSeq(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteAllTextSeq 根据全文本、编号、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteAllTextSeq 根据全文本、编号、发布日期小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateLte time.Time 发布日期小于等于
@@ -5427,7 +5427,7 @@ func HistPageCountOfBooksByReleaseDateLteAllTextSeq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteAllTextSeq 根据全文本、编号、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteAllTextSeq 根据全文本、编号、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -5446,7 +5446,7 @@ func HistPageCountOfBooksByReleaseDateGteLteAllTextSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteAllTextSeq 根据全文本、编号、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteAllTextSeq 根据全文本、编号、发布日期大于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -5464,7 +5464,7 @@ func HistPriceOfBooksByReleaseDateGteAllTextSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtAllTextSeq 根据全文本、编号、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtAllTextSeq 根据全文本、编号、发布日期大于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateGt time.Time 发布日期大于
@@ -5482,7 +5482,7 @@ func HistPriceOfBooksByReleaseDateGtAllTextSeq(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtAllTextSeq 根据全文本、编号、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtAllTextSeq 根据全文本、编号、发布日期小于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateLt time.Time 发布日期小于
@@ -5500,7 +5500,7 @@ func HistPriceOfBooksByReleaseDateLtAllTextSeq(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteAllTextSeq 根据全文本、编号、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteAllTextSeq 根据全文本、编号、发布日期小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateLte time.Time 发布日期小于等于
@@ -5518,7 +5518,7 @@ func HistPriceOfBooksByReleaseDateLteAllTextSeq(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteAllTextSeq 根据全文本、编号、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteAllTextSeq 根据全文本、编号、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -5537,7 +5537,7 @@ func HistPriceOfBooksByReleaseDateGteLteAllTextSeq(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteAuthorClass 根据作者、类别、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteAuthorClass 根据作者、类别、页数大于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class string 类别
 // pageCountGte int64 页数大于等于
@@ -5555,7 +5555,7 @@ func HistPriceOfBooksByPageCountGteAuthorClass(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtAuthorClass 根据作者、类别、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtAuthorClass 根据作者、类别、页数大于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class string 类别
 // pageCountGt int64 页数大于
@@ -5573,7 +5573,7 @@ func HistPriceOfBooksByPageCountGtAuthorClass(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtAuthorClass 根据作者、类别、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtAuthorClass 根据作者、类别、页数小于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class string 类别
 // pageCountLt int64 页数小于
@@ -5591,7 +5591,7 @@ func HistPriceOfBooksByPageCountLtAuthorClass(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteAuthorClass 根据作者、类别、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteAuthorClass 根据作者、类别、页数小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class string 类别
 // pageCountLte int64 页数小于等于
@@ -5609,7 +5609,7 @@ func HistPriceOfBooksByPageCountLteAuthorClass(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteAuthorClass 根据作者、类别、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteAuthorClass 根据作者、类别、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class string 类别
 // pageCountGte int64 页数大于等于
@@ -5628,7 +5628,7 @@ func HistPriceOfBooksByPageCountGteLteAuthorClass(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteAuthorClass 根据作者、类别、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteAuthorClass 根据作者、类别、价格大于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class string 类别
 // priceGte float64 价格大于等于
@@ -5646,7 +5646,7 @@ func HistPageCountOfBooksByPriceGteAuthorClass(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtAuthorClass 根据作者、类别、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtAuthorClass 根据作者、类别、价格大于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class string 类别
 // priceGt float64 价格大于
@@ -5664,7 +5664,7 @@ func HistPageCountOfBooksByPriceGtAuthorClass(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtAuthorClass 根据作者、类别、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtAuthorClass 根据作者、类别、价格小于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class string 类别
 // priceLt float64 价格小于
@@ -5682,7 +5682,7 @@ func HistPageCountOfBooksByPriceLtAuthorClass(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteAuthorClass 根据作者、类别、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteAuthorClass 根据作者、类别、价格小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class string 类别
 // priceLte float64 价格小于等于
@@ -5700,7 +5700,7 @@ func HistPageCountOfBooksByPriceLteAuthorClass(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteAuthorClass 根据作者、类别、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteAuthorClass 根据作者、类别、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class string 类别
 // priceGte float64 价格大于等于
@@ -5719,7 +5719,7 @@ func HistPageCountOfBooksByPriceGteLteAuthorClass(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteAuthorClass 根据作者、类别、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteAuthorClass 根据作者、类别、发布日期大于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -5737,7 +5737,7 @@ func HistPageCountOfBooksByReleaseDateGteAuthorClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtAuthorClass 根据作者、类别、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtAuthorClass 根据作者、类别、发布日期大于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateGt time.Time 发布日期大于
@@ -5755,7 +5755,7 @@ func HistPageCountOfBooksByReleaseDateGtAuthorClass(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtAuthorClass 根据作者、类别、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtAuthorClass 根据作者、类别、发布日期小于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateLt time.Time 发布日期小于
@@ -5773,7 +5773,7 @@ func HistPageCountOfBooksByReleaseDateLtAuthorClass(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteAuthorClass 根据作者、类别、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteAuthorClass 根据作者、类别、发布日期小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateLte time.Time 发布日期小于等于
@@ -5791,7 +5791,7 @@ func HistPageCountOfBooksByReleaseDateLteAuthorClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteAuthorClass 根据作者、类别、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteAuthorClass 根据作者、类别、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -5810,7 +5810,7 @@ func HistPageCountOfBooksByReleaseDateGteLteAuthorClass(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteAuthorClass 根据作者、类别、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteAuthorClass 根据作者、类别、发布日期大于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -5828,7 +5828,7 @@ func HistPriceOfBooksByReleaseDateGteAuthorClass(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtAuthorClass 根据作者、类别、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtAuthorClass 根据作者、类别、发布日期大于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateGt time.Time 发布日期大于
@@ -5846,7 +5846,7 @@ func HistPriceOfBooksByReleaseDateGtAuthorClass(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtAuthorClass 根据作者、类别、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtAuthorClass 根据作者、类别、发布日期小于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateLt time.Time 发布日期小于
@@ -5864,7 +5864,7 @@ func HistPriceOfBooksByReleaseDateLtAuthorClass(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteAuthorClass 根据作者、类别、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteAuthorClass 根据作者、类别、发布日期小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateLte time.Time 发布日期小于等于
@@ -5882,7 +5882,7 @@ func HistPriceOfBooksByReleaseDateLteAuthorClass(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteAuthorClass 根据作者、类别、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteAuthorClass 根据作者、类别、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -5901,7 +5901,7 @@ func HistPriceOfBooksByReleaseDateGteLteAuthorClass(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteAuthorClass2 根据作者、子类别、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteAuthorClass2 根据作者、子类别、页数大于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
@@ -5919,7 +5919,7 @@ func HistPriceOfBooksByPageCountGteAuthorClass2(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtAuthorClass2 根据作者、子类别、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtAuthorClass2 根据作者、子类别、页数大于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // pageCountGt int64 页数大于
@@ -5937,7 +5937,7 @@ func HistPriceOfBooksByPageCountGtAuthorClass2(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtAuthorClass2 根据作者、子类别、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtAuthorClass2 根据作者、子类别、页数小于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // pageCountLt int64 页数小于
@@ -5955,7 +5955,7 @@ func HistPriceOfBooksByPageCountLtAuthorClass2(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteAuthorClass2 根据作者、子类别、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteAuthorClass2 根据作者、子类别、页数小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
@@ -5973,7 +5973,7 @@ func HistPriceOfBooksByPageCountLteAuthorClass2(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteAuthorClass2 根据作者、子类别、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteAuthorClass2 根据作者、子类别、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
@@ -5992,7 +5992,7 @@ func HistPriceOfBooksByPageCountGteLteAuthorClass2(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteAuthorClass2 根据作者、子类别、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteAuthorClass2 根据作者、子类别、价格大于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // priceGte float64 价格大于等于
@@ -6010,7 +6010,7 @@ func HistPageCountOfBooksByPriceGteAuthorClass2(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtAuthorClass2 根据作者、子类别、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtAuthorClass2 根据作者、子类别、价格大于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // priceGt float64 价格大于
@@ -6028,7 +6028,7 @@ func HistPageCountOfBooksByPriceGtAuthorClass2(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtAuthorClass2 根据作者、子类别、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtAuthorClass2 根据作者、子类别、价格小于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // priceLt float64 价格小于
@@ -6046,7 +6046,7 @@ func HistPageCountOfBooksByPriceLtAuthorClass2(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteAuthorClass2 根据作者、子类别、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteAuthorClass2 根据作者、子类别、价格小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // priceLte float64 价格小于等于
@@ -6064,7 +6064,7 @@ func HistPageCountOfBooksByPriceLteAuthorClass2(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteAuthorClass2 根据作者、子类别、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteAuthorClass2 根据作者、子类别、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // priceGte float64 价格大于等于
@@ -6083,7 +6083,7 @@ func HistPageCountOfBooksByPriceGteLteAuthorClass2(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteAuthorClass2 根据作者、子类别、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteAuthorClass2 根据作者、子类别、发布日期大于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -6101,7 +6101,7 @@ func HistPageCountOfBooksByReleaseDateGteAuthorClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtAuthorClass2 根据作者、子类别、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtAuthorClass2 根据作者、子类别、发布日期大于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateGt time.Time 发布日期大于
@@ -6119,7 +6119,7 @@ func HistPageCountOfBooksByReleaseDateGtAuthorClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtAuthorClass2 根据作者、子类别、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtAuthorClass2 根据作者、子类别、发布日期小于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateLt time.Time 发布日期小于
@@ -6137,7 +6137,7 @@ func HistPageCountOfBooksByReleaseDateLtAuthorClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteAuthorClass2 根据作者、子类别、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteAuthorClass2 根据作者、子类别、发布日期小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateLte time.Time 发布日期小于等于
@@ -6155,7 +6155,7 @@ func HistPageCountOfBooksByReleaseDateLteAuthorClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteAuthorClass2 根据作者、子类别、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteAuthorClass2 根据作者、子类别、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -6174,7 +6174,7 @@ func HistPageCountOfBooksByReleaseDateGteLteAuthorClass2(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteAuthorClass2 根据作者、子类别、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteAuthorClass2 根据作者、子类别、发布日期大于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -6192,7 +6192,7 @@ func HistPriceOfBooksByReleaseDateGteAuthorClass2(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtAuthorClass2 根据作者、子类别、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtAuthorClass2 根据作者、子类别、发布日期大于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateGt time.Time 发布日期大于
@@ -6210,7 +6210,7 @@ func HistPriceOfBooksByReleaseDateGtAuthorClass2(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtAuthorClass2 根据作者、子类别、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtAuthorClass2 根据作者、子类别、发布日期小于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateLt time.Time 发布日期小于
@@ -6228,7 +6228,7 @@ func HistPriceOfBooksByReleaseDateLtAuthorClass2(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteAuthorClass2 根据作者、子类别、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteAuthorClass2 根据作者、子类别、发布日期小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateLte time.Time 发布日期小于等于
@@ -6246,7 +6246,7 @@ func HistPriceOfBooksByReleaseDateLteAuthorClass2(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteAuthorClass2 根据作者、子类别、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteAuthorClass2 根据作者、子类别、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -6265,7 +6265,7 @@ func HistPriceOfBooksByReleaseDateGteLteAuthorClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteAuthorName 根据作者、书名、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteAuthorName 根据作者、书名、页数大于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // name string 书名
 // pageCountGte int64 页数大于等于
@@ -6283,7 +6283,7 @@ func HistPriceOfBooksByPageCountGteAuthorName(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtAuthorName 根据作者、书名、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtAuthorName 根据作者、书名、页数大于检索books表并统计价格的数量直方图分布
 // author string 作者
 // name string 书名
 // pageCountGt int64 页数大于
@@ -6301,7 +6301,7 @@ func HistPriceOfBooksByPageCountGtAuthorName(es *elasticsearch.Client, author, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtAuthorName 根据作者、书名、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtAuthorName 根据作者、书名、页数小于检索books表并统计价格的数量直方图分布
 // author string 作者
 // name string 书名
 // pageCountLt int64 页数小于
@@ -6319,7 +6319,7 @@ func HistPriceOfBooksByPageCountLtAuthorName(es *elasticsearch.Client, author, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteAuthorName 根据作者、书名、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteAuthorName 根据作者、书名、页数小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // name string 书名
 // pageCountLte int64 页数小于等于
@@ -6337,7 +6337,7 @@ func HistPriceOfBooksByPageCountLteAuthorName(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteAuthorName 根据作者、书名、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteAuthorName 根据作者、书名、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // name string 书名
 // pageCountGte int64 页数大于等于
@@ -6356,7 +6356,7 @@ func HistPriceOfBooksByPageCountGteLteAuthorName(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteAuthorName 根据作者、书名、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteAuthorName 根据作者、书名、价格大于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // name string 书名
 // priceGte float64 价格大于等于
@@ -6374,7 +6374,7 @@ func HistPageCountOfBooksByPriceGteAuthorName(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtAuthorName 根据作者、书名、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtAuthorName 根据作者、书名、价格大于检索books表并统计页数的数量直方图分布
 // author string 作者
 // name string 书名
 // priceGt float64 价格大于
@@ -6392,7 +6392,7 @@ func HistPageCountOfBooksByPriceGtAuthorName(es *elasticsearch.Client, author, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtAuthorName 根据作者、书名、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtAuthorName 根据作者、书名、价格小于检索books表并统计页数的数量直方图分布
 // author string 作者
 // name string 书名
 // priceLt float64 价格小于
@@ -6410,7 +6410,7 @@ func HistPageCountOfBooksByPriceLtAuthorName(es *elasticsearch.Client, author, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteAuthorName 根据作者、书名、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteAuthorName 根据作者、书名、价格小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // name string 书名
 // priceLte float64 价格小于等于
@@ -6428,7 +6428,7 @@ func HistPageCountOfBooksByPriceLteAuthorName(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteAuthorName 根据作者、书名、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteAuthorName 根据作者、书名、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // name string 书名
 // priceGte float64 价格大于等于
@@ -6447,7 +6447,7 @@ func HistPageCountOfBooksByPriceGteLteAuthorName(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteAuthorName 根据作者、书名、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteAuthorName 根据作者、书名、发布日期大于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -6465,7 +6465,7 @@ func HistPageCountOfBooksByReleaseDateGteAuthorName(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtAuthorName 根据作者、书名、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtAuthorName 根据作者、书名、发布日期大于检索books表并统计页数的数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateGt time.Time 发布日期大于
@@ -6483,7 +6483,7 @@ func HistPageCountOfBooksByReleaseDateGtAuthorName(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtAuthorName 根据作者、书名、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtAuthorName 根据作者、书名、发布日期小于检索books表并统计页数的数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateLt time.Time 发布日期小于
@@ -6501,7 +6501,7 @@ func HistPageCountOfBooksByReleaseDateLtAuthorName(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteAuthorName 根据作者、书名、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteAuthorName 根据作者、书名、发布日期小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateLte time.Time 发布日期小于等于
@@ -6519,7 +6519,7 @@ func HistPageCountOfBooksByReleaseDateLteAuthorName(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteAuthorName 根据作者、书名、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteAuthorName 根据作者、书名、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -6538,7 +6538,7 @@ func HistPageCountOfBooksByReleaseDateGteLteAuthorName(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteAuthorName 根据作者、书名、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteAuthorName 根据作者、书名、发布日期大于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -6556,7 +6556,7 @@ func HistPriceOfBooksByReleaseDateGteAuthorName(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtAuthorName 根据作者、书名、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtAuthorName 根据作者、书名、发布日期大于检索books表并统计价格的数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateGt time.Time 发布日期大于
@@ -6574,7 +6574,7 @@ func HistPriceOfBooksByReleaseDateGtAuthorName(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtAuthorName 根据作者、书名、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtAuthorName 根据作者、书名、发布日期小于检索books表并统计价格的数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateLt time.Time 发布日期小于
@@ -6592,7 +6592,7 @@ func HistPriceOfBooksByReleaseDateLtAuthorName(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteAuthorName 根据作者、书名、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteAuthorName 根据作者、书名、发布日期小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateLte time.Time 发布日期小于等于
@@ -6610,7 +6610,7 @@ func HistPriceOfBooksByReleaseDateLteAuthorName(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteAuthorName 根据作者、书名、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteAuthorName 根据作者、书名、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -6629,7 +6629,7 @@ func HistPriceOfBooksByReleaseDateGteLteAuthorName(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGteAuthor 根据作者、页数大于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGteAuthor 根据作者、页数大于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -6647,7 +6647,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGteAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGtAuthor 根据作者、页数大于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGtAuthor 根据作者、页数大于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateGt time.Time 发布日期大于
@@ -6665,7 +6665,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGtAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateLtAuthor 根据作者、页数大于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateLtAuthor 根据作者、页数大于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateLt time.Time 发布日期小于
@@ -6683,7 +6683,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateLtAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateLteAuthor 根据作者、页数大于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateLteAuthor 根据作者、页数大于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -6701,7 +6701,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateLteAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGteLteAuthor 根据作者、页数大于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGteLteAuthor 根据作者、页数大于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -6720,7 +6720,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGteLteAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGteAuthor 根据作者、页数大于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGteAuthor 根据作者、页数大于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -6738,7 +6738,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGteAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGtAuthor 根据作者、页数大于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGtAuthor 根据作者、页数大于、发布日期大于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateGt time.Time 发布日期大于
@@ -6756,7 +6756,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGtAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateLtAuthor 根据作者、页数大于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateLtAuthor 根据作者、页数大于、发布日期小于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateLt time.Time 发布日期小于
@@ -6774,7 +6774,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateLtAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateLteAuthor 根据作者、页数大于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateLteAuthor 根据作者、页数大于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateLte time.Time 发布日期小于等于
@@ -6792,7 +6792,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateLteAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGteLteAuthor 根据作者、页数大于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGteLteAuthor 根据作者、页数大于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -6811,7 +6811,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGteLteAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGteAuthor 根据作者、页数小于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGteAuthor 根据作者、页数小于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -6829,7 +6829,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGteAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGtAuthor 根据作者、页数小于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGtAuthor 根据作者、页数小于、发布日期大于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateGt time.Time 发布日期大于
@@ -6847,7 +6847,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGtAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateLtAuthor 根据作者、页数小于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateLtAuthor 根据作者、页数小于、发布日期小于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateLt time.Time 发布日期小于
@@ -6865,7 +6865,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateLtAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateLteAuthor 根据作者、页数小于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateLteAuthor 根据作者、页数小于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateLte time.Time 发布日期小于等于
@@ -6883,7 +6883,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateLteAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGteLteAuthor 根据作者、页数小于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGteLteAuthor 根据作者、页数小于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -6902,7 +6902,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGteLteAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGteAuthor 根据作者、页数小于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGteAuthor 根据作者、页数小于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -6920,7 +6920,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGteAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGtAuthor 根据作者、页数小于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGtAuthor 根据作者、页数小于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateGt time.Time 发布日期大于
@@ -6938,7 +6938,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGtAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateLtAuthor 根据作者、页数小于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateLtAuthor 根据作者、页数小于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateLt time.Time 发布日期小于
@@ -6956,7 +6956,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateLtAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateLteAuthor 根据作者、页数小于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateLteAuthor 根据作者、页数小于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -6974,7 +6974,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateLteAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGteLteAuthor 根据作者、页数小于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGteLteAuthor 根据作者、页数小于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -6993,7 +6993,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGteLteAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGteAuthor 根据作者、页数大于等于和小于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGteAuthor 根据作者、页数大于等于和小于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -7012,7 +7012,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGteAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGtAuthor 根据作者、页数大于等于和小于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGtAuthor 根据作者、页数大于等于和小于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -7031,7 +7031,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGtAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateLtAuthor 根据作者、页数大于等于和小于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateLtAuthor 根据作者、页数大于等于和小于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -7050,7 +7050,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateLtAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateLteAuthor 根据作者、页数大于等于和小于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateLteAuthor 根据作者、页数大于等于和小于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -7069,7 +7069,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateLteAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGteLteAuthor 根据作者、页数大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGteLteAuthor 根据作者、页数大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -7089,7 +7089,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGteLteAuthor(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteAuthorSeq 根据作者、编号、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteAuthorSeq 根据作者、编号、页数大于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // seq string 编号
 // pageCountGte int64 页数大于等于
@@ -7107,7 +7107,7 @@ func HistPriceOfBooksByPageCountGteAuthorSeq(es *elasticsearch.Client, author, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtAuthorSeq 根据作者、编号、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtAuthorSeq 根据作者、编号、页数大于检索books表并统计价格的数量直方图分布
 // author string 作者
 // seq string 编号
 // pageCountGt int64 页数大于
@@ -7125,7 +7125,7 @@ func HistPriceOfBooksByPageCountGtAuthorSeq(es *elasticsearch.Client, author, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtAuthorSeq 根据作者、编号、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtAuthorSeq 根据作者、编号、页数小于检索books表并统计价格的数量直方图分布
 // author string 作者
 // seq string 编号
 // pageCountLt int64 页数小于
@@ -7143,7 +7143,7 @@ func HistPriceOfBooksByPageCountLtAuthorSeq(es *elasticsearch.Client, author, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteAuthorSeq 根据作者、编号、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteAuthorSeq 根据作者、编号、页数小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // seq string 编号
 // pageCountLte int64 页数小于等于
@@ -7161,7 +7161,7 @@ func HistPriceOfBooksByPageCountLteAuthorSeq(es *elasticsearch.Client, author, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteAuthorSeq 根据作者、编号、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteAuthorSeq 根据作者、编号、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // seq string 编号
 // pageCountGte int64 页数大于等于
@@ -7180,7 +7180,7 @@ func HistPriceOfBooksByPageCountGteLteAuthorSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGteAuthor 根据作者、价格大于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGteAuthor 根据作者、价格大于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -7198,7 +7198,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGteAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGtAuthor 根据作者、价格大于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGtAuthor 根据作者、价格大于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateGt time.Time 发布日期大于
@@ -7216,7 +7216,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGtAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateLtAuthor 根据作者、价格大于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateLtAuthor 根据作者、价格大于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateLt time.Time 发布日期小于
@@ -7234,7 +7234,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateLtAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateLteAuthor 根据作者、价格大于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateLteAuthor 根据作者、价格大于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -7252,7 +7252,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateLteAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGteLteAuthor 根据作者、价格大于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGteLteAuthor 根据作者、价格大于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -7271,7 +7271,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGteLteAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGteAuthor 根据作者、价格大于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGteAuthor 根据作者、价格大于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -7289,7 +7289,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGteAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGtAuthor 根据作者、价格大于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGtAuthor 根据作者、价格大于、发布日期大于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateGt time.Time 发布日期大于
@@ -7307,7 +7307,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGtAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateLtAuthor 根据作者、价格大于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateLtAuthor 根据作者、价格大于、发布日期小于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateLt time.Time 发布日期小于
@@ -7325,7 +7325,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateLtAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateLteAuthor 根据作者、价格大于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateLteAuthor 根据作者、价格大于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateLte time.Time 发布日期小于等于
@@ -7343,7 +7343,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateLteAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGteLteAuthor 根据作者、价格大于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGteLteAuthor 根据作者、价格大于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -7362,7 +7362,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGteLteAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGteAuthor 根据作者、价格小于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGteAuthor 根据作者、价格小于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -7380,7 +7380,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGteAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGtAuthor 根据作者、价格小于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGtAuthor 根据作者、价格小于、发布日期大于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateGt time.Time 发布日期大于
@@ -7398,7 +7398,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGtAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateLtAuthor 根据作者、价格小于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateLtAuthor 根据作者、价格小于、发布日期小于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateLt time.Time 发布日期小于
@@ -7416,7 +7416,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateLtAuthor(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateLteAuthor 根据作者、价格小于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateLteAuthor 根据作者、价格小于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateLte time.Time 发布日期小于等于
@@ -7434,7 +7434,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateLteAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGteLteAuthor 根据作者、价格小于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGteLteAuthor 根据作者、价格小于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -7453,7 +7453,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGteLteAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGteAuthor 根据作者、价格小于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGteAuthor 根据作者、价格小于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -7471,7 +7471,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGteAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGtAuthor 根据作者、价格小于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGtAuthor 根据作者、价格小于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateGt time.Time 发布日期大于
@@ -7489,7 +7489,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGtAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateLtAuthor 根据作者、价格小于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateLtAuthor 根据作者、价格小于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateLt time.Time 发布日期小于
@@ -7507,7 +7507,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateLtAuthor(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateLteAuthor 根据作者、价格小于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateLteAuthor 根据作者、价格小于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -7525,7 +7525,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateLteAuthor(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGteLteAuthor 根据作者、价格小于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGteLteAuthor 根据作者、价格小于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -7544,7 +7544,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGteLteAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGteAuthor 根据作者、价格大于等于和小于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGteAuthor 根据作者、价格大于等于和小于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -7563,7 +7563,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGteAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGtAuthor 根据作者、价格大于等于和小于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGtAuthor 根据作者、价格大于等于和小于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -7582,7 +7582,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGtAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateLtAuthor 根据作者、价格大于等于和小于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateLtAuthor 根据作者、价格大于等于和小于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -7601,7 +7601,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateLtAuthor(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateLteAuthor 根据作者、价格大于等于和小于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateLteAuthor 根据作者、价格大于等于和小于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -7620,7 +7620,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateLteAuthor(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGteLteAuthor 根据作者、价格大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGteLteAuthor 根据作者、价格大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -7640,7 +7640,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGteLteAuthor(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteAuthorSeq 根据作者、编号、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteAuthorSeq 根据作者、编号、价格大于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // seq string 编号
 // priceGte float64 价格大于等于
@@ -7658,7 +7658,7 @@ func HistPageCountOfBooksByPriceGteAuthorSeq(es *elasticsearch.Client, author, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtAuthorSeq 根据作者、编号、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtAuthorSeq 根据作者、编号、价格大于检索books表并统计页数的数量直方图分布
 // author string 作者
 // seq string 编号
 // priceGt float64 价格大于
@@ -7676,7 +7676,7 @@ func HistPageCountOfBooksByPriceGtAuthorSeq(es *elasticsearch.Client, author, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtAuthorSeq 根据作者、编号、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtAuthorSeq 根据作者、编号、价格小于检索books表并统计页数的数量直方图分布
 // author string 作者
 // seq string 编号
 // priceLt float64 价格小于
@@ -7694,7 +7694,7 @@ func HistPageCountOfBooksByPriceLtAuthorSeq(es *elasticsearch.Client, author, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteAuthorSeq 根据作者、编号、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteAuthorSeq 根据作者、编号、价格小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // seq string 编号
 // priceLte float64 价格小于等于
@@ -7712,7 +7712,7 @@ func HistPageCountOfBooksByPriceLteAuthorSeq(es *elasticsearch.Client, author, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteAuthorSeq 根据作者、编号、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteAuthorSeq 根据作者、编号、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // seq string 编号
 // priceGte float64 价格大于等于
@@ -7731,7 +7731,7 @@ func HistPageCountOfBooksByPriceGteLteAuthorSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteAuthorSeq 根据作者、编号、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteAuthorSeq 根据作者、编号、发布日期大于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -7749,7 +7749,7 @@ func HistPageCountOfBooksByReleaseDateGteAuthorSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtAuthorSeq 根据作者、编号、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtAuthorSeq 根据作者、编号、发布日期大于检索books表并统计页数的数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateGt time.Time 发布日期大于
@@ -7767,7 +7767,7 @@ func HistPageCountOfBooksByReleaseDateGtAuthorSeq(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtAuthorSeq 根据作者、编号、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtAuthorSeq 根据作者、编号、发布日期小于检索books表并统计页数的数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateLt time.Time 发布日期小于
@@ -7785,7 +7785,7 @@ func HistPageCountOfBooksByReleaseDateLtAuthorSeq(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteAuthorSeq 根据作者、编号、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteAuthorSeq 根据作者、编号、发布日期小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateLte time.Time 发布日期小于等于
@@ -7803,7 +7803,7 @@ func HistPageCountOfBooksByReleaseDateLteAuthorSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteAuthorSeq 根据作者、编号、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteAuthorSeq 根据作者、编号、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -7822,7 +7822,7 @@ func HistPageCountOfBooksByReleaseDateGteLteAuthorSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteAuthorSeq 根据作者、编号、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteAuthorSeq 根据作者、编号、发布日期大于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -7840,7 +7840,7 @@ func HistPriceOfBooksByReleaseDateGteAuthorSeq(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtAuthorSeq 根据作者、编号、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtAuthorSeq 根据作者、编号、发布日期大于检索books表并统计价格的数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateGt time.Time 发布日期大于
@@ -7858,7 +7858,7 @@ func HistPriceOfBooksByReleaseDateGtAuthorSeq(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtAuthorSeq 根据作者、编号、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtAuthorSeq 根据作者、编号、发布日期小于检索books表并统计价格的数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateLt time.Time 发布日期小于
@@ -7876,7 +7876,7 @@ func HistPriceOfBooksByReleaseDateLtAuthorSeq(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteAuthorSeq 根据作者、编号、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteAuthorSeq 根据作者、编号、发布日期小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateLte time.Time 发布日期小于等于
@@ -7894,7 +7894,7 @@ func HistPriceOfBooksByReleaseDateLteAuthorSeq(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteAuthorSeq 根据作者、编号、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteAuthorSeq 根据作者、编号、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -7913,7 +7913,7 @@ func HistPriceOfBooksByReleaseDateGteLteAuthorSeq(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteClassClass2 根据类别、子类别、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteClassClass2 根据类别、子类别、页数大于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
@@ -7929,7 +7929,7 @@ func HistPriceOfBooksByPageCountGteClassClass2(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtClassClass2 根据类别、子类别、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtClassClass2 根据类别、子类别、页数大于检索books表并统计价格的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // pageCountGt int64 页数大于
@@ -7945,7 +7945,7 @@ func HistPriceOfBooksByPageCountGtClassClass2(es *elasticsearch.Client, class, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtClassClass2 根据类别、子类别、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtClassClass2 根据类别、子类别、页数小于检索books表并统计价格的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // pageCountLt int64 页数小于
@@ -7961,7 +7961,7 @@ func HistPriceOfBooksByPageCountLtClassClass2(es *elasticsearch.Client, class, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteClassClass2 根据类别、子类别、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteClassClass2 根据类别、子类别、页数小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
@@ -7977,7 +7977,7 @@ func HistPriceOfBooksByPageCountLteClassClass2(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteClassClass2 根据类别、子类别、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteClassClass2 根据类别、子类别、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
@@ -7994,7 +7994,7 @@ func HistPriceOfBooksByPageCountGteLteClassClass2(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteClassClass2 根据类别、子类别、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteClassClass2 根据类别、子类别、价格大于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // priceGte float64 价格大于等于
@@ -8010,7 +8010,7 @@ func HistPageCountOfBooksByPriceGteClassClass2(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtClassClass2 根据类别、子类别、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtClassClass2 根据类别、子类别、价格大于检索books表并统计页数的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // priceGt float64 价格大于
@@ -8026,7 +8026,7 @@ func HistPageCountOfBooksByPriceGtClassClass2(es *elasticsearch.Client, class, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtClassClass2 根据类别、子类别、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtClassClass2 根据类别、子类别、价格小于检索books表并统计页数的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // priceLt float64 价格小于
@@ -8042,7 +8042,7 @@ func HistPageCountOfBooksByPriceLtClassClass2(es *elasticsearch.Client, class, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteClassClass2 根据类别、子类别、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteClassClass2 根据类别、子类别、价格小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // priceLte float64 价格小于等于
@@ -8058,7 +8058,7 @@ func HistPageCountOfBooksByPriceLteClassClass2(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteClassClass2 根据类别、子类别、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteClassClass2 根据类别、子类别、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // priceGte float64 价格大于等于
@@ -8075,7 +8075,7 @@ func HistPageCountOfBooksByPriceGteLteClassClass2(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteClassClass2 根据类别、子类别、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteClassClass2 根据类别、子类别、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -8091,7 +8091,7 @@ func HistPageCountOfBooksByReleaseDateGteClassClass2(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtClassClass2 根据类别、子类别、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtClassClass2 根据类别、子类别、发布日期大于检索books表并统计页数的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateGt time.Time 发布日期大于
@@ -8107,7 +8107,7 @@ func HistPageCountOfBooksByReleaseDateGtClassClass2(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtClassClass2 根据类别、子类别、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtClassClass2 根据类别、子类别、发布日期小于检索books表并统计页数的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateLt time.Time 发布日期小于
@@ -8123,7 +8123,7 @@ func HistPageCountOfBooksByReleaseDateLtClassClass2(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteClassClass2 根据类别、子类别、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteClassClass2 根据类别、子类别、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateLte time.Time 发布日期小于等于
@@ -8139,7 +8139,7 @@ func HistPageCountOfBooksByReleaseDateLteClassClass2(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteClassClass2 根据类别、子类别、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteClassClass2 根据类别、子类别、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -8156,7 +8156,7 @@ func HistPageCountOfBooksByReleaseDateGteLteClassClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteClassClass2 根据类别、子类别、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteClassClass2 根据类别、子类别、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -8172,7 +8172,7 @@ func HistPriceOfBooksByReleaseDateGteClassClass2(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtClassClass2 根据类别、子类别、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtClassClass2 根据类别、子类别、发布日期大于检索books表并统计价格的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateGt time.Time 发布日期大于
@@ -8188,7 +8188,7 @@ func HistPriceOfBooksByReleaseDateGtClassClass2(es *elasticsearch.Client, class,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtClassClass2 根据类别、子类别、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtClassClass2 根据类别、子类别、发布日期小于检索books表并统计价格的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateLt time.Time 发布日期小于
@@ -8204,7 +8204,7 @@ func HistPriceOfBooksByReleaseDateLtClassClass2(es *elasticsearch.Client, class,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteClassClass2 根据类别、子类别、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteClassClass2 根据类别、子类别、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateLte time.Time 发布日期小于等于
@@ -8220,7 +8220,7 @@ func HistPriceOfBooksByReleaseDateLteClassClass2(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteClassClass2 根据类别、子类别、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteClassClass2 根据类别、子类别、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateGte time.Time 发布日期大于等于
@@ -8237,7 +8237,7 @@ func HistPriceOfBooksByReleaseDateGteLteClassClass2(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteClassName 根据类别、书名、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteClassName 根据类别、书名、页数大于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // name string 书名
 // pageCountGte int64 页数大于等于
@@ -8255,7 +8255,7 @@ func HistPriceOfBooksByPageCountGteClassName(es *elasticsearch.Client, class, na
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtClassName 根据类别、书名、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtClassName 根据类别、书名、页数大于检索books表并统计价格的数量直方图分布
 // class string 类别
 // name string 书名
 // pageCountGt int64 页数大于
@@ -8273,7 +8273,7 @@ func HistPriceOfBooksByPageCountGtClassName(es *elasticsearch.Client, class, nam
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtClassName 根据类别、书名、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtClassName 根据类别、书名、页数小于检索books表并统计价格的数量直方图分布
 // class string 类别
 // name string 书名
 // pageCountLt int64 页数小于
@@ -8291,7 +8291,7 @@ func HistPriceOfBooksByPageCountLtClassName(es *elasticsearch.Client, class, nam
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteClassName 根据类别、书名、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteClassName 根据类别、书名、页数小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // name string 书名
 // pageCountLte int64 页数小于等于
@@ -8309,7 +8309,7 @@ func HistPriceOfBooksByPageCountLteClassName(es *elasticsearch.Client, class, na
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteClassName 根据类别、书名、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteClassName 根据类别、书名、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // name string 书名
 // pageCountGte int64 页数大于等于
@@ -8328,7 +8328,7 @@ func HistPriceOfBooksByPageCountGteLteClassName(es *elasticsearch.Client, class,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteClassName 根据类别、书名、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteClassName 根据类别、书名、价格大于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // name string 书名
 // priceGte float64 价格大于等于
@@ -8346,7 +8346,7 @@ func HistPageCountOfBooksByPriceGteClassName(es *elasticsearch.Client, class, na
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtClassName 根据类别、书名、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtClassName 根据类别、书名、价格大于检索books表并统计页数的数量直方图分布
 // class string 类别
 // name string 书名
 // priceGt float64 价格大于
@@ -8364,7 +8364,7 @@ func HistPageCountOfBooksByPriceGtClassName(es *elasticsearch.Client, class, nam
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtClassName 根据类别、书名、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtClassName 根据类别、书名、价格小于检索books表并统计页数的数量直方图分布
 // class string 类别
 // name string 书名
 // priceLt float64 价格小于
@@ -8382,7 +8382,7 @@ func HistPageCountOfBooksByPriceLtClassName(es *elasticsearch.Client, class, nam
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteClassName 根据类别、书名、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteClassName 根据类别、书名、价格小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // name string 书名
 // priceLte float64 价格小于等于
@@ -8400,7 +8400,7 @@ func HistPageCountOfBooksByPriceLteClassName(es *elasticsearch.Client, class, na
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteClassName 根据类别、书名、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteClassName 根据类别、书名、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // name string 书名
 // priceGte float64 价格大于等于
@@ -8419,7 +8419,7 @@ func HistPageCountOfBooksByPriceGteLteClassName(es *elasticsearch.Client, class,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteClassName 根据类别、书名、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteClassName 根据类别、书名、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -8437,7 +8437,7 @@ func HistPageCountOfBooksByReleaseDateGteClassName(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtClassName 根据类别、书名、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtClassName 根据类别、书名、发布日期大于检索books表并统计页数的数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateGt time.Time 发布日期大于
@@ -8455,7 +8455,7 @@ func HistPageCountOfBooksByReleaseDateGtClassName(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtClassName 根据类别、书名、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtClassName 根据类别、书名、发布日期小于检索books表并统计页数的数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateLt time.Time 发布日期小于
@@ -8473,7 +8473,7 @@ func HistPageCountOfBooksByReleaseDateLtClassName(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteClassName 根据类别、书名、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteClassName 根据类别、书名、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateLte time.Time 发布日期小于等于
@@ -8491,7 +8491,7 @@ func HistPageCountOfBooksByReleaseDateLteClassName(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteClassName 根据类别、书名、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteClassName 根据类别、书名、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -8510,7 +8510,7 @@ func HistPageCountOfBooksByReleaseDateGteLteClassName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteClassName 根据类别、书名、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteClassName 根据类别、书名、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -8528,7 +8528,7 @@ func HistPriceOfBooksByReleaseDateGteClassName(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtClassName 根据类别、书名、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtClassName 根据类别、书名、发布日期大于检索books表并统计价格的数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateGt time.Time 发布日期大于
@@ -8546,7 +8546,7 @@ func HistPriceOfBooksByReleaseDateGtClassName(es *elasticsearch.Client, class, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtClassName 根据类别、书名、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtClassName 根据类别、书名、发布日期小于检索books表并统计价格的数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateLt time.Time 发布日期小于
@@ -8564,7 +8564,7 @@ func HistPriceOfBooksByReleaseDateLtClassName(es *elasticsearch.Client, class, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteClassName 根据类别、书名、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteClassName 根据类别、书名、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateLte time.Time 发布日期小于等于
@@ -8582,7 +8582,7 @@ func HistPriceOfBooksByReleaseDateLteClassName(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteClassName 根据类别、书名、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteClassName 根据类别、书名、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -8601,7 +8601,7 @@ func HistPriceOfBooksByReleaseDateGteLteClassName(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGteClass 根据类别、页数大于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGteClass 根据类别、页数大于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -8617,7 +8617,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGteClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGtClass 根据类别、页数大于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGtClass 根据类别、页数大于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateGt time.Time 发布日期大于
@@ -8633,7 +8633,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGtClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateLtClass 根据类别、页数大于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateLtClass 根据类别、页数大于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateLt time.Time 发布日期小于
@@ -8649,7 +8649,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateLtClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateLteClass 根据类别、页数大于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateLteClass 根据类别、页数大于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -8665,7 +8665,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateLteClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGteLteClass 根据类别、页数大于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGteLteClass 根据类别、页数大于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -8682,7 +8682,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGteLteClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGteClass 根据类别、页数大于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGteClass 根据类别、页数大于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -8698,7 +8698,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGteClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGtClass 根据类别、页数大于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGtClass 根据类别、页数大于、发布日期大于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateGt time.Time 发布日期大于
@@ -8714,7 +8714,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGtClass(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateLtClass 根据类别、页数大于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateLtClass 根据类别、页数大于、发布日期小于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateLt time.Time 发布日期小于
@@ -8730,7 +8730,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateLtClass(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateLteClass 根据类别、页数大于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateLteClass 根据类别、页数大于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateLte time.Time 发布日期小于等于
@@ -8746,7 +8746,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateLteClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGteLteClass 根据类别、页数大于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGteLteClass 根据类别、页数大于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -8763,7 +8763,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGteLteClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGteClass 根据类别、页数小于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGteClass 根据类别、页数小于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -8779,7 +8779,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGteClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGtClass 根据类别、页数小于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGtClass 根据类别、页数小于、发布日期大于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateGt time.Time 发布日期大于
@@ -8795,7 +8795,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGtClass(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateLtClass 根据类别、页数小于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateLtClass 根据类别、页数小于、发布日期小于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateLt time.Time 发布日期小于
@@ -8811,7 +8811,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateLtClass(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateLteClass 根据类别、页数小于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateLteClass 根据类别、页数小于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateLte time.Time 发布日期小于等于
@@ -8827,7 +8827,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateLteClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGteLteClass 根据类别、页数小于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGteLteClass 根据类别、页数小于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -8844,7 +8844,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGteLteClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGteClass 根据类别、页数小于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGteClass 根据类别、页数小于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -8860,7 +8860,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGteClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGtClass 根据类别、页数小于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGtClass 根据类别、页数小于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateGt time.Time 发布日期大于
@@ -8876,7 +8876,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGtClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateLtClass 根据类别、页数小于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateLtClass 根据类别、页数小于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateLt time.Time 发布日期小于
@@ -8892,7 +8892,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateLtClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateLteClass 根据类别、页数小于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateLteClass 根据类别、页数小于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -8908,7 +8908,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateLteClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGteLteClass 根据类别、页数小于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGteLteClass 根据类别、页数小于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -8925,7 +8925,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGteLteClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGteClass 根据类别、页数大于等于和小于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGteClass 根据类别、页数大于等于和小于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -8942,7 +8942,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGteClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGtClass 根据类别、页数大于等于和小于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGtClass 根据类别、页数大于等于和小于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -8959,7 +8959,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGtClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateLtClass 根据类别、页数大于等于和小于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateLtClass 根据类别、页数大于等于和小于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -8976,7 +8976,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateLtClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateLteClass 根据类别、页数大于等于和小于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateLteClass 根据类别、页数大于等于和小于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -8993,7 +8993,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateLteClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGteLteClass 根据类别、页数大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGteLteClass 根据类别、页数大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -9011,7 +9011,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGteLteClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteClassSeq 根据类别、编号、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteClassSeq 根据类别、编号、页数大于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // seq string 编号
 // pageCountGte int64 页数大于等于
@@ -9027,7 +9027,7 @@ func HistPriceOfBooksByPageCountGteClassSeq(es *elasticsearch.Client, class, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtClassSeq 根据类别、编号、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtClassSeq 根据类别、编号、页数大于检索books表并统计价格的数量直方图分布
 // class string 类别
 // seq string 编号
 // pageCountGt int64 页数大于
@@ -9043,7 +9043,7 @@ func HistPriceOfBooksByPageCountGtClassSeq(es *elasticsearch.Client, class, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtClassSeq 根据类别、编号、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtClassSeq 根据类别、编号、页数小于检索books表并统计价格的数量直方图分布
 // class string 类别
 // seq string 编号
 // pageCountLt int64 页数小于
@@ -9059,7 +9059,7 @@ func HistPriceOfBooksByPageCountLtClassSeq(es *elasticsearch.Client, class, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteClassSeq 根据类别、编号、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteClassSeq 根据类别、编号、页数小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // seq string 编号
 // pageCountLte int64 页数小于等于
@@ -9075,7 +9075,7 @@ func HistPriceOfBooksByPageCountLteClassSeq(es *elasticsearch.Client, class, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteClassSeq 根据类别、编号、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteClassSeq 根据类别、编号、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // seq string 编号
 // pageCountGte int64 页数大于等于
@@ -9092,7 +9092,7 @@ func HistPriceOfBooksByPageCountGteLteClassSeq(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGteClass 根据类别、价格大于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGteClass 根据类别、价格大于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -9108,7 +9108,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGteClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGtClass 根据类别、价格大于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGtClass 根据类别、价格大于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateGt time.Time 发布日期大于
@@ -9124,7 +9124,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGtClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateLtClass 根据类别、价格大于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateLtClass 根据类别、价格大于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateLt time.Time 发布日期小于
@@ -9140,7 +9140,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateLtClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateLteClass 根据类别、价格大于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateLteClass 根据类别、价格大于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -9156,7 +9156,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateLteClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGteLteClass 根据类别、价格大于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGteLteClass 根据类别、价格大于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -9173,7 +9173,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGteLteClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGteClass 根据类别、价格大于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGteClass 根据类别、价格大于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -9189,7 +9189,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGteClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGtClass 根据类别、价格大于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGtClass 根据类别、价格大于、发布日期大于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateGt time.Time 发布日期大于
@@ -9205,7 +9205,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGtClass(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateLtClass 根据类别、价格大于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateLtClass 根据类别、价格大于、发布日期小于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateLt time.Time 发布日期小于
@@ -9221,7 +9221,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateLtClass(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateLteClass 根据类别、价格大于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateLteClass 根据类别、价格大于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateLte time.Time 发布日期小于等于
@@ -9237,7 +9237,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateLteClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGteLteClass 根据类别、价格大于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGteLteClass 根据类别、价格大于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -9254,7 +9254,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGteLteClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGteClass 根据类别、价格小于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGteClass 根据类别、价格小于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -9270,7 +9270,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGteClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGtClass 根据类别、价格小于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGtClass 根据类别、价格小于、发布日期大于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateGt time.Time 发布日期大于
@@ -9286,7 +9286,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGtClass(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateLtClass 根据类别、价格小于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateLtClass 根据类别、价格小于、发布日期小于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateLt time.Time 发布日期小于
@@ -9302,7 +9302,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateLtClass(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateLteClass 根据类别、价格小于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateLteClass 根据类别、价格小于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateLte time.Time 发布日期小于等于
@@ -9318,7 +9318,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateLteClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGteLteClass 根据类别、价格小于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGteLteClass 根据类别、价格小于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -9335,7 +9335,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGteLteClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGteClass 根据类别、价格小于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGteClass 根据类别、价格小于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -9351,7 +9351,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGteClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGtClass 根据类别、价格小于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGtClass 根据类别、价格小于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateGt time.Time 发布日期大于
@@ -9367,7 +9367,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGtClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateLtClass 根据类别、价格小于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateLtClass 根据类别、价格小于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateLt time.Time 发布日期小于
@@ -9383,7 +9383,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateLtClass(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateLteClass 根据类别、价格小于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateLteClass 根据类别、价格小于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -9399,7 +9399,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateLteClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGteLteClass 根据类别、价格小于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGteLteClass 根据类别、价格小于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -9416,7 +9416,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGteLteClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGteClass 根据类别、价格大于等于和小于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGteClass 根据类别、价格大于等于和小于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -9433,7 +9433,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGteClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGtClass 根据类别、价格大于等于和小于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGtClass 根据类别、价格大于等于和小于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -9450,7 +9450,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGtClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateLtClass 根据类别、价格大于等于和小于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateLtClass 根据类别、价格大于等于和小于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -9467,7 +9467,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateLtClass(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateLteClass 根据类别、价格大于等于和小于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateLteClass 根据类别、价格大于等于和小于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -9484,7 +9484,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateLteClass(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGteLteClass 根据类别、价格大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGteLteClass 根据类别、价格大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -9502,7 +9502,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGteLteClass(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteClassSeq 根据类别、编号、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteClassSeq 根据类别、编号、价格大于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // seq string 编号
 // priceGte float64 价格大于等于
@@ -9518,7 +9518,7 @@ func HistPageCountOfBooksByPriceGteClassSeq(es *elasticsearch.Client, class, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtClassSeq 根据类别、编号、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtClassSeq 根据类别、编号、价格大于检索books表并统计页数的数量直方图分布
 // class string 类别
 // seq string 编号
 // priceGt float64 价格大于
@@ -9534,7 +9534,7 @@ func HistPageCountOfBooksByPriceGtClassSeq(es *elasticsearch.Client, class, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtClassSeq 根据类别、编号、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtClassSeq 根据类别、编号、价格小于检索books表并统计页数的数量直方图分布
 // class string 类别
 // seq string 编号
 // priceLt float64 价格小于
@@ -9550,7 +9550,7 @@ func HistPageCountOfBooksByPriceLtClassSeq(es *elasticsearch.Client, class, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteClassSeq 根据类别、编号、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteClassSeq 根据类别、编号、价格小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // seq string 编号
 // priceLte float64 价格小于等于
@@ -9566,7 +9566,7 @@ func HistPageCountOfBooksByPriceLteClassSeq(es *elasticsearch.Client, class, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteClassSeq 根据类别、编号、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteClassSeq 根据类别、编号、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // seq string 编号
 // priceGte float64 价格大于等于
@@ -9583,7 +9583,7 @@ func HistPageCountOfBooksByPriceGteLteClassSeq(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteClassSeq 根据类别、编号、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteClassSeq 根据类别、编号、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -9599,7 +9599,7 @@ func HistPageCountOfBooksByReleaseDateGteClassSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtClassSeq 根据类别、编号、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtClassSeq 根据类别、编号、发布日期大于检索books表并统计页数的数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateGt time.Time 发布日期大于
@@ -9615,7 +9615,7 @@ func HistPageCountOfBooksByReleaseDateGtClassSeq(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtClassSeq 根据类别、编号、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtClassSeq 根据类别、编号、发布日期小于检索books表并统计页数的数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateLt time.Time 发布日期小于
@@ -9631,7 +9631,7 @@ func HistPageCountOfBooksByReleaseDateLtClassSeq(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteClassSeq 根据类别、编号、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteClassSeq 根据类别、编号、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateLte time.Time 发布日期小于等于
@@ -9647,7 +9647,7 @@ func HistPageCountOfBooksByReleaseDateLteClassSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteClassSeq 根据类别、编号、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteClassSeq 根据类别、编号、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -9664,7 +9664,7 @@ func HistPageCountOfBooksByReleaseDateGteLteClassSeq(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteClassSeq 根据类别、编号、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteClassSeq 根据类别、编号、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -9680,7 +9680,7 @@ func HistPriceOfBooksByReleaseDateGteClassSeq(es *elasticsearch.Client, class, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtClassSeq 根据类别、编号、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtClassSeq 根据类别、编号、发布日期大于检索books表并统计价格的数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateGt time.Time 发布日期大于
@@ -9696,7 +9696,7 @@ func HistPriceOfBooksByReleaseDateGtClassSeq(es *elasticsearch.Client, class, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtClassSeq 根据类别、编号、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtClassSeq 根据类别、编号、发布日期小于检索books表并统计价格的数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateLt time.Time 发布日期小于
@@ -9712,7 +9712,7 @@ func HistPriceOfBooksByReleaseDateLtClassSeq(es *elasticsearch.Client, class, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteClassSeq 根据类别、编号、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteClassSeq 根据类别、编号、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateLte time.Time 发布日期小于等于
@@ -9728,7 +9728,7 @@ func HistPriceOfBooksByReleaseDateLteClassSeq(es *elasticsearch.Client, class, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteClassSeq 根据类别、编号、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteClassSeq 根据类别、编号、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -9745,7 +9745,7 @@ func HistPriceOfBooksByReleaseDateGteLteClassSeq(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteClass2Name 根据子类别、书名、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteClass2Name 根据子类别、书名、页数大于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // pageCountGte int64 页数大于等于
@@ -9763,7 +9763,7 @@ func HistPriceOfBooksByPageCountGteClass2Name(es *elasticsearch.Client, class2, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtClass2Name 根据子类别、书名、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtClass2Name 根据子类别、书名、页数大于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // pageCountGt int64 页数大于
@@ -9781,7 +9781,7 @@ func HistPriceOfBooksByPageCountGtClass2Name(es *elasticsearch.Client, class2, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtClass2Name 根据子类别、书名、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtClass2Name 根据子类别、书名、页数小于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // pageCountLt int64 页数小于
@@ -9799,7 +9799,7 @@ func HistPriceOfBooksByPageCountLtClass2Name(es *elasticsearch.Client, class2, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteClass2Name 根据子类别、书名、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteClass2Name 根据子类别、书名、页数小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // pageCountLte int64 页数小于等于
@@ -9817,7 +9817,7 @@ func HistPriceOfBooksByPageCountLteClass2Name(es *elasticsearch.Client, class2, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteClass2Name 根据子类别、书名、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteClass2Name 根据子类别、书名、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // pageCountGte int64 页数大于等于
@@ -9836,7 +9836,7 @@ func HistPriceOfBooksByPageCountGteLteClass2Name(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteClass2Name 根据子类别、书名、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteClass2Name 根据子类别、书名、价格大于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // priceGte float64 价格大于等于
@@ -9854,7 +9854,7 @@ func HistPageCountOfBooksByPriceGteClass2Name(es *elasticsearch.Client, class2, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtClass2Name 根据子类别、书名、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtClass2Name 根据子类别、书名、价格大于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // priceGt float64 价格大于
@@ -9872,7 +9872,7 @@ func HistPageCountOfBooksByPriceGtClass2Name(es *elasticsearch.Client, class2, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtClass2Name 根据子类别、书名、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtClass2Name 根据子类别、书名、价格小于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // priceLt float64 价格小于
@@ -9890,7 +9890,7 @@ func HistPageCountOfBooksByPriceLtClass2Name(es *elasticsearch.Client, class2, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteClass2Name 根据子类别、书名、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteClass2Name 根据子类别、书名、价格小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // priceLte float64 价格小于等于
@@ -9908,7 +9908,7 @@ func HistPageCountOfBooksByPriceLteClass2Name(es *elasticsearch.Client, class2, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteClass2Name 根据子类别、书名、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteClass2Name 根据子类别、书名、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // priceGte float64 价格大于等于
@@ -9927,7 +9927,7 @@ func HistPageCountOfBooksByPriceGteLteClass2Name(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteClass2Name 根据子类别、书名、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteClass2Name 根据子类别、书名、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -9945,7 +9945,7 @@ func HistPageCountOfBooksByReleaseDateGteClass2Name(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtClass2Name 根据子类别、书名、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtClass2Name 根据子类别、书名、发布日期大于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateGt time.Time 发布日期大于
@@ -9963,7 +9963,7 @@ func HistPageCountOfBooksByReleaseDateGtClass2Name(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtClass2Name 根据子类别、书名、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtClass2Name 根据子类别、书名、发布日期小于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateLt time.Time 发布日期小于
@@ -9981,7 +9981,7 @@ func HistPageCountOfBooksByReleaseDateLtClass2Name(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteClass2Name 根据子类别、书名、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteClass2Name 根据子类别、书名、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateLte time.Time 发布日期小于等于
@@ -9999,7 +9999,7 @@ func HistPageCountOfBooksByReleaseDateLteClass2Name(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteClass2Name 根据子类别、书名、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteClass2Name 根据子类别、书名、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -10018,7 +10018,7 @@ func HistPageCountOfBooksByReleaseDateGteLteClass2Name(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteClass2Name 根据子类别、书名、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteClass2Name 根据子类别、书名、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -10036,7 +10036,7 @@ func HistPriceOfBooksByReleaseDateGteClass2Name(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtClass2Name 根据子类别、书名、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtClass2Name 根据子类别、书名、发布日期大于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateGt time.Time 发布日期大于
@@ -10054,7 +10054,7 @@ func HistPriceOfBooksByReleaseDateGtClass2Name(es *elasticsearch.Client, class2,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtClass2Name 根据子类别、书名、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtClass2Name 根据子类别、书名、发布日期小于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateLt time.Time 发布日期小于
@@ -10072,7 +10072,7 @@ func HistPriceOfBooksByReleaseDateLtClass2Name(es *elasticsearch.Client, class2,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteClass2Name 根据子类别、书名、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteClass2Name 根据子类别、书名、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateLte time.Time 发布日期小于等于
@@ -10090,7 +10090,7 @@ func HistPriceOfBooksByReleaseDateLteClass2Name(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteClass2Name 根据子类别、书名、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteClass2Name 根据子类别、书名、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateGte time.Time 发布日期大于等于
@@ -10109,7 +10109,7 @@ func HistPriceOfBooksByReleaseDateGteLteClass2Name(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGteClass2 根据子类别、页数大于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGteClass2 根据子类别、页数大于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10125,7 +10125,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGteClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGtClass2 根据子类别、页数大于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGtClass2 根据子类别、页数大于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateGt time.Time 发布日期大于
@@ -10141,7 +10141,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGtClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateLtClass2 根据子类别、页数大于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateLtClass2 根据子类别、页数大于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateLt time.Time 发布日期小于
@@ -10157,7 +10157,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateLtClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateLteClass2 根据子类别、页数大于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateLteClass2 根据子类别、页数大于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -10173,7 +10173,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateLteClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGteLteClass2 根据子类别、页数大于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGteLteClass2 根据子类别、页数大于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10190,7 +10190,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGteLteClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGteClass2 根据子类别、页数大于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGteClass2 根据子类别、页数大于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10206,7 +10206,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGteClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGtClass2 根据子类别、页数大于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGtClass2 根据子类别、页数大于、发布日期大于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateGt time.Time 发布日期大于
@@ -10222,7 +10222,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGtClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateLtClass2 根据子类别、页数大于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateLtClass2 根据子类别、页数大于、发布日期小于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateLt time.Time 发布日期小于
@@ -10238,7 +10238,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateLtClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateLteClass2 根据子类别、页数大于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateLteClass2 根据子类别、页数大于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateLte time.Time 发布日期小于等于
@@ -10254,7 +10254,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateLteClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGteLteClass2 根据子类别、页数大于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGteLteClass2 根据子类别、页数大于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10271,7 +10271,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGteLteClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGteClass2 根据子类别、页数小于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGteClass2 根据子类别、页数小于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10287,7 +10287,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGteClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGtClass2 根据子类别、页数小于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGtClass2 根据子类别、页数小于、发布日期大于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateGt time.Time 发布日期大于
@@ -10303,7 +10303,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGtClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateLtClass2 根据子类别、页数小于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateLtClass2 根据子类别、页数小于、发布日期小于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateLt time.Time 发布日期小于
@@ -10319,7 +10319,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateLtClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateLteClass2 根据子类别、页数小于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateLteClass2 根据子类别、页数小于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateLte time.Time 发布日期小于等于
@@ -10335,7 +10335,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateLteClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGteLteClass2 根据子类别、页数小于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGteLteClass2 根据子类别、页数小于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10352,7 +10352,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGteLteClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGteClass2 根据子类别、页数小于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGteClass2 根据子类别、页数小于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10368,7 +10368,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGteClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGtClass2 根据子类别、页数小于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGtClass2 根据子类别、页数小于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateGt time.Time 发布日期大于
@@ -10384,7 +10384,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGtClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateLtClass2 根据子类别、页数小于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateLtClass2 根据子类别、页数小于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateLt time.Time 发布日期小于
@@ -10400,7 +10400,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateLtClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateLteClass2 根据子类别、页数小于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateLteClass2 根据子类别、页数小于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -10416,7 +10416,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateLteClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGteLteClass2 根据子类别、页数小于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGteLteClass2 根据子类别、页数小于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10433,7 +10433,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGteLteClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGteClass2 根据子类别、页数大于等于和小于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGteClass2 根据子类别、页数大于等于和小于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -10450,7 +10450,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGteClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGtClass2 根据子类别、页数大于等于和小于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGtClass2 根据子类别、页数大于等于和小于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -10467,7 +10467,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGtClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateLtClass2 根据子类别、页数大于等于和小于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateLtClass2 根据子类别、页数大于等于和小于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -10484,7 +10484,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateLtClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateLteClass2 根据子类别、页数大于等于和小于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateLteClass2 根据子类别、页数大于等于和小于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -10501,7 +10501,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateLteClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGteLteClass2 根据子类别、页数大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGteLteClass2 根据子类别、页数大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -10519,7 +10519,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGteLteClass2(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteClass2Seq 根据子类别、编号、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteClass2Seq 根据子类别、编号、页数大于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // pageCountGte int64 页数大于等于
@@ -10535,7 +10535,7 @@ func HistPriceOfBooksByPageCountGteClass2Seq(es *elasticsearch.Client, class2, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtClass2Seq 根据子类别、编号、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtClass2Seq 根据子类别、编号、页数大于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // pageCountGt int64 页数大于
@@ -10551,7 +10551,7 @@ func HistPriceOfBooksByPageCountGtClass2Seq(es *elasticsearch.Client, class2, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtClass2Seq 根据子类别、编号、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtClass2Seq 根据子类别、编号、页数小于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // pageCountLt int64 页数小于
@@ -10567,7 +10567,7 @@ func HistPriceOfBooksByPageCountLtClass2Seq(es *elasticsearch.Client, class2, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteClass2Seq 根据子类别、编号、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteClass2Seq 根据子类别、编号、页数小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // pageCountLte int64 页数小于等于
@@ -10583,7 +10583,7 @@ func HistPriceOfBooksByPageCountLteClass2Seq(es *elasticsearch.Client, class2, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteClass2Seq 根据子类别、编号、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteClass2Seq 根据子类别、编号、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // pageCountGte int64 页数大于等于
@@ -10600,7 +10600,7 @@ func HistPriceOfBooksByPageCountGteLteClass2Seq(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGteClass2 根据子类别、价格大于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGteClass2 根据子类别、价格大于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10616,7 +10616,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGteClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGtClass2 根据子类别、价格大于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGtClass2 根据子类别、价格大于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateGt time.Time 发布日期大于
@@ -10632,7 +10632,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGtClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateLtClass2 根据子类别、价格大于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateLtClass2 根据子类别、价格大于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateLt time.Time 发布日期小于
@@ -10648,7 +10648,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateLtClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateLteClass2 根据子类别、价格大于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateLteClass2 根据子类别、价格大于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -10664,7 +10664,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateLteClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGteLteClass2 根据子类别、价格大于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGteLteClass2 根据子类别、价格大于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10681,7 +10681,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGteLteClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGteClass2 根据子类别、价格大于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGteClass2 根据子类别、价格大于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10697,7 +10697,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGteClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGtClass2 根据子类别、价格大于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGtClass2 根据子类别、价格大于、发布日期大于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateGt time.Time 发布日期大于
@@ -10713,7 +10713,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGtClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateLtClass2 根据子类别、价格大于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateLtClass2 根据子类别、价格大于、发布日期小于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateLt time.Time 发布日期小于
@@ -10729,7 +10729,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateLtClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateLteClass2 根据子类别、价格大于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateLteClass2 根据子类别、价格大于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateLte time.Time 发布日期小于等于
@@ -10745,7 +10745,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateLteClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGteLteClass2 根据子类别、价格大于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGteLteClass2 根据子类别、价格大于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10762,7 +10762,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGteLteClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGteClass2 根据子类别、价格小于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGteClass2 根据子类别、价格小于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10778,7 +10778,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGteClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGtClass2 根据子类别、价格小于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGtClass2 根据子类别、价格小于、发布日期大于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateGt time.Time 发布日期大于
@@ -10794,7 +10794,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGtClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateLtClass2 根据子类别、价格小于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateLtClass2 根据子类别、价格小于、发布日期小于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateLt time.Time 发布日期小于
@@ -10810,7 +10810,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateLtClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateLteClass2 根据子类别、价格小于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateLteClass2 根据子类别、价格小于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateLte time.Time 发布日期小于等于
@@ -10826,7 +10826,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateLteClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGteLteClass2 根据子类别、价格小于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGteLteClass2 根据子类别、价格小于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10843,7 +10843,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGteLteClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGteClass2 根据子类别、价格小于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGteClass2 根据子类别、价格小于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10859,7 +10859,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGteClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGtClass2 根据子类别、价格小于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGtClass2 根据子类别、价格小于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateGt time.Time 发布日期大于
@@ -10875,7 +10875,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGtClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateLtClass2 根据子类别、价格小于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateLtClass2 根据子类别、价格小于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateLt time.Time 发布日期小于
@@ -10891,7 +10891,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateLtClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateLteClass2 根据子类别、价格小于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateLteClass2 根据子类别、价格小于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -10907,7 +10907,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateLteClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGteLteClass2 根据子类别、价格小于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGteLteClass2 根据子类别、价格小于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -10924,7 +10924,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGteLteClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGteClass2 根据子类别、价格大于等于和小于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGteClass2 根据子类别、价格大于等于和小于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -10941,7 +10941,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGteClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGtClass2 根据子类别、价格大于等于和小于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGtClass2 根据子类别、价格大于等于和小于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -10958,7 +10958,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGtClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateLtClass2 根据子类别、价格大于等于和小于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateLtClass2 根据子类别、价格大于等于和小于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -10975,7 +10975,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateLtClass2(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateLteClass2 根据子类别、价格大于等于和小于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateLteClass2 根据子类别、价格大于等于和小于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -10992,7 +10992,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateLteClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGteLteClass2 根据子类别、价格大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGteLteClass2 根据子类别、价格大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -11010,7 +11010,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGteLteClass2(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteClass2Seq 根据子类别、编号、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteClass2Seq 根据子类别、编号、价格大于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // priceGte float64 价格大于等于
@@ -11026,7 +11026,7 @@ func HistPageCountOfBooksByPriceGteClass2Seq(es *elasticsearch.Client, class2, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtClass2Seq 根据子类别、编号、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtClass2Seq 根据子类别、编号、价格大于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // priceGt float64 价格大于
@@ -11042,7 +11042,7 @@ func HistPageCountOfBooksByPriceGtClass2Seq(es *elasticsearch.Client, class2, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtClass2Seq 根据子类别、编号、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtClass2Seq 根据子类别、编号、价格小于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // priceLt float64 价格小于
@@ -11058,7 +11058,7 @@ func HistPageCountOfBooksByPriceLtClass2Seq(es *elasticsearch.Client, class2, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteClass2Seq 根据子类别、编号、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteClass2Seq 根据子类别、编号、价格小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // priceLte float64 价格小于等于
@@ -11074,7 +11074,7 @@ func HistPageCountOfBooksByPriceLteClass2Seq(es *elasticsearch.Client, class2, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteClass2Seq 根据子类别、编号、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteClass2Seq 根据子类别、编号、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // priceGte float64 价格大于等于
@@ -11091,7 +11091,7 @@ func HistPageCountOfBooksByPriceGteLteClass2Seq(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteClass2Seq 根据子类别、编号、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteClass2Seq 根据子类别、编号、发布日期大于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -11107,7 +11107,7 @@ func HistPageCountOfBooksByReleaseDateGteClass2Seq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtClass2Seq 根据子类别、编号、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtClass2Seq 根据子类别、编号、发布日期大于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateGt time.Time 发布日期大于
@@ -11123,7 +11123,7 @@ func HistPageCountOfBooksByReleaseDateGtClass2Seq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtClass2Seq 根据子类别、编号、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtClass2Seq 根据子类别、编号、发布日期小于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateLt time.Time 发布日期小于
@@ -11139,7 +11139,7 @@ func HistPageCountOfBooksByReleaseDateLtClass2Seq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteClass2Seq 根据子类别、编号、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteClass2Seq 根据子类别、编号、发布日期小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateLte time.Time 发布日期小于等于
@@ -11155,7 +11155,7 @@ func HistPageCountOfBooksByReleaseDateLteClass2Seq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteClass2Seq 根据子类别、编号、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteClass2Seq 根据子类别、编号、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -11172,7 +11172,7 @@ func HistPageCountOfBooksByReleaseDateGteLteClass2Seq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteClass2Seq 根据子类别、编号、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteClass2Seq 根据子类别、编号、发布日期大于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -11188,7 +11188,7 @@ func HistPriceOfBooksByReleaseDateGteClass2Seq(es *elasticsearch.Client, class2,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtClass2Seq 根据子类别、编号、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtClass2Seq 根据子类别、编号、发布日期大于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateGt time.Time 发布日期大于
@@ -11204,7 +11204,7 @@ func HistPriceOfBooksByReleaseDateGtClass2Seq(es *elasticsearch.Client, class2, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtClass2Seq 根据子类别、编号、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtClass2Seq 根据子类别、编号、发布日期小于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateLt time.Time 发布日期小于
@@ -11220,7 +11220,7 @@ func HistPriceOfBooksByReleaseDateLtClass2Seq(es *elasticsearch.Client, class2, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteClass2Seq 根据子类别、编号、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteClass2Seq 根据子类别、编号、发布日期小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateLte time.Time 发布日期小于等于
@@ -11236,7 +11236,7 @@ func HistPriceOfBooksByReleaseDateLteClass2Seq(es *elasticsearch.Client, class2,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteClass2Seq 根据子类别、编号、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteClass2Seq 根据子类别、编号、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -11253,7 +11253,7 @@ func HistPriceOfBooksByReleaseDateGteLteClass2Seq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGteName 根据书名、页数大于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGteName 根据书名、页数大于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -11271,7 +11271,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGteName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGtName 根据书名、页数大于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGtName 根据书名、页数大于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateGt time.Time 发布日期大于
@@ -11289,7 +11289,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGtName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateLtName 根据书名、页数大于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateLtName 根据书名、页数大于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateLt time.Time 发布日期小于
@@ -11307,7 +11307,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateLtName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateLteName 根据书名、页数大于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateLteName 根据书名、页数大于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -11325,7 +11325,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateLteName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGteLteName 根据书名、页数大于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGteLteName 根据书名、页数大于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -11344,7 +11344,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGteLteName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGteName 根据书名、页数大于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGteName 根据书名、页数大于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -11362,7 +11362,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGteName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGtName 根据书名、页数大于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGtName 根据书名、页数大于、发布日期大于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateGt time.Time 发布日期大于
@@ -11380,7 +11380,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGtName(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateLtName 根据书名、页数大于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateLtName 根据书名、页数大于、发布日期小于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateLt time.Time 发布日期小于
@@ -11398,7 +11398,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateLtName(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateLteName 根据书名、页数大于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateLteName 根据书名、页数大于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateLte time.Time 发布日期小于等于
@@ -11416,7 +11416,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateLteName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGteLteName 根据书名、页数大于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGteLteName 根据书名、页数大于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -11435,7 +11435,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGteLteName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGteName 根据书名、页数小于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGteName 根据书名、页数小于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -11453,7 +11453,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGteName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGtName 根据书名、页数小于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGtName 根据书名、页数小于、发布日期大于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateGt time.Time 发布日期大于
@@ -11471,7 +11471,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGtName(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateLtName 根据书名、页数小于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateLtName 根据书名、页数小于、发布日期小于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateLt time.Time 发布日期小于
@@ -11489,7 +11489,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateLtName(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateLteName 根据书名、页数小于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateLteName 根据书名、页数小于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateLte time.Time 发布日期小于等于
@@ -11507,7 +11507,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateLteName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGteLteName 根据书名、页数小于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGteLteName 根据书名、页数小于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -11526,7 +11526,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGteLteName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGteName 根据书名、页数小于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGteName 根据书名、页数小于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -11544,7 +11544,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGteName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGtName 根据书名、页数小于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGtName 根据书名、页数小于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateGt time.Time 发布日期大于
@@ -11562,7 +11562,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGtName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateLtName 根据书名、页数小于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateLtName 根据书名、页数小于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateLt time.Time 发布日期小于
@@ -11580,7 +11580,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateLtName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateLteName 根据书名、页数小于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateLteName 根据书名、页数小于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -11598,7 +11598,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateLteName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGteLteName 根据书名、页数小于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGteLteName 根据书名、页数小于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -11617,7 +11617,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGteLteName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGteName 根据书名、页数大于等于和小于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGteName 根据书名、页数大于等于和小于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -11636,7 +11636,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGteName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGtName 根据书名、页数大于等于和小于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGtName 根据书名、页数大于等于和小于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -11655,7 +11655,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGtName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateLtName 根据书名、页数大于等于和小于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateLtName 根据书名、页数大于等于和小于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -11674,7 +11674,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateLtName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateLteName 根据书名、页数大于等于和小于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateLteName 根据书名、页数大于等于和小于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -11693,7 +11693,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateLteName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGteLteName 根据书名、页数大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGteLteName 根据书名、页数大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -11713,7 +11713,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGteLteName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteNameSeq 根据书名、编号、页数大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteNameSeq 根据书名、编号、页数大于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // seq string 编号
 // pageCountGte int64 页数大于等于
@@ -11731,7 +11731,7 @@ func HistPriceOfBooksByPageCountGteNameSeq(es *elasticsearch.Client, name, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtNameSeq 根据书名、编号、页数大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtNameSeq 根据书名、编号、页数大于检索books表并统计价格的数量直方图分布
 // name string 书名
 // seq string 编号
 // pageCountGt int64 页数大于
@@ -11749,7 +11749,7 @@ func HistPriceOfBooksByPageCountGtNameSeq(es *elasticsearch.Client, name, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtNameSeq 根据书名、编号、页数小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtNameSeq 根据书名、编号、页数小于检索books表并统计价格的数量直方图分布
 // name string 书名
 // seq string 编号
 // pageCountLt int64 页数小于
@@ -11767,7 +11767,7 @@ func HistPriceOfBooksByPageCountLtNameSeq(es *elasticsearch.Client, name, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteNameSeq 根据书名、编号、页数小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteNameSeq 根据书名、编号、页数小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // seq string 编号
 // pageCountLte int64 页数小于等于
@@ -11785,7 +11785,7 @@ func HistPriceOfBooksByPageCountLteNameSeq(es *elasticsearch.Client, name, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteNameSeq 根据书名、编号、页数大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteNameSeq 根据书名、编号、页数大于等于和小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // seq string 编号
 // pageCountGte int64 页数大于等于
@@ -11804,7 +11804,7 @@ func HistPriceOfBooksByPageCountGteLteNameSeq(es *elasticsearch.Client, name, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGteName 根据书名、价格大于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGteName 根据书名、价格大于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -11822,7 +11822,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGteName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGtName 根据书名、价格大于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGtName 根据书名、价格大于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateGt time.Time 发布日期大于
@@ -11840,7 +11840,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGtName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateLtName 根据书名、价格大于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateLtName 根据书名、价格大于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateLt time.Time 发布日期小于
@@ -11858,7 +11858,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateLtName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateLteName 根据书名、价格大于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateLteName 根据书名、价格大于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -11876,7 +11876,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateLteName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGteLteName 根据书名、价格大于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGteLteName 根据书名、价格大于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -11895,7 +11895,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGteLteName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGteName 根据书名、价格大于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGteName 根据书名、价格大于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -11913,7 +11913,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGteName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGtName 根据书名、价格大于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGtName 根据书名、价格大于、发布日期大于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateGt time.Time 发布日期大于
@@ -11931,7 +11931,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGtName(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateLtName 根据书名、价格大于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateLtName 根据书名、价格大于、发布日期小于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateLt time.Time 发布日期小于
@@ -11949,7 +11949,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateLtName(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateLteName 根据书名、价格大于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateLteName 根据书名、价格大于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateLte time.Time 发布日期小于等于
@@ -11967,7 +11967,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateLteName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGteLteName 根据书名、价格大于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGteLteName 根据书名、价格大于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -11986,7 +11986,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGteLteName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGteName 根据书名、价格小于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGteName 根据书名、价格小于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -12004,7 +12004,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGteName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGtName 根据书名、价格小于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGtName 根据书名、价格小于、发布日期大于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateGt time.Time 发布日期大于
@@ -12022,7 +12022,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGtName(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateLtName 根据书名、价格小于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateLtName 根据书名、价格小于、发布日期小于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateLt time.Time 发布日期小于
@@ -12040,7 +12040,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateLtName(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateLteName 根据书名、价格小于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateLteName 根据书名、价格小于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateLte time.Time 发布日期小于等于
@@ -12058,7 +12058,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateLteName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGteLteName 根据书名、价格小于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGteLteName 根据书名、价格小于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -12077,7 +12077,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGteLteName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGteName 根据书名、价格小于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGteName 根据书名、价格小于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -12095,7 +12095,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGteName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGtName 根据书名、价格小于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGtName 根据书名、价格小于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateGt time.Time 发布日期大于
@@ -12113,7 +12113,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGtName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateLtName 根据书名、价格小于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateLtName 根据书名、价格小于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateLt time.Time 发布日期小于
@@ -12131,7 +12131,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateLtName(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateLteName 根据书名、价格小于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateLteName 根据书名、价格小于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -12149,7 +12149,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateLteName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGteLteName 根据书名、价格小于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGteLteName 根据书名、价格小于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -12168,7 +12168,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGteLteName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGteName 根据书名、价格大于等于和小于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGteName 根据书名、价格大于等于和小于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -12187,7 +12187,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGteName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGtName 根据书名、价格大于等于和小于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGtName 根据书名、价格大于等于和小于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -12206,7 +12206,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGtName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateLtName 根据书名、价格大于等于和小于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateLtName 根据书名、价格大于等于和小于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -12225,7 +12225,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateLtName(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateLteName 根据书名、价格大于等于和小于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateLteName 根据书名、价格大于等于和小于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -12244,7 +12244,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateLteName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGteLteName 根据书名、价格大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGteLteName 根据书名、价格大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -12264,7 +12264,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGteLteName(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteNameSeq 根据书名、编号、价格大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteNameSeq 根据书名、编号、价格大于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // seq string 编号
 // priceGte float64 价格大于等于
@@ -12282,7 +12282,7 @@ func HistPageCountOfBooksByPriceGteNameSeq(es *elasticsearch.Client, name, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtNameSeq 根据书名、编号、价格大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtNameSeq 根据书名、编号、价格大于检索books表并统计页数的数量直方图分布
 // name string 书名
 // seq string 编号
 // priceGt float64 价格大于
@@ -12300,7 +12300,7 @@ func HistPageCountOfBooksByPriceGtNameSeq(es *elasticsearch.Client, name, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtNameSeq 根据书名、编号、价格小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtNameSeq 根据书名、编号、价格小于检索books表并统计页数的数量直方图分布
 // name string 书名
 // seq string 编号
 // priceLt float64 价格小于
@@ -12318,7 +12318,7 @@ func HistPageCountOfBooksByPriceLtNameSeq(es *elasticsearch.Client, name, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteNameSeq 根据书名、编号、价格小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteNameSeq 根据书名、编号、价格小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // seq string 编号
 // priceLte float64 价格小于等于
@@ -12336,7 +12336,7 @@ func HistPageCountOfBooksByPriceLteNameSeq(es *elasticsearch.Client, name, seq s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteNameSeq 根据书名、编号、价格大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteNameSeq 根据书名、编号、价格大于等于和小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // seq string 编号
 // priceGte float64 价格大于等于
@@ -12355,7 +12355,7 @@ func HistPageCountOfBooksByPriceGteLteNameSeq(es *elasticsearch.Client, name, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteNameSeq 根据书名、编号、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteNameSeq 根据书名、编号、发布日期大于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -12373,7 +12373,7 @@ func HistPageCountOfBooksByReleaseDateGteNameSeq(es *elasticsearch.Client, name,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGtNameSeq 根据书名、编号、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGtNameSeq 根据书名、编号、发布日期大于检索books表并统计页数的数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateGt time.Time 发布日期大于
@@ -12391,7 +12391,7 @@ func HistPageCountOfBooksByReleaseDateGtNameSeq(es *elasticsearch.Client, name, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLtNameSeq 根据书名、编号、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLtNameSeq 根据书名、编号、发布日期小于检索books表并统计页数的数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateLt time.Time 发布日期小于
@@ -12409,7 +12409,7 @@ func HistPageCountOfBooksByReleaseDateLtNameSeq(es *elasticsearch.Client, name, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateLteNameSeq 根据书名、编号、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateLteNameSeq 根据书名、编号、发布日期小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateLte time.Time 发布日期小于等于
@@ -12427,7 +12427,7 @@ func HistPageCountOfBooksByReleaseDateLteNameSeq(es *elasticsearch.Client, name,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByReleaseDateGteLteNameSeq 根据书名、编号、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByReleaseDateGteLteNameSeq 根据书名、编号、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -12446,7 +12446,7 @@ func HistPageCountOfBooksByReleaseDateGteLteNameSeq(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteNameSeq 根据书名、编号、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteNameSeq 根据书名、编号、发布日期大于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -12464,7 +12464,7 @@ func HistPriceOfBooksByReleaseDateGteNameSeq(es *elasticsearch.Client, name, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGtNameSeq 根据书名、编号、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGtNameSeq 根据书名、编号、发布日期大于检索books表并统计价格的数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateGt time.Time 发布日期大于
@@ -12482,7 +12482,7 @@ func HistPriceOfBooksByReleaseDateGtNameSeq(es *elasticsearch.Client, name, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLtNameSeq 根据书名、编号、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLtNameSeq 根据书名、编号、发布日期小于检索books表并统计价格的数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateLt time.Time 发布日期小于
@@ -12500,7 +12500,7 @@ func HistPriceOfBooksByReleaseDateLtNameSeq(es *elasticsearch.Client, name, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateLteNameSeq 根据书名、编号、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateLteNameSeq 根据书名、编号、发布日期小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateLte time.Time 发布日期小于等于
@@ -12518,7 +12518,7 @@ func HistPriceOfBooksByReleaseDateLteNameSeq(es *elasticsearch.Client, name, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByReleaseDateGteLteNameSeq 根据书名、编号、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByReleaseDateGteLteNameSeq 根据书名、编号、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateGte time.Time 发布日期大于等于
@@ -12537,7 +12537,7 @@ func HistPriceOfBooksByReleaseDateGteLteNameSeq(es *elasticsearch.Client, name, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGteSeq 根据编号、页数大于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGteSeq 根据编号、页数大于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -12553,7 +12553,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGteSeq(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGtSeq 根据编号、页数大于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGtSeq 根据编号、页数大于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateGt time.Time 发布日期大于
@@ -12569,7 +12569,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGtSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateLtSeq 根据编号、页数大于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateLtSeq 根据编号、页数大于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateLt time.Time 发布日期小于
@@ -12585,7 +12585,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateLtSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateLteSeq 根据编号、页数大于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateLteSeq 根据编号、页数大于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -12601,7 +12601,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateLteSeq(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteReleaseDateGteLteSeq 根据编号、页数大于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteReleaseDateGteLteSeq 根据编号、页数大于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -12618,7 +12618,7 @@ func HistPriceOfBooksByPageCountGteReleaseDateGteLteSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGteSeq 根据编号、页数大于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGteSeq 根据编号、页数大于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -12634,7 +12634,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGteSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGtSeq 根据编号、页数大于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGtSeq 根据编号、页数大于、发布日期大于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateGt time.Time 发布日期大于
@@ -12650,7 +12650,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGtSeq(es *elasticsearch.Client, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateLtSeq 根据编号、页数大于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateLtSeq 根据编号、页数大于、发布日期小于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateLt time.Time 发布日期小于
@@ -12666,7 +12666,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateLtSeq(es *elasticsearch.Client, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateLteSeq 根据编号、页数大于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateLteSeq 根据编号、页数大于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateLte time.Time 发布日期小于等于
@@ -12682,7 +12682,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateLteSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGtReleaseDateGteLteSeq 根据编号、页数大于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGtReleaseDateGteLteSeq 根据编号、页数大于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -12699,7 +12699,7 @@ func HistPriceOfBooksByPageCountGtReleaseDateGteLteSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGteSeq 根据编号、页数小于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGteSeq 根据编号、页数小于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -12715,7 +12715,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGteSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGtSeq 根据编号、页数小于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGtSeq 根据编号、页数小于、发布日期大于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateGt time.Time 发布日期大于
@@ -12731,7 +12731,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGtSeq(es *elasticsearch.Client, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateLtSeq 根据编号、页数小于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateLtSeq 根据编号、页数小于、发布日期小于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateLt time.Time 发布日期小于
@@ -12747,7 +12747,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateLtSeq(es *elasticsearch.Client, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateLteSeq 根据编号、页数小于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateLteSeq 根据编号、页数小于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateLte time.Time 发布日期小于等于
@@ -12763,7 +12763,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateLteSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLtReleaseDateGteLteSeq 根据编号、页数小于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLtReleaseDateGteLteSeq 根据编号、页数小于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -12780,7 +12780,7 @@ func HistPriceOfBooksByPageCountLtReleaseDateGteLteSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGteSeq 根据编号、页数小于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGteSeq 根据编号、页数小于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -12796,7 +12796,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGteSeq(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGtSeq 根据编号、页数小于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGtSeq 根据编号、页数小于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateGt time.Time 发布日期大于
@@ -12812,7 +12812,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGtSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateLtSeq 根据编号、页数小于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateLtSeq 根据编号、页数小于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateLt time.Time 发布日期小于
@@ -12828,7 +12828,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateLtSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateLteSeq 根据编号、页数小于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateLteSeq 根据编号、页数小于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -12844,7 +12844,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateLteSeq(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountLteReleaseDateGteLteSeq 根据编号、页数小于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountLteReleaseDateGteLteSeq 根据编号、页数小于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -12861,7 +12861,7 @@ func HistPriceOfBooksByPageCountLteReleaseDateGteLteSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGteSeq 根据编号、页数大于等于和小于等于、发布日期大于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGteSeq 根据编号、页数大于等于和小于等于、发布日期大于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -12878,7 +12878,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGteSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGtSeq 根据编号、页数大于等于和小于等于、发布日期大于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGtSeq 根据编号、页数大于等于和小于等于、发布日期大于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -12895,7 +12895,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGtSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateLtSeq 根据编号、页数大于等于和小于等于、发布日期小于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateLtSeq 根据编号、页数大于等于和小于等于、发布日期小于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -12912,7 +12912,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateLtSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateLteSeq 根据编号、页数大于等于和小于等于、发布日期小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateLteSeq 根据编号、页数大于等于和小于等于、发布日期小于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -12929,7 +12929,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateLteSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfBooksByPageCountGteLteReleaseDateGteLteSeq 根据编号、页数大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计价格的直方图分布
+// HistPriceOfBooksByPageCountGteLteReleaseDateGteLteSeq 根据编号、页数大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计价格的数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -12947,7 +12947,7 @@ func HistPriceOfBooksByPageCountGteLteReleaseDateGteLteSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGteSeq 根据编号、价格大于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGteSeq 根据编号、价格大于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -12963,7 +12963,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGteSeq(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGtSeq 根据编号、价格大于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGtSeq 根据编号、价格大于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateGt time.Time 发布日期大于
@@ -12979,7 +12979,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGtSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateLtSeq 根据编号、价格大于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateLtSeq 根据编号、价格大于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateLt time.Time 发布日期小于
@@ -12995,7 +12995,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateLtSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateLteSeq 根据编号、价格大于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateLteSeq 根据编号、价格大于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -13011,7 +13011,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateLteSeq(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteReleaseDateGteLteSeq 根据编号、价格大于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteReleaseDateGteLteSeq 根据编号、价格大于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -13028,7 +13028,7 @@ func HistPageCountOfBooksByPriceGteReleaseDateGteLteSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGteSeq 根据编号、价格大于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGteSeq 根据编号、价格大于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -13044,7 +13044,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGteSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGtSeq 根据编号、价格大于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGtSeq 根据编号、价格大于、发布日期大于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateGt time.Time 发布日期大于
@@ -13060,7 +13060,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGtSeq(es *elasticsearch.Client, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateLtSeq 根据编号、价格大于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateLtSeq 根据编号、价格大于、发布日期小于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateLt time.Time 发布日期小于
@@ -13076,7 +13076,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateLtSeq(es *elasticsearch.Client, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateLteSeq 根据编号、价格大于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateLteSeq 根据编号、价格大于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateLte time.Time 发布日期小于等于
@@ -13092,7 +13092,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateLteSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGtReleaseDateGteLteSeq 根据编号、价格大于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGtReleaseDateGteLteSeq 根据编号、价格大于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateGte time.Time 发布日期大于等于
@@ -13109,7 +13109,7 @@ func HistPageCountOfBooksByPriceGtReleaseDateGteLteSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGteSeq 根据编号、价格小于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGteSeq 根据编号、价格小于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -13125,7 +13125,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGteSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGtSeq 根据编号、价格小于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGtSeq 根据编号、价格小于、发布日期大于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateGt time.Time 发布日期大于
@@ -13141,7 +13141,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGtSeq(es *elasticsearch.Client, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateLtSeq 根据编号、价格小于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateLtSeq 根据编号、价格小于、发布日期小于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateLt time.Time 发布日期小于
@@ -13157,7 +13157,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateLtSeq(es *elasticsearch.Client, seq
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateLteSeq 根据编号、价格小于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateLteSeq 根据编号、价格小于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateLte time.Time 发布日期小于等于
@@ -13173,7 +13173,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateLteSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLtReleaseDateGteLteSeq 根据编号、价格小于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLtReleaseDateGteLteSeq 根据编号、价格小于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateGte time.Time 发布日期大于等于
@@ -13190,7 +13190,7 @@ func HistPageCountOfBooksByPriceLtReleaseDateGteLteSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGteSeq 根据编号、价格小于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGteSeq 根据编号、价格小于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -13206,7 +13206,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGteSeq(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGtSeq 根据编号、价格小于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGtSeq 根据编号、价格小于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateGt time.Time 发布日期大于
@@ -13222,7 +13222,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGtSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateLtSeq 根据编号、价格小于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateLtSeq 根据编号、价格小于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateLt time.Time 发布日期小于
@@ -13238,7 +13238,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateLtSeq(es *elasticsearch.Client, se
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateLteSeq 根据编号、价格小于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateLteSeq 根据编号、价格小于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateLte time.Time 发布日期小于等于
@@ -13254,7 +13254,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateLteSeq(es *elasticsearch.Client, s
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceLteReleaseDateGteLteSeq 根据编号、价格小于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceLteReleaseDateGteLteSeq 根据编号、价格小于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateGte time.Time 发布日期大于等于
@@ -13271,7 +13271,7 @@ func HistPageCountOfBooksByPriceLteReleaseDateGteLteSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGteSeq 根据编号、价格大于等于和小于等于、发布日期大于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGteSeq 根据编号、价格大于等于和小于等于、发布日期大于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -13288,7 +13288,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGteSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGtSeq 根据编号、价格大于等于和小于等于、发布日期大于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGtSeq 根据编号、价格大于等于和小于等于、发布日期大于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -13305,7 +13305,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateGtSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateLtSeq 根据编号、价格大于等于和小于等于、发布日期小于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateLtSeq 根据编号、价格大于等于和小于等于、发布日期小于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -13322,7 +13322,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateLtSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateLteSeq 根据编号、价格大于等于和小于等于、发布日期小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateLteSeq 根据编号、价格大于等于和小于等于、发布日期小于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -13339,7 +13339,7 @@ func HistPageCountOfBooksByPriceGteLteReleaseDateLteSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfBooksByPriceGteLteReleaseDateGteLteSeq 根据编号、价格大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计页数的直方图分布
+// HistPageCountOfBooksByPriceGteLteReleaseDateGteLteSeq 根据编号、价格大于等于和小于等于、发布日期大于等于和小于等于检索books表并统计页数的数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于

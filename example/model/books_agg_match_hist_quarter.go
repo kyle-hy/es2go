@@ -7,7 +7,7 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// QuarterHistReleaseDateOfBooksByAllText 根据全文本检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllText 根据全文本检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 func QuarterHistReleaseDateOfBooksByAllText(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -18,7 +18,7 @@ func QuarterHistReleaseDateOfBooksByAllText(es *elasticsearch.Client, allText st
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthor 根据作者检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthor 根据作者检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 func QuarterHistReleaseDateOfBooksByAuthor(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -29,7 +29,7 @@ func QuarterHistReleaseDateOfBooksByAuthor(es *elasticsearch.Client, author stri
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass 根据类别检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass 根据类别检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 func QuarterHistReleaseDateOfBooksByClass(es *elasticsearch.Client, class string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -40,7 +40,7 @@ func QuarterHistReleaseDateOfBooksByClass(es *elasticsearch.Client, class string
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass2 根据子类别检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass2 根据子类别检索books表并按发布日期统计每季度的数量直方图分布
 // class2 string 子类别
 func QuarterHistReleaseDateOfBooksByClass2(es *elasticsearch.Client, class2 string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -51,7 +51,7 @@ func QuarterHistReleaseDateOfBooksByClass2(es *elasticsearch.Client, class2 stri
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByName 根据书名检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByName 根据书名检索books表并按发布日期统计每季度的数量直方图分布
 // name string 书名
 func QuarterHistReleaseDateOfBooksByName(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -62,7 +62,7 @@ func QuarterHistReleaseDateOfBooksByName(es *elasticsearch.Client, name string) 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByPageCount 根据页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByPageCount 根据页数检索books表并按发布日期统计每季度的数量直方图分布
 // pageCount int64 页数
 func QuarterHistReleaseDateOfBooksByPageCount(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -73,7 +73,7 @@ func QuarterHistReleaseDateOfBooksByPageCount(es *elasticsearch.Client, pageCoun
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByPrice 根据价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByPrice 根据价格检索books表并按发布日期统计每季度的数量直方图分布
 // price float64 价格
 func QuarterHistReleaseDateOfBooksByPrice(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -84,7 +84,7 @@ func QuarterHistReleaseDateOfBooksByPrice(es *elasticsearch.Client, price float6
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksBySeq 根据编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksBySeq 根据编号检索books表并按发布日期统计每季度的数量直方图分布
 // seq string 编号
 func QuarterHistReleaseDateOfBooksBySeq(es *elasticsearch.Client, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -95,7 +95,7 @@ func QuarterHistReleaseDateOfBooksBySeq(es *elasticsearch.Client, seq string) (*
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthor 根据全文本、作者检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthor 根据全文本、作者检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 func QuarterHistReleaseDateOfBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
@@ -108,7 +108,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthor(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClass 根据全文本、类别检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClass 根据全文本、类别检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 func QuarterHistReleaseDateOfBooksByAllTextClass(es *elasticsearch.Client, allText, class string) (*eq.Data, *eq.Query, error) {
@@ -123,7 +123,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClass(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClass2 根据全文本、子类别检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClass2 根据全文本、子类别检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 func QuarterHistReleaseDateOfBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string) (*eq.Data, *eq.Query, error) {
@@ -138,7 +138,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClass2(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextName 根据全文本、书名检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextName 根据全文本、书名检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // name string 书名
 func QuarterHistReleaseDateOfBooksByAllTextName(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
@@ -151,7 +151,7 @@ func QuarterHistReleaseDateOfBooksByAllTextName(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextPageCount 根据全文本、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextPageCount 根据全文本、页数检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // pageCount int64 页数
 func QuarterHistReleaseDateOfBooksByAllTextPageCount(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -166,7 +166,7 @@ func QuarterHistReleaseDateOfBooksByAllTextPageCount(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextPrice 根据全文本、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextPrice 根据全文本、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // price float64 价格
 func QuarterHistReleaseDateOfBooksByAllTextPrice(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
@@ -181,7 +181,7 @@ func QuarterHistReleaseDateOfBooksByAllTextPrice(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextSeq 根据全文本、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextSeq 根据全文本、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // seq string 编号
 func QuarterHistReleaseDateOfBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string) (*eq.Data, *eq.Query, error) {
@@ -196,7 +196,7 @@ func QuarterHistReleaseDateOfBooksByAllTextSeq(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClass 根据作者、类别检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClass 根据作者、类别检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 func QuarterHistReleaseDateOfBooksByAuthorClass(es *elasticsearch.Client, author, class string) (*eq.Data, *eq.Query, error) {
@@ -211,7 +211,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClass(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClass2 根据作者、子类别检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClass2 根据作者、子类别检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class2 string 子类别
 func QuarterHistReleaseDateOfBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string) (*eq.Data, *eq.Query, error) {
@@ -226,7 +226,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClass2(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorName 根据作者、书名检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorName 根据作者、书名检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // name string 书名
 func QuarterHistReleaseDateOfBooksByAuthorName(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
@@ -239,7 +239,7 @@ func QuarterHistReleaseDateOfBooksByAuthorName(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorPageCount 根据作者、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorPageCount 根据作者、页数检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // pageCount int64 页数
 func QuarterHistReleaseDateOfBooksByAuthorPageCount(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -254,7 +254,7 @@ func QuarterHistReleaseDateOfBooksByAuthorPageCount(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorPrice 根据作者、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorPrice 根据作者、价格检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // price float64 价格
 func QuarterHistReleaseDateOfBooksByAuthorPrice(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
@@ -269,7 +269,7 @@ func QuarterHistReleaseDateOfBooksByAuthorPrice(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorSeq 根据作者、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorSeq 根据作者、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // seq string 编号
 func QuarterHistReleaseDateOfBooksByAuthorSeq(es *elasticsearch.Client, author, seq string) (*eq.Data, *eq.Query, error) {
@@ -284,7 +284,7 @@ func QuarterHistReleaseDateOfBooksByAuthorSeq(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassClass2 根据类别、子类别检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassClass2 根据类别、子类别检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // class2 string 子类别
 func QuarterHistReleaseDateOfBooksByClassClass2(es *elasticsearch.Client, class, class2 string) (*eq.Data, *eq.Query, error) {
@@ -297,7 +297,7 @@ func QuarterHistReleaseDateOfBooksByClassClass2(es *elasticsearch.Client, class,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassName 根据类别、书名检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassName 根据类别、书名检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // name string 书名
 func QuarterHistReleaseDateOfBooksByClassName(es *elasticsearch.Client, class, name string) (*eq.Data, *eq.Query, error) {
@@ -312,7 +312,7 @@ func QuarterHistReleaseDateOfBooksByClassName(es *elasticsearch.Client, class, n
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassPageCount 根据类别、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassPageCount 根据类别、页数检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // pageCount int64 页数
 func QuarterHistReleaseDateOfBooksByClassPageCount(es *elasticsearch.Client, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -325,7 +325,7 @@ func QuarterHistReleaseDateOfBooksByClassPageCount(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassPrice 根据类别、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassPrice 根据类别、价格检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // price float64 价格
 func QuarterHistReleaseDateOfBooksByClassPrice(es *elasticsearch.Client, class string, price float64) (*eq.Data, *eq.Query, error) {
@@ -338,7 +338,7 @@ func QuarterHistReleaseDateOfBooksByClassPrice(es *elasticsearch.Client, class s
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassSeq 根据类别、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassSeq 根据类别、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // seq string 编号
 func QuarterHistReleaseDateOfBooksByClassSeq(es *elasticsearch.Client, class, seq string) (*eq.Data, *eq.Query, error) {
@@ -351,7 +351,7 @@ func QuarterHistReleaseDateOfBooksByClassSeq(es *elasticsearch.Client, class, se
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass2Name 根据子类别、书名检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass2Name 根据子类别、书名检索books表并按发布日期统计每季度的数量直方图分布
 // class2 string 子类别
 // name string 书名
 func QuarterHistReleaseDateOfBooksByClass2Name(es *elasticsearch.Client, class2, name string) (*eq.Data, *eq.Query, error) {
@@ -366,7 +366,7 @@ func QuarterHistReleaseDateOfBooksByClass2Name(es *elasticsearch.Client, class2,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass2PageCount 根据子类别、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass2PageCount 根据子类别、页数检索books表并按发布日期统计每季度的数量直方图分布
 // class2 string 子类别
 // pageCount int64 页数
 func QuarterHistReleaseDateOfBooksByClass2PageCount(es *elasticsearch.Client, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -379,7 +379,7 @@ func QuarterHistReleaseDateOfBooksByClass2PageCount(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass2Price 根据子类别、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass2Price 根据子类别、价格检索books表并按发布日期统计每季度的数量直方图分布
 // class2 string 子类别
 // price float64 价格
 func QuarterHistReleaseDateOfBooksByClass2Price(es *elasticsearch.Client, class2 string, price float64) (*eq.Data, *eq.Query, error) {
@@ -392,7 +392,7 @@ func QuarterHistReleaseDateOfBooksByClass2Price(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass2Seq 根据子类别、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass2Seq 根据子类别、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 func QuarterHistReleaseDateOfBooksByClass2Seq(es *elasticsearch.Client, class2, seq string) (*eq.Data, *eq.Query, error) {
@@ -405,7 +405,7 @@ func QuarterHistReleaseDateOfBooksByClass2Seq(es *elasticsearch.Client, class2, 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByNamePageCount 根据书名、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByNamePageCount 根据书名、页数检索books表并按发布日期统计每季度的数量直方图分布
 // name string 书名
 // pageCount int64 页数
 func QuarterHistReleaseDateOfBooksByNamePageCount(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -420,7 +420,7 @@ func QuarterHistReleaseDateOfBooksByNamePageCount(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByNamePrice 根据书名、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByNamePrice 根据书名、价格检索books表并按发布日期统计每季度的数量直方图分布
 // name string 书名
 // price float64 价格
 func QuarterHistReleaseDateOfBooksByNamePrice(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
@@ -435,7 +435,7 @@ func QuarterHistReleaseDateOfBooksByNamePrice(es *elasticsearch.Client, name str
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByNameSeq 根据书名、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByNameSeq 根据书名、编号检索books表并按发布日期统计每季度的数量直方图分布
 // name string 书名
 // seq string 编号
 func QuarterHistReleaseDateOfBooksByNameSeq(es *elasticsearch.Client, name, seq string) (*eq.Data, *eq.Query, error) {
@@ -450,7 +450,7 @@ func QuarterHistReleaseDateOfBooksByNameSeq(es *elasticsearch.Client, name, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByPageCountPrice 根据页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByPageCountPrice 根据页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // pageCount int64 页数
 // price float64 价格
 func QuarterHistReleaseDateOfBooksByPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
@@ -463,7 +463,7 @@ func QuarterHistReleaseDateOfBooksByPageCountPrice(es *elasticsearch.Client, pag
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByPageCountSeq 根据页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByPageCountSeq 根据页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // pageCount int64 页数
 // seq string 编号
 func QuarterHistReleaseDateOfBooksByPageCountSeq(es *elasticsearch.Client, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
@@ -476,7 +476,7 @@ func QuarterHistReleaseDateOfBooksByPageCountSeq(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByPriceSeq 根据价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByPriceSeq 根据价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // price float64 价格
 // seq string 编号
 func QuarterHistReleaseDateOfBooksByPriceSeq(es *elasticsearch.Client, price float64, seq string) (*eq.Data, *eq.Query, error) {
@@ -489,7 +489,7 @@ func QuarterHistReleaseDateOfBooksByPriceSeq(es *elasticsearch.Client, price flo
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorClass 根据全文本、作者、类别检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorClass 根据全文本、作者、类别检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -506,7 +506,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorClass(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorClass2 根据全文本、作者、子类别检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorClass2 根据全文本、作者、子类别检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -523,7 +523,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorClass2(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorName 根据全文本、作者、书名检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorName 根据全文本、作者、书名检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -538,7 +538,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorName(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorPageCount 根据全文本、作者、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorPageCount 根据全文本、作者、页数检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -555,7 +555,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorPageCount(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorPrice 根据全文本、作者、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorPrice 根据全文本、作者、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -572,7 +572,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorPrice(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorSeq 根据全文本、作者、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorSeq 根据全文本、作者、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // seq string 编号
@@ -589,7 +589,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClassClass2 根据全文本、类别、子类别检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClassClass2 根据全文本、类别、子类别检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -606,7 +606,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClassClass2(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClassName 根据全文本、类别、书名检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClassName 根据全文本、类别、书名检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -623,7 +623,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClassName(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClassPageCount 根据全文本、类别、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClassPageCount 根据全文本、类别、页数检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -640,7 +640,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClassPageCount(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClassPrice 根据全文本、类别、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClassPrice 根据全文本、类别、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 // price float64 价格
@@ -657,7 +657,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClassPrice(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClassSeq 根据全文本、类别、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClassSeq 根据全文本、类别、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 // seq string 编号
@@ -674,7 +674,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClassSeq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClass2Name 根据全文本、子类别、书名检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClass2Name 根据全文本、子类别、书名检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -691,7 +691,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClass2Name(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClass2PageCount 根据全文本、子类别、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClass2PageCount 根据全文本、子类别、页数检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -708,7 +708,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClass2PageCount(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClass2Price 根据全文本、子类别、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClass2Price 根据全文本、子类别、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
@@ -725,7 +725,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClass2Price(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClass2Seq 根据全文本、子类别、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClass2Seq 根据全文本、子类别、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // seq string 编号
@@ -742,7 +742,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClass2Seq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextNamePageCount 根据全文本、书名、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextNamePageCount 根据全文本、书名、页数检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -759,7 +759,7 @@ func QuarterHistReleaseDateOfBooksByAllTextNamePageCount(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextNamePrice 根据全文本、书名、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextNamePrice 根据全文本、书名、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -776,7 +776,7 @@ func QuarterHistReleaseDateOfBooksByAllTextNamePrice(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextNameSeq 根据全文本、书名、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextNameSeq 根据全文本、书名、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // name string 书名
 // seq string 编号
@@ -793,7 +793,7 @@ func QuarterHistReleaseDateOfBooksByAllTextNameSeq(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextPageCountPrice 根据全文本、页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextPageCountPrice 根据全文本、页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -810,7 +810,7 @@ func QuarterHistReleaseDateOfBooksByAllTextPageCountPrice(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextPageCountSeq 根据全文本、页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextPageCountSeq 根据全文本、页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // pageCount int64 页数
 // seq string 编号
@@ -827,7 +827,7 @@ func QuarterHistReleaseDateOfBooksByAllTextPageCountSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextPriceSeq 根据全文本、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextPriceSeq 根据全文本、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // price float64 价格
 // seq string 编号
@@ -844,7 +844,7 @@ func QuarterHistReleaseDateOfBooksByAllTextPriceSeq(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClassClass2 根据作者、类别、子类别检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClassClass2 根据作者、类别、子类别检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -861,7 +861,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClassClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClassName 根据作者、类别、书名检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClassName 根据作者、类别、书名检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 // name string 书名
@@ -878,7 +878,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClassName(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClassPageCount 根据作者、类别、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClassPageCount 根据作者、类别、页数检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -895,7 +895,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClassPageCount(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClassPrice 根据作者、类别、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClassPrice 根据作者、类别、价格检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 // price float64 价格
@@ -912,7 +912,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClassPrice(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClassSeq 根据作者、类别、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClassSeq 根据作者、类别、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 // seq string 编号
@@ -929,7 +929,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClassSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClass2Name 根据作者、子类别、书名检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClass2Name 根据作者、子类别、书名检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -946,7 +946,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClass2Name(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClass2PageCount 根据作者、子类别、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClass2PageCount 根据作者、子类别、页数检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -963,7 +963,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClass2PageCount(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClass2Price 根据作者、子类别、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClass2Price 根据作者、子类别、价格检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // price float64 价格
@@ -980,7 +980,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClass2Price(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClass2Seq 根据作者、子类别、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClass2Seq 根据作者、子类别、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // seq string 编号
@@ -997,7 +997,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClass2Seq(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorNamePageCount 根据作者、书名、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorNamePageCount 根据作者、书名、页数检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -1014,7 +1014,7 @@ func QuarterHistReleaseDateOfBooksByAuthorNamePageCount(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorNamePrice 根据作者、书名、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorNamePrice 根据作者、书名、价格检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -1031,7 +1031,7 @@ func QuarterHistReleaseDateOfBooksByAuthorNamePrice(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorNameSeq 根据作者、书名、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorNameSeq 根据作者、书名、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // name string 书名
 // seq string 编号
@@ -1048,7 +1048,7 @@ func QuarterHistReleaseDateOfBooksByAuthorNameSeq(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorPageCountPrice 根据作者、页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorPageCountPrice 根据作者、页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -1065,7 +1065,7 @@ func QuarterHistReleaseDateOfBooksByAuthorPageCountPrice(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorPageCountSeq 根据作者、页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorPageCountSeq 根据作者、页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
@@ -1082,7 +1082,7 @@ func QuarterHistReleaseDateOfBooksByAuthorPageCountSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorPriceSeq 根据作者、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorPriceSeq 根据作者、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // price float64 价格
 // seq string 编号
@@ -1099,7 +1099,7 @@ func QuarterHistReleaseDateOfBooksByAuthorPriceSeq(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassClass2Name 根据类别、子类别、书名检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassClass2Name 根据类别、子类别、书名检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -1116,7 +1116,7 @@ func QuarterHistReleaseDateOfBooksByClassClass2Name(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassClass2PageCount 根据类别、子类别、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassClass2PageCount 根据类别、子类别、页数检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
@@ -1131,7 +1131,7 @@ func QuarterHistReleaseDateOfBooksByClassClass2PageCount(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassClass2Price 根据类别、子类别、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassClass2Price 根据类别、子类别、价格检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // price float64 价格
@@ -1146,7 +1146,7 @@ func QuarterHistReleaseDateOfBooksByClassClass2Price(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassClass2Seq 根据类别、子类别、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassClass2Seq 根据类别、子类别、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // seq string 编号
@@ -1161,7 +1161,7 @@ func QuarterHistReleaseDateOfBooksByClassClass2Seq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassNamePageCount 根据类别、书名、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassNamePageCount 根据类别、书名、页数检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -1178,7 +1178,7 @@ func QuarterHistReleaseDateOfBooksByClassNamePageCount(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassNamePrice 根据类别、书名、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassNamePrice 根据类别、书名、价格检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // name string 书名
 // price float64 价格
@@ -1195,7 +1195,7 @@ func QuarterHistReleaseDateOfBooksByClassNamePrice(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassNameSeq 根据类别、书名、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassNameSeq 根据类别、书名、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // name string 书名
 // seq string 编号
@@ -1212,7 +1212,7 @@ func QuarterHistReleaseDateOfBooksByClassNameSeq(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassPageCountPrice 根据类别、页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassPageCountPrice 根据类别、页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
@@ -1227,7 +1227,7 @@ func QuarterHistReleaseDateOfBooksByClassPageCountPrice(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassPageCountSeq 根据类别、页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassPageCountSeq 根据类别、页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // pageCount int64 页数
 // seq string 编号
@@ -1242,7 +1242,7 @@ func QuarterHistReleaseDateOfBooksByClassPageCountSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassPriceSeq 根据类别、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassPriceSeq 根据类别、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // price float64 价格
 // seq string 编号
@@ -1257,7 +1257,7 @@ func QuarterHistReleaseDateOfBooksByClassPriceSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass2NamePageCount 根据子类别、书名、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass2NamePageCount 根据子类别、书名、页数检索books表并按发布日期统计每季度的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -1274,7 +1274,7 @@ func QuarterHistReleaseDateOfBooksByClass2NamePageCount(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass2NamePrice 根据子类别、书名、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass2NamePrice 根据子类别、书名、价格检索books表并按发布日期统计每季度的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // price float64 价格
@@ -1291,7 +1291,7 @@ func QuarterHistReleaseDateOfBooksByClass2NamePrice(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass2NameSeq 根据子类别、书名、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass2NameSeq 根据子类别、书名、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // seq string 编号
@@ -1308,7 +1308,7 @@ func QuarterHistReleaseDateOfBooksByClass2NameSeq(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass2PageCountPrice 根据子类别、页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass2PageCountPrice 根据子类别、页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
@@ -1323,7 +1323,7 @@ func QuarterHistReleaseDateOfBooksByClass2PageCountPrice(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass2PageCountSeq 根据子类别、页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass2PageCountSeq 根据子类别、页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
@@ -1338,7 +1338,7 @@ func QuarterHistReleaseDateOfBooksByClass2PageCountSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass2PriceSeq 根据子类别、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass2PriceSeq 根据子类别、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
@@ -1353,7 +1353,7 @@ func QuarterHistReleaseDateOfBooksByClass2PriceSeq(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByNamePageCountPrice 根据书名、页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByNamePageCountPrice 根据书名、页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -1370,7 +1370,7 @@ func QuarterHistReleaseDateOfBooksByNamePageCountPrice(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByNamePageCountSeq 根据书名、页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByNamePageCountSeq 根据书名、页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
@@ -1387,7 +1387,7 @@ func QuarterHistReleaseDateOfBooksByNamePageCountSeq(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByNamePriceSeq 根据书名、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByNamePriceSeq 根据书名、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // name string 书名
 // price float64 价格
 // seq string 编号
@@ -1404,7 +1404,7 @@ func QuarterHistReleaseDateOfBooksByNamePriceSeq(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByPageCountPriceSeq 根据页数、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByPageCountPriceSeq 根据页数、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
@@ -1419,7 +1419,7 @@ func QuarterHistReleaseDateOfBooksByPageCountPriceSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorClassClass2 根据全文本、作者、类别、子类别检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorClassClass2 根据全文本、作者、类别、子类别检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1438,7 +1438,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorClassClass2(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorClassName 根据全文本、作者、类别、书名检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorClassName 根据全文本、作者、类别、书名检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1457,7 +1457,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorClassName(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorClassPageCount 根据全文本、作者、类别、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorClassPageCount 根据全文本、作者、类别、页数检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1476,7 +1476,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorClassPageCount(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorClassPrice 根据全文本、作者、类别、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorClassPrice 根据全文本、作者、类别、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1495,7 +1495,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorClassPrice(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorClassSeq 根据全文本、作者、类别、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorClassSeq 根据全文本、作者、类别、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1514,7 +1514,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorClassSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorClass2Name 根据全文本、作者、子类别、书名检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorClass2Name 根据全文本、作者、子类别、书名检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -1533,7 +1533,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorClass2PageCount 根据全文本、作者、子类别、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorClass2PageCount 根据全文本、作者、子类别、页数检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -1552,7 +1552,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorClass2PageCount(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorClass2Price 根据全文本、作者、子类别、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorClass2Price 根据全文本、作者、子类别、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -1571,7 +1571,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorClass2Price(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorClass2Seq 根据全文本、作者、子类别、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorClass2Seq 根据全文本、作者、子类别、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -1590,7 +1590,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorNamePageCount 根据全文本、作者、书名、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorNamePageCount 根据全文本、作者、书名、页数检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -1609,7 +1609,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorNamePageCount(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorNamePrice 根据全文本、作者、书名、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorNamePrice 根据全文本、作者、书名、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -1628,7 +1628,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorNamePrice(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorNameSeq 根据全文本、作者、书名、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorNameSeq 根据全文本、作者、书名、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -1647,7 +1647,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorPageCountPrice 根据全文本、作者、页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorPageCountPrice 根据全文本、作者、页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -1666,7 +1666,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorPageCountPrice(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorPageCountSeq 根据全文本、作者、页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorPageCountSeq 根据全文本、作者、页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -1685,7 +1685,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorPageCountSeq(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextAuthorPriceSeq 根据全文本、作者、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextAuthorPriceSeq 根据全文本、作者、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -1704,7 +1704,7 @@ func QuarterHistReleaseDateOfBooksByAllTextAuthorPriceSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClassClass2Name 根据全文本、类别、子类别、书名检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClassClass2Name 根据全文本、类别、子类别、书名检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -1723,7 +1723,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClassClass2Name(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClassClass2PageCount 根据全文本、类别、子类别、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClassClass2PageCount 根据全文本、类别、子类别、页数检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -1742,7 +1742,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClassClass2PageCount(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClassClass2Price 根据全文本、类别、子类别、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClassClass2Price 根据全文本、类别、子类别、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -1761,7 +1761,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClassClass2Price(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClassClass2Seq 根据全文本、类别、子类别、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClassClass2Seq 根据全文本、类别、子类别、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -1780,7 +1780,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClassClass2Seq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClassNamePageCount 根据全文本、类别、书名、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClassNamePageCount 根据全文本、类别、书名、页数检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -1799,7 +1799,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClassNamePageCount(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClassNamePrice 根据全文本、类别、书名、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClassNamePrice 根据全文本、类别、书名、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -1818,7 +1818,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClassNamePrice(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClassNameSeq 根据全文本、类别、书名、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClassNameSeq 根据全文本、类别、书名、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -1837,7 +1837,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClassNameSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClassPageCountPrice 根据全文本、类别、页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClassPageCountPrice 根据全文本、类别、页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -1856,7 +1856,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClassPageCountPrice(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClassPageCountSeq 根据全文本、类别、页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClassPageCountSeq 根据全文本、类别、页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -1875,7 +1875,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClassPageCountSeq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClassPriceSeq 根据全文本、类别、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClassPriceSeq 根据全文本、类别、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class string 类别
 // price float64 价格
@@ -1894,7 +1894,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClassPriceSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClass2NamePageCount 根据全文本、子类别、书名、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClass2NamePageCount 根据全文本、子类别、书名、页数检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -1913,7 +1913,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClass2NamePageCount(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClass2NamePrice 根据全文本、子类别、书名、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClass2NamePrice 根据全文本、子类别、书名、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -1932,7 +1932,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClass2NamePrice(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClass2NameSeq 根据全文本、子类别、书名、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClass2NameSeq 根据全文本、子类别、书名、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -1951,7 +1951,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClass2NameSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClass2PageCountPrice 根据全文本、子类别、页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClass2PageCountPrice 根据全文本、子类别、页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -1970,7 +1970,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClass2PageCountPrice(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClass2PageCountSeq 根据全文本、子类别、页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClass2PageCountSeq 根据全文本、子类别、页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -1989,7 +1989,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClass2PageCountSeq(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextClass2PriceSeq 根据全文本、子类别、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextClass2PriceSeq 根据全文本、子类别、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
@@ -2008,7 +2008,7 @@ func QuarterHistReleaseDateOfBooksByAllTextClass2PriceSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextNamePageCountPrice 根据全文本、书名、页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextNamePageCountPrice 根据全文本、书名、页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -2027,7 +2027,7 @@ func QuarterHistReleaseDateOfBooksByAllTextNamePageCountPrice(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextNamePageCountSeq 根据全文本、书名、页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextNamePageCountSeq 根据全文本、书名、页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -2046,7 +2046,7 @@ func QuarterHistReleaseDateOfBooksByAllTextNamePageCountSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextNamePriceSeq 根据全文本、书名、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextNamePriceSeq 根据全文本、书名、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -2065,7 +2065,7 @@ func QuarterHistReleaseDateOfBooksByAllTextNamePriceSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAllTextPageCountPriceSeq 根据全文本、页数、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAllTextPageCountPriceSeq 根据全文本、页数、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -2084,7 +2084,7 @@ func QuarterHistReleaseDateOfBooksByAllTextPageCountPriceSeq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClassClass2Name 根据作者、类别、子类别、书名检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClassClass2Name 根据作者、类别、子类别、书名检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -2103,7 +2103,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClassClass2Name(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClassClass2PageCount 根据作者、类别、子类别、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClassClass2PageCount 根据作者、类别、子类别、页数检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -2122,7 +2122,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClassClass2PageCount(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClassClass2Price 根据作者、类别、子类别、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClassClass2Price 根据作者、类别、子类别、价格检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -2141,7 +2141,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClassClass2Price(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClassClass2Seq 根据作者、类别、子类别、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClassClass2Seq 根据作者、类别、子类别、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -2160,7 +2160,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClassClass2Seq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClassNamePageCount 根据作者、类别、书名、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClassNamePageCount 根据作者、类别、书名、页数检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 // name string 书名
@@ -2179,7 +2179,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClassNamePageCount(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClassNamePrice 根据作者、类别、书名、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClassNamePrice 根据作者、类别、书名、价格检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 // name string 书名
@@ -2198,7 +2198,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClassNamePrice(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClassNameSeq 根据作者、类别、书名、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClassNameSeq 根据作者、类别、书名、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 // name string 书名
@@ -2217,7 +2217,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClassNameSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClassPageCountPrice 根据作者、类别、页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClassPageCountPrice 根据作者、类别、页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -2236,7 +2236,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClassPageCountPrice(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClassPageCountSeq 根据作者、类别、页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClassPageCountSeq 根据作者、类别、页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -2255,7 +2255,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClassPageCountSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClassPriceSeq 根据作者、类别、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClassPriceSeq 根据作者、类别、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class string 类别
 // price float64 价格
@@ -2274,7 +2274,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClassPriceSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClass2NamePageCount 根据作者、子类别、书名、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClass2NamePageCount 根据作者、子类别、书名、页数检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -2293,7 +2293,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClass2NamePageCount(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClass2NamePrice 根据作者、子类别、书名、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClass2NamePrice 根据作者、子类别、书名、价格检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -2312,7 +2312,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClass2NamePrice(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClass2NameSeq 根据作者、子类别、书名、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClass2NameSeq 根据作者、子类别、书名、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -2331,7 +2331,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClass2NameSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClass2PageCountPrice 根据作者、子类别、页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClass2PageCountPrice 根据作者、子类别、页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -2350,7 +2350,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClass2PageCountPrice(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClass2PageCountSeq 根据作者、子类别、页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClass2PageCountSeq 根据作者、子类别、页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -2369,7 +2369,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClass2PageCountSeq(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorClass2PriceSeq 根据作者、子类别、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorClass2PriceSeq 根据作者、子类别、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // price float64 价格
@@ -2388,7 +2388,7 @@ func QuarterHistReleaseDateOfBooksByAuthorClass2PriceSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorNamePageCountPrice 根据作者、书名、页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorNamePageCountPrice 根据作者、书名、页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -2407,7 +2407,7 @@ func QuarterHistReleaseDateOfBooksByAuthorNamePageCountPrice(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorNamePageCountSeq 根据作者、书名、页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorNamePageCountSeq 根据作者、书名、页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -2426,7 +2426,7 @@ func QuarterHistReleaseDateOfBooksByAuthorNamePageCountSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorNamePriceSeq 根据作者、书名、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorNamePriceSeq 根据作者、书名、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -2445,7 +2445,7 @@ func QuarterHistReleaseDateOfBooksByAuthorNamePriceSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByAuthorPageCountPriceSeq 根据作者、页数、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByAuthorPageCountPriceSeq 根据作者、页数、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -2464,7 +2464,7 @@ func QuarterHistReleaseDateOfBooksByAuthorPageCountPriceSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassClass2NamePageCount 根据类别、子类别、书名、页数检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassClass2NamePageCount 根据类别、子类别、书名、页数检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -2483,7 +2483,7 @@ func QuarterHistReleaseDateOfBooksByClassClass2NamePageCount(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassClass2NamePrice 根据类别、子类别、书名、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassClass2NamePrice 根据类别、子类别、书名、价格检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -2502,7 +2502,7 @@ func QuarterHistReleaseDateOfBooksByClassClass2NamePrice(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassClass2NameSeq 根据类别、子类别、书名、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassClass2NameSeq 根据类别、子类别、书名、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -2521,7 +2521,7 @@ func QuarterHistReleaseDateOfBooksByClassClass2NameSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassClass2PageCountPrice 根据类别、子类别、页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassClass2PageCountPrice 根据类别、子类别、页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
@@ -2538,7 +2538,7 @@ func QuarterHistReleaseDateOfBooksByClassClass2PageCountPrice(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassClass2PageCountSeq 根据类别、子类别、页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassClass2PageCountSeq 根据类别、子类别、页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
@@ -2555,7 +2555,7 @@ func QuarterHistReleaseDateOfBooksByClassClass2PageCountSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassClass2PriceSeq 根据类别、子类别、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassClass2PriceSeq 根据类别、子类别、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // price float64 价格
@@ -2572,7 +2572,7 @@ func QuarterHistReleaseDateOfBooksByClassClass2PriceSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassNamePageCountPrice 根据类别、书名、页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassNamePageCountPrice 根据类别、书名、页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -2591,7 +2591,7 @@ func QuarterHistReleaseDateOfBooksByClassNamePageCountPrice(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassNamePageCountSeq 根据类别、书名、页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassNamePageCountSeq 根据类别、书名、页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -2610,7 +2610,7 @@ func QuarterHistReleaseDateOfBooksByClassNamePageCountSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassNamePriceSeq 根据类别、书名、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassNamePriceSeq 根据类别、书名、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // name string 书名
 // price float64 价格
@@ -2629,7 +2629,7 @@ func QuarterHistReleaseDateOfBooksByClassNamePriceSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClassPageCountPriceSeq 根据类别、页数、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClassPageCountPriceSeq 根据类别、页数、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
@@ -2646,7 +2646,7 @@ func QuarterHistReleaseDateOfBooksByClassPageCountPriceSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass2NamePageCountPrice 根据子类别、书名、页数、价格检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass2NamePageCountPrice 根据子类别、书名、页数、价格检索books表并按发布日期统计每季度的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -2665,7 +2665,7 @@ func QuarterHistReleaseDateOfBooksByClass2NamePageCountPrice(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass2NamePageCountSeq 根据子类别、书名、页数、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass2NamePageCountSeq 根据子类别、书名、页数、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -2684,7 +2684,7 @@ func QuarterHistReleaseDateOfBooksByClass2NamePageCountSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass2NamePriceSeq 根据子类别、书名、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass2NamePriceSeq 根据子类别、书名、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // price float64 价格
@@ -2703,7 +2703,7 @@ func QuarterHistReleaseDateOfBooksByClass2NamePriceSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByClass2PageCountPriceSeq 根据子类别、页数、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByClass2PageCountPriceSeq 根据子类别、页数、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
@@ -2720,7 +2720,7 @@ func QuarterHistReleaseDateOfBooksByClass2PageCountPriceSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistReleaseDateOfBooksByNamePageCountPriceSeq 根据书名、页数、价格、编号检索books表并按发布日期统计每季度的直方图分布
+// QuarterHistReleaseDateOfBooksByNamePageCountPriceSeq 根据书名、页数、价格、编号检索books表并按发布日期统计每季度的数量直方图分布
 // name string 书名
 // pageCount int64 页数
 // price float64 价格

@@ -7,7 +7,7 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// MonthHistReleaseDateOfBooksByAllText 根据全文本检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllText 根据全文本检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 func MonthHistReleaseDateOfBooksByAllText(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -18,7 +18,7 @@ func MonthHistReleaseDateOfBooksByAllText(es *elasticsearch.Client, allText stri
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthor 根据作者检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthor 根据作者检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 func MonthHistReleaseDateOfBooksByAuthor(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -29,7 +29,7 @@ func MonthHistReleaseDateOfBooksByAuthor(es *elasticsearch.Client, author string
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass 根据类别检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass 根据类别检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 func MonthHistReleaseDateOfBooksByClass(es *elasticsearch.Client, class string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -40,7 +40,7 @@ func MonthHistReleaseDateOfBooksByClass(es *elasticsearch.Client, class string) 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass2 根据子类别检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass2 根据子类别检索books表并按发布日期统计每月的数量直方图分布
 // class2 string 子类别
 func MonthHistReleaseDateOfBooksByClass2(es *elasticsearch.Client, class2 string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -51,7 +51,7 @@ func MonthHistReleaseDateOfBooksByClass2(es *elasticsearch.Client, class2 string
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByName 根据书名检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByName 根据书名检索books表并按发布日期统计每月的数量直方图分布
 // name string 书名
 func MonthHistReleaseDateOfBooksByName(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
@@ -62,7 +62,7 @@ func MonthHistReleaseDateOfBooksByName(es *elasticsearch.Client, name string) (*
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByPageCount 根据页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByPageCount 根据页数检索books表并按发布日期统计每月的数量直方图分布
 // pageCount int64 页数
 func MonthHistReleaseDateOfBooksByPageCount(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -73,7 +73,7 @@ func MonthHistReleaseDateOfBooksByPageCount(es *elasticsearch.Client, pageCount 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByPrice 根据价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByPrice 根据价格检索books表并按发布日期统计每月的数量直方图分布
 // price float64 价格
 func MonthHistReleaseDateOfBooksByPrice(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -84,7 +84,7 @@ func MonthHistReleaseDateOfBooksByPrice(es *elasticsearch.Client, price float64)
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksBySeq 根据编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksBySeq 根据编号检索books表并按发布日期统计每月的数量直方图分布
 // seq string 编号
 func MonthHistReleaseDateOfBooksBySeq(es *elasticsearch.Client, seq string) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -95,7 +95,7 @@ func MonthHistReleaseDateOfBooksBySeq(es *elasticsearch.Client, seq string) (*eq
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthor 根据全文本、作者检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthor 根据全文本、作者检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 func MonthHistReleaseDateOfBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
@@ -108,7 +108,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthor(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClass 根据全文本、类别检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClass 根据全文本、类别检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 func MonthHistReleaseDateOfBooksByAllTextClass(es *elasticsearch.Client, allText, class string) (*eq.Data, *eq.Query, error) {
@@ -123,7 +123,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClass2 根据全文本、子类别检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClass2 根据全文本、子类别检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 func MonthHistReleaseDateOfBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string) (*eq.Data, *eq.Query, error) {
@@ -138,7 +138,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2(es *elasticsearch.Client, allTex
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextName 根据全文本、书名检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextName 根据全文本、书名检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // name string 书名
 func MonthHistReleaseDateOfBooksByAllTextName(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
@@ -151,7 +151,7 @@ func MonthHistReleaseDateOfBooksByAllTextName(es *elasticsearch.Client, allText,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextPageCount 根据全文本、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextPageCount 根据全文本、页数检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // pageCount int64 页数
 func MonthHistReleaseDateOfBooksByAllTextPageCount(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -166,7 +166,7 @@ func MonthHistReleaseDateOfBooksByAllTextPageCount(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextPrice 根据全文本、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextPrice 根据全文本、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // price float64 价格
 func MonthHistReleaseDateOfBooksByAllTextPrice(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
@@ -181,7 +181,7 @@ func MonthHistReleaseDateOfBooksByAllTextPrice(es *elasticsearch.Client, allText
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextSeq 根据全文本、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextSeq 根据全文本、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // seq string 编号
 func MonthHistReleaseDateOfBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string) (*eq.Data, *eq.Query, error) {
@@ -196,7 +196,7 @@ func MonthHistReleaseDateOfBooksByAllTextSeq(es *elasticsearch.Client, allText, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClass 根据作者、类别检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClass 根据作者、类别检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 func MonthHistReleaseDateOfBooksByAuthorClass(es *elasticsearch.Client, author, class string) (*eq.Data, *eq.Query, error) {
@@ -211,7 +211,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass(es *elasticsearch.Client, author, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClass2 根据作者、子类别检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClass2 根据作者、子类别检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class2 string 子类别
 func MonthHistReleaseDateOfBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string) (*eq.Data, *eq.Query, error) {
@@ -226,7 +226,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2(es *elasticsearch.Client, author,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorName 根据作者、书名检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorName 根据作者、书名检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // name string 书名
 func MonthHistReleaseDateOfBooksByAuthorName(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
@@ -239,7 +239,7 @@ func MonthHistReleaseDateOfBooksByAuthorName(es *elasticsearch.Client, author, n
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorPageCount 根据作者、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorPageCount 根据作者、页数检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // pageCount int64 页数
 func MonthHistReleaseDateOfBooksByAuthorPageCount(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -254,7 +254,7 @@ func MonthHistReleaseDateOfBooksByAuthorPageCount(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorPrice 根据作者、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorPrice 根据作者、价格检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // price float64 价格
 func MonthHistReleaseDateOfBooksByAuthorPrice(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
@@ -269,7 +269,7 @@ func MonthHistReleaseDateOfBooksByAuthorPrice(es *elasticsearch.Client, author s
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorSeq 根据作者、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorSeq 根据作者、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // seq string 编号
 func MonthHistReleaseDateOfBooksByAuthorSeq(es *elasticsearch.Client, author, seq string) (*eq.Data, *eq.Query, error) {
@@ -284,7 +284,7 @@ func MonthHistReleaseDateOfBooksByAuthorSeq(es *elasticsearch.Client, author, se
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassClass2 根据类别、子类别检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassClass2 根据类别、子类别检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // class2 string 子类别
 func MonthHistReleaseDateOfBooksByClassClass2(es *elasticsearch.Client, class, class2 string) (*eq.Data, *eq.Query, error) {
@@ -297,7 +297,7 @@ func MonthHistReleaseDateOfBooksByClassClass2(es *elasticsearch.Client, class, c
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassName 根据类别、书名检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassName 根据类别、书名检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // name string 书名
 func MonthHistReleaseDateOfBooksByClassName(es *elasticsearch.Client, class, name string) (*eq.Data, *eq.Query, error) {
@@ -312,7 +312,7 @@ func MonthHistReleaseDateOfBooksByClassName(es *elasticsearch.Client, class, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassPageCount 根据类别、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassPageCount 根据类别、页数检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // pageCount int64 页数
 func MonthHistReleaseDateOfBooksByClassPageCount(es *elasticsearch.Client, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -325,7 +325,7 @@ func MonthHistReleaseDateOfBooksByClassPageCount(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassPrice 根据类别、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassPrice 根据类别、价格检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // price float64 价格
 func MonthHistReleaseDateOfBooksByClassPrice(es *elasticsearch.Client, class string, price float64) (*eq.Data, *eq.Query, error) {
@@ -338,7 +338,7 @@ func MonthHistReleaseDateOfBooksByClassPrice(es *elasticsearch.Client, class str
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassSeq 根据类别、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassSeq 根据类别、编号检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // seq string 编号
 func MonthHistReleaseDateOfBooksByClassSeq(es *elasticsearch.Client, class, seq string) (*eq.Data, *eq.Query, error) {
@@ -351,7 +351,7 @@ func MonthHistReleaseDateOfBooksByClassSeq(es *elasticsearch.Client, class, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass2Name 根据子类别、书名检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass2Name 根据子类别、书名检索books表并按发布日期统计每月的数量直方图分布
 // class2 string 子类别
 // name string 书名
 func MonthHistReleaseDateOfBooksByClass2Name(es *elasticsearch.Client, class2, name string) (*eq.Data, *eq.Query, error) {
@@ -366,7 +366,7 @@ func MonthHistReleaseDateOfBooksByClass2Name(es *elasticsearch.Client, class2, n
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass2PageCount 根据子类别、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass2PageCount 根据子类别、页数检索books表并按发布日期统计每月的数量直方图分布
 // class2 string 子类别
 // pageCount int64 页数
 func MonthHistReleaseDateOfBooksByClass2PageCount(es *elasticsearch.Client, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -379,7 +379,7 @@ func MonthHistReleaseDateOfBooksByClass2PageCount(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass2Price 根据子类别、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass2Price 根据子类别、价格检索books表并按发布日期统计每月的数量直方图分布
 // class2 string 子类别
 // price float64 价格
 func MonthHistReleaseDateOfBooksByClass2Price(es *elasticsearch.Client, class2 string, price float64) (*eq.Data, *eq.Query, error) {
@@ -392,7 +392,7 @@ func MonthHistReleaseDateOfBooksByClass2Price(es *elasticsearch.Client, class2 s
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass2Seq 根据子类别、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass2Seq 根据子类别、编号检索books表并按发布日期统计每月的数量直方图分布
 // class2 string 子类别
 // seq string 编号
 func MonthHistReleaseDateOfBooksByClass2Seq(es *elasticsearch.Client, class2, seq string) (*eq.Data, *eq.Query, error) {
@@ -405,7 +405,7 @@ func MonthHistReleaseDateOfBooksByClass2Seq(es *elasticsearch.Client, class2, se
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByNamePageCount 根据书名、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByNamePageCount 根据书名、页数检索books表并按发布日期统计每月的数量直方图分布
 // name string 书名
 // pageCount int64 页数
 func MonthHistReleaseDateOfBooksByNamePageCount(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
@@ -420,7 +420,7 @@ func MonthHistReleaseDateOfBooksByNamePageCount(es *elasticsearch.Client, name s
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByNamePrice 根据书名、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByNamePrice 根据书名、价格检索books表并按发布日期统计每月的数量直方图分布
 // name string 书名
 // price float64 价格
 func MonthHistReleaseDateOfBooksByNamePrice(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
@@ -435,7 +435,7 @@ func MonthHistReleaseDateOfBooksByNamePrice(es *elasticsearch.Client, name strin
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByNameSeq 根据书名、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByNameSeq 根据书名、编号检索books表并按发布日期统计每月的数量直方图分布
 // name string 书名
 // seq string 编号
 func MonthHistReleaseDateOfBooksByNameSeq(es *elasticsearch.Client, name, seq string) (*eq.Data, *eq.Query, error) {
@@ -450,7 +450,7 @@ func MonthHistReleaseDateOfBooksByNameSeq(es *elasticsearch.Client, name, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByPageCountPrice 根据页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByPageCountPrice 根据页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // pageCount int64 页数
 // price float64 价格
 func MonthHistReleaseDateOfBooksByPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
@@ -463,7 +463,7 @@ func MonthHistReleaseDateOfBooksByPageCountPrice(es *elasticsearch.Client, pageC
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByPageCountSeq 根据页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByPageCountSeq 根据页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // pageCount int64 页数
 // seq string 编号
 func MonthHistReleaseDateOfBooksByPageCountSeq(es *elasticsearch.Client, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
@@ -476,7 +476,7 @@ func MonthHistReleaseDateOfBooksByPageCountSeq(es *elasticsearch.Client, pageCou
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByPriceSeq 根据价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByPriceSeq 根据价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // price float64 价格
 // seq string 编号
 func MonthHistReleaseDateOfBooksByPriceSeq(es *elasticsearch.Client, price float64, seq string) (*eq.Data, *eq.Query, error) {
@@ -489,7 +489,7 @@ func MonthHistReleaseDateOfBooksByPriceSeq(es *elasticsearch.Client, price float
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorClass 根据全文本、作者、类别检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorClass 根据全文本、作者、类别检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -506,7 +506,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClass(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorClass2 根据全文本、作者、子类别检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorClass2 根据全文本、作者、子类别检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -523,7 +523,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClass2(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorName 根据全文本、作者、书名检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorName 根据全文本、作者、书名检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -538,7 +538,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorName(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorPageCount 根据全文本、作者、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorPageCount 根据全文本、作者、页数检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -555,7 +555,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorPageCount(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorPrice 根据全文本、作者、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorPrice 根据全文本、作者、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -572,7 +572,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorPrice(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorSeq 根据全文本、作者、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorSeq 根据全文本、作者、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // seq string 编号
@@ -589,7 +589,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorSeq(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClassClass2 根据全文本、类别、子类别检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClassClass2 根据全文本、类别、子类别检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -606,7 +606,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassClass2(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClassName 根据全文本、类别、书名检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClassName 根据全文本、类别、书名检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -623,7 +623,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassName(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClassPageCount 根据全文本、类别、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClassPageCount 根据全文本、类别、页数检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -640,7 +640,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassPageCount(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClassPrice 根据全文本、类别、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClassPrice 根据全文本、类别、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 // price float64 价格
@@ -657,7 +657,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassPrice(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClassSeq 根据全文本、类别、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClassSeq 根据全文本、类别、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 // seq string 编号
@@ -674,7 +674,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassSeq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClass2Name 根据全文本、子类别、书名检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClass2Name 根据全文本、子类别、书名检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -691,7 +691,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2Name(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClass2PageCount 根据全文本、子类别、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClass2PageCount 根据全文本、子类别、页数检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -708,7 +708,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2PageCount(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClass2Price 根据全文本、子类别、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClass2Price 根据全文本、子类别、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
@@ -725,7 +725,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2Price(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClass2Seq 根据全文本、子类别、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClass2Seq 根据全文本、子类别、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // seq string 编号
@@ -742,7 +742,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2Seq(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextNamePageCount 根据全文本、书名、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextNamePageCount 根据全文本、书名、页数检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -759,7 +759,7 @@ func MonthHistReleaseDateOfBooksByAllTextNamePageCount(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextNamePrice 根据全文本、书名、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextNamePrice 根据全文本、书名、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -776,7 +776,7 @@ func MonthHistReleaseDateOfBooksByAllTextNamePrice(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextNameSeq 根据全文本、书名、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextNameSeq 根据全文本、书名、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // name string 书名
 // seq string 编号
@@ -793,7 +793,7 @@ func MonthHistReleaseDateOfBooksByAllTextNameSeq(es *elasticsearch.Client, allTe
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextPageCountPrice 根据全文本、页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextPageCountPrice 根据全文本、页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -810,7 +810,7 @@ func MonthHistReleaseDateOfBooksByAllTextPageCountPrice(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextPageCountSeq 根据全文本、页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextPageCountSeq 根据全文本、页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // pageCount int64 页数
 // seq string 编号
@@ -827,7 +827,7 @@ func MonthHistReleaseDateOfBooksByAllTextPageCountSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextPriceSeq 根据全文本、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextPriceSeq 根据全文本、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // price float64 价格
 // seq string 编号
@@ -844,7 +844,7 @@ func MonthHistReleaseDateOfBooksByAllTextPriceSeq(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClassClass2 根据作者、类别、子类别检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClassClass2 根据作者、类别、子类别检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -861,7 +861,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassClass2(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClassName 根据作者、类别、书名检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClassName 根据作者、类别、书名检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 // name string 书名
@@ -878,7 +878,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassName(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClassPageCount 根据作者、类别、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClassPageCount 根据作者、类别、页数检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -895,7 +895,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassPageCount(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClassPrice 根据作者、类别、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClassPrice 根据作者、类别、价格检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 // price float64 价格
@@ -912,7 +912,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassPrice(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClassSeq 根据作者、类别、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClassSeq 根据作者、类别、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 // seq string 编号
@@ -929,7 +929,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassSeq(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClass2Name 根据作者、子类别、书名检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClass2Name 根据作者、子类别、书名检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -946,7 +946,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2Name(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClass2PageCount 根据作者、子类别、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClass2PageCount 根据作者、子类别、页数检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -963,7 +963,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2PageCount(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClass2Price 根据作者、子类别、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClass2Price 根据作者、子类别、价格检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // price float64 价格
@@ -980,7 +980,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2Price(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClass2Seq 根据作者、子类别、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClass2Seq 根据作者、子类别、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // seq string 编号
@@ -997,7 +997,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2Seq(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorNamePageCount 根据作者、书名、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorNamePageCount 根据作者、书名、页数检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -1014,7 +1014,7 @@ func MonthHistReleaseDateOfBooksByAuthorNamePageCount(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorNamePrice 根据作者、书名、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorNamePrice 根据作者、书名、价格检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -1031,7 +1031,7 @@ func MonthHistReleaseDateOfBooksByAuthorNamePrice(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorNameSeq 根据作者、书名、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorNameSeq 根据作者、书名、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // name string 书名
 // seq string 编号
@@ -1048,7 +1048,7 @@ func MonthHistReleaseDateOfBooksByAuthorNameSeq(es *elasticsearch.Client, author
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorPageCountPrice 根据作者、页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorPageCountPrice 根据作者、页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -1065,7 +1065,7 @@ func MonthHistReleaseDateOfBooksByAuthorPageCountPrice(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorPageCountSeq 根据作者、页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorPageCountSeq 根据作者、页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
@@ -1082,7 +1082,7 @@ func MonthHistReleaseDateOfBooksByAuthorPageCountSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorPriceSeq 根据作者、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorPriceSeq 根据作者、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // price float64 价格
 // seq string 编号
@@ -1099,7 +1099,7 @@ func MonthHistReleaseDateOfBooksByAuthorPriceSeq(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassClass2Name 根据类别、子类别、书名检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassClass2Name 根据类别、子类别、书名检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -1116,7 +1116,7 @@ func MonthHistReleaseDateOfBooksByClassClass2Name(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassClass2PageCount 根据类别、子类别、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassClass2PageCount 根据类别、子类别、页数检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
@@ -1131,7 +1131,7 @@ func MonthHistReleaseDateOfBooksByClassClass2PageCount(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassClass2Price 根据类别、子类别、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassClass2Price 根据类别、子类别、价格检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // price float64 价格
@@ -1146,7 +1146,7 @@ func MonthHistReleaseDateOfBooksByClassClass2Price(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassClass2Seq 根据类别、子类别、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassClass2Seq 根据类别、子类别、编号检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // seq string 编号
@@ -1161,7 +1161,7 @@ func MonthHistReleaseDateOfBooksByClassClass2Seq(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassNamePageCount 根据类别、书名、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassNamePageCount 根据类别、书名、页数检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -1178,7 +1178,7 @@ func MonthHistReleaseDateOfBooksByClassNamePageCount(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassNamePrice 根据类别、书名、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassNamePrice 根据类别、书名、价格检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // name string 书名
 // price float64 价格
@@ -1195,7 +1195,7 @@ func MonthHistReleaseDateOfBooksByClassNamePrice(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassNameSeq 根据类别、书名、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassNameSeq 根据类别、书名、编号检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // name string 书名
 // seq string 编号
@@ -1212,7 +1212,7 @@ func MonthHistReleaseDateOfBooksByClassNameSeq(es *elasticsearch.Client, class, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassPageCountPrice 根据类别、页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassPageCountPrice 根据类别、页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
@@ -1227,7 +1227,7 @@ func MonthHistReleaseDateOfBooksByClassPageCountPrice(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassPageCountSeq 根据类别、页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassPageCountSeq 根据类别、页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // pageCount int64 页数
 // seq string 编号
@@ -1242,7 +1242,7 @@ func MonthHistReleaseDateOfBooksByClassPageCountSeq(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassPriceSeq 根据类别、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassPriceSeq 根据类别、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // price float64 价格
 // seq string 编号
@@ -1257,7 +1257,7 @@ func MonthHistReleaseDateOfBooksByClassPriceSeq(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass2NamePageCount 根据子类别、书名、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass2NamePageCount 根据子类别、书名、页数检索books表并按发布日期统计每月的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -1274,7 +1274,7 @@ func MonthHistReleaseDateOfBooksByClass2NamePageCount(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass2NamePrice 根据子类别、书名、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass2NamePrice 根据子类别、书名、价格检索books表并按发布日期统计每月的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // price float64 价格
@@ -1291,7 +1291,7 @@ func MonthHistReleaseDateOfBooksByClass2NamePrice(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass2NameSeq 根据子类别、书名、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass2NameSeq 根据子类别、书名、编号检索books表并按发布日期统计每月的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // seq string 编号
@@ -1308,7 +1308,7 @@ func MonthHistReleaseDateOfBooksByClass2NameSeq(es *elasticsearch.Client, class2
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass2PageCountPrice 根据子类别、页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass2PageCountPrice 根据子类别、页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
@@ -1323,7 +1323,7 @@ func MonthHistReleaseDateOfBooksByClass2PageCountPrice(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass2PageCountSeq 根据子类别、页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass2PageCountSeq 根据子类别、页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
@@ -1338,7 +1338,7 @@ func MonthHistReleaseDateOfBooksByClass2PageCountSeq(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass2PriceSeq 根据子类别、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass2PriceSeq 根据子类别、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
@@ -1353,7 +1353,7 @@ func MonthHistReleaseDateOfBooksByClass2PriceSeq(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByNamePageCountPrice 根据书名、页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByNamePageCountPrice 根据书名、页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
@@ -1370,7 +1370,7 @@ func MonthHistReleaseDateOfBooksByNamePageCountPrice(es *elasticsearch.Client, n
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByNamePageCountSeq 根据书名、页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByNamePageCountSeq 根据书名、页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
@@ -1387,7 +1387,7 @@ func MonthHistReleaseDateOfBooksByNamePageCountSeq(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByNamePriceSeq 根据书名、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByNamePriceSeq 根据书名、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // name string 书名
 // price float64 价格
 // seq string 编号
@@ -1404,7 +1404,7 @@ func MonthHistReleaseDateOfBooksByNamePriceSeq(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByPageCountPriceSeq 根据页数、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByPageCountPriceSeq 根据页数、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
@@ -1419,7 +1419,7 @@ func MonthHistReleaseDateOfBooksByPageCountPriceSeq(es *elasticsearch.Client, pa
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorClassClass2 根据全文本、作者、类别、子类别检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorClassClass2 根据全文本、作者、类别、子类别检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1438,7 +1438,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClassClass2(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorClassName 根据全文本、作者、类别、书名检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorClassName 根据全文本、作者、类别、书名检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1457,7 +1457,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClassName(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorClassPageCount 根据全文本、作者、类别、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorClassPageCount 根据全文本、作者、类别、页数检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1476,7 +1476,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClassPageCount(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorClassPrice 根据全文本、作者、类别、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorClassPrice 根据全文本、作者、类别、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1495,7 +1495,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClassPrice(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorClassSeq 根据全文本、作者、类别、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorClassSeq 根据全文本、作者、类别、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class string 类别
@@ -1514,7 +1514,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClassSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorClass2Name 根据全文本、作者、子类别、书名检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorClass2Name 根据全文本、作者、子类别、书名检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -1533,7 +1533,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorClass2PageCount 根据全文本、作者、子类别、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorClass2PageCount 根据全文本、作者、子类别、页数检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -1552,7 +1552,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClass2PageCount(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorClass2Price 根据全文本、作者、子类别、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorClass2Price 根据全文本、作者、子类别、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -1571,7 +1571,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClass2Price(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorClass2Seq 根据全文本、作者、子类别、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorClass2Seq 根据全文本、作者、子类别、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
@@ -1590,7 +1590,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorNamePageCount 根据全文本、作者、书名、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorNamePageCount 根据全文本、作者、书名、页数检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -1609,7 +1609,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorNamePageCount(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorNamePrice 根据全文本、作者、书名、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorNamePrice 根据全文本、作者、书名、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -1628,7 +1628,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorNamePrice(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorNameSeq 根据全文本、作者、书名、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorNameSeq 根据全文本、作者、书名、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // name string 书名
@@ -1647,7 +1647,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorPageCountPrice 根据全文本、作者、页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorPageCountPrice 根据全文本、作者、页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -1666,7 +1666,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorPageCountPrice(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorPageCountSeq 根据全文本、作者、页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorPageCountSeq 根据全文本、作者、页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
@@ -1685,7 +1685,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorPageCountSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextAuthorPriceSeq 根据全文本、作者、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextAuthorPriceSeq 根据全文本、作者、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // author string 作者
 // price float64 价格
@@ -1704,7 +1704,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClassClass2Name 根据全文本、类别、子类别、书名检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClassClass2Name 根据全文本、类别、子类别、书名检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -1723,7 +1723,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassClass2Name(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClassClass2PageCount 根据全文本、类别、子类别、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClassClass2PageCount 根据全文本、类别、子类别、页数检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -1742,7 +1742,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassClass2PageCount(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClassClass2Price 根据全文本、类别、子类别、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClassClass2Price 根据全文本、类别、子类别、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -1761,7 +1761,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassClass2Price(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClassClass2Seq 根据全文本、类别、子类别、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClassClass2Seq 根据全文本、类别、子类别、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
@@ -1780,7 +1780,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassClass2Seq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClassNamePageCount 根据全文本、类别、书名、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClassNamePageCount 根据全文本、类别、书名、页数检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -1799,7 +1799,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassNamePageCount(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClassNamePrice 根据全文本、类别、书名、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClassNamePrice 根据全文本、类别、书名、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -1818,7 +1818,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassNamePrice(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClassNameSeq 根据全文本、类别、书名、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClassNameSeq 根据全文本、类别、书名、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 // name string 书名
@@ -1837,7 +1837,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassNameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClassPageCountPrice 根据全文本、类别、页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClassPageCountPrice 根据全文本、类别、页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -1856,7 +1856,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassPageCountPrice(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClassPageCountSeq 根据全文本、类别、页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClassPageCountSeq 根据全文本、类别、页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
@@ -1875,7 +1875,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassPageCountSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClassPriceSeq 根据全文本、类别、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClassPriceSeq 根据全文本、类别、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class string 类别
 // price float64 价格
@@ -1894,7 +1894,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassPriceSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClass2NamePageCount 根据全文本、子类别、书名、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClass2NamePageCount 根据全文本、子类别、书名、页数检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -1913,7 +1913,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2NamePageCount(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClass2NamePrice 根据全文本、子类别、书名、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClass2NamePrice 根据全文本、子类别、书名、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -1932,7 +1932,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2NamePrice(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClass2NameSeq 根据全文本、子类别、书名、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClass2NameSeq 根据全文本、子类别、书名、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
@@ -1951,7 +1951,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2NameSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClass2PageCountPrice 根据全文本、子类别、页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClass2PageCountPrice 根据全文本、子类别、页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -1970,7 +1970,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2PageCountPrice(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClass2PageCountSeq 根据全文本、子类别、页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClass2PageCountSeq 根据全文本、子类别、页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
@@ -1989,7 +1989,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2PageCountSeq(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextClass2PriceSeq 根据全文本、子类别、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextClass2PriceSeq 根据全文本、子类别、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
@@ -2008,7 +2008,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2PriceSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextNamePageCountPrice 根据全文本、书名、页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextNamePageCountPrice 根据全文本、书名、页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -2027,7 +2027,7 @@ func MonthHistReleaseDateOfBooksByAllTextNamePageCountPrice(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextNamePageCountSeq 根据全文本、书名、页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextNamePageCountSeq 根据全文本、书名、页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
@@ -2046,7 +2046,7 @@ func MonthHistReleaseDateOfBooksByAllTextNamePageCountSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextNamePriceSeq 根据全文本、书名、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextNamePriceSeq 根据全文本、书名、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // name string 书名
 // price float64 价格
@@ -2065,7 +2065,7 @@ func MonthHistReleaseDateOfBooksByAllTextNamePriceSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAllTextPageCountPriceSeq 根据全文本、页数、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAllTextPageCountPriceSeq 根据全文本、页数、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
@@ -2084,7 +2084,7 @@ func MonthHistReleaseDateOfBooksByAllTextPageCountPriceSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClassClass2Name 根据作者、类别、子类别、书名检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClassClass2Name 根据作者、类别、子类别、书名检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -2103,7 +2103,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassClass2Name(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClassClass2PageCount 根据作者、类别、子类别、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClassClass2PageCount 根据作者、类别、子类别、页数检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -2122,7 +2122,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassClass2PageCount(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClassClass2Price 根据作者、类别、子类别、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClassClass2Price 根据作者、类别、子类别、价格检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -2141,7 +2141,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassClass2Price(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClassClass2Seq 根据作者、类别、子类别、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClassClass2Seq 根据作者、类别、子类别、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 // class2 string 子类别
@@ -2160,7 +2160,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassClass2Seq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClassNamePageCount 根据作者、类别、书名、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClassNamePageCount 根据作者、类别、书名、页数检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 // name string 书名
@@ -2179,7 +2179,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassNamePageCount(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClassNamePrice 根据作者、类别、书名、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClassNamePrice 根据作者、类别、书名、价格检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 // name string 书名
@@ -2198,7 +2198,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassNamePrice(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClassNameSeq 根据作者、类别、书名、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClassNameSeq 根据作者、类别、书名、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 // name string 书名
@@ -2217,7 +2217,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassNameSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClassPageCountPrice 根据作者、类别、页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClassPageCountPrice 根据作者、类别、页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -2236,7 +2236,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassPageCountPrice(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClassPageCountSeq 根据作者、类别、页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClassPageCountSeq 根据作者、类别、页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 // pageCount int64 页数
@@ -2255,7 +2255,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassPageCountSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClassPriceSeq 根据作者、类别、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClassPriceSeq 根据作者、类别、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class string 类别
 // price float64 价格
@@ -2274,7 +2274,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassPriceSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClass2NamePageCount 根据作者、子类别、书名、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClass2NamePageCount 根据作者、子类别、书名、页数检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -2293,7 +2293,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2NamePageCount(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClass2NamePrice 根据作者、子类别、书名、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClass2NamePrice 根据作者、子类别、书名、价格检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -2312,7 +2312,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2NamePrice(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClass2NameSeq 根据作者、子类别、书名、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClass2NameSeq 根据作者、子类别、书名、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // name string 书名
@@ -2331,7 +2331,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2NameSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClass2PageCountPrice 根据作者、子类别、页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClass2PageCountPrice 根据作者、子类别、页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -2350,7 +2350,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2PageCountPrice(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClass2PageCountSeq 根据作者、子类别、页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClass2PageCountSeq 根据作者、子类别、页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
@@ -2369,7 +2369,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2PageCountSeq(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorClass2PriceSeq 根据作者、子类别、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorClass2PriceSeq 根据作者、子类别、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // class2 string 子类别
 // price float64 价格
@@ -2388,7 +2388,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2PriceSeq(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorNamePageCountPrice 根据作者、书名、页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorNamePageCountPrice 根据作者、书名、页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -2407,7 +2407,7 @@ func MonthHistReleaseDateOfBooksByAuthorNamePageCountPrice(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorNamePageCountSeq 根据作者、书名、页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorNamePageCountSeq 根据作者、书名、页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // name string 书名
 // pageCount int64 页数
@@ -2426,7 +2426,7 @@ func MonthHistReleaseDateOfBooksByAuthorNamePageCountSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorNamePriceSeq 根据作者、书名、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorNamePriceSeq 根据作者、书名、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // name string 书名
 // price float64 价格
@@ -2445,7 +2445,7 @@ func MonthHistReleaseDateOfBooksByAuthorNamePriceSeq(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByAuthorPageCountPriceSeq 根据作者、页数、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByAuthorPageCountPriceSeq 根据作者、页数、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
@@ -2464,7 +2464,7 @@ func MonthHistReleaseDateOfBooksByAuthorPageCountPriceSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassClass2NamePageCount 根据类别、子类别、书名、页数检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassClass2NamePageCount 根据类别、子类别、书名、页数检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -2483,7 +2483,7 @@ func MonthHistReleaseDateOfBooksByClassClass2NamePageCount(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassClass2NamePrice 根据类别、子类别、书名、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassClass2NamePrice 根据类别、子类别、书名、价格检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -2502,7 +2502,7 @@ func MonthHistReleaseDateOfBooksByClassClass2NamePrice(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassClass2NameSeq 根据类别、子类别、书名、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassClass2NameSeq 根据类别、子类别、书名、编号检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // name string 书名
@@ -2521,7 +2521,7 @@ func MonthHistReleaseDateOfBooksByClassClass2NameSeq(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassClass2PageCountPrice 根据类别、子类别、页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassClass2PageCountPrice 根据类别、子类别、页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
@@ -2538,7 +2538,7 @@ func MonthHistReleaseDateOfBooksByClassClass2PageCountPrice(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassClass2PageCountSeq 根据类别、子类别、页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassClass2PageCountSeq 根据类别、子类别、页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
@@ -2555,7 +2555,7 @@ func MonthHistReleaseDateOfBooksByClassClass2PageCountSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassClass2PriceSeq 根据类别、子类别、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassClass2PriceSeq 根据类别、子类别、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // class2 string 子类别
 // price float64 价格
@@ -2572,7 +2572,7 @@ func MonthHistReleaseDateOfBooksByClassClass2PriceSeq(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassNamePageCountPrice 根据类别、书名、页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassNamePageCountPrice 根据类别、书名、页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -2591,7 +2591,7 @@ func MonthHistReleaseDateOfBooksByClassNamePageCountPrice(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassNamePageCountSeq 根据类别、书名、页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassNamePageCountSeq 根据类别、书名、页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // name string 书名
 // pageCount int64 页数
@@ -2610,7 +2610,7 @@ func MonthHistReleaseDateOfBooksByClassNamePageCountSeq(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassNamePriceSeq 根据类别、书名、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassNamePriceSeq 根据类别、书名、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // name string 书名
 // price float64 价格
@@ -2629,7 +2629,7 @@ func MonthHistReleaseDateOfBooksByClassNamePriceSeq(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClassPageCountPriceSeq 根据类别、页数、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClassPageCountPriceSeq 根据类别、页数、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
@@ -2646,7 +2646,7 @@ func MonthHistReleaseDateOfBooksByClassPageCountPriceSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass2NamePageCountPrice 根据子类别、书名、页数、价格检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass2NamePageCountPrice 根据子类别、书名、页数、价格检索books表并按发布日期统计每月的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -2665,7 +2665,7 @@ func MonthHistReleaseDateOfBooksByClass2NamePageCountPrice(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass2NamePageCountSeq 根据子类别、书名、页数、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass2NamePageCountSeq 根据子类别、书名、页数、编号检索books表并按发布日期统计每月的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
@@ -2684,7 +2684,7 @@ func MonthHistReleaseDateOfBooksByClass2NamePageCountSeq(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass2NamePriceSeq 根据子类别、书名、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass2NamePriceSeq 根据子类别、书名、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // class2 string 子类别
 // name string 书名
 // price float64 价格
@@ -2703,7 +2703,7 @@ func MonthHistReleaseDateOfBooksByClass2NamePriceSeq(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByClass2PageCountPriceSeq 根据子类别、页数、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByClass2PageCountPriceSeq 根据子类别、页数、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
@@ -2720,7 +2720,7 @@ func MonthHistReleaseDateOfBooksByClass2PageCountPriceSeq(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistReleaseDateOfBooksByNamePageCountPriceSeq 根据书名、页数、价格、编号检索books表并按发布日期统计每月的直方图分布
+// MonthHistReleaseDateOfBooksByNamePageCountPriceSeq 根据书名、页数、价格、编号检索books表并按发布日期统计每月的数量直方图分布
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
