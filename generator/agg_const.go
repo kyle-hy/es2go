@@ -23,9 +23,9 @@ var (
 
 // 日期直方图统计聚合
 var (
-	DateHistTypes = []string{"Minute", "Hour", "Day", "Week", "Month", "Quarter", "Year"}
-	DateHistNames = map[string]string{"Minute": "", "Hour": "", "Day": "", "Week": "", "Month": "", "Quarter": "", "Year": ""}
-	DateHistFuncs = map[string]string{"Avg": AggFuncAvg, "Sum": AggFuncSum, "Min": AggFuncMin, "Max": AggFuncMax, "Stats": AggFuncStats}
+	DateHistTypes    = []string{"Minute", "Hour", "Day", "Week", "Month", "Quarter", "Year"}
+	DateHistNames    = map[string]string{"Minute": "每分钟", "Hour": "每小时", "Day": "每天", "Week": "每周", "Month": "每月", "Quarter": "每季度", "Year": "每年"}
+	DateHistInterval = map[string]string{"Minute": "minute", "Hour": "hour", "Day": "day", "Week": "week", "Month": "month", "Quarter": "quarter", "Year": "year"}
 )
 
 // 聚合方式枚举
@@ -39,5 +39,6 @@ const (
 	AggFuncHist     = "eq.HistogramAgg"     // 直方图统计
 	AggFuncDateHist = "eq.DateHistogramAgg" // 日期直方图统计
 
-	AggOptInterval = "eq.WithInterval(histInterval)" // 桶聚合的间隔
+	AggOptInterval         = "eq.WithInterval(histInterval)"   // 桶聚合的间隔
+	AggOptCalendarInterval = "eq.WithCalendarInterval(\"%s\")" // 桶聚合的时间间隔
 )
