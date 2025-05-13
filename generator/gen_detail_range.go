@@ -134,7 +134,9 @@ func getDetailRangeFuncComment(structComment string, fields []*FieldInfo, rangeT
 	paramOpts := utils.Cartesian(fieldParamCmts)
 	if len(funcCmts) == len(paramOpts) {
 		for idx, fc := range funcCmts {
-			funcCmts[idx] = fc + filterParam + strings.TrimSuffix(paramOpts[idx], "\n")
+			pcmt := fc + filterParam + paramOpts[idx]
+			pcmt += "// size int 返回的记录数、默认20"
+			funcCmts[idx] = pcmt
 		}
 	}
 
@@ -152,7 +154,7 @@ func getDetailRangeFuncParams(fields []*FieldInfo, rangeTypes []string, optList 
 
 	funcParams := utils.Cartesian(params)
 	for idx, fp := range funcParams {
-		funcParams[idx] = simplifyParams(cfp + strings.TrimSuffix(fp, ", "))
+		funcParams[idx] = simplifyParams(cfp + fp + "size int")
 	}
 	return funcParams
 }
@@ -175,7 +177,7 @@ func getDetailRangeQuery(fields []*FieldInfo, rangeTypes []string, termInShould 
 	for idx, fq := range funcRanges {
 		fq = WrapTermCond(tq + fq)
 		bq := GenBoolCond(mq, fq, termInShould)
-		esq := GenESQueryCond(bq, "", "", "")
+		esq := GenESQueryCond(bq, "", "", "size")
 		funcRanges[idx] = mq + fq + esq
 	}
 

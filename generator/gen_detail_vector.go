@@ -91,8 +91,9 @@ func getDetailVectorFuncComment(structComment string, fields []*FieldInfo, range
 	// 参数注释部分
 	paramCmt := GenParamCmt(other, false)
 	// 范围条件部分
-	paramCmt += GenParamCmt(types, true)
+	paramCmt += GenParamCmt(types, false)
 	funcCmt += paramCmt
+	funcCmt += "// size int 返回的记录数、默认20"
 	return funcCmt
 }
 
@@ -101,6 +102,7 @@ func getDetailVectorFuncParams(fields []*FieldInfo, rangeTypes []string) string 
 	types, other := FieldFilterByTypes(fields, rangeTypes)
 	fp := GenParam(other, false)
 	fp += GenParam(types, true)
+	fp += ", size int"
 	return fp
 }
 
@@ -110,7 +112,7 @@ func getDetailVectorQuery(fields []*FieldInfo, termInShould bool, rangeTypes []s
 	mq := GenFilterCond(other) // 过滤条件
 	bq := GenBoolCond(mq, "", termInShould)
 	kq := GenKnnCond(types, bq)
-	esq := GenESQueryCond("knn", "", "", "")
+	esq := GenESQueryCond("knn", "", "", "size")
 	return mq + kq + esq
 }
 

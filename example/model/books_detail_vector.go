@@ -11,117 +11,127 @@ import (
 
 // KnnBooksByAllVector 对全文本向量进行检索查找books表的详细数据列表和总数量
 // allVector []float32 全文本向量
-func KnnBooksByAllVector(es *elasticsearch.Client, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVector(es *elasticsearch.Client, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	knn := eq.Knn("all_vector", allVector)
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // KnnBooksByAllVectorWithAllText 根据全文本过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // allText string 全文本
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllText(es *elasticsearch.Client, allText string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllText(es *elasticsearch.Client, allText string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // KnnBooksByAllVectorWithAuthor 根据作者过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // author string 作者
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthor(es *elasticsearch.Client, author string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthor(es *elasticsearch.Client, author string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // KnnBooksByAllVectorWithClass 根据类别过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // class string 类别
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass(es *elasticsearch.Client, class string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass(es *elasticsearch.Client, class string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // KnnBooksByAllVectorWithClass2 根据子类别过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // class2 string 子类别
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2(es *elasticsearch.Client, class2 string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2(es *elasticsearch.Client, class2 string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // KnnBooksByAllVectorWithName 根据书名过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // name string 书名
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithName(es *elasticsearch.Client, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithName(es *elasticsearch.Client, name string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // KnnBooksByAllVectorWithPageCount 根据页数过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithPageCount(es *elasticsearch.Client, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithPageCount(es *elasticsearch.Client, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // KnnBooksByAllVectorWithPrice 根据价格过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithPrice(es *elasticsearch.Client, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithPrice(es *elasticsearch.Client, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // KnnBooksByAllVectorWithReleaseDate 根据发布日期过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithReleaseDate(es *elasticsearch.Client, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithReleaseDate(es *elasticsearch.Client, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // KnnBooksByAllVectorWithSeq 根据编号过滤后对全文本向量进行检索查找books表的详细数据列表和总数量
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithSeq(es *elasticsearch.Client, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithSeq(es *elasticsearch.Client, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -129,13 +139,14 @@ func KnnBooksByAllVectorWithSeq(es *elasticsearch.Client, seq string, allVector 
 // allText string 全文本
 // author string 作者
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextAuthor(es *elasticsearch.Client, allText, author string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextAuthor(es *elasticsearch.Client, allText, author string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -143,13 +154,14 @@ func KnnBooksByAllVectorWithAllTextAuthor(es *elasticsearch.Client, allText, aut
 // allText string 全文本
 // class string 类别
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextClass(es *elasticsearch.Client, allText, class string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextClass(es *elasticsearch.Client, allText, class string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("class", class),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -157,13 +169,14 @@ func KnnBooksByAllVectorWithAllTextClass(es *elasticsearch.Client, allText, clas
 // allText string 全文本
 // class2 string 子类别
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextClass2(es *elasticsearch.Client, allText, class2 string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("class2", class2),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -171,13 +184,14 @@ func KnnBooksByAllVectorWithAllTextClass2(es *elasticsearch.Client, allText, cla
 // allText string 全文本
 // name string 书名
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextName(es *elasticsearch.Client, allText, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextName(es *elasticsearch.Client, allText, name string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -185,13 +199,14 @@ func KnnBooksByAllVectorWithAllTextName(es *elasticsearch.Client, allText, name 
 // allText string 全文本
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextPageCount(es *elasticsearch.Client, allText string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextPageCount(es *elasticsearch.Client, allText string, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -199,13 +214,14 @@ func KnnBooksByAllVectorWithAllTextPageCount(es *elasticsearch.Client, allText s
 // allText string 全文本
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextPrice(es *elasticsearch.Client, allText string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextPrice(es *elasticsearch.Client, allText string, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -213,13 +229,14 @@ func KnnBooksByAllVectorWithAllTextPrice(es *elasticsearch.Client, allText strin
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -227,13 +244,14 @@ func KnnBooksByAllVectorWithAllTextReleaseDate(es *elasticsearch.Client, allText
 // allText string 全文本
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextSeq(es *elasticsearch.Client, allText, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextSeq(es *elasticsearch.Client, allText, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -241,13 +259,14 @@ func KnnBooksByAllVectorWithAllTextSeq(es *elasticsearch.Client, allText, seq st
 // author string 作者
 // class string 类别
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorClass(es *elasticsearch.Client, author, class string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorClass(es *elasticsearch.Client, author, class string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("class", class),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -255,13 +274,14 @@ func KnnBooksByAllVectorWithAuthorClass(es *elasticsearch.Client, author, class 
 // author string 作者
 // class2 string 子类别
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorClass2(es *elasticsearch.Client, author, class2 string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorClass2(es *elasticsearch.Client, author, class2 string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("class2", class2),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -269,13 +289,14 @@ func KnnBooksByAllVectorWithAuthorClass2(es *elasticsearch.Client, author, class
 // author string 作者
 // name string 书名
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorName(es *elasticsearch.Client, author, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorName(es *elasticsearch.Client, author, name string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -283,13 +304,14 @@ func KnnBooksByAllVectorWithAuthorName(es *elasticsearch.Client, author, name st
 // author string 作者
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorPageCount(es *elasticsearch.Client, author string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorPageCount(es *elasticsearch.Client, author string, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -297,13 +319,14 @@ func KnnBooksByAllVectorWithAuthorPageCount(es *elasticsearch.Client, author str
 // author string 作者
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorPrice(es *elasticsearch.Client, author string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorPrice(es *elasticsearch.Client, author string, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -311,13 +334,14 @@ func KnnBooksByAllVectorWithAuthorPrice(es *elasticsearch.Client, author string,
 // author string 作者
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -325,13 +349,14 @@ func KnnBooksByAllVectorWithAuthorReleaseDate(es *elasticsearch.Client, author s
 // author string 作者
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorSeq(es *elasticsearch.Client, author, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorSeq(es *elasticsearch.Client, author, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -339,13 +364,14 @@ func KnnBooksByAllVectorWithAuthorSeq(es *elasticsearch.Client, author, seq stri
 // class string 类别
 // class2 string 子类别
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassClass2(es *elasticsearch.Client, class, class2 string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassClass2(es *elasticsearch.Client, class, class2 string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -353,13 +379,14 @@ func KnnBooksByAllVectorWithClassClass2(es *elasticsearch.Client, class, class2 
 // class string 类别
 // name string 书名
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassName(es *elasticsearch.Client, class, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassName(es *elasticsearch.Client, class, name string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Match("name", name),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -367,13 +394,14 @@ func KnnBooksByAllVectorWithClassName(es *elasticsearch.Client, class, name stri
 // class string 类别
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassPageCount(es *elasticsearch.Client, class string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassPageCount(es *elasticsearch.Client, class string, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -381,13 +409,14 @@ func KnnBooksByAllVectorWithClassPageCount(es *elasticsearch.Client, class strin
 // class string 类别
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassPrice(es *elasticsearch.Client, class string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassPrice(es *elasticsearch.Client, class string, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -395,13 +424,14 @@ func KnnBooksByAllVectorWithClassPrice(es *elasticsearch.Client, class string, p
 // class string 类别
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -409,13 +439,14 @@ func KnnBooksByAllVectorWithClassReleaseDate(es *elasticsearch.Client, class str
 // class string 类别
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassSeq(es *elasticsearch.Client, class, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassSeq(es *elasticsearch.Client, class, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -423,13 +454,14 @@ func KnnBooksByAllVectorWithClassSeq(es *elasticsearch.Client, class, seq string
 // class2 string 子类别
 // name string 书名
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2Name(es *elasticsearch.Client, class2, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2Name(es *elasticsearch.Client, class2, name string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Match("name", name),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -437,13 +469,14 @@ func KnnBooksByAllVectorWithClass2Name(es *elasticsearch.Client, class2, name st
 // class2 string 子类别
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2PageCount(es *elasticsearch.Client, class2 string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2PageCount(es *elasticsearch.Client, class2 string, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -451,13 +484,14 @@ func KnnBooksByAllVectorWithClass2PageCount(es *elasticsearch.Client, class2 str
 // class2 string 子类别
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2Price(es *elasticsearch.Client, class2 string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2Price(es *elasticsearch.Client, class2 string, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -465,13 +499,14 @@ func KnnBooksByAllVectorWithClass2Price(es *elasticsearch.Client, class2 string,
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -479,13 +514,14 @@ func KnnBooksByAllVectorWithClass2ReleaseDate(es *elasticsearch.Client, class2 s
 // class2 string 子类别
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2Seq(es *elasticsearch.Client, class2, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2Seq(es *elasticsearch.Client, class2, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -493,13 +529,14 @@ func KnnBooksByAllVectorWithClass2Seq(es *elasticsearch.Client, class2, seq stri
 // name string 书名
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithNamePageCount(es *elasticsearch.Client, name string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithNamePageCount(es *elasticsearch.Client, name string, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -507,13 +544,14 @@ func KnnBooksByAllVectorWithNamePageCount(es *elasticsearch.Client, name string,
 // name string 书名
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithNamePrice(es *elasticsearch.Client, name string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithNamePrice(es *elasticsearch.Client, name string, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -521,13 +559,14 @@ func KnnBooksByAllVectorWithNamePrice(es *elasticsearch.Client, name string, pri
 // name string 书名
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -535,13 +574,14 @@ func KnnBooksByAllVectorWithNameReleaseDate(es *elasticsearch.Client, name strin
 // name string 书名
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithNameSeq(es *elasticsearch.Client, name, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithNameSeq(es *elasticsearch.Client, name, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -549,13 +589,14 @@ func KnnBooksByAllVectorWithNameSeq(es *elasticsearch.Client, name, seq string, 
 // pageCount int64 页数
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -563,13 +604,14 @@ func KnnBooksByAllVectorWithPageCountPrice(es *elasticsearch.Client, pageCount i
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithPageCountReleaseDate(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithPageCountReleaseDate(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -577,13 +619,14 @@ func KnnBooksByAllVectorWithPageCountReleaseDate(es *elasticsearch.Client, pageC
 // pageCount int64 页数
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithPageCountSeq(es *elasticsearch.Client, pageCount int64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithPageCountSeq(es *elasticsearch.Client, pageCount int64, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -591,13 +634,14 @@ func KnnBooksByAllVectorWithPageCountSeq(es *elasticsearch.Client, pageCount int
 // price float64 价格
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithPriceReleaseDate(es *elasticsearch.Client, price float64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithPriceReleaseDate(es *elasticsearch.Client, price float64, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -605,13 +649,14 @@ func KnnBooksByAllVectorWithPriceReleaseDate(es *elasticsearch.Client, price flo
 // price float64 价格
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithPriceSeq(es *elasticsearch.Client, price float64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithPriceSeq(es *elasticsearch.Client, price float64, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -619,13 +664,14 @@ func KnnBooksByAllVectorWithPriceSeq(es *elasticsearch.Client, price float64, se
 // releaseDate time.Time 发布日期
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -634,14 +680,15 @@ func KnnBooksByAllVectorWithReleaseDateSeq(es *elasticsearch.Client, releaseDate
 // author string 作者
 // class string 类别
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 		eq.Term("class", class),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -650,14 +697,15 @@ func KnnBooksByAllVectorWithAllTextAuthorClass(es *elasticsearch.Client, allText
 // author string 作者
 // class2 string 子类别
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 		eq.Term("class2", class2),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -666,14 +714,15 @@ func KnnBooksByAllVectorWithAllTextAuthorClass2(es *elasticsearch.Client, allTex
 // author string 作者
 // name string 书名
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextAuthorName(es *elasticsearch.Client, allText, author, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextAuthorName(es *elasticsearch.Client, allText, author, name string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -682,14 +731,15 @@ func KnnBooksByAllVectorWithAllTextAuthorName(es *elasticsearch.Client, allText,
 // author string 作者
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextAuthorPageCount(es *elasticsearch.Client, allText, author string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextAuthorPageCount(es *elasticsearch.Client, allText, author string, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -698,14 +748,15 @@ func KnnBooksByAllVectorWithAllTextAuthorPageCount(es *elasticsearch.Client, all
 // author string 作者
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextAuthorPrice(es *elasticsearch.Client, allText, author string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextAuthorPrice(es *elasticsearch.Client, allText, author string, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -714,14 +765,15 @@ func KnnBooksByAllVectorWithAllTextAuthorPrice(es *elasticsearch.Client, allText
 // author string 作者
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, author string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, author string, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -730,14 +782,15 @@ func KnnBooksByAllVectorWithAllTextAuthorReleaseDate(es *elasticsearch.Client, a
 // author string 作者
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -746,14 +799,15 @@ func KnnBooksByAllVectorWithAllTextAuthorSeq(es *elasticsearch.Client, allText, 
 // class string 类别
 // class2 string 子类别
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextClassClass2(es *elasticsearch.Client, allText, class, class2 string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextClassClass2(es *elasticsearch.Client, allText, class, class2 string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -762,14 +816,15 @@ func KnnBooksByAllVectorWithAllTextClassClass2(es *elasticsearch.Client, allText
 // class string 类别
 // name string 书名
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextClassName(es *elasticsearch.Client, allText, class, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextClassName(es *elasticsearch.Client, allText, class, name string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("class", class),
 		eq.Match("name", name),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -778,14 +833,15 @@ func KnnBooksByAllVectorWithAllTextClassName(es *elasticsearch.Client, allText, 
 // class string 类别
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextClassPageCount(es *elasticsearch.Client, allText, class string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextClassPageCount(es *elasticsearch.Client, allText, class string, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -794,14 +850,15 @@ func KnnBooksByAllVectorWithAllTextClassPageCount(es *elasticsearch.Client, allT
 // class string 类别
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextClassPrice(es *elasticsearch.Client, allText, class string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextClassPrice(es *elasticsearch.Client, allText, class string, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -810,14 +867,15 @@ func KnnBooksByAllVectorWithAllTextClassPrice(es *elasticsearch.Client, allText,
 // class string 类别
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextClassReleaseDate(es *elasticsearch.Client, allText, class string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextClassReleaseDate(es *elasticsearch.Client, allText, class string, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -826,14 +884,15 @@ func KnnBooksByAllVectorWithAllTextClassReleaseDate(es *elasticsearch.Client, al
 // class string 类别
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextClassSeq(es *elasticsearch.Client, allText, class, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextClassSeq(es *elasticsearch.Client, allText, class, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -842,14 +901,15 @@ func KnnBooksByAllVectorWithAllTextClassSeq(es *elasticsearch.Client, allText, c
 // class2 string 子类别
 // name string 书名
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("class2", class2),
 		eq.Match("name", name),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -858,14 +918,15 @@ func KnnBooksByAllVectorWithAllTextClass2Name(es *elasticsearch.Client, allText,
 // class2 string 子类别
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextClass2PageCount(es *elasticsearch.Client, allText, class2 string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextClass2PageCount(es *elasticsearch.Client, allText, class2 string, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -874,14 +935,15 @@ func KnnBooksByAllVectorWithAllTextClass2PageCount(es *elasticsearch.Client, all
 // class2 string 子类别
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextClass2Price(es *elasticsearch.Client, allText, class2 string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextClass2Price(es *elasticsearch.Client, allText, class2 string, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -890,14 +952,15 @@ func KnnBooksByAllVectorWithAllTextClass2Price(es *elasticsearch.Client, allText
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -906,14 +969,15 @@ func KnnBooksByAllVectorWithAllTextClass2ReleaseDate(es *elasticsearch.Client, a
 // class2 string 子类别
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -922,14 +986,15 @@ func KnnBooksByAllVectorWithAllTextClass2Seq(es *elasticsearch.Client, allText, 
 // name string 书名
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextNamePageCount(es *elasticsearch.Client, allText, name string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextNamePageCount(es *elasticsearch.Client, allText, name string, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -938,14 +1003,15 @@ func KnnBooksByAllVectorWithAllTextNamePageCount(es *elasticsearch.Client, allTe
 // name string 书名
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextNamePrice(es *elasticsearch.Client, allText, name string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextNamePrice(es *elasticsearch.Client, allText, name string, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -954,14 +1020,15 @@ func KnnBooksByAllVectorWithAllTextNamePrice(es *elasticsearch.Client, allText, 
 // name string 书名
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -970,14 +1037,15 @@ func KnnBooksByAllVectorWithAllTextNameReleaseDate(es *elasticsearch.Client, all
 // name string 书名
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -986,14 +1054,15 @@ func KnnBooksByAllVectorWithAllTextNameSeq(es *elasticsearch.Client, allText, na
 // pageCount int64 页数
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextPageCountPrice(es *elasticsearch.Client, allText string, pageCount int64, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextPageCountPrice(es *elasticsearch.Client, allText string, pageCount int64, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1002,14 +1071,15 @@ func KnnBooksByAllVectorWithAllTextPageCountPrice(es *elasticsearch.Client, allT
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextPageCountReleaseDate(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextPageCountReleaseDate(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1018,14 +1088,15 @@ func KnnBooksByAllVectorWithAllTextPageCountReleaseDate(es *elasticsearch.Client
 // pageCount int64 页数
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextPageCountSeq(es *elasticsearch.Client, allText string, pageCount int64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextPageCountSeq(es *elasticsearch.Client, allText string, pageCount int64, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1034,14 +1105,15 @@ func KnnBooksByAllVectorWithAllTextPageCountSeq(es *elasticsearch.Client, allTex
 // price float64 价格
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextPriceReleaseDate(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextPriceReleaseDate(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1050,14 +1122,15 @@ func KnnBooksByAllVectorWithAllTextPriceReleaseDate(es *elasticsearch.Client, al
 // price float64 价格
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextPriceSeq(es *elasticsearch.Client, allText string, price float64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextPriceSeq(es *elasticsearch.Client, allText string, price float64, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1066,14 +1139,15 @@ func KnnBooksByAllVectorWithAllTextPriceSeq(es *elasticsearch.Client, allText st
 // releaseDate time.Time 发布日期
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1082,14 +1156,15 @@ func KnnBooksByAllVectorWithAllTextReleaseDateSeq(es *elasticsearch.Client, allT
 // class string 类别
 // class2 string 子类别
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorClassClass2(es *elasticsearch.Client, author, class, class2 string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorClassClass2(es *elasticsearch.Client, author, class, class2 string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1098,14 +1173,15 @@ func KnnBooksByAllVectorWithAuthorClassClass2(es *elasticsearch.Client, author, 
 // class string 类别
 // name string 书名
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorClassName(es *elasticsearch.Client, author, class, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorClassName(es *elasticsearch.Client, author, class, name string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("class", class),
 		eq.Match("name", name),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1114,14 +1190,15 @@ func KnnBooksByAllVectorWithAuthorClassName(es *elasticsearch.Client, author, cl
 // class string 类别
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorClassPageCount(es *elasticsearch.Client, author, class string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorClassPageCount(es *elasticsearch.Client, author, class string, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1130,14 +1207,15 @@ func KnnBooksByAllVectorWithAuthorClassPageCount(es *elasticsearch.Client, autho
 // class string 类别
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorClassPrice(es *elasticsearch.Client, author, class string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorClassPrice(es *elasticsearch.Client, author, class string, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1146,14 +1224,15 @@ func KnnBooksByAllVectorWithAuthorClassPrice(es *elasticsearch.Client, author, c
 // class string 类别
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorClassReleaseDate(es *elasticsearch.Client, author, class string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorClassReleaseDate(es *elasticsearch.Client, author, class string, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1162,14 +1241,15 @@ func KnnBooksByAllVectorWithAuthorClassReleaseDate(es *elasticsearch.Client, aut
 // class string 类别
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorClassSeq(es *elasticsearch.Client, author, class, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorClassSeq(es *elasticsearch.Client, author, class, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1178,14 +1258,15 @@ func KnnBooksByAllVectorWithAuthorClassSeq(es *elasticsearch.Client, author, cla
 // class2 string 子类别
 // name string 书名
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorClass2Name(es *elasticsearch.Client, author, class2, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorClass2Name(es *elasticsearch.Client, author, class2, name string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("class2", class2),
 		eq.Match("name", name),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1194,14 +1275,15 @@ func KnnBooksByAllVectorWithAuthorClass2Name(es *elasticsearch.Client, author, c
 // class2 string 子类别
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorClass2PageCount(es *elasticsearch.Client, author, class2 string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorClass2PageCount(es *elasticsearch.Client, author, class2 string, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1210,14 +1292,15 @@ func KnnBooksByAllVectorWithAuthorClass2PageCount(es *elasticsearch.Client, auth
 // class2 string 子类别
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorClass2Price(es *elasticsearch.Client, author, class2 string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorClass2Price(es *elasticsearch.Client, author, class2 string, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1226,14 +1309,15 @@ func KnnBooksByAllVectorWithAuthorClass2Price(es *elasticsearch.Client, author, 
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1242,14 +1326,15 @@ func KnnBooksByAllVectorWithAuthorClass2ReleaseDate(es *elasticsearch.Client, au
 // class2 string 子类别
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1258,14 +1343,15 @@ func KnnBooksByAllVectorWithAuthorClass2Seq(es *elasticsearch.Client, author, cl
 // name string 书名
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorNamePageCount(es *elasticsearch.Client, author, name string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorNamePageCount(es *elasticsearch.Client, author, name string, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1274,14 +1360,15 @@ func KnnBooksByAllVectorWithAuthorNamePageCount(es *elasticsearch.Client, author
 // name string 书名
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorNamePrice(es *elasticsearch.Client, author, name string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorNamePrice(es *elasticsearch.Client, author, name string, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1290,14 +1377,15 @@ func KnnBooksByAllVectorWithAuthorNamePrice(es *elasticsearch.Client, author, na
 // name string 书名
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorNameReleaseDate(es *elasticsearch.Client, author, name string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorNameReleaseDate(es *elasticsearch.Client, author, name string, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1306,14 +1394,15 @@ func KnnBooksByAllVectorWithAuthorNameReleaseDate(es *elasticsearch.Client, auth
 // name string 书名
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorNameSeq(es *elasticsearch.Client, author, name, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorNameSeq(es *elasticsearch.Client, author, name, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1322,14 +1411,15 @@ func KnnBooksByAllVectorWithAuthorNameSeq(es *elasticsearch.Client, author, name
 // pageCount int64 页数
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorPageCountPrice(es *elasticsearch.Client, author string, pageCount int64, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorPageCountPrice(es *elasticsearch.Client, author string, pageCount int64, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1338,14 +1428,15 @@ func KnnBooksByAllVectorWithAuthorPageCountPrice(es *elasticsearch.Client, autho
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorPageCountReleaseDate(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorPageCountReleaseDate(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1354,14 +1445,15 @@ func KnnBooksByAllVectorWithAuthorPageCountReleaseDate(es *elasticsearch.Client,
 // pageCount int64 页数
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorPageCountSeq(es *elasticsearch.Client, author string, pageCount int64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorPageCountSeq(es *elasticsearch.Client, author string, pageCount int64, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1370,14 +1462,15 @@ func KnnBooksByAllVectorWithAuthorPageCountSeq(es *elasticsearch.Client, author 
 // price float64 价格
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorPriceReleaseDate(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorPriceReleaseDate(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1386,14 +1479,15 @@ func KnnBooksByAllVectorWithAuthorPriceReleaseDate(es *elasticsearch.Client, aut
 // price float64 价格
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorPriceSeq(es *elasticsearch.Client, author string, price float64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorPriceSeq(es *elasticsearch.Client, author string, price float64, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1402,14 +1496,15 @@ func KnnBooksByAllVectorWithAuthorPriceSeq(es *elasticsearch.Client, author stri
 // releaseDate time.Time 发布日期
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1418,14 +1513,15 @@ func KnnBooksByAllVectorWithAuthorReleaseDateSeq(es *elasticsearch.Client, autho
 // class2 string 子类别
 // name string 书名
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassClass2Name(es *elasticsearch.Client, class, class2, name string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassClass2Name(es *elasticsearch.Client, class, class2, name string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Match("name", name),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1434,14 +1530,15 @@ func KnnBooksByAllVectorWithClassClass2Name(es *elasticsearch.Client, class, cla
 // class2 string 子类别
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassClass2PageCount(es *elasticsearch.Client, class, class2 string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassClass2PageCount(es *elasticsearch.Client, class, class2 string, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1450,14 +1547,15 @@ func KnnBooksByAllVectorWithClassClass2PageCount(es *elasticsearch.Client, class
 // class2 string 子类别
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassClass2Price(es *elasticsearch.Client, class, class2 string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassClass2Price(es *elasticsearch.Client, class, class2 string, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1466,14 +1564,15 @@ func KnnBooksByAllVectorWithClassClass2Price(es *elasticsearch.Client, class, cl
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassClass2ReleaseDate(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassClass2ReleaseDate(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1482,14 +1581,15 @@ func KnnBooksByAllVectorWithClassClass2ReleaseDate(es *elasticsearch.Client, cla
 // class2 string 子类别
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassClass2Seq(es *elasticsearch.Client, class, class2, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassClass2Seq(es *elasticsearch.Client, class, class2, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1498,14 +1598,15 @@ func KnnBooksByAllVectorWithClassClass2Seq(es *elasticsearch.Client, class, clas
 // name string 书名
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassNamePageCount(es *elasticsearch.Client, class, name string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassNamePageCount(es *elasticsearch.Client, class, name string, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Match("name", name),
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1514,14 +1615,15 @@ func KnnBooksByAllVectorWithClassNamePageCount(es *elasticsearch.Client, class, 
 // name string 书名
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassNamePrice(es *elasticsearch.Client, class, name string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassNamePrice(es *elasticsearch.Client, class, name string, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Match("name", name),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1530,14 +1632,15 @@ func KnnBooksByAllVectorWithClassNamePrice(es *elasticsearch.Client, class, name
 // name string 书名
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassNameReleaseDate(es *elasticsearch.Client, class, name string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassNameReleaseDate(es *elasticsearch.Client, class, name string, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Match("name", name),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1546,14 +1649,15 @@ func KnnBooksByAllVectorWithClassNameReleaseDate(es *elasticsearch.Client, class
 // name string 书名
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassNameSeq(es *elasticsearch.Client, class, name, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassNameSeq(es *elasticsearch.Client, class, name, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Match("name", name),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1562,14 +1666,15 @@ func KnnBooksByAllVectorWithClassNameSeq(es *elasticsearch.Client, class, name, 
 // pageCount int64 页数
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassPageCountPrice(es *elasticsearch.Client, class string, pageCount int64, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassPageCountPrice(es *elasticsearch.Client, class string, pageCount int64, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1578,14 +1683,15 @@ func KnnBooksByAllVectorWithClassPageCountPrice(es *elasticsearch.Client, class 
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassPageCountReleaseDate(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassPageCountReleaseDate(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1594,14 +1700,15 @@ func KnnBooksByAllVectorWithClassPageCountReleaseDate(es *elasticsearch.Client, 
 // pageCount int64 页数
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassPageCountSeq(es *elasticsearch.Client, class string, pageCount int64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassPageCountSeq(es *elasticsearch.Client, class string, pageCount int64, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1610,14 +1717,15 @@ func KnnBooksByAllVectorWithClassPageCountSeq(es *elasticsearch.Client, class st
 // price float64 价格
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassPriceReleaseDate(es *elasticsearch.Client, class string, price float64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassPriceReleaseDate(es *elasticsearch.Client, class string, price float64, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1626,14 +1734,15 @@ func KnnBooksByAllVectorWithClassPriceReleaseDate(es *elasticsearch.Client, clas
 // price float64 价格
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassPriceSeq(es *elasticsearch.Client, class string, price float64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassPriceSeq(es *elasticsearch.Client, class string, price float64, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1642,14 +1751,15 @@ func KnnBooksByAllVectorWithClassPriceSeq(es *elasticsearch.Client, class string
 // releaseDate time.Time 发布日期
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClassReleaseDateSeq(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClassReleaseDateSeq(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1658,14 +1768,15 @@ func KnnBooksByAllVectorWithClassReleaseDateSeq(es *elasticsearch.Client, class 
 // name string 书名
 // pageCount int64 页数
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2NamePageCount(es *elasticsearch.Client, class2, name string, pageCount int64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2NamePageCount(es *elasticsearch.Client, class2, name string, pageCount int64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Match("name", name),
 		eq.Term("page_count", pageCount),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1674,14 +1785,15 @@ func KnnBooksByAllVectorWithClass2NamePageCount(es *elasticsearch.Client, class2
 // name string 书名
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2NamePrice(es *elasticsearch.Client, class2, name string, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2NamePrice(es *elasticsearch.Client, class2, name string, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Match("name", name),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1690,14 +1802,15 @@ func KnnBooksByAllVectorWithClass2NamePrice(es *elasticsearch.Client, class2, na
 // name string 书名
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2NameReleaseDate(es *elasticsearch.Client, class2, name string, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2NameReleaseDate(es *elasticsearch.Client, class2, name string, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Match("name", name),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1706,14 +1819,15 @@ func KnnBooksByAllVectorWithClass2NameReleaseDate(es *elasticsearch.Client, clas
 // name string 书名
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2NameSeq(es *elasticsearch.Client, class2, name, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2NameSeq(es *elasticsearch.Client, class2, name, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Match("name", name),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1722,14 +1836,15 @@ func KnnBooksByAllVectorWithClass2NameSeq(es *elasticsearch.Client, class2, name
 // pageCount int64 页数
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2PageCountPrice(es *elasticsearch.Client, class2 string, pageCount int64, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2PageCountPrice(es *elasticsearch.Client, class2 string, pageCount int64, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1738,14 +1853,15 @@ func KnnBooksByAllVectorWithClass2PageCountPrice(es *elasticsearch.Client, class
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2PageCountReleaseDate(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2PageCountReleaseDate(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1754,14 +1870,15 @@ func KnnBooksByAllVectorWithClass2PageCountReleaseDate(es *elasticsearch.Client,
 // pageCount int64 页数
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2PageCountSeq(es *elasticsearch.Client, class2 string, pageCount int64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2PageCountSeq(es *elasticsearch.Client, class2 string, pageCount int64, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1770,14 +1887,15 @@ func KnnBooksByAllVectorWithClass2PageCountSeq(es *elasticsearch.Client, class2 
 // price float64 价格
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2PriceReleaseDate(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2PriceReleaseDate(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1786,14 +1904,15 @@ func KnnBooksByAllVectorWithClass2PriceReleaseDate(es *elasticsearch.Client, cla
 // price float64 价格
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2PriceSeq(es *elasticsearch.Client, class2 string, price float64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2PriceSeq(es *elasticsearch.Client, class2 string, price float64, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1802,14 +1921,15 @@ func KnnBooksByAllVectorWithClass2PriceSeq(es *elasticsearch.Client, class2 stri
 // releaseDate time.Time 发布日期
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1818,14 +1938,15 @@ func KnnBooksByAllVectorWithClass2ReleaseDateSeq(es *elasticsearch.Client, class
 // pageCount int64 页数
 // price float64 价格
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithNamePageCountPrice(es *elasticsearch.Client, name string, pageCount int64, price float64, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithNamePageCountPrice(es *elasticsearch.Client, name string, pageCount int64, price float64, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1834,14 +1955,15 @@ func KnnBooksByAllVectorWithNamePageCountPrice(es *elasticsearch.Client, name st
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithNamePageCountReleaseDate(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithNamePageCountReleaseDate(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1850,14 +1972,15 @@ func KnnBooksByAllVectorWithNamePageCountReleaseDate(es *elasticsearch.Client, n
 // pageCount int64 页数
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithNamePageCountSeq(es *elasticsearch.Client, name string, pageCount int64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithNamePageCountSeq(es *elasticsearch.Client, name string, pageCount int64, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1866,14 +1989,15 @@ func KnnBooksByAllVectorWithNamePageCountSeq(es *elasticsearch.Client, name stri
 // price float64 价格
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithNamePriceReleaseDate(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithNamePriceReleaseDate(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1882,14 +2006,15 @@ func KnnBooksByAllVectorWithNamePriceReleaseDate(es *elasticsearch.Client, name 
 // price float64 价格
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithNamePriceSeq(es *elasticsearch.Client, name string, price float64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithNamePriceSeq(es *elasticsearch.Client, name string, price float64, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1898,14 +2023,15 @@ func KnnBooksByAllVectorWithNamePriceSeq(es *elasticsearch.Client, name string, 
 // releaseDate time.Time 发布日期
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1914,14 +2040,15 @@ func KnnBooksByAllVectorWithNameReleaseDateSeq(es *elasticsearch.Client, name st
 // price float64 价格
 // releaseDate time.Time 发布日期
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithPageCountPriceReleaseDate(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithPageCountPriceReleaseDate(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1930,14 +2057,15 @@ func KnnBooksByAllVectorWithPageCountPriceReleaseDate(es *elasticsearch.Client, 
 // price float64 价格
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithPageCountPriceSeq(es *elasticsearch.Client, pageCount int64, price float64, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithPageCountPriceSeq(es *elasticsearch.Client, pageCount int64, price float64, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1946,14 +2074,15 @@ func KnnBooksByAllVectorWithPageCountPriceSeq(es *elasticsearch.Client, pageCoun
 // releaseDate time.Time 发布日期
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithPageCountReleaseDateSeq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithPageCountReleaseDateSeq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1962,13 +2091,14 @@ func KnnBooksByAllVectorWithPageCountReleaseDateSeq(es *elasticsearch.Client, pa
 // releaseDate time.Time 发布日期
 // seq string 编号
 // allVector []float32 全文本向量
-func KnnBooksByAllVectorWithPriceReleaseDateSeq(es *elasticsearch.Client, price float64, releaseDate time.Time, seq string, allVector []float32) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func KnnBooksByAllVectorWithPriceReleaseDateSeq(es *elasticsearch.Client, price float64, releaseDate time.Time, seq string, allVector []float32, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	knn := eq.Knn("all_vector", allVector, eq.WithFilter(eq.Bool(eq.WithMust(matches))))
-	esQuery := &eq.ESQuery{Query: knn}
+	esQuery := &eq.ESQuery{Query: knn, Size: size}
 	return queryBooksList(es, esQuery)
 }
