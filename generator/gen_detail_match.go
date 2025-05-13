@@ -54,7 +54,8 @@ func getDetailMatchFuncComment(structComment string, fields []*FieldInfo) string
 	cmt += "进行检索(等于)查找" + structComment + "的详细数据列表和总数量\n"
 
 	// 参数注释
-	cmt += GenParamCmt(fields, true)
+	cmt += GenParamCmt(fields, false)
+	cmt += "// size int 返回的记录数、默认20"
 
 	return cmt
 }
@@ -62,7 +63,8 @@ func getDetailMatchFuncComment(structComment string, fields []*FieldInfo) string
 // getDetailMatchFuncParams 获取函数参数列表
 func getDetailMatchFuncParams(fields []*FieldInfo) string {
 	fp := GenParam(fields, true)
-	return fp
+	fp += ", size int"
+	return simplifyParams(fp)
 }
 
 // getDetailMatchQuery 获取函数的查找条件
@@ -75,7 +77,7 @@ func getDetailMatchQuery(fields []*FieldInfo, termInShould bool) string {
 
 	// bool部分参数
 	bq := GenBoolCond(mq, tq, termInShould)
-	esq := GenESQueryCond(bq, "", "", "")
+	esq := GenESQueryCond(bq, "", "", "size")
 
 	// 拼接match和term条件
 	fq := mq + tq + esq

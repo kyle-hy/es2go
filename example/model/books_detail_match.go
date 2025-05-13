@@ -11,559 +11,604 @@ import (
 
 // MatchBooksByAllText 根据全文本进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
-func MatchBooksByAllText(es *elasticsearch.Client, allText string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllText(es *elasticsearch.Client, allText string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAuthor 根据作者进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
-func MatchBooksByAuthor(es *elasticsearch.Client, author string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthor(es *elasticsearch.Client, author string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByClass 根据类别进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
-func MatchBooksByClass(es *elasticsearch.Client, class string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass(es *elasticsearch.Client, class string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByClass2 根据子类别进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
-func MatchBooksByClass2(es *elasticsearch.Client, class2 string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2(es *elasticsearch.Client, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByName 根据书名进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
-func MatchBooksByName(es *elasticsearch.Client, name string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByName(es *elasticsearch.Client, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByPageCount 根据页数进行检索(等于)查找books表的详细数据列表和总数量
 // pageCount int64 页数
-func MatchBooksByPageCount(es *elasticsearch.Client, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByPageCount(es *elasticsearch.Client, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByPrice 根据价格进行检索(等于)查找books表的详细数据列表和总数量
 // price float64 价格
-func MatchBooksByPrice(es *elasticsearch.Client, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByPrice(es *elasticsearch.Client, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByReleaseDate 根据发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // releaseDate time.Time 发布日期
-func MatchBooksByReleaseDate(es *elasticsearch.Client, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByReleaseDate(es *elasticsearch.Client, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksBySeq 根据编号进行检索(等于)查找books表的详细数据列表和总数量
 // seq string 编号
-func MatchBooksBySeq(es *elasticsearch.Client, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksBySeq(es *elasticsearch.Client, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAllTextAuthor 根据全文本、作者进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // author string 作者
-func MatchBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAllTextClass 根据全文本、类别进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class string 类别
-func MatchBooksByAllTextClass(es *elasticsearch.Client, allText, class string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass(es *elasticsearch.Client, allText, class string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAllTextClass2 根据全文本、子类别进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // class2 string 子类别
-func MatchBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAllTextName 根据全文本、书名进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // name string 书名
-func MatchBooksByAllTextName(es *elasticsearch.Client, allText, name string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextName(es *elasticsearch.Client, allText, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAllTextPageCount 根据全文本、页数进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // pageCount int64 页数
-func MatchBooksByAllTextPageCount(es *elasticsearch.Client, allText string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextPageCount(es *elasticsearch.Client, allText string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAllTextPrice 根据全文本、价格进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // price float64 价格
-func MatchBooksByAllTextPrice(es *elasticsearch.Client, allText string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextPrice(es *elasticsearch.Client, allText string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAllTextReleaseDate 根据全文本、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAllTextSeq 根据全文本、编号进行检索(等于)查找books表的详细数据列表和总数量
 // allText string 全文本
 // seq string 编号
-func MatchBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAuthorClass 根据作者、类别进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class string 类别
-func MatchBooksByAuthorClass(es *elasticsearch.Client, author, class string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass(es *elasticsearch.Client, author, class string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAuthorClass2 根据作者、子类别进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // class2 string 子类别
-func MatchBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAuthorName 根据作者、书名进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // name string 书名
-func MatchBooksByAuthorName(es *elasticsearch.Client, author, name string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorName(es *elasticsearch.Client, author, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAuthorPageCount 根据作者、页数进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // pageCount int64 页数
-func MatchBooksByAuthorPageCount(es *elasticsearch.Client, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorPageCount(es *elasticsearch.Client, author string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAuthorPrice 根据作者、价格进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // price float64 价格
-func MatchBooksByAuthorPrice(es *elasticsearch.Client, author string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorPrice(es *elasticsearch.Client, author string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAuthorReleaseDate 根据作者、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByAuthorSeq 根据作者、编号进行检索(等于)查找books表的详细数据列表和总数量
 // author string 作者
 // seq string 编号
-func MatchBooksByAuthorSeq(es *elasticsearch.Client, author, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorSeq(es *elasticsearch.Client, author, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByClassClass2 根据类别、子类别进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // class2 string 子类别
-func MatchBooksByClassClass2(es *elasticsearch.Client, class, class2 string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2(es *elasticsearch.Client, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByClassName 根据类别、书名进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // name string 书名
-func MatchBooksByClassName(es *elasticsearch.Client, class, name string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassName(es *elasticsearch.Client, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByClassPageCount 根据类别、页数进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // pageCount int64 页数
-func MatchBooksByClassPageCount(es *elasticsearch.Client, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassPageCount(es *elasticsearch.Client, class string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByClassPrice 根据类别、价格进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // price float64 价格
-func MatchBooksByClassPrice(es *elasticsearch.Client, class string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassPrice(es *elasticsearch.Client, class string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByClassReleaseDate 根据类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // releaseDate time.Time 发布日期
-func MatchBooksByClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByClassSeq 根据类别、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class string 类别
 // seq string 编号
-func MatchBooksByClassSeq(es *elasticsearch.Client, class, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassSeq(es *elasticsearch.Client, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByClass2Name 根据子类别、书名进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // name string 书名
-func MatchBooksByClass2Name(es *elasticsearch.Client, class2, name string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2Name(es *elasticsearch.Client, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByClass2PageCount 根据子类别、页数进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByClass2PageCount(es *elasticsearch.Client, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2PageCount(es *elasticsearch.Client, class2 string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByClass2Price 根据子类别、价格进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByClass2Price(es *elasticsearch.Client, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2Price(es *elasticsearch.Client, class2 string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByClass2ReleaseDate 根据子类别、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByClass2Seq 根据子类别、编号进行检索(等于)查找books表的详细数据列表和总数量
 // class2 string 子类别
 // seq string 编号
-func MatchBooksByClass2Seq(es *elasticsearch.Client, class2, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2Seq(es *elasticsearch.Client, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByNamePageCount 根据书名、页数进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByNamePageCount(es *elasticsearch.Client, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByNamePageCount(es *elasticsearch.Client, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByNamePrice 根据书名、价格进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // price float64 价格
-func MatchBooksByNamePrice(es *elasticsearch.Client, name string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByNamePrice(es *elasticsearch.Client, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByNameReleaseDate 根据书名、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByNameSeq 根据书名、编号进行检索(等于)查找books表的详细数据列表和总数量
 // name string 书名
 // seq string 编号
-func MatchBooksByNameSeq(es *elasticsearch.Client, name, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByNameSeq(es *elasticsearch.Client, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByPageCountPrice 根据页数、价格进行检索(等于)查找books表的详细数据列表和总数量
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByPageCountPrice(es *elasticsearch.Client, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByPageCountReleaseDate 根据页数、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByPageCountReleaseDate(es *elasticsearch.Client, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByPageCountReleaseDate(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByPageCountSeq 根据页数、编号进行检索(等于)查找books表的详细数据列表和总数量
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByPageCountSeq(es *elasticsearch.Client, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByPageCountSeq(es *elasticsearch.Client, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByPriceReleaseDate 根据价格、发布日期进行检索(等于)查找books表的详细数据列表和总数量
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByPriceReleaseDate(es *elasticsearch.Client, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByPriceReleaseDate(es *elasticsearch.Client, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByPriceSeq 根据价格、编号进行检索(等于)查找books表的详细数据列表和总数量
 // price float64 价格
 // seq string 编号
-func MatchBooksByPriceSeq(es *elasticsearch.Client, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByPriceSeq(es *elasticsearch.Client, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
 // MatchBooksByReleaseDateSeq 根据发布日期、编号进行检索(等于)查找books表的详细数据列表和总数量
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -571,7 +616,8 @@ func MatchBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time,
 // allText string 全文本
 // author string 作者
 // class string 类别
-func MatchBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -579,7 +625,7 @@ func MatchBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, author, c
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -587,7 +633,8 @@ func MatchBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, author, c
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
-func MatchBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -595,7 +642,7 @@ func MatchBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText, author, 
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -603,13 +650,14 @@ func MatchBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText, author, 
 // allText string 全文本
 // author string 作者
 // name string 书名
-func MatchBooksByAllTextAuthorName(es *elasticsearch.Client, allText, author, name string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorName(es *elasticsearch.Client, allText, author, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -617,7 +665,8 @@ func MatchBooksByAllTextAuthorName(es *elasticsearch.Client, allText, author, na
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
-func MatchBooksByAllTextAuthorPageCount(es *elasticsearch.Client, allText, author string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorPageCount(es *elasticsearch.Client, allText, author string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -625,7 +674,7 @@ func MatchBooksByAllTextAuthorPageCount(es *elasticsearch.Client, allText, autho
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -633,7 +682,8 @@ func MatchBooksByAllTextAuthorPageCount(es *elasticsearch.Client, allText, autho
 // allText string 全文本
 // author string 作者
 // price float64 价格
-func MatchBooksByAllTextAuthorPrice(es *elasticsearch.Client, allText, author string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorPrice(es *elasticsearch.Client, allText, author string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -641,7 +691,7 @@ func MatchBooksByAllTextAuthorPrice(es *elasticsearch.Client, allText, author st
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -649,7 +699,8 @@ func MatchBooksByAllTextAuthorPrice(es *elasticsearch.Client, allText, author st
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, author string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, author string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -657,7 +708,7 @@ func MatchBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, aut
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -665,7 +716,8 @@ func MatchBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, aut
 // allText string 全文本
 // author string 作者
 // seq string 编号
-func MatchBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -673,7 +725,7 @@ func MatchBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -681,7 +733,8 @@ func MatchBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
-func MatchBooksByAllTextClassClass2(es *elasticsearch.Client, allText, class, class2 string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassClass2(es *elasticsearch.Client, allText, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -689,7 +742,7 @@ func MatchBooksByAllTextClassClass2(es *elasticsearch.Client, allText, class, cl
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -697,7 +750,8 @@ func MatchBooksByAllTextClassClass2(es *elasticsearch.Client, allText, class, cl
 // allText string 全文本
 // class string 类别
 // name string 书名
-func MatchBooksByAllTextClassName(es *elasticsearch.Client, allText, class, name string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassName(es *elasticsearch.Client, allText, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -705,7 +759,7 @@ func MatchBooksByAllTextClassName(es *elasticsearch.Client, allText, class, name
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -713,7 +767,8 @@ func MatchBooksByAllTextClassName(es *elasticsearch.Client, allText, class, name
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
-func MatchBooksByAllTextClassPageCount(es *elasticsearch.Client, allText, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassPageCount(es *elasticsearch.Client, allText, class string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -721,7 +776,7 @@ func MatchBooksByAllTextClassPageCount(es *elasticsearch.Client, allText, class 
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -729,7 +784,8 @@ func MatchBooksByAllTextClassPageCount(es *elasticsearch.Client, allText, class 
 // allText string 全文本
 // class string 类别
 // price float64 价格
-func MatchBooksByAllTextClassPrice(es *elasticsearch.Client, allText, class string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassPrice(es *elasticsearch.Client, allText, class string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -737,7 +793,7 @@ func MatchBooksByAllTextClassPrice(es *elasticsearch.Client, allText, class stri
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -745,7 +801,8 @@ func MatchBooksByAllTextClassPrice(es *elasticsearch.Client, allText, class stri
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allText, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allText, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -753,7 +810,7 @@ func MatchBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allText, clas
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -761,7 +818,8 @@ func MatchBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allText, clas
 // allText string 全文本
 // class string 类别
 // seq string 编号
-func MatchBooksByAllTextClassSeq(es *elasticsearch.Client, allText, class, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassSeq(es *elasticsearch.Client, allText, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -769,7 +827,7 @@ func MatchBooksByAllTextClassSeq(es *elasticsearch.Client, allText, class, seq s
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -777,7 +835,8 @@ func MatchBooksByAllTextClassSeq(es *elasticsearch.Client, allText, class, seq s
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
-func MatchBooksByAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -785,7 +844,7 @@ func MatchBooksByAllTextClass2Name(es *elasticsearch.Client, allText, class2, na
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -793,7 +852,8 @@ func MatchBooksByAllTextClass2Name(es *elasticsearch.Client, allText, class2, na
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByAllTextClass2PageCount(es *elasticsearch.Client, allText, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2PageCount(es *elasticsearch.Client, allText, class2 string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -801,7 +861,7 @@ func MatchBooksByAllTextClass2PageCount(es *elasticsearch.Client, allText, class
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -809,7 +869,8 @@ func MatchBooksByAllTextClass2PageCount(es *elasticsearch.Client, allText, class
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByAllTextClass2Price(es *elasticsearch.Client, allText, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2Price(es *elasticsearch.Client, allText, class2 string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -817,7 +878,7 @@ func MatchBooksByAllTextClass2Price(es *elasticsearch.Client, allText, class2 st
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -825,7 +886,8 @@ func MatchBooksByAllTextClass2Price(es *elasticsearch.Client, allText, class2 st
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -833,7 +895,7 @@ func MatchBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, cla
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -841,7 +903,8 @@ func MatchBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, cla
 // allText string 全文本
 // class2 string 子类别
 // seq string 编号
-func MatchBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -849,7 +912,7 @@ func MatchBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -857,7 +920,8 @@ func MatchBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAllTextNamePageCount(es *elasticsearch.Client, allText, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextNamePageCount(es *elasticsearch.Client, allText, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -865,7 +929,7 @@ func MatchBooksByAllTextNamePageCount(es *elasticsearch.Client, allText, name st
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -873,7 +937,8 @@ func MatchBooksByAllTextNamePageCount(es *elasticsearch.Client, allText, name st
 // allText string 全文本
 // name string 书名
 // price float64 价格
-func MatchBooksByAllTextNamePrice(es *elasticsearch.Client, allText, name string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextNamePrice(es *elasticsearch.Client, allText, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -881,7 +946,7 @@ func MatchBooksByAllTextNamePrice(es *elasticsearch.Client, allText, name string
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -889,7 +954,8 @@ func MatchBooksByAllTextNamePrice(es *elasticsearch.Client, allText, name string
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -897,7 +963,7 @@ func MatchBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name 
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -905,7 +971,8 @@ func MatchBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name 
 // allText string 全文本
 // name string 书名
 // seq string 编号
-func MatchBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -913,7 +980,7 @@ func MatchBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name, seq str
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -921,7 +988,8 @@ func MatchBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name, seq str
 // allText string 全文本
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextPageCountPrice(es *elasticsearch.Client, allText string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextPageCountPrice(es *elasticsearch.Client, allText string, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -929,7 +997,7 @@ func MatchBooksByAllTextPageCountPrice(es *elasticsearch.Client, allText string,
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -937,7 +1005,8 @@ func MatchBooksByAllTextPageCountPrice(es *elasticsearch.Client, allText string,
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountReleaseDate(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextPageCountReleaseDate(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -945,7 +1014,7 @@ func MatchBooksByAllTextPageCountReleaseDate(es *elasticsearch.Client, allText s
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -953,7 +1022,8 @@ func MatchBooksByAllTextPageCountReleaseDate(es *elasticsearch.Client, allText s
 // allText string 全文本
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAllTextPageCountSeq(es *elasticsearch.Client, allText string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextPageCountSeq(es *elasticsearch.Client, allText string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -961,7 +1031,7 @@ func MatchBooksByAllTextPageCountSeq(es *elasticsearch.Client, allText string, p
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -969,7 +1039,8 @@ func MatchBooksByAllTextPageCountSeq(es *elasticsearch.Client, allText string, p
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextPriceReleaseDate(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextPriceReleaseDate(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -977,7 +1048,7 @@ func MatchBooksByAllTextPriceReleaseDate(es *elasticsearch.Client, allText strin
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -985,7 +1056,8 @@ func MatchBooksByAllTextPriceReleaseDate(es *elasticsearch.Client, allText strin
 // allText string 全文本
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextPriceSeq(es *elasticsearch.Client, allText string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextPriceSeq(es *elasticsearch.Client, allText string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -993,7 +1065,7 @@ func MatchBooksByAllTextPriceSeq(es *elasticsearch.Client, allText string, price
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1001,7 +1073,8 @@ func MatchBooksByAllTextPriceSeq(es *elasticsearch.Client, allText string, price
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -1009,7 +1082,7 @@ func MatchBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string,
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1017,7 +1090,8 @@ func MatchBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string,
 // author string 作者
 // class string 类别
 // class2 string 子类别
-func MatchBooksByAuthorClassClass2(es *elasticsearch.Client, author, class, class2 string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassClass2(es *elasticsearch.Client, author, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1025,7 +1099,7 @@ func MatchBooksByAuthorClassClass2(es *elasticsearch.Client, author, class, clas
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1033,7 +1107,8 @@ func MatchBooksByAuthorClassClass2(es *elasticsearch.Client, author, class, clas
 // author string 作者
 // class string 类别
 // name string 书名
-func MatchBooksByAuthorClassName(es *elasticsearch.Client, author, class, name string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassName(es *elasticsearch.Client, author, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -1041,7 +1116,7 @@ func MatchBooksByAuthorClassName(es *elasticsearch.Client, author, class, name s
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1049,7 +1124,8 @@ func MatchBooksByAuthorClassName(es *elasticsearch.Client, author, class, name s
 // author string 作者
 // class string 类别
 // pageCount int64 页数
-func MatchBooksByAuthorClassPageCount(es *elasticsearch.Client, author, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassPageCount(es *elasticsearch.Client, author, class string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1057,7 +1133,7 @@ func MatchBooksByAuthorClassPageCount(es *elasticsearch.Client, author, class st
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1065,7 +1141,8 @@ func MatchBooksByAuthorClassPageCount(es *elasticsearch.Client, author, class st
 // author string 作者
 // class string 类别
 // price float64 价格
-func MatchBooksByAuthorClassPrice(es *elasticsearch.Client, author, class string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassPrice(es *elasticsearch.Client, author, class string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1073,7 +1150,7 @@ func MatchBooksByAuthorClassPrice(es *elasticsearch.Client, author, class string
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1081,7 +1158,8 @@ func MatchBooksByAuthorClassPrice(es *elasticsearch.Client, author, class string
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassReleaseDate(es *elasticsearch.Client, author, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassReleaseDate(es *elasticsearch.Client, author, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1089,7 +1167,7 @@ func MatchBooksByAuthorClassReleaseDate(es *elasticsearch.Client, author, class 
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1097,7 +1175,8 @@ func MatchBooksByAuthorClassReleaseDate(es *elasticsearch.Client, author, class 
 // author string 作者
 // class string 类别
 // seq string 编号
-func MatchBooksByAuthorClassSeq(es *elasticsearch.Client, author, class, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassSeq(es *elasticsearch.Client, author, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1105,7 +1184,7 @@ func MatchBooksByAuthorClassSeq(es *elasticsearch.Client, author, class, seq str
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1113,7 +1192,8 @@ func MatchBooksByAuthorClassSeq(es *elasticsearch.Client, author, class, seq str
 // author string 作者
 // class2 string 子类别
 // name string 书名
-func MatchBooksByAuthorClass2Name(es *elasticsearch.Client, author, class2, name string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2Name(es *elasticsearch.Client, author, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -1121,7 +1201,7 @@ func MatchBooksByAuthorClass2Name(es *elasticsearch.Client, author, class2, name
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1129,7 +1209,8 @@ func MatchBooksByAuthorClass2Name(es *elasticsearch.Client, author, class2, name
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByAuthorClass2PageCount(es *elasticsearch.Client, author, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2PageCount(es *elasticsearch.Client, author, class2 string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1137,7 +1218,7 @@ func MatchBooksByAuthorClass2PageCount(es *elasticsearch.Client, author, class2 
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1145,7 +1226,8 @@ func MatchBooksByAuthorClass2PageCount(es *elasticsearch.Client, author, class2 
 // author string 作者
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByAuthorClass2Price(es *elasticsearch.Client, author, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2Price(es *elasticsearch.Client, author, class2 string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1153,7 +1235,7 @@ func MatchBooksByAuthorClass2Price(es *elasticsearch.Client, author, class2 stri
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1161,7 +1243,8 @@ func MatchBooksByAuthorClass2Price(es *elasticsearch.Client, author, class2 stri
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1169,7 +1252,7 @@ func MatchBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1177,7 +1260,8 @@ func MatchBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class
 // author string 作者
 // class2 string 子类别
 // seq string 编号
-func MatchBooksByAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1185,7 +1269,7 @@ func MatchBooksByAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq s
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1193,7 +1277,8 @@ func MatchBooksByAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq s
 // author string 作者
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAuthorNamePageCount(es *elasticsearch.Client, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorNamePageCount(es *elasticsearch.Client, author, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -1201,7 +1286,7 @@ func MatchBooksByAuthorNamePageCount(es *elasticsearch.Client, author, name stri
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1209,7 +1294,8 @@ func MatchBooksByAuthorNamePageCount(es *elasticsearch.Client, author, name stri
 // author string 作者
 // name string 书名
 // price float64 价格
-func MatchBooksByAuthorNamePrice(es *elasticsearch.Client, author, name string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorNamePrice(es *elasticsearch.Client, author, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -1217,7 +1303,7 @@ func MatchBooksByAuthorNamePrice(es *elasticsearch.Client, author, name string, 
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1225,7 +1311,8 @@ func MatchBooksByAuthorNamePrice(es *elasticsearch.Client, author, name string, 
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -1233,7 +1320,7 @@ func MatchBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name st
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1241,7 +1328,8 @@ func MatchBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name st
 // author string 作者
 // name string 书名
 // seq string 编号
-func MatchBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -1249,7 +1337,7 @@ func MatchBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, seq strin
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1257,7 +1345,8 @@ func MatchBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, seq strin
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAuthorPageCountPrice(es *elasticsearch.Client, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorPageCountPrice(es *elasticsearch.Client, author string, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1265,7 +1354,7 @@ func MatchBooksByAuthorPageCountPrice(es *elasticsearch.Client, author string, p
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1273,7 +1362,8 @@ func MatchBooksByAuthorPageCountPrice(es *elasticsearch.Client, author string, p
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountReleaseDate(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorPageCountReleaseDate(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1281,7 +1371,7 @@ func MatchBooksByAuthorPageCountReleaseDate(es *elasticsearch.Client, author str
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1289,7 +1379,8 @@ func MatchBooksByAuthorPageCountReleaseDate(es *elasticsearch.Client, author str
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAuthorPageCountSeq(es *elasticsearch.Client, author string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorPageCountSeq(es *elasticsearch.Client, author string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1297,7 +1388,7 @@ func MatchBooksByAuthorPageCountSeq(es *elasticsearch.Client, author string, pag
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1305,7 +1396,8 @@ func MatchBooksByAuthorPageCountSeq(es *elasticsearch.Client, author string, pag
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorPriceReleaseDate(es *elasticsearch.Client, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorPriceReleaseDate(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1313,7 +1405,7 @@ func MatchBooksByAuthorPriceReleaseDate(es *elasticsearch.Client, author string,
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1321,7 +1413,8 @@ func MatchBooksByAuthorPriceReleaseDate(es *elasticsearch.Client, author string,
 // author string 作者
 // price float64 价格
 // seq string 编号
-func MatchBooksByAuthorPriceSeq(es *elasticsearch.Client, author string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorPriceSeq(es *elasticsearch.Client, author string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1329,7 +1422,7 @@ func MatchBooksByAuthorPriceSeq(es *elasticsearch.Client, author string, price f
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1337,7 +1430,8 @@ func MatchBooksByAuthorPriceSeq(es *elasticsearch.Client, author string, price f
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1345,7 +1439,7 @@ func MatchBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, r
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1353,7 +1447,8 @@ func MatchBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, r
 // class string 类别
 // class2 string 子类别
 // name string 书名
-func MatchBooksByClassClass2Name(es *elasticsearch.Client, class, class2, name string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2Name(es *elasticsearch.Client, class, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1361,7 +1456,7 @@ func MatchBooksByClassClass2Name(es *elasticsearch.Client, class, class2, name s
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1369,13 +1464,14 @@ func MatchBooksByClassClass2Name(es *elasticsearch.Client, class, class2, name s
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByClassClass2PageCount(es *elasticsearch.Client, class, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2PageCount(es *elasticsearch.Client, class, class2 string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1383,13 +1479,14 @@ func MatchBooksByClassClass2PageCount(es *elasticsearch.Client, class, class2 st
 // class string 类别
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByClassClass2Price(es *elasticsearch.Client, class, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2Price(es *elasticsearch.Client, class, class2 string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1397,13 +1494,14 @@ func MatchBooksByClassClass2Price(es *elasticsearch.Client, class, class2 string
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByClassClass2ReleaseDate(es *elasticsearch.Client, class, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2ReleaseDate(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1411,13 +1509,14 @@ func MatchBooksByClassClass2ReleaseDate(es *elasticsearch.Client, class, class2 
 // class string 类别
 // class2 string 子类别
 // seq string 编号
-func MatchBooksByClassClass2Seq(es *elasticsearch.Client, class, class2, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2Seq(es *elasticsearch.Client, class, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1425,7 +1524,8 @@ func MatchBooksByClassClass2Seq(es *elasticsearch.Client, class, class2, seq str
 // class string 类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByClassNamePageCount(es *elasticsearch.Client, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassNamePageCount(es *elasticsearch.Client, class, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1433,7 +1533,7 @@ func MatchBooksByClassNamePageCount(es *elasticsearch.Client, class, name string
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1441,7 +1541,8 @@ func MatchBooksByClassNamePageCount(es *elasticsearch.Client, class, name string
 // class string 类别
 // name string 书名
 // price float64 价格
-func MatchBooksByClassNamePrice(es *elasticsearch.Client, class, name string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassNamePrice(es *elasticsearch.Client, class, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1449,7 +1550,7 @@ func MatchBooksByClassNamePrice(es *elasticsearch.Client, class, name string, pr
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1457,7 +1558,8 @@ func MatchBooksByClassNamePrice(es *elasticsearch.Client, class, name string, pr
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByClassNameReleaseDate(es *elasticsearch.Client, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassNameReleaseDate(es *elasticsearch.Client, class, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1465,7 +1567,7 @@ func MatchBooksByClassNameReleaseDate(es *elasticsearch.Client, class, name stri
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1473,7 +1575,8 @@ func MatchBooksByClassNameReleaseDate(es *elasticsearch.Client, class, name stri
 // class string 类别
 // name string 书名
 // seq string 编号
-func MatchBooksByClassNameSeq(es *elasticsearch.Client, class, name, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassNameSeq(es *elasticsearch.Client, class, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1481,7 +1584,7 @@ func MatchBooksByClassNameSeq(es *elasticsearch.Client, class, name, seq string)
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1489,13 +1592,14 @@ func MatchBooksByClassNameSeq(es *elasticsearch.Client, class, name, seq string)
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByClassPageCountPrice(es *elasticsearch.Client, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassPageCountPrice(es *elasticsearch.Client, class string, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1503,13 +1607,14 @@ func MatchBooksByClassPageCountPrice(es *elasticsearch.Client, class string, pag
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByClassPageCountReleaseDate(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassPageCountReleaseDate(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1517,13 +1622,14 @@ func MatchBooksByClassPageCountReleaseDate(es *elasticsearch.Client, class strin
 // class string 类别
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByClassPageCountSeq(es *elasticsearch.Client, class string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassPageCountSeq(es *elasticsearch.Client, class string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1531,13 +1637,14 @@ func MatchBooksByClassPageCountSeq(es *elasticsearch.Client, class string, pageC
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClassPriceReleaseDate(es *elasticsearch.Client, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassPriceReleaseDate(es *elasticsearch.Client, class string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1545,13 +1652,14 @@ func MatchBooksByClassPriceReleaseDate(es *elasticsearch.Client, class string, p
 // class string 类别
 // price float64 价格
 // seq string 编号
-func MatchBooksByClassPriceSeq(es *elasticsearch.Client, class string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassPriceSeq(es *elasticsearch.Client, class string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1559,13 +1667,14 @@ func MatchBooksByClassPriceSeq(es *elasticsearch.Client, class string, price flo
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClassReleaseDateSeq(es *elasticsearch.Client, class string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassReleaseDateSeq(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1573,7 +1682,8 @@ func MatchBooksByClassReleaseDateSeq(es *elasticsearch.Client, class string, rel
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByClass2NamePageCount(es *elasticsearch.Client, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2NamePageCount(es *elasticsearch.Client, class2, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1581,7 +1691,7 @@ func MatchBooksByClass2NamePageCount(es *elasticsearch.Client, class2, name stri
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1589,7 +1699,8 @@ func MatchBooksByClass2NamePageCount(es *elasticsearch.Client, class2, name stri
 // class2 string 子类别
 // name string 书名
 // price float64 价格
-func MatchBooksByClass2NamePrice(es *elasticsearch.Client, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2NamePrice(es *elasticsearch.Client, class2, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1597,7 +1708,7 @@ func MatchBooksByClass2NamePrice(es *elasticsearch.Client, class2, name string, 
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1605,7 +1716,8 @@ func MatchBooksByClass2NamePrice(es *elasticsearch.Client, class2, name string, 
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1613,7 +1725,7 @@ func MatchBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2, name st
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1621,7 +1733,8 @@ func MatchBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2, name st
 // class2 string 子类别
 // name string 书名
 // seq string 编号
-func MatchBooksByClass2NameSeq(es *elasticsearch.Client, class2, name, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2NameSeq(es *elasticsearch.Client, class2, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1629,7 +1742,7 @@ func MatchBooksByClass2NameSeq(es *elasticsearch.Client, class2, name, seq strin
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1637,13 +1750,14 @@ func MatchBooksByClass2NameSeq(es *elasticsearch.Client, class2, name, seq strin
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByClass2PageCountPrice(es *elasticsearch.Client, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2PageCountPrice(es *elasticsearch.Client, class2 string, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1651,13 +1765,14 @@ func MatchBooksByClass2PageCountPrice(es *elasticsearch.Client, class2 string, p
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2PageCountReleaseDate(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2PageCountReleaseDate(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1665,13 +1780,14 @@ func MatchBooksByClass2PageCountReleaseDate(es *elasticsearch.Client, class2 str
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByClass2PageCountSeq(es *elasticsearch.Client, class2 string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2PageCountSeq(es *elasticsearch.Client, class2 string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1679,13 +1795,14 @@ func MatchBooksByClass2PageCountSeq(es *elasticsearch.Client, class2 string, pag
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2PriceReleaseDate(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2PriceReleaseDate(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1693,13 +1810,14 @@ func MatchBooksByClass2PriceReleaseDate(es *elasticsearch.Client, class2 string,
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
-func MatchBooksByClass2PriceSeq(es *elasticsearch.Client, class2 string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2PriceSeq(es *elasticsearch.Client, class2 string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1707,13 +1825,14 @@ func MatchBooksByClass2PriceSeq(es *elasticsearch.Client, class2 string, price f
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1721,7 +1840,8 @@ func MatchBooksByClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, r
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByNamePageCountPrice(es *elasticsearch.Client, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByNamePageCountPrice(es *elasticsearch.Client, name string, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1729,7 +1849,7 @@ func MatchBooksByNamePageCountPrice(es *elasticsearch.Client, name string, pageC
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1737,7 +1857,8 @@ func MatchBooksByNamePageCountPrice(es *elasticsearch.Client, name string, pageC
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountReleaseDate(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByNamePageCountReleaseDate(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1745,7 +1866,7 @@ func MatchBooksByNamePageCountReleaseDate(es *elasticsearch.Client, name string,
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1753,7 +1874,8 @@ func MatchBooksByNamePageCountReleaseDate(es *elasticsearch.Client, name string,
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByNamePageCountSeq(es *elasticsearch.Client, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByNamePageCountSeq(es *elasticsearch.Client, name string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1761,7 +1883,7 @@ func MatchBooksByNamePageCountSeq(es *elasticsearch.Client, name string, pageCou
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1769,7 +1891,8 @@ func MatchBooksByNamePageCountSeq(es *elasticsearch.Client, name string, pageCou
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByNamePriceReleaseDate(es *elasticsearch.Client, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByNamePriceReleaseDate(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1777,7 +1900,7 @@ func MatchBooksByNamePriceReleaseDate(es *elasticsearch.Client, name string, pri
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1785,7 +1908,8 @@ func MatchBooksByNamePriceReleaseDate(es *elasticsearch.Client, name string, pri
 // name string 书名
 // price float64 价格
 // seq string 编号
-func MatchBooksByNamePriceSeq(es *elasticsearch.Client, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByNamePriceSeq(es *elasticsearch.Client, name string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1793,7 +1917,7 @@ func MatchBooksByNamePriceSeq(es *elasticsearch.Client, name string, price float
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1801,7 +1925,8 @@ func MatchBooksByNamePriceSeq(es *elasticsearch.Client, name string, price float
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1809,7 +1934,7 @@ func MatchBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, relea
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1817,13 +1942,14 @@ func MatchBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, relea
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByPageCountPriceReleaseDate(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByPageCountPriceReleaseDate(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1831,13 +1957,14 @@ func MatchBooksByPageCountPriceReleaseDate(es *elasticsearch.Client, pageCount i
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByPageCountPriceSeq(es *elasticsearch.Client, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByPageCountPriceSeq(es *elasticsearch.Client, pageCount int64, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1845,13 +1972,14 @@ func MatchBooksByPageCountPriceSeq(es *elasticsearch.Client, pageCount int64, pr
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByPageCountReleaseDateSeq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByPageCountReleaseDateSeq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1859,13 +1987,14 @@ func MatchBooksByPageCountReleaseDateSeq(es *elasticsearch.Client, pageCount int
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByPriceReleaseDateSeq(es *elasticsearch.Client, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByPriceReleaseDateSeq(es *elasticsearch.Client, price float64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1874,7 +2003,8 @@ func MatchBooksByPriceReleaseDateSeq(es *elasticsearch.Client, price float64, re
 // author string 作者
 // class string 类别
 // class2 string 子类别
-func MatchBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, allText, author, class, class2 string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, allText, author, class, class2 string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1883,7 +2013,7 @@ func MatchBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, allText, aut
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1892,7 +2022,8 @@ func MatchBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, allText, aut
 // author string 作者
 // class string 类别
 // name string 书名
-func MatchBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, author, class, name string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, author, class, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1901,7 +2032,7 @@ func MatchBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, autho
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1910,7 +2041,8 @@ func MatchBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, autho
 // author string 作者
 // class string 类别
 // pageCount int64 页数
-func MatchBooksByAllTextAuthorClassPageCount(es *elasticsearch.Client, allText, author, class string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorClassPageCount(es *elasticsearch.Client, allText, author, class string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1919,7 +2051,7 @@ func MatchBooksByAllTextAuthorClassPageCount(es *elasticsearch.Client, allText, 
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1928,7 +2060,8 @@ func MatchBooksByAllTextAuthorClassPageCount(es *elasticsearch.Client, allText, 
 // author string 作者
 // class string 类别
 // price float64 价格
-func MatchBooksByAllTextAuthorClassPrice(es *elasticsearch.Client, allText, author, class string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorClassPrice(es *elasticsearch.Client, allText, author, class string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1937,7 +2070,7 @@ func MatchBooksByAllTextAuthorClassPrice(es *elasticsearch.Client, allText, auth
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1946,7 +2079,8 @@ func MatchBooksByAllTextAuthorClassPrice(es *elasticsearch.Client, allText, auth
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client, allText, author, class string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client, allText, author, class string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1955,7 +2089,7 @@ func MatchBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client, allText
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1964,7 +2098,8 @@ func MatchBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client, allText
 // author string 作者
 // class string 类别
 // seq string 编号
-func MatchBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allText, author, class, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allText, author, class, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1973,7 +2108,7 @@ func MatchBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allText, author
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -1982,7 +2117,8 @@ func MatchBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allText, author
 // author string 作者
 // class2 string 子类别
 // name string 书名
-func MatchBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allText, author, class2, name string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allText, author, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1991,7 +2127,7 @@ func MatchBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allText, auth
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2000,7 +2136,8 @@ func MatchBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allText, auth
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByAllTextAuthorClass2PageCount(es *elasticsearch.Client, allText, author, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorClass2PageCount(es *elasticsearch.Client, allText, author, class2 string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2009,7 +2146,7 @@ func MatchBooksByAllTextAuthorClass2PageCount(es *elasticsearch.Client, allText,
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2018,7 +2155,8 @@ func MatchBooksByAllTextAuthorClass2PageCount(es *elasticsearch.Client, allText,
 // author string 作者
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByAllTextAuthorClass2Price(es *elasticsearch.Client, allText, author, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorClass2Price(es *elasticsearch.Client, allText, author, class2 string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2027,7 +2165,7 @@ func MatchBooksByAllTextAuthorClass2Price(es *elasticsearch.Client, allText, aut
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2036,7 +2174,8 @@ func MatchBooksByAllTextAuthorClass2Price(es *elasticsearch.Client, allText, aut
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Client, allText, author, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Client, allText, author, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2045,7 +2184,7 @@ func MatchBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Client, allTex
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2054,7 +2193,8 @@ func MatchBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Client, allTex
 // author string 作者
 // class2 string 子类别
 // seq string 编号
-func MatchBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allText, author, class2, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allText, author, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2063,7 +2203,7 @@ func MatchBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allText, autho
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2072,7 +2212,8 @@ func MatchBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allText, autho
 // author string 作者
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAllTextAuthorNamePageCount(es *elasticsearch.Client, allText, author, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorNamePageCount(es *elasticsearch.Client, allText, author, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2081,7 +2222,7 @@ func MatchBooksByAllTextAuthorNamePageCount(es *elasticsearch.Client, allText, a
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2090,7 +2231,8 @@ func MatchBooksByAllTextAuthorNamePageCount(es *elasticsearch.Client, allText, a
 // author string 作者
 // name string 书名
 // price float64 价格
-func MatchBooksByAllTextAuthorNamePrice(es *elasticsearch.Client, allText, author, name string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorNamePrice(es *elasticsearch.Client, allText, author, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2099,7 +2241,7 @@ func MatchBooksByAllTextAuthorNamePrice(es *elasticsearch.Client, allText, autho
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2108,7 +2250,8 @@ func MatchBooksByAllTextAuthorNamePrice(es *elasticsearch.Client, allText, autho
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2117,7 +2260,7 @@ func MatchBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText,
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2126,7 +2269,8 @@ func MatchBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText,
 // author string 作者
 // name string 书名
 // seq string 编号
-func MatchBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author, name, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2135,7 +2279,7 @@ func MatchBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author,
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2144,7 +2288,8 @@ func MatchBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author,
 // author string 作者
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextAuthorPageCountPrice(es *elasticsearch.Client, allText, author string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorPageCountPrice(es *elasticsearch.Client, allText, author string, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2153,7 +2298,7 @@ func MatchBooksByAllTextAuthorPageCountPrice(es *elasticsearch.Client, allText, 
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2162,7 +2307,8 @@ func MatchBooksByAllTextAuthorPageCountPrice(es *elasticsearch.Client, allText, 
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPageCountReleaseDate(es *elasticsearch.Client, allText, author string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorPageCountReleaseDate(es *elasticsearch.Client, allText, author string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2171,7 +2317,7 @@ func MatchBooksByAllTextAuthorPageCountReleaseDate(es *elasticsearch.Client, all
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2180,7 +2326,8 @@ func MatchBooksByAllTextAuthorPageCountReleaseDate(es *elasticsearch.Client, all
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAllTextAuthorPageCountSeq(es *elasticsearch.Client, allText, author string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorPageCountSeq(es *elasticsearch.Client, allText, author string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2189,7 +2336,7 @@ func MatchBooksByAllTextAuthorPageCountSeq(es *elasticsearch.Client, allText, au
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2198,7 +2345,8 @@ func MatchBooksByAllTextAuthorPageCountSeq(es *elasticsearch.Client, allText, au
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextAuthorPriceReleaseDate(es *elasticsearch.Client, allText, author string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorPriceReleaseDate(es *elasticsearch.Client, allText, author string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2207,7 +2355,7 @@ func MatchBooksByAllTextAuthorPriceReleaseDate(es *elasticsearch.Client, allText
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2216,7 +2364,8 @@ func MatchBooksByAllTextAuthorPriceReleaseDate(es *elasticsearch.Client, allText
 // author string 作者
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client, allText, author string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client, allText, author string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2225,7 +2374,7 @@ func MatchBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client, allText, author
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2234,7 +2383,8 @@ func MatchBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client, allText, author
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2243,7 +2393,7 @@ func MatchBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, 
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2252,7 +2402,8 @@ func MatchBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, 
 // class string 类别
 // class2 string 子类别
 // name string 书名
-func MatchBooksByAllTextClassClass2Name(es *elasticsearch.Client, allText, class, class2, name string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassClass2Name(es *elasticsearch.Client, allText, class, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2261,7 +2412,7 @@ func MatchBooksByAllTextClassClass2Name(es *elasticsearch.Client, allText, class
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2270,7 +2421,8 @@ func MatchBooksByAllTextClassClass2Name(es *elasticsearch.Client, allText, class
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByAllTextClassClass2PageCount(es *elasticsearch.Client, allText, class, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassClass2PageCount(es *elasticsearch.Client, allText, class, class2 string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2279,7 +2431,7 @@ func MatchBooksByAllTextClassClass2PageCount(es *elasticsearch.Client, allText, 
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2288,7 +2440,8 @@ func MatchBooksByAllTextClassClass2PageCount(es *elasticsearch.Client, allText, 
 // class string 类别
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByAllTextClassClass2Price(es *elasticsearch.Client, allText, class, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassClass2Price(es *elasticsearch.Client, allText, class, class2 string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2297,7 +2450,7 @@ func MatchBooksByAllTextClassClass2Price(es *elasticsearch.Client, allText, clas
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2306,7 +2459,8 @@ func MatchBooksByAllTextClassClass2Price(es *elasticsearch.Client, allText, clas
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Client, allText, class, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Client, allText, class, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2315,7 +2469,7 @@ func MatchBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Client, allText
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2324,7 +2478,8 @@ func MatchBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Client, allText
 // class string 类别
 // class2 string 子类别
 // seq string 编号
-func MatchBooksByAllTextClassClass2Seq(es *elasticsearch.Client, allText, class, class2, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassClass2Seq(es *elasticsearch.Client, allText, class, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2333,7 +2488,7 @@ func MatchBooksByAllTextClassClass2Seq(es *elasticsearch.Client, allText, class,
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2342,7 +2497,8 @@ func MatchBooksByAllTextClassClass2Seq(es *elasticsearch.Client, allText, class,
 // class string 类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAllTextClassNamePageCount(es *elasticsearch.Client, allText, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassNamePageCount(es *elasticsearch.Client, allText, class, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2351,7 +2507,7 @@ func MatchBooksByAllTextClassNamePageCount(es *elasticsearch.Client, allText, cl
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2360,7 +2516,8 @@ func MatchBooksByAllTextClassNamePageCount(es *elasticsearch.Client, allText, cl
 // class string 类别
 // name string 书名
 // price float64 价格
-func MatchBooksByAllTextClassNamePrice(es *elasticsearch.Client, allText, class, name string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassNamePrice(es *elasticsearch.Client, allText, class, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2369,7 +2526,7 @@ func MatchBooksByAllTextClassNamePrice(es *elasticsearch.Client, allText, class,
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2378,7 +2535,8 @@ func MatchBooksByAllTextClassNamePrice(es *elasticsearch.Client, allText, class,
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, allText, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, allText, class, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2387,7 +2545,7 @@ func MatchBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, allText, 
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2396,7 +2554,8 @@ func MatchBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, allText, 
 // class string 类别
 // name string 书名
 // seq string 编号
-func MatchBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText, class, name, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText, class, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2405,7 +2564,7 @@ func MatchBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText, class, n
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2414,7 +2573,8 @@ func MatchBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText, class, n
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextClassPageCountPrice(es *elasticsearch.Client, allText, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassPageCountPrice(es *elasticsearch.Client, allText, class string, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2423,7 +2583,7 @@ func MatchBooksByAllTextClassPageCountPrice(es *elasticsearch.Client, allText, c
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2432,7 +2592,8 @@ func MatchBooksByAllTextClassPageCountPrice(es *elasticsearch.Client, allText, c
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassPageCountReleaseDate(es *elasticsearch.Client, allText, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassPageCountReleaseDate(es *elasticsearch.Client, allText, class string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2441,7 +2602,7 @@ func MatchBooksByAllTextClassPageCountReleaseDate(es *elasticsearch.Client, allT
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2450,7 +2611,8 @@ func MatchBooksByAllTextClassPageCountReleaseDate(es *elasticsearch.Client, allT
 // class string 类别
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAllTextClassPageCountSeq(es *elasticsearch.Client, allText, class string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassPageCountSeq(es *elasticsearch.Client, allText, class string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2459,7 +2621,7 @@ func MatchBooksByAllTextClassPageCountSeq(es *elasticsearch.Client, allText, cla
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2468,7 +2630,8 @@ func MatchBooksByAllTextClassPageCountSeq(es *elasticsearch.Client, allText, cla
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClassPriceReleaseDate(es *elasticsearch.Client, allText, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassPriceReleaseDate(es *elasticsearch.Client, allText, class string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2477,7 +2640,7 @@ func MatchBooksByAllTextClassPriceReleaseDate(es *elasticsearch.Client, allText,
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2486,7 +2649,8 @@ func MatchBooksByAllTextClassPriceReleaseDate(es *elasticsearch.Client, allText,
 // class string 类别
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextClassPriceSeq(es *elasticsearch.Client, allText, class string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassPriceSeq(es *elasticsearch.Client, allText, class string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2495,7 +2659,7 @@ func MatchBooksByAllTextClassPriceSeq(es *elasticsearch.Client, allText, class s
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2504,7 +2668,8 @@ func MatchBooksByAllTextClassPriceSeq(es *elasticsearch.Client, allText, class s
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, class string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, class string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2513,7 +2678,7 @@ func MatchBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, c
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2522,7 +2687,8 @@ func MatchBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, c
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAllTextClass2NamePageCount(es *elasticsearch.Client, allText, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2NamePageCount(es *elasticsearch.Client, allText, class2, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2531,7 +2697,7 @@ func MatchBooksByAllTextClass2NamePageCount(es *elasticsearch.Client, allText, c
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2540,7 +2706,8 @@ func MatchBooksByAllTextClass2NamePageCount(es *elasticsearch.Client, allText, c
 // class2 string 子类别
 // name string 书名
 // price float64 价格
-func MatchBooksByAllTextClass2NamePrice(es *elasticsearch.Client, allText, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2NamePrice(es *elasticsearch.Client, allText, class2, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2549,7 +2716,7 @@ func MatchBooksByAllTextClass2NamePrice(es *elasticsearch.Client, allText, class
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2558,7 +2725,8 @@ func MatchBooksByAllTextClass2NamePrice(es *elasticsearch.Client, allText, class
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client, allText, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client, allText, class2, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2567,7 +2735,7 @@ func MatchBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client, allText,
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2576,7 +2744,8 @@ func MatchBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client, allText,
 // class2 string 子类别
 // name string 书名
 // seq string 编号
-func MatchBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allText, class2, name, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allText, class2, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2585,7 +2754,7 @@ func MatchBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allText, class2,
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2594,7 +2763,8 @@ func MatchBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allText, class2,
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextClass2PageCountPrice(es *elasticsearch.Client, allText, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2PageCountPrice(es *elasticsearch.Client, allText, class2 string, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2603,7 +2773,7 @@ func MatchBooksByAllTextClass2PageCountPrice(es *elasticsearch.Client, allText, 
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2612,7 +2782,8 @@ func MatchBooksByAllTextClass2PageCountPrice(es *elasticsearch.Client, allText, 
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2PageCountReleaseDate(es *elasticsearch.Client, allText, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2PageCountReleaseDate(es *elasticsearch.Client, allText, class2 string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2621,7 +2792,7 @@ func MatchBooksByAllTextClass2PageCountReleaseDate(es *elasticsearch.Client, all
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2630,7 +2801,8 @@ func MatchBooksByAllTextClass2PageCountReleaseDate(es *elasticsearch.Client, all
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAllTextClass2PageCountSeq(es *elasticsearch.Client, allText, class2 string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2PageCountSeq(es *elasticsearch.Client, allText, class2 string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2639,7 +2811,7 @@ func MatchBooksByAllTextClass2PageCountSeq(es *elasticsearch.Client, allText, cl
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2648,7 +2820,8 @@ func MatchBooksByAllTextClass2PageCountSeq(es *elasticsearch.Client, allText, cl
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextClass2PriceReleaseDate(es *elasticsearch.Client, allText, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2PriceReleaseDate(es *elasticsearch.Client, allText, class2 string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2657,7 +2830,7 @@ func MatchBooksByAllTextClass2PriceReleaseDate(es *elasticsearch.Client, allText
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2666,7 +2839,8 @@ func MatchBooksByAllTextClass2PriceReleaseDate(es *elasticsearch.Client, allText
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextClass2PriceSeq(es *elasticsearch.Client, allText, class2 string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2PriceSeq(es *elasticsearch.Client, allText, class2 string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2675,7 +2849,7 @@ func MatchBooksByAllTextClass2PriceSeq(es *elasticsearch.Client, allText, class2
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2684,7 +2858,8 @@ func MatchBooksByAllTextClass2PriceSeq(es *elasticsearch.Client, allText, class2
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2693,7 +2868,7 @@ func MatchBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client, allText, 
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2702,7 +2877,8 @@ func MatchBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client, allText, 
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAllTextNamePageCountPrice(es *elasticsearch.Client, allText, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextNamePageCountPrice(es *elasticsearch.Client, allText, name string, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2711,7 +2887,7 @@ func MatchBooksByAllTextNamePageCountPrice(es *elasticsearch.Client, allText, na
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2720,7 +2896,8 @@ func MatchBooksByAllTextNamePageCountPrice(es *elasticsearch.Client, allText, na
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePageCountReleaseDate(es *elasticsearch.Client, allText, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextNamePageCountReleaseDate(es *elasticsearch.Client, allText, name string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2729,7 +2906,7 @@ func MatchBooksByAllTextNamePageCountReleaseDate(es *elasticsearch.Client, allTe
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2738,7 +2915,8 @@ func MatchBooksByAllTextNamePageCountReleaseDate(es *elasticsearch.Client, allTe
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAllTextNamePageCountSeq(es *elasticsearch.Client, allText, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextNamePageCountSeq(es *elasticsearch.Client, allText, name string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2747,7 +2925,7 @@ func MatchBooksByAllTextNamePageCountSeq(es *elasticsearch.Client, allText, name
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2756,7 +2934,8 @@ func MatchBooksByAllTextNamePageCountSeq(es *elasticsearch.Client, allText, name
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextNamePriceReleaseDate(es *elasticsearch.Client, allText, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextNamePriceReleaseDate(es *elasticsearch.Client, allText, name string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2765,7 +2944,7 @@ func MatchBooksByAllTextNamePriceReleaseDate(es *elasticsearch.Client, allText, 
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2774,7 +2953,8 @@ func MatchBooksByAllTextNamePriceReleaseDate(es *elasticsearch.Client, allText, 
 // name string 书名
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextNamePriceSeq(es *elasticsearch.Client, allText, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextNamePriceSeq(es *elasticsearch.Client, allText, name string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2783,7 +2963,7 @@ func MatchBooksByAllTextNamePriceSeq(es *elasticsearch.Client, allText, name str
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2792,7 +2972,8 @@ func MatchBooksByAllTextNamePriceSeq(es *elasticsearch.Client, allText, name str
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2801,7 +2982,7 @@ func MatchBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, na
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2810,7 +2991,8 @@ func MatchBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, na
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAllTextPageCountPriceReleaseDate(es *elasticsearch.Client, allText string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextPageCountPriceReleaseDate(es *elasticsearch.Client, allText string, pageCount int64, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2819,7 +3001,7 @@ func MatchBooksByAllTextPageCountPriceReleaseDate(es *elasticsearch.Client, allT
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2828,7 +3010,8 @@ func MatchBooksByAllTextPageCountPriceReleaseDate(es *elasticsearch.Client, allT
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByAllTextPageCountPriceSeq(es *elasticsearch.Client, allText string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextPageCountPriceSeq(es *elasticsearch.Client, allText string, pageCount int64, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2837,7 +3020,7 @@ func MatchBooksByAllTextPageCountPriceSeq(es *elasticsearch.Client, allText stri
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2846,7 +3029,8 @@ func MatchBooksByAllTextPageCountPriceSeq(es *elasticsearch.Client, allText stri
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextPageCountReleaseDateSeq(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextPageCountReleaseDateSeq(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2855,7 +3039,7 @@ func MatchBooksByAllTextPageCountReleaseDateSeq(es *elasticsearch.Client, allTex
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2864,7 +3048,8 @@ func MatchBooksByAllTextPageCountReleaseDateSeq(es *elasticsearch.Client, allTex
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAllTextPriceReleaseDateSeq(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAllTextPriceReleaseDateSeq(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2873,7 +3058,7 @@ func MatchBooksByAllTextPriceReleaseDateSeq(es *elasticsearch.Client, allText st
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2882,7 +3067,8 @@ func MatchBooksByAllTextPriceReleaseDateSeq(es *elasticsearch.Client, allText st
 // class string 类别
 // class2 string 子类别
 // name string 书名
-func MatchBooksByAuthorClassClass2Name(es *elasticsearch.Client, author, class, class2, name string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassClass2Name(es *elasticsearch.Client, author, class, class2, name string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -2891,7 +3077,7 @@ func MatchBooksByAuthorClassClass2Name(es *elasticsearch.Client, author, class, 
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2900,7 +3086,8 @@ func MatchBooksByAuthorClassClass2Name(es *elasticsearch.Client, author, class, 
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
-func MatchBooksByAuthorClassClass2PageCount(es *elasticsearch.Client, author, class, class2 string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassClass2PageCount(es *elasticsearch.Client, author, class, class2 string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2909,7 +3096,7 @@ func MatchBooksByAuthorClassClass2PageCount(es *elasticsearch.Client, author, cl
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2918,7 +3105,8 @@ func MatchBooksByAuthorClassClass2PageCount(es *elasticsearch.Client, author, cl
 // class string 类别
 // class2 string 子类别
 // price float64 价格
-func MatchBooksByAuthorClassClass2Price(es *elasticsearch.Client, author, class, class2 string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassClass2Price(es *elasticsearch.Client, author, class, class2 string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2927,7 +3115,7 @@ func MatchBooksByAuthorClassClass2Price(es *elasticsearch.Client, author, class,
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2936,7 +3124,8 @@ func MatchBooksByAuthorClassClass2Price(es *elasticsearch.Client, author, class,
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client, author, class, class2 string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client, author, class, class2 string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2945,7 +3134,7 @@ func MatchBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client, author, 
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2954,7 +3143,8 @@ func MatchBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client, author, 
 // class string 类别
 // class2 string 子类别
 // seq string 编号
-func MatchBooksByAuthorClassClass2Seq(es *elasticsearch.Client, author, class, class2, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassClass2Seq(es *elasticsearch.Client, author, class, class2, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -2963,7 +3153,7 @@ func MatchBooksByAuthorClassClass2Seq(es *elasticsearch.Client, author, class, c
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2972,7 +3162,8 @@ func MatchBooksByAuthorClassClass2Seq(es *elasticsearch.Client, author, class, c
 // class string 类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAuthorClassNamePageCount(es *elasticsearch.Client, author, class, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassNamePageCount(es *elasticsearch.Client, author, class, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -2981,7 +3172,7 @@ func MatchBooksByAuthorClassNamePageCount(es *elasticsearch.Client, author, clas
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -2990,7 +3181,8 @@ func MatchBooksByAuthorClassNamePageCount(es *elasticsearch.Client, author, clas
 // class string 类别
 // name string 书名
 // price float64 价格
-func MatchBooksByAuthorClassNamePrice(es *elasticsearch.Client, author, class, name string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassNamePrice(es *elasticsearch.Client, author, class, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -2999,7 +3191,7 @@ func MatchBooksByAuthorClassNamePrice(es *elasticsearch.Client, author, class, n
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3008,7 +3200,8 @@ func MatchBooksByAuthorClassNamePrice(es *elasticsearch.Client, author, class, n
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, author, class, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, author, class, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3017,7 +3210,7 @@ func MatchBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, author, cl
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3026,7 +3219,8 @@ func MatchBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, author, cl
 // class string 类别
 // name string 书名
 // seq string 编号
-func MatchBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, class, name, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, class, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3035,7 +3229,7 @@ func MatchBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, class, nam
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3044,7 +3238,8 @@ func MatchBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, class, nam
 // class string 类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAuthorClassPageCountPrice(es *elasticsearch.Client, author, class string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassPageCountPrice(es *elasticsearch.Client, author, class string, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3053,7 +3248,7 @@ func MatchBooksByAuthorClassPageCountPrice(es *elasticsearch.Client, author, cla
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3062,7 +3257,8 @@ func MatchBooksByAuthorClassPageCountPrice(es *elasticsearch.Client, author, cla
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassPageCountReleaseDate(es *elasticsearch.Client, author, class string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassPageCountReleaseDate(es *elasticsearch.Client, author, class string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3071,7 +3267,7 @@ func MatchBooksByAuthorClassPageCountReleaseDate(es *elasticsearch.Client, autho
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3080,7 +3276,8 @@ func MatchBooksByAuthorClassPageCountReleaseDate(es *elasticsearch.Client, autho
 // class string 类别
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAuthorClassPageCountSeq(es *elasticsearch.Client, author, class string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassPageCountSeq(es *elasticsearch.Client, author, class string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3089,7 +3286,7 @@ func MatchBooksByAuthorClassPageCountSeq(es *elasticsearch.Client, author, class
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3098,7 +3295,8 @@ func MatchBooksByAuthorClassPageCountSeq(es *elasticsearch.Client, author, class
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClassPriceReleaseDate(es *elasticsearch.Client, author, class string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassPriceReleaseDate(es *elasticsearch.Client, author, class string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3107,7 +3305,7 @@ func MatchBooksByAuthorClassPriceReleaseDate(es *elasticsearch.Client, author, c
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3116,7 +3314,8 @@ func MatchBooksByAuthorClassPriceReleaseDate(es *elasticsearch.Client, author, c
 // class string 类别
 // price float64 价格
 // seq string 编号
-func MatchBooksByAuthorClassPriceSeq(es *elasticsearch.Client, author, class string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassPriceSeq(es *elasticsearch.Client, author, class string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3125,7 +3324,7 @@ func MatchBooksByAuthorClassPriceSeq(es *elasticsearch.Client, author, class str
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3134,7 +3333,8 @@ func MatchBooksByAuthorClassPriceSeq(es *elasticsearch.Client, author, class str
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, class string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, class string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3143,7 +3343,7 @@ func MatchBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, cla
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3152,7 +3352,8 @@ func MatchBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, cla
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByAuthorClass2NamePageCount(es *elasticsearch.Client, author, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2NamePageCount(es *elasticsearch.Client, author, class2, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3161,7 +3362,7 @@ func MatchBooksByAuthorClass2NamePageCount(es *elasticsearch.Client, author, cla
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3170,7 +3371,8 @@ func MatchBooksByAuthorClass2NamePageCount(es *elasticsearch.Client, author, cla
 // class2 string 子类别
 // name string 书名
 // price float64 价格
-func MatchBooksByAuthorClass2NamePrice(es *elasticsearch.Client, author, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2NamePrice(es *elasticsearch.Client, author, class2, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3179,7 +3381,7 @@ func MatchBooksByAuthorClass2NamePrice(es *elasticsearch.Client, author, class2,
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3188,7 +3390,8 @@ func MatchBooksByAuthorClass2NamePrice(es *elasticsearch.Client, author, class2,
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, author, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, author, class2, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3197,7 +3400,7 @@ func MatchBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, author, c
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3206,7 +3409,8 @@ func MatchBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, author, c
 // class2 string 子类别
 // name string 书名
 // seq string 编号
-func MatchBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author, class2, name, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author, class2, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3215,7 +3419,7 @@ func MatchBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author, class2, n
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3224,7 +3428,8 @@ func MatchBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author, class2, n
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAuthorClass2PageCountPrice(es *elasticsearch.Client, author, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2PageCountPrice(es *elasticsearch.Client, author, class2 string, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3233,7 +3438,7 @@ func MatchBooksByAuthorClass2PageCountPrice(es *elasticsearch.Client, author, cl
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3242,7 +3447,8 @@ func MatchBooksByAuthorClass2PageCountPrice(es *elasticsearch.Client, author, cl
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2PageCountReleaseDate(es *elasticsearch.Client, author, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2PageCountReleaseDate(es *elasticsearch.Client, author, class2 string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3251,7 +3457,7 @@ func MatchBooksByAuthorClass2PageCountReleaseDate(es *elasticsearch.Client, auth
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3260,7 +3466,8 @@ func MatchBooksByAuthorClass2PageCountReleaseDate(es *elasticsearch.Client, auth
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAuthorClass2PageCountSeq(es *elasticsearch.Client, author, class2 string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2PageCountSeq(es *elasticsearch.Client, author, class2 string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3269,7 +3476,7 @@ func MatchBooksByAuthorClass2PageCountSeq(es *elasticsearch.Client, author, clas
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3278,7 +3485,8 @@ func MatchBooksByAuthorClass2PageCountSeq(es *elasticsearch.Client, author, clas
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorClass2PriceReleaseDate(es *elasticsearch.Client, author, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2PriceReleaseDate(es *elasticsearch.Client, author, class2 string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3287,7 +3495,7 @@ func MatchBooksByAuthorClass2PriceReleaseDate(es *elasticsearch.Client, author, 
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3296,7 +3504,8 @@ func MatchBooksByAuthorClass2PriceReleaseDate(es *elasticsearch.Client, author, 
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
-func MatchBooksByAuthorClass2PriceSeq(es *elasticsearch.Client, author, class2 string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2PriceSeq(es *elasticsearch.Client, author, class2 string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3305,7 +3514,7 @@ func MatchBooksByAuthorClass2PriceSeq(es *elasticsearch.Client, author, class2 s
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3314,7 +3523,8 @@ func MatchBooksByAuthorClass2PriceSeq(es *elasticsearch.Client, author, class2 s
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3323,7 +3533,7 @@ func MatchBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, author, cl
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3332,7 +3542,8 @@ func MatchBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, author, cl
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByAuthorNamePageCountPrice(es *elasticsearch.Client, author, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorNamePageCountPrice(es *elasticsearch.Client, author, name string, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3341,7 +3552,7 @@ func MatchBooksByAuthorNamePageCountPrice(es *elasticsearch.Client, author, name
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3350,7 +3561,8 @@ func MatchBooksByAuthorNamePageCountPrice(es *elasticsearch.Client, author, name
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePageCountReleaseDate(es *elasticsearch.Client, author, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorNamePageCountReleaseDate(es *elasticsearch.Client, author, name string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3359,7 +3571,7 @@ func MatchBooksByAuthorNamePageCountReleaseDate(es *elasticsearch.Client, author
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3368,7 +3580,8 @@ func MatchBooksByAuthorNamePageCountReleaseDate(es *elasticsearch.Client, author
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByAuthorNamePageCountSeq(es *elasticsearch.Client, author, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorNamePageCountSeq(es *elasticsearch.Client, author, name string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3377,7 +3590,7 @@ func MatchBooksByAuthorNamePageCountSeq(es *elasticsearch.Client, author, name s
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3386,7 +3599,8 @@ func MatchBooksByAuthorNamePageCountSeq(es *elasticsearch.Client, author, name s
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorNamePriceReleaseDate(es *elasticsearch.Client, author, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorNamePriceReleaseDate(es *elasticsearch.Client, author, name string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3395,7 +3609,7 @@ func MatchBooksByAuthorNamePriceReleaseDate(es *elasticsearch.Client, author, na
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3404,7 +3618,8 @@ func MatchBooksByAuthorNamePriceReleaseDate(es *elasticsearch.Client, author, na
 // name string 书名
 // price float64 价格
 // seq string 编号
-func MatchBooksByAuthorNamePriceSeq(es *elasticsearch.Client, author, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorNamePriceSeq(es *elasticsearch.Client, author, name string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3413,7 +3628,7 @@ func MatchBooksByAuthorNamePriceSeq(es *elasticsearch.Client, author, name strin
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3422,7 +3637,8 @@ func MatchBooksByAuthorNamePriceSeq(es *elasticsearch.Client, author, name strin
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3431,7 +3647,7 @@ func MatchBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3440,7 +3656,8 @@ func MatchBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByAuthorPageCountPriceReleaseDate(es *elasticsearch.Client, author string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorPageCountPriceReleaseDate(es *elasticsearch.Client, author string, pageCount int64, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3449,7 +3666,7 @@ func MatchBooksByAuthorPageCountPriceReleaseDate(es *elasticsearch.Client, autho
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3458,7 +3675,8 @@ func MatchBooksByAuthorPageCountPriceReleaseDate(es *elasticsearch.Client, autho
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByAuthorPageCountPriceSeq(es *elasticsearch.Client, author string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorPageCountPriceSeq(es *elasticsearch.Client, author string, pageCount int64, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3467,7 +3685,7 @@ func MatchBooksByAuthorPageCountPriceSeq(es *elasticsearch.Client, author string
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3476,7 +3694,8 @@ func MatchBooksByAuthorPageCountPriceSeq(es *elasticsearch.Client, author string
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorPageCountReleaseDateSeq(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorPageCountReleaseDateSeq(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3485,7 +3704,7 @@ func MatchBooksByAuthorPageCountReleaseDateSeq(es *elasticsearch.Client, author 
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3494,7 +3713,8 @@ func MatchBooksByAuthorPageCountReleaseDateSeq(es *elasticsearch.Client, author 
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByAuthorPriceReleaseDateSeq(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByAuthorPriceReleaseDateSeq(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3503,7 +3723,7 @@ func MatchBooksByAuthorPriceReleaseDateSeq(es *elasticsearch.Client, author stri
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3512,7 +3732,8 @@ func MatchBooksByAuthorPriceReleaseDateSeq(es *elasticsearch.Client, author stri
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
-func MatchBooksByClassClass2NamePageCount(es *elasticsearch.Client, class, class2, name string, pageCount int64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2NamePageCount(es *elasticsearch.Client, class, class2, name string, pageCount int64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3521,7 +3742,7 @@ func MatchBooksByClassClass2NamePageCount(es *elasticsearch.Client, class, class
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3530,7 +3751,8 @@ func MatchBooksByClassClass2NamePageCount(es *elasticsearch.Client, class, class
 // class2 string 子类别
 // name string 书名
 // price float64 价格
-func MatchBooksByClassClass2NamePrice(es *elasticsearch.Client, class, class2, name string, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2NamePrice(es *elasticsearch.Client, class, class2, name string, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3539,7 +3761,7 @@ func MatchBooksByClassClass2NamePrice(es *elasticsearch.Client, class, class2, n
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3548,7 +3770,8 @@ func MatchBooksByClassClass2NamePrice(es *elasticsearch.Client, class, class2, n
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
-func MatchBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, class, class2, name string, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, class, class2, name string, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3557,7 +3780,7 @@ func MatchBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, class, cla
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3566,7 +3789,8 @@ func MatchBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, class, cla
 // class2 string 子类别
 // name string 书名
 // seq string 编号
-func MatchBooksByClassClass2NameSeq(es *elasticsearch.Client, class, class2, name, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2NameSeq(es *elasticsearch.Client, class, class2, name, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3575,7 +3799,7 @@ func MatchBooksByClassClass2NameSeq(es *elasticsearch.Client, class, class2, nam
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3584,14 +3808,15 @@ func MatchBooksByClassClass2NameSeq(es *elasticsearch.Client, class, class2, nam
 // class2 string 子类别
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByClassClass2PageCountPrice(es *elasticsearch.Client, class, class2 string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2PageCountPrice(es *elasticsearch.Client, class, class2 string, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3600,14 +3825,15 @@ func MatchBooksByClassClass2PageCountPrice(es *elasticsearch.Client, class, clas
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByClassClass2PageCountReleaseDate(es *elasticsearch.Client, class, class2 string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2PageCountReleaseDate(es *elasticsearch.Client, class, class2 string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3616,14 +3842,15 @@ func MatchBooksByClassClass2PageCountReleaseDate(es *elasticsearch.Client, class
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByClassClass2PageCountSeq(es *elasticsearch.Client, class, class2 string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2PageCountSeq(es *elasticsearch.Client, class, class2 string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3632,14 +3859,15 @@ func MatchBooksByClassClass2PageCountSeq(es *elasticsearch.Client, class, class2
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClassClass2PriceReleaseDate(es *elasticsearch.Client, class, class2 string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2PriceReleaseDate(es *elasticsearch.Client, class, class2 string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3648,14 +3876,15 @@ func MatchBooksByClassClass2PriceReleaseDate(es *elasticsearch.Client, class, cl
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
-func MatchBooksByClassClass2PriceSeq(es *elasticsearch.Client, class, class2 string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2PriceSeq(es *elasticsearch.Client, class, class2 string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3664,14 +3893,15 @@ func MatchBooksByClassClass2PriceSeq(es *elasticsearch.Client, class, class2 str
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClassClass2ReleaseDateSeq(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassClass2ReleaseDateSeq(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3680,7 +3910,8 @@ func MatchBooksByClassClass2ReleaseDateSeq(es *elasticsearch.Client, class, clas
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByClassNamePageCountPrice(es *elasticsearch.Client, class, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassNamePageCountPrice(es *elasticsearch.Client, class, name string, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3689,7 +3920,7 @@ func MatchBooksByClassNamePageCountPrice(es *elasticsearch.Client, class, name s
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3698,7 +3929,8 @@ func MatchBooksByClassNamePageCountPrice(es *elasticsearch.Client, class, name s
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByClassNamePageCountReleaseDate(es *elasticsearch.Client, class, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassNamePageCountReleaseDate(es *elasticsearch.Client, class, name string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3707,7 +3939,7 @@ func MatchBooksByClassNamePageCountReleaseDate(es *elasticsearch.Client, class, 
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3716,7 +3948,8 @@ func MatchBooksByClassNamePageCountReleaseDate(es *elasticsearch.Client, class, 
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByClassNamePageCountSeq(es *elasticsearch.Client, class, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassNamePageCountSeq(es *elasticsearch.Client, class, name string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3725,7 +3958,7 @@ func MatchBooksByClassNamePageCountSeq(es *elasticsearch.Client, class, name str
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3734,7 +3967,8 @@ func MatchBooksByClassNamePageCountSeq(es *elasticsearch.Client, class, name str
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClassNamePriceReleaseDate(es *elasticsearch.Client, class, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassNamePriceReleaseDate(es *elasticsearch.Client, class, name string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3743,7 +3977,7 @@ func MatchBooksByClassNamePriceReleaseDate(es *elasticsearch.Client, class, name
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3752,7 +3986,8 @@ func MatchBooksByClassNamePriceReleaseDate(es *elasticsearch.Client, class, name
 // name string 书名
 // price float64 价格
 // seq string 编号
-func MatchBooksByClassNamePriceSeq(es *elasticsearch.Client, class, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassNamePriceSeq(es *elasticsearch.Client, class, name string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3761,7 +3996,7 @@ func MatchBooksByClassNamePriceSeq(es *elasticsearch.Client, class, name string,
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3770,7 +4005,8 @@ func MatchBooksByClassNamePriceSeq(es *elasticsearch.Client, class, name string,
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3779,7 +4015,7 @@ func MatchBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name s
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3788,14 +4024,15 @@ func MatchBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name s
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClassPageCountPriceReleaseDate(es *elasticsearch.Client, class string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassPageCountPriceReleaseDate(es *elasticsearch.Client, class string, pageCount int64, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3804,14 +4041,15 @@ func MatchBooksByClassPageCountPriceReleaseDate(es *elasticsearch.Client, class 
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByClassPageCountPriceSeq(es *elasticsearch.Client, class string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassPageCountPriceSeq(es *elasticsearch.Client, class string, pageCount int64, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3820,14 +4058,15 @@ func MatchBooksByClassPageCountPriceSeq(es *elasticsearch.Client, class string, 
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClassPageCountReleaseDateSeq(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassPageCountReleaseDateSeq(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3836,14 +4075,15 @@ func MatchBooksByClassPageCountReleaseDateSeq(es *elasticsearch.Client, class st
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClassPriceReleaseDateSeq(es *elasticsearch.Client, class string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClassPriceReleaseDateSeq(es *elasticsearch.Client, class string, price float64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3852,7 +4092,8 @@ func MatchBooksByClassPriceReleaseDateSeq(es *elasticsearch.Client, class string
 // name string 书名
 // pageCount int64 页数
 // price float64 价格
-func MatchBooksByClass2NamePageCountPrice(es *elasticsearch.Client, class2, name string, pageCount int64, price float64) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2NamePageCountPrice(es *elasticsearch.Client, class2, name string, pageCount int64, price float64, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3861,7 +4102,7 @@ func MatchBooksByClass2NamePageCountPrice(es *elasticsearch.Client, class2, name
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3870,7 +4111,8 @@ func MatchBooksByClass2NamePageCountPrice(es *elasticsearch.Client, class2, name
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2NamePageCountReleaseDate(es *elasticsearch.Client, class2, name string, pageCount int64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2NamePageCountReleaseDate(es *elasticsearch.Client, class2, name string, pageCount int64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3879,7 +4121,7 @@ func MatchBooksByClass2NamePageCountReleaseDate(es *elasticsearch.Client, class2
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3888,7 +4130,8 @@ func MatchBooksByClass2NamePageCountReleaseDate(es *elasticsearch.Client, class2
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
-func MatchBooksByClass2NamePageCountSeq(es *elasticsearch.Client, class2, name string, pageCount int64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2NamePageCountSeq(es *elasticsearch.Client, class2, name string, pageCount int64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3897,7 +4140,7 @@ func MatchBooksByClass2NamePageCountSeq(es *elasticsearch.Client, class2, name s
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3906,7 +4149,8 @@ func MatchBooksByClass2NamePageCountSeq(es *elasticsearch.Client, class2, name s
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2NamePriceReleaseDate(es *elasticsearch.Client, class2, name string, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2NamePriceReleaseDate(es *elasticsearch.Client, class2, name string, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3915,7 +4159,7 @@ func MatchBooksByClass2NamePriceReleaseDate(es *elasticsearch.Client, class2, na
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3924,7 +4168,8 @@ func MatchBooksByClass2NamePriceReleaseDate(es *elasticsearch.Client, class2, na
 // name string 书名
 // price float64 价格
 // seq string 编号
-func MatchBooksByClass2NamePriceSeq(es *elasticsearch.Client, class2, name string, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2NamePriceSeq(es *elasticsearch.Client, class2, name string, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3933,7 +4178,7 @@ func MatchBooksByClass2NamePriceSeq(es *elasticsearch.Client, class2, name strin
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3942,7 +4187,8 @@ func MatchBooksByClass2NamePriceSeq(es *elasticsearch.Client, class2, name strin
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, class2, name string, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, class2, name string, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -3951,7 +4197,7 @@ func MatchBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, class2, name
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3960,14 +4206,15 @@ func MatchBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, class2, name
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByClass2PageCountPriceReleaseDate(es *elasticsearch.Client, class2 string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2PageCountPriceReleaseDate(es *elasticsearch.Client, class2 string, pageCount int64, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3976,14 +4223,15 @@ func MatchBooksByClass2PageCountPriceReleaseDate(es *elasticsearch.Client, class
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByClass2PageCountPriceSeq(es *elasticsearch.Client, class2 string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2PageCountPriceSeq(es *elasticsearch.Client, class2 string, pageCount int64, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -3992,14 +4240,15 @@ func MatchBooksByClass2PageCountPriceSeq(es *elasticsearch.Client, class2 string
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClass2PageCountReleaseDateSeq(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2PageCountReleaseDateSeq(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4008,14 +4257,15 @@ func MatchBooksByClass2PageCountReleaseDateSeq(es *elasticsearch.Client, class2 
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByClass2PriceReleaseDateSeq(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByClass2PriceReleaseDateSeq(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4024,7 +4274,8 @@ func MatchBooksByClass2PriceReleaseDateSeq(es *elasticsearch.Client, class2 stri
 // pageCount int64 页数
 // price float64 价格
 // releaseDate time.Time 发布日期
-func MatchBooksByNamePageCountPriceReleaseDate(es *elasticsearch.Client, name string, pageCount int64, price float64, releaseDate time.Time) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByNamePageCountPriceReleaseDate(es *elasticsearch.Client, name string, pageCount int64, price float64, releaseDate time.Time, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4033,7 +4284,7 @@ func MatchBooksByNamePageCountPriceReleaseDate(es *elasticsearch.Client, name st
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4042,7 +4293,8 @@ func MatchBooksByNamePageCountPriceReleaseDate(es *elasticsearch.Client, name st
 // pageCount int64 页数
 // price float64 价格
 // seq string 编号
-func MatchBooksByNamePageCountPriceSeq(es *elasticsearch.Client, name string, pageCount int64, price float64, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByNamePageCountPriceSeq(es *elasticsearch.Client, name string, pageCount int64, price float64, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4051,7 +4303,7 @@ func MatchBooksByNamePageCountPriceSeq(es *elasticsearch.Client, name string, pa
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4060,7 +4312,8 @@ func MatchBooksByNamePageCountPriceSeq(es *elasticsearch.Client, name string, pa
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByNamePageCountReleaseDateSeq(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByNamePageCountReleaseDateSeq(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4069,7 +4322,7 @@ func MatchBooksByNamePageCountReleaseDateSeq(es *elasticsearch.Client, name stri
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4078,7 +4331,8 @@ func MatchBooksByNamePageCountReleaseDateSeq(es *elasticsearch.Client, name stri
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByNamePriceReleaseDateSeq(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByNamePriceReleaseDateSeq(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4087,7 +4341,7 @@ func MatchBooksByNamePriceReleaseDateSeq(es *elasticsearch.Client, name string, 
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
@@ -4096,14 +4350,15 @@ func MatchBooksByNamePriceReleaseDateSeq(es *elasticsearch.Client, name string, 
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
-func MatchBooksByPageCountPriceReleaseDateSeq(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time, seq string) (*eq.Data, *eq.Query, error) {
+// size int 返回的记录数、默认20
+func MatchBooksByPageCountPriceReleaseDateSeq(es *elasticsearch.Client, pageCount int64, price float64, releaseDate time.Time, seq string, size int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms))}
+	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Size: size}
 	return queryBooksList(es, esQuery)
 }
 
