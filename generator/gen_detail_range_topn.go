@@ -41,7 +41,7 @@ func PreDetailRangeTopNCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplD
 		topFields := FilterOutByTypes(fields, cfs, []string{TypeNumber}, nil)
 
 		// 过滤出配置文件指定的聚合字段
-		topFields = FilterOutByName(topFields, cfs, genCfg.TermsFields, genCfg.NotTermsFields)
+		topFields = FilterOutByName(topFields, cfs, genCfg.TopNFields, genCfg.NotTopNFields)
 
 		// 只生成一个字段的排序，否则太多了
 		topCmbs := utils.Combinations(topFields, 1)
