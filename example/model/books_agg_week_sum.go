@@ -15,7 +15,7 @@ func SumPageCountOfWeekBooksByReleaseDateGte(es *elasticsearch.Client, releaseDa
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -41,7 +41,7 @@ func SumPageCountOfWeekBooksByAllTextReleaseDateGte(es *elasticsearch.Client, al
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -71,7 +71,7 @@ func SumPageCountOfWeekBooksByAuthorReleaseDateGte(es *elasticsearch.Client, aut
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -99,7 +99,7 @@ func SumPageCountOfWeekBooksByClassReleaseDateGte(es *elasticsearch.Client, clas
 		eq.Term("class", class),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -125,7 +125,7 @@ func SumPageCountOfWeekBooksByClass2ReleaseDateGte(es *elasticsearch.Client, cla
 		eq.Term("class2", class2),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -153,7 +153,7 @@ func SumPageCountOfWeekBooksByNameReleaseDateGte(es *elasticsearch.Client, name 
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -247,7 +247,7 @@ func SumPageCountOfWeekBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, p
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -260,7 +260,7 @@ func SumPageCountOfWeekBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, pr
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -273,7 +273,7 @@ func SumPageCountOfWeekBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, pr
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -286,7 +286,7 @@ func SumPageCountOfWeekBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, p
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -300,7 +300,7 @@ func SumPageCountOfWeekBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -313,7 +313,7 @@ func SumPageCountOfWeekBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq st
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -343,7 +343,7 @@ func SumPageCountOfWeekBooksByAllTextAuthorReleaseDateGte(es *elasticsearch.Clie
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -377,7 +377,7 @@ func SumPageCountOfWeekBooksByAllTextClassReleaseDateGte(es *elasticsearch.Clien
 		eq.Term("class", class),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -411,7 +411,7 @@ func SumPageCountOfWeekBooksByAllTextClass2ReleaseDateGte(es *elasticsearch.Clie
 		eq.Term("class2", class2),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -445,7 +445,7 @@ func SumPageCountOfWeekBooksByAllTextNameReleaseDateGte(es *elasticsearch.Client
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -565,7 +565,7 @@ func SumPageCountOfWeekBooksByAllTextPriceGteReleaseDateGte(es *elasticsearch.Cl
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -582,7 +582,7 @@ func SumPageCountOfWeekBooksByAllTextPriceGtReleaseDateGte(es *elasticsearch.Cli
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -599,7 +599,7 @@ func SumPageCountOfWeekBooksByAllTextPriceLtReleaseDateGte(es *elasticsearch.Cli
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -616,7 +616,7 @@ func SumPageCountOfWeekBooksByAllTextPriceLteReleaseDateGte(es *elasticsearch.Cl
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -634,7 +634,7 @@ func SumPageCountOfWeekBooksByAllTextPriceGteLteReleaseDateGte(es *elasticsearch
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -651,7 +651,7 @@ func SumPageCountOfWeekBooksByAllTextSeqReleaseDateGte(es *elasticsearch.Client,
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -685,7 +685,7 @@ func SumPageCountOfWeekBooksByAuthorClassReleaseDateGte(es *elasticsearch.Client
 		eq.Term("class", class),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -719,7 +719,7 @@ func SumPageCountOfWeekBooksByAuthorClass2ReleaseDateGte(es *elasticsearch.Clien
 		eq.Term("class2", class2),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -753,7 +753,7 @@ func SumPageCountOfWeekBooksByAuthorNameReleaseDateGte(es *elasticsearch.Client,
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -873,7 +873,7 @@ func SumPageCountOfWeekBooksByAuthorPriceGteReleaseDateGte(es *elasticsearch.Cli
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -890,7 +890,7 @@ func SumPageCountOfWeekBooksByAuthorPriceGtReleaseDateGte(es *elasticsearch.Clie
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -907,7 +907,7 @@ func SumPageCountOfWeekBooksByAuthorPriceLtReleaseDateGte(es *elasticsearch.Clie
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -924,7 +924,7 @@ func SumPageCountOfWeekBooksByAuthorPriceLteReleaseDateGte(es *elasticsearch.Cli
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -942,7 +942,7 @@ func SumPageCountOfWeekBooksByAuthorPriceGteLteReleaseDateGte(es *elasticsearch.
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -959,7 +959,7 @@ func SumPageCountOfWeekBooksByAuthorSeqReleaseDateGte(es *elasticsearch.Client, 
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -991,7 +991,7 @@ func SumPageCountOfWeekBooksByClassClass2ReleaseDateGte(es *elasticsearch.Client
 		eq.Term("class2", class2),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1023,7 +1023,7 @@ func SumPageCountOfWeekBooksByClassNameReleaseDateGte(es *elasticsearch.Client, 
 		eq.Term("class", class),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1131,7 +1131,7 @@ func SumPageCountOfWeekBooksByClassPriceGteReleaseDateGte(es *elasticsearch.Clie
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1146,7 +1146,7 @@ func SumPageCountOfWeekBooksByClassPriceGtReleaseDateGte(es *elasticsearch.Clien
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1161,7 +1161,7 @@ func SumPageCountOfWeekBooksByClassPriceLtReleaseDateGte(es *elasticsearch.Clien
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1176,7 +1176,7 @@ func SumPageCountOfWeekBooksByClassPriceLteReleaseDateGte(es *elasticsearch.Clie
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1192,7 +1192,7 @@ func SumPageCountOfWeekBooksByClassPriceGteLteReleaseDateGte(es *elasticsearch.C
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1207,7 +1207,7 @@ func SumPageCountOfWeekBooksByClassSeqReleaseDateGte(es *elasticsearch.Client, c
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1239,7 +1239,7 @@ func SumPageCountOfWeekBooksByClass2NameReleaseDateGte(es *elasticsearch.Client,
 		eq.Term("class2", class2),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1347,7 +1347,7 @@ func SumPageCountOfWeekBooksByClass2PriceGteReleaseDateGte(es *elasticsearch.Cli
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1362,7 +1362,7 @@ func SumPageCountOfWeekBooksByClass2PriceGtReleaseDateGte(es *elasticsearch.Clie
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1377,7 +1377,7 @@ func SumPageCountOfWeekBooksByClass2PriceLtReleaseDateGte(es *elasticsearch.Clie
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1392,7 +1392,7 @@ func SumPageCountOfWeekBooksByClass2PriceLteReleaseDateGte(es *elasticsearch.Cli
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1408,7 +1408,7 @@ func SumPageCountOfWeekBooksByClass2PriceGteLteReleaseDateGte(es *elasticsearch.
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1423,7 +1423,7 @@ func SumPageCountOfWeekBooksByClass2SeqReleaseDateGte(es *elasticsearch.Client, 
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1541,7 +1541,7 @@ func SumPageCountOfWeekBooksByNamePriceGteReleaseDateGte(es *elasticsearch.Clien
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1558,7 +1558,7 @@ func SumPageCountOfWeekBooksByNamePriceGtReleaseDateGte(es *elasticsearch.Client
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1575,7 +1575,7 @@ func SumPageCountOfWeekBooksByNamePriceLtReleaseDateGte(es *elasticsearch.Client
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1592,7 +1592,7 @@ func SumPageCountOfWeekBooksByNamePriceLteReleaseDateGte(es *elasticsearch.Clien
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1610,7 +1610,7 @@ func SumPageCountOfWeekBooksByNamePriceGteLteReleaseDateGte(es *elasticsearch.Cl
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1627,7 +1627,7 @@ func SumPageCountOfWeekBooksByNameSeqReleaseDateGte(es *elasticsearch.Client, na
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1735,7 +1735,7 @@ func SumPageCountOfWeekBooksBySeqPriceGteReleaseDateGte(es *elasticsearch.Client
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1750,7 +1750,7 @@ func SumPageCountOfWeekBooksBySeqPriceGtReleaseDateGte(es *elasticsearch.Client,
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1765,7 +1765,7 @@ func SumPageCountOfWeekBooksBySeqPriceLtReleaseDateGte(es *elasticsearch.Client,
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1780,7 +1780,7 @@ func SumPageCountOfWeekBooksBySeqPriceLteReleaseDateGte(es *elasticsearch.Client
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1796,7 +1796,7 @@ func SumPageCountOfWeekBooksBySeqPriceGteLteReleaseDateGte(es *elasticsearch.Cli
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dw/w", releaseDateNWeek), nil, nil, nil),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }

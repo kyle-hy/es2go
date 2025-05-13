@@ -16,7 +16,7 @@ func HistPageCountOfBooksByAllText(es *elasticsearch.Client, allText string, his
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -40,7 +40,7 @@ func HistPageCountOfBooksByAuthor(es *elasticsearch.Client, author string, histI
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -64,7 +64,7 @@ func HistPageCountOfBooksByClass(es *elasticsearch.Client, class string, histInt
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -88,7 +88,7 @@ func HistPageCountOfBooksByClass2(es *elasticsearch.Client, class2 string, histI
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -112,7 +112,7 @@ func HistPageCountOfBooksByName(es *elasticsearch.Client, name string, histInter
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -148,7 +148,7 @@ func HistPageCountOfBooksByPrice(es *elasticsearch.Client, price float64, histIn
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -160,7 +160,7 @@ func HistPageCountOfBooksByReleaseDate(es *elasticsearch.Client, releaseDate tim
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -184,7 +184,7 @@ func HistPageCountOfBooksBySeq(es *elasticsearch.Client, seq string, histInterva
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -210,7 +210,7 @@ func HistPageCountOfBooksByAllTextAuthor(es *elasticsearch.Client, allText, auth
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -240,7 +240,7 @@ func HistPageCountOfBooksByAllTextClass(es *elasticsearch.Client, allText, class
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -272,7 +272,7 @@ func HistPageCountOfBooksByAllTextClass2(es *elasticsearch.Client, allText, clas
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -302,7 +302,7 @@ func HistPageCountOfBooksByAllTextName(es *elasticsearch.Client, allText, name s
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -348,7 +348,7 @@ func HistPageCountOfBooksByAllTextPrice(es *elasticsearch.Client, allText string
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -364,7 +364,7 @@ func HistPageCountOfBooksByAllTextReleaseDate(es *elasticsearch.Client, allText 
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -396,7 +396,7 @@ func HistPageCountOfBooksByAllTextSeq(es *elasticsearch.Client, allText, seq str
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -428,7 +428,7 @@ func HistPageCountOfBooksByAuthorClass(es *elasticsearch.Client, author, class s
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -460,7 +460,7 @@ func HistPageCountOfBooksByAuthorClass2(es *elasticsearch.Client, author, class2
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -490,7 +490,7 @@ func HistPageCountOfBooksByAuthorName(es *elasticsearch.Client, author, name str
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -536,7 +536,7 @@ func HistPageCountOfBooksByAuthorPrice(es *elasticsearch.Client, author string, 
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -552,7 +552,7 @@ func HistPageCountOfBooksByAuthorReleaseDate(es *elasticsearch.Client, author st
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -584,7 +584,7 @@ func HistPageCountOfBooksByAuthorSeq(es *elasticsearch.Client, author, seq strin
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -614,7 +614,7 @@ func HistPageCountOfBooksByClassClass2(es *elasticsearch.Client, class, class2 s
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -644,7 +644,7 @@ func HistPageCountOfBooksByClassName(es *elasticsearch.Client, class, name strin
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -688,7 +688,7 @@ func HistPageCountOfBooksByClassPrice(es *elasticsearch.Client, class string, pr
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -702,7 +702,7 @@ func HistPageCountOfBooksByClassReleaseDate(es *elasticsearch.Client, class stri
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -730,7 +730,7 @@ func HistPageCountOfBooksByClassSeq(es *elasticsearch.Client, class, seq string,
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -760,7 +760,7 @@ func HistPageCountOfBooksByClass2Name(es *elasticsearch.Client, class2, name str
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -804,7 +804,7 @@ func HistPageCountOfBooksByClass2Price(es *elasticsearch.Client, class2 string, 
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -818,7 +818,7 @@ func HistPageCountOfBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 st
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -846,7 +846,7 @@ func HistPageCountOfBooksByClass2Seq(es *elasticsearch.Client, class2, seq strin
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -892,7 +892,7 @@ func HistPageCountOfBooksByNamePrice(es *elasticsearch.Client, name string, pric
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -908,7 +908,7 @@ func HistPageCountOfBooksByNameReleaseDate(es *elasticsearch.Client, name string
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -940,7 +940,7 @@ func HistPageCountOfBooksByNameSeq(es *elasticsearch.Client, name, seq string, h
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -998,7 +998,7 @@ func HistPageCountOfBooksByPriceReleaseDate(es *elasticsearch.Client, price floa
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1012,7 +1012,7 @@ func HistPageCountOfBooksByPriceSeq(es *elasticsearch.Client, price float64, seq
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1026,7 +1026,7 @@ func HistPageCountOfBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate 
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1058,7 +1058,7 @@ func HistPageCountOfBooksByAllTextAuthorClass(es *elasticsearch.Client, allText,
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1094,7 +1094,7 @@ func HistPageCountOfBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1128,7 +1128,7 @@ func HistPageCountOfBooksByAllTextAuthorName(es *elasticsearch.Client, allText, 
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1180,7 +1180,7 @@ func HistPageCountOfBooksByAllTextAuthorPrice(es *elasticsearch.Client, allText,
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1198,7 +1198,7 @@ func HistPageCountOfBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, al
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1234,7 +1234,7 @@ func HistPageCountOfBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, a
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1270,7 +1270,7 @@ func HistPageCountOfBooksByAllTextClassClass2(es *elasticsearch.Client, allText,
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1306,7 +1306,7 @@ func HistPageCountOfBooksByAllTextClassName(es *elasticsearch.Client, allText, c
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1360,7 +1360,7 @@ func HistPageCountOfBooksByAllTextClassPrice(es *elasticsearch.Client, allText, 
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1378,7 +1378,7 @@ func HistPageCountOfBooksByAllTextClassReleaseDate(es *elasticsearch.Client, all
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1414,7 +1414,7 @@ func HistPageCountOfBooksByAllTextClassSeq(es *elasticsearch.Client, allText, cl
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1450,7 +1450,7 @@ func HistPageCountOfBooksByAllTextClass2Name(es *elasticsearch.Client, allText, 
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1504,7 +1504,7 @@ func HistPageCountOfBooksByAllTextClass2Price(es *elasticsearch.Client, allText,
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1522,7 +1522,7 @@ func HistPageCountOfBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, al
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1558,7 +1558,7 @@ func HistPageCountOfBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, c
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1612,7 +1612,7 @@ func HistPageCountOfBooksByAllTextNamePrice(es *elasticsearch.Client, allText, n
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1630,7 +1630,7 @@ func HistPageCountOfBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allT
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1666,7 +1666,7 @@ func HistPageCountOfBooksByAllTextNameSeq(es *elasticsearch.Client, allText, nam
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1738,7 +1738,7 @@ func HistPageCountOfBooksByAllTextPriceReleaseDate(es *elasticsearch.Client, all
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1756,7 +1756,7 @@ func HistPageCountOfBooksByAllTextPriceSeq(es *elasticsearch.Client, allText str
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1774,7 +1774,7 @@ func HistPageCountOfBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allTe
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1810,7 +1810,7 @@ func HistPageCountOfBooksByAuthorClassClass2(es *elasticsearch.Client, author, c
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1846,7 +1846,7 @@ func HistPageCountOfBooksByAuthorClassName(es *elasticsearch.Client, author, cla
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1900,7 +1900,7 @@ func HistPageCountOfBooksByAuthorClassPrice(es *elasticsearch.Client, author, cl
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1918,7 +1918,7 @@ func HistPageCountOfBooksByAuthorClassReleaseDate(es *elasticsearch.Client, auth
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1954,7 +1954,7 @@ func HistPageCountOfBooksByAuthorClassSeq(es *elasticsearch.Client, author, clas
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1990,7 +1990,7 @@ func HistPageCountOfBooksByAuthorClass2Name(es *elasticsearch.Client, author, cl
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2044,7 +2044,7 @@ func HistPageCountOfBooksByAuthorClass2Price(es *elasticsearch.Client, author, c
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2062,7 +2062,7 @@ func HistPageCountOfBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, aut
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2098,7 +2098,7 @@ func HistPageCountOfBooksByAuthorClass2Seq(es *elasticsearch.Client, author, cla
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2152,7 +2152,7 @@ func HistPageCountOfBooksByAuthorNamePrice(es *elasticsearch.Client, author, nam
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2170,7 +2170,7 @@ func HistPageCountOfBooksByAuthorNameReleaseDate(es *elasticsearch.Client, autho
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2206,7 +2206,7 @@ func HistPageCountOfBooksByAuthorNameSeq(es *elasticsearch.Client, author, name,
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2278,7 +2278,7 @@ func HistPageCountOfBooksByAuthorPriceReleaseDate(es *elasticsearch.Client, auth
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2296,7 +2296,7 @@ func HistPageCountOfBooksByAuthorPriceSeq(es *elasticsearch.Client, author strin
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2314,7 +2314,7 @@ func HistPageCountOfBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2350,7 +2350,7 @@ func HistPageCountOfBooksByClassClass2Name(es *elasticsearch.Client, class, clas
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2400,7 +2400,7 @@ func HistPageCountOfBooksByClassClass2Price(es *elasticsearch.Client, class, cla
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2416,7 +2416,7 @@ func HistPageCountOfBooksByClassClass2ReleaseDate(es *elasticsearch.Client, clas
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2448,7 +2448,7 @@ func HistPageCountOfBooksByClassClass2Seq(es *elasticsearch.Client, class, class
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2500,7 +2500,7 @@ func HistPageCountOfBooksByClassNamePrice(es *elasticsearch.Client, class, name 
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2518,7 +2518,7 @@ func HistPageCountOfBooksByClassNameReleaseDate(es *elasticsearch.Client, class,
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2554,7 +2554,7 @@ func HistPageCountOfBooksByClassNameSeq(es *elasticsearch.Client, class, name, s
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2620,7 +2620,7 @@ func HistPageCountOfBooksByClassPriceReleaseDate(es *elasticsearch.Client, class
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2636,7 +2636,7 @@ func HistPageCountOfBooksByClassPriceSeq(es *elasticsearch.Client, class string,
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2652,7 +2652,7 @@ func HistPageCountOfBooksByClassReleaseDateSeq(es *elasticsearch.Client, class s
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2704,7 +2704,7 @@ func HistPageCountOfBooksByClass2NamePrice(es *elasticsearch.Client, class2, nam
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2722,7 +2722,7 @@ func HistPageCountOfBooksByClass2NameReleaseDate(es *elasticsearch.Client, class
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2758,7 +2758,7 @@ func HistPageCountOfBooksByClass2NameSeq(es *elasticsearch.Client, class2, name,
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2824,7 +2824,7 @@ func HistPageCountOfBooksByClass2PriceReleaseDate(es *elasticsearch.Client, clas
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2840,7 +2840,7 @@ func HistPageCountOfBooksByClass2PriceSeq(es *elasticsearch.Client, class2 strin
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2856,7 +2856,7 @@ func HistPageCountOfBooksByClass2ReleaseDateSeq(es *elasticsearch.Client, class2
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2926,7 +2926,7 @@ func HistPageCountOfBooksByNamePriceReleaseDate(es *elasticsearch.Client, name s
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2944,7 +2944,7 @@ func HistPageCountOfBooksByNamePriceSeq(es *elasticsearch.Client, name string, p
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2962,7 +2962,7 @@ func HistPageCountOfBooksByNameReleaseDateSeq(es *elasticsearch.Client, name str
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3012,7 +3012,7 @@ func HistPageCountOfBooksByPriceReleaseDateSeq(es *elasticsearch.Client, price f
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3032,7 +3032,7 @@ func HistPageCountOfBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, al
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3072,7 +3072,7 @@ func HistPageCountOfBooksByAllTextAuthorClassName(es *elasticsearch.Client, allT
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3132,7 +3132,7 @@ func HistPageCountOfBooksByAllTextAuthorClassPrice(es *elasticsearch.Client, all
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3152,7 +3152,7 @@ func HistPageCountOfBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Clien
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3192,7 +3192,7 @@ func HistPageCountOfBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allTe
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3232,7 +3232,7 @@ func HistPageCountOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, all
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3292,7 +3292,7 @@ func HistPageCountOfBooksByAllTextAuthorClass2Price(es *elasticsearch.Client, al
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3312,7 +3312,7 @@ func HistPageCountOfBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Clie
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3352,7 +3352,7 @@ func HistPageCountOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allT
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3412,7 +3412,7 @@ func HistPageCountOfBooksByAllTextAuthorNamePrice(es *elasticsearch.Client, allT
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3432,7 +3432,7 @@ func HistPageCountOfBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3472,7 +3472,7 @@ func HistPageCountOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allTex
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3552,7 +3552,7 @@ func HistPageCountOfBooksByAllTextAuthorPriceReleaseDate(es *elasticsearch.Clien
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3572,7 +3572,7 @@ func HistPageCountOfBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client, allTe
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3592,7 +3592,7 @@ func HistPageCountOfBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client,
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3632,7 +3632,7 @@ func HistPageCountOfBooksByAllTextClassClass2Name(es *elasticsearch.Client, allT
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3692,7 +3692,7 @@ func HistPageCountOfBooksByAllTextClassClass2Price(es *elasticsearch.Client, all
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3712,7 +3712,7 @@ func HistPageCountOfBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Clien
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3752,7 +3752,7 @@ func HistPageCountOfBooksByAllTextClassClass2Seq(es *elasticsearch.Client, allTe
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3812,7 +3812,7 @@ func HistPageCountOfBooksByAllTextClassNamePrice(es *elasticsearch.Client, allTe
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3832,7 +3832,7 @@ func HistPageCountOfBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client,
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3872,7 +3872,7 @@ func HistPageCountOfBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3952,7 +3952,7 @@ func HistPageCountOfBooksByAllTextClassPriceReleaseDate(es *elasticsearch.Client
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3972,7 +3972,7 @@ func HistPageCountOfBooksByAllTextClassPriceSeq(es *elasticsearch.Client, allTex
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3992,7 +3992,7 @@ func HistPageCountOfBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, 
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4052,7 +4052,7 @@ func HistPageCountOfBooksByAllTextClass2NamePrice(es *elasticsearch.Client, allT
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4072,7 +4072,7 @@ func HistPageCountOfBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4112,7 +4112,7 @@ func HistPageCountOfBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allTex
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4192,7 +4192,7 @@ func HistPageCountOfBooksByAllTextClass2PriceReleaseDate(es *elasticsearch.Clien
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4212,7 +4212,7 @@ func HistPageCountOfBooksByAllTextClass2PriceSeq(es *elasticsearch.Client, allTe
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4232,7 +4232,7 @@ func HistPageCountOfBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client,
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4312,7 +4312,7 @@ func HistPageCountOfBooksByAllTextNamePriceReleaseDate(es *elasticsearch.Client,
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4332,7 +4332,7 @@ func HistPageCountOfBooksByAllTextNamePriceSeq(es *elasticsearch.Client, allText
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4352,7 +4352,7 @@ func HistPageCountOfBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, a
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4412,7 +4412,7 @@ func HistPageCountOfBooksByAllTextPriceReleaseDateSeq(es *elasticsearch.Client, 
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4432,7 +4432,7 @@ func HistPageCountOfBooksByAuthorClassClass2Name(es *elasticsearch.Client, autho
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4492,7 +4492,7 @@ func HistPageCountOfBooksByAuthorClassClass2Price(es *elasticsearch.Client, auth
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4512,7 +4512,7 @@ func HistPageCountOfBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4552,7 +4552,7 @@ func HistPageCountOfBooksByAuthorClassClass2Seq(es *elasticsearch.Client, author
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4612,7 +4612,7 @@ func HistPageCountOfBooksByAuthorClassNamePrice(es *elasticsearch.Client, author
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4632,7 +4632,7 @@ func HistPageCountOfBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, 
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4672,7 +4672,7 @@ func HistPageCountOfBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, 
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4752,7 +4752,7 @@ func HistPageCountOfBooksByAuthorClassPriceReleaseDate(es *elasticsearch.Client,
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4772,7 +4772,7 @@ func HistPageCountOfBooksByAuthorClassPriceSeq(es *elasticsearch.Client, author,
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4792,7 +4792,7 @@ func HistPageCountOfBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, a
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4852,7 +4852,7 @@ func HistPageCountOfBooksByAuthorClass2NamePrice(es *elasticsearch.Client, autho
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4872,7 +4872,7 @@ func HistPageCountOfBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client,
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4912,7 +4912,7 @@ func HistPageCountOfBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author,
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4992,7 +4992,7 @@ func HistPageCountOfBooksByAuthorClass2PriceReleaseDate(es *elasticsearch.Client
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5012,7 +5012,7 @@ func HistPageCountOfBooksByAuthorClass2PriceSeq(es *elasticsearch.Client, author
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5032,7 +5032,7 @@ func HistPageCountOfBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, 
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5112,7 +5112,7 @@ func HistPageCountOfBooksByAuthorNamePriceReleaseDate(es *elasticsearch.Client, 
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5132,7 +5132,7 @@ func HistPageCountOfBooksByAuthorNamePriceSeq(es *elasticsearch.Client, author, 
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5152,7 +5152,7 @@ func HistPageCountOfBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, au
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5212,7 +5212,7 @@ func HistPageCountOfBooksByAuthorPriceReleaseDateSeq(es *elasticsearch.Client, a
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5252,7 +5252,7 @@ func HistPageCountOfBooksByClassClass2NamePrice(es *elasticsearch.Client, class,
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5272,7 +5272,7 @@ func HistPageCountOfBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, 
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5312,7 +5312,7 @@ func HistPageCountOfBooksByClassClass2NameSeq(es *elasticsearch.Client, class, c
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5386,7 +5386,7 @@ func HistPageCountOfBooksByClassClass2PriceReleaseDate(es *elasticsearch.Client,
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5404,7 +5404,7 @@ func HistPageCountOfBooksByClassClass2PriceSeq(es *elasticsearch.Client, class, 
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5422,7 +5422,7 @@ func HistPageCountOfBooksByClassClass2ReleaseDateSeq(es *elasticsearch.Client, c
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5500,7 +5500,7 @@ func HistPageCountOfBooksByClassNamePriceReleaseDate(es *elasticsearch.Client, c
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5520,7 +5520,7 @@ func HistPageCountOfBooksByClassNamePriceSeq(es *elasticsearch.Client, class, na
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5540,7 +5540,7 @@ func HistPageCountOfBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, cla
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5596,7 +5596,7 @@ func HistPageCountOfBooksByClassPriceReleaseDateSeq(es *elasticsearch.Client, cl
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5656,7 +5656,7 @@ func HistPageCountOfBooksByClass2NamePriceReleaseDate(es *elasticsearch.Client, 
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5676,7 +5676,7 @@ func HistPageCountOfBooksByClass2NamePriceSeq(es *elasticsearch.Client, class2, 
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5696,7 +5696,7 @@ func HistPageCountOfBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, cl
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5752,7 +5752,7 @@ func HistPageCountOfBooksByClass2PriceReleaseDateSeq(es *elasticsearch.Client, c
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5792,7 +5792,7 @@ func HistPageCountOfBooksByNamePriceReleaseDateSeq(es *elasticsearch.Client, nam
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.HistogramAgg("pageCount", eq.WithInterval(histInterval))
+	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }

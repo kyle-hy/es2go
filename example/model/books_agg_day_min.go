@@ -15,7 +15,7 @@ func MinPageCountOfDayBooksByReleaseDateGte(es *elasticsearch.Client, releaseDat
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -41,7 +41,7 @@ func MinPageCountOfDayBooksByAllTextReleaseDateGte(es *elasticsearch.Client, all
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -71,7 +71,7 @@ func MinPageCountOfDayBooksByAuthorReleaseDateGte(es *elasticsearch.Client, auth
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -99,7 +99,7 @@ func MinPageCountOfDayBooksByClassReleaseDateGte(es *elasticsearch.Client, class
 		eq.Term("class", class),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -125,7 +125,7 @@ func MinPageCountOfDayBooksByClass2ReleaseDateGte(es *elasticsearch.Client, clas
 		eq.Term("class2", class2),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -153,7 +153,7 @@ func MinPageCountOfDayBooksByNameReleaseDateGte(es *elasticsearch.Client, name s
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -247,7 +247,7 @@ func MinPageCountOfDayBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, pr
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -260,7 +260,7 @@ func MinPageCountOfDayBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, pri
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -273,7 +273,7 @@ func MinPageCountOfDayBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, pri
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -286,7 +286,7 @@ func MinPageCountOfDayBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, pr
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -300,7 +300,7 @@ func MinPageCountOfDayBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client,
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -313,7 +313,7 @@ func MinPageCountOfDayBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq str
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -343,7 +343,7 @@ func MinPageCountOfDayBooksByAllTextAuthorReleaseDateGte(es *elasticsearch.Clien
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -377,7 +377,7 @@ func MinPageCountOfDayBooksByAllTextClassReleaseDateGte(es *elasticsearch.Client
 		eq.Term("class", class),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -411,7 +411,7 @@ func MinPageCountOfDayBooksByAllTextClass2ReleaseDateGte(es *elasticsearch.Clien
 		eq.Term("class2", class2),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -445,7 +445,7 @@ func MinPageCountOfDayBooksByAllTextNameReleaseDateGte(es *elasticsearch.Client,
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -565,7 +565,7 @@ func MinPageCountOfDayBooksByAllTextPriceGteReleaseDateGte(es *elasticsearch.Cli
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -582,7 +582,7 @@ func MinPageCountOfDayBooksByAllTextPriceGtReleaseDateGte(es *elasticsearch.Clie
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -599,7 +599,7 @@ func MinPageCountOfDayBooksByAllTextPriceLtReleaseDateGte(es *elasticsearch.Clie
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -616,7 +616,7 @@ func MinPageCountOfDayBooksByAllTextPriceLteReleaseDateGte(es *elasticsearch.Cli
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -634,7 +634,7 @@ func MinPageCountOfDayBooksByAllTextPriceGteLteReleaseDateGte(es *elasticsearch.
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -651,7 +651,7 @@ func MinPageCountOfDayBooksByAllTextSeqReleaseDateGte(es *elasticsearch.Client, 
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -685,7 +685,7 @@ func MinPageCountOfDayBooksByAuthorClassReleaseDateGte(es *elasticsearch.Client,
 		eq.Term("class", class),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -719,7 +719,7 @@ func MinPageCountOfDayBooksByAuthorClass2ReleaseDateGte(es *elasticsearch.Client
 		eq.Term("class2", class2),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -753,7 +753,7 @@ func MinPageCountOfDayBooksByAuthorNameReleaseDateGte(es *elasticsearch.Client, 
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -873,7 +873,7 @@ func MinPageCountOfDayBooksByAuthorPriceGteReleaseDateGte(es *elasticsearch.Clie
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -890,7 +890,7 @@ func MinPageCountOfDayBooksByAuthorPriceGtReleaseDateGte(es *elasticsearch.Clien
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -907,7 +907,7 @@ func MinPageCountOfDayBooksByAuthorPriceLtReleaseDateGte(es *elasticsearch.Clien
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -924,7 +924,7 @@ func MinPageCountOfDayBooksByAuthorPriceLteReleaseDateGte(es *elasticsearch.Clie
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -942,7 +942,7 @@ func MinPageCountOfDayBooksByAuthorPriceGteLteReleaseDateGte(es *elasticsearch.C
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -959,7 +959,7 @@ func MinPageCountOfDayBooksByAuthorSeqReleaseDateGte(es *elasticsearch.Client, a
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -991,7 +991,7 @@ func MinPageCountOfDayBooksByClassClass2ReleaseDateGte(es *elasticsearch.Client,
 		eq.Term("class2", class2),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1023,7 +1023,7 @@ func MinPageCountOfDayBooksByClassNameReleaseDateGte(es *elasticsearch.Client, c
 		eq.Term("class", class),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1131,7 +1131,7 @@ func MinPageCountOfDayBooksByClassPriceGteReleaseDateGte(es *elasticsearch.Clien
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1146,7 +1146,7 @@ func MinPageCountOfDayBooksByClassPriceGtReleaseDateGte(es *elasticsearch.Client
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1161,7 +1161,7 @@ func MinPageCountOfDayBooksByClassPriceLtReleaseDateGte(es *elasticsearch.Client
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1176,7 +1176,7 @@ func MinPageCountOfDayBooksByClassPriceLteReleaseDateGte(es *elasticsearch.Clien
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1192,7 +1192,7 @@ func MinPageCountOfDayBooksByClassPriceGteLteReleaseDateGte(es *elasticsearch.Cl
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1207,7 +1207,7 @@ func MinPageCountOfDayBooksByClassSeqReleaseDateGte(es *elasticsearch.Client, cl
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1239,7 +1239,7 @@ func MinPageCountOfDayBooksByClass2NameReleaseDateGte(es *elasticsearch.Client, 
 		eq.Term("class2", class2),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1347,7 +1347,7 @@ func MinPageCountOfDayBooksByClass2PriceGteReleaseDateGte(es *elasticsearch.Clie
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1362,7 +1362,7 @@ func MinPageCountOfDayBooksByClass2PriceGtReleaseDateGte(es *elasticsearch.Clien
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1377,7 +1377,7 @@ func MinPageCountOfDayBooksByClass2PriceLtReleaseDateGte(es *elasticsearch.Clien
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1392,7 +1392,7 @@ func MinPageCountOfDayBooksByClass2PriceLteReleaseDateGte(es *elasticsearch.Clie
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1408,7 +1408,7 @@ func MinPageCountOfDayBooksByClass2PriceGteLteReleaseDateGte(es *elasticsearch.C
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1423,7 +1423,7 @@ func MinPageCountOfDayBooksByClass2SeqReleaseDateGte(es *elasticsearch.Client, c
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1541,7 +1541,7 @@ func MinPageCountOfDayBooksByNamePriceGteReleaseDateGte(es *elasticsearch.Client
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1558,7 +1558,7 @@ func MinPageCountOfDayBooksByNamePriceGtReleaseDateGte(es *elasticsearch.Client,
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1575,7 +1575,7 @@ func MinPageCountOfDayBooksByNamePriceLtReleaseDateGte(es *elasticsearch.Client,
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1592,7 +1592,7 @@ func MinPageCountOfDayBooksByNamePriceLteReleaseDateGte(es *elasticsearch.Client
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1610,7 +1610,7 @@ func MinPageCountOfDayBooksByNamePriceGteLteReleaseDateGte(es *elasticsearch.Cli
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1627,7 +1627,7 @@ func MinPageCountOfDayBooksByNameSeqReleaseDateGte(es *elasticsearch.Client, nam
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1735,7 +1735,7 @@ func MinPageCountOfDayBooksBySeqPriceGteReleaseDateGte(es *elasticsearch.Client,
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1750,7 +1750,7 @@ func MinPageCountOfDayBooksBySeqPriceGtReleaseDateGte(es *elasticsearch.Client, 
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1765,7 +1765,7 @@ func MinPageCountOfDayBooksBySeqPriceLtReleaseDateGte(es *elasticsearch.Client, 
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1780,7 +1780,7 @@ func MinPageCountOfDayBooksBySeqPriceLteReleaseDateGte(es *elasticsearch.Client,
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1796,7 +1796,7 @@ func MinPageCountOfDayBooksBySeqPriceGteLteReleaseDateGte(es *elasticsearch.Clie
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dd/d", releaseDateNDay), nil, nil, nil),
 	}
-	aggs := eq.MinAgg("pageCount")
+	aggs := eq.MinAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }

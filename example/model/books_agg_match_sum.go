@@ -15,7 +15,7 @@ func SumPageCountOfBooksByAllText(es *elasticsearch.Client, allText string) (*eq
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -37,7 +37,7 @@ func SumPageCountOfBooksByAuthor(es *elasticsearch.Client, author string) (*eq.D
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -59,7 +59,7 @@ func SumPageCountOfBooksByClass(es *elasticsearch.Client, class string) (*eq.Dat
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -81,7 +81,7 @@ func SumPageCountOfBooksByClass2(es *elasticsearch.Client, class2 string) (*eq.D
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -103,7 +103,7 @@ func SumPageCountOfBooksByName(es *elasticsearch.Client, name string) (*eq.Data,
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -136,7 +136,7 @@ func SumPageCountOfBooksByPrice(es *elasticsearch.Client, price float64) (*eq.Da
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -147,7 +147,7 @@ func SumPageCountOfBooksByReleaseDate(es *elasticsearch.Client, releaseDate time
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -169,7 +169,7 @@ func SumPageCountOfBooksBySeq(es *elasticsearch.Client, seq string) (*eq.Data, *
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -193,7 +193,7 @@ func SumPageCountOfBooksByAllTextAuthor(es *elasticsearch.Client, allText, autho
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -221,7 +221,7 @@ func SumPageCountOfBooksByAllTextClass(es *elasticsearch.Client, allText, class 
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -251,7 +251,7 @@ func SumPageCountOfBooksByAllTextClass2(es *elasticsearch.Client, allText, class
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -279,7 +279,7 @@ func SumPageCountOfBooksByAllTextName(es *elasticsearch.Client, allText, name st
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -322,7 +322,7 @@ func SumPageCountOfBooksByAllTextPrice(es *elasticsearch.Client, allText string,
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -337,7 +337,7 @@ func SumPageCountOfBooksByAllTextReleaseDate(es *elasticsearch.Client, allText s
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -367,7 +367,7 @@ func SumPageCountOfBooksByAllTextSeq(es *elasticsearch.Client, allText, seq stri
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -397,7 +397,7 @@ func SumPageCountOfBooksByAuthorClass(es *elasticsearch.Client, author, class st
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -427,7 +427,7 @@ func SumPageCountOfBooksByAuthorClass2(es *elasticsearch.Client, author, class2 
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -455,7 +455,7 @@ func SumPageCountOfBooksByAuthorName(es *elasticsearch.Client, author, name stri
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -498,7 +498,7 @@ func SumPageCountOfBooksByAuthorPrice(es *elasticsearch.Client, author string, p
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -513,7 +513,7 @@ func SumPageCountOfBooksByAuthorReleaseDate(es *elasticsearch.Client, author str
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -543,7 +543,7 @@ func SumPageCountOfBooksByAuthorSeq(es *elasticsearch.Client, author, seq string
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -571,7 +571,7 @@ func SumPageCountOfBooksByClassClass2(es *elasticsearch.Client, class, class2 st
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -599,7 +599,7 @@ func SumPageCountOfBooksByClassName(es *elasticsearch.Client, class, name string
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -640,7 +640,7 @@ func SumPageCountOfBooksByClassPrice(es *elasticsearch.Client, class string, pri
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -653,7 +653,7 @@ func SumPageCountOfBooksByClassReleaseDate(es *elasticsearch.Client, class strin
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -679,7 +679,7 @@ func SumPageCountOfBooksByClassSeq(es *elasticsearch.Client, class, seq string) 
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -707,7 +707,7 @@ func SumPageCountOfBooksByClass2Name(es *elasticsearch.Client, class2, name stri
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -748,7 +748,7 @@ func SumPageCountOfBooksByClass2Price(es *elasticsearch.Client, class2 string, p
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -761,7 +761,7 @@ func SumPageCountOfBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 str
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -787,7 +787,7 @@ func SumPageCountOfBooksByClass2Seq(es *elasticsearch.Client, class2, seq string
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -830,7 +830,7 @@ func SumPageCountOfBooksByNamePrice(es *elasticsearch.Client, name string, price
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -845,7 +845,7 @@ func SumPageCountOfBooksByNameReleaseDate(es *elasticsearch.Client, name string,
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -875,7 +875,7 @@ func SumPageCountOfBooksByNameSeq(es *elasticsearch.Client, name, seq string) (*
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -929,7 +929,7 @@ func SumPageCountOfBooksByPriceReleaseDate(es *elasticsearch.Client, price float
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -942,7 +942,7 @@ func SumPageCountOfBooksByPriceSeq(es *elasticsearch.Client, price float64, seq 
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -955,7 +955,7 @@ func SumPageCountOfBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate t
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -985,7 +985,7 @@ func SumPageCountOfBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, 
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1019,7 +1019,7 @@ func SumPageCountOfBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText,
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1051,7 +1051,7 @@ func SumPageCountOfBooksByAllTextAuthorName(es *elasticsearch.Client, allText, a
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1100,7 +1100,7 @@ func SumPageCountOfBooksByAllTextAuthorPrice(es *elasticsearch.Client, allText, 
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1117,7 +1117,7 @@ func SumPageCountOfBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, all
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1151,7 +1151,7 @@ func SumPageCountOfBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, au
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1185,7 +1185,7 @@ func SumPageCountOfBooksByAllTextClassClass2(es *elasticsearch.Client, allText, 
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1219,7 +1219,7 @@ func SumPageCountOfBooksByAllTextClassName(es *elasticsearch.Client, allText, cl
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1270,7 +1270,7 @@ func SumPageCountOfBooksByAllTextClassPrice(es *elasticsearch.Client, allText, c
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1287,7 +1287,7 @@ func SumPageCountOfBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allT
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1321,7 +1321,7 @@ func SumPageCountOfBooksByAllTextClassSeq(es *elasticsearch.Client, allText, cla
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1355,7 +1355,7 @@ func SumPageCountOfBooksByAllTextClass2Name(es *elasticsearch.Client, allText, c
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1406,7 +1406,7 @@ func SumPageCountOfBooksByAllTextClass2Price(es *elasticsearch.Client, allText, 
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1423,7 +1423,7 @@ func SumPageCountOfBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, all
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1457,7 +1457,7 @@ func SumPageCountOfBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, cl
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1508,7 +1508,7 @@ func SumPageCountOfBooksByAllTextNamePrice(es *elasticsearch.Client, allText, na
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1525,7 +1525,7 @@ func SumPageCountOfBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allTe
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1559,7 +1559,7 @@ func SumPageCountOfBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1627,7 +1627,7 @@ func SumPageCountOfBooksByAllTextPriceReleaseDate(es *elasticsearch.Client, allT
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1644,7 +1644,7 @@ func SumPageCountOfBooksByAllTextPriceSeq(es *elasticsearch.Client, allText stri
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1661,7 +1661,7 @@ func SumPageCountOfBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allTex
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1695,7 +1695,7 @@ func SumPageCountOfBooksByAuthorClassClass2(es *elasticsearch.Client, author, cl
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1729,7 +1729,7 @@ func SumPageCountOfBooksByAuthorClassName(es *elasticsearch.Client, author, clas
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1780,7 +1780,7 @@ func SumPageCountOfBooksByAuthorClassPrice(es *elasticsearch.Client, author, cla
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1797,7 +1797,7 @@ func SumPageCountOfBooksByAuthorClassReleaseDate(es *elasticsearch.Client, autho
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1831,7 +1831,7 @@ func SumPageCountOfBooksByAuthorClassSeq(es *elasticsearch.Client, author, class
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1865,7 +1865,7 @@ func SumPageCountOfBooksByAuthorClass2Name(es *elasticsearch.Client, author, cla
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1916,7 +1916,7 @@ func SumPageCountOfBooksByAuthorClass2Price(es *elasticsearch.Client, author, cl
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1933,7 +1933,7 @@ func SumPageCountOfBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, auth
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1967,7 +1967,7 @@ func SumPageCountOfBooksByAuthorClass2Seq(es *elasticsearch.Client, author, clas
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2018,7 +2018,7 @@ func SumPageCountOfBooksByAuthorNamePrice(es *elasticsearch.Client, author, name
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2035,7 +2035,7 @@ func SumPageCountOfBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2069,7 +2069,7 @@ func SumPageCountOfBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, 
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2137,7 +2137,7 @@ func SumPageCountOfBooksByAuthorPriceReleaseDate(es *elasticsearch.Client, autho
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2154,7 +2154,7 @@ func SumPageCountOfBooksByAuthorPriceSeq(es *elasticsearch.Client, author string
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2171,7 +2171,7 @@ func SumPageCountOfBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author 
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2205,7 +2205,7 @@ func SumPageCountOfBooksByClassClass2Name(es *elasticsearch.Client, class, class
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2252,7 +2252,7 @@ func SumPageCountOfBooksByClassClass2Price(es *elasticsearch.Client, class, clas
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2267,7 +2267,7 @@ func SumPageCountOfBooksByClassClass2ReleaseDate(es *elasticsearch.Client, class
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2297,7 +2297,7 @@ func SumPageCountOfBooksByClassClass2Seq(es *elasticsearch.Client, class, class2
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2346,7 +2346,7 @@ func SumPageCountOfBooksByClassNamePrice(es *elasticsearch.Client, class, name s
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2363,7 +2363,7 @@ func SumPageCountOfBooksByClassNameReleaseDate(es *elasticsearch.Client, class, 
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2397,7 +2397,7 @@ func SumPageCountOfBooksByClassNameSeq(es *elasticsearch.Client, class, name, se
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2459,7 +2459,7 @@ func SumPageCountOfBooksByClassPriceReleaseDate(es *elasticsearch.Client, class 
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2474,7 +2474,7 @@ func SumPageCountOfBooksByClassPriceSeq(es *elasticsearch.Client, class string, 
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2489,7 +2489,7 @@ func SumPageCountOfBooksByClassReleaseDateSeq(es *elasticsearch.Client, class st
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2538,7 +2538,7 @@ func SumPageCountOfBooksByClass2NamePrice(es *elasticsearch.Client, class2, name
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2555,7 +2555,7 @@ func SumPageCountOfBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2589,7 +2589,7 @@ func SumPageCountOfBooksByClass2NameSeq(es *elasticsearch.Client, class2, name, 
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2651,7 +2651,7 @@ func SumPageCountOfBooksByClass2PriceReleaseDate(es *elasticsearch.Client, class
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2666,7 +2666,7 @@ func SumPageCountOfBooksByClass2PriceSeq(es *elasticsearch.Client, class2 string
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2681,7 +2681,7 @@ func SumPageCountOfBooksByClass2ReleaseDateSeq(es *elasticsearch.Client, class2 
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2747,7 +2747,7 @@ func SumPageCountOfBooksByNamePriceReleaseDate(es *elasticsearch.Client, name st
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2764,7 +2764,7 @@ func SumPageCountOfBooksByNamePriceSeq(es *elasticsearch.Client, name string, pr
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2781,7 +2781,7 @@ func SumPageCountOfBooksByNameReleaseDateSeq(es *elasticsearch.Client, name stri
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2828,7 +2828,7 @@ func SumPageCountOfBooksByPriceReleaseDateSeq(es *elasticsearch.Client, price fl
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2847,7 +2847,7 @@ func SumPageCountOfBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, all
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2885,7 +2885,7 @@ func SumPageCountOfBooksByAllTextAuthorClassName(es *elasticsearch.Client, allTe
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2942,7 +2942,7 @@ func SumPageCountOfBooksByAllTextAuthorClassPrice(es *elasticsearch.Client, allT
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2961,7 +2961,7 @@ func SumPageCountOfBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2999,7 +2999,7 @@ func SumPageCountOfBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allTex
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3037,7 +3037,7 @@ func SumPageCountOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allT
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3094,7 +3094,7 @@ func SumPageCountOfBooksByAllTextAuthorClass2Price(es *elasticsearch.Client, all
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3113,7 +3113,7 @@ func SumPageCountOfBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Clien
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3151,7 +3151,7 @@ func SumPageCountOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allTe
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3208,7 +3208,7 @@ func SumPageCountOfBooksByAllTextAuthorNamePrice(es *elasticsearch.Client, allTe
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3227,7 +3227,7 @@ func SumPageCountOfBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client,
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3265,7 +3265,7 @@ func SumPageCountOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3341,7 +3341,7 @@ func SumPageCountOfBooksByAllTextAuthorPriceReleaseDate(es *elasticsearch.Client
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3360,7 +3360,7 @@ func SumPageCountOfBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client, allTex
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3379,7 +3379,7 @@ func SumPageCountOfBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, 
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3417,7 +3417,7 @@ func SumPageCountOfBooksByAllTextClassClass2Name(es *elasticsearch.Client, allTe
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3474,7 +3474,7 @@ func SumPageCountOfBooksByAllTextClassClass2Price(es *elasticsearch.Client, allT
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3493,7 +3493,7 @@ func SumPageCountOfBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Client
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3531,7 +3531,7 @@ func SumPageCountOfBooksByAllTextClassClass2Seq(es *elasticsearch.Client, allTex
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3588,7 +3588,7 @@ func SumPageCountOfBooksByAllTextClassNamePrice(es *elasticsearch.Client, allTex
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3607,7 +3607,7 @@ func SumPageCountOfBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, 
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3645,7 +3645,7 @@ func SumPageCountOfBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText,
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3721,7 +3721,7 @@ func SumPageCountOfBooksByAllTextClassPriceReleaseDate(es *elasticsearch.Client,
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3740,7 +3740,7 @@ func SumPageCountOfBooksByAllTextClassPriceSeq(es *elasticsearch.Client, allText
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3759,7 +3759,7 @@ func SumPageCountOfBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, a
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3816,7 +3816,7 @@ func SumPageCountOfBooksByAllTextClass2NamePrice(es *elasticsearch.Client, allTe
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3835,7 +3835,7 @@ func SumPageCountOfBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client,
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3873,7 +3873,7 @@ func SumPageCountOfBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allText
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3949,7 +3949,7 @@ func SumPageCountOfBooksByAllTextClass2PriceReleaseDate(es *elasticsearch.Client
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3968,7 +3968,7 @@ func SumPageCountOfBooksByAllTextClass2PriceSeq(es *elasticsearch.Client, allTex
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -3987,7 +3987,7 @@ func SumPageCountOfBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client, 
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4063,7 +4063,7 @@ func SumPageCountOfBooksByAllTextNamePriceReleaseDate(es *elasticsearch.Client, 
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4082,7 +4082,7 @@ func SumPageCountOfBooksByAllTextNamePriceSeq(es *elasticsearch.Client, allText,
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4101,7 +4101,7 @@ func SumPageCountOfBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, al
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4158,7 +4158,7 @@ func SumPageCountOfBooksByAllTextPriceReleaseDateSeq(es *elasticsearch.Client, a
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4177,7 +4177,7 @@ func SumPageCountOfBooksByAuthorClassClass2Name(es *elasticsearch.Client, author
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4234,7 +4234,7 @@ func SumPageCountOfBooksByAuthorClassClass2Price(es *elasticsearch.Client, autho
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4253,7 +4253,7 @@ func SumPageCountOfBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client,
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4291,7 +4291,7 @@ func SumPageCountOfBooksByAuthorClassClass2Seq(es *elasticsearch.Client, author,
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4348,7 +4348,7 @@ func SumPageCountOfBooksByAuthorClassNamePrice(es *elasticsearch.Client, author,
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4367,7 +4367,7 @@ func SumPageCountOfBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, a
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4405,7 +4405,7 @@ func SumPageCountOfBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, c
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4481,7 +4481,7 @@ func SumPageCountOfBooksByAuthorClassPriceReleaseDate(es *elasticsearch.Client, 
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4500,7 +4500,7 @@ func SumPageCountOfBooksByAuthorClassPriceSeq(es *elasticsearch.Client, author, 
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4519,7 +4519,7 @@ func SumPageCountOfBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, au
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4576,7 +4576,7 @@ func SumPageCountOfBooksByAuthorClass2NamePrice(es *elasticsearch.Client, author
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4595,7 +4595,7 @@ func SumPageCountOfBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, 
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4633,7 +4633,7 @@ func SumPageCountOfBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author, 
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4709,7 +4709,7 @@ func SumPageCountOfBooksByAuthorClass2PriceReleaseDate(es *elasticsearch.Client,
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4728,7 +4728,7 @@ func SumPageCountOfBooksByAuthorClass2PriceSeq(es *elasticsearch.Client, author,
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4747,7 +4747,7 @@ func SumPageCountOfBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, a
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4823,7 +4823,7 @@ func SumPageCountOfBooksByAuthorNamePriceReleaseDate(es *elasticsearch.Client, a
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4842,7 +4842,7 @@ func SumPageCountOfBooksByAuthorNamePriceSeq(es *elasticsearch.Client, author, n
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4861,7 +4861,7 @@ func SumPageCountOfBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, aut
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4918,7 +4918,7 @@ func SumPageCountOfBooksByAuthorPriceReleaseDateSeq(es *elasticsearch.Client, au
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4956,7 +4956,7 @@ func SumPageCountOfBooksByClassClass2NamePrice(es *elasticsearch.Client, class, 
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -4975,7 +4975,7 @@ func SumPageCountOfBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, c
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5013,7 +5013,7 @@ func SumPageCountOfBooksByClassClass2NameSeq(es *elasticsearch.Client, class, cl
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5083,7 +5083,7 @@ func SumPageCountOfBooksByClassClass2PriceReleaseDate(es *elasticsearch.Client, 
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5100,7 +5100,7 @@ func SumPageCountOfBooksByClassClass2PriceSeq(es *elasticsearch.Client, class, c
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5117,7 +5117,7 @@ func SumPageCountOfBooksByClassClass2ReleaseDateSeq(es *elasticsearch.Client, cl
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5191,7 +5191,7 @@ func SumPageCountOfBooksByClassNamePriceReleaseDate(es *elasticsearch.Client, cl
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5210,7 +5210,7 @@ func SumPageCountOfBooksByClassNamePriceSeq(es *elasticsearch.Client, class, nam
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5229,7 +5229,7 @@ func SumPageCountOfBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, clas
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5282,7 +5282,7 @@ func SumPageCountOfBooksByClassPriceReleaseDateSeq(es *elasticsearch.Client, cla
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5339,7 +5339,7 @@ func SumPageCountOfBooksByClass2NamePriceReleaseDate(es *elasticsearch.Client, c
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5358,7 +5358,7 @@ func SumPageCountOfBooksByClass2NamePriceSeq(es *elasticsearch.Client, class2, n
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5377,7 +5377,7 @@ func SumPageCountOfBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, cla
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5430,7 +5430,7 @@ func SumPageCountOfBooksByClass2PriceReleaseDateSeq(es *elasticsearch.Client, cl
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -5468,7 +5468,7 @@ func SumPageCountOfBooksByNamePriceReleaseDateSeq(es *elasticsearch.Client, name
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.SumAgg("pageCount")
+	aggs := eq.SumAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }

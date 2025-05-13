@@ -13,7 +13,7 @@ func MonthHistReleaseDateOfBooksByAllText(es *elasticsearch.Client, allText stri
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -24,7 +24,7 @@ func MonthHistReleaseDateOfBooksByAuthor(es *elasticsearch.Client, author string
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -35,7 +35,7 @@ func MonthHistReleaseDateOfBooksByClass(es *elasticsearch.Client, class string) 
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -46,7 +46,7 @@ func MonthHistReleaseDateOfBooksByClass2(es *elasticsearch.Client, class2 string
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -57,7 +57,7 @@ func MonthHistReleaseDateOfBooksByName(es *elasticsearch.Client, name string) (*
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -68,7 +68,7 @@ func MonthHistReleaseDateOfBooksByPageCount(es *elasticsearch.Client, pageCount 
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -79,7 +79,7 @@ func MonthHistReleaseDateOfBooksByPrice(es *elasticsearch.Client, price float64)
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -90,7 +90,7 @@ func MonthHistReleaseDateOfBooksBySeq(es *elasticsearch.Client, seq string) (*eq
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -103,7 +103,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthor(es *elasticsearch.Client, allTex
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -118,7 +118,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass(es *elasticsearch.Client, allText
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -133,7 +133,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2(es *elasticsearch.Client, allTex
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -146,7 +146,7 @@ func MonthHistReleaseDateOfBooksByAllTextName(es *elasticsearch.Client, allText,
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -161,7 +161,7 @@ func MonthHistReleaseDateOfBooksByAllTextPageCount(es *elasticsearch.Client, all
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -176,7 +176,7 @@ func MonthHistReleaseDateOfBooksByAllTextPrice(es *elasticsearch.Client, allText
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -191,7 +191,7 @@ func MonthHistReleaseDateOfBooksByAllTextSeq(es *elasticsearch.Client, allText, 
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -206,7 +206,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass(es *elasticsearch.Client, author, 
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -221,7 +221,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2(es *elasticsearch.Client, author,
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -234,7 +234,7 @@ func MonthHistReleaseDateOfBooksByAuthorName(es *elasticsearch.Client, author, n
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -249,7 +249,7 @@ func MonthHistReleaseDateOfBooksByAuthorPageCount(es *elasticsearch.Client, auth
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -264,7 +264,7 @@ func MonthHistReleaseDateOfBooksByAuthorPrice(es *elasticsearch.Client, author s
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -279,7 +279,7 @@ func MonthHistReleaseDateOfBooksByAuthorSeq(es *elasticsearch.Client, author, se
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -292,7 +292,7 @@ func MonthHistReleaseDateOfBooksByClassClass2(es *elasticsearch.Client, class, c
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -307,7 +307,7 @@ func MonthHistReleaseDateOfBooksByClassName(es *elasticsearch.Client, class, nam
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -320,7 +320,7 @@ func MonthHistReleaseDateOfBooksByClassPageCount(es *elasticsearch.Client, class
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -333,7 +333,7 @@ func MonthHistReleaseDateOfBooksByClassPrice(es *elasticsearch.Client, class str
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -346,7 +346,7 @@ func MonthHistReleaseDateOfBooksByClassSeq(es *elasticsearch.Client, class, seq 
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -361,7 +361,7 @@ func MonthHistReleaseDateOfBooksByClass2Name(es *elasticsearch.Client, class2, n
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -374,7 +374,7 @@ func MonthHistReleaseDateOfBooksByClass2PageCount(es *elasticsearch.Client, clas
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -387,7 +387,7 @@ func MonthHistReleaseDateOfBooksByClass2Price(es *elasticsearch.Client, class2 s
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -400,7 +400,7 @@ func MonthHistReleaseDateOfBooksByClass2Seq(es *elasticsearch.Client, class2, se
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -415,7 +415,7 @@ func MonthHistReleaseDateOfBooksByNamePageCount(es *elasticsearch.Client, name s
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -430,7 +430,7 @@ func MonthHistReleaseDateOfBooksByNamePrice(es *elasticsearch.Client, name strin
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -445,7 +445,7 @@ func MonthHistReleaseDateOfBooksByNameSeq(es *elasticsearch.Client, name, seq st
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -458,7 +458,7 @@ func MonthHistReleaseDateOfBooksByPageCountPrice(es *elasticsearch.Client, pageC
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -471,7 +471,7 @@ func MonthHistReleaseDateOfBooksByPageCountSeq(es *elasticsearch.Client, pageCou
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -484,7 +484,7 @@ func MonthHistReleaseDateOfBooksByPriceSeq(es *elasticsearch.Client, price float
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -501,7 +501,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClass(es *elasticsearch.Client, a
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -518,7 +518,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClass2(es *elasticsearch.Client, 
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -533,7 +533,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorName(es *elasticsearch.Client, al
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -550,7 +550,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorPageCount(es *elasticsearch.Clien
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -567,7 +567,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorPrice(es *elasticsearch.Client, a
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -584,7 +584,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorSeq(es *elasticsearch.Client, all
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -601,7 +601,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassClass2(es *elasticsearch.Client, a
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -618,7 +618,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassName(es *elasticsearch.Client, all
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -635,7 +635,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassPageCount(es *elasticsearch.Client
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -652,7 +652,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassPrice(es *elasticsearch.Client, al
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -669,7 +669,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassSeq(es *elasticsearch.Client, allT
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -686,7 +686,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2Name(es *elasticsearch.Client, al
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -703,7 +703,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2PageCount(es *elasticsearch.Clien
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -720,7 +720,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2Price(es *elasticsearch.Client, a
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -737,7 +737,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2Seq(es *elasticsearch.Client, all
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -754,7 +754,7 @@ func MonthHistReleaseDateOfBooksByAllTextNamePageCount(es *elasticsearch.Client,
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -771,7 +771,7 @@ func MonthHistReleaseDateOfBooksByAllTextNamePrice(es *elasticsearch.Client, all
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -788,7 +788,7 @@ func MonthHistReleaseDateOfBooksByAllTextNameSeq(es *elasticsearch.Client, allTe
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -805,7 +805,7 @@ func MonthHistReleaseDateOfBooksByAllTextPageCountPrice(es *elasticsearch.Client
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -822,7 +822,7 @@ func MonthHistReleaseDateOfBooksByAllTextPageCountSeq(es *elasticsearch.Client, 
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -839,7 +839,7 @@ func MonthHistReleaseDateOfBooksByAllTextPriceSeq(es *elasticsearch.Client, allT
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -856,7 +856,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassClass2(es *elasticsearch.Client, au
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -873,7 +873,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassName(es *elasticsearch.Client, auth
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -890,7 +890,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassPageCount(es *elasticsearch.Client,
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -907,7 +907,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassPrice(es *elasticsearch.Client, aut
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -924,7 +924,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassSeq(es *elasticsearch.Client, autho
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -941,7 +941,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2Name(es *elasticsearch.Client, aut
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -958,7 +958,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2PageCount(es *elasticsearch.Client
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -975,7 +975,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2Price(es *elasticsearch.Client, au
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -992,7 +992,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2Seq(es *elasticsearch.Client, auth
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1009,7 +1009,7 @@ func MonthHistReleaseDateOfBooksByAuthorNamePageCount(es *elasticsearch.Client, 
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1026,7 +1026,7 @@ func MonthHistReleaseDateOfBooksByAuthorNamePrice(es *elasticsearch.Client, auth
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1043,7 +1043,7 @@ func MonthHistReleaseDateOfBooksByAuthorNameSeq(es *elasticsearch.Client, author
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1060,7 +1060,7 @@ func MonthHistReleaseDateOfBooksByAuthorPageCountPrice(es *elasticsearch.Client,
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1077,7 +1077,7 @@ func MonthHistReleaseDateOfBooksByAuthorPageCountSeq(es *elasticsearch.Client, a
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1094,7 +1094,7 @@ func MonthHistReleaseDateOfBooksByAuthorPriceSeq(es *elasticsearch.Client, autho
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1111,7 +1111,7 @@ func MonthHistReleaseDateOfBooksByClassClass2Name(es *elasticsearch.Client, clas
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1126,7 +1126,7 @@ func MonthHistReleaseDateOfBooksByClassClass2PageCount(es *elasticsearch.Client,
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1141,7 +1141,7 @@ func MonthHistReleaseDateOfBooksByClassClass2Price(es *elasticsearch.Client, cla
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1156,7 +1156,7 @@ func MonthHistReleaseDateOfBooksByClassClass2Seq(es *elasticsearch.Client, class
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1173,7 +1173,7 @@ func MonthHistReleaseDateOfBooksByClassNamePageCount(es *elasticsearch.Client, c
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1190,7 +1190,7 @@ func MonthHistReleaseDateOfBooksByClassNamePrice(es *elasticsearch.Client, class
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1207,7 +1207,7 @@ func MonthHistReleaseDateOfBooksByClassNameSeq(es *elasticsearch.Client, class, 
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1222,7 +1222,7 @@ func MonthHistReleaseDateOfBooksByClassPageCountPrice(es *elasticsearch.Client, 
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1237,7 +1237,7 @@ func MonthHistReleaseDateOfBooksByClassPageCountSeq(es *elasticsearch.Client, cl
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1252,7 +1252,7 @@ func MonthHistReleaseDateOfBooksByClassPriceSeq(es *elasticsearch.Client, class 
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1269,7 +1269,7 @@ func MonthHistReleaseDateOfBooksByClass2NamePageCount(es *elasticsearch.Client, 
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1286,7 +1286,7 @@ func MonthHistReleaseDateOfBooksByClass2NamePrice(es *elasticsearch.Client, clas
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1303,7 +1303,7 @@ func MonthHistReleaseDateOfBooksByClass2NameSeq(es *elasticsearch.Client, class2
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1318,7 +1318,7 @@ func MonthHistReleaseDateOfBooksByClass2PageCountPrice(es *elasticsearch.Client,
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1333,7 +1333,7 @@ func MonthHistReleaseDateOfBooksByClass2PageCountSeq(es *elasticsearch.Client, c
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1348,7 +1348,7 @@ func MonthHistReleaseDateOfBooksByClass2PriceSeq(es *elasticsearch.Client, class
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1365,7 +1365,7 @@ func MonthHistReleaseDateOfBooksByNamePageCountPrice(es *elasticsearch.Client, n
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1382,7 +1382,7 @@ func MonthHistReleaseDateOfBooksByNamePageCountSeq(es *elasticsearch.Client, nam
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1399,7 +1399,7 @@ func MonthHistReleaseDateOfBooksByNamePriceSeq(es *elasticsearch.Client, name st
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1414,7 +1414,7 @@ func MonthHistReleaseDateOfBooksByPageCountPriceSeq(es *elasticsearch.Client, pa
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1433,7 +1433,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClassClass2(es *elasticsearch.Cli
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1452,7 +1452,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClassName(es *elasticsearch.Clien
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1471,7 +1471,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClassPageCount(es *elasticsearch.
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1490,7 +1490,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClassPrice(es *elasticsearch.Clie
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1509,7 +1509,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClassSeq(es *elasticsearch.Client
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1528,7 +1528,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Clie
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1547,7 +1547,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClass2PageCount(es *elasticsearch
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1566,7 +1566,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClass2Price(es *elasticsearch.Cli
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1585,7 +1585,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.Clien
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1604,7 +1604,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorNamePageCount(es *elasticsearch.C
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1623,7 +1623,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorNamePrice(es *elasticsearch.Clien
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1642,7 +1642,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Client,
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1661,7 +1661,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorPageCountPrice(es *elasticsearch.
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1680,7 +1680,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorPageCountSeq(es *elasticsearch.Cl
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1699,7 +1699,7 @@ func MonthHistReleaseDateOfBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1718,7 +1718,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassClass2Name(es *elasticsearch.Clien
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1737,7 +1737,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassClass2PageCount(es *elasticsearch.
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1756,7 +1756,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassClass2Price(es *elasticsearch.Clie
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1775,7 +1775,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassClass2Seq(es *elasticsearch.Client
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1794,7 +1794,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassNamePageCount(es *elasticsearch.Cl
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1813,7 +1813,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassNamePrice(es *elasticsearch.Client
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1832,7 +1832,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassNameSeq(es *elasticsearch.Client, 
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1851,7 +1851,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassPageCountPrice(es *elasticsearch.C
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1870,7 +1870,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassPageCountSeq(es *elasticsearch.Cli
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1889,7 +1889,7 @@ func MonthHistReleaseDateOfBooksByAllTextClassPriceSeq(es *elasticsearch.Client,
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1908,7 +1908,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2NamePageCount(es *elasticsearch.C
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1927,7 +1927,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2NamePrice(es *elasticsearch.Clien
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1946,7 +1946,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2NameSeq(es *elasticsearch.Client,
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1965,7 +1965,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2PageCountPrice(es *elasticsearch.
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1984,7 +1984,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2PageCountSeq(es *elasticsearch.Cl
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2003,7 +2003,7 @@ func MonthHistReleaseDateOfBooksByAllTextClass2PriceSeq(es *elasticsearch.Client
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2022,7 +2022,7 @@ func MonthHistReleaseDateOfBooksByAllTextNamePageCountPrice(es *elasticsearch.Cl
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2041,7 +2041,7 @@ func MonthHistReleaseDateOfBooksByAllTextNamePageCountSeq(es *elasticsearch.Clie
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2060,7 +2060,7 @@ func MonthHistReleaseDateOfBooksByAllTextNamePriceSeq(es *elasticsearch.Client, 
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2079,7 +2079,7 @@ func MonthHistReleaseDateOfBooksByAllTextPageCountPriceSeq(es *elasticsearch.Cli
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2098,7 +2098,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassClass2Name(es *elasticsearch.Client
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2117,7 +2117,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassClass2PageCount(es *elasticsearch.C
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2136,7 +2136,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassClass2Price(es *elasticsearch.Clien
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2155,7 +2155,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassClass2Seq(es *elasticsearch.Client,
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2174,7 +2174,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassNamePageCount(es *elasticsearch.Cli
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2193,7 +2193,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassNamePrice(es *elasticsearch.Client,
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2212,7 +2212,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassNameSeq(es *elasticsearch.Client, a
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2231,7 +2231,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassPageCountPrice(es *elasticsearch.Cl
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2250,7 +2250,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassPageCountSeq(es *elasticsearch.Clie
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2269,7 +2269,7 @@ func MonthHistReleaseDateOfBooksByAuthorClassPriceSeq(es *elasticsearch.Client, 
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2288,7 +2288,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2NamePageCount(es *elasticsearch.Cl
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2307,7 +2307,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2NamePrice(es *elasticsearch.Client
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2326,7 +2326,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2NameSeq(es *elasticsearch.Client, 
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2345,7 +2345,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2PageCountPrice(es *elasticsearch.C
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2364,7 +2364,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2PageCountSeq(es *elasticsearch.Cli
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2383,7 +2383,7 @@ func MonthHistReleaseDateOfBooksByAuthorClass2PriceSeq(es *elasticsearch.Client,
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2402,7 +2402,7 @@ func MonthHistReleaseDateOfBooksByAuthorNamePageCountPrice(es *elasticsearch.Cli
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2421,7 +2421,7 @@ func MonthHistReleaseDateOfBooksByAuthorNamePageCountSeq(es *elasticsearch.Clien
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2440,7 +2440,7 @@ func MonthHistReleaseDateOfBooksByAuthorNamePriceSeq(es *elasticsearch.Client, a
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2459,7 +2459,7 @@ func MonthHistReleaseDateOfBooksByAuthorPageCountPriceSeq(es *elasticsearch.Clie
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2478,7 +2478,7 @@ func MonthHistReleaseDateOfBooksByClassClass2NamePageCount(es *elasticsearch.Cli
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2497,7 +2497,7 @@ func MonthHistReleaseDateOfBooksByClassClass2NamePrice(es *elasticsearch.Client,
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2516,7 +2516,7 @@ func MonthHistReleaseDateOfBooksByClassClass2NameSeq(es *elasticsearch.Client, c
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2533,7 +2533,7 @@ func MonthHistReleaseDateOfBooksByClassClass2PageCountPrice(es *elasticsearch.Cl
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2550,7 +2550,7 @@ func MonthHistReleaseDateOfBooksByClassClass2PageCountSeq(es *elasticsearch.Clie
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2567,7 +2567,7 @@ func MonthHistReleaseDateOfBooksByClassClass2PriceSeq(es *elasticsearch.Client, 
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2586,7 +2586,7 @@ func MonthHistReleaseDateOfBooksByClassNamePageCountPrice(es *elasticsearch.Clie
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2605,7 +2605,7 @@ func MonthHistReleaseDateOfBooksByClassNamePageCountSeq(es *elasticsearch.Client
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2624,7 +2624,7 @@ func MonthHistReleaseDateOfBooksByClassNamePriceSeq(es *elasticsearch.Client, cl
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2641,7 +2641,7 @@ func MonthHistReleaseDateOfBooksByClassPageCountPriceSeq(es *elasticsearch.Clien
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2660,7 +2660,7 @@ func MonthHistReleaseDateOfBooksByClass2NamePageCountPrice(es *elasticsearch.Cli
 		eq.Term("page_count", pageCount),
 		eq.Term("price", price),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2679,7 +2679,7 @@ func MonthHistReleaseDateOfBooksByClass2NamePageCountSeq(es *elasticsearch.Clien
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2698,7 +2698,7 @@ func MonthHistReleaseDateOfBooksByClass2NamePriceSeq(es *elasticsearch.Client, c
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2715,7 +2715,7 @@ func MonthHistReleaseDateOfBooksByClass2PageCountPriceSeq(es *elasticsearch.Clie
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -2734,7 +2734,7 @@ func MonthHistReleaseDateOfBooksByNamePageCountPriceSeq(es *elasticsearch.Client
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
-	aggs := eq.DateHistogramAgg("releaseDate", eq.WithCalendarInterval("month"))
+	aggs := eq.DateHistogramAgg("release_date", eq.WithCalendarInterval("month"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }

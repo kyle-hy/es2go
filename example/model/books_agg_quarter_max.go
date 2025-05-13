@@ -15,7 +15,7 @@ func MaxPageCountOfQuarterBooksByReleaseDateGte(es *elasticsearch.Client, releas
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -41,7 +41,7 @@ func MaxPageCountOfQuarterBooksByAllTextReleaseDateGte(es *elasticsearch.Client,
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -71,7 +71,7 @@ func MaxPageCountOfQuarterBooksByAuthorReleaseDateGte(es *elasticsearch.Client, 
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -99,7 +99,7 @@ func MaxPageCountOfQuarterBooksByClassReleaseDateGte(es *elasticsearch.Client, c
 		eq.Term("class", class),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -125,7 +125,7 @@ func MaxPageCountOfQuarterBooksByClass2ReleaseDateGte(es *elasticsearch.Client, 
 		eq.Term("class2", class2),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -153,7 +153,7 @@ func MaxPageCountOfQuarterBooksByNameReleaseDateGte(es *elasticsearch.Client, na
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -247,7 +247,7 @@ func MaxPageCountOfQuarterBooksByPriceGteReleaseDateGte(es *elasticsearch.Client
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -260,7 +260,7 @@ func MaxPageCountOfQuarterBooksByPriceGtReleaseDateGte(es *elasticsearch.Client,
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -273,7 +273,7 @@ func MaxPageCountOfQuarterBooksByPriceLtReleaseDateGte(es *elasticsearch.Client,
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -286,7 +286,7 @@ func MaxPageCountOfQuarterBooksByPriceLteReleaseDateGte(es *elasticsearch.Client
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -300,7 +300,7 @@ func MaxPageCountOfQuarterBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Cli
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -313,7 +313,7 @@ func MaxPageCountOfQuarterBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -343,7 +343,7 @@ func MaxPageCountOfQuarterBooksByAllTextAuthorReleaseDateGte(es *elasticsearch.C
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -377,7 +377,7 @@ func MaxPageCountOfQuarterBooksByAllTextClassReleaseDateGte(es *elasticsearch.Cl
 		eq.Term("class", class),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -411,7 +411,7 @@ func MaxPageCountOfQuarterBooksByAllTextClass2ReleaseDateGte(es *elasticsearch.C
 		eq.Term("class2", class2),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -445,7 +445,7 @@ func MaxPageCountOfQuarterBooksByAllTextNameReleaseDateGte(es *elasticsearch.Cli
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -565,7 +565,7 @@ func MaxPageCountOfQuarterBooksByAllTextPriceGteReleaseDateGte(es *elasticsearch
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -582,7 +582,7 @@ func MaxPageCountOfQuarterBooksByAllTextPriceGtReleaseDateGte(es *elasticsearch.
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -599,7 +599,7 @@ func MaxPageCountOfQuarterBooksByAllTextPriceLtReleaseDateGte(es *elasticsearch.
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -616,7 +616,7 @@ func MaxPageCountOfQuarterBooksByAllTextPriceLteReleaseDateGte(es *elasticsearch
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -634,7 +634,7 @@ func MaxPageCountOfQuarterBooksByAllTextPriceGteLteReleaseDateGte(es *elasticsea
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -651,7 +651,7 @@ func MaxPageCountOfQuarterBooksByAllTextSeqReleaseDateGte(es *elasticsearch.Clie
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -685,7 +685,7 @@ func MaxPageCountOfQuarterBooksByAuthorClassReleaseDateGte(es *elasticsearch.Cli
 		eq.Term("class", class),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -719,7 +719,7 @@ func MaxPageCountOfQuarterBooksByAuthorClass2ReleaseDateGte(es *elasticsearch.Cl
 		eq.Term("class2", class2),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -753,7 +753,7 @@ func MaxPageCountOfQuarterBooksByAuthorNameReleaseDateGte(es *elasticsearch.Clie
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -873,7 +873,7 @@ func MaxPageCountOfQuarterBooksByAuthorPriceGteReleaseDateGte(es *elasticsearch.
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -890,7 +890,7 @@ func MaxPageCountOfQuarterBooksByAuthorPriceGtReleaseDateGte(es *elasticsearch.C
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -907,7 +907,7 @@ func MaxPageCountOfQuarterBooksByAuthorPriceLtReleaseDateGte(es *elasticsearch.C
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -924,7 +924,7 @@ func MaxPageCountOfQuarterBooksByAuthorPriceLteReleaseDateGte(es *elasticsearch.
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -942,7 +942,7 @@ func MaxPageCountOfQuarterBooksByAuthorPriceGteLteReleaseDateGte(es *elasticsear
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -959,7 +959,7 @@ func MaxPageCountOfQuarterBooksByAuthorSeqReleaseDateGte(es *elasticsearch.Clien
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -991,7 +991,7 @@ func MaxPageCountOfQuarterBooksByClassClass2ReleaseDateGte(es *elasticsearch.Cli
 		eq.Term("class2", class2),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1023,7 +1023,7 @@ func MaxPageCountOfQuarterBooksByClassNameReleaseDateGte(es *elasticsearch.Clien
 		eq.Term("class", class),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1131,7 +1131,7 @@ func MaxPageCountOfQuarterBooksByClassPriceGteReleaseDateGte(es *elasticsearch.C
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1146,7 +1146,7 @@ func MaxPageCountOfQuarterBooksByClassPriceGtReleaseDateGte(es *elasticsearch.Cl
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1161,7 +1161,7 @@ func MaxPageCountOfQuarterBooksByClassPriceLtReleaseDateGte(es *elasticsearch.Cl
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1176,7 +1176,7 @@ func MaxPageCountOfQuarterBooksByClassPriceLteReleaseDateGte(es *elasticsearch.C
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1192,7 +1192,7 @@ func MaxPageCountOfQuarterBooksByClassPriceGteLteReleaseDateGte(es *elasticsearc
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1207,7 +1207,7 @@ func MaxPageCountOfQuarterBooksByClassSeqReleaseDateGte(es *elasticsearch.Client
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1239,7 +1239,7 @@ func MaxPageCountOfQuarterBooksByClass2NameReleaseDateGte(es *elasticsearch.Clie
 		eq.Term("class2", class2),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1347,7 +1347,7 @@ func MaxPageCountOfQuarterBooksByClass2PriceGteReleaseDateGte(es *elasticsearch.
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1362,7 +1362,7 @@ func MaxPageCountOfQuarterBooksByClass2PriceGtReleaseDateGte(es *elasticsearch.C
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1377,7 +1377,7 @@ func MaxPageCountOfQuarterBooksByClass2PriceLtReleaseDateGte(es *elasticsearch.C
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1392,7 +1392,7 @@ func MaxPageCountOfQuarterBooksByClass2PriceLteReleaseDateGte(es *elasticsearch.
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1408,7 +1408,7 @@ func MaxPageCountOfQuarterBooksByClass2PriceGteLteReleaseDateGte(es *elasticsear
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1423,7 +1423,7 @@ func MaxPageCountOfQuarterBooksByClass2SeqReleaseDateGte(es *elasticsearch.Clien
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1541,7 +1541,7 @@ func MaxPageCountOfQuarterBooksByNamePriceGteReleaseDateGte(es *elasticsearch.Cl
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1558,7 +1558,7 @@ func MaxPageCountOfQuarterBooksByNamePriceGtReleaseDateGte(es *elasticsearch.Cli
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1575,7 +1575,7 @@ func MaxPageCountOfQuarterBooksByNamePriceLtReleaseDateGte(es *elasticsearch.Cli
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1592,7 +1592,7 @@ func MaxPageCountOfQuarterBooksByNamePriceLteReleaseDateGte(es *elasticsearch.Cl
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1610,7 +1610,7 @@ func MaxPageCountOfQuarterBooksByNamePriceGteLteReleaseDateGte(es *elasticsearch
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1627,7 +1627,7 @@ func MaxPageCountOfQuarterBooksByNameSeqReleaseDateGte(es *elasticsearch.Client,
 		eq.Term("seq", seq),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1735,7 +1735,7 @@ func MaxPageCountOfQuarterBooksBySeqPriceGteReleaseDateGte(es *elasticsearch.Cli
 		eq.Range("price", priceGte, nil, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1750,7 +1750,7 @@ func MaxPageCountOfQuarterBooksBySeqPriceGtReleaseDateGte(es *elasticsearch.Clie
 		eq.Range("price", nil, priceGt, nil, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1765,7 +1765,7 @@ func MaxPageCountOfQuarterBooksBySeqPriceLtReleaseDateGte(es *elasticsearch.Clie
 		eq.Range("price", nil, nil, priceLt, nil),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1780,7 +1780,7 @@ func MaxPageCountOfQuarterBooksBySeqPriceLteReleaseDateGte(es *elasticsearch.Cli
 		eq.Range("price", nil, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
@@ -1796,7 +1796,7 @@ func MaxPageCountOfQuarterBooksBySeqPriceGteLteReleaseDateGte(es *elasticsearch.
 		eq.Range("price", priceGte, nil, nil, priceLte),
 		eq.Range("release_date", fmt.Sprintf("now-%dQ/Q", releaseDateNQuarter), nil, nil, nil),
 	}
-	aggs := eq.MaxAgg("pageCount")
+	aggs := eq.MaxAgg("page_count")
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }

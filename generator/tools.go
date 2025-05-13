@@ -414,7 +414,7 @@ func GenAggWithCond(fields []*FieldInfo, aggFunc string) string {
 			prefix = ".With(" + aggFunc
 			suffix = ")"
 		}
-		aq += fmt.Sprintf("%s(\"%s\")%s", prefix, utils.ToFirstLower(f.FieldName), suffix)
+		aq += fmt.Sprintf("%s(\"%s\")%s", prefix, f.EsFieldPath, suffix)
 	}
 	if len(fields) > 0 {
 		return "	aggs :=" + aq + "\n"
@@ -438,7 +438,7 @@ func GenAggWithCondOpt(fields []*FieldInfo, aggFunc, aggOpt string) string {
 			prefix = ".With(" + aggFunc
 			suffix = ")"
 		}
-		aq += fmt.Sprintf("%s(\"%s\"%s)%s", prefix, utils.ToFirstLower(f.FieldName), aggOpt, suffix)
+		aq += fmt.Sprintf("%s(\"%s\"%s)%s", prefix, f.EsFieldPath, aggOpt, suffix)
 	}
 	if len(fields) > 0 {
 		return "	aggs :=" + aq + "\n"
@@ -457,7 +457,7 @@ func GenAggNestedCond(fields []*FieldInfo, aggFunc string) string {
 			prefix = ".Nested(" + aggFunc
 			suffix += ")"
 		}
-		aq += fmt.Sprintf("%s(\"%s\")", prefix, utils.ToFirstLower(f.FieldName))
+		aq += fmt.Sprintf("%s(\"%s\")", prefix, f.EsFieldPath)
 	}
 	if len(fields) > 0 {
 		return "	aggs :=" + aq + suffix + "\n"
