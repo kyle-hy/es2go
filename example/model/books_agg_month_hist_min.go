@@ -9,7 +9,7 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// MinPageCountInHistPageCountOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
 func MinPageCountInHistPageCountOfMonthBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -22,7 +22,7 @@ func MinPageCountInHistPageCountOfMonthBooksByReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
 func MinPriceInHistPageCountOfMonthBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -35,7 +35,7 @@ func MinPriceInHistPageCountOfMonthBooksByReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
 func MinPageCountInHistPriceOfMonthBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -48,7 +48,7 @@ func MinPageCountInHistPriceOfMonthBooksByReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
 func MinPriceInHistPriceOfMonthBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -61,7 +61,7 @@ func MinPriceInHistPriceOfMonthBooksByReleaseDateGte(es *elasticsearch.Client, r
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -78,7 +78,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAllTextReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // allText string 全文本
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -95,7 +95,7 @@ func MinPriceInHistPageCountOfMonthBooksByAllTextReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // allText string 全文本
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -112,7 +112,7 @@ func MinPageCountInHistPriceOfMonthBooksByAllTextReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -129,7 +129,7 @@ func MinPriceInHistPriceOfMonthBooksByAllTextReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -146,7 +146,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAuthorReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -163,7 +163,7 @@ func MinPriceInHistPageCountOfMonthBooksByAuthorReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -180,7 +180,7 @@ func MinPageCountInHistPriceOfMonthBooksByAuthorReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -197,7 +197,7 @@ func MinPriceInHistPriceOfMonthBooksByAuthorReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -212,7 +212,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClassReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -227,7 +227,7 @@ func MinPriceInHistPageCountOfMonthBooksByClassReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -242,7 +242,7 @@ func MinPageCountInHistPriceOfMonthBooksByClassReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -257,7 +257,7 @@ func MinPriceInHistPriceOfMonthBooksByClassReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -272,7 +272,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClass2ReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -287,7 +287,7 @@ func MinPriceInHistPageCountOfMonthBooksByClass2ReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -302,7 +302,7 @@ func MinPageCountInHistPriceOfMonthBooksByClass2ReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -317,7 +317,7 @@ func MinPriceInHistPriceOfMonthBooksByClass2ReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -334,7 +334,7 @@ func MinPageCountInHistPageCountOfMonthBooksByNameReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -351,7 +351,7 @@ func MinPriceInHistPageCountOfMonthBooksByNameReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -368,7 +368,7 @@ func MinPageCountInHistPriceOfMonthBooksByNameReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -385,7 +385,7 @@ func MinPriceInHistPriceOfMonthBooksByNameReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -400,7 +400,7 @@ func MinPriceInHistPriceOfMonthBooksByPageCountGteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -415,7 +415,7 @@ func MinPriceInHistPriceOfMonthBooksByPageCountGtReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -430,7 +430,7 @@ func MinPriceInHistPriceOfMonthBooksByPageCountLtReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -445,7 +445,7 @@ func MinPriceInHistPriceOfMonthBooksByPageCountLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -461,7 +461,7 @@ func MinPriceInHistPriceOfMonthBooksByPageCountGteLteReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -476,7 +476,7 @@ func MinPageCountInHistPageCountOfMonthBooksByPriceGteReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -491,7 +491,7 @@ func MinPageCountInHistPageCountOfMonthBooksByPriceGtReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -506,7 +506,7 @@ func MinPageCountInHistPageCountOfMonthBooksByPriceLtReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -521,7 +521,7 @@ func MinPageCountInHistPageCountOfMonthBooksByPriceLteReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -537,7 +537,7 @@ func MinPageCountInHistPageCountOfMonthBooksByPriceGteLteReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -552,7 +552,7 @@ func MinPageCountInHistPageCountOfMonthBooksBySeqReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -567,7 +567,7 @@ func MinPriceInHistPageCountOfMonthBooksBySeqReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -582,7 +582,7 @@ func MinPageCountInHistPriceOfMonthBooksBySeqReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -597,7 +597,7 @@ func MinPriceInHistPriceOfMonthBooksBySeqReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
@@ -616,7 +616,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // allText string 全文本
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
@@ -635,7 +635,7 @@ func MinPriceInHistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // allText string 全文本
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
@@ -654,7 +654,7 @@ func MinPageCountInHistPriceOfMonthBooksByAllTextAuthorReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
@@ -673,7 +673,7 @@ func MinPriceInHistPriceOfMonthBooksByAllTextAuthorReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -692,7 +692,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAllTextClassReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // allText string 全文本
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -711,7 +711,7 @@ func MinPriceInHistPageCountOfMonthBooksByAllTextClassReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // allText string 全文本
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -730,7 +730,7 @@ func MinPageCountInHistPriceOfMonthBooksByAllTextClassReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -749,7 +749,7 @@ func MinPriceInHistPriceOfMonthBooksByAllTextClassReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -768,7 +768,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -787,7 +787,7 @@ func MinPriceInHistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -806,7 +806,7 @@ func MinPageCountInHistPriceOfMonthBooksByAllTextClass2ReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -825,7 +825,7 @@ func MinPriceInHistPriceOfMonthBooksByAllTextClass2ReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -844,7 +844,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAllTextNameReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // allText string 全文本
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -863,7 +863,7 @@ func MinPriceInHistPageCountOfMonthBooksByAllTextNameReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // allText string 全文本
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -882,7 +882,7 @@ func MinPageCountInHistPriceOfMonthBooksByAllTextNameReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -901,7 +901,7 @@ func MinPriceInHistPriceOfMonthBooksByAllTextNameReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -920,7 +920,7 @@ func MinPriceInHistPriceOfMonthBooksByAllTextPageCountGteReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -939,7 +939,7 @@ func MinPriceInHistPriceOfMonthBooksByAllTextPageCountGtReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -958,7 +958,7 @@ func MinPriceInHistPriceOfMonthBooksByAllTextPageCountLtReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -977,7 +977,7 @@ func MinPriceInHistPriceOfMonthBooksByAllTextPageCountLteReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -997,7 +997,7 @@ func MinPriceInHistPriceOfMonthBooksByAllTextPageCountGteLteReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1016,7 +1016,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAllTextPriceGteReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1035,7 +1035,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAllTextPriceGtReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1054,7 +1054,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAllTextPriceLtReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1073,7 +1073,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAllTextPriceLteReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1093,7 +1093,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAllTextPriceGteLteReleaseDateGte(e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1112,7 +1112,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAllTextSeqReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // allText string 全文本
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1131,7 +1131,7 @@ func MinPriceInHistPageCountOfMonthBooksByAllTextSeqReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // allText string 全文本
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1150,7 +1150,7 @@ func MinPageCountInHistPriceOfMonthBooksByAllTextSeqReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1169,7 +1169,7 @@ func MinPriceInHistPriceOfMonthBooksByAllTextSeqReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1188,7 +1188,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAuthorClassReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // author string 作者
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1207,7 +1207,7 @@ func MinPriceInHistPageCountOfMonthBooksByAuthorClassReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // author string 作者
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1226,7 +1226,7 @@ func MinPageCountInHistPriceOfMonthBooksByAuthorClassReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1245,7 +1245,7 @@ func MinPriceInHistPriceOfMonthBooksByAuthorClassReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1264,7 +1264,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // author string 作者
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1283,7 +1283,7 @@ func MinPriceInHistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // author string 作者
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1302,7 +1302,7 @@ func MinPageCountInHistPriceOfMonthBooksByAuthorClass2ReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1321,7 +1321,7 @@ func MinPriceInHistPriceOfMonthBooksByAuthorClass2ReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1340,7 +1340,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAuthorNameReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // author string 作者
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1359,7 +1359,7 @@ func MinPriceInHistPageCountOfMonthBooksByAuthorNameReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // author string 作者
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1378,7 +1378,7 @@ func MinPageCountInHistPriceOfMonthBooksByAuthorNameReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1397,7 +1397,7 @@ func MinPriceInHistPriceOfMonthBooksByAuthorNameReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1416,7 +1416,7 @@ func MinPriceInHistPriceOfMonthBooksByAuthorPageCountGteReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1435,7 +1435,7 @@ func MinPriceInHistPriceOfMonthBooksByAuthorPageCountGtReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1454,7 +1454,7 @@ func MinPriceInHistPriceOfMonthBooksByAuthorPageCountLtReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1473,7 +1473,7 @@ func MinPriceInHistPriceOfMonthBooksByAuthorPageCountLteReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1493,7 +1493,7 @@ func MinPriceInHistPriceOfMonthBooksByAuthorPageCountGteLteReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1512,7 +1512,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAuthorPriceGteReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1531,7 +1531,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAuthorPriceGtReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1550,7 +1550,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAuthorPriceLtReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1569,7 +1569,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAuthorPriceLteReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1589,7 +1589,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAuthorPriceGteLteReleaseDateGte(es
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1608,7 +1608,7 @@ func MinPageCountInHistPageCountOfMonthBooksByAuthorSeqReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // author string 作者
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1627,7 +1627,7 @@ func MinPriceInHistPageCountOfMonthBooksByAuthorSeqReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // author string 作者
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1646,7 +1646,7 @@ func MinPageCountInHistPriceOfMonthBooksByAuthorSeqReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1665,7 +1665,7 @@ func MinPriceInHistPriceOfMonthBooksByAuthorSeqReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1682,7 +1682,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClassClass2ReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // class string 类别
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1699,7 +1699,7 @@ func MinPriceInHistPageCountOfMonthBooksByClassClass2ReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // class string 类别
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1716,7 +1716,7 @@ func MinPageCountInHistPriceOfMonthBooksByClassClass2ReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1733,7 +1733,7 @@ func MinPriceInHistPriceOfMonthBooksByClassClass2ReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1752,7 +1752,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClassNameReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // class string 类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1771,7 +1771,7 @@ func MinPriceInHistPageCountOfMonthBooksByClassNameReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // class string 类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1790,7 +1790,7 @@ func MinPageCountInHistPriceOfMonthBooksByClassNameReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1809,7 +1809,7 @@ func MinPriceInHistPriceOfMonthBooksByClassNameReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1826,7 +1826,7 @@ func MinPriceInHistPriceOfMonthBooksByClassPageCountGteReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1843,7 +1843,7 @@ func MinPriceInHistPriceOfMonthBooksByClassPageCountGtReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1860,7 +1860,7 @@ func MinPriceInHistPriceOfMonthBooksByClassPageCountLtReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1877,7 +1877,7 @@ func MinPriceInHistPriceOfMonthBooksByClassPageCountLteReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1895,7 +1895,7 @@ func MinPriceInHistPriceOfMonthBooksByClassPageCountGteLteReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1912,7 +1912,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClassPriceGteReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1929,7 +1929,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClassPriceGtReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1946,7 +1946,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClassPriceLtReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1963,7 +1963,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClassPriceLteReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1981,7 +1981,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClassPriceGteLteReleaseDateGte(es 
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1998,7 +1998,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClassSeqReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // class string 类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2015,7 +2015,7 @@ func MinPriceInHistPageCountOfMonthBooksByClassSeqReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // class string 类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2032,7 +2032,7 @@ func MinPageCountInHistPriceOfMonthBooksByClassSeqReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2049,7 +2049,7 @@ func MinPriceInHistPriceOfMonthBooksByClassSeqReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -2068,7 +2068,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClass2NameReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // class2 string 子类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -2087,7 +2087,7 @@ func MinPriceInHistPageCountOfMonthBooksByClass2NameReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // class2 string 子类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -2106,7 +2106,7 @@ func MinPageCountInHistPriceOfMonthBooksByClass2NameReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -2125,7 +2125,7 @@ func MinPriceInHistPriceOfMonthBooksByClass2NameReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2142,7 +2142,7 @@ func MinPriceInHistPriceOfMonthBooksByClass2PageCountGteReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2159,7 +2159,7 @@ func MinPriceInHistPriceOfMonthBooksByClass2PageCountGtReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2176,7 +2176,7 @@ func MinPriceInHistPriceOfMonthBooksByClass2PageCountLtReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2193,7 +2193,7 @@ func MinPriceInHistPriceOfMonthBooksByClass2PageCountLteReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2211,7 +2211,7 @@ func MinPriceInHistPriceOfMonthBooksByClass2PageCountGteLteReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2228,7 +2228,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClass2PriceGteReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2245,7 +2245,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClass2PriceGtReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2262,7 +2262,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClass2PriceLtReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2279,7 +2279,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClass2PriceLteReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2297,7 +2297,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClass2PriceGteLteReleaseDateGte(es
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2314,7 +2314,7 @@ func MinPageCountInHistPageCountOfMonthBooksByClass2SeqReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // class2 string 子类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2331,7 +2331,7 @@ func MinPriceInHistPageCountOfMonthBooksByClass2SeqReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // class2 string 子类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2348,7 +2348,7 @@ func MinPageCountInHistPriceOfMonthBooksByClass2SeqReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2365,7 +2365,7 @@ func MinPriceInHistPriceOfMonthBooksByClass2SeqReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2384,7 +2384,7 @@ func MinPriceInHistPriceOfMonthBooksByNamePageCountGteReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2403,7 +2403,7 @@ func MinPriceInHistPriceOfMonthBooksByNamePageCountGtReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2422,7 +2422,7 @@ func MinPriceInHistPriceOfMonthBooksByNamePageCountLtReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2441,7 +2441,7 @@ func MinPriceInHistPriceOfMonthBooksByNamePageCountLteReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2461,7 +2461,7 @@ func MinPriceInHistPriceOfMonthBooksByNamePageCountGteLteReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2480,7 +2480,7 @@ func MinPageCountInHistPageCountOfMonthBooksByNamePriceGteReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2499,7 +2499,7 @@ func MinPageCountInHistPageCountOfMonthBooksByNamePriceGtReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2518,7 +2518,7 @@ func MinPageCountInHistPageCountOfMonthBooksByNamePriceLtReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2537,7 +2537,7 @@ func MinPageCountInHistPageCountOfMonthBooksByNamePriceLteReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2557,7 +2557,7 @@ func MinPageCountInHistPageCountOfMonthBooksByNamePriceGteLteReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // name string 书名
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2576,7 +2576,7 @@ func MinPageCountInHistPageCountOfMonthBooksByNameSeqReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表，并按页数区间分桶统计价格的最小值
 // name string 书名
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2595,7 +2595,7 @@ func MinPriceInHistPageCountOfMonthBooksByNameSeqReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表，并按价格区间分桶统计页数的最小值
 // name string 书名
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2614,7 +2614,7 @@ func MinPageCountInHistPriceOfMonthBooksByNameSeqReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // name string 书名
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2633,7 +2633,7 @@ func MinPriceInHistPriceOfMonthBooksByNameSeqReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2650,7 +2650,7 @@ func MinPriceInHistPriceOfMonthBooksBySeqPageCountGteReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2667,7 +2667,7 @@ func MinPriceInHistPriceOfMonthBooksBySeqPageCountGtReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2684,7 +2684,7 @@ func MinPriceInHistPriceOfMonthBooksBySeqPageCountLtReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2701,7 +2701,7 @@ func MinPriceInHistPriceOfMonthBooksBySeqPageCountLteReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfMonthBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfMonthBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的最小值
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2719,7 +2719,7 @@ func MinPriceInHistPriceOfMonthBooksBySeqPageCountGteLteReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2736,7 +2736,7 @@ func MinPageCountInHistPageCountOfMonthBooksBySeqPriceGteReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2753,7 +2753,7 @@ func MinPageCountInHistPageCountOfMonthBooksBySeqPriceGtReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2770,7 +2770,7 @@ func MinPageCountInHistPageCountOfMonthBooksBySeqPriceLtReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2787,7 +2787,7 @@ func MinPageCountInHistPageCountOfMonthBooksBySeqPriceLteReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfMonthBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfMonthBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的最小值
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于

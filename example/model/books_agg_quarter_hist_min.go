@@ -9,7 +9,7 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// MinPageCountInHistPageCountOfQuarterBooksByReleaseDateGte 根据发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByReleaseDateGte 根据发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
 func MinPageCountInHistPageCountOfQuarterBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNQuarter int, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -22,7 +22,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByReleaseDateGte 根据发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByReleaseDateGte 根据发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
 func MinPriceInHistPageCountOfQuarterBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNQuarter int, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -35,7 +35,7 @@ func MinPriceInHistPageCountOfQuarterBooksByReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByReleaseDateGte 根据发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByReleaseDateGte 根据发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
 func MinPageCountInHistPriceOfQuarterBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNQuarter int, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -48,7 +48,7 @@ func MinPageCountInHistPriceOfQuarterBooksByReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByReleaseDateGte 根据发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByReleaseDateGte 根据发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
 func MinPriceInHistPriceOfQuarterBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNQuarter int, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -61,7 +61,7 @@ func MinPriceInHistPriceOfQuarterBooksByReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -78,7 +78,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAllTextReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // allText string 全文本
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -95,7 +95,7 @@ func MinPriceInHistPageCountOfQuarterBooksByAllTextReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // allText string 全文本
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -112,7 +112,7 @@ func MinPageCountInHistPriceOfQuarterBooksByAllTextReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -129,7 +129,7 @@ func MinPriceInHistPriceOfQuarterBooksByAllTextReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -146,7 +146,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAuthorReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // author string 作者
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -163,7 +163,7 @@ func MinPriceInHistPageCountOfQuarterBooksByAuthorReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // author string 作者
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -180,7 +180,7 @@ func MinPageCountInHistPriceOfQuarterBooksByAuthorReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -197,7 +197,7 @@ func MinPriceInHistPriceOfQuarterBooksByAuthorReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClassReleaseDateGte 根据类别、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClassReleaseDateGte 根据类别、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -212,7 +212,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClassReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByClassReleaseDateGte 根据类别、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByClassReleaseDateGte 根据类别、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -227,7 +227,7 @@ func MinPriceInHistPageCountOfQuarterBooksByClassReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByClassReleaseDateGte 根据类别、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByClassReleaseDateGte 根据类别、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -242,7 +242,7 @@ func MinPageCountInHistPriceOfQuarterBooksByClassReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClassReleaseDateGte 根据类别、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClassReleaseDateGte 根据类别、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -257,7 +257,7 @@ func MinPriceInHistPriceOfQuarterBooksByClassReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -272,7 +272,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClass2ReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -287,7 +287,7 @@ func MinPriceInHistPageCountOfQuarterBooksByClass2ReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -302,7 +302,7 @@ func MinPageCountInHistPriceOfQuarterBooksByClass2ReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -317,7 +317,7 @@ func MinPriceInHistPriceOfQuarterBooksByClass2ReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByNameReleaseDateGte 根据书名、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByNameReleaseDateGte 根据书名、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -334,7 +334,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByNameReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByNameReleaseDateGte 根据书名、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByNameReleaseDateGte 根据书名、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -351,7 +351,7 @@ func MinPriceInHistPageCountOfQuarterBooksByNameReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByNameReleaseDateGte 根据书名、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByNameReleaseDateGte 根据书名、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -368,7 +368,7 @@ func MinPageCountInHistPriceOfQuarterBooksByNameReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByNameReleaseDateGte 根据书名、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByNameReleaseDateGte 根据书名、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -385,7 +385,7 @@ func MinPriceInHistPriceOfQuarterBooksByNameReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -400,7 +400,7 @@ func MinPriceInHistPriceOfQuarterBooksByPageCountGteReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -415,7 +415,7 @@ func MinPriceInHistPriceOfQuarterBooksByPageCountGtReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -430,7 +430,7 @@ func MinPriceInHistPriceOfQuarterBooksByPageCountLtReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -445,7 +445,7 @@ func MinPriceInHistPriceOfQuarterBooksByPageCountLteReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -461,7 +461,7 @@ func MinPriceInHistPriceOfQuarterBooksByPageCountGteLteReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -476,7 +476,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByPriceGteReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -491,7 +491,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByPriceGtReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -506,7 +506,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByPriceLtReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -521,7 +521,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByPriceLteReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -537,7 +537,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByPriceGteLteReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksBySeqReleaseDateGte 根据编号、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksBySeqReleaseDateGte 根据编号、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -552,7 +552,7 @@ func MinPageCountInHistPageCountOfQuarterBooksBySeqReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksBySeqReleaseDateGte 根据编号、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksBySeqReleaseDateGte 根据编号、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的页数区间间隔
@@ -567,7 +567,7 @@ func MinPriceInHistPageCountOfQuarterBooksBySeqReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksBySeqReleaseDateGte 根据编号、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksBySeqReleaseDateGte 根据编号、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -582,7 +582,7 @@ func MinPageCountInHistPriceOfQuarterBooksBySeqReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksBySeqReleaseDateGte 根据编号、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksBySeqReleaseDateGte 根据编号、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
 // histInterval float64 分桶聚合的价格区间间隔
@@ -597,7 +597,7 @@ func MinPriceInHistPriceOfQuarterBooksBySeqReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // author string 作者
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -616,7 +616,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAllTextAuthorReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // allText string 全文本
 // author string 作者
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -635,7 +635,7 @@ func MinPriceInHistPageCountOfQuarterBooksByAllTextAuthorReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // allText string 全文本
 // author string 作者
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -654,7 +654,7 @@ func MinPageCountInHistPriceOfQuarterBooksByAllTextAuthorReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // author string 作者
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -673,7 +673,7 @@ func MinPriceInHistPriceOfQuarterBooksByAllTextAuthorReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -692,7 +692,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAllTextClassReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // allText string 全文本
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -711,7 +711,7 @@ func MinPriceInHistPageCountOfQuarterBooksByAllTextClassReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // allText string 全文本
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -730,7 +730,7 @@ func MinPageCountInHistPriceOfQuarterBooksByAllTextClassReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -749,7 +749,7 @@ func MinPriceInHistPriceOfQuarterBooksByAllTextClassReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -768,7 +768,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAllTextClass2ReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -787,7 +787,7 @@ func MinPriceInHistPageCountOfQuarterBooksByAllTextClass2ReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -806,7 +806,7 @@ func MinPageCountInHistPriceOfQuarterBooksByAllTextClass2ReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -825,7 +825,7 @@ func MinPriceInHistPriceOfQuarterBooksByAllTextClass2ReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -844,7 +844,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAllTextNameReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // allText string 全文本
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -863,7 +863,7 @@ func MinPriceInHistPageCountOfQuarterBooksByAllTextNameReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // allText string 全文本
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -882,7 +882,7 @@ func MinPageCountInHistPriceOfQuarterBooksByAllTextNameReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -901,7 +901,7 @@ func MinPriceInHistPriceOfQuarterBooksByAllTextNameReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -920,7 +920,7 @@ func MinPriceInHistPriceOfQuarterBooksByAllTextPageCountGteReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -939,7 +939,7 @@ func MinPriceInHistPriceOfQuarterBooksByAllTextPageCountGtReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -958,7 +958,7 @@ func MinPriceInHistPriceOfQuarterBooksByAllTextPageCountLtReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -977,7 +977,7 @@ func MinPriceInHistPriceOfQuarterBooksByAllTextPageCountLteReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -997,7 +997,7 @@ func MinPriceInHistPriceOfQuarterBooksByAllTextPageCountGteLteReleaseDateGte(es 
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1016,7 +1016,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAllTextPriceGteReleaseDateGte(es
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1035,7 +1035,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAllTextPriceGtReleaseDateGte(es 
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1054,7 +1054,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAllTextPriceLtReleaseDateGte(es 
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1073,7 +1073,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAllTextPriceLteReleaseDateGte(es
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1093,7 +1093,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAllTextPriceGteLteReleaseDateGte
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // allText string 全文本
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1112,7 +1112,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAllTextSeqReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // allText string 全文本
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1131,7 +1131,7 @@ func MinPriceInHistPageCountOfQuarterBooksByAllTextSeqReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // allText string 全文本
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1150,7 +1150,7 @@ func MinPageCountInHistPriceOfQuarterBooksByAllTextSeqReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // allText string 全文本
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1169,7 +1169,7 @@ func MinPriceInHistPriceOfQuarterBooksByAllTextSeqReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1188,7 +1188,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAuthorClassReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // author string 作者
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1207,7 +1207,7 @@ func MinPriceInHistPageCountOfQuarterBooksByAuthorClassReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // author string 作者
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1226,7 +1226,7 @@ func MinPageCountInHistPriceOfQuarterBooksByAuthorClassReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1245,7 +1245,7 @@ func MinPriceInHistPriceOfQuarterBooksByAuthorClassReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1264,7 +1264,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAuthorClass2ReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // author string 作者
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1283,7 +1283,7 @@ func MinPriceInHistPageCountOfQuarterBooksByAuthorClass2ReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // author string 作者
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1302,7 +1302,7 @@ func MinPageCountInHistPriceOfQuarterBooksByAuthorClass2ReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1321,7 +1321,7 @@ func MinPriceInHistPriceOfQuarterBooksByAuthorClass2ReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1340,7 +1340,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAuthorNameReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // author string 作者
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1359,7 +1359,7 @@ func MinPriceInHistPageCountOfQuarterBooksByAuthorNameReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // author string 作者
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1378,7 +1378,7 @@ func MinPageCountInHistPriceOfQuarterBooksByAuthorNameReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1397,7 +1397,7 @@ func MinPriceInHistPriceOfQuarterBooksByAuthorNameReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1416,7 +1416,7 @@ func MinPriceInHistPriceOfQuarterBooksByAuthorPageCountGteReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1435,7 +1435,7 @@ func MinPriceInHistPriceOfQuarterBooksByAuthorPageCountGtReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1454,7 +1454,7 @@ func MinPriceInHistPriceOfQuarterBooksByAuthorPageCountLtReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1473,7 +1473,7 @@ func MinPriceInHistPriceOfQuarterBooksByAuthorPageCountLteReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1493,7 +1493,7 @@ func MinPriceInHistPriceOfQuarterBooksByAuthorPageCountGteLteReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1512,7 +1512,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAuthorPriceGteReleaseDateGte(es 
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1531,7 +1531,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAuthorPriceGtReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1550,7 +1550,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAuthorPriceLtReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1569,7 +1569,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAuthorPriceLteReleaseDateGte(es 
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1589,7 +1589,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAuthorPriceGteLteReleaseDateGte(
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // author string 作者
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1608,7 +1608,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByAuthorSeqReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // author string 作者
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1627,7 +1627,7 @@ func MinPriceInHistPageCountOfQuarterBooksByAuthorSeqReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // author string 作者
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1646,7 +1646,7 @@ func MinPageCountInHistPriceOfQuarterBooksByAuthorSeqReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // author string 作者
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1665,7 +1665,7 @@ func MinPriceInHistPriceOfQuarterBooksByAuthorSeqReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1682,7 +1682,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClassClass2ReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // class string 类别
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1699,7 +1699,7 @@ func MinPriceInHistPageCountOfQuarterBooksByClassClass2ReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // class string 类别
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1716,7 +1716,7 @@ func MinPageCountInHistPriceOfQuarterBooksByClassClass2ReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1733,7 +1733,7 @@ func MinPriceInHistPriceOfQuarterBooksByClassClass2ReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1752,7 +1752,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClassNameReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // class string 类别
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1771,7 +1771,7 @@ func MinPriceInHistPageCountOfQuarterBooksByClassNameReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // class string 类别
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1790,7 +1790,7 @@ func MinPageCountInHistPriceOfQuarterBooksByClassNameReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1809,7 +1809,7 @@ func MinPriceInHistPriceOfQuarterBooksByClassNameReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1826,7 +1826,7 @@ func MinPriceInHistPriceOfQuarterBooksByClassPageCountGteReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1843,7 +1843,7 @@ func MinPriceInHistPriceOfQuarterBooksByClassPageCountGtReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1860,7 +1860,7 @@ func MinPriceInHistPriceOfQuarterBooksByClassPageCountLtReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1877,7 +1877,7 @@ func MinPriceInHistPriceOfQuarterBooksByClassPageCountLteReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1895,7 +1895,7 @@ func MinPriceInHistPriceOfQuarterBooksByClassPageCountGteLteReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1912,7 +1912,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClassPriceGteReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1929,7 +1929,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClassPriceGtReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1946,7 +1946,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClassPriceLtReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1963,7 +1963,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClassPriceLteReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1981,7 +1981,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClassPriceGteLteReleaseDateGte(e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class string 类别
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1998,7 +1998,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClassSeqReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // class string 类别
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2015,7 +2015,7 @@ func MinPriceInHistPageCountOfQuarterBooksByClassSeqReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // class string 类别
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2032,7 +2032,7 @@ func MinPageCountInHistPriceOfQuarterBooksByClassSeqReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class string 类别
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2049,7 +2049,7 @@ func MinPriceInHistPriceOfQuarterBooksByClassSeqReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2068,7 +2068,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClass2NameReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // class2 string 子类别
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2087,7 +2087,7 @@ func MinPriceInHistPageCountOfQuarterBooksByClass2NameReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // class2 string 子类别
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2106,7 +2106,7 @@ func MinPageCountInHistPriceOfQuarterBooksByClass2NameReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2125,7 +2125,7 @@ func MinPriceInHistPriceOfQuarterBooksByClass2NameReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2142,7 +2142,7 @@ func MinPriceInHistPriceOfQuarterBooksByClass2PageCountGteReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2159,7 +2159,7 @@ func MinPriceInHistPriceOfQuarterBooksByClass2PageCountGtReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2176,7 +2176,7 @@ func MinPriceInHistPriceOfQuarterBooksByClass2PageCountLtReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2193,7 +2193,7 @@ func MinPriceInHistPriceOfQuarterBooksByClass2PageCountLteReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2211,7 +2211,7 @@ func MinPriceInHistPriceOfQuarterBooksByClass2PageCountGteLteReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2228,7 +2228,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClass2PriceGteReleaseDateGte(es 
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2245,7 +2245,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClass2PriceGtReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2262,7 +2262,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClass2PriceLtReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2279,7 +2279,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClass2PriceLteReleaseDateGte(es 
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2297,7 +2297,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClass2PriceGteLteReleaseDateGte(
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // class2 string 子类别
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2314,7 +2314,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByClass2SeqReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // class2 string 子类别
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2331,7 +2331,7 @@ func MinPriceInHistPageCountOfQuarterBooksByClass2SeqReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // class2 string 子类别
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2348,7 +2348,7 @@ func MinPageCountInHistPriceOfQuarterBooksByClass2SeqReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // class2 string 子类别
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2365,7 +2365,7 @@ func MinPriceInHistPriceOfQuarterBooksByClass2SeqReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2384,7 +2384,7 @@ func MinPriceInHistPriceOfQuarterBooksByNamePageCountGteReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2403,7 +2403,7 @@ func MinPriceInHistPriceOfQuarterBooksByNamePageCountGtReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2422,7 +2422,7 @@ func MinPriceInHistPriceOfQuarterBooksByNamePageCountLtReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2441,7 +2441,7 @@ func MinPriceInHistPriceOfQuarterBooksByNamePageCountLteReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2461,7 +2461,7 @@ func MinPriceInHistPriceOfQuarterBooksByNamePageCountGteLteReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2480,7 +2480,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByNamePriceGteReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2499,7 +2499,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByNamePriceGtReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2518,7 +2518,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByNamePriceLtReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2537,7 +2537,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByNamePriceLteReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2557,7 +2557,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByNamePriceGteLteReleaseDateGte(es
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // name string 书名
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2576,7 +2576,7 @@ func MinPageCountInHistPageCountOfQuarterBooksByNameSeqReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPageCountOfQuarterBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个季度检索books表并按页数区间分桶统计价格的最小值
+// MinPriceInHistPageCountOfQuarterBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个季度检索books表，并按页数区间分桶统计价格的最小值
 // name string 书名
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2595,7 +2595,7 @@ func MinPriceInHistPageCountOfQuarterBooksByNameSeqReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPriceOfQuarterBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个季度检索books表并按价格区间分桶统计页数的最小值
+// MinPageCountInHistPriceOfQuarterBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个季度检索books表，并按价格区间分桶统计页数的最小值
 // name string 书名
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2614,7 +2614,7 @@ func MinPageCountInHistPriceOfQuarterBooksByNameSeqReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // name string 书名
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2633,7 +2633,7 @@ func MinPriceInHistPriceOfQuarterBooksByNameSeqReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2650,7 +2650,7 @@ func MinPriceInHistPriceOfQuarterBooksBySeqPageCountGteReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2667,7 +2667,7 @@ func MinPriceInHistPriceOfQuarterBooksBySeqPageCountGtReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2684,7 +2684,7 @@ func MinPriceInHistPriceOfQuarterBooksBySeqPageCountLtReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2701,7 +2701,7 @@ func MinPriceInHistPriceOfQuarterBooksBySeqPageCountLteReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MinPriceInHistPriceOfQuarterBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几个季度检索books表并按价格区间分桶统计价格的最小值
+// MinPriceInHistPriceOfQuarterBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几个季度检索books表，并按价格区间分桶统计价格的最小值
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2719,7 +2719,7 @@ func MinPriceInHistPriceOfQuarterBooksBySeqPageCountGteLteReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2736,7 +2736,7 @@ func MinPageCountInHistPageCountOfQuarterBooksBySeqPriceGteReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2753,7 +2753,7 @@ func MinPageCountInHistPageCountOfQuarterBooksBySeqPriceGtReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2770,7 +2770,7 @@ func MinPageCountInHistPageCountOfQuarterBooksBySeqPriceLtReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2787,7 +2787,7 @@ func MinPageCountInHistPageCountOfQuarterBooksBySeqPriceLteReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// MinPageCountInHistPageCountOfQuarterBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几个季度检索books表并按页数区间分桶统计页数的最小值
+// MinPageCountInHistPageCountOfQuarterBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几个季度检索books表，并按页数区间分桶统计页数的最小值
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于

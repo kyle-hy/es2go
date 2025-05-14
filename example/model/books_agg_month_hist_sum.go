@@ -9,7 +9,7 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// SumPageCountInHistPageCountOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
 func SumPageCountInHistPageCountOfMonthBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -22,7 +22,7 @@ func SumPageCountInHistPageCountOfMonthBooksByReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
 func SumPriceInHistPageCountOfMonthBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -35,7 +35,7 @@ func SumPriceInHistPageCountOfMonthBooksByReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
 func SumPageCountInHistPriceOfMonthBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -48,7 +48,7 @@ func SumPageCountInHistPriceOfMonthBooksByReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
 func SumPriceInHistPriceOfMonthBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
@@ -61,7 +61,7 @@ func SumPriceInHistPriceOfMonthBooksByReleaseDateGte(es *elasticsearch.Client, r
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // allText string 全文本
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -78,7 +78,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAllTextReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // allText string 全文本
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -95,7 +95,7 @@ func SumPriceInHistPageCountOfMonthBooksByAllTextReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // allText string 全文本
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -112,7 +112,7 @@ func SumPageCountInHistPriceOfMonthBooksByAllTextReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // allText string 全文本
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -129,7 +129,7 @@ func SumPriceInHistPriceOfMonthBooksByAllTextReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -146,7 +146,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAuthorReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -163,7 +163,7 @@ func SumPriceInHistPageCountOfMonthBooksByAuthorReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -180,7 +180,7 @@ func SumPageCountInHistPriceOfMonthBooksByAuthorReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -197,7 +197,7 @@ func SumPriceInHistPriceOfMonthBooksByAuthorReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -212,7 +212,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClassReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -227,7 +227,7 @@ func SumPriceInHistPageCountOfMonthBooksByClassReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -242,7 +242,7 @@ func SumPageCountInHistPriceOfMonthBooksByClassReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -257,7 +257,7 @@ func SumPriceInHistPriceOfMonthBooksByClassReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -272,7 +272,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClass2ReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -287,7 +287,7 @@ func SumPriceInHistPageCountOfMonthBooksByClass2ReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -302,7 +302,7 @@ func SumPageCountInHistPriceOfMonthBooksByClass2ReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -317,7 +317,7 @@ func SumPriceInHistPriceOfMonthBooksByClass2ReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -334,7 +334,7 @@ func SumPageCountInHistPageCountOfMonthBooksByNameReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -351,7 +351,7 @@ func SumPriceInHistPageCountOfMonthBooksByNameReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -368,7 +368,7 @@ func SumPageCountInHistPriceOfMonthBooksByNameReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -385,7 +385,7 @@ func SumPriceInHistPriceOfMonthBooksByNameReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -400,7 +400,7 @@ func SumPriceInHistPriceOfMonthBooksByPageCountGteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -415,7 +415,7 @@ func SumPriceInHistPriceOfMonthBooksByPageCountGtReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -430,7 +430,7 @@ func SumPriceInHistPriceOfMonthBooksByPageCountLtReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -445,7 +445,7 @@ func SumPriceInHistPriceOfMonthBooksByPageCountLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -461,7 +461,7 @@ func SumPriceInHistPriceOfMonthBooksByPageCountGteLteReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -476,7 +476,7 @@ func SumPageCountInHistPageCountOfMonthBooksByPriceGteReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -491,7 +491,7 @@ func SumPageCountInHistPageCountOfMonthBooksByPriceGtReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -506,7 +506,7 @@ func SumPageCountInHistPageCountOfMonthBooksByPriceLtReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -521,7 +521,7 @@ func SumPageCountInHistPageCountOfMonthBooksByPriceLteReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -537,7 +537,7 @@ func SumPageCountInHistPageCountOfMonthBooksByPriceGteLteReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -552,7 +552,7 @@ func SumPageCountInHistPageCountOfMonthBooksBySeqReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的页数区间间隔
@@ -567,7 +567,7 @@ func SumPriceInHistPageCountOfMonthBooksBySeqReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -582,7 +582,7 @@ func SumPageCountInHistPriceOfMonthBooksBySeqReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
 // histInterval float64 分桶聚合的价格区间间隔
@@ -597,7 +597,7 @@ func SumPriceInHistPriceOfMonthBooksBySeqReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // allText string 全文本
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
@@ -616,7 +616,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // allText string 全文本
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
@@ -635,7 +635,7 @@ func SumPriceInHistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // allText string 全文本
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
@@ -654,7 +654,7 @@ func SumPageCountInHistPriceOfMonthBooksByAllTextAuthorReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // allText string 全文本
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
@@ -673,7 +673,7 @@ func SumPriceInHistPriceOfMonthBooksByAllTextAuthorReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // allText string 全文本
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -692,7 +692,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAllTextClassReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // allText string 全文本
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -711,7 +711,7 @@ func SumPriceInHistPageCountOfMonthBooksByAllTextClassReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // allText string 全文本
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -730,7 +730,7 @@ func SumPageCountInHistPriceOfMonthBooksByAllTextClassReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // allText string 全文本
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -749,7 +749,7 @@ func SumPriceInHistPriceOfMonthBooksByAllTextClassReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -768,7 +768,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -787,7 +787,7 @@ func SumPriceInHistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -806,7 +806,7 @@ func SumPageCountInHistPriceOfMonthBooksByAllTextClass2ReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -825,7 +825,7 @@ func SumPriceInHistPriceOfMonthBooksByAllTextClass2ReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // allText string 全文本
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -844,7 +844,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAllTextNameReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // allText string 全文本
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -863,7 +863,7 @@ func SumPriceInHistPageCountOfMonthBooksByAllTextNameReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // allText string 全文本
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -882,7 +882,7 @@ func SumPageCountInHistPriceOfMonthBooksByAllTextNameReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // allText string 全文本
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -901,7 +901,7 @@ func SumPriceInHistPriceOfMonthBooksByAllTextNameReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -920,7 +920,7 @@ func SumPriceInHistPriceOfMonthBooksByAllTextPageCountGteReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // allText string 全文本
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -939,7 +939,7 @@ func SumPriceInHistPriceOfMonthBooksByAllTextPageCountGtReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // allText string 全文本
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -958,7 +958,7 @@ func SumPriceInHistPriceOfMonthBooksByAllTextPageCountLtReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -977,7 +977,7 @@ func SumPriceInHistPriceOfMonthBooksByAllTextPageCountLteReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -997,7 +997,7 @@ func SumPriceInHistPriceOfMonthBooksByAllTextPageCountGteLteReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // allText string 全文本
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1016,7 +1016,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAllTextPriceGteReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // allText string 全文本
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1035,7 +1035,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAllTextPriceGtReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // allText string 全文本
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1054,7 +1054,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAllTextPriceLtReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // allText string 全文本
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1073,7 +1073,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAllTextPriceLteReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1093,7 +1093,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAllTextPriceGteLteReleaseDateGte(e
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // allText string 全文本
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1112,7 +1112,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAllTextSeqReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // allText string 全文本
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1131,7 +1131,7 @@ func SumPriceInHistPageCountOfMonthBooksByAllTextSeqReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // allText string 全文本
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1150,7 +1150,7 @@ func SumPageCountInHistPriceOfMonthBooksByAllTextSeqReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // allText string 全文本
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1169,7 +1169,7 @@ func SumPriceInHistPriceOfMonthBooksByAllTextSeqReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // author string 作者
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1188,7 +1188,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAuthorClassReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // author string 作者
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1207,7 +1207,7 @@ func SumPriceInHistPageCountOfMonthBooksByAuthorClassReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // author string 作者
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1226,7 +1226,7 @@ func SumPageCountInHistPriceOfMonthBooksByAuthorClassReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // author string 作者
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1245,7 +1245,7 @@ func SumPriceInHistPriceOfMonthBooksByAuthorClassReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // author string 作者
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1264,7 +1264,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // author string 作者
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1283,7 +1283,7 @@ func SumPriceInHistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // author string 作者
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1302,7 +1302,7 @@ func SumPageCountInHistPriceOfMonthBooksByAuthorClass2ReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // author string 作者
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1321,7 +1321,7 @@ func SumPriceInHistPriceOfMonthBooksByAuthorClass2ReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // author string 作者
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1340,7 +1340,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAuthorNameReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // author string 作者
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1359,7 +1359,7 @@ func SumPriceInHistPageCountOfMonthBooksByAuthorNameReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // author string 作者
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1378,7 +1378,7 @@ func SumPageCountInHistPriceOfMonthBooksByAuthorNameReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // author string 作者
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1397,7 +1397,7 @@ func SumPriceInHistPriceOfMonthBooksByAuthorNameReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1416,7 +1416,7 @@ func SumPriceInHistPriceOfMonthBooksByAuthorPageCountGteReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1435,7 +1435,7 @@ func SumPriceInHistPriceOfMonthBooksByAuthorPageCountGtReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1454,7 +1454,7 @@ func SumPriceInHistPriceOfMonthBooksByAuthorPageCountLtReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1473,7 +1473,7 @@ func SumPriceInHistPriceOfMonthBooksByAuthorPageCountLteReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1493,7 +1493,7 @@ func SumPriceInHistPriceOfMonthBooksByAuthorPageCountGteLteReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1512,7 +1512,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAuthorPriceGteReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1531,7 +1531,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAuthorPriceGtReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1550,7 +1550,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAuthorPriceLtReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1569,7 +1569,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAuthorPriceLteReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1589,7 +1589,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAuthorPriceGteLteReleaseDateGte(es
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // author string 作者
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1608,7 +1608,7 @@ func SumPageCountInHistPageCountOfMonthBooksByAuthorSeqReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // author string 作者
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1627,7 +1627,7 @@ func SumPriceInHistPageCountOfMonthBooksByAuthorSeqReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // author string 作者
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1646,7 +1646,7 @@ func SumPageCountInHistPriceOfMonthBooksByAuthorSeqReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // author string 作者
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1665,7 +1665,7 @@ func SumPriceInHistPriceOfMonthBooksByAuthorSeqReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class string 类别
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1682,7 +1682,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClassClass2ReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // class string 类别
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1699,7 +1699,7 @@ func SumPriceInHistPageCountOfMonthBooksByClassClass2ReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // class string 类别
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1716,7 +1716,7 @@ func SumPageCountInHistPriceOfMonthBooksByClassClass2ReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class string 类别
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
@@ -1733,7 +1733,7 @@ func SumPriceInHistPriceOfMonthBooksByClassClass2ReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class string 类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1752,7 +1752,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClassNameReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // class string 类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1771,7 +1771,7 @@ func SumPriceInHistPageCountOfMonthBooksByClassNameReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // class string 类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1790,7 +1790,7 @@ func SumPageCountInHistPriceOfMonthBooksByClassNameReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class string 类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -1809,7 +1809,7 @@ func SumPriceInHistPriceOfMonthBooksByClassNameReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1826,7 +1826,7 @@ func SumPriceInHistPriceOfMonthBooksByClassPageCountGteReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1843,7 +1843,7 @@ func SumPriceInHistPriceOfMonthBooksByClassPageCountGtReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1860,7 +1860,7 @@ func SumPriceInHistPriceOfMonthBooksByClassPageCountLtReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1877,7 +1877,7 @@ func SumPriceInHistPriceOfMonthBooksByClassPageCountLteReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1895,7 +1895,7 @@ func SumPriceInHistPriceOfMonthBooksByClassPageCountGteLteReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1912,7 +1912,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClassPriceGteReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1929,7 +1929,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClassPriceGtReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1946,7 +1946,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClassPriceLtReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -1963,7 +1963,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClassPriceLteReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1981,7 +1981,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClassPriceGteLteReleaseDateGte(es 
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class string 类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -1998,7 +1998,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClassSeqReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // class string 类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2015,7 +2015,7 @@ func SumPriceInHistPageCountOfMonthBooksByClassSeqReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // class string 类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2032,7 +2032,7 @@ func SumPageCountInHistPriceOfMonthBooksByClassSeqReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class string 类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2049,7 +2049,7 @@ func SumPriceInHistPriceOfMonthBooksByClassSeqReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class2 string 子类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -2068,7 +2068,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClass2NameReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // class2 string 子类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -2087,7 +2087,7 @@ func SumPriceInHistPageCountOfMonthBooksByClass2NameReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // class2 string 子类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -2106,7 +2106,7 @@ func SumPageCountInHistPriceOfMonthBooksByClass2NameReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class2 string 子类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
@@ -2125,7 +2125,7 @@ func SumPriceInHistPriceOfMonthBooksByClass2NameReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2142,7 +2142,7 @@ func SumPriceInHistPriceOfMonthBooksByClass2PageCountGteReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2159,7 +2159,7 @@ func SumPriceInHistPriceOfMonthBooksByClass2PageCountGtReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2176,7 +2176,7 @@ func SumPriceInHistPriceOfMonthBooksByClass2PageCountLtReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2193,7 +2193,7 @@ func SumPriceInHistPriceOfMonthBooksByClass2PageCountLteReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2211,7 +2211,7 @@ func SumPriceInHistPriceOfMonthBooksByClass2PageCountGteLteReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2228,7 +2228,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClass2PriceGteReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2245,7 +2245,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClass2PriceGtReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2262,7 +2262,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClass2PriceLtReleaseDateGte(es *el
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2279,7 +2279,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClass2PriceLteReleaseDateGte(es *e
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2297,7 +2297,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClass2PriceGteLteReleaseDateGte(es
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // class2 string 子类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2314,7 +2314,7 @@ func SumPageCountInHistPageCountOfMonthBooksByClass2SeqReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // class2 string 子类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2331,7 +2331,7 @@ func SumPriceInHistPageCountOfMonthBooksByClass2SeqReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // class2 string 子类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2348,7 +2348,7 @@ func SumPageCountInHistPriceOfMonthBooksByClass2SeqReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // class2 string 子类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2365,7 +2365,7 @@ func SumPriceInHistPriceOfMonthBooksByClass2SeqReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2384,7 +2384,7 @@ func SumPriceInHistPriceOfMonthBooksByNamePageCountGteReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2403,7 +2403,7 @@ func SumPriceInHistPriceOfMonthBooksByNamePageCountGtReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2422,7 +2422,7 @@ func SumPriceInHistPriceOfMonthBooksByNamePageCountLtReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2441,7 +2441,7 @@ func SumPriceInHistPriceOfMonthBooksByNamePageCountLteReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2461,7 +2461,7 @@ func SumPriceInHistPriceOfMonthBooksByNamePageCountGteLteReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2480,7 +2480,7 @@ func SumPageCountInHistPageCountOfMonthBooksByNamePriceGteReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2499,7 +2499,7 @@ func SumPageCountInHistPageCountOfMonthBooksByNamePriceGtReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2518,7 +2518,7 @@ func SumPageCountInHistPageCountOfMonthBooksByNamePriceLtReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2537,7 +2537,7 @@ func SumPageCountInHistPageCountOfMonthBooksByNamePriceLteReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2557,7 +2557,7 @@ func SumPageCountInHistPageCountOfMonthBooksByNamePriceGteLteReleaseDateGte(es *
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // name string 书名
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2576,7 +2576,7 @@ func SumPageCountInHistPageCountOfMonthBooksByNameSeqReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPageCountOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表并按页数区间分桶统计价格的总和
+// SumPriceInHistPageCountOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表，并按页数区间分桶统计价格的总和
 // name string 书名
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2595,7 +2595,7 @@ func SumPriceInHistPageCountOfMonthBooksByNameSeqReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPriceOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表并按价格区间分桶统计页数的总和
+// SumPageCountInHistPriceOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表，并按价格区间分桶统计页数的总和
 // name string 书名
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2614,7 +2614,7 @@ func SumPageCountInHistPriceOfMonthBooksByNameSeqReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // name string 书名
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
@@ -2633,7 +2633,7 @@ func SumPriceInHistPriceOfMonthBooksByNameSeqReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2650,7 +2650,7 @@ func SumPriceInHistPriceOfMonthBooksBySeqPageCountGteReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2667,7 +2667,7 @@ func SumPriceInHistPriceOfMonthBooksBySeqPageCountGtReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2684,7 +2684,7 @@ func SumPriceInHistPriceOfMonthBooksBySeqPageCountLtReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2701,7 +2701,7 @@ func SumPriceInHistPriceOfMonthBooksBySeqPageCountLteReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// SumPriceInHistPriceOfMonthBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计价格的总和
+// SumPriceInHistPriceOfMonthBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几个月检索books表，并按价格区间分桶统计价格的总和
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2719,7 +2719,7 @@ func SumPriceInHistPriceOfMonthBooksBySeqPageCountGteLteReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2736,7 +2736,7 @@ func SumPageCountInHistPageCountOfMonthBooksBySeqPriceGteReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2753,7 +2753,7 @@ func SumPageCountInHistPageCountOfMonthBooksBySeqPriceGtReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2770,7 +2770,7 @@ func SumPageCountInHistPageCountOfMonthBooksBySeqPriceLtReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
@@ -2787,7 +2787,7 @@ func SumPageCountInHistPageCountOfMonthBooksBySeqPriceLteReleaseDateGte(es *elas
 	return queryBooksList(es, esQuery)
 }
 
-// SumPageCountInHistPageCountOfMonthBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计页数的总和
+// SumPageCountInHistPageCountOfMonthBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几个月检索books表，并按页数区间分桶统计页数的总和
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于

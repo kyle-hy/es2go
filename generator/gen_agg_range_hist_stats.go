@@ -117,7 +117,7 @@ func getAggRangeHistStatsFuncComment(structComment string, condFields, histField
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
 		fopt = strings.TrimSuffix(fopt, "、")
-		fcmt := otherComment + fopt + "检索" + structComment + "并按" + GenFieldsCmt(histFields, true) + "区间分桶统计" + GenFieldsCmt(statsFields, true) + "的" + HistStatNames[stype] + "\n"
+		fcmt := otherComment + fopt + "检索" + structComment + "，并按" + GenFieldsCmt(histFields, true) + "区间分桶统计" + GenFieldsCmt(statsFields, true) + "的" + HistStatNames[stype] + "\n"
 		funcCmts = append(funcCmts, fcmt)
 	}
 

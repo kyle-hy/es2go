@@ -120,7 +120,7 @@ func getAggRecentHistStatsFuncComment(structComment string, condFields, histFiel
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
 		fopt = strings.TrimSuffix(fopt, "、")
-		funcCmts = append(funcCmts, otherComment+fopt+"检索"+structComment+"并按"+GenFieldsCmt(histFields, true)+"区间分桶统计"+GenFieldsCmt(statsFields, true)+"的"+HistStatNames[stype]+"\n")
+		funcCmts = append(funcCmts, otherComment+fopt+"检索"+structComment+"，并按"+GenFieldsCmt(histFields, true)+"区间分桶统计"+GenFieldsCmt(statsFields, true)+"的"+HistStatNames[stype]+"\n")
 	}
 
 	// 参数注释部分
