@@ -446,7 +446,7 @@ func GenAggWithCondOpt(fields []*FieldInfo, aggFunc, aggOpt string) string {
 	return ""
 }
 
-// GenAggNestedCond 生成多个字段嵌套聚合
+// GenAggNestedCond 生成多个字段的递归嵌套聚合
 func GenAggNestedCond(fields []*FieldInfo, aggFunc string) string {
 	// aggs := eq.TermsAgg("zg").Nested(eq.TermsAgg("ak").Nested(eq.TermsAgg("bk")))
 	aq := ""
@@ -461,6 +461,22 @@ func GenAggNestedCond(fields []*FieldInfo, aggFunc string) string {
 	}
 	if len(fields) > 0 {
 		return "	aggs :=" + aq + suffix + "\n"
+	}
+	return ""
+}
+
+// GenAddNestedAgg 生成追加一级的嵌套聚合条件
+func GenAddNestedAgg(fields []*FieldInfo, aggFunc string) string {
+	aq := ""
+	prefix := "aggs.Nested(" + aggFunc
+	for idx, f := range fields {
+		if idx > 0 {
+			prefix = ".Nested(" + aggFunc
+		}
+		aq += fmt.Sprintf("%s(\"%s\"))", prefix, f.EsFieldPath)
+	}
+	if len(fields) > 0 {
+		return "	aggs = " + aq + "\n"
 	}
 	return ""
 }

@@ -97,6 +97,7 @@ func main() {
 		gen.GenEsAggMatchStats,
 		gen.GenEsAggMatchHist,
 		gen.GenEsAggMatchDateHist,
+		gen.GenEsAggMatchHistStats,
 
 		// 范围查询聚合
 		gen.GenEsAggRangeTerms,
