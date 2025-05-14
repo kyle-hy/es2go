@@ -99,7 +99,6 @@ func getAggRecentHistFuncComment(structComment string, fields, termsFields []*Fi
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
-	statCmt := "并统计"
 
 	// 函数注释部分
 	types, other := FieldFilterByTypes(fields, rangeTypes)
@@ -115,7 +114,7 @@ func getAggRecentHistFuncComment(structComment string, fields, termsFields []*Fi
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
 		fopt = strings.TrimSuffix(fopt, "、")
-		funcCmts = append(funcCmts, otherComment+fopt+"检索"+structComment+statCmt+GenFieldsCmt(termsFields, true)+"的数量直方图分布\n")
+		funcCmts = append(funcCmts, otherComment+fopt+"检索"+structComment+"并按"+GenFieldsCmt(termsFields, true)+"区间分桶统计记录数量的直方图分布\n")
 	}
 
 	// 参数注释部分
@@ -130,7 +129,7 @@ func getAggRecentHistFuncComment(structComment string, fields, termsFields []*Fi
 	if len(funcCmts) == len(paramOpts) {
 		for idx, fc := range funcCmts {
 			pcmt := fc + filterParam + paramOpts[idx]
-			pcmt += "// histInterval float64 桶聚合的" + GenFieldsCmt(termsFields, true) + "间隔"
+			pcmt += "// histInterval float64 分桶聚合的" + GenFieldsCmt(termsFields, true) + "区间间隔"
 			funcCmts[idx] = pcmt
 		}
 	}

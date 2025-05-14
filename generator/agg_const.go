@@ -28,6 +28,13 @@ var (
 	DateHistInterval = map[string]string{"Minute": "minute", "Hour": "hour", "Day": "day", "Week": "week", "Month": "month", "Quarter": "quarter", "Year": "year"}
 )
 
+// 直方图聚合后的数值统计聚合
+var (
+	HistStatsTypes = []string{"Avg", "Sum", "Min", "Max", "Stats"}
+	HistStatNames  = map[string]string{"Avg": "平均值", "Sum": "总和", "Min": "最小值", "Max": "最大值", "Stats": "统计信息"}
+	HistStatsFuncs = map[string]string{"Avg": AggFuncAvg, "Sum": AggFuncSum, "Min": AggFuncMin, "Max": AggFuncMax, "Stats": AggFuncStats}
+)
+
 // 聚合方式枚举
 const (
 	AggFuncTerms    = "eq.TermsAgg"         // 分组统计

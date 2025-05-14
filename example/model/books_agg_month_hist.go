@@ -9,9 +9,9 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// HistPageCountOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dM/M", releaseDateNMonth), nil, nil, nil),
@@ -21,9 +21,9 @@ func HistPageCountOfMonthBooksByReleaseDateGte(es *elasticsearch.Client, release
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByReleaseDateGte 根据发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Range("release_date", fmt.Sprintf("now-%dM/M", releaseDateNMonth), nil, nil, nil),
@@ -33,10 +33,10 @@ func HistPriceOfMonthBooksByReleaseDateGte(es *elasticsearch.Client, releaseDate
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAllTextReleaseDateGte(es *elasticsearch.Client, allText string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -49,10 +49,10 @@ func HistPageCountOfMonthBooksByAllTextReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAllTextReleaseDateGte(es *elasticsearch.Client, allText string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -65,10 +65,10 @@ func HistPriceOfMonthBooksByAllTextReleaseDateGte(es *elasticsearch.Client, allT
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAuthorReleaseDateGte(es *elasticsearch.Client, author string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -81,10 +81,10 @@ func HistPageCountOfMonthBooksByAuthorReleaseDateGte(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAuthorReleaseDateGte(es *elasticsearch.Client, author string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -97,10 +97,10 @@ func HistPriceOfMonthBooksByAuthorReleaseDateGte(es *elasticsearch.Client, autho
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClassReleaseDateGte(es *elasticsearch.Client, class string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -111,10 +111,10 @@ func HistPageCountOfMonthBooksByClassReleaseDateGte(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClassReleaseDateGte 根据类别、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClassReleaseDateGte(es *elasticsearch.Client, class string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -125,10 +125,10 @@ func HistPriceOfMonthBooksByClassReleaseDateGte(es *elasticsearch.Client, class 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClass2ReleaseDateGte(es *elasticsearch.Client, class2 string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -139,10 +139,10 @@ func HistPageCountOfMonthBooksByClass2ReleaseDateGte(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClass2ReleaseDateGte(es *elasticsearch.Client, class2 string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -153,10 +153,10 @@ func HistPriceOfMonthBooksByClass2ReleaseDateGte(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByNameReleaseDateGte(es *elasticsearch.Client, name string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -169,10 +169,10 @@ func HistPageCountOfMonthBooksByNameReleaseDateGte(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByNameReleaseDateGte 根据书名、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByNameReleaseDateGte(es *elasticsearch.Client, name string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -185,10 +185,10 @@ func HistPriceOfMonthBooksByNameReleaseDateGte(es *elasticsearch.Client, name st
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, nil),
@@ -199,10 +199,10 @@ func HistPriceOfMonthBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Range("page_count", nil, pageCountGt, nil, nil),
@@ -213,10 +213,10 @@ func HistPriceOfMonthBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Range("page_count", nil, nil, pageCountLt, nil),
@@ -227,10 +227,10 @@ func HistPriceOfMonthBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Range("page_count", nil, nil, nil, pageCountLte),
@@ -241,11 +241,11 @@ func HistPriceOfMonthBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Client, pageCountGte, pageCountLte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Range("page_count", pageCountGte, nil, nil, pageCountLte),
@@ -256,10 +256,10 @@ func HistPriceOfMonthBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceGte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Range("price", priceGte, nil, nil, nil),
@@ -270,10 +270,10 @@ func HistPageCountOfMonthBooksByPriceGteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Range("price", nil, priceGt, nil, nil),
@@ -284,10 +284,10 @@ func HistPageCountOfMonthBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Range("price", nil, nil, priceLt, nil),
@@ -298,10 +298,10 @@ func HistPageCountOfMonthBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Range("price", nil, nil, nil, priceLte),
@@ -312,11 +312,11 @@ func HistPageCountOfMonthBooksByPriceLteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client, priceGte, priceLte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Range("price", priceGte, nil, nil, priceLte),
@@ -327,10 +327,10 @@ func HistPageCountOfMonthBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
@@ -341,10 +341,10 @@ func HistPageCountOfMonthBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksBySeqReleaseDateGte 根据编号、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
@@ -355,11 +355,11 @@ func HistPriceOfMonthBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq stri
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte(es *elasticsearch.Client, allText, author string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -373,11 +373,11 @@ func HistPageCountOfMonthBooksByAllTextAuthorReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAllTextAuthorReleaseDateGte(es *elasticsearch.Client, allText, author string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -391,11 +391,11 @@ func HistPriceOfMonthBooksByAllTextAuthorReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAllTextClassReleaseDateGte(es *elasticsearch.Client, allText, class string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -409,11 +409,11 @@ func HistPageCountOfMonthBooksByAllTextClassReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAllTextClassReleaseDateGte(es *elasticsearch.Client, allText, class string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -427,11 +427,11 @@ func HistPriceOfMonthBooksByAllTextClassReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte(es *elasticsearch.Client, allText, class2 string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -445,11 +445,11 @@ func HistPageCountOfMonthBooksByAllTextClass2ReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAllTextClass2ReleaseDateGte(es *elasticsearch.Client, allText, class2 string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -463,11 +463,11 @@ func HistPriceOfMonthBooksByAllTextClass2ReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAllTextNameReleaseDateGte(es *elasticsearch.Client, allText, name string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -481,11 +481,11 @@ func HistPageCountOfMonthBooksByAllTextNameReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAllTextNameReleaseDateGte(es *elasticsearch.Client, allText, name string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -499,11 +499,11 @@ func HistPriceOfMonthBooksByAllTextNameReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAllTextPageCountGteReleaseDateGte(es *elasticsearch.Client, allText string, pageCountGte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -517,11 +517,11 @@ func HistPriceOfMonthBooksByAllTextPageCountGteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAllTextPageCountGtReleaseDateGte(es *elasticsearch.Client, allText string, pageCountGt int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -535,11 +535,11 @@ func HistPriceOfMonthBooksByAllTextPageCountGtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAllTextPageCountLtReleaseDateGte(es *elasticsearch.Client, allText string, pageCountLt int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -553,11 +553,11 @@ func HistPriceOfMonthBooksByAllTextPageCountLtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAllTextPageCountLteReleaseDateGte(es *elasticsearch.Client, allText string, pageCountLte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -571,12 +571,12 @@ func HistPriceOfMonthBooksByAllTextPageCountLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAllTextPageCountGteLteReleaseDateGte(es *elasticsearch.Client, allText string, pageCountGte, pageCountLte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -590,11 +590,11 @@ func HistPriceOfMonthBooksByAllTextPageCountGteLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAllTextPriceGteReleaseDateGte(es *elasticsearch.Client, allText string, priceGte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -608,11 +608,11 @@ func HistPageCountOfMonthBooksByAllTextPriceGteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAllTextPriceGtReleaseDateGte(es *elasticsearch.Client, allText string, priceGt float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -626,11 +626,11 @@ func HistPageCountOfMonthBooksByAllTextPriceGtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAllTextPriceLtReleaseDateGte(es *elasticsearch.Client, allText string, priceLt float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -644,11 +644,11 @@ func HistPageCountOfMonthBooksByAllTextPriceLtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAllTextPriceLteReleaseDateGte(es *elasticsearch.Client, allText string, priceLte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -662,12 +662,12 @@ func HistPageCountOfMonthBooksByAllTextPriceLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAllTextPriceGteLteReleaseDateGte(es *elasticsearch.Client, allText string, priceGte, priceLte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -681,11 +681,11 @@ func HistPageCountOfMonthBooksByAllTextPriceGteLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAllTextSeqReleaseDateGte(es *elasticsearch.Client, allText, seq string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -699,11 +699,11 @@ func HistPageCountOfMonthBooksByAllTextSeqReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAllTextSeqReleaseDateGte(es *elasticsearch.Client, allText, seq string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
@@ -717,11 +717,11 @@ func HistPriceOfMonthBooksByAllTextSeqReleaseDateGte(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // author string 作者
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAuthorClassReleaseDateGte(es *elasticsearch.Client, author, class string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -735,11 +735,11 @@ func HistPageCountOfMonthBooksByAuthorClassReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // author string 作者
 // class string 类别
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAuthorClassReleaseDateGte(es *elasticsearch.Client, author, class string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -753,11 +753,11 @@ func HistPriceOfMonthBooksByAuthorClassReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte(es *elasticsearch.Client, author, class2 string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -771,11 +771,11 @@ func HistPageCountOfMonthBooksByAuthorClass2ReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAuthorClass2ReleaseDateGte(es *elasticsearch.Client, author, class2 string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -789,11 +789,11 @@ func HistPriceOfMonthBooksByAuthorClass2ReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // author string 作者
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAuthorNameReleaseDateGte(es *elasticsearch.Client, author, name string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -807,11 +807,11 @@ func HistPageCountOfMonthBooksByAuthorNameReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // author string 作者
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAuthorNameReleaseDateGte(es *elasticsearch.Client, author, name string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -825,11 +825,11 @@ func HistPriceOfMonthBooksByAuthorNameReleaseDateGte(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAuthorPageCountGteReleaseDateGte(es *elasticsearch.Client, author string, pageCountGte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -843,11 +843,11 @@ func HistPriceOfMonthBooksByAuthorPageCountGteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAuthorPageCountGtReleaseDateGte(es *elasticsearch.Client, author string, pageCountGt int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -861,11 +861,11 @@ func HistPriceOfMonthBooksByAuthorPageCountGtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAuthorPageCountLtReleaseDateGte(es *elasticsearch.Client, author string, pageCountLt int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -879,11 +879,11 @@ func HistPriceOfMonthBooksByAuthorPageCountLtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAuthorPageCountLteReleaseDateGte(es *elasticsearch.Client, author string, pageCountLte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -897,12 +897,12 @@ func HistPriceOfMonthBooksByAuthorPageCountLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAuthorPageCountGteLteReleaseDateGte(es *elasticsearch.Client, author string, pageCountGte, pageCountLte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -916,11 +916,11 @@ func HistPriceOfMonthBooksByAuthorPageCountGteLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAuthorPriceGteReleaseDateGte(es *elasticsearch.Client, author string, priceGte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -934,11 +934,11 @@ func HistPageCountOfMonthBooksByAuthorPriceGteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAuthorPriceGtReleaseDateGte(es *elasticsearch.Client, author string, priceGt float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -952,11 +952,11 @@ func HistPageCountOfMonthBooksByAuthorPriceGtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAuthorPriceLtReleaseDateGte(es *elasticsearch.Client, author string, priceLt float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -970,11 +970,11 @@ func HistPageCountOfMonthBooksByAuthorPriceLtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAuthorPriceLteReleaseDateGte(es *elasticsearch.Client, author string, priceLte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -988,12 +988,12 @@ func HistPageCountOfMonthBooksByAuthorPriceLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAuthorPriceGteLteReleaseDateGte(es *elasticsearch.Client, author string, priceGte, priceLte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -1007,11 +1007,11 @@ func HistPageCountOfMonthBooksByAuthorPriceGteLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByAuthorSeqReleaseDateGte(es *elasticsearch.Client, author, seq string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -1025,11 +1025,11 @@ func HistPageCountOfMonthBooksByAuthorSeqReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByAuthorSeqReleaseDateGte(es *elasticsearch.Client, author, seq string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
@@ -1043,11 +1043,11 @@ func HistPriceOfMonthBooksByAuthorSeqReleaseDateGte(es *elasticsearch.Client, au
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClassClass2ReleaseDateGte(es *elasticsearch.Client, class, class2 string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1059,11 +1059,11 @@ func HistPageCountOfMonthBooksByClassClass2ReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClassClass2ReleaseDateGte(es *elasticsearch.Client, class, class2 string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1075,11 +1075,11 @@ func HistPriceOfMonthBooksByClassClass2ReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class string 类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClassNameReleaseDateGte(es *elasticsearch.Client, class, name string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1093,11 +1093,11 @@ func HistPageCountOfMonthBooksByClassNameReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class string 类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClassNameReleaseDateGte(es *elasticsearch.Client, class, name string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1111,11 +1111,11 @@ func HistPriceOfMonthBooksByClassNameReleaseDateGte(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClassPageCountGteReleaseDateGte(es *elasticsearch.Client, class string, pageCountGte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1127,11 +1127,11 @@ func HistPriceOfMonthBooksByClassPageCountGteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClassPageCountGtReleaseDateGte(es *elasticsearch.Client, class string, pageCountGt int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1143,11 +1143,11 @@ func HistPriceOfMonthBooksByClassPageCountGtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClassPageCountLtReleaseDateGte(es *elasticsearch.Client, class string, pageCountLt int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1159,11 +1159,11 @@ func HistPriceOfMonthBooksByClassPageCountLtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClassPageCountLteReleaseDateGte(es *elasticsearch.Client, class string, pageCountLte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1175,12 +1175,12 @@ func HistPriceOfMonthBooksByClassPageCountLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClassPageCountGteLteReleaseDateGte(es *elasticsearch.Client, class string, pageCountGte, pageCountLte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1192,11 +1192,11 @@ func HistPriceOfMonthBooksByClassPageCountGteLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClassPriceGteReleaseDateGte(es *elasticsearch.Client, class string, priceGte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1208,11 +1208,11 @@ func HistPageCountOfMonthBooksByClassPriceGteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClassPriceGtReleaseDateGte(es *elasticsearch.Client, class string, priceGt float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1224,11 +1224,11 @@ func HistPageCountOfMonthBooksByClassPriceGtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClassPriceLtReleaseDateGte(es *elasticsearch.Client, class string, priceLt float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1240,11 +1240,11 @@ func HistPageCountOfMonthBooksByClassPriceLtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClassPriceLteReleaseDateGte(es *elasticsearch.Client, class string, priceLte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1256,12 +1256,12 @@ func HistPageCountOfMonthBooksByClassPriceLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClassPriceGteLteReleaseDateGte(es *elasticsearch.Client, class string, priceGte, priceLte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1273,11 +1273,11 @@ func HistPageCountOfMonthBooksByClassPriceGteLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClassSeqReleaseDateGte(es *elasticsearch.Client, class, seq string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1289,11 +1289,11 @@ func HistPageCountOfMonthBooksByClassSeqReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClassSeqReleaseDateGte(es *elasticsearch.Client, class, seq string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
@@ -1305,11 +1305,11 @@ func HistPriceOfMonthBooksByClassSeqReleaseDateGte(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClass2NameReleaseDateGte(es *elasticsearch.Client, class2, name string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1323,11 +1323,11 @@ func HistPageCountOfMonthBooksByClass2NameReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClass2NameReleaseDateGte(es *elasticsearch.Client, class2, name string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1341,11 +1341,11 @@ func HistPriceOfMonthBooksByClass2NameReleaseDateGte(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClass2PageCountGteReleaseDateGte(es *elasticsearch.Client, class2 string, pageCountGte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1357,11 +1357,11 @@ func HistPriceOfMonthBooksByClass2PageCountGteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClass2PageCountGtReleaseDateGte(es *elasticsearch.Client, class2 string, pageCountGt int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1373,11 +1373,11 @@ func HistPriceOfMonthBooksByClass2PageCountGtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClass2PageCountLtReleaseDateGte(es *elasticsearch.Client, class2 string, pageCountLt int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1389,11 +1389,11 @@ func HistPriceOfMonthBooksByClass2PageCountLtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClass2PageCountLteReleaseDateGte(es *elasticsearch.Client, class2 string, pageCountLte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1405,12 +1405,12 @@ func HistPriceOfMonthBooksByClass2PageCountLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClass2PageCountGteLteReleaseDateGte(es *elasticsearch.Client, class2 string, pageCountGte, pageCountLte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1422,11 +1422,11 @@ func HistPriceOfMonthBooksByClass2PageCountGteLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClass2PriceGteReleaseDateGte(es *elasticsearch.Client, class2 string, priceGte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1438,11 +1438,11 @@ func HistPageCountOfMonthBooksByClass2PriceGteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClass2PriceGtReleaseDateGte(es *elasticsearch.Client, class2 string, priceGt float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1454,11 +1454,11 @@ func HistPageCountOfMonthBooksByClass2PriceGtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClass2PriceLtReleaseDateGte(es *elasticsearch.Client, class2 string, priceLt float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1470,11 +1470,11 @@ func HistPageCountOfMonthBooksByClass2PriceLtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClass2PriceLteReleaseDateGte(es *elasticsearch.Client, class2 string, priceLte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1486,12 +1486,12 @@ func HistPageCountOfMonthBooksByClass2PriceLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClass2PriceGteLteReleaseDateGte(es *elasticsearch.Client, class2 string, priceGte, priceLte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1503,11 +1503,11 @@ func HistPageCountOfMonthBooksByClass2PriceGteLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByClass2SeqReleaseDateGte(es *elasticsearch.Client, class2, seq string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1519,11 +1519,11 @@ func HistPageCountOfMonthBooksByClass2SeqReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByClass2SeqReleaseDateGte(es *elasticsearch.Client, class2, seq string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
@@ -1535,11 +1535,11 @@ func HistPriceOfMonthBooksByClass2SeqReleaseDateGte(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByNamePageCountGteReleaseDateGte(es *elasticsearch.Client, name string, pageCountGte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1553,11 +1553,11 @@ func HistPriceOfMonthBooksByNamePageCountGteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByNamePageCountGtReleaseDateGte(es *elasticsearch.Client, name string, pageCountGt int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1571,11 +1571,11 @@ func HistPriceOfMonthBooksByNamePageCountGtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByNamePageCountLtReleaseDateGte(es *elasticsearch.Client, name string, pageCountLt int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1589,11 +1589,11 @@ func HistPriceOfMonthBooksByNamePageCountLtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByNamePageCountLteReleaseDateGte(es *elasticsearch.Client, name string, pageCountLte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1607,12 +1607,12 @@ func HistPriceOfMonthBooksByNamePageCountLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByNamePageCountGteLteReleaseDateGte(es *elasticsearch.Client, name string, pageCountGte, pageCountLte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1626,11 +1626,11 @@ func HistPriceOfMonthBooksByNamePageCountGteLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByNamePriceGteReleaseDateGte(es *elasticsearch.Client, name string, priceGte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1644,11 +1644,11 @@ func HistPageCountOfMonthBooksByNamePriceGteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByNamePriceGtReleaseDateGte(es *elasticsearch.Client, name string, priceGt float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1662,11 +1662,11 @@ func HistPageCountOfMonthBooksByNamePriceGtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByNamePriceLtReleaseDateGte(es *elasticsearch.Client, name string, priceLt float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1680,11 +1680,11 @@ func HistPageCountOfMonthBooksByNamePriceLtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByNamePriceLteReleaseDateGte(es *elasticsearch.Client, name string, priceLte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1698,12 +1698,12 @@ func HistPageCountOfMonthBooksByNamePriceLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByNamePriceGteLteReleaseDateGte(es *elasticsearch.Client, name string, priceGte, priceLte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1717,11 +1717,11 @@ func HistPageCountOfMonthBooksByNamePriceGteLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksByNameSeqReleaseDateGte(es *elasticsearch.Client, name, seq string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1735,11 +1735,11 @@ func HistPageCountOfMonthBooksByNameSeqReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksByNameSeqReleaseDateGte(es *elasticsearch.Client, name, seq string, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
@@ -1753,11 +1753,11 @@ func HistPriceOfMonthBooksByNameSeqReleaseDateGte(es *elasticsearch.Client, name
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksBySeqPageCountGteReleaseDateGte(es *elasticsearch.Client, seq string, pageCountGte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
@@ -1769,11 +1769,11 @@ func HistPriceOfMonthBooksBySeqPageCountGteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksBySeqPageCountGtReleaseDateGte(es *elasticsearch.Client, seq string, pageCountGt int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
@@ -1785,11 +1785,11 @@ func HistPriceOfMonthBooksBySeqPageCountGtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksBySeqPageCountLtReleaseDateGte(es *elasticsearch.Client, seq string, pageCountLt int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
@@ -1801,11 +1801,11 @@ func HistPriceOfMonthBooksBySeqPageCountLtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksBySeqPageCountLteReleaseDateGte(es *elasticsearch.Client, seq string, pageCountLte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
@@ -1817,12 +1817,12 @@ func HistPriceOfMonthBooksBySeqPageCountLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPriceOfMonthBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几个月检索books表并统计价格的数量直方图分布
+// HistPriceOfMonthBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几个月检索books表并按价格区间分桶统计记录数量的直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的价格间隔
+// histInterval float64 分桶聚合的价格区间间隔
 func HistPriceOfMonthBooksBySeqPageCountGteLteReleaseDateGte(es *elasticsearch.Client, seq string, pageCountGte, pageCountLte int64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
@@ -1834,11 +1834,11 @@ func HistPriceOfMonthBooksBySeqPageCountGteLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksBySeqPriceGteReleaseDateGte(es *elasticsearch.Client, seq string, priceGte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
@@ -1850,11 +1850,11 @@ func HistPageCountOfMonthBooksBySeqPriceGteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksBySeqPriceGtReleaseDateGte(es *elasticsearch.Client, seq string, priceGt float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
@@ -1866,11 +1866,11 @@ func HistPageCountOfMonthBooksBySeqPriceGtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksBySeqPriceLtReleaseDateGte(es *elasticsearch.Client, seq string, priceLt float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
@@ -1882,11 +1882,11 @@ func HistPageCountOfMonthBooksBySeqPriceLtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksBySeqPriceLteReleaseDateGte(es *elasticsearch.Client, seq string, priceLte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
@@ -1898,12 +1898,12 @@ func HistPageCountOfMonthBooksBySeqPriceLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// HistPageCountOfMonthBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几个月检索books表并统计页数的数量直方图分布
+// HistPageCountOfMonthBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几个月检索books表并按页数区间分桶统计记录数量的直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNMonth int 发布日期为近几个月
-// histInterval float64 桶聚合的页数间隔
+// histInterval float64 分桶聚合的页数区间间隔
 func HistPageCountOfMonthBooksBySeqPriceGteLteReleaseDateGte(es *elasticsearch.Client, seq string, priceGte, priceLte float64, releaseDateNMonth int, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),

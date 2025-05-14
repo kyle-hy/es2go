@@ -9,7 +9,7 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// WeekHistOfQuarterBooksByReleaseDateGte 根据发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByReleaseDateGte 根据发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // releaseDateNQuarter int 发布日期为近几个季度
 func WeekHistOfQuarterBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -20,7 +20,7 @@ func WeekHistOfQuarterBooksByReleaseDateGte(es *elasticsearch.Client, releaseDat
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByReleaseDateGte 根据发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByReleaseDateGte 根据发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // releaseDateNQuarter int 发布日期为近几个季度
 func MonthHistOfQuarterBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -31,7 +31,7 @@ func MonthHistOfQuarterBooksByReleaseDateGte(es *elasticsearch.Client, releaseDa
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByReleaseDateGte 根据发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByReleaseDateGte 根据发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // releaseDateNQuarter int 发布日期为近几个季度
 func QuarterHistOfQuarterBooksByReleaseDateGte(es *elasticsearch.Client, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
@@ -42,7 +42,7 @@ func QuarterHistOfQuarterBooksByReleaseDateGte(es *elasticsearch.Client, release
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // releaseDateNQuarter int 发布日期为近几个季度
 func WeekHistOfQuarterBooksByAllTextReleaseDateGte(es *elasticsearch.Client, allText string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -57,7 +57,7 @@ func WeekHistOfQuarterBooksByAllTextReleaseDateGte(es *elasticsearch.Client, all
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // releaseDateNQuarter int 发布日期为近几个季度
 func MonthHistOfQuarterBooksByAllTextReleaseDateGte(es *elasticsearch.Client, allText string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -72,7 +72,7 @@ func MonthHistOfQuarterBooksByAllTextReleaseDateGte(es *elasticsearch.Client, al
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextReleaseDateGte 根据全文本、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // releaseDateNQuarter int 发布日期为近几个季度
 func QuarterHistOfQuarterBooksByAllTextReleaseDateGte(es *elasticsearch.Client, allText string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -87,7 +87,7 @@ func QuarterHistOfQuarterBooksByAllTextReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // author string 作者
 // releaseDateNQuarter int 发布日期为近几个季度
 func WeekHistOfQuarterBooksByAuthorReleaseDateGte(es *elasticsearch.Client, author string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -102,7 +102,7 @@ func WeekHistOfQuarterBooksByAuthorReleaseDateGte(es *elasticsearch.Client, auth
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // author string 作者
 // releaseDateNQuarter int 发布日期为近几个季度
 func MonthHistOfQuarterBooksByAuthorReleaseDateGte(es *elasticsearch.Client, author string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -117,7 +117,7 @@ func MonthHistOfQuarterBooksByAuthorReleaseDateGte(es *elasticsearch.Client, aut
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAuthorReleaseDateGte 根据作者、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // author string 作者
 // releaseDateNQuarter int 发布日期为近几个季度
 func QuarterHistOfQuarterBooksByAuthorReleaseDateGte(es *elasticsearch.Client, author string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -132,7 +132,7 @@ func QuarterHistOfQuarterBooksByAuthorReleaseDateGte(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClassReleaseDateGte 根据类别、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClassReleaseDateGte 根据类别、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
 func WeekHistOfQuarterBooksByClassReleaseDateGte(es *elasticsearch.Client, class string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -145,7 +145,7 @@ func WeekHistOfQuarterBooksByClassReleaseDateGte(es *elasticsearch.Client, class
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClassReleaseDateGte 根据类别、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClassReleaseDateGte 根据类别、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
 func MonthHistOfQuarterBooksByClassReleaseDateGte(es *elasticsearch.Client, class string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -158,7 +158,7 @@ func MonthHistOfQuarterBooksByClassReleaseDateGte(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClassReleaseDateGte 根据类别、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClassReleaseDateGte 根据类别、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
 func QuarterHistOfQuarterBooksByClassReleaseDateGte(es *elasticsearch.Client, class string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -171,7 +171,7 @@ func QuarterHistOfQuarterBooksByClassReleaseDateGte(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
 func WeekHistOfQuarterBooksByClass2ReleaseDateGte(es *elasticsearch.Client, class2 string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -184,7 +184,7 @@ func WeekHistOfQuarterBooksByClass2ReleaseDateGte(es *elasticsearch.Client, clas
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
 func MonthHistOfQuarterBooksByClass2ReleaseDateGte(es *elasticsearch.Client, class2 string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -197,7 +197,7 @@ func MonthHistOfQuarterBooksByClass2ReleaseDateGte(es *elasticsearch.Client, cla
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClass2ReleaseDateGte 根据子类别、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
 func QuarterHistOfQuarterBooksByClass2ReleaseDateGte(es *elasticsearch.Client, class2 string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -210,7 +210,7 @@ func QuarterHistOfQuarterBooksByClass2ReleaseDateGte(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByNameReleaseDateGte 根据书名、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByNameReleaseDateGte 根据书名、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
 func WeekHistOfQuarterBooksByNameReleaseDateGte(es *elasticsearch.Client, name string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -225,7 +225,7 @@ func WeekHistOfQuarterBooksByNameReleaseDateGte(es *elasticsearch.Client, name s
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByNameReleaseDateGte 根据书名、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByNameReleaseDateGte 根据书名、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
 func MonthHistOfQuarterBooksByNameReleaseDateGte(es *elasticsearch.Client, name string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -240,7 +240,7 @@ func MonthHistOfQuarterBooksByNameReleaseDateGte(es *elasticsearch.Client, name 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByNameReleaseDateGte 根据书名、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByNameReleaseDateGte 根据书名、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
 func QuarterHistOfQuarterBooksByNameReleaseDateGte(es *elasticsearch.Client, name string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -255,7 +255,7 @@ func QuarterHistOfQuarterBooksByNameReleaseDateGte(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 func WeekHistOfQuarterBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -268,7 +268,7 @@ func WeekHistOfQuarterBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
 func WeekHistOfQuarterBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -281,7 +281,7 @@ func WeekHistOfQuarterBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
 func WeekHistOfQuarterBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -294,7 +294,7 @@ func WeekHistOfQuarterBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 func WeekHistOfQuarterBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -307,7 +307,7 @@ func WeekHistOfQuarterBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -321,7 +321,7 @@ func WeekHistOfQuarterBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 func MonthHistOfQuarterBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -334,7 +334,7 @@ func MonthHistOfQuarterBooksByPageCountGteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
 func MonthHistOfQuarterBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -347,7 +347,7 @@ func MonthHistOfQuarterBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
 func MonthHistOfQuarterBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -360,7 +360,7 @@ func MonthHistOfQuarterBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 func MonthHistOfQuarterBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -373,7 +373,7 @@ func MonthHistOfQuarterBooksByPageCountLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -387,7 +387,7 @@ func MonthHistOfQuarterBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGteReleaseDateGte 根据页数大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 func QuarterHistOfQuarterBooksByPageCountGteReleaseDateGte(es *elasticsearch.Client, pageCountGte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -400,7 +400,7 @@ func QuarterHistOfQuarterBooksByPageCountGteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGtReleaseDateGte 根据页数大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
 func QuarterHistOfQuarterBooksByPageCountGtReleaseDateGte(es *elasticsearch.Client, pageCountGt int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -413,7 +413,7 @@ func QuarterHistOfQuarterBooksByPageCountGtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountLtReleaseDateGte 根据页数小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
 func QuarterHistOfQuarterBooksByPageCountLtReleaseDateGte(es *elasticsearch.Client, pageCountLt int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -426,7 +426,7 @@ func QuarterHistOfQuarterBooksByPageCountLtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountLteReleaseDateGte 根据页数小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 func QuarterHistOfQuarterBooksByPageCountLteReleaseDateGte(es *elasticsearch.Client, pageCountLte int64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -439,7 +439,7 @@ func QuarterHistOfQuarterBooksByPageCountLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGteLteReleaseDateGte 根据页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -453,7 +453,7 @@ func QuarterHistOfQuarterBooksByPageCountGteLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 func WeekHistOfQuarterBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceGte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -466,7 +466,7 @@ func WeekHistOfQuarterBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, pr
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
 func WeekHistOfQuarterBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -479,7 +479,7 @@ func WeekHistOfQuarterBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, pri
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
 func WeekHistOfQuarterBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -492,7 +492,7 @@ func WeekHistOfQuarterBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, pri
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 func WeekHistOfQuarterBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -505,7 +505,7 @@ func WeekHistOfQuarterBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, pr
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -519,7 +519,7 @@ func WeekHistOfQuarterBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 func MonthHistOfQuarterBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceGte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -532,7 +532,7 @@ func MonthHistOfQuarterBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
 func MonthHistOfQuarterBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -545,7 +545,7 @@ func MonthHistOfQuarterBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, pr
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
 func MonthHistOfQuarterBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -558,7 +558,7 @@ func MonthHistOfQuarterBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, pr
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 func MonthHistOfQuarterBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -571,7 +571,7 @@ func MonthHistOfQuarterBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, p
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -585,7 +585,7 @@ func MonthHistOfQuarterBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPriceGteReleaseDateGte 根据价格大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 func QuarterHistOfQuarterBooksByPriceGteReleaseDateGte(es *elasticsearch.Client, priceGte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -598,7 +598,7 @@ func QuarterHistOfQuarterBooksByPriceGteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPriceGtReleaseDateGte 根据价格大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
 func QuarterHistOfQuarterBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, priceGt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -611,7 +611,7 @@ func QuarterHistOfQuarterBooksByPriceGtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPriceLtReleaseDateGte 根据价格小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
 func QuarterHistOfQuarterBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, priceLt float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -624,7 +624,7 @@ func QuarterHistOfQuarterBooksByPriceLtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPriceLteReleaseDateGte 根据价格小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
 func QuarterHistOfQuarterBooksByPriceLteReleaseDateGte(es *elasticsearch.Client, priceLte float64, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -637,7 +637,7 @@ func QuarterHistOfQuarterBooksByPriceLteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPriceGteLteReleaseDateGte 根据价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -651,7 +651,7 @@ func QuarterHistOfQuarterBooksByPriceGteLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksBySeqReleaseDateGte 根据编号、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksBySeqReleaseDateGte 根据编号、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
 func WeekHistOfQuarterBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -664,7 +664,7 @@ func WeekHistOfQuarterBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq str
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksBySeqReleaseDateGte 根据编号、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksBySeqReleaseDateGte 根据编号、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
 func MonthHistOfQuarterBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -677,7 +677,7 @@ func MonthHistOfQuarterBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq st
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksBySeqReleaseDateGte 根据编号、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksBySeqReleaseDateGte 根据编号、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
 func QuarterHistOfQuarterBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq string, releaseDateNQuarter int) (*eq.Data, *eq.Query, error) {
@@ -690,7 +690,7 @@ func QuarterHistOfQuarterBooksBySeqReleaseDateGte(es *elasticsearch.Client, seq 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -707,7 +707,7 @@ func WeekHistOfQuarterBooksByAllTextAuthorReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -724,7 +724,7 @@ func MonthHistOfQuarterBooksByAllTextAuthorReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextAuthorReleaseDateGte 根据全文本、作者、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // author string 作者
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -741,7 +741,7 @@ func QuarterHistOfQuarterBooksByAllTextAuthorReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -758,7 +758,7 @@ func WeekHistOfQuarterBooksByAllTextClassReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -775,7 +775,7 @@ func MonthHistOfQuarterBooksByAllTextClassReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextClassReleaseDateGte 根据全文本、类别、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -792,7 +792,7 @@ func QuarterHistOfQuarterBooksByAllTextClassReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -809,7 +809,7 @@ func WeekHistOfQuarterBooksByAllTextClass2ReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -826,7 +826,7 @@ func MonthHistOfQuarterBooksByAllTextClass2ReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextClass2ReleaseDateGte 根据全文本、子类别、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -843,7 +843,7 @@ func QuarterHistOfQuarterBooksByAllTextClass2ReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -860,7 +860,7 @@ func WeekHistOfQuarterBooksByAllTextNameReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -877,7 +877,7 @@ func MonthHistOfQuarterBooksByAllTextNameReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextNameReleaseDateGte 根据全文本、书名、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -894,7 +894,7 @@ func QuarterHistOfQuarterBooksByAllTextNameReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -911,7 +911,7 @@ func WeekHistOfQuarterBooksByAllTextPageCountGteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -928,7 +928,7 @@ func WeekHistOfQuarterBooksByAllTextPageCountGtReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -945,7 +945,7 @@ func WeekHistOfQuarterBooksByAllTextPageCountLtReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -962,7 +962,7 @@ func WeekHistOfQuarterBooksByAllTextPageCountLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -980,7 +980,7 @@ func WeekHistOfQuarterBooksByAllTextPageCountGteLteReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -997,7 +997,7 @@ func MonthHistOfQuarterBooksByAllTextPageCountGteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1014,7 +1014,7 @@ func MonthHistOfQuarterBooksByAllTextPageCountGtReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1031,7 +1031,7 @@ func MonthHistOfQuarterBooksByAllTextPageCountLtReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1048,7 +1048,7 @@ func MonthHistOfQuarterBooksByAllTextPageCountLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1066,7 +1066,7 @@ func MonthHistOfQuarterBooksByAllTextPageCountGteLteReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextPageCountGteReleaseDateGte 根据全文本、页数大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1083,7 +1083,7 @@ func QuarterHistOfQuarterBooksByAllTextPageCountGteReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextPageCountGtReleaseDateGte 根据全文本、页数大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1100,7 +1100,7 @@ func QuarterHistOfQuarterBooksByAllTextPageCountGtReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextPageCountLtReleaseDateGte 根据全文本、页数小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1117,7 +1117,7 @@ func QuarterHistOfQuarterBooksByAllTextPageCountLtReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextPageCountLteReleaseDateGte 根据全文本、页数小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1134,7 +1134,7 @@ func QuarterHistOfQuarterBooksByAllTextPageCountLteReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextPageCountGteLteReleaseDateGte 根据全文本、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1152,7 +1152,7 @@ func QuarterHistOfQuarterBooksByAllTextPageCountGteLteReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1169,7 +1169,7 @@ func WeekHistOfQuarterBooksByAllTextPriceGteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1186,7 +1186,7 @@ func WeekHistOfQuarterBooksByAllTextPriceGtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1203,7 +1203,7 @@ func WeekHistOfQuarterBooksByAllTextPriceLtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1220,7 +1220,7 @@ func WeekHistOfQuarterBooksByAllTextPriceLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1238,7 +1238,7 @@ func WeekHistOfQuarterBooksByAllTextPriceGteLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1255,7 +1255,7 @@ func MonthHistOfQuarterBooksByAllTextPriceGteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1272,7 +1272,7 @@ func MonthHistOfQuarterBooksByAllTextPriceGtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1289,7 +1289,7 @@ func MonthHistOfQuarterBooksByAllTextPriceLtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1306,7 +1306,7 @@ func MonthHistOfQuarterBooksByAllTextPriceLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1324,7 +1324,7 @@ func MonthHistOfQuarterBooksByAllTextPriceGteLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextPriceGteReleaseDateGte 根据全文本、价格大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1341,7 +1341,7 @@ func QuarterHistOfQuarterBooksByAllTextPriceGteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextPriceGtReleaseDateGte 根据全文本、价格大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1358,7 +1358,7 @@ func QuarterHistOfQuarterBooksByAllTextPriceGtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextPriceLtReleaseDateGte 根据全文本、价格小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1375,7 +1375,7 @@ func QuarterHistOfQuarterBooksByAllTextPriceLtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextPriceLteReleaseDateGte 根据全文本、价格小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1392,7 +1392,7 @@ func QuarterHistOfQuarterBooksByAllTextPriceLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextPriceGteLteReleaseDateGte 根据全文本、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1410,7 +1410,7 @@ func QuarterHistOfQuarterBooksByAllTextPriceGteLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1427,7 +1427,7 @@ func WeekHistOfQuarterBooksByAllTextSeqReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1444,7 +1444,7 @@ func MonthHistOfQuarterBooksByAllTextSeqReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAllTextSeqReleaseDateGte 根据全文本、编号、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // allText string 全文本
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1461,7 +1461,7 @@ func QuarterHistOfQuarterBooksByAllTextSeqReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1478,7 +1478,7 @@ func WeekHistOfQuarterBooksByAuthorClassReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1495,7 +1495,7 @@ func MonthHistOfQuarterBooksByAuthorClassReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAuthorClassReleaseDateGte 根据作者、类别、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // author string 作者
 // class string 类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1512,7 +1512,7 @@ func QuarterHistOfQuarterBooksByAuthorClassReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1529,7 +1529,7 @@ func WeekHistOfQuarterBooksByAuthorClass2ReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1546,7 +1546,7 @@ func MonthHistOfQuarterBooksByAuthorClass2ReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAuthorClass2ReleaseDateGte 根据作者、子类别、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // author string 作者
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1563,7 +1563,7 @@ func QuarterHistOfQuarterBooksByAuthorClass2ReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1580,7 +1580,7 @@ func WeekHistOfQuarterBooksByAuthorNameReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1597,7 +1597,7 @@ func MonthHistOfQuarterBooksByAuthorNameReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAuthorNameReleaseDateGte 根据作者、书名、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // author string 作者
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1614,7 +1614,7 @@ func QuarterHistOfQuarterBooksByAuthorNameReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1631,7 +1631,7 @@ func WeekHistOfQuarterBooksByAuthorPageCountGteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1648,7 +1648,7 @@ func WeekHistOfQuarterBooksByAuthorPageCountGtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1665,7 +1665,7 @@ func WeekHistOfQuarterBooksByAuthorPageCountLtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1682,7 +1682,7 @@ func WeekHistOfQuarterBooksByAuthorPageCountLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1700,7 +1700,7 @@ func WeekHistOfQuarterBooksByAuthorPageCountGteLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1717,7 +1717,7 @@ func MonthHistOfQuarterBooksByAuthorPageCountGteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1734,7 +1734,7 @@ func MonthHistOfQuarterBooksByAuthorPageCountGtReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1751,7 +1751,7 @@ func MonthHistOfQuarterBooksByAuthorPageCountLtReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1768,7 +1768,7 @@ func MonthHistOfQuarterBooksByAuthorPageCountLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1786,7 +1786,7 @@ func MonthHistOfQuarterBooksByAuthorPageCountGteLteReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAuthorPageCountGteReleaseDateGte 根据作者、页数大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1803,7 +1803,7 @@ func QuarterHistOfQuarterBooksByAuthorPageCountGteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAuthorPageCountGtReleaseDateGte 根据作者、页数大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // author string 作者
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1820,7 +1820,7 @@ func QuarterHistOfQuarterBooksByAuthorPageCountGtReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAuthorPageCountLtReleaseDateGte 根据作者、页数小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // author string 作者
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1837,7 +1837,7 @@ func QuarterHistOfQuarterBooksByAuthorPageCountLtReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAuthorPageCountLteReleaseDateGte 根据作者、页数小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // author string 作者
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1854,7 +1854,7 @@ func QuarterHistOfQuarterBooksByAuthorPageCountLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAuthorPageCountGteLteReleaseDateGte 根据作者、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // author string 作者
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -1872,7 +1872,7 @@ func QuarterHistOfQuarterBooksByAuthorPageCountGteLteReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1889,7 +1889,7 @@ func WeekHistOfQuarterBooksByAuthorPriceGteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1906,7 +1906,7 @@ func WeekHistOfQuarterBooksByAuthorPriceGtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1923,7 +1923,7 @@ func WeekHistOfQuarterBooksByAuthorPriceLtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1940,7 +1940,7 @@ func WeekHistOfQuarterBooksByAuthorPriceLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -1958,7 +1958,7 @@ func WeekHistOfQuarterBooksByAuthorPriceGteLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1975,7 +1975,7 @@ func MonthHistOfQuarterBooksByAuthorPriceGteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -1992,7 +1992,7 @@ func MonthHistOfQuarterBooksByAuthorPriceGtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2009,7 +2009,7 @@ func MonthHistOfQuarterBooksByAuthorPriceLtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2026,7 +2026,7 @@ func MonthHistOfQuarterBooksByAuthorPriceLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2044,7 +2044,7 @@ func MonthHistOfQuarterBooksByAuthorPriceGteLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAuthorPriceGteReleaseDateGte 根据作者、价格大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2061,7 +2061,7 @@ func QuarterHistOfQuarterBooksByAuthorPriceGteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAuthorPriceGtReleaseDateGte 根据作者、价格大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // author string 作者
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2078,7 +2078,7 @@ func QuarterHistOfQuarterBooksByAuthorPriceGtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAuthorPriceLtReleaseDateGte 根据作者、价格小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // author string 作者
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2095,7 +2095,7 @@ func QuarterHistOfQuarterBooksByAuthorPriceLtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAuthorPriceLteReleaseDateGte 根据作者、价格小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // author string 作者
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2112,7 +2112,7 @@ func QuarterHistOfQuarterBooksByAuthorPriceLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAuthorPriceGteLteReleaseDateGte 根据作者、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // author string 作者
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2130,7 +2130,7 @@ func QuarterHistOfQuarterBooksByAuthorPriceGteLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2147,7 +2147,7 @@ func WeekHistOfQuarterBooksByAuthorSeqReleaseDateGte(es *elasticsearch.Client, a
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2164,7 +2164,7 @@ func MonthHistOfQuarterBooksByAuthorSeqReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByAuthorSeqReleaseDateGte 根据作者、编号、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // author string 作者
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2181,7 +2181,7 @@ func QuarterHistOfQuarterBooksByAuthorSeqReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2196,7 +2196,7 @@ func WeekHistOfQuarterBooksByClassClass2ReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2211,7 +2211,7 @@ func MonthHistOfQuarterBooksByClassClass2ReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClassClass2ReleaseDateGte 根据类别、子类别、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class string 类别
 // class2 string 子类别
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2226,7 +2226,7 @@ func QuarterHistOfQuarterBooksByClassClass2ReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2243,7 +2243,7 @@ func WeekHistOfQuarterBooksByClassNameReleaseDateGte(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2260,7 +2260,7 @@ func MonthHistOfQuarterBooksByClassNameReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClassNameReleaseDateGte 根据类别、书名、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class string 类别
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2277,7 +2277,7 @@ func QuarterHistOfQuarterBooksByClassNameReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2292,7 +2292,7 @@ func WeekHistOfQuarterBooksByClassPageCountGteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2307,7 +2307,7 @@ func WeekHistOfQuarterBooksByClassPageCountGtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2322,7 +2322,7 @@ func WeekHistOfQuarterBooksByClassPageCountLtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2337,7 +2337,7 @@ func WeekHistOfQuarterBooksByClassPageCountLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2353,7 +2353,7 @@ func WeekHistOfQuarterBooksByClassPageCountGteLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2368,7 +2368,7 @@ func MonthHistOfQuarterBooksByClassPageCountGteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2383,7 +2383,7 @@ func MonthHistOfQuarterBooksByClassPageCountGtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2398,7 +2398,7 @@ func MonthHistOfQuarterBooksByClassPageCountLtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2413,7 +2413,7 @@ func MonthHistOfQuarterBooksByClassPageCountLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2429,7 +2429,7 @@ func MonthHistOfQuarterBooksByClassPageCountGteLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClassPageCountGteReleaseDateGte 根据类别、页数大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2444,7 +2444,7 @@ func QuarterHistOfQuarterBooksByClassPageCountGteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClassPageCountGtReleaseDateGte 根据类别、页数大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class string 类别
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2459,7 +2459,7 @@ func QuarterHistOfQuarterBooksByClassPageCountGtReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClassPageCountLtReleaseDateGte 根据类别、页数小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class string 类别
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2474,7 +2474,7 @@ func QuarterHistOfQuarterBooksByClassPageCountLtReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClassPageCountLteReleaseDateGte 根据类别、页数小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class string 类别
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2489,7 +2489,7 @@ func QuarterHistOfQuarterBooksByClassPageCountLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClassPageCountGteLteReleaseDateGte 根据类别、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class string 类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2505,7 +2505,7 @@ func QuarterHistOfQuarterBooksByClassPageCountGteLteReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2520,7 +2520,7 @@ func WeekHistOfQuarterBooksByClassPriceGteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2535,7 +2535,7 @@ func WeekHistOfQuarterBooksByClassPriceGtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2550,7 +2550,7 @@ func WeekHistOfQuarterBooksByClassPriceLtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2565,7 +2565,7 @@ func WeekHistOfQuarterBooksByClassPriceLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2581,7 +2581,7 @@ func WeekHistOfQuarterBooksByClassPriceGteLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2596,7 +2596,7 @@ func MonthHistOfQuarterBooksByClassPriceGteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2611,7 +2611,7 @@ func MonthHistOfQuarterBooksByClassPriceGtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2626,7 +2626,7 @@ func MonthHistOfQuarterBooksByClassPriceLtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2641,7 +2641,7 @@ func MonthHistOfQuarterBooksByClassPriceLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2657,7 +2657,7 @@ func MonthHistOfQuarterBooksByClassPriceGteLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClassPriceGteReleaseDateGte 根据类别、价格大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2672,7 +2672,7 @@ func QuarterHistOfQuarterBooksByClassPriceGteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClassPriceGtReleaseDateGte 根据类别、价格大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class string 类别
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2687,7 +2687,7 @@ func QuarterHistOfQuarterBooksByClassPriceGtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClassPriceLtReleaseDateGte 根据类别、价格小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class string 类别
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2702,7 +2702,7 @@ func QuarterHistOfQuarterBooksByClassPriceLtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClassPriceLteReleaseDateGte 根据类别、价格小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class string 类别
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2717,7 +2717,7 @@ func QuarterHistOfQuarterBooksByClassPriceLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClassPriceGteLteReleaseDateGte 根据类别、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class string 类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -2733,7 +2733,7 @@ func QuarterHistOfQuarterBooksByClassPriceGteLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2748,7 +2748,7 @@ func WeekHistOfQuarterBooksByClassSeqReleaseDateGte(es *elasticsearch.Client, cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2763,7 +2763,7 @@ func MonthHistOfQuarterBooksByClassSeqReleaseDateGte(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClassSeqReleaseDateGte 根据类别、编号、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class string 类别
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2778,7 +2778,7 @@ func QuarterHistOfQuarterBooksByClassSeqReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2795,7 +2795,7 @@ func WeekHistOfQuarterBooksByClass2NameReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2812,7 +2812,7 @@ func MonthHistOfQuarterBooksByClass2NameReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClass2NameReleaseDateGte 根据子类别、书名、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class2 string 子类别
 // name string 书名
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2829,7 +2829,7 @@ func QuarterHistOfQuarterBooksByClass2NameReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2844,7 +2844,7 @@ func WeekHistOfQuarterBooksByClass2PageCountGteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2859,7 +2859,7 @@ func WeekHistOfQuarterBooksByClass2PageCountGtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2874,7 +2874,7 @@ func WeekHistOfQuarterBooksByClass2PageCountLtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2889,7 +2889,7 @@ func WeekHistOfQuarterBooksByClass2PageCountLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2905,7 +2905,7 @@ func WeekHistOfQuarterBooksByClass2PageCountGteLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2920,7 +2920,7 @@ func MonthHistOfQuarterBooksByClass2PageCountGteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2935,7 +2935,7 @@ func MonthHistOfQuarterBooksByClass2PageCountGtReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2950,7 +2950,7 @@ func MonthHistOfQuarterBooksByClass2PageCountLtReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2965,7 +2965,7 @@ func MonthHistOfQuarterBooksByClass2PageCountLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -2981,7 +2981,7 @@ func MonthHistOfQuarterBooksByClass2PageCountGteLteReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClass2PageCountGteReleaseDateGte 根据子类别、页数大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -2996,7 +2996,7 @@ func QuarterHistOfQuarterBooksByClass2PageCountGteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClass2PageCountGtReleaseDateGte 根据子类别、页数大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class2 string 子类别
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3011,7 +3011,7 @@ func QuarterHistOfQuarterBooksByClass2PageCountGtReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClass2PageCountLtReleaseDateGte 根据子类别、页数小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class2 string 子类别
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3026,7 +3026,7 @@ func QuarterHistOfQuarterBooksByClass2PageCountLtReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClass2PageCountLteReleaseDateGte 根据子类别、页数小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class2 string 子类别
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3041,7 +3041,7 @@ func QuarterHistOfQuarterBooksByClass2PageCountLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClass2PageCountGteLteReleaseDateGte 根据子类别、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class2 string 子类别
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -3057,7 +3057,7 @@ func QuarterHistOfQuarterBooksByClass2PageCountGteLteReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3072,7 +3072,7 @@ func WeekHistOfQuarterBooksByClass2PriceGteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3087,7 +3087,7 @@ func WeekHistOfQuarterBooksByClass2PriceGtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3102,7 +3102,7 @@ func WeekHistOfQuarterBooksByClass2PriceLtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3117,7 +3117,7 @@ func WeekHistOfQuarterBooksByClass2PriceLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -3133,7 +3133,7 @@ func WeekHistOfQuarterBooksByClass2PriceGteLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3148,7 +3148,7 @@ func MonthHistOfQuarterBooksByClass2PriceGteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3163,7 +3163,7 @@ func MonthHistOfQuarterBooksByClass2PriceGtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3178,7 +3178,7 @@ func MonthHistOfQuarterBooksByClass2PriceLtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3193,7 +3193,7 @@ func MonthHistOfQuarterBooksByClass2PriceLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -3209,7 +3209,7 @@ func MonthHistOfQuarterBooksByClass2PriceGteLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClass2PriceGteReleaseDateGte 根据子类别、价格大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3224,7 +3224,7 @@ func QuarterHistOfQuarterBooksByClass2PriceGteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClass2PriceGtReleaseDateGte 根据子类别、价格大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class2 string 子类别
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3239,7 +3239,7 @@ func QuarterHistOfQuarterBooksByClass2PriceGtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClass2PriceLtReleaseDateGte 根据子类别、价格小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class2 string 子类别
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3254,7 +3254,7 @@ func QuarterHistOfQuarterBooksByClass2PriceLtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClass2PriceLteReleaseDateGte 根据子类别、价格小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class2 string 子类别
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3269,7 +3269,7 @@ func QuarterHistOfQuarterBooksByClass2PriceLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClass2PriceGteLteReleaseDateGte 根据子类别、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class2 string 子类别
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -3285,7 +3285,7 @@ func QuarterHistOfQuarterBooksByClass2PriceGteLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3300,7 +3300,7 @@ func WeekHistOfQuarterBooksByClass2SeqReleaseDateGte(es *elasticsearch.Client, c
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3315,7 +3315,7 @@ func MonthHistOfQuarterBooksByClass2SeqReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByClass2SeqReleaseDateGte 根据子类别、编号、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // class2 string 子类别
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3330,7 +3330,7 @@ func QuarterHistOfQuarterBooksByClass2SeqReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3347,7 +3347,7 @@ func WeekHistOfQuarterBooksByNamePageCountGteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3364,7 +3364,7 @@ func WeekHistOfQuarterBooksByNamePageCountGtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3381,7 +3381,7 @@ func WeekHistOfQuarterBooksByNamePageCountLtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3398,7 +3398,7 @@ func WeekHistOfQuarterBooksByNamePageCountLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -3416,7 +3416,7 @@ func WeekHistOfQuarterBooksByNamePageCountGteLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3433,7 +3433,7 @@ func MonthHistOfQuarterBooksByNamePageCountGteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3450,7 +3450,7 @@ func MonthHistOfQuarterBooksByNamePageCountGtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3467,7 +3467,7 @@ func MonthHistOfQuarterBooksByNamePageCountLtReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3484,7 +3484,7 @@ func MonthHistOfQuarterBooksByNamePageCountLteReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -3502,7 +3502,7 @@ func MonthHistOfQuarterBooksByNamePageCountGteLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByNamePageCountGteReleaseDateGte 根据书名、页数大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3519,7 +3519,7 @@ func QuarterHistOfQuarterBooksByNamePageCountGteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByNamePageCountGtReleaseDateGte 根据书名、页数大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // name string 书名
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3536,7 +3536,7 @@ func QuarterHistOfQuarterBooksByNamePageCountGtReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByNamePageCountLtReleaseDateGte 根据书名、页数小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // name string 书名
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3553,7 +3553,7 @@ func QuarterHistOfQuarterBooksByNamePageCountLtReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByNamePageCountLteReleaseDateGte 根据书名、页数小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // name string 书名
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3570,7 +3570,7 @@ func QuarterHistOfQuarterBooksByNamePageCountLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByNamePageCountGteLteReleaseDateGte 根据书名、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // name string 书名
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -3588,7 +3588,7 @@ func QuarterHistOfQuarterBooksByNamePageCountGteLteReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3605,7 +3605,7 @@ func WeekHistOfQuarterBooksByNamePriceGteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3622,7 +3622,7 @@ func WeekHistOfQuarterBooksByNamePriceGtReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3639,7 +3639,7 @@ func WeekHistOfQuarterBooksByNamePriceLtReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3656,7 +3656,7 @@ func WeekHistOfQuarterBooksByNamePriceLteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -3674,7 +3674,7 @@ func WeekHistOfQuarterBooksByNamePriceGteLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3691,7 +3691,7 @@ func MonthHistOfQuarterBooksByNamePriceGteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3708,7 +3708,7 @@ func MonthHistOfQuarterBooksByNamePriceGtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3725,7 +3725,7 @@ func MonthHistOfQuarterBooksByNamePriceLtReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3742,7 +3742,7 @@ func MonthHistOfQuarterBooksByNamePriceLteReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -3760,7 +3760,7 @@ func MonthHistOfQuarterBooksByNamePriceGteLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByNamePriceGteReleaseDateGte 根据书名、价格大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3777,7 +3777,7 @@ func QuarterHistOfQuarterBooksByNamePriceGteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByNamePriceGtReleaseDateGte 根据书名、价格大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // name string 书名
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3794,7 +3794,7 @@ func QuarterHistOfQuarterBooksByNamePriceGtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByNamePriceLtReleaseDateGte 根据书名、价格小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // name string 书名
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3811,7 +3811,7 @@ func QuarterHistOfQuarterBooksByNamePriceLtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByNamePriceLteReleaseDateGte 根据书名、价格小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // name string 书名
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3828,7 +3828,7 @@ func QuarterHistOfQuarterBooksByNamePriceLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByNamePriceGteLteReleaseDateGte 根据书名、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // name string 书名
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -3846,7 +3846,7 @@ func QuarterHistOfQuarterBooksByNamePriceGteLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3863,7 +3863,7 @@ func WeekHistOfQuarterBooksByNameSeqReleaseDateGte(es *elasticsearch.Client, nam
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3880,7 +3880,7 @@ func MonthHistOfQuarterBooksByNameSeqReleaseDateGte(es *elasticsearch.Client, na
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByNameSeqReleaseDateGte 根据书名、编号、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // name string 书名
 // seq string 编号
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3897,7 +3897,7 @@ func QuarterHistOfQuarterBooksByNameSeqReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGtePriceGteReleaseDateGte 根据页数大于等于、价格大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGtePriceGteReleaseDateGte 根据页数大于等于、价格大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3912,7 +3912,7 @@ func WeekHistOfQuarterBooksByPageCountGtePriceGteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGtePriceGtReleaseDateGte 根据页数大于等于、价格大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGtePriceGtReleaseDateGte 根据页数大于等于、价格大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3927,7 +3927,7 @@ func WeekHistOfQuarterBooksByPageCountGtePriceGtReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGtePriceLtReleaseDateGte 根据页数大于等于、价格小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGtePriceLtReleaseDateGte 根据页数大于等于、价格小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3942,7 +3942,7 @@ func WeekHistOfQuarterBooksByPageCountGtePriceLtReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGtePriceLteReleaseDateGte 根据页数大于等于、价格小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGtePriceLteReleaseDateGte 根据页数大于等于、价格小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3957,7 +3957,7 @@ func WeekHistOfQuarterBooksByPageCountGtePriceLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGtePriceGteLteReleaseDateGte 根据页数大于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGtePriceGteLteReleaseDateGte 根据页数大于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -3973,7 +3973,7 @@ func WeekHistOfQuarterBooksByPageCountGtePriceGteLteReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGtPriceGteReleaseDateGte 根据页数大于、价格大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGtPriceGteReleaseDateGte 根据页数大于、价格大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -3988,7 +3988,7 @@ func WeekHistOfQuarterBooksByPageCountGtPriceGteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGtPriceGtReleaseDateGte 根据页数大于、价格大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGtPriceGtReleaseDateGte 根据页数大于、价格大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGt int64 页数大于
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4003,7 +4003,7 @@ func WeekHistOfQuarterBooksByPageCountGtPriceGtReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGtPriceLtReleaseDateGte 根据页数大于、价格小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGtPriceLtReleaseDateGte 根据页数大于、价格小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGt int64 页数大于
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4018,7 +4018,7 @@ func WeekHistOfQuarterBooksByPageCountGtPriceLtReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGtPriceLteReleaseDateGte 根据页数大于、价格小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGtPriceLteReleaseDateGte 根据页数大于、价格小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4033,7 +4033,7 @@ func WeekHistOfQuarterBooksByPageCountGtPriceLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGtPriceGteLteReleaseDateGte 根据页数大于、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGtPriceGteLteReleaseDateGte 根据页数大于、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4049,7 +4049,7 @@ func WeekHistOfQuarterBooksByPageCountGtPriceGteLteReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountLtPriceGteReleaseDateGte 根据页数小于、价格大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountLtPriceGteReleaseDateGte 根据页数小于、价格大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4064,7 +4064,7 @@ func WeekHistOfQuarterBooksByPageCountLtPriceGteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountLtPriceGtReleaseDateGte 根据页数小于、价格大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountLtPriceGtReleaseDateGte 根据页数小于、价格大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountLt int64 页数小于
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4079,7 +4079,7 @@ func WeekHistOfQuarterBooksByPageCountLtPriceGtReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountLtPriceLtReleaseDateGte 根据页数小于、价格小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountLtPriceLtReleaseDateGte 根据页数小于、价格小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountLt int64 页数小于
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4094,7 +4094,7 @@ func WeekHistOfQuarterBooksByPageCountLtPriceLtReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountLtPriceLteReleaseDateGte 根据页数小于、价格小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountLtPriceLteReleaseDateGte 根据页数小于、价格小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4109,7 +4109,7 @@ func WeekHistOfQuarterBooksByPageCountLtPriceLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountLtPriceGteLteReleaseDateGte 根据页数小于、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountLtPriceGteLteReleaseDateGte 根据页数小于、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4125,7 +4125,7 @@ func WeekHistOfQuarterBooksByPageCountLtPriceGteLteReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountLtePriceGteReleaseDateGte 根据页数小于等于、价格大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountLtePriceGteReleaseDateGte 根据页数小于等于、价格大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4140,7 +4140,7 @@ func WeekHistOfQuarterBooksByPageCountLtePriceGteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountLtePriceGtReleaseDateGte 根据页数小于等于、价格大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountLtePriceGtReleaseDateGte 根据页数小于等于、价格大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4155,7 +4155,7 @@ func WeekHistOfQuarterBooksByPageCountLtePriceGtReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountLtePriceLtReleaseDateGte 根据页数小于等于、价格小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountLtePriceLtReleaseDateGte 根据页数小于等于、价格小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4170,7 +4170,7 @@ func WeekHistOfQuarterBooksByPageCountLtePriceLtReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountLtePriceLteReleaseDateGte 根据页数小于等于、价格小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountLtePriceLteReleaseDateGte 根据页数小于等于、价格小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4185,7 +4185,7 @@ func WeekHistOfQuarterBooksByPageCountLtePriceLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountLtePriceGteLteReleaseDateGte 根据页数小于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountLtePriceGteLteReleaseDateGte 根据页数小于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4201,7 +4201,7 @@ func WeekHistOfQuarterBooksByPageCountLtePriceGteLteReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGteLtePriceGteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGteLtePriceGteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
@@ -4217,7 +4217,7 @@ func WeekHistOfQuarterBooksByPageCountGteLtePriceGteReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGteLtePriceGtReleaseDateGte 根据页数大于等于和小于等于、价格大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGteLtePriceGtReleaseDateGte 根据页数大于等于和小于等于、价格大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
@@ -4233,7 +4233,7 @@ func WeekHistOfQuarterBooksByPageCountGteLtePriceGtReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGteLtePriceLtReleaseDateGte 根据页数大于等于和小于等于、价格小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGteLtePriceLtReleaseDateGte 根据页数大于等于和小于等于、价格小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
@@ -4249,7 +4249,7 @@ func WeekHistOfQuarterBooksByPageCountGteLtePriceLtReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGteLtePriceLteReleaseDateGte 根据页数大于等于和小于等于、价格小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGteLtePriceLteReleaseDateGte 根据页数大于等于和小于等于、价格小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
@@ -4265,7 +4265,7 @@ func WeekHistOfQuarterBooksByPageCountGteLtePriceLteReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksByPageCountGteLtePriceGteLteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksByPageCountGteLtePriceGteLteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
@@ -4282,7 +4282,7 @@ func WeekHistOfQuarterBooksByPageCountGteLtePriceGteLteReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGtePriceGteReleaseDateGte 根据页数大于等于、价格大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGtePriceGteReleaseDateGte 根据页数大于等于、价格大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4297,7 +4297,7 @@ func MonthHistOfQuarterBooksByPageCountGtePriceGteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGtePriceGtReleaseDateGte 根据页数大于等于、价格大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGtePriceGtReleaseDateGte 根据页数大于等于、价格大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4312,7 +4312,7 @@ func MonthHistOfQuarterBooksByPageCountGtePriceGtReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGtePriceLtReleaseDateGte 根据页数大于等于、价格小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGtePriceLtReleaseDateGte 根据页数大于等于、价格小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4327,7 +4327,7 @@ func MonthHistOfQuarterBooksByPageCountGtePriceLtReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGtePriceLteReleaseDateGte 根据页数大于等于、价格小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGtePriceLteReleaseDateGte 根据页数大于等于、价格小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4342,7 +4342,7 @@ func MonthHistOfQuarterBooksByPageCountGtePriceLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGtePriceGteLteReleaseDateGte 根据页数大于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGtePriceGteLteReleaseDateGte 根据页数大于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4358,7 +4358,7 @@ func MonthHistOfQuarterBooksByPageCountGtePriceGteLteReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGtPriceGteReleaseDateGte 根据页数大于、价格大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGtPriceGteReleaseDateGte 根据页数大于、价格大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4373,7 +4373,7 @@ func MonthHistOfQuarterBooksByPageCountGtPriceGteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGtPriceGtReleaseDateGte 根据页数大于、价格大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGtPriceGtReleaseDateGte 根据页数大于、价格大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGt int64 页数大于
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4388,7 +4388,7 @@ func MonthHistOfQuarterBooksByPageCountGtPriceGtReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGtPriceLtReleaseDateGte 根据页数大于、价格小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGtPriceLtReleaseDateGte 根据页数大于、价格小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGt int64 页数大于
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4403,7 +4403,7 @@ func MonthHistOfQuarterBooksByPageCountGtPriceLtReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGtPriceLteReleaseDateGte 根据页数大于、价格小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGtPriceLteReleaseDateGte 根据页数大于、价格小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4418,7 +4418,7 @@ func MonthHistOfQuarterBooksByPageCountGtPriceLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGtPriceGteLteReleaseDateGte 根据页数大于、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGtPriceGteLteReleaseDateGte 根据页数大于、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4434,7 +4434,7 @@ func MonthHistOfQuarterBooksByPageCountGtPriceGteLteReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountLtPriceGteReleaseDateGte 根据页数小于、价格大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountLtPriceGteReleaseDateGte 根据页数小于、价格大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4449,7 +4449,7 @@ func MonthHistOfQuarterBooksByPageCountLtPriceGteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountLtPriceGtReleaseDateGte 根据页数小于、价格大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountLtPriceGtReleaseDateGte 根据页数小于、价格大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountLt int64 页数小于
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4464,7 +4464,7 @@ func MonthHistOfQuarterBooksByPageCountLtPriceGtReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountLtPriceLtReleaseDateGte 根据页数小于、价格小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountLtPriceLtReleaseDateGte 根据页数小于、价格小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountLt int64 页数小于
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4479,7 +4479,7 @@ func MonthHistOfQuarterBooksByPageCountLtPriceLtReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountLtPriceLteReleaseDateGte 根据页数小于、价格小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountLtPriceLteReleaseDateGte 根据页数小于、价格小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4494,7 +4494,7 @@ func MonthHistOfQuarterBooksByPageCountLtPriceLteReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountLtPriceGteLteReleaseDateGte 根据页数小于、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountLtPriceGteLteReleaseDateGte 根据页数小于、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4510,7 +4510,7 @@ func MonthHistOfQuarterBooksByPageCountLtPriceGteLteReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountLtePriceGteReleaseDateGte 根据页数小于等于、价格大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountLtePriceGteReleaseDateGte 根据页数小于等于、价格大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4525,7 +4525,7 @@ func MonthHistOfQuarterBooksByPageCountLtePriceGteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountLtePriceGtReleaseDateGte 根据页数小于等于、价格大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountLtePriceGtReleaseDateGte 根据页数小于等于、价格大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4540,7 +4540,7 @@ func MonthHistOfQuarterBooksByPageCountLtePriceGtReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountLtePriceLtReleaseDateGte 根据页数小于等于、价格小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountLtePriceLtReleaseDateGte 根据页数小于等于、价格小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4555,7 +4555,7 @@ func MonthHistOfQuarterBooksByPageCountLtePriceLtReleaseDateGte(es *elasticsearc
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountLtePriceLteReleaseDateGte 根据页数小于等于、价格小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountLtePriceLteReleaseDateGte 根据页数小于等于、价格小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4570,7 +4570,7 @@ func MonthHistOfQuarterBooksByPageCountLtePriceLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountLtePriceGteLteReleaseDateGte 根据页数小于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountLtePriceGteLteReleaseDateGte 根据页数小于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4586,7 +4586,7 @@ func MonthHistOfQuarterBooksByPageCountLtePriceGteLteReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGteLtePriceGteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGteLtePriceGteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
@@ -4602,7 +4602,7 @@ func MonthHistOfQuarterBooksByPageCountGteLtePriceGteReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGteLtePriceGtReleaseDateGte 根据页数大于等于和小于等于、价格大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGteLtePriceGtReleaseDateGte 根据页数大于等于和小于等于、价格大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
@@ -4618,7 +4618,7 @@ func MonthHistOfQuarterBooksByPageCountGteLtePriceGtReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGteLtePriceLtReleaseDateGte 根据页数大于等于和小于等于、价格小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGteLtePriceLtReleaseDateGte 根据页数大于等于和小于等于、价格小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
@@ -4634,7 +4634,7 @@ func MonthHistOfQuarterBooksByPageCountGteLtePriceLtReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGteLtePriceLteReleaseDateGte 根据页数大于等于和小于等于、价格小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGteLtePriceLteReleaseDateGte 根据页数大于等于和小于等于、价格小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
@@ -4650,7 +4650,7 @@ func MonthHistOfQuarterBooksByPageCountGteLtePriceLteReleaseDateGte(es *elastics
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksByPageCountGteLtePriceGteLteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksByPageCountGteLtePriceGteLteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
@@ -4667,7 +4667,7 @@ func MonthHistOfQuarterBooksByPageCountGteLtePriceGteLteReleaseDateGte(es *elast
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGtePriceGteReleaseDateGte 根据页数大于等于、价格大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGtePriceGteReleaseDateGte 根据页数大于等于、价格大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4682,7 +4682,7 @@ func QuarterHistOfQuarterBooksByPageCountGtePriceGteReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGtePriceGtReleaseDateGte 根据页数大于等于、价格大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGtePriceGtReleaseDateGte 根据页数大于等于、价格大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4697,7 +4697,7 @@ func QuarterHistOfQuarterBooksByPageCountGtePriceGtReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGtePriceLtReleaseDateGte 根据页数大于等于、价格小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGtePriceLtReleaseDateGte 根据页数大于等于、价格小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4712,7 +4712,7 @@ func QuarterHistOfQuarterBooksByPageCountGtePriceLtReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGtePriceLteReleaseDateGte 根据页数大于等于、价格小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGtePriceLteReleaseDateGte 根据页数大于等于、价格小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4727,7 +4727,7 @@ func QuarterHistOfQuarterBooksByPageCountGtePriceLteReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGtePriceGteLteReleaseDateGte 根据页数大于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGtePriceGteLteReleaseDateGte 根据页数大于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4743,7 +4743,7 @@ func QuarterHistOfQuarterBooksByPageCountGtePriceGteLteReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGtPriceGteReleaseDateGte 根据页数大于、价格大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGtPriceGteReleaseDateGte 根据页数大于、价格大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4758,7 +4758,7 @@ func QuarterHistOfQuarterBooksByPageCountGtPriceGteReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGtPriceGtReleaseDateGte 根据页数大于、价格大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGtPriceGtReleaseDateGte 根据页数大于、价格大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGt int64 页数大于
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4773,7 +4773,7 @@ func QuarterHistOfQuarterBooksByPageCountGtPriceGtReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGtPriceLtReleaseDateGte 根据页数大于、价格小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGtPriceLtReleaseDateGte 根据页数大于、价格小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGt int64 页数大于
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4788,7 +4788,7 @@ func QuarterHistOfQuarterBooksByPageCountGtPriceLtReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGtPriceLteReleaseDateGte 根据页数大于、价格小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGtPriceLteReleaseDateGte 根据页数大于、价格小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGt int64 页数大于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4803,7 +4803,7 @@ func QuarterHistOfQuarterBooksByPageCountGtPriceLteReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGtPriceGteLteReleaseDateGte 根据页数大于、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGtPriceGteLteReleaseDateGte 根据页数大于、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGt int64 页数大于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4819,7 +4819,7 @@ func QuarterHistOfQuarterBooksByPageCountGtPriceGteLteReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountLtPriceGteReleaseDateGte 根据页数小于、价格大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountLtPriceGteReleaseDateGte 根据页数小于、价格大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4834,7 +4834,7 @@ func QuarterHistOfQuarterBooksByPageCountLtPriceGteReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountLtPriceGtReleaseDateGte 根据页数小于、价格大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountLtPriceGtReleaseDateGte 根据页数小于、价格大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountLt int64 页数小于
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4849,7 +4849,7 @@ func QuarterHistOfQuarterBooksByPageCountLtPriceGtReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountLtPriceLtReleaseDateGte 根据页数小于、价格小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountLtPriceLtReleaseDateGte 根据页数小于、价格小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountLt int64 页数小于
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4864,7 +4864,7 @@ func QuarterHistOfQuarterBooksByPageCountLtPriceLtReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountLtPriceLteReleaseDateGte 根据页数小于、价格小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountLtPriceLteReleaseDateGte 根据页数小于、价格小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountLt int64 页数小于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4879,7 +4879,7 @@ func QuarterHistOfQuarterBooksByPageCountLtPriceLteReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountLtPriceGteLteReleaseDateGte 根据页数小于、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountLtPriceGteLteReleaseDateGte 根据页数小于、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountLt int64 页数小于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4895,7 +4895,7 @@ func QuarterHistOfQuarterBooksByPageCountLtPriceGteLteReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountLtePriceGteReleaseDateGte 根据页数小于等于、价格大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountLtePriceGteReleaseDateGte 根据页数小于等于、价格大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4910,7 +4910,7 @@ func QuarterHistOfQuarterBooksByPageCountLtePriceGteReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountLtePriceGtReleaseDateGte 根据页数小于等于、价格大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountLtePriceGtReleaseDateGte 根据页数小于等于、价格大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4925,7 +4925,7 @@ func QuarterHistOfQuarterBooksByPageCountLtePriceGtReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountLtePriceLtReleaseDateGte 根据页数小于等于、价格小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountLtePriceLtReleaseDateGte 根据页数小于等于、价格小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4940,7 +4940,7 @@ func QuarterHistOfQuarterBooksByPageCountLtePriceLtReleaseDateGte(es *elasticsea
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountLtePriceLteReleaseDateGte 根据页数小于等于、价格小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountLtePriceLteReleaseDateGte 根据页数小于等于、价格小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -4955,7 +4955,7 @@ func QuarterHistOfQuarterBooksByPageCountLtePriceLteReleaseDateGte(es *elasticse
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountLtePriceGteLteReleaseDateGte 根据页数小于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountLtePriceGteLteReleaseDateGte 根据页数小于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -4971,7 +4971,7 @@ func QuarterHistOfQuarterBooksByPageCountLtePriceGteLteReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGteLtePriceGteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGteLtePriceGteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
@@ -4987,7 +4987,7 @@ func QuarterHistOfQuarterBooksByPageCountGteLtePriceGteReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGteLtePriceGtReleaseDateGte 根据页数大于等于和小于等于、价格大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGteLtePriceGtReleaseDateGte 根据页数大于等于和小于等于、价格大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGt float64 价格大于
@@ -5003,7 +5003,7 @@ func QuarterHistOfQuarterBooksByPageCountGteLtePriceGtReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGteLtePriceLtReleaseDateGte 根据页数大于等于和小于等于、价格小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGteLtePriceLtReleaseDateGte 根据页数大于等于和小于等于、价格小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceLt float64 价格小于
@@ -5019,7 +5019,7 @@ func QuarterHistOfQuarterBooksByPageCountGteLtePriceLtReleaseDateGte(es *elastic
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGteLtePriceLteReleaseDateGte 根据页数大于等于和小于等于、价格小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGteLtePriceLteReleaseDateGte 根据页数大于等于和小于等于、价格小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceLte float64 价格小于等于
@@ -5035,7 +5035,7 @@ func QuarterHistOfQuarterBooksByPageCountGteLtePriceLteReleaseDateGte(es *elasti
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksByPageCountGteLtePriceGteLteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksByPageCountGteLtePriceGteLteReleaseDateGte 根据页数大于等于和小于等于、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
 // priceGte float64 价格大于等于
@@ -5052,7 +5052,7 @@ func QuarterHistOfQuarterBooksByPageCountGteLtePriceGteLteReleaseDateGte(es *ela
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5067,7 +5067,7 @@ func WeekHistOfQuarterBooksBySeqPageCountGteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5082,7 +5082,7 @@ func WeekHistOfQuarterBooksBySeqPageCountGtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5097,7 +5097,7 @@ func WeekHistOfQuarterBooksBySeqPageCountLtReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5112,7 +5112,7 @@ func WeekHistOfQuarterBooksBySeqPageCountLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -5128,7 +5128,7 @@ func WeekHistOfQuarterBooksBySeqPageCountGteLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5143,7 +5143,7 @@ func MonthHistOfQuarterBooksBySeqPageCountGteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5158,7 +5158,7 @@ func MonthHistOfQuarterBooksBySeqPageCountGtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5173,7 +5173,7 @@ func MonthHistOfQuarterBooksBySeqPageCountLtReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5188,7 +5188,7 @@ func MonthHistOfQuarterBooksBySeqPageCountLteReleaseDateGte(es *elasticsearch.Cl
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -5204,7 +5204,7 @@ func MonthHistOfQuarterBooksBySeqPageCountGteLteReleaseDateGte(es *elasticsearch
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksBySeqPageCountGteReleaseDateGte 根据编号、页数大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5219,7 +5219,7 @@ func QuarterHistOfQuarterBooksBySeqPageCountGteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksBySeqPageCountGtReleaseDateGte 根据编号、页数大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // seq string 编号
 // pageCountGt int64 页数大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5234,7 +5234,7 @@ func QuarterHistOfQuarterBooksBySeqPageCountGtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksBySeqPageCountLtReleaseDateGte 根据编号、页数小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // seq string 编号
 // pageCountLt int64 页数小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5249,7 +5249,7 @@ func QuarterHistOfQuarterBooksBySeqPageCountLtReleaseDateGte(es *elasticsearch.C
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksBySeqPageCountLteReleaseDateGte 根据编号、页数小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // seq string 编号
 // pageCountLte int64 页数小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5264,7 +5264,7 @@ func QuarterHistOfQuarterBooksBySeqPageCountLteReleaseDateGte(es *elasticsearch.
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksBySeqPageCountGteLteReleaseDateGte 根据编号、页数大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // seq string 编号
 // pageCountGte int64 页数大于等于
 // pageCountLte int64 页数小于等于
@@ -5280,7 +5280,7 @@ func QuarterHistOfQuarterBooksBySeqPageCountGteLteReleaseDateGte(es *elasticsear
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5295,7 +5295,7 @@ func WeekHistOfQuarterBooksBySeqPriceGteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5310,7 +5310,7 @@ func WeekHistOfQuarterBooksBySeqPriceGtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5325,7 +5325,7 @@ func WeekHistOfQuarterBooksBySeqPriceLtReleaseDateGte(es *elasticsearch.Client, 
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5340,7 +5340,7 @@ func WeekHistOfQuarterBooksBySeqPriceLteReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// WeekHistOfQuarterBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每周的数量直方图分布
+// WeekHistOfQuarterBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每周的记录数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -5356,7 +5356,7 @@ func WeekHistOfQuarterBooksBySeqPriceGteLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5371,7 +5371,7 @@ func MonthHistOfQuarterBooksBySeqPriceGteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5386,7 +5386,7 @@ func MonthHistOfQuarterBooksBySeqPriceGtReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5401,7 +5401,7 @@ func MonthHistOfQuarterBooksBySeqPriceLtReleaseDateGte(es *elasticsearch.Client,
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5416,7 +5416,7 @@ func MonthHistOfQuarterBooksBySeqPriceLteReleaseDateGte(es *elasticsearch.Client
 	return queryBooksList(es, esQuery)
 }
 
-// MonthHistOfQuarterBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每月的数量直方图分布
+// MonthHistOfQuarterBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每月的记录数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于
@@ -5432,7 +5432,7 @@ func MonthHistOfQuarterBooksBySeqPriceGteLteReleaseDateGte(es *elasticsearch.Cli
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksBySeqPriceGteReleaseDateGte 根据编号、价格大于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5447,7 +5447,7 @@ func QuarterHistOfQuarterBooksBySeqPriceGteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksBySeqPriceGtReleaseDateGte 根据编号、价格大于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // seq string 编号
 // priceGt float64 价格大于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5462,7 +5462,7 @@ func QuarterHistOfQuarterBooksBySeqPriceGtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksBySeqPriceLtReleaseDateGte 根据编号、价格小于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // seq string 编号
 // priceLt float64 价格小于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5477,7 +5477,7 @@ func QuarterHistOfQuarterBooksBySeqPriceLtReleaseDateGte(es *elasticsearch.Clien
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksBySeqPriceLteReleaseDateGte 根据编号、价格小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // seq string 编号
 // priceLte float64 价格小于等于
 // releaseDateNQuarter int 发布日期为近几个季度
@@ -5492,7 +5492,7 @@ func QuarterHistOfQuarterBooksBySeqPriceLteReleaseDateGte(es *elasticsearch.Clie
 	return queryBooksList(es, esQuery)
 }
 
-// QuarterHistOfQuarterBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几个季度检索books表并统计每季度的数量直方图分布
+// QuarterHistOfQuarterBooksBySeqPriceGteLteReleaseDateGte 根据编号、价格大于等于和小于等于、发布日期为近几个季度检索books表并分桶统计每季度的记录数量直方图分布
 // seq string 编号
 // priceGte float64 价格大于等于
 // priceLte float64 价格小于等于

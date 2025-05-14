@@ -38,9 +38,11 @@ type GenConfig struct {
 	StatsFields    []string `json:"statsFields"`    // 做统计的字段
 	NotStatsFields []string `json:"notStatsFields"` // 不做统计的字段
 
-	// 数值直方图统计字段配置
-	HistFields    []string `json:"histFields"`    // 做直方图统计的字段
-	NotHistFields []string `json:"notHistFields"` // 不做直方图统计的字段
+	// 直方图统计字段配置
+	HistFields         []string `json:"histFields"`         // 做直方图分桶的字段
+	NotHistFields      []string `json:"notHistFields"`      // 不做直方图分桶的字段
+	HistStatsFields    []string `json:"histStatsFields"`    // 做直方图分桶的嵌套统计字段
+	NotHistStatsFields []string `json:"notHistStatsFields"` // 不做直方图分桶的嵌套统计字段
 }
 
 // getCfgPathByMapping 根据Mapping文件的配置路径获取自定义的配置文件路径

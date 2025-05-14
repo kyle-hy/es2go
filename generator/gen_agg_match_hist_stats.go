@@ -13,8 +13,8 @@ import (
 
 // 生成对text字段检索的代码
 
-// PreAggMatchHistCond 使用go代码预处理渲染需要的一些逻辑，template脚本调试困难
-func PreAggMatchHistCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData {
+// PreAggMatchHistStatsCond 使用go代码预处理渲染需要的一些逻辑，template脚本调试困难
+func PreAggMatchHistStatsCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData {
 	funcDatas := []*FuncTplData{}
 
 	// 尝试加载自定义生成配置
@@ -30,19 +30,22 @@ func PreAggMatchHistCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData
 	// 构造渲染模板所需的数据
 	for _, cfs := range cmbFields {
 		// 筛选出做聚合分析的类型的字段
-		statsFields := FilterOutByTypes(fields, cfs, []string{TypeNumber}, nil)
+		numFields := FilterOutByTypes(fields, cfs, []string{TypeNumber}, nil)
 
 		// 过滤出配置文件指定的聚合字段
-		statsFields = FilterOutByName(statsFields, cfs, genCfg.HistFields, genCfg.NotHistFields)
+		histFields := FilterOutByName(numFields, cfs, genCfg.HistFields, genCfg.NotHistFields)
+		histStatsFields := FilterOutByName(numFields, cfs, genCfg.HistFields, genCfg.NotHistFields)
 
 		// histogram的聚合分析
-		statsCmbs := utils.Combinations(statsFields, 1)
-		for _, scmb := range statsCmbs {
+		histCmbs := utils.Combinations(histFields, 1)
+		statsCmbs := utils.Combinations(histStatsFields, 1)
+		_ = statsCmbs
+		for _, scmb := range histCmbs {
 			ftd := &FuncTplData{
-				Name:    getAggMatchHistFuncName(esInfo.StructName, cfs, scmb),
-				Comment: getAggMatchHistFuncComment(esInfo.StructComment, cfs, scmb),
-				Params:  getAggMatchHistFuncParams(cfs),
-				Query:   getAggMatchHistQuery(cfs, scmb),
+				Name:    getAggMatchHistStatsFuncName(esInfo.StructName, cfs, scmb),
+				Comment: getAggMatchHistStatsFuncComment(esInfo.StructComment, cfs, scmb),
+				Params:  getAggMatchHistStatsFuncParams(cfs),
+				Query:   getAggMatchHistStatsQuery(cfs, scmb),
 			}
 			funcDatas = append(funcDatas, ftd)
 		}
@@ -51,32 +54,32 @@ func PreAggMatchHistCond(mappingPath string, esInfo *EsModelInfo) []*FuncTplData
 	return funcDatas
 }
 
-// getAggMatchHistFuncName 获取函数名称
-func getAggMatchHistFuncName(structName string, fields, termsFields []*FieldInfo) string {
+// getAggMatchHistStatsFuncName 获取函数名称
+func getAggMatchHistStatsFuncName(structName string, fields, termsFields []*FieldInfo) string {
 	fn := "Hist" + GenFieldsName(termsFields) + "Of" + structName + "By" + GenFieldsName(fields)
 	return fn
 }
 
-// getAggMatchHistFuncComment 获取函数注释
-func getAggMatchHistFuncComment(structComment string, fields, termsFields []*FieldInfo) string {
+// getAggMatchHistStatsFuncComment 获取函数注释
+func getAggMatchHistStatsFuncComment(structComment string, fields, termsFields []*FieldInfo) string {
 	// 函数注释
-	cmt := "根据" + GenFieldsCmt(fields, true) + "检索" + structComment + "并按" + GenFieldsCmt(termsFields, true) + "区间分桶统计记录数量的直方图分布\n"
+	cmt := "根据" + GenFieldsCmt(fields, true) + "检索" + structComment + "并统计" + GenFieldsCmt(termsFields, true) + "的数量直方图分布\n"
 
 	// 参数注释
 	cmt += GenParamCmt(fields, false)
-	cmt += "// histInterval float64 分桶聚合的" + GenFieldsCmt(termsFields, true) + "区间间隔"
+	cmt += "// histInterval float64 桶聚合的" + GenFieldsCmt(termsFields, true) + "间隔"
 	return cmt
 }
 
-// getAggMatchHistFuncParams 获取函数参数列表
-func getAggMatchHistFuncParams(fields []*FieldInfo) string {
+// getAggMatchHistStatsFuncParams 获取函数参数列表
+func getAggMatchHistStatsFuncParams(fields []*FieldInfo) string {
 	fp := GenParam(fields, false)
 	fp += "histInterval float64"
 	return fp
 }
 
-// getAggMatchHistQuery 获取函数的查找条件
-func getAggMatchHistQuery(fields, termsFields []*FieldInfo) string {
+// getAggMatchHistStatsQuery 获取函数的查找条件
+func getAggMatchHistStatsQuery(fields, termsFields []*FieldInfo) string {
 	// match部分参数
 	mq := GenMatchCond(fields)
 
@@ -96,10 +99,10 @@ func getAggMatchHistQuery(fields, termsFields []*FieldInfo) string {
 	return fq
 }
 
-// GenEsAggMatchHist 生成es检索后聚合分析
-func GenEsAggMatchHist(mappingPath, outputPath string, esInfo *EsModelInfo) error {
+// GenEsAggMatchHistStats 生成es检索后聚合分析
+func GenEsAggMatchHistStats(mappingPath, outputPath string, esInfo *EsModelInfo) error {
 	// 预处理渲染所需的内容
-	funcData := PreAggMatchHistCond(mappingPath, esInfo)
+	funcData := PreAggMatchHistStatsCond(mappingPath, esInfo)
 	detailData := DetailTplData{
 		PackageName:   esInfo.PackageName,
 		StructName:    esInfo.StructName,

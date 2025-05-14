@@ -109,7 +109,7 @@ func getAggRecentDateHistFuncComment(structComment string, fields []*FieldInfo, 
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
 		fopt = strings.TrimSuffix(fopt, "、")
-		funcCmts = append(funcCmts, otherComment+fopt+"检索"+structComment+"并统计"+DateHistNames[dhtype]+"的数量直方图分布\n")
+		funcCmts = append(funcCmts, otherComment+fopt+"检索"+structComment+"并分桶统计"+DateHistNames[dhtype]+"的记录数量直方图分布\n")
 	}
 
 	// 参数注释部分
