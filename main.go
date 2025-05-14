@@ -104,6 +104,7 @@ func main() {
 		gen.GenEsAggRangeStats,
 		gen.GenEsAggRangeHist,
 		gen.GenEsAggRangeDateHist,
+		gen.GenEsAggRangeHistStats,
 
 		// 近期日期聚合
 		gen.GenEsAggRecentTerms,

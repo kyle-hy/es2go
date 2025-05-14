@@ -9,461 +9,461 @@ import (
 	eq "github.com/kyle-hy/esquery"
 )
 
-// StatsPageCountInHistPageCountOfBooksByAllText 根据全文本检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllText 根据全文本检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllText(es *elasticsearch.Client, allText string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllText(es *elasticsearch.Client, allText string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllText 根据全文本检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllText 根据全文本检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllText(es *elasticsearch.Client, allText string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllText(es *elasticsearch.Client, allText string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllText 根据全文本检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllText 根据全文本检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllText(es *elasticsearch.Client, allText string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllText(es *elasticsearch.Client, allText string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllText 根据全文本检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllText 根据全文本检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllText(es *elasticsearch.Client, allText string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllText(es *elasticsearch.Client, allText string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthor 根据作者检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthor 根据作者检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthor(es *elasticsearch.Client, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthor(es *elasticsearch.Client, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthor 根据作者检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthor 根据作者检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthor(es *elasticsearch.Client, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthor(es *elasticsearch.Client, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthor 根据作者检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthor 根据作者检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthor(es *elasticsearch.Client, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthor(es *elasticsearch.Client, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthor 根据作者检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthor 根据作者检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthor(es *elasticsearch.Client, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthor(es *elasticsearch.Client, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass 根据类别检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass 根据类别检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass(es *elasticsearch.Client, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass(es *elasticsearch.Client, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClass 根据类别检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClass 根据类别检索books表，并按页数区间分桶统计价格的平均值
 // class string 类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClass(es *elasticsearch.Client, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClass(es *elasticsearch.Client, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClass 根据类别检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClass 根据类别检索books表，并按价格区间分桶统计页数的平均值
 // class string 类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClass(es *elasticsearch.Client, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClass(es *elasticsearch.Client, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass 根据类别检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass 根据类别检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass(es *elasticsearch.Client, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass(es *elasticsearch.Client, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass2 根据子类别检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass2 根据子类别检索books表，并按页数区间分桶统计页数的平均值
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass2(es *elasticsearch.Client, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass2(es *elasticsearch.Client, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClass2 根据子类别检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClass2 根据子类别检索books表，并按页数区间分桶统计价格的平均值
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClass2(es *elasticsearch.Client, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClass2(es *elasticsearch.Client, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClass2 根据子类别检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClass2 根据子类别检索books表，并按价格区间分桶统计页数的平均值
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClass2(es *elasticsearch.Client, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClass2(es *elasticsearch.Client, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass2 根据子类别检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass2 根据子类别检索books表，并按价格区间分桶统计价格的平均值
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass2(es *elasticsearch.Client, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass2(es *elasticsearch.Client, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByName 根据书名检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByName 根据书名检索books表，并按页数区间分桶统计页数的平均值
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByName(es *elasticsearch.Client, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByName(es *elasticsearch.Client, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByName 根据书名检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByName 根据书名检索books表，并按页数区间分桶统计价格的平均值
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByName(es *elasticsearch.Client, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByName(es *elasticsearch.Client, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByName 根据书名检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByName 根据书名检索books表，并按价格区间分桶统计页数的平均值
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByName(es *elasticsearch.Client, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByName(es *elasticsearch.Client, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByName 根据书名检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByName 根据书名检索books表，并按价格区间分桶统计价格的平均值
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByName(es *elasticsearch.Client, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByName(es *elasticsearch.Client, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByPageCount 根据页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByPageCount 根据页数检索books表，并按价格区间分桶统计价格的平均值
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByPageCount(es *elasticsearch.Client, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByPageCount(es *elasticsearch.Client, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByPrice 根据价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByPrice 根据价格检索books表，并按页数区间分桶统计页数的平均值
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByPrice(es *elasticsearch.Client, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByPrice(es *elasticsearch.Client, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByReleaseDate 根据发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByReleaseDate 根据发布日期检索books表，并按页数区间分桶统计页数的平均值
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByReleaseDate(es *elasticsearch.Client, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByReleaseDate(es *elasticsearch.Client, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByReleaseDate 根据发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByReleaseDate 根据发布日期检索books表，并按页数区间分桶统计价格的平均值
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByReleaseDate(es *elasticsearch.Client, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByReleaseDate(es *elasticsearch.Client, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByReleaseDate 根据发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByReleaseDate 根据发布日期检索books表，并按价格区间分桶统计页数的平均值
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByReleaseDate(es *elasticsearch.Client, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByReleaseDate(es *elasticsearch.Client, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByReleaseDate 根据发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByReleaseDate 根据发布日期检索books表，并按价格区间分桶统计价格的平均值
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByReleaseDate(es *elasticsearch.Client, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByReleaseDate(es *elasticsearch.Client, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksBySeq 根据编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksBySeq 根据编号检索books表，并按页数区间分桶统计页数的平均值
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksBySeq(es *elasticsearch.Client, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksBySeq(es *elasticsearch.Client, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksBySeq 根据编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksBySeq 根据编号检索books表，并按页数区间分桶统计价格的平均值
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksBySeq(es *elasticsearch.Client, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksBySeq(es *elasticsearch.Client, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksBySeq 根据编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksBySeq 根据编号检索books表，并按价格区间分桶统计页数的平均值
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksBySeq(es *elasticsearch.Client, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksBySeq(es *elasticsearch.Client, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksBySeq 根据编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksBySeq 根据编号检索books表，并按价格区间分桶统计价格的平均值
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksBySeq(es *elasticsearch.Client, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksBySeq(es *elasticsearch.Client, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthor 根据全文本、作者检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthor 根据全文本、作者检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthor 根据全文本、作者检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthor 根据全文本、作者检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthor 根据全文本、作者检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthor 根据全文本、作者检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthor 根据全文本、作者检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthor 根据全文本、作者检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthor(es *elasticsearch.Client, allText, author string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClass 根据全文本、类别检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClass 根据全文本、类别检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClass(es *elasticsearch.Client, allText, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClass(es *elasticsearch.Client, allText, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -471,16 +471,16 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClass(es *elasticsearch.Client
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClass 根据全文本、类别检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClass 根据全文本、类别检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClass(es *elasticsearch.Client, allText, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClass(es *elasticsearch.Client, allText, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -488,16 +488,16 @@ func StatsPriceInHistPageCountOfBooksByAllTextClass(es *elasticsearch.Client, al
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClass 根据全文本、类别检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClass 根据全文本、类别检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClass(es *elasticsearch.Client, allText, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClass(es *elasticsearch.Client, allText, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -505,16 +505,16 @@ func StatsPageCountInHistPriceOfBooksByAllTextClass(es *elasticsearch.Client, al
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClass 根据全文本、类别检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClass 根据全文本、类别检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClass(es *elasticsearch.Client, allText, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClass(es *elasticsearch.Client, allText, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -522,16 +522,16 @@ func StatsPriceInHistPriceOfBooksByAllTextClass(es *elasticsearch.Client, allTex
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClass2 根据全文本、子类别检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClass2 根据全文本、子类别检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -539,16 +539,16 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClass2(es *elasticsearch.Clien
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClass2 根据全文本、子类别检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClass2 根据全文本、子类别检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -556,16 +556,16 @@ func StatsPriceInHistPageCountOfBooksByAllTextClass2(es *elasticsearch.Client, a
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClass2 根据全文本、子类别检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClass2 根据全文本、子类别检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -573,16 +573,16 @@ func StatsPageCountInHistPriceOfBooksByAllTextClass2(es *elasticsearch.Client, a
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClass2 根据全文本、子类别检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClass2 根据全文本、子类别检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClass2(es *elasticsearch.Client, allText, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -590,76 +590,76 @@ func StatsPriceInHistPriceOfBooksByAllTextClass2(es *elasticsearch.Client, allTe
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextName 根据全文本、书名检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextName 根据全文本、书名检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextName(es *elasticsearch.Client, allText, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextName(es *elasticsearch.Client, allText, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextName 根据全文本、书名检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextName 根据全文本、书名检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextName(es *elasticsearch.Client, allText, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextName(es *elasticsearch.Client, allText, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextName 根据全文本、书名检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextName 根据全文本、书名检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextName(es *elasticsearch.Client, allText, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextName(es *elasticsearch.Client, allText, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextName 根据全文本、书名检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextName 根据全文本、书名检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextName(es *elasticsearch.Client, allText, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextName(es *elasticsearch.Client, allText, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextPageCount 根据全文本、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextPageCount 根据全文本、页数检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextPageCount(es *elasticsearch.Client, allText string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextPageCount(es *elasticsearch.Client, allText string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -667,16 +667,16 @@ func StatsPriceInHistPriceOfBooksByAllTextPageCount(es *elasticsearch.Client, al
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextPrice 根据全文本、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextPrice 根据全文本、价格检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextPrice(es *elasticsearch.Client, allText string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextPrice(es *elasticsearch.Client, allText string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -684,16 +684,16 @@ func StatsPageCountInHistPageCountOfBooksByAllTextPrice(es *elasticsearch.Client
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextReleaseDate 根据全文本、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextReleaseDate 根据全文本、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -701,16 +701,16 @@ func StatsPageCountInHistPageCountOfBooksByAllTextReleaseDate(es *elasticsearch.
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextReleaseDate 根据全文本、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextReleaseDate 根据全文本、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -718,16 +718,16 @@ func StatsPriceInHistPageCountOfBooksByAllTextReleaseDate(es *elasticsearch.Clie
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextReleaseDate 根据全文本、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextReleaseDate 根据全文本、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -735,16 +735,16 @@ func StatsPageCountInHistPriceOfBooksByAllTextReleaseDate(es *elasticsearch.Clie
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextReleaseDate 根据全文本、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextReleaseDate 根据全文本、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextReleaseDate(es *elasticsearch.Client, allText string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -752,16 +752,16 @@ func StatsPriceInHistPriceOfBooksByAllTextReleaseDate(es *elasticsearch.Client, 
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextSeq 根据全文本、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextSeq 根据全文本、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -769,16 +769,16 @@ func StatsPageCountInHistPageCountOfBooksByAllTextSeq(es *elasticsearch.Client, 
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextSeq 根据全文本、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextSeq 根据全文本、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -786,16 +786,16 @@ func StatsPriceInHistPageCountOfBooksByAllTextSeq(es *elasticsearch.Client, allT
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextSeq 根据全文本、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextSeq 根据全文本、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -803,16 +803,16 @@ func StatsPageCountInHistPriceOfBooksByAllTextSeq(es *elasticsearch.Client, allT
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextSeq 根据全文本、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextSeq 根据全文本、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextSeq(es *elasticsearch.Client, allText, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -820,16 +820,16 @@ func StatsPriceInHistPriceOfBooksByAllTextSeq(es *elasticsearch.Client, allText,
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClass 根据作者、类别检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClass 根据作者、类别检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClass(es *elasticsearch.Client, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClass(es *elasticsearch.Client, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -837,16 +837,16 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClass(es *elasticsearch.Client,
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClass 根据作者、类别检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClass 根据作者、类别检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClass(es *elasticsearch.Client, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClass(es *elasticsearch.Client, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -854,16 +854,16 @@ func StatsPriceInHistPageCountOfBooksByAuthorClass(es *elasticsearch.Client, aut
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClass 根据作者、类别检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClass 根据作者、类别检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClass(es *elasticsearch.Client, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClass(es *elasticsearch.Client, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -871,16 +871,16 @@ func StatsPageCountInHistPriceOfBooksByAuthorClass(es *elasticsearch.Client, aut
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClass 根据作者、类别检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClass 根据作者、类别检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClass(es *elasticsearch.Client, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClass(es *elasticsearch.Client, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -888,16 +888,16 @@ func StatsPriceInHistPriceOfBooksByAuthorClass(es *elasticsearch.Client, author,
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClass2 根据作者、子类别检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClass2 根据作者、子类别检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -905,16 +905,16 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClass2(es *elasticsearch.Client
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClass2 根据作者、子类别检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClass2 根据作者、子类别检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -922,16 +922,16 @@ func StatsPriceInHistPageCountOfBooksByAuthorClass2(es *elasticsearch.Client, au
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClass2 根据作者、子类别检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClass2 根据作者、子类别检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -939,16 +939,16 @@ func StatsPageCountInHistPriceOfBooksByAuthorClass2(es *elasticsearch.Client, au
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClass2 根据作者、子类别检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClass2 根据作者、子类别检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClass2(es *elasticsearch.Client, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -956,76 +956,76 @@ func StatsPriceInHistPriceOfBooksByAuthorClass2(es *elasticsearch.Client, author
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorName 根据作者、书名检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorName 根据作者、书名检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorName(es *elasticsearch.Client, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorName(es *elasticsearch.Client, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorName 根据作者、书名检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorName 根据作者、书名检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorName(es *elasticsearch.Client, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorName(es *elasticsearch.Client, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorName 根据作者、书名检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorName 根据作者、书名检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorName(es *elasticsearch.Client, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorName(es *elasticsearch.Client, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorName 根据作者、书名检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorName 根据作者、书名检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorName(es *elasticsearch.Client, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorName(es *elasticsearch.Client, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorPageCount 根据作者、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorPageCount 根据作者、页数检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorPageCount(es *elasticsearch.Client, author string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorPageCount(es *elasticsearch.Client, author string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1033,16 +1033,16 @@ func StatsPriceInHistPriceOfBooksByAuthorPageCount(es *elasticsearch.Client, aut
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorPrice 根据作者、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorPrice 根据作者、价格检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorPrice(es *elasticsearch.Client, author string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorPrice(es *elasticsearch.Client, author string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1050,16 +1050,16 @@ func StatsPageCountInHistPageCountOfBooksByAuthorPrice(es *elasticsearch.Client,
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorReleaseDate 根据作者、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorReleaseDate 根据作者、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1067,16 +1067,16 @@ func StatsPageCountInHistPageCountOfBooksByAuthorReleaseDate(es *elasticsearch.C
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorReleaseDate 根据作者、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorReleaseDate 根据作者、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1084,16 +1084,16 @@ func StatsPriceInHistPageCountOfBooksByAuthorReleaseDate(es *elasticsearch.Clien
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorReleaseDate 根据作者、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorReleaseDate 根据作者、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1101,16 +1101,16 @@ func StatsPageCountInHistPriceOfBooksByAuthorReleaseDate(es *elasticsearch.Clien
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorReleaseDate 根据作者、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorReleaseDate 根据作者、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorReleaseDate(es *elasticsearch.Client, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1118,16 +1118,16 @@ func StatsPriceInHistPriceOfBooksByAuthorReleaseDate(es *elasticsearch.Client, a
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorSeq 根据作者、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorSeq 根据作者、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorSeq(es *elasticsearch.Client, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorSeq(es *elasticsearch.Client, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1135,16 +1135,16 @@ func StatsPageCountInHistPageCountOfBooksByAuthorSeq(es *elasticsearch.Client, a
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorSeq 根据作者、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorSeq 根据作者、编号检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorSeq(es *elasticsearch.Client, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorSeq(es *elasticsearch.Client, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1152,16 +1152,16 @@ func StatsPriceInHistPageCountOfBooksByAuthorSeq(es *elasticsearch.Client, autho
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorSeq 根据作者、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorSeq 根据作者、编号检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorSeq(es *elasticsearch.Client, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorSeq(es *elasticsearch.Client, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1169,16 +1169,16 @@ func StatsPageCountInHistPriceOfBooksByAuthorSeq(es *elasticsearch.Client, autho
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorSeq 根据作者、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorSeq 根据作者、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorSeq(es *elasticsearch.Client, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorSeq(es *elasticsearch.Client, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -1186,76 +1186,76 @@ func StatsPriceInHistPriceOfBooksByAuthorSeq(es *elasticsearch.Client, author, s
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassClass2 根据类别、子类别检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassClass2 根据类别、子类别检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassClass2(es *elasticsearch.Client, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassClass2(es *elasticsearch.Client, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClassClass2 根据类别、子类别检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClassClass2 根据类别、子类别检索books表，并按页数区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClassClass2(es *elasticsearch.Client, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClassClass2(es *elasticsearch.Client, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClassClass2 根据类别、子类别检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClassClass2 根据类别、子类别检索books表，并按价格区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClassClass2(es *elasticsearch.Client, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClassClass2(es *elasticsearch.Client, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassClass2 根据类别、子类别检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassClass2 根据类别、子类别检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassClass2(es *elasticsearch.Client, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassClass2(es *elasticsearch.Client, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassName 根据类别、书名检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassName 根据类别、书名检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassName(es *elasticsearch.Client, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassName(es *elasticsearch.Client, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1263,16 +1263,16 @@ func StatsPageCountInHistPageCountOfBooksByClassName(es *elasticsearch.Client, c
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClassName 根据类别、书名检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClassName 根据类别、书名检索books表，并按页数区间分桶统计价格的平均值
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClassName(es *elasticsearch.Client, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClassName(es *elasticsearch.Client, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1280,16 +1280,16 @@ func StatsPriceInHistPageCountOfBooksByClassName(es *elasticsearch.Client, class
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClassName 根据类别、书名检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClassName 根据类别、书名检索books表，并按价格区间分桶统计页数的平均值
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClassName(es *elasticsearch.Client, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClassName(es *elasticsearch.Client, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1297,16 +1297,16 @@ func StatsPageCountInHistPriceOfBooksByClassName(es *elasticsearch.Client, class
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassName 根据类别、书名检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassName 根据类别、书名检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassName(es *elasticsearch.Client, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassName(es *elasticsearch.Client, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1314,166 +1314,166 @@ func StatsPriceInHistPriceOfBooksByClassName(es *elasticsearch.Client, class, na
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassPageCount 根据类别、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassPageCount 根据类别、页数检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassPageCount(es *elasticsearch.Client, class string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassPageCount(es *elasticsearch.Client, class string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassPrice 根据类别、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassPrice 根据类别、价格检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassPrice(es *elasticsearch.Client, class string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassPrice(es *elasticsearch.Client, class string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassReleaseDate 根据类别、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassReleaseDate 根据类别、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClassReleaseDate 根据类别、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClassReleaseDate 根据类别、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClassReleaseDate 根据类别、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClassReleaseDate 根据类别、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassReleaseDate 根据类别、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassReleaseDate 根据类别、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassReleaseDate(es *elasticsearch.Client, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassSeq 根据类别、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassSeq 根据类别、编号检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassSeq(es *elasticsearch.Client, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassSeq(es *elasticsearch.Client, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClassSeq 根据类别、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClassSeq 根据类别、编号检索books表，并按页数区间分桶统计价格的平均值
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClassSeq(es *elasticsearch.Client, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClassSeq(es *elasticsearch.Client, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClassSeq 根据类别、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClassSeq 根据类别、编号检索books表，并按价格区间分桶统计页数的平均值
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClassSeq(es *elasticsearch.Client, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClassSeq(es *elasticsearch.Client, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassSeq 根据类别、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassSeq 根据类别、编号检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassSeq(es *elasticsearch.Client, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassSeq(es *elasticsearch.Client, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass2Name 根据子类别、书名检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass2Name 根据子类别、书名检索books表，并按页数区间分桶统计页数的平均值
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass2Name(es *elasticsearch.Client, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass2Name(es *elasticsearch.Client, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1481,16 +1481,16 @@ func StatsPageCountInHistPageCountOfBooksByClass2Name(es *elasticsearch.Client, 
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClass2Name 根据子类别、书名检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClass2Name 根据子类别、书名检索books表，并按页数区间分桶统计价格的平均值
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClass2Name(es *elasticsearch.Client, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClass2Name(es *elasticsearch.Client, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1498,16 +1498,16 @@ func StatsPriceInHistPageCountOfBooksByClass2Name(es *elasticsearch.Client, clas
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClass2Name 根据子类别、书名检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClass2Name 根据子类别、书名检索books表，并按价格区间分桶统计页数的平均值
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClass2Name(es *elasticsearch.Client, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClass2Name(es *elasticsearch.Client, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1515,16 +1515,16 @@ func StatsPageCountInHistPriceOfBooksByClass2Name(es *elasticsearch.Client, clas
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass2Name 根据子类别、书名检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass2Name 根据子类别、书名检索books表，并按价格区间分桶统计价格的平均值
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass2Name(es *elasticsearch.Client, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass2Name(es *elasticsearch.Client, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1532,166 +1532,166 @@ func StatsPriceInHistPriceOfBooksByClass2Name(es *elasticsearch.Client, class2, 
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass2PageCount 根据子类别、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass2PageCount 根据子类别、页数检索books表，并按价格区间分桶统计价格的平均值
 // class2 string 子类别
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass2PageCount(es *elasticsearch.Client, class2 string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass2PageCount(es *elasticsearch.Client, class2 string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass2Price 根据子类别、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass2Price 根据子类别、价格检索books表，并按页数区间分桶统计页数的平均值
 // class2 string 子类别
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass2Price(es *elasticsearch.Client, class2 string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass2Price(es *elasticsearch.Client, class2 string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass2ReleaseDate 根据子类别、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass2ReleaseDate 根据子类别、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClass2ReleaseDate 根据子类别、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClass2ReleaseDate 根据子类别、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClass2ReleaseDate 根据子类别、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClass2ReleaseDate 根据子类别、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass2ReleaseDate 根据子类别、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass2ReleaseDate 根据子类别、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass2ReleaseDate(es *elasticsearch.Client, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass2Seq 根据子类别、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass2Seq 根据子类别、编号检索books表，并按页数区间分桶统计页数的平均值
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass2Seq(es *elasticsearch.Client, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass2Seq(es *elasticsearch.Client, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClass2Seq 根据子类别、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClass2Seq 根据子类别、编号检索books表，并按页数区间分桶统计价格的平均值
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClass2Seq(es *elasticsearch.Client, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClass2Seq(es *elasticsearch.Client, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClass2Seq 根据子类别、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClass2Seq 根据子类别、编号检索books表，并按价格区间分桶统计页数的平均值
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClass2Seq(es *elasticsearch.Client, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClass2Seq(es *elasticsearch.Client, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass2Seq 根据子类别、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass2Seq 根据子类别、编号检索books表，并按价格区间分桶统计价格的平均值
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass2Seq(es *elasticsearch.Client, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass2Seq(es *elasticsearch.Client, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByNamePageCount 根据书名、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByNamePageCount 根据书名、页数检索books表，并按价格区间分桶统计价格的平均值
 // name string 书名
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByNamePageCount(es *elasticsearch.Client, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByNamePageCount(es *elasticsearch.Client, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1699,16 +1699,16 @@ func StatsPriceInHistPriceOfBooksByNamePageCount(es *elasticsearch.Client, name 
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByNamePrice 根据书名、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByNamePrice 根据书名、价格检索books表，并按页数区间分桶统计页数的平均值
 // name string 书名
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByNamePrice(es *elasticsearch.Client, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByNamePrice(es *elasticsearch.Client, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1716,16 +1716,16 @@ func StatsPageCountInHistPageCountOfBooksByNamePrice(es *elasticsearch.Client, n
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByNameReleaseDate 根据书名、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByNameReleaseDate 根据书名、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1733,16 +1733,16 @@ func StatsPageCountInHistPageCountOfBooksByNameReleaseDate(es *elasticsearch.Cli
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByNameReleaseDate 根据书名、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByNameReleaseDate 根据书名、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1750,16 +1750,16 @@ func StatsPriceInHistPageCountOfBooksByNameReleaseDate(es *elasticsearch.Client,
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByNameReleaseDate 根据书名、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByNameReleaseDate 根据书名、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1767,16 +1767,16 @@ func StatsPageCountInHistPriceOfBooksByNameReleaseDate(es *elasticsearch.Client,
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByNameReleaseDate 根据书名、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByNameReleaseDate 根据书名、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByNameReleaseDate(es *elasticsearch.Client, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1784,16 +1784,16 @@ func StatsPriceInHistPriceOfBooksByNameReleaseDate(es *elasticsearch.Client, nam
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByNameSeq 根据书名、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByNameSeq 根据书名、编号检索books表，并按页数区间分桶统计页数的平均值
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByNameSeq(es *elasticsearch.Client, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByNameSeq(es *elasticsearch.Client, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1801,16 +1801,16 @@ func StatsPageCountInHistPageCountOfBooksByNameSeq(es *elasticsearch.Client, nam
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByNameSeq 根据书名、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByNameSeq 根据书名、编号检索books表，并按页数区间分桶统计价格的平均值
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByNameSeq(es *elasticsearch.Client, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByNameSeq(es *elasticsearch.Client, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1818,16 +1818,16 @@ func StatsPriceInHistPageCountOfBooksByNameSeq(es *elasticsearch.Client, name, s
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByNameSeq 根据书名、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByNameSeq 根据书名、编号检索books表，并按价格区间分桶统计页数的平均值
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByNameSeq(es *elasticsearch.Client, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByNameSeq(es *elasticsearch.Client, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1835,16 +1835,16 @@ func StatsPageCountInHistPriceOfBooksByNameSeq(es *elasticsearch.Client, name, s
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByNameSeq 根据书名、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByNameSeq 根据书名、编号检索books表，并按价格区间分桶统计价格的平均值
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByNameSeq(es *elasticsearch.Client, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByNameSeq(es *elasticsearch.Client, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -1852,137 +1852,137 @@ func StatsPriceInHistPriceOfBooksByNameSeq(es *elasticsearch.Client, name, seq s
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByPageCountReleaseDate 根据页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByPageCountReleaseDate 根据页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByPageCountReleaseDate(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByPageCountReleaseDate(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByPageCountSeq 根据页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByPageCountSeq 根据页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByPageCountSeq(es *elasticsearch.Client, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByPageCountSeq(es *elasticsearch.Client, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByPriceReleaseDate 根据价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByPriceReleaseDate 根据价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByPriceReleaseDate(es *elasticsearch.Client, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByPriceReleaseDate(es *elasticsearch.Client, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByPriceSeq 根据价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByPriceSeq 根据价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByPriceSeq(es *elasticsearch.Client, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByPriceSeq(es *elasticsearch.Client, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByReleaseDateSeq 根据发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByReleaseDateSeq 根据发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByReleaseDateSeq 根据发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByReleaseDateSeq 根据发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByReleaseDateSeq 根据发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByReleaseDateSeq 根据发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByReleaseDateSeq 根据发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByReleaseDateSeq 根据发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByReleaseDateSeq(es *elasticsearch.Client, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass 根据全文本、作者、类别检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorClass 根据全文本、作者、类别检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -1991,17 +1991,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass(es *elasticsearch.
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthorClass 根据全文本、作者、类别检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthorClass 根据全文本、作者、类别检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2010,17 +2010,17 @@ func StatsPriceInHistPageCountOfBooksByAllTextAuthorClass(es *elasticsearch.Clie
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthorClass 根据全文本、作者、类别检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthorClass 根据全文本、作者、类别检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2029,17 +2029,17 @@ func StatsPageCountInHistPriceOfBooksByAllTextAuthorClass(es *elasticsearch.Clie
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorClass 根据全文本、作者、类别检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorClass 根据全文本、作者、类别检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorClass(es *elasticsearch.Client, allText, author, class string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2048,17 +2048,17 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorClass(es *elasticsearch.Client, 
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass2 根据全文本、作者、子类别检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorClass2 根据全文本、作者、子类别检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2067,17 +2067,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass2(es *elasticsearch
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthorClass2 根据全文本、作者、子类别检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthorClass2 根据全文本、作者、子类别检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2086,17 +2086,17 @@ func StatsPriceInHistPageCountOfBooksByAllTextAuthorClass2(es *elasticsearch.Cli
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthorClass2 根据全文本、作者、子类别检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthorClass2 根据全文本、作者、子类别检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2105,17 +2105,17 @@ func StatsPageCountInHistPriceOfBooksByAllTextAuthorClass2(es *elasticsearch.Cli
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorClass2 根据全文本、作者、子类别检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorClass2 根据全文本、作者、子类别检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorClass2(es *elasticsearch.Client, allText, author, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2124,85 +2124,85 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorClass2(es *elasticsearch.Client,
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorName 根据全文本、作者、书名检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorName 根据全文本、作者、书名检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorName(es *elasticsearch.Client, allText, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorName(es *elasticsearch.Client, allText, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthorName 根据全文本、作者、书名检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthorName 根据全文本、作者、书名检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthorName(es *elasticsearch.Client, allText, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthorName(es *elasticsearch.Client, allText, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthorName 根据全文本、作者、书名检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthorName 根据全文本、作者、书名检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthorName(es *elasticsearch.Client, allText, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthorName(es *elasticsearch.Client, allText, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorName 根据全文本、作者、书名检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorName 根据全文本、作者、书名检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorName(es *elasticsearch.Client, allText, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorName(es *elasticsearch.Client, allText, author, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
 		eq.Match("name", name),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorPageCount 根据全文本、作者、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorPageCount 根据全文本、作者、页数检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorPageCount(es *elasticsearch.Client, allText, author string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorPageCount(es *elasticsearch.Client, allText, author string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2211,17 +2211,17 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorPageCount(es *elasticsearch.Clie
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorPrice 根据全文本、作者、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorPrice 根据全文本、作者、价格检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorPrice(es *elasticsearch.Client, allText, author string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorPrice(es *elasticsearch.Client, allText, author string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2230,17 +2230,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorPrice(es *elasticsearch.
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorReleaseDate 根据全文本、作者、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorReleaseDate 根据全文本、作者、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2249,17 +2249,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorReleaseDate(es *elastics
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthorReleaseDate 根据全文本、作者、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthorReleaseDate 根据全文本、作者、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2268,17 +2268,17 @@ func StatsPriceInHistPageCountOfBooksByAllTextAuthorReleaseDate(es *elasticsearc
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthorReleaseDate 根据全文本、作者、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthorReleaseDate 根据全文本、作者、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2287,17 +2287,17 @@ func StatsPageCountInHistPriceOfBooksByAllTextAuthorReleaseDate(es *elasticsearc
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorReleaseDate 根据全文本、作者、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorReleaseDate 根据全文本、作者、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorReleaseDate(es *elasticsearch.Client, allText, author string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2306,17 +2306,17 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorReleaseDate(es *elasticsearch.Cl
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorSeq 根据全文本、作者、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorSeq 根据全文本、作者、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2325,17 +2325,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorSeq(es *elasticsearch.Cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthorSeq 根据全文本、作者、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthorSeq 根据全文本、作者、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2344,17 +2344,17 @@ func StatsPriceInHistPageCountOfBooksByAllTextAuthorSeq(es *elasticsearch.Client
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthorSeq 根据全文本、作者、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthorSeq 根据全文本、作者、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2363,17 +2363,17 @@ func StatsPageCountInHistPriceOfBooksByAllTextAuthorSeq(es *elasticsearch.Client
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorSeq 根据全文本、作者、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorSeq 根据全文本、作者、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorSeq(es *elasticsearch.Client, allText, author, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -2382,17 +2382,17 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorSeq(es *elasticsearch.Client, al
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClassClass2 根据全文本、类别、子类别检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClassClass2 根据全文本、类别、子类别检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClassClass2(es *elasticsearch.Client, allText, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClassClass2(es *elasticsearch.Client, allText, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2401,17 +2401,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClassClass2(es *elasticsearch.
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClassClass2 根据全文本、类别、子类别检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClassClass2 根据全文本、类别、子类别检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClassClass2(es *elasticsearch.Client, allText, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClassClass2(es *elasticsearch.Client, allText, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2420,17 +2420,17 @@ func StatsPriceInHistPageCountOfBooksByAllTextClassClass2(es *elasticsearch.Clie
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClassClass2 根据全文本、类别、子类别检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClassClass2 根据全文本、类别、子类别检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClassClass2(es *elasticsearch.Client, allText, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClassClass2(es *elasticsearch.Client, allText, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2439,17 +2439,17 @@ func StatsPageCountInHistPriceOfBooksByAllTextClassClass2(es *elasticsearch.Clie
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClassClass2 根据全文本、类别、子类别检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClassClass2 根据全文本、类别、子类别检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClassClass2(es *elasticsearch.Client, allText, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClassClass2(es *elasticsearch.Client, allText, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2458,17 +2458,17 @@ func StatsPriceInHistPriceOfBooksByAllTextClassClass2(es *elasticsearch.Client, 
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClassName 根据全文本、类别、书名检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClassName 根据全文本、类别、书名检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClassName(es *elasticsearch.Client, allText, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClassName(es *elasticsearch.Client, allText, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2477,17 +2477,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClassName(es *elasticsearch.Cl
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClassName 根据全文本、类别、书名检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClassName 根据全文本、类别、书名检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClassName(es *elasticsearch.Client, allText, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClassName(es *elasticsearch.Client, allText, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2496,17 +2496,17 @@ func StatsPriceInHistPageCountOfBooksByAllTextClassName(es *elasticsearch.Client
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClassName 根据全文本、类别、书名检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClassName 根据全文本、类别、书名检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClassName(es *elasticsearch.Client, allText, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClassName(es *elasticsearch.Client, allText, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2515,17 +2515,17 @@ func StatsPageCountInHistPriceOfBooksByAllTextClassName(es *elasticsearch.Client
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClassName 根据全文本、类别、书名检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClassName 根据全文本、类别、书名检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClassName(es *elasticsearch.Client, allText, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClassName(es *elasticsearch.Client, allText, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2534,17 +2534,17 @@ func StatsPriceInHistPriceOfBooksByAllTextClassName(es *elasticsearch.Client, al
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClassPageCount 根据全文本、类别、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClassPageCount 根据全文本、类别、页数检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClassPageCount(es *elasticsearch.Client, allText, class string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClassPageCount(es *elasticsearch.Client, allText, class string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2553,17 +2553,17 @@ func StatsPriceInHistPriceOfBooksByAllTextClassPageCount(es *elasticsearch.Clien
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClassPrice 根据全文本、类别、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClassPrice 根据全文本、类别、价格检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClassPrice(es *elasticsearch.Client, allText, class string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClassPrice(es *elasticsearch.Client, allText, class string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2572,17 +2572,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClassPrice(es *elasticsearch.C
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClassReleaseDate 根据全文本、类别、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClassReleaseDate 根据全文本、类别、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allText, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allText, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2591,17 +2591,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClassReleaseDate(es *elasticse
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClassReleaseDate 根据全文本、类别、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClassReleaseDate 根据全文本、类别、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allText, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allText, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2610,17 +2610,17 @@ func StatsPriceInHistPageCountOfBooksByAllTextClassReleaseDate(es *elasticsearch
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClassReleaseDate 根据全文本、类别、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClassReleaseDate 根据全文本、类别、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allText, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allText, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2629,17 +2629,17 @@ func StatsPageCountInHistPriceOfBooksByAllTextClassReleaseDate(es *elasticsearch
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClassReleaseDate 根据全文本、类别、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClassReleaseDate 根据全文本、类别、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allText, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClassReleaseDate(es *elasticsearch.Client, allText, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2648,17 +2648,17 @@ func StatsPriceInHistPriceOfBooksByAllTextClassReleaseDate(es *elasticsearch.Cli
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClassSeq 根据全文本、类别、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClassSeq 根据全文本、类别、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClassSeq(es *elasticsearch.Client, allText, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClassSeq(es *elasticsearch.Client, allText, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2667,17 +2667,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClassSeq(es *elasticsearch.Cli
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClassSeq 根据全文本、类别、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClassSeq 根据全文本、类别、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClassSeq(es *elasticsearch.Client, allText, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClassSeq(es *elasticsearch.Client, allText, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2686,17 +2686,17 @@ func StatsPriceInHistPageCountOfBooksByAllTextClassSeq(es *elasticsearch.Client,
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClassSeq 根据全文本、类别、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClassSeq 根据全文本、类别、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClassSeq(es *elasticsearch.Client, allText, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClassSeq(es *elasticsearch.Client, allText, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2705,17 +2705,17 @@ func StatsPageCountInHistPriceOfBooksByAllTextClassSeq(es *elasticsearch.Client,
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClassSeq 根据全文本、类别、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClassSeq 根据全文本、类别、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClassSeq(es *elasticsearch.Client, allText, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClassSeq(es *elasticsearch.Client, allText, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2724,17 +2724,17 @@ func StatsPriceInHistPriceOfBooksByAllTextClassSeq(es *elasticsearch.Client, all
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClass2Name 根据全文本、子类别、书名检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClass2Name 根据全文本、子类别、书名检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2743,17 +2743,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClass2Name(es *elasticsearch.C
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClass2Name 根据全文本、子类别、书名检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClass2Name 根据全文本、子类别、书名检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2762,17 +2762,17 @@ func StatsPriceInHistPageCountOfBooksByAllTextClass2Name(es *elasticsearch.Clien
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClass2Name 根据全文本、子类别、书名检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClass2Name 根据全文本、子类别、书名检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2781,17 +2781,17 @@ func StatsPageCountInHistPriceOfBooksByAllTextClass2Name(es *elasticsearch.Clien
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClass2Name 根据全文本、子类别、书名检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClass2Name 根据全文本、子类别、书名检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClass2Name(es *elasticsearch.Client, allText, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -2800,17 +2800,17 @@ func StatsPriceInHistPriceOfBooksByAllTextClass2Name(es *elasticsearch.Client, a
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClass2PageCount 根据全文本、子类别、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClass2PageCount 根据全文本、子类别、页数检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClass2PageCount(es *elasticsearch.Client, allText, class2 string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClass2PageCount(es *elasticsearch.Client, allText, class2 string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2819,17 +2819,17 @@ func StatsPriceInHistPriceOfBooksByAllTextClass2PageCount(es *elasticsearch.Clie
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClass2Price 根据全文本、子类别、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClass2Price 根据全文本、子类别、价格检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClass2Price(es *elasticsearch.Client, allText, class2 string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClass2Price(es *elasticsearch.Client, allText, class2 string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2838,17 +2838,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClass2Price(es *elasticsearch.
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClass2ReleaseDate 根据全文本、子类别、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClass2ReleaseDate 根据全文本、子类别、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2857,17 +2857,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClass2ReleaseDate(es *elastics
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClass2ReleaseDate 根据全文本、子类别、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClass2ReleaseDate 根据全文本、子类别、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2876,17 +2876,17 @@ func StatsPriceInHistPageCountOfBooksByAllTextClass2ReleaseDate(es *elasticsearc
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClass2ReleaseDate 根据全文本、子类别、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClass2ReleaseDate 根据全文本、子类别、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2895,17 +2895,17 @@ func StatsPageCountInHistPriceOfBooksByAllTextClass2ReleaseDate(es *elasticsearc
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClass2ReleaseDate 根据全文本、子类别、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClass2ReleaseDate 根据全文本、子类别、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClass2ReleaseDate(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2914,17 +2914,17 @@ func StatsPriceInHistPriceOfBooksByAllTextClass2ReleaseDate(es *elasticsearch.Cl
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClass2Seq 根据全文本、子类别、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClass2Seq 根据全文本、子类别、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2933,17 +2933,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClass2Seq(es *elasticsearch.Cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClass2Seq 根据全文本、子类别、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClass2Seq 根据全文本、子类别、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2952,17 +2952,17 @@ func StatsPriceInHistPageCountOfBooksByAllTextClass2Seq(es *elasticsearch.Client
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClass2Seq 根据全文本、子类别、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClass2Seq 根据全文本、子类别、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2971,17 +2971,17 @@ func StatsPageCountInHistPriceOfBooksByAllTextClass2Seq(es *elasticsearch.Client
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClass2Seq 根据全文本、子类别、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClass2Seq 根据全文本、子类别、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClass2Seq(es *elasticsearch.Client, allText, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -2990,17 +2990,17 @@ func StatsPriceInHistPriceOfBooksByAllTextClass2Seq(es *elasticsearch.Client, al
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextNamePageCount 根据全文本、书名、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextNamePageCount 根据全文本、书名、页数检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextNamePageCount(es *elasticsearch.Client, allText, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextNamePageCount(es *elasticsearch.Client, allText, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3009,17 +3009,17 @@ func StatsPriceInHistPriceOfBooksByAllTextNamePageCount(es *elasticsearch.Client
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextNamePrice 根据全文本、书名、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextNamePrice 根据全文本、书名、价格检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // name string 书名
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextNamePrice(es *elasticsearch.Client, allText, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextNamePrice(es *elasticsearch.Client, allText, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3028,17 +3028,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextNamePrice(es *elasticsearch.Cl
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextNameReleaseDate 根据全文本、书名、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextNameReleaseDate 根据全文本、书名、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3047,17 +3047,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextNameReleaseDate(es *elasticsea
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextNameReleaseDate 根据全文本、书名、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextNameReleaseDate 根据全文本、书名、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3066,17 +3066,17 @@ func StatsPriceInHistPageCountOfBooksByAllTextNameReleaseDate(es *elasticsearch.
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextNameReleaseDate 根据全文本、书名、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextNameReleaseDate 根据全文本、书名、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3085,17 +3085,17 @@ func StatsPageCountInHistPriceOfBooksByAllTextNameReleaseDate(es *elasticsearch.
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextNameReleaseDate 根据全文本、书名、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextNameReleaseDate 根据全文本、书名、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextNameReleaseDate(es *elasticsearch.Client, allText, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3104,17 +3104,17 @@ func StatsPriceInHistPriceOfBooksByAllTextNameReleaseDate(es *elasticsearch.Clie
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextNameSeq 根据全文本、书名、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextNameSeq 根据全文本、书名、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3123,17 +3123,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextNameSeq(es *elasticsearch.Clie
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextNameSeq 根据全文本、书名、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextNameSeq 根据全文本、书名、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3142,17 +3142,17 @@ func StatsPriceInHistPageCountOfBooksByAllTextNameSeq(es *elasticsearch.Client, 
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextNameSeq 根据全文本、书名、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextNameSeq 根据全文本、书名、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3161,17 +3161,17 @@ func StatsPageCountInHistPriceOfBooksByAllTextNameSeq(es *elasticsearch.Client, 
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextNameSeq 根据全文本、书名、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextNameSeq 根据全文本、书名、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextNameSeq(es *elasticsearch.Client, allText, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -3180,17 +3180,17 @@ func StatsPriceInHistPriceOfBooksByAllTextNameSeq(es *elasticsearch.Client, allT
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextPageCountReleaseDate 根据全文本、页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextPageCountReleaseDate 根据全文本、页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextPageCountReleaseDate(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextPageCountReleaseDate(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3199,17 +3199,17 @@ func StatsPriceInHistPriceOfBooksByAllTextPageCountReleaseDate(es *elasticsearch
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextPageCountSeq 根据全文本、页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextPageCountSeq 根据全文本、页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextPageCountSeq(es *elasticsearch.Client, allText string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextPageCountSeq(es *elasticsearch.Client, allText string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3218,17 +3218,17 @@ func StatsPriceInHistPriceOfBooksByAllTextPageCountSeq(es *elasticsearch.Client,
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextPriceReleaseDate 根据全文本、价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextPriceReleaseDate 根据全文本、价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextPriceReleaseDate(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextPriceReleaseDate(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3237,17 +3237,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextPriceReleaseDate(es *elasticse
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextPriceSeq 根据全文本、价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextPriceSeq 根据全文本、价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextPriceSeq(es *elasticsearch.Client, allText string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextPriceSeq(es *elasticsearch.Client, allText string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3256,17 +3256,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextPriceSeq(es *elasticsearch.Cli
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextReleaseDateSeq 根据全文本、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextReleaseDateSeq 根据全文本、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3275,17 +3275,17 @@ func StatsPageCountInHistPageCountOfBooksByAllTextReleaseDateSeq(es *elasticsear
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextReleaseDateSeq 根据全文本、发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextReleaseDateSeq 根据全文本、发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3294,17 +3294,17 @@ func StatsPriceInHistPageCountOfBooksByAllTextReleaseDateSeq(es *elasticsearch.C
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextReleaseDateSeq 根据全文本、发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextReleaseDateSeq 根据全文本、发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3313,17 +3313,17 @@ func StatsPageCountInHistPriceOfBooksByAllTextReleaseDateSeq(es *elasticsearch.C
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextReleaseDateSeq 根据全文本、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextReleaseDateSeq 根据全文本、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextReleaseDateSeq(es *elasticsearch.Client, allText string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -3332,17 +3332,17 @@ func StatsPriceInHistPriceOfBooksByAllTextReleaseDateSeq(es *elasticsearch.Clien
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClassClass2 根据作者、类别、子类别检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClassClass2 根据作者、类别、子类别检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClassClass2(es *elasticsearch.Client, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClassClass2(es *elasticsearch.Client, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3351,17 +3351,17 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClassClass2(es *elasticsearch.C
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClassClass2 根据作者、类别、子类别检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClassClass2 根据作者、类别、子类别检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClassClass2(es *elasticsearch.Client, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClassClass2(es *elasticsearch.Client, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3370,17 +3370,17 @@ func StatsPriceInHistPageCountOfBooksByAuthorClassClass2(es *elasticsearch.Clien
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClassClass2 根据作者、类别、子类别检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClassClass2 根据作者、类别、子类别检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClassClass2(es *elasticsearch.Client, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClassClass2(es *elasticsearch.Client, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3389,17 +3389,17 @@ func StatsPageCountInHistPriceOfBooksByAuthorClassClass2(es *elasticsearch.Clien
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClassClass2 根据作者、类别、子类别检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClassClass2 根据作者、类别、子类别检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClassClass2(es *elasticsearch.Client, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClassClass2(es *elasticsearch.Client, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3408,17 +3408,17 @@ func StatsPriceInHistPriceOfBooksByAuthorClassClass2(es *elasticsearch.Client, a
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClassName 根据作者、类别、书名检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClassName 根据作者、类别、书名检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClassName(es *elasticsearch.Client, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClassName(es *elasticsearch.Client, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3427,17 +3427,17 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClassName(es *elasticsearch.Cli
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClassName 根据作者、类别、书名检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClassName 根据作者、类别、书名检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClassName(es *elasticsearch.Client, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClassName(es *elasticsearch.Client, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3446,17 +3446,17 @@ func StatsPriceInHistPageCountOfBooksByAuthorClassName(es *elasticsearch.Client,
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClassName 根据作者、类别、书名检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClassName 根据作者、类别、书名检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClassName(es *elasticsearch.Client, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClassName(es *elasticsearch.Client, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3465,17 +3465,17 @@ func StatsPageCountInHistPriceOfBooksByAuthorClassName(es *elasticsearch.Client,
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClassName 根据作者、类别、书名检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClassName 根据作者、类别、书名检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClassName(es *elasticsearch.Client, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClassName(es *elasticsearch.Client, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3484,17 +3484,17 @@ func StatsPriceInHistPriceOfBooksByAuthorClassName(es *elasticsearch.Client, aut
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClassPageCount 根据作者、类别、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClassPageCount 根据作者、类别、页数检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClassPageCount(es *elasticsearch.Client, author, class string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClassPageCount(es *elasticsearch.Client, author, class string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3503,17 +3503,17 @@ func StatsPriceInHistPriceOfBooksByAuthorClassPageCount(es *elasticsearch.Client
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClassPrice 根据作者、类别、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClassPrice 根据作者、类别、价格检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClassPrice(es *elasticsearch.Client, author, class string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClassPrice(es *elasticsearch.Client, author, class string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3522,17 +3522,17 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClassPrice(es *elasticsearch.Cl
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClassReleaseDate 根据作者、类别、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClassReleaseDate 根据作者、类别、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClassReleaseDate(es *elasticsearch.Client, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClassReleaseDate(es *elasticsearch.Client, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3541,17 +3541,17 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClassReleaseDate(es *elasticsea
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClassReleaseDate 根据作者、类别、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClassReleaseDate 根据作者、类别、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClassReleaseDate(es *elasticsearch.Client, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClassReleaseDate(es *elasticsearch.Client, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3560,17 +3560,17 @@ func StatsPriceInHistPageCountOfBooksByAuthorClassReleaseDate(es *elasticsearch.
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClassReleaseDate 根据作者、类别、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClassReleaseDate 根据作者、类别、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClassReleaseDate(es *elasticsearch.Client, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClassReleaseDate(es *elasticsearch.Client, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3579,17 +3579,17 @@ func StatsPageCountInHistPriceOfBooksByAuthorClassReleaseDate(es *elasticsearch.
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClassReleaseDate 根据作者、类别、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClassReleaseDate 根据作者、类别、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClassReleaseDate(es *elasticsearch.Client, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClassReleaseDate(es *elasticsearch.Client, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3598,17 +3598,17 @@ func StatsPriceInHistPriceOfBooksByAuthorClassReleaseDate(es *elasticsearch.Clie
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClassSeq 根据作者、类别、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClassSeq 根据作者、类别、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClassSeq(es *elasticsearch.Client, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClassSeq(es *elasticsearch.Client, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3617,17 +3617,17 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClassSeq(es *elasticsearch.Clie
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClassSeq 根据作者、类别、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClassSeq 根据作者、类别、编号检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClassSeq(es *elasticsearch.Client, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClassSeq(es *elasticsearch.Client, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3636,17 +3636,17 @@ func StatsPriceInHistPageCountOfBooksByAuthorClassSeq(es *elasticsearch.Client, 
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClassSeq 根据作者、类别、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClassSeq 根据作者、类别、编号检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClassSeq(es *elasticsearch.Client, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClassSeq(es *elasticsearch.Client, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3655,17 +3655,17 @@ func StatsPageCountInHistPriceOfBooksByAuthorClassSeq(es *elasticsearch.Client, 
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClassSeq 根据作者、类别、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClassSeq 根据作者、类别、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClassSeq(es *elasticsearch.Client, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClassSeq(es *elasticsearch.Client, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3674,17 +3674,17 @@ func StatsPriceInHistPriceOfBooksByAuthorClassSeq(es *elasticsearch.Client, auth
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClass2Name 根据作者、子类别、书名检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClass2Name 根据作者、子类别、书名检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClass2Name(es *elasticsearch.Client, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClass2Name(es *elasticsearch.Client, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3693,17 +3693,17 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClass2Name(es *elasticsearch.Cl
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClass2Name 根据作者、子类别、书名检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClass2Name 根据作者、子类别、书名检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClass2Name(es *elasticsearch.Client, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClass2Name(es *elasticsearch.Client, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3712,17 +3712,17 @@ func StatsPriceInHistPageCountOfBooksByAuthorClass2Name(es *elasticsearch.Client
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClass2Name 根据作者、子类别、书名检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClass2Name 根据作者、子类别、书名检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClass2Name(es *elasticsearch.Client, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClass2Name(es *elasticsearch.Client, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3731,17 +3731,17 @@ func StatsPageCountInHistPriceOfBooksByAuthorClass2Name(es *elasticsearch.Client
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClass2Name 根据作者、子类别、书名检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClass2Name 根据作者、子类别、书名检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClass2Name(es *elasticsearch.Client, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClass2Name(es *elasticsearch.Client, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3750,17 +3750,17 @@ func StatsPriceInHistPriceOfBooksByAuthorClass2Name(es *elasticsearch.Client, au
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClass2PageCount 根据作者、子类别、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClass2PageCount 根据作者、子类别、页数检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClass2PageCount(es *elasticsearch.Client, author, class2 string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClass2PageCount(es *elasticsearch.Client, author, class2 string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3769,17 +3769,17 @@ func StatsPriceInHistPriceOfBooksByAuthorClass2PageCount(es *elasticsearch.Clien
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClass2Price 根据作者、子类别、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClass2Price 根据作者、子类别、价格检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClass2Price(es *elasticsearch.Client, author, class2 string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClass2Price(es *elasticsearch.Client, author, class2 string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3788,17 +3788,17 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClass2Price(es *elasticsearch.C
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClass2ReleaseDate 根据作者、子类别、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClass2ReleaseDate 根据作者、子类别、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3807,17 +3807,17 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClass2ReleaseDate(es *elasticse
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClass2ReleaseDate 根据作者、子类别、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClass2ReleaseDate 根据作者、子类别、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3826,17 +3826,17 @@ func StatsPriceInHistPageCountOfBooksByAuthorClass2ReleaseDate(es *elasticsearch
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClass2ReleaseDate 根据作者、子类别、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClass2ReleaseDate 根据作者、子类别、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3845,17 +3845,17 @@ func StatsPageCountInHistPriceOfBooksByAuthorClass2ReleaseDate(es *elasticsearch
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClass2ReleaseDate 根据作者、子类别、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClass2ReleaseDate 根据作者、子类别、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClass2ReleaseDate(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3864,17 +3864,17 @@ func StatsPriceInHistPriceOfBooksByAuthorClass2ReleaseDate(es *elasticsearch.Cli
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClass2Seq 根据作者、子类别、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClass2Seq 根据作者、子类别、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3883,17 +3883,17 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClass2Seq(es *elasticsearch.Cli
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClass2Seq 根据作者、子类别、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClass2Seq 根据作者、子类别、编号检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3902,17 +3902,17 @@ func StatsPriceInHistPageCountOfBooksByAuthorClass2Seq(es *elasticsearch.Client,
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClass2Seq 根据作者、子类别、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClass2Seq 根据作者、子类别、编号检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3921,17 +3921,17 @@ func StatsPageCountInHistPriceOfBooksByAuthorClass2Seq(es *elasticsearch.Client,
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClass2Seq 根据作者、子类别、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClass2Seq 根据作者、子类别、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClass2Seq(es *elasticsearch.Client, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -3940,17 +3940,17 @@ func StatsPriceInHistPriceOfBooksByAuthorClass2Seq(es *elasticsearch.Client, aut
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorNamePageCount 根据作者、书名、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorNamePageCount 根据作者、书名、页数检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // name string 书名
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorNamePageCount(es *elasticsearch.Client, author, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorNamePageCount(es *elasticsearch.Client, author, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3959,17 +3959,17 @@ func StatsPriceInHistPriceOfBooksByAuthorNamePageCount(es *elasticsearch.Client,
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorNamePrice 根据作者、书名、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorNamePrice 根据作者、书名、价格检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // name string 书名
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorNamePrice(es *elasticsearch.Client, author, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorNamePrice(es *elasticsearch.Client, author, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3978,17 +3978,17 @@ func StatsPageCountInHistPageCountOfBooksByAuthorNamePrice(es *elasticsearch.Cli
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorNameReleaseDate 根据作者、书名、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorNameReleaseDate 根据作者、书名、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -3997,17 +3997,17 @@ func StatsPageCountInHistPageCountOfBooksByAuthorNameReleaseDate(es *elasticsear
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorNameReleaseDate 根据作者、书名、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorNameReleaseDate 根据作者、书名、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -4016,17 +4016,17 @@ func StatsPriceInHistPageCountOfBooksByAuthorNameReleaseDate(es *elasticsearch.C
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorNameReleaseDate 根据作者、书名、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorNameReleaseDate 根据作者、书名、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -4035,17 +4035,17 @@ func StatsPageCountInHistPriceOfBooksByAuthorNameReleaseDate(es *elasticsearch.C
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorNameReleaseDate 根据作者、书名、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorNameReleaseDate 根据作者、书名、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorNameReleaseDate(es *elasticsearch.Client, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -4054,17 +4054,17 @@ func StatsPriceInHistPriceOfBooksByAuthorNameReleaseDate(es *elasticsearch.Clien
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorNameSeq 根据作者、书名、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorNameSeq 根据作者、书名、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -4073,17 +4073,17 @@ func StatsPageCountInHistPageCountOfBooksByAuthorNameSeq(es *elasticsearch.Clien
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorNameSeq 根据作者、书名、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorNameSeq 根据作者、书名、编号检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -4092,17 +4092,17 @@ func StatsPriceInHistPageCountOfBooksByAuthorNameSeq(es *elasticsearch.Client, a
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorNameSeq 根据作者、书名、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorNameSeq 根据作者、书名、编号检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -4111,17 +4111,17 @@ func StatsPageCountInHistPriceOfBooksByAuthorNameSeq(es *elasticsearch.Client, a
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorNameSeq 根据作者、书名、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorNameSeq 根据作者、书名、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorNameSeq(es *elasticsearch.Client, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -4130,17 +4130,17 @@ func StatsPriceInHistPriceOfBooksByAuthorNameSeq(es *elasticsearch.Client, autho
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorPageCountReleaseDate 根据作者、页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorPageCountReleaseDate 根据作者、页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorPageCountReleaseDate(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorPageCountReleaseDate(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4149,17 +4149,17 @@ func StatsPriceInHistPriceOfBooksByAuthorPageCountReleaseDate(es *elasticsearch.
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorPageCountSeq 根据作者、页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorPageCountSeq 根据作者、页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorPageCountSeq(es *elasticsearch.Client, author string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorPageCountSeq(es *elasticsearch.Client, author string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4168,17 +4168,17 @@ func StatsPriceInHistPriceOfBooksByAuthorPageCountSeq(es *elasticsearch.Client, 
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorPriceReleaseDate 根据作者、价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorPriceReleaseDate 根据作者、价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorPriceReleaseDate(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorPriceReleaseDate(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4187,17 +4187,17 @@ func StatsPageCountInHistPageCountOfBooksByAuthorPriceReleaseDate(es *elasticsea
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorPriceSeq 根据作者、价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorPriceSeq 根据作者、价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorPriceSeq(es *elasticsearch.Client, author string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorPriceSeq(es *elasticsearch.Client, author string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4206,17 +4206,17 @@ func StatsPageCountInHistPageCountOfBooksByAuthorPriceSeq(es *elasticsearch.Clie
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorReleaseDateSeq 根据作者、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorReleaseDateSeq 根据作者、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4225,17 +4225,17 @@ func StatsPageCountInHistPageCountOfBooksByAuthorReleaseDateSeq(es *elasticsearc
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorReleaseDateSeq 根据作者、发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorReleaseDateSeq 根据作者、发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4244,17 +4244,17 @@ func StatsPriceInHistPageCountOfBooksByAuthorReleaseDateSeq(es *elasticsearch.Cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorReleaseDateSeq 根据作者、发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorReleaseDateSeq 根据作者、发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4263,17 +4263,17 @@ func StatsPageCountInHistPriceOfBooksByAuthorReleaseDateSeq(es *elasticsearch.Cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorReleaseDateSeq 根据作者、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorReleaseDateSeq 根据作者、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorReleaseDateSeq(es *elasticsearch.Client, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -4282,17 +4282,17 @@ func StatsPriceInHistPriceOfBooksByAuthorReleaseDateSeq(es *elasticsearch.Client
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassClass2Name 根据类别、子类别、书名检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassClass2Name 根据类别、子类别、书名检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassClass2Name(es *elasticsearch.Client, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassClass2Name(es *elasticsearch.Client, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4301,17 +4301,17 @@ func StatsPageCountInHistPageCountOfBooksByClassClass2Name(es *elasticsearch.Cli
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClassClass2Name 根据类别、子类别、书名检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClassClass2Name 根据类别、子类别、书名检索books表，并按页数区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClassClass2Name(es *elasticsearch.Client, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClassClass2Name(es *elasticsearch.Client, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4320,17 +4320,17 @@ func StatsPriceInHistPageCountOfBooksByClassClass2Name(es *elasticsearch.Client,
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClassClass2Name 根据类别、子类别、书名检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClassClass2Name 根据类别、子类别、书名检索books表，并按价格区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClassClass2Name(es *elasticsearch.Client, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClassClass2Name(es *elasticsearch.Client, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4339,17 +4339,17 @@ func StatsPageCountInHistPriceOfBooksByClassClass2Name(es *elasticsearch.Client,
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassClass2Name 根据类别、子类别、书名检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassClass2Name 根据类别、子类别、书名检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassClass2Name(es *elasticsearch.Client, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassClass2Name(es *elasticsearch.Client, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4358,187 +4358,187 @@ func StatsPriceInHistPriceOfBooksByClassClass2Name(es *elasticsearch.Client, cla
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassClass2PageCount 根据类别、子类别、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassClass2PageCount 根据类别、子类别、页数检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassClass2PageCount(es *elasticsearch.Client, class, class2 string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassClass2PageCount(es *elasticsearch.Client, class, class2 string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassClass2Price 根据类别、子类别、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassClass2Price 根据类别、子类别、价格检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassClass2Price(es *elasticsearch.Client, class, class2 string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassClass2Price(es *elasticsearch.Client, class, class2 string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassClass2ReleaseDate 根据类别、子类别、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassClass2ReleaseDate 根据类别、子类别、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassClass2ReleaseDate(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassClass2ReleaseDate(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClassClass2ReleaseDate 根据类别、子类别、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClassClass2ReleaseDate 根据类别、子类别、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClassClass2ReleaseDate(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClassClass2ReleaseDate(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClassClass2ReleaseDate 根据类别、子类别、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClassClass2ReleaseDate 根据类别、子类别、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClassClass2ReleaseDate(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClassClass2ReleaseDate(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassClass2ReleaseDate 根据类别、子类别、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassClass2ReleaseDate 根据类别、子类别、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassClass2ReleaseDate(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassClass2ReleaseDate(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassClass2Seq 根据类别、子类别、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassClass2Seq 根据类别、子类别、编号检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassClass2Seq(es *elasticsearch.Client, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassClass2Seq(es *elasticsearch.Client, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClassClass2Seq 根据类别、子类别、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClassClass2Seq 根据类别、子类别、编号检索books表，并按页数区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClassClass2Seq(es *elasticsearch.Client, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClassClass2Seq(es *elasticsearch.Client, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClassClass2Seq 根据类别、子类别、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClassClass2Seq 根据类别、子类别、编号检索books表，并按价格区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClassClass2Seq(es *elasticsearch.Client, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClassClass2Seq(es *elasticsearch.Client, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassClass2Seq 根据类别、子类别、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassClass2Seq 根据类别、子类别、编号检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassClass2Seq(es *elasticsearch.Client, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassClass2Seq(es *elasticsearch.Client, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassNamePageCount 根据类别、书名、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassNamePageCount 根据类别、书名、页数检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // name string 书名
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassNamePageCount(es *elasticsearch.Client, class, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassNamePageCount(es *elasticsearch.Client, class, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4547,17 +4547,17 @@ func StatsPriceInHistPriceOfBooksByClassNamePageCount(es *elasticsearch.Client, 
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassNamePrice 根据类别、书名、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassNamePrice 根据类别、书名、价格检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // name string 书名
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassNamePrice(es *elasticsearch.Client, class, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassNamePrice(es *elasticsearch.Client, class, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4566,17 +4566,17 @@ func StatsPageCountInHistPageCountOfBooksByClassNamePrice(es *elasticsearch.Clie
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassNameReleaseDate 根据类别、书名、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassNameReleaseDate 根据类别、书名、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassNameReleaseDate(es *elasticsearch.Client, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassNameReleaseDate(es *elasticsearch.Client, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4585,17 +4585,17 @@ func StatsPageCountInHistPageCountOfBooksByClassNameReleaseDate(es *elasticsearc
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClassNameReleaseDate 根据类别、书名、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClassNameReleaseDate 根据类别、书名、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClassNameReleaseDate(es *elasticsearch.Client, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClassNameReleaseDate(es *elasticsearch.Client, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4604,17 +4604,17 @@ func StatsPriceInHistPageCountOfBooksByClassNameReleaseDate(es *elasticsearch.Cl
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClassNameReleaseDate 根据类别、书名、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClassNameReleaseDate 根据类别、书名、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClassNameReleaseDate(es *elasticsearch.Client, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClassNameReleaseDate(es *elasticsearch.Client, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4623,17 +4623,17 @@ func StatsPageCountInHistPriceOfBooksByClassNameReleaseDate(es *elasticsearch.Cl
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassNameReleaseDate 根据类别、书名、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassNameReleaseDate 根据类别、书名、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassNameReleaseDate(es *elasticsearch.Client, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassNameReleaseDate(es *elasticsearch.Client, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4642,17 +4642,17 @@ func StatsPriceInHistPriceOfBooksByClassNameReleaseDate(es *elasticsearch.Client
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassNameSeq 根据类别、书名、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassNameSeq 根据类别、书名、编号检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassNameSeq(es *elasticsearch.Client, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassNameSeq(es *elasticsearch.Client, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4661,17 +4661,17 @@ func StatsPageCountInHistPageCountOfBooksByClassNameSeq(es *elasticsearch.Client
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClassNameSeq 根据类别、书名、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClassNameSeq 根据类别、书名、编号检索books表，并按页数区间分桶统计价格的平均值
 // class string 类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClassNameSeq(es *elasticsearch.Client, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClassNameSeq(es *elasticsearch.Client, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4680,17 +4680,17 @@ func StatsPriceInHistPageCountOfBooksByClassNameSeq(es *elasticsearch.Client, cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClassNameSeq 根据类别、书名、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClassNameSeq 根据类别、书名、编号检索books表，并按价格区间分桶统计页数的平均值
 // class string 类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClassNameSeq(es *elasticsearch.Client, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClassNameSeq(es *elasticsearch.Client, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4699,17 +4699,17 @@ func StatsPageCountInHistPriceOfBooksByClassNameSeq(es *elasticsearch.Client, cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassNameSeq 根据类别、书名、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassNameSeq 根据类别、书名、编号检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassNameSeq(es *elasticsearch.Client, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassNameSeq(es *elasticsearch.Client, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4718,153 +4718,153 @@ func StatsPriceInHistPriceOfBooksByClassNameSeq(es *elasticsearch.Client, class,
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassPageCountReleaseDate 根据类别、页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassPageCountReleaseDate 根据类别、页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassPageCountReleaseDate(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassPageCountReleaseDate(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassPageCountSeq 根据类别、页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassPageCountSeq 根据类别、页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassPageCountSeq(es *elasticsearch.Client, class string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassPageCountSeq(es *elasticsearch.Client, class string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassPriceReleaseDate 根据类别、价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassPriceReleaseDate 根据类别、价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassPriceReleaseDate(es *elasticsearch.Client, class string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassPriceReleaseDate(es *elasticsearch.Client, class string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassPriceSeq 根据类别、价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassPriceSeq 根据类别、价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassPriceSeq(es *elasticsearch.Client, class string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassPriceSeq(es *elasticsearch.Client, class string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassReleaseDateSeq 根据类别、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassReleaseDateSeq 根据类别、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassReleaseDateSeq(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassReleaseDateSeq(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClassReleaseDateSeq 根据类别、发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClassReleaseDateSeq 根据类别、发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClassReleaseDateSeq(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClassReleaseDateSeq(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClassReleaseDateSeq 根据类别、发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClassReleaseDateSeq 根据类别、发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClassReleaseDateSeq(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClassReleaseDateSeq(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassReleaseDateSeq 根据类别、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassReleaseDateSeq 根据类别、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassReleaseDateSeq(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassReleaseDateSeq(es *elasticsearch.Client, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass2NamePageCount 根据子类别、书名、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass2NamePageCount 根据子类别、书名、页数检索books表，并按价格区间分桶统计价格的平均值
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass2NamePageCount(es *elasticsearch.Client, class2, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass2NamePageCount(es *elasticsearch.Client, class2, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4873,17 +4873,17 @@ func StatsPriceInHistPriceOfBooksByClass2NamePageCount(es *elasticsearch.Client,
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass2NamePrice 根据子类别、书名、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass2NamePrice 根据子类别、书名、价格检索books表，并按页数区间分桶统计页数的平均值
 // class2 string 子类别
 // name string 书名
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass2NamePrice(es *elasticsearch.Client, class2, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass2NamePrice(es *elasticsearch.Client, class2, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4892,17 +4892,17 @@ func StatsPageCountInHistPageCountOfBooksByClass2NamePrice(es *elasticsearch.Cli
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass2NameReleaseDate 根据子类别、书名、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass2NameReleaseDate 根据子类别、书名、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4911,17 +4911,17 @@ func StatsPageCountInHistPageCountOfBooksByClass2NameReleaseDate(es *elasticsear
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClass2NameReleaseDate 根据子类别、书名、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClass2NameReleaseDate 根据子类别、书名、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4930,17 +4930,17 @@ func StatsPriceInHistPageCountOfBooksByClass2NameReleaseDate(es *elasticsearch.C
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClass2NameReleaseDate 根据子类别、书名、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClass2NameReleaseDate 根据子类别、书名、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4949,17 +4949,17 @@ func StatsPageCountInHistPriceOfBooksByClass2NameReleaseDate(es *elasticsearch.C
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass2NameReleaseDate 根据子类别、书名、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass2NameReleaseDate 根据子类别、书名、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass2NameReleaseDate(es *elasticsearch.Client, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4968,17 +4968,17 @@ func StatsPriceInHistPriceOfBooksByClass2NameReleaseDate(es *elasticsearch.Clien
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass2NameSeq 根据子类别、书名、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass2NameSeq 根据子类别、书名、编号检索books表，并按页数区间分桶统计页数的平均值
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass2NameSeq(es *elasticsearch.Client, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass2NameSeq(es *elasticsearch.Client, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -4987,17 +4987,17 @@ func StatsPageCountInHistPageCountOfBooksByClass2NameSeq(es *elasticsearch.Clien
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClass2NameSeq 根据子类别、书名、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClass2NameSeq 根据子类别、书名、编号检索books表，并按页数区间分桶统计价格的平均值
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClass2NameSeq(es *elasticsearch.Client, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClass2NameSeq(es *elasticsearch.Client, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5006,17 +5006,17 @@ func StatsPriceInHistPageCountOfBooksByClass2NameSeq(es *elasticsearch.Client, c
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClass2NameSeq 根据子类别、书名、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClass2NameSeq 根据子类别、书名、编号检索books表，并按价格区间分桶统计页数的平均值
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClass2NameSeq(es *elasticsearch.Client, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClass2NameSeq(es *elasticsearch.Client, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5025,17 +5025,17 @@ func StatsPageCountInHistPriceOfBooksByClass2NameSeq(es *elasticsearch.Client, c
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass2NameSeq 根据子类别、书名、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass2NameSeq 根据子类别、书名、编号检索books表，并按价格区间分桶统计价格的平均值
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass2NameSeq(es *elasticsearch.Client, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass2NameSeq(es *elasticsearch.Client, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5044,153 +5044,153 @@ func StatsPriceInHistPriceOfBooksByClass2NameSeq(es *elasticsearch.Client, class
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass2PageCountReleaseDate 根据子类别、页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass2PageCountReleaseDate 根据子类别、页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass2PageCountReleaseDate(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass2PageCountReleaseDate(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass2PageCountSeq 根据子类别、页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass2PageCountSeq 根据子类别、页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass2PageCountSeq(es *elasticsearch.Client, class2 string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass2PageCountSeq(es *elasticsearch.Client, class2 string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass2PriceReleaseDate 根据子类别、价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass2PriceReleaseDate 根据子类别、价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass2PriceReleaseDate(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass2PriceReleaseDate(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass2PriceSeq 根据子类别、价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass2PriceSeq 根据子类别、价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass2PriceSeq(es *elasticsearch.Client, class2 string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass2PriceSeq(es *elasticsearch.Client, class2 string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass2ReleaseDateSeq 根据子类别、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass2ReleaseDateSeq 根据子类别、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClass2ReleaseDateSeq 根据子类别、发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClass2ReleaseDateSeq 根据子类别、发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClass2ReleaseDateSeq 根据子类别、发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClass2ReleaseDateSeq 根据子类别、发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass2ReleaseDateSeq 根据子类别、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass2ReleaseDateSeq 根据子类别、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass2ReleaseDateSeq(es *elasticsearch.Client, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByNamePageCountReleaseDate 根据书名、页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByNamePageCountReleaseDate 根据书名、页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByNamePageCountReleaseDate(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByNamePageCountReleaseDate(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5199,17 +5199,17 @@ func StatsPriceInHistPriceOfBooksByNamePageCountReleaseDate(es *elasticsearch.Cl
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByNamePageCountSeq 根据书名、页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByNamePageCountSeq 根据书名、页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByNamePageCountSeq(es *elasticsearch.Client, name string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByNamePageCountSeq(es *elasticsearch.Client, name string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5218,17 +5218,17 @@ func StatsPriceInHistPriceOfBooksByNamePageCountSeq(es *elasticsearch.Client, na
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByNamePriceReleaseDate 根据书名、价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByNamePriceReleaseDate 根据书名、价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByNamePriceReleaseDate(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByNamePriceReleaseDate(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5237,17 +5237,17 @@ func StatsPageCountInHistPageCountOfBooksByNamePriceReleaseDate(es *elasticsearc
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByNamePriceSeq 根据书名、价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByNamePriceSeq 根据书名、价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // name string 书名
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByNamePriceSeq(es *elasticsearch.Client, name string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByNamePriceSeq(es *elasticsearch.Client, name string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5256,17 +5256,17 @@ func StatsPageCountInHistPageCountOfBooksByNamePriceSeq(es *elasticsearch.Client
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByNameReleaseDateSeq 根据书名、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByNameReleaseDateSeq 根据书名、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5275,17 +5275,17 @@ func StatsPageCountInHistPageCountOfBooksByNameReleaseDateSeq(es *elasticsearch.
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByNameReleaseDateSeq 根据书名、发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByNameReleaseDateSeq 根据书名、发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5294,17 +5294,17 @@ func StatsPriceInHistPageCountOfBooksByNameReleaseDateSeq(es *elasticsearch.Clie
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByNameReleaseDateSeq 根据书名、发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByNameReleaseDateSeq 根据书名、发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5313,17 +5313,17 @@ func StatsPageCountInHistPriceOfBooksByNameReleaseDateSeq(es *elasticsearch.Clie
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByNameReleaseDateSeq 根据书名、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByNameReleaseDateSeq 根据书名、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByNameReleaseDateSeq(es *elasticsearch.Client, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -5332,52 +5332,52 @@ func StatsPriceInHistPriceOfBooksByNameReleaseDateSeq(es *elasticsearch.Client, 
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByPageCountReleaseDateSeq 根据页数、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByPageCountReleaseDateSeq 根据页数、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByPageCountReleaseDateSeq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByPageCountReleaseDateSeq(es *elasticsearch.Client, pageCount int64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("page_count", pageCount),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByPriceReleaseDateSeq 根据价格、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByPriceReleaseDateSeq 根据价格、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByPriceReleaseDateSeq(es *elasticsearch.Client, price float64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByPriceReleaseDateSeq(es *elasticsearch.Client, price float64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("price", price),
 		eq.Term("release_date", releaseDate),
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorClassClass2 根据全文本、作者、类别、子类别检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorClassClass2 根据全文本、作者、类别、子类别检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, allText, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, allText, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5387,18 +5387,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClassClass2(es *elastics
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthorClassClass2 根据全文本、作者、类别、子类别检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthorClassClass2 根据全文本、作者、类别、子类别检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, allText, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, allText, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5408,18 +5408,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextAuthorClassClass2(es *elasticsearc
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthorClassClass2 根据全文本、作者、类别、子类别检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthorClassClass2 根据全文本、作者、类别、子类别检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, allText, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, allText, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5429,18 +5429,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextAuthorClassClass2(es *elasticsearc
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorClassClass2 根据全文本、作者、类别、子类别检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorClassClass2 根据全文本、作者、类别、子类别检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, allText, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorClassClass2(es *elasticsearch.Client, allText, author, class, class2 string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5450,18 +5450,18 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorClassClass2(es *elasticsearch.Cl
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorClassName 根据全文本、作者、类别、书名检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorClassName 根据全文本、作者、类别、书名检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5471,18 +5471,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClassName(es *elasticsea
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthorClassName 根据全文本、作者、类别、书名检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthorClassName 根据全文本、作者、类别、书名检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5492,18 +5492,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextAuthorClassName(es *elasticsearch.
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthorClassName 根据全文本、作者、类别、书名检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthorClassName 根据全文本、作者、类别、书名检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5513,18 +5513,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextAuthorClassName(es *elasticsearch.
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorClassName 根据全文本、作者、类别、书名检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorClassName 根据全文本、作者、类别、书名检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorClassName(es *elasticsearch.Client, allText, author, class, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5534,18 +5534,18 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorClassName(es *elasticsearch.Clie
 		eq.Term("class", class),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorClassPageCount 根据全文本、作者、类别、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorClassPageCount 根据全文本、作者、类别、页数检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorClassPageCount(es *elasticsearch.Client, allText, author, class string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorClassPageCount(es *elasticsearch.Client, allText, author, class string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5555,18 +5555,18 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorClassPageCount(es *elasticsearch
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorClassPrice 根据全文本、作者、类别、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorClassPrice 根据全文本、作者、类别、价格检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClassPrice(es *elasticsearch.Client, allText, author, class string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorClassPrice(es *elasticsearch.Client, allText, author, class string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5576,18 +5576,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClassPrice(es *elasticse
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorClassReleaseDate 根据全文本、作者、类别、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorClassReleaseDate 根据全文本、作者、类别、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client, allText, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client, allText, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5597,18 +5597,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClassReleaseDate(es *ela
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthorClassReleaseDate 根据全文本、作者、类别、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthorClassReleaseDate 根据全文本、作者、类别、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client, allText, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client, allText, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5618,18 +5618,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextAuthorClassReleaseDate(es *elastic
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthorClassReleaseDate 根据全文本、作者、类别、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthorClassReleaseDate 根据全文本、作者、类别、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client, allText, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client, allText, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5639,18 +5639,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextAuthorClassReleaseDate(es *elastic
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorClassReleaseDate 根据全文本、作者、类别、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorClassReleaseDate 根据全文本、作者、类别、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client, allText, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorClassReleaseDate(es *elasticsearch.Client, allText, author, class string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5660,18 +5660,18 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorClassReleaseDate(es *elasticsear
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorClassSeq 根据全文本、作者、类别、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorClassSeq 根据全文本、作者、类别、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allText, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allText, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5681,18 +5681,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClassSeq(es *elasticsear
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthorClassSeq 根据全文本、作者、类别、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthorClassSeq 根据全文本、作者、类别、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allText, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allText, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5702,18 +5702,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextAuthorClassSeq(es *elasticsearch.C
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthorClassSeq 根据全文本、作者、类别、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthorClassSeq 根据全文本、作者、类别、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allText, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allText, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5723,18 +5723,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextAuthorClassSeq(es *elasticsearch.C
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorClassSeq 根据全文本、作者、类别、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorClassSeq 根据全文本、作者、类别、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class string 类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allText, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorClassSeq(es *elasticsearch.Client, allText, author, class, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5744,18 +5744,18 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorClassSeq(es *elasticsearch.Clien
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass2Name 根据全文本、作者、子类别、书名检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorClass2Name 根据全文本、作者、子类别、书名检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allText, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allText, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5765,18 +5765,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass2Name(es *elasticse
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthorClass2Name 根据全文本、作者、子类别、书名检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthorClass2Name 根据全文本、作者、子类别、书名检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allText, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allText, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5786,18 +5786,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextAuthorClass2Name(es *elasticsearch
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthorClass2Name 根据全文本、作者、子类别、书名检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthorClass2Name 根据全文本、作者、子类别、书名检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allText, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allText, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5807,18 +5807,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextAuthorClass2Name(es *elasticsearch
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorClass2Name 根据全文本、作者、子类别、书名检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorClass2Name 根据全文本、作者、子类别、书名检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allText, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Client, allText, author, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5828,18 +5828,18 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorClass2Name(es *elasticsearch.Cli
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorClass2PageCount 根据全文本、作者、子类别、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorClass2PageCount 根据全文本、作者、子类别、页数检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorClass2PageCount(es *elasticsearch.Client, allText, author, class2 string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorClass2PageCount(es *elasticsearch.Client, allText, author, class2 string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5849,18 +5849,18 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorClass2PageCount(es *elasticsearc
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass2Price 根据全文本、作者、子类别、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorClass2Price 根据全文本、作者、子类别、价格检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass2Price(es *elasticsearch.Client, allText, author, class2 string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorClass2Price(es *elasticsearch.Client, allText, author, class2 string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5870,18 +5870,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass2Price(es *elastics
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass2ReleaseDate 根据全文本、作者、子类别、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorClass2ReleaseDate 根据全文本、作者、子类别、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Client, allText, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Client, allText, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5891,18 +5891,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass2ReleaseDate(es *el
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthorClass2ReleaseDate 根据全文本、作者、子类别、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthorClass2ReleaseDate 根据全文本、作者、子类别、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Client, allText, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Client, allText, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5912,18 +5912,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextAuthorClass2ReleaseDate(es *elasti
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthorClass2ReleaseDate 根据全文本、作者、子类别、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthorClass2ReleaseDate 根据全文本、作者、子类别、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Client, allText, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Client, allText, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5933,18 +5933,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextAuthorClass2ReleaseDate(es *elasti
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorClass2ReleaseDate 根据全文本、作者、子类别、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorClass2ReleaseDate 根据全文本、作者、子类别、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Client, allText, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorClass2ReleaseDate(es *elasticsearch.Client, allText, author, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5954,18 +5954,18 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorClass2ReleaseDate(es *elasticsea
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass2Seq 根据全文本、作者、子类别、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorClass2Seq 根据全文本、作者、子类别、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allText, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allText, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5975,18 +5975,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorClass2Seq(es *elasticsea
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthorClass2Seq 根据全文本、作者、子类别、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthorClass2Seq 根据全文本、作者、子类别、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allText, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allText, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -5996,18 +5996,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthorClass2Seq 根据全文本、作者、子类别、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthorClass2Seq 根据全文本、作者、子类别、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allText, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allText, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6017,18 +6017,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorClass2Seq 根据全文本、作者、子类别、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorClass2Seq 根据全文本、作者、子类别、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allText, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.Client, allText, author, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6038,18 +6038,18 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorClass2Seq(es *elasticsearch.Clie
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorNamePageCount 根据全文本、作者、书名、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorNamePageCount 根据全文本、作者、书名、页数检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // name string 书名
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorNamePageCount(es *elasticsearch.Client, allText, author, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorNamePageCount(es *elasticsearch.Client, allText, author, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6059,18 +6059,18 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorNamePageCount(es *elasticsearch.
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorNamePrice 根据全文本、作者、书名、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorNamePrice 根据全文本、作者、书名、价格检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // name string 书名
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorNamePrice(es *elasticsearch.Client, allText, author, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorNamePrice(es *elasticsearch.Client, allText, author, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6080,18 +6080,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorNamePrice(es *elasticsea
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorNameReleaseDate 根据全文本、作者、书名、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorNameReleaseDate 根据全文本、作者、书名、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6101,18 +6101,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorNameReleaseDate(es *elas
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthorNameReleaseDate 根据全文本、作者、书名、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthorNameReleaseDate 根据全文本、作者、书名、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6122,18 +6122,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextAuthorNameReleaseDate(es *elastics
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthorNameReleaseDate 根据全文本、作者、书名、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthorNameReleaseDate 根据全文本、作者、书名、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6143,18 +6143,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextAuthorNameReleaseDate(es *elastics
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorNameReleaseDate 根据全文本、作者、书名、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorNameReleaseDate 根据全文本、作者、书名、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorNameReleaseDate(es *elasticsearch.Client, allText, author, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6164,18 +6164,18 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorNameReleaseDate(es *elasticsearc
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorNameSeq 根据全文本、作者、书名、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorNameSeq 根据全文本、作者、书名、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6185,18 +6185,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorNameSeq(es *elasticsearc
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthorNameSeq 根据全文本、作者、书名、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthorNameSeq 根据全文本、作者、书名、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6206,18 +6206,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthorNameSeq 根据全文本、作者、书名、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthorNameSeq 根据全文本、作者、书名、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6227,18 +6227,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorNameSeq 根据全文本、作者、书名、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorNameSeq 根据全文本、作者、书名、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Client, allText, author, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6248,18 +6248,18 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorNameSeq(es *elasticsearch.Client
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorPageCountReleaseDate 根据全文本、作者、页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorPageCountReleaseDate 根据全文本、作者、页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorPageCountReleaseDate(es *elasticsearch.Client, allText, author string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorPageCountReleaseDate(es *elasticsearch.Client, allText, author string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6269,18 +6269,18 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorPageCountReleaseDate(es *elastic
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorPageCountSeq 根据全文本、作者、页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorPageCountSeq 根据全文本、作者、页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorPageCountSeq(es *elasticsearch.Client, allText, author string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorPageCountSeq(es *elasticsearch.Client, allText, author string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6290,18 +6290,18 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorPageCountSeq(es *elasticsearch.C
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorPriceReleaseDate 根据全文本、作者、价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorPriceReleaseDate 根据全文本、作者、价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorPriceReleaseDate(es *elasticsearch.Client, allText, author string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorPriceReleaseDate(es *elasticsearch.Client, allText, author string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6311,18 +6311,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorPriceReleaseDate(es *ela
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorPriceSeq 根据全文本、作者、价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorPriceSeq 根据全文本、作者、价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client, allText, author string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorPriceSeq(es *elasticsearch.Client, allText, author string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6332,18 +6332,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorPriceSeq(es *elasticsear
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextAuthorReleaseDateSeq 根据全文本、作者、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextAuthorReleaseDateSeq 根据全文本、作者、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6353,18 +6353,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextAuthorReleaseDateSeq(es *elast
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextAuthorReleaseDateSeq 根据全文本、作者、发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextAuthorReleaseDateSeq 根据全文本、作者、发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6374,18 +6374,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextAuthorReleaseDateSeq(es *elasticse
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextAuthorReleaseDateSeq 根据全文本、作者、发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextAuthorReleaseDateSeq 根据全文本、作者、发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6395,18 +6395,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextAuthorReleaseDateSeq(es *elasticse
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextAuthorReleaseDateSeq 根据全文本、作者、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextAuthorReleaseDateSeq 根据全文本、作者、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // author string 作者
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch.Client, allText, author string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("author", author),
@@ -6416,18 +6416,18 @@ func StatsPriceInHistPriceOfBooksByAllTextAuthorReleaseDateSeq(es *elasticsearch
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClassClass2Name 根据全文本、类别、子类别、书名检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClassClass2Name 根据全文本、类别、子类别、书名检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClassClass2Name(es *elasticsearch.Client, allText, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClassClass2Name(es *elasticsearch.Client, allText, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -6437,18 +6437,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClassClass2Name(es *elasticsea
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClassClass2Name 根据全文本、类别、子类别、书名检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClassClass2Name 根据全文本、类别、子类别、书名检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClassClass2Name(es *elasticsearch.Client, allText, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClassClass2Name(es *elasticsearch.Client, allText, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -6458,18 +6458,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextClassClass2Name(es *elasticsearch.
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClassClass2Name 根据全文本、类别、子类别、书名检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClassClass2Name 根据全文本、类别、子类别、书名检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClassClass2Name(es *elasticsearch.Client, allText, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClassClass2Name(es *elasticsearch.Client, allText, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -6479,18 +6479,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextClassClass2Name(es *elasticsearch.
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClassClass2Name 根据全文本、类别、子类别、书名检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClassClass2Name 根据全文本、类别、子类别、书名检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClassClass2Name(es *elasticsearch.Client, allText, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClassClass2Name(es *elasticsearch.Client, allText, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -6500,18 +6500,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClassClass2Name(es *elasticsearch.Clie
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClassClass2PageCount 根据全文本、类别、子类别、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClassClass2PageCount 根据全文本、类别、子类别、页数检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClassClass2PageCount(es *elasticsearch.Client, allText, class, class2 string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClassClass2PageCount(es *elasticsearch.Client, allText, class, class2 string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -6521,18 +6521,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClassClass2PageCount(es *elasticsearch
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClassClass2Price 根据全文本、类别、子类别、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClassClass2Price 根据全文本、类别、子类别、价格检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClassClass2Price(es *elasticsearch.Client, allText, class, class2 string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClassClass2Price(es *elasticsearch.Client, allText, class, class2 string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -6542,18 +6542,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClassClass2Price(es *elasticse
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClassClass2ReleaseDate 根据全文本、类别、子类别、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClassClass2ReleaseDate 根据全文本、类别、子类别、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Client, allText, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Client, allText, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -6563,18 +6563,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClassClass2ReleaseDate(es *ela
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClassClass2ReleaseDate 根据全文本、类别、子类别、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClassClass2ReleaseDate 根据全文本、类别、子类别、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Client, allText, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Client, allText, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -6584,18 +6584,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextClassClass2ReleaseDate(es *elastic
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClassClass2ReleaseDate 根据全文本、类别、子类别、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClassClass2ReleaseDate 根据全文本、类别、子类别、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Client, allText, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Client, allText, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -6605,18 +6605,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextClassClass2ReleaseDate(es *elastic
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClassClass2ReleaseDate 根据全文本、类别、子类别、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClassClass2ReleaseDate 根据全文本、类别、子类别、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Client, allText, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClassClass2ReleaseDate(es *elasticsearch.Client, allText, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -6626,18 +6626,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClassClass2ReleaseDate(es *elasticsear
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClassClass2Seq 根据全文本、类别、子类别、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClassClass2Seq 根据全文本、类别、子类别、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClassClass2Seq(es *elasticsearch.Client, allText, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClassClass2Seq(es *elasticsearch.Client, allText, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -6647,18 +6647,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClassClass2Seq(es *elasticsear
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClassClass2Seq 根据全文本、类别、子类别、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClassClass2Seq 根据全文本、类别、子类别、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClassClass2Seq(es *elasticsearch.Client, allText, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClassClass2Seq(es *elasticsearch.Client, allText, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -6668,18 +6668,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextClassClass2Seq(es *elasticsearch.C
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClassClass2Seq 根据全文本、类别、子类别、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClassClass2Seq 根据全文本、类别、子类别、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClassClass2Seq(es *elasticsearch.Client, allText, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClassClass2Seq(es *elasticsearch.Client, allText, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -6689,18 +6689,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextClassClass2Seq(es *elasticsearch.C
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClassClass2Seq 根据全文本、类别、子类别、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClassClass2Seq 根据全文本、类别、子类别、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClassClass2Seq(es *elasticsearch.Client, allText, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClassClass2Seq(es *elasticsearch.Client, allText, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -6710,18 +6710,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClassClass2Seq(es *elasticsearch.Clien
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClassNamePageCount 根据全文本、类别、书名、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClassNamePageCount 根据全文本、类别、书名、页数检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // name string 书名
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClassNamePageCount(es *elasticsearch.Client, allText, class, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClassNamePageCount(es *elasticsearch.Client, allText, class, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -6731,18 +6731,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClassNamePageCount(es *elasticsearch.C
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClassNamePrice 根据全文本、类别、书名、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClassNamePrice 根据全文本、类别、书名、价格检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // name string 书名
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClassNamePrice(es *elasticsearch.Client, allText, class, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClassNamePrice(es *elasticsearch.Client, allText, class, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -6752,18 +6752,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClassNamePrice(es *elasticsear
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClassNameReleaseDate 根据全文本、类别、书名、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClassNameReleaseDate 根据全文本、类别、书名、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, allText, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, allText, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -6773,18 +6773,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClassNameReleaseDate(es *elast
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClassNameReleaseDate 根据全文本、类别、书名、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClassNameReleaseDate 根据全文本、类别、书名、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, allText, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, allText, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -6794,18 +6794,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextClassNameReleaseDate(es *elasticse
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClassNameReleaseDate 根据全文本、类别、书名、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClassNameReleaseDate 根据全文本、类别、书名、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, allText, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, allText, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -6815,18 +6815,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextClassNameReleaseDate(es *elasticse
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClassNameReleaseDate 根据全文本、类别、书名、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClassNameReleaseDate 根据全文本、类别、书名、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, allText, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClassNameReleaseDate(es *elasticsearch.Client, allText, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -6836,18 +6836,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClassNameReleaseDate(es *elasticsearch
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClassNameSeq 根据全文本、类别、书名、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClassNameSeq 根据全文本、类别、书名、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -6857,18 +6857,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClassNameSeq(es *elasticsearch
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClassNameSeq 根据全文本、类别、书名、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClassNameSeq 根据全文本、类别、书名、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -6878,18 +6878,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextClassNameSeq(es *elasticsearch.Cli
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClassNameSeq 根据全文本、类别、书名、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClassNameSeq 根据全文本、类别、书名、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -6899,18 +6899,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextClassNameSeq(es *elasticsearch.Cli
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClassNameSeq 根据全文本、类别、书名、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClassNameSeq 根据全文本、类别、书名、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClassNameSeq(es *elasticsearch.Client, allText, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -6920,18 +6920,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClassNameSeq(es *elasticsearch.Client,
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClassPageCountReleaseDate 根据全文本、类别、页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClassPageCountReleaseDate 根据全文本、类别、页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClassPageCountReleaseDate(es *elasticsearch.Client, allText, class string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClassPageCountReleaseDate(es *elasticsearch.Client, allText, class string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -6941,18 +6941,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClassPageCountReleaseDate(es *elastics
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClassPageCountSeq 根据全文本、类别、页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClassPageCountSeq 根据全文本、类别、页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClassPageCountSeq(es *elasticsearch.Client, allText, class string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClassPageCountSeq(es *elasticsearch.Client, allText, class string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -6962,18 +6962,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClassPageCountSeq(es *elasticsearch.Cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClassPriceReleaseDate 根据全文本、类别、价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClassPriceReleaseDate 根据全文本、类别、价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClassPriceReleaseDate(es *elasticsearch.Client, allText, class string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClassPriceReleaseDate(es *elasticsearch.Client, allText, class string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -6983,18 +6983,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClassPriceReleaseDate(es *elas
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClassPriceSeq 根据全文本、类别、价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClassPriceSeq 根据全文本、类别、价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClassPriceSeq(es *elasticsearch.Client, allText, class string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClassPriceSeq(es *elasticsearch.Client, allText, class string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -7004,18 +7004,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClassPriceSeq(es *elasticsearc
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClassReleaseDateSeq 根据全文本、类别、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClassReleaseDateSeq 根据全文本、类别、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -7025,18 +7025,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClassReleaseDateSeq(es *elasti
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClassReleaseDateSeq 根据全文本、类别、发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClassReleaseDateSeq 根据全文本、类别、发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -7046,18 +7046,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextClassReleaseDateSeq(es *elasticsea
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClassReleaseDateSeq 根据全文本、类别、发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClassReleaseDateSeq 根据全文本、类别、发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -7067,18 +7067,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextClassReleaseDateSeq(es *elasticsea
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClassReleaseDateSeq 根据全文本、类别、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClassReleaseDateSeq 根据全文本、类别、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClassReleaseDateSeq(es *elasticsearch.Client, allText, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -7088,18 +7088,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClassReleaseDateSeq(es *elasticsearch.
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClass2NamePageCount 根据全文本、子类别、书名、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClass2NamePageCount 根据全文本、子类别、书名、页数检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClass2NamePageCount(es *elasticsearch.Client, allText, class2, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClass2NamePageCount(es *elasticsearch.Client, allText, class2, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7109,18 +7109,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClass2NamePageCount(es *elasticsearch.
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClass2NamePrice 根据全文本、子类别、书名、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClass2NamePrice 根据全文本、子类别、书名、价格检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClass2NamePrice(es *elasticsearch.Client, allText, class2, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClass2NamePrice(es *elasticsearch.Client, allText, class2, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7130,18 +7130,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClass2NamePrice(es *elasticsea
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClass2NameReleaseDate 根据全文本、子类别、书名、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClass2NameReleaseDate 根据全文本、子类别、书名、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client, allText, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client, allText, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7151,18 +7151,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClass2NameReleaseDate(es *elas
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClass2NameReleaseDate 根据全文本、子类别、书名、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClass2NameReleaseDate 根据全文本、子类别、书名、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client, allText, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client, allText, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7172,18 +7172,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextClass2NameReleaseDate(es *elastics
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClass2NameReleaseDate 根据全文本、子类别、书名、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClass2NameReleaseDate 根据全文本、子类别、书名、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client, allText, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client, allText, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7193,18 +7193,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextClass2NameReleaseDate(es *elastics
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClass2NameReleaseDate 根据全文本、子类别、书名、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClass2NameReleaseDate 根据全文本、子类别、书名、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client, allText, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClass2NameReleaseDate(es *elasticsearch.Client, allText, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7214,18 +7214,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClass2NameReleaseDate(es *elasticsearc
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClass2NameSeq 根据全文本、子类别、书名、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClass2NameSeq 根据全文本、子类别、书名、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allText, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allText, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7235,18 +7235,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClass2NameSeq(es *elasticsearc
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClass2NameSeq 根据全文本、子类别、书名、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClass2NameSeq 根据全文本、子类别、书名、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allText, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allText, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7256,18 +7256,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextClass2NameSeq(es *elasticsearch.Cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClass2NameSeq 根据全文本、子类别、书名、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClass2NameSeq 根据全文本、子类别、书名、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allText, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allText, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7277,18 +7277,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextClass2NameSeq(es *elasticsearch.Cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClass2NameSeq 根据全文本、子类别、书名、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClass2NameSeq 根据全文本、子类别、书名、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allText, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClass2NameSeq(es *elasticsearch.Client, allText, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7298,18 +7298,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClass2NameSeq(es *elasticsearch.Client
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClass2PageCountReleaseDate 根据全文本、子类别、页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClass2PageCountReleaseDate 根据全文本、子类别、页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClass2PageCountReleaseDate(es *elasticsearch.Client, allText, class2 string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClass2PageCountReleaseDate(es *elasticsearch.Client, allText, class2 string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -7319,18 +7319,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClass2PageCountReleaseDate(es *elastic
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClass2PageCountSeq 根据全文本、子类别、页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClass2PageCountSeq 根据全文本、子类别、页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClass2PageCountSeq(es *elasticsearch.Client, allText, class2 string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClass2PageCountSeq(es *elasticsearch.Client, allText, class2 string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -7340,18 +7340,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClass2PageCountSeq(es *elasticsearch.C
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClass2PriceReleaseDate 根据全文本、子类别、价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClass2PriceReleaseDate 根据全文本、子类别、价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClass2PriceReleaseDate(es *elasticsearch.Client, allText, class2 string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClass2PriceReleaseDate(es *elasticsearch.Client, allText, class2 string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -7361,18 +7361,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClass2PriceReleaseDate(es *ela
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClass2PriceSeq 根据全文本、子类别、价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClass2PriceSeq 根据全文本、子类别、价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClass2PriceSeq(es *elasticsearch.Client, allText, class2 string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClass2PriceSeq(es *elasticsearch.Client, allText, class2 string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -7382,18 +7382,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClass2PriceSeq(es *elasticsear
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextClass2ReleaseDateSeq 根据全文本、子类别、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextClass2ReleaseDateSeq 根据全文本、子类别、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -7403,18 +7403,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextClass2ReleaseDateSeq(es *elast
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextClass2ReleaseDateSeq 根据全文本、子类别、发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextClass2ReleaseDateSeq 根据全文本、子类别、发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -7424,18 +7424,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextClass2ReleaseDateSeq(es *elasticse
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextClass2ReleaseDateSeq 根据全文本、子类别、发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextClass2ReleaseDateSeq 根据全文本、子类别、发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -7445,18 +7445,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextClass2ReleaseDateSeq(es *elasticse
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextClass2ReleaseDateSeq 根据全文本、子类别、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextClass2ReleaseDateSeq 根据全文本、子类别、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch.Client, allText, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -7466,18 +7466,18 @@ func StatsPriceInHistPriceOfBooksByAllTextClass2ReleaseDateSeq(es *elasticsearch
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextNamePageCountReleaseDate 根据全文本、书名、页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextNamePageCountReleaseDate 根据全文本、书名、页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextNamePageCountReleaseDate(es *elasticsearch.Client, allText, name string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextNamePageCountReleaseDate(es *elasticsearch.Client, allText, name string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7487,18 +7487,18 @@ func StatsPriceInHistPriceOfBooksByAllTextNamePageCountReleaseDate(es *elasticse
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextNamePageCountSeq 根据全文本、书名、页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextNamePageCountSeq 根据全文本、书名、页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextNamePageCountSeq(es *elasticsearch.Client, allText, name string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextNamePageCountSeq(es *elasticsearch.Client, allText, name string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7508,18 +7508,18 @@ func StatsPriceInHistPriceOfBooksByAllTextNamePageCountSeq(es *elasticsearch.Cli
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextNamePriceReleaseDate 根据全文本、书名、价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextNamePriceReleaseDate 根据全文本、书名、价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextNamePriceReleaseDate(es *elasticsearch.Client, allText, name string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextNamePriceReleaseDate(es *elasticsearch.Client, allText, name string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7529,18 +7529,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextNamePriceReleaseDate(es *elast
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextNamePriceSeq 根据全文本、书名、价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextNamePriceSeq 根据全文本、书名、价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // name string 书名
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextNamePriceSeq(es *elasticsearch.Client, allText, name string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextNamePriceSeq(es *elasticsearch.Client, allText, name string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7550,18 +7550,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextNamePriceSeq(es *elasticsearch
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextNameReleaseDateSeq 根据全文本、书名、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextNameReleaseDateSeq 根据全文本、书名、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7571,18 +7571,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextNameReleaseDateSeq(es *elastic
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAllTextNameReleaseDateSeq 根据全文本、书名、发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAllTextNameReleaseDateSeq 根据全文本、书名、发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7592,18 +7592,18 @@ func StatsPriceInHistPageCountOfBooksByAllTextNameReleaseDateSeq(es *elasticsear
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAllTextNameReleaseDateSeq 根据全文本、书名、发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAllTextNameReleaseDateSeq 根据全文本、书名、发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7613,18 +7613,18 @@ func StatsPageCountInHistPriceOfBooksByAllTextNameReleaseDateSeq(es *elasticsear
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextNameReleaseDateSeq 根据全文本、书名、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextNameReleaseDateSeq 根据全文本、书名、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextNameReleaseDateSeq(es *elasticsearch.Client, allText, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 		eq.Match("name", name),
@@ -7634,18 +7634,18 @@ func StatsPriceInHistPriceOfBooksByAllTextNameReleaseDateSeq(es *elasticsearch.C
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAllTextPageCountReleaseDateSeq 根据全文本、页数、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAllTextPageCountReleaseDateSeq 根据全文本、页数、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // allText string 全文本
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAllTextPageCountReleaseDateSeq(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAllTextPageCountReleaseDateSeq(es *elasticsearch.Client, allText string, pageCount int64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -7655,18 +7655,18 @@ func StatsPriceInHistPriceOfBooksByAllTextPageCountReleaseDateSeq(es *elasticsea
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAllTextPriceReleaseDateSeq 根据全文本、价格、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAllTextPriceReleaseDateSeq 根据全文本、价格、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // allText string 全文本
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAllTextPriceReleaseDateSeq(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAllTextPriceReleaseDateSeq(es *elasticsearch.Client, allText string, price float64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("all_text", allText),
 	}
@@ -7676,18 +7676,18 @@ func StatsPageCountInHistPageCountOfBooksByAllTextPriceReleaseDateSeq(es *elasti
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClassClass2Name 根据作者、类别、子类别、书名检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClassClass2Name 根据作者、类别、子类别、书名检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClassClass2Name(es *elasticsearch.Client, author, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClassClass2Name(es *elasticsearch.Client, author, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -7697,18 +7697,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClassClass2Name(es *elasticsear
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClassClass2Name 根据作者、类别、子类别、书名检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClassClass2Name 根据作者、类别、子类别、书名检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClassClass2Name(es *elasticsearch.Client, author, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClassClass2Name(es *elasticsearch.Client, author, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -7718,18 +7718,18 @@ func StatsPriceInHistPageCountOfBooksByAuthorClassClass2Name(es *elasticsearch.C
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClassClass2Name 根据作者、类别、子类别、书名检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClassClass2Name 根据作者、类别、子类别、书名检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClassClass2Name(es *elasticsearch.Client, author, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClassClass2Name(es *elasticsearch.Client, author, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -7739,18 +7739,18 @@ func StatsPageCountInHistPriceOfBooksByAuthorClassClass2Name(es *elasticsearch.C
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClassClass2Name 根据作者、类别、子类别、书名检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClassClass2Name 根据作者、类别、子类别、书名检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClassClass2Name(es *elasticsearch.Client, author, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClassClass2Name(es *elasticsearch.Client, author, class, class2, name string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -7760,18 +7760,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClassClass2Name(es *elasticsearch.Clien
 		eq.Term("class2", class2),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClassClass2PageCount 根据作者、类别、子类别、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClassClass2PageCount 根据作者、类别、子类别、页数检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClassClass2PageCount(es *elasticsearch.Client, author, class, class2 string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClassClass2PageCount(es *elasticsearch.Client, author, class, class2 string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -7781,18 +7781,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClassClass2PageCount(es *elasticsearch.
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClassClass2Price 根据作者、类别、子类别、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClassClass2Price 根据作者、类别、子类别、价格检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClassClass2Price(es *elasticsearch.Client, author, class, class2 string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClassClass2Price(es *elasticsearch.Client, author, class, class2 string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -7802,18 +7802,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClassClass2Price(es *elasticsea
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClassClass2ReleaseDate 根据作者、类别、子类别、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClassClass2ReleaseDate 根据作者、类别、子类别、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client, author, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client, author, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -7823,18 +7823,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClassClass2ReleaseDate(es *elas
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClassClass2ReleaseDate 根据作者、类别、子类别、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClassClass2ReleaseDate 根据作者、类别、子类别、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client, author, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client, author, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -7844,18 +7844,18 @@ func StatsPriceInHistPageCountOfBooksByAuthorClassClass2ReleaseDate(es *elastics
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClassClass2ReleaseDate 根据作者、类别、子类别、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClassClass2ReleaseDate 根据作者、类别、子类别、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client, author, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client, author, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -7865,18 +7865,18 @@ func StatsPageCountInHistPriceOfBooksByAuthorClassClass2ReleaseDate(es *elastics
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClassClass2ReleaseDate 根据作者、类别、子类别、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClassClass2ReleaseDate 根据作者、类别、子类别、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client, author, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClassClass2ReleaseDate(es *elasticsearch.Client, author, class, class2 string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -7886,18 +7886,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClassClass2ReleaseDate(es *elasticsearc
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClassClass2Seq 根据作者、类别、子类别、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClassClass2Seq 根据作者、类别、子类别、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClassClass2Seq(es *elasticsearch.Client, author, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClassClass2Seq(es *elasticsearch.Client, author, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -7907,18 +7907,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClassClass2Seq(es *elasticsearc
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClassClass2Seq 根据作者、类别、子类别、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClassClass2Seq 根据作者、类别、子类别、编号检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClassClass2Seq(es *elasticsearch.Client, author, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClassClass2Seq(es *elasticsearch.Client, author, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -7928,18 +7928,18 @@ func StatsPriceInHistPageCountOfBooksByAuthorClassClass2Seq(es *elasticsearch.Cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClassClass2Seq 根据作者、类别、子类别、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClassClass2Seq 根据作者、类别、子类别、编号检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClassClass2Seq(es *elasticsearch.Client, author, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClassClass2Seq(es *elasticsearch.Client, author, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -7949,18 +7949,18 @@ func StatsPageCountInHistPriceOfBooksByAuthorClassClass2Seq(es *elasticsearch.Cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClassClass2Seq 根据作者、类别、子类别、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClassClass2Seq 根据作者、类别、子类别、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // class2 string 子类别
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClassClass2Seq(es *elasticsearch.Client, author, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClassClass2Seq(es *elasticsearch.Client, author, class, class2, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -7970,18 +7970,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClassClass2Seq(es *elasticsearch.Client
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClassNamePageCount 根据作者、类别、书名、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClassNamePageCount 根据作者、类别、书名、页数检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // name string 书名
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClassNamePageCount(es *elasticsearch.Client, author, class, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClassNamePageCount(es *elasticsearch.Client, author, class, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -7991,18 +7991,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClassNamePageCount(es *elasticsearch.Cl
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClassNamePrice 根据作者、类别、书名、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClassNamePrice 根据作者、类别、书名、价格检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // name string 书名
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClassNamePrice(es *elasticsearch.Client, author, class, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClassNamePrice(es *elasticsearch.Client, author, class, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8012,18 +8012,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClassNamePrice(es *elasticsearc
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClassNameReleaseDate 根据作者、类别、书名、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClassNameReleaseDate 根据作者、类别、书名、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, author, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, author, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8033,18 +8033,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClassNameReleaseDate(es *elasti
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClassNameReleaseDate 根据作者、类别、书名、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClassNameReleaseDate 根据作者、类别、书名、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, author, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, author, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8054,18 +8054,18 @@ func StatsPriceInHistPageCountOfBooksByAuthorClassNameReleaseDate(es *elasticsea
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClassNameReleaseDate 根据作者、类别、书名、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClassNameReleaseDate 根据作者、类别、书名、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, author, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, author, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8075,18 +8075,18 @@ func StatsPageCountInHistPriceOfBooksByAuthorClassNameReleaseDate(es *elasticsea
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClassNameReleaseDate 根据作者、类别、书名、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClassNameReleaseDate 根据作者、类别、书名、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, author, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClassNameReleaseDate(es *elasticsearch.Client, author, class, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8096,18 +8096,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClassNameReleaseDate(es *elasticsearch.
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClassNameSeq 根据作者、类别、书名、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClassNameSeq 根据作者、类别、书名、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8117,18 +8117,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClassNameSeq(es *elasticsearch.
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClassNameSeq 根据作者、类别、书名、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClassNameSeq 根据作者、类别、书名、编号检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8138,18 +8138,18 @@ func StatsPriceInHistPageCountOfBooksByAuthorClassNameSeq(es *elasticsearch.Clie
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClassNameSeq 根据作者、类别、书名、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClassNameSeq 根据作者、类别、书名、编号检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8159,18 +8159,18 @@ func StatsPageCountInHistPriceOfBooksByAuthorClassNameSeq(es *elasticsearch.Clie
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClassNameSeq 根据作者、类别、书名、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClassNameSeq 根据作者、类别、书名、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClassNameSeq(es *elasticsearch.Client, author, class, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8180,18 +8180,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClassNameSeq(es *elasticsearch.Client, 
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClassPageCountReleaseDate 根据作者、类别、页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClassPageCountReleaseDate 根据作者、类别、页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClassPageCountReleaseDate(es *elasticsearch.Client, author, class string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClassPageCountReleaseDate(es *elasticsearch.Client, author, class string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8201,18 +8201,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClassPageCountReleaseDate(es *elasticse
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClassPageCountSeq 根据作者、类别、页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClassPageCountSeq 根据作者、类别、页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClassPageCountSeq(es *elasticsearch.Client, author, class string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClassPageCountSeq(es *elasticsearch.Client, author, class string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8222,18 +8222,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClassPageCountSeq(es *elasticsearch.Cli
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClassPriceReleaseDate 根据作者、类别、价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClassPriceReleaseDate 根据作者、类别、价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClassPriceReleaseDate(es *elasticsearch.Client, author, class string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClassPriceReleaseDate(es *elasticsearch.Client, author, class string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8243,18 +8243,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClassPriceReleaseDate(es *elast
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClassPriceSeq 根据作者、类别、价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClassPriceSeq 根据作者、类别、价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClassPriceSeq(es *elasticsearch.Client, author, class string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClassPriceSeq(es *elasticsearch.Client, author, class string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8264,18 +8264,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClassPriceSeq(es *elasticsearch
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClassReleaseDateSeq 根据作者、类别、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClassReleaseDateSeq 根据作者、类别、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8285,18 +8285,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClassReleaseDateSeq(es *elastic
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClassReleaseDateSeq 根据作者、类别、发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClassReleaseDateSeq 根据作者、类别、发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8306,18 +8306,18 @@ func StatsPriceInHistPageCountOfBooksByAuthorClassReleaseDateSeq(es *elasticsear
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClassReleaseDateSeq 根据作者、类别、发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClassReleaseDateSeq 根据作者、类别、发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8327,18 +8327,18 @@ func StatsPageCountInHistPriceOfBooksByAuthorClassReleaseDateSeq(es *elasticsear
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClassReleaseDateSeq 根据作者、类别、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClassReleaseDateSeq 根据作者、类别、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class string 类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClassReleaseDateSeq(es *elasticsearch.Client, author, class string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8348,18 +8348,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClassReleaseDateSeq(es *elasticsearch.C
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClass2NamePageCount 根据作者、子类别、书名、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClass2NamePageCount 根据作者、子类别、书名、页数检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClass2NamePageCount(es *elasticsearch.Client, author, class2, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClass2NamePageCount(es *elasticsearch.Client, author, class2, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8369,18 +8369,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClass2NamePageCount(es *elasticsearch.C
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClass2NamePrice 根据作者、子类别、书名、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClass2NamePrice 根据作者、子类别、书名、价格检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClass2NamePrice(es *elasticsearch.Client, author, class2, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClass2NamePrice(es *elasticsearch.Client, author, class2, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8390,18 +8390,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClass2NamePrice(es *elasticsear
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClass2NameReleaseDate 根据作者、子类别、书名、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClass2NameReleaseDate 根据作者、子类别、书名、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, author, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, author, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8411,18 +8411,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClass2NameReleaseDate(es *elast
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClass2NameReleaseDate 根据作者、子类别、书名、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClass2NameReleaseDate 根据作者、子类别、书名、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, author, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, author, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8432,18 +8432,18 @@ func StatsPriceInHistPageCountOfBooksByAuthorClass2NameReleaseDate(es *elasticse
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClass2NameReleaseDate 根据作者、子类别、书名、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClass2NameReleaseDate 根据作者、子类别、书名、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, author, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, author, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8453,18 +8453,18 @@ func StatsPageCountInHistPriceOfBooksByAuthorClass2NameReleaseDate(es *elasticse
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClass2NameReleaseDate 根据作者、子类别、书名、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClass2NameReleaseDate 根据作者、子类别、书名、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, author, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClass2NameReleaseDate(es *elasticsearch.Client, author, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8474,18 +8474,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClass2NameReleaseDate(es *elasticsearch
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClass2NameSeq 根据作者、子类别、书名、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClass2NameSeq 根据作者、子类别、书名、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8495,18 +8495,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClass2NameSeq(es *elasticsearch
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClass2NameSeq 根据作者、子类别、书名、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClass2NameSeq 根据作者、子类别、书名、编号检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8516,18 +8516,18 @@ func StatsPriceInHistPageCountOfBooksByAuthorClass2NameSeq(es *elasticsearch.Cli
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClass2NameSeq 根据作者、子类别、书名、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClass2NameSeq 根据作者、子类别、书名、编号检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8537,18 +8537,18 @@ func StatsPageCountInHistPriceOfBooksByAuthorClass2NameSeq(es *elasticsearch.Cli
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClass2NameSeq 根据作者、子类别、书名、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClass2NameSeq 根据作者、子类别、书名、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClass2NameSeq(es *elasticsearch.Client, author, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8558,18 +8558,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClass2NameSeq(es *elasticsearch.Client,
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClass2PageCountReleaseDate 根据作者、子类别、页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClass2PageCountReleaseDate 根据作者、子类别、页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClass2PageCountReleaseDate(es *elasticsearch.Client, author, class2 string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClass2PageCountReleaseDate(es *elasticsearch.Client, author, class2 string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8579,18 +8579,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClass2PageCountReleaseDate(es *elastics
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClass2PageCountSeq 根据作者、子类别、页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClass2PageCountSeq 根据作者、子类别、页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClass2PageCountSeq(es *elasticsearch.Client, author, class2 string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClass2PageCountSeq(es *elasticsearch.Client, author, class2 string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8600,18 +8600,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClass2PageCountSeq(es *elasticsearch.Cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClass2PriceReleaseDate 根据作者、子类别、价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClass2PriceReleaseDate 根据作者、子类别、价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClass2PriceReleaseDate(es *elasticsearch.Client, author, class2 string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClass2PriceReleaseDate(es *elasticsearch.Client, author, class2 string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8621,18 +8621,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClass2PriceReleaseDate(es *elas
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClass2PriceSeq 根据作者、子类别、价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClass2PriceSeq 根据作者、子类别、价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClass2PriceSeq(es *elasticsearch.Client, author, class2 string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClass2PriceSeq(es *elasticsearch.Client, author, class2 string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8642,18 +8642,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClass2PriceSeq(es *elasticsearc
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorClass2ReleaseDateSeq 根据作者、子类别、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorClass2ReleaseDateSeq 根据作者、子类别、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8663,18 +8663,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorClass2ReleaseDateSeq(es *elasti
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorClass2ReleaseDateSeq 根据作者、子类别、发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorClass2ReleaseDateSeq 根据作者、子类别、发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8684,18 +8684,18 @@ func StatsPriceInHistPageCountOfBooksByAuthorClass2ReleaseDateSeq(es *elasticsea
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorClass2ReleaseDateSeq 根据作者、子类别、发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorClass2ReleaseDateSeq 根据作者、子类别、发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8705,18 +8705,18 @@ func StatsPageCountInHistPriceOfBooksByAuthorClass2ReleaseDateSeq(es *elasticsea
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorClass2ReleaseDateSeq 根据作者、子类别、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorClass2ReleaseDateSeq 根据作者、子类别、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.Client, author, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8726,18 +8726,18 @@ func StatsPriceInHistPriceOfBooksByAuthorClass2ReleaseDateSeq(es *elasticsearch.
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorNamePageCountReleaseDate 根据作者、书名、页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorNamePageCountReleaseDate 根据作者、书名、页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorNamePageCountReleaseDate(es *elasticsearch.Client, author, name string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorNamePageCountReleaseDate(es *elasticsearch.Client, author, name string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8747,18 +8747,18 @@ func StatsPriceInHistPriceOfBooksByAuthorNamePageCountReleaseDate(es *elasticsea
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorNamePageCountSeq 根据作者、书名、页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorNamePageCountSeq 根据作者、书名、页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorNamePageCountSeq(es *elasticsearch.Client, author, name string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorNamePageCountSeq(es *elasticsearch.Client, author, name string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8768,18 +8768,18 @@ func StatsPriceInHistPriceOfBooksByAuthorNamePageCountSeq(es *elasticsearch.Clie
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorNamePriceReleaseDate 根据作者、书名、价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorNamePriceReleaseDate 根据作者、书名、价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorNamePriceReleaseDate(es *elasticsearch.Client, author, name string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorNamePriceReleaseDate(es *elasticsearch.Client, author, name string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8789,18 +8789,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorNamePriceReleaseDate(es *elasti
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorNamePriceSeq 根据作者、书名、价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorNamePriceSeq 根据作者、书名、价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // name string 书名
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorNamePriceSeq(es *elasticsearch.Client, author, name string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorNamePriceSeq(es *elasticsearch.Client, author, name string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8810,18 +8810,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorNamePriceSeq(es *elasticsearch.
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorNameReleaseDateSeq 根据作者、书名、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorNameReleaseDateSeq 根据作者、书名、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8831,18 +8831,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorNameReleaseDateSeq(es *elastics
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByAuthorNameReleaseDateSeq 根据作者、书名、发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByAuthorNameReleaseDateSeq 根据作者、书名、发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8852,18 +8852,18 @@ func StatsPriceInHistPageCountOfBooksByAuthorNameReleaseDateSeq(es *elasticsearc
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByAuthorNameReleaseDateSeq 根据作者、书名、发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByAuthorNameReleaseDateSeq 根据作者、书名、发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8873,18 +8873,18 @@ func StatsPageCountInHistPriceOfBooksByAuthorNameReleaseDateSeq(es *elasticsearc
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorNameReleaseDateSeq 根据作者、书名、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorNameReleaseDateSeq 根据作者、书名、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Client, author, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 		eq.Match("name", name),
@@ -8894,18 +8894,18 @@ func StatsPriceInHistPriceOfBooksByAuthorNameReleaseDateSeq(es *elasticsearch.Cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByAuthorPageCountReleaseDateSeq 根据作者、页数、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByAuthorPageCountReleaseDateSeq 根据作者、页数、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // author string 作者
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByAuthorPageCountReleaseDateSeq(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByAuthorPageCountReleaseDateSeq(es *elasticsearch.Client, author string, pageCount int64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8915,18 +8915,18 @@ func StatsPriceInHistPriceOfBooksByAuthorPageCountReleaseDateSeq(es *elasticsear
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByAuthorPriceReleaseDateSeq 根据作者、价格、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByAuthorPriceReleaseDateSeq 根据作者、价格、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // author string 作者
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByAuthorPriceReleaseDateSeq(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByAuthorPriceReleaseDateSeq(es *elasticsearch.Client, author string, price float64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("author", author),
 	}
@@ -8936,18 +8936,18 @@ func StatsPageCountInHistPageCountOfBooksByAuthorPriceReleaseDateSeq(es *elastic
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassClass2NamePageCount 根据类别、子类别、书名、页数检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassClass2NamePageCount 根据类别、子类别、书名、页数检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassClass2NamePageCount(es *elasticsearch.Client, class, class2, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassClass2NamePageCount(es *elasticsearch.Client, class, class2, name string, pageCount int64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -8957,18 +8957,18 @@ func StatsPriceInHistPriceOfBooksByClassClass2NamePageCount(es *elasticsearch.Cl
 		eq.Term("page_count", pageCount),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassClass2NamePrice 根据类别、子类别、书名、价格检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassClass2NamePrice 根据类别、子类别、书名、价格检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // price float64 价格
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassClass2NamePrice(es *elasticsearch.Client, class, class2, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassClass2NamePrice(es *elasticsearch.Client, class, class2, name string, price float64, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -8978,18 +8978,18 @@ func StatsPageCountInHistPageCountOfBooksByClassClass2NamePrice(es *elasticsearc
 		eq.Term("price", price),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassClass2NameReleaseDate 根据类别、子类别、书名、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassClass2NameReleaseDate 根据类别、子类别、书名、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, class, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, class, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -8999,18 +8999,18 @@ func StatsPageCountInHistPageCountOfBooksByClassClass2NameReleaseDate(es *elasti
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClassClass2NameReleaseDate 根据类别、子类别、书名、发布日期检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClassClass2NameReleaseDate 根据类别、子类别、书名、发布日期检索books表，并按页数区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, class, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, class, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9020,18 +9020,18 @@ func StatsPriceInHistPageCountOfBooksByClassClass2NameReleaseDate(es *elasticsea
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClassClass2NameReleaseDate 根据类别、子类别、书名、发布日期检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClassClass2NameReleaseDate 根据类别、子类别、书名、发布日期检索books表，并按价格区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, class, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, class, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9041,18 +9041,18 @@ func StatsPageCountInHistPriceOfBooksByClassClass2NameReleaseDate(es *elasticsea
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassClass2NameReleaseDate 根据类别、子类别、书名、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassClass2NameReleaseDate 根据类别、子类别、书名、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, class, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassClass2NameReleaseDate(es *elasticsearch.Client, class, class2, name string, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9062,18 +9062,18 @@ func StatsPriceInHistPriceOfBooksByClassClass2NameReleaseDate(es *elasticsearch.
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassClass2NameSeq 根据类别、子类别、书名、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassClass2NameSeq 根据类别、子类别、书名、编号检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassClass2NameSeq(es *elasticsearch.Client, class, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassClass2NameSeq(es *elasticsearch.Client, class, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9083,18 +9083,18 @@ func StatsPageCountInHistPageCountOfBooksByClassClass2NameSeq(es *elasticsearch.
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClassClass2NameSeq 根据类别、子类别、书名、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClassClass2NameSeq 根据类别、子类别、书名、编号检索books表，并按页数区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClassClass2NameSeq(es *elasticsearch.Client, class, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClassClass2NameSeq(es *elasticsearch.Client, class, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9104,18 +9104,18 @@ func StatsPriceInHistPageCountOfBooksByClassClass2NameSeq(es *elasticsearch.Clie
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClassClass2NameSeq 根据类别、子类别、书名、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClassClass2NameSeq 根据类别、子类别、书名、编号检索books表，并按价格区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClassClass2NameSeq(es *elasticsearch.Client, class, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClassClass2NameSeq(es *elasticsearch.Client, class, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9125,18 +9125,18 @@ func StatsPageCountInHistPriceOfBooksByClassClass2NameSeq(es *elasticsearch.Clie
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassClass2NameSeq 根据类别、子类别、书名、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassClass2NameSeq 根据类别、子类别、书名、编号检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // name string 书名
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassClass2NameSeq(es *elasticsearch.Client, class, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassClass2NameSeq(es *elasticsearch.Client, class, class2, name, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9146,18 +9146,18 @@ func StatsPriceInHistPriceOfBooksByClassClass2NameSeq(es *elasticsearch.Client, 
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassClass2PageCountReleaseDate 根据类别、子类别、页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassClass2PageCountReleaseDate 根据类别、子类别、页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassClass2PageCountReleaseDate(es *elasticsearch.Client, class, class2 string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassClass2PageCountReleaseDate(es *elasticsearch.Client, class, class2 string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -9165,18 +9165,18 @@ func StatsPriceInHistPriceOfBooksByClassClass2PageCountReleaseDate(es *elasticse
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassClass2PageCountSeq 根据类别、子类别、页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassClass2PageCountSeq 根据类别、子类别、页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassClass2PageCountSeq(es *elasticsearch.Client, class, class2 string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassClass2PageCountSeq(es *elasticsearch.Client, class, class2 string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -9184,18 +9184,18 @@ func StatsPriceInHistPriceOfBooksByClassClass2PageCountSeq(es *elasticsearch.Cli
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassClass2PriceReleaseDate 根据类别、子类别、价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassClass2PriceReleaseDate 根据类别、子类别、价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassClass2PriceReleaseDate(es *elasticsearch.Client, class, class2 string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassClass2PriceReleaseDate(es *elasticsearch.Client, class, class2 string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -9203,18 +9203,18 @@ func StatsPageCountInHistPageCountOfBooksByClassClass2PriceReleaseDate(es *elast
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassClass2PriceSeq 根据类别、子类别、价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassClass2PriceSeq 根据类别、子类别、价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassClass2PriceSeq(es *elasticsearch.Client, class, class2 string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassClass2PriceSeq(es *elasticsearch.Client, class, class2 string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -9222,18 +9222,18 @@ func StatsPageCountInHistPageCountOfBooksByClassClass2PriceSeq(es *elasticsearch
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassClass2ReleaseDateSeq 根据类别、子类别、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassClass2ReleaseDateSeq 根据类别、子类别、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassClass2ReleaseDateSeq(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassClass2ReleaseDateSeq(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -9241,18 +9241,18 @@ func StatsPageCountInHistPageCountOfBooksByClassClass2ReleaseDateSeq(es *elastic
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClassClass2ReleaseDateSeq 根据类别、子类别、发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClassClass2ReleaseDateSeq 根据类别、子类别、发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClassClass2ReleaseDateSeq(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClassClass2ReleaseDateSeq(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -9260,18 +9260,18 @@ func StatsPriceInHistPageCountOfBooksByClassClass2ReleaseDateSeq(es *elasticsear
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClassClass2ReleaseDateSeq 根据类别、子类别、发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClassClass2ReleaseDateSeq 根据类别、子类别、发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClassClass2ReleaseDateSeq(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClassClass2ReleaseDateSeq(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -9279,18 +9279,18 @@ func StatsPageCountInHistPriceOfBooksByClassClass2ReleaseDateSeq(es *elasticsear
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassClass2ReleaseDateSeq 根据类别、子类别、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassClass2ReleaseDateSeq 根据类别、子类别、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // class2 string 子类别
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassClass2ReleaseDateSeq(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassClass2ReleaseDateSeq(es *elasticsearch.Client, class, class2 string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("class2", class2),
@@ -9298,18 +9298,18 @@ func StatsPriceInHistPriceOfBooksByClassClass2ReleaseDateSeq(es *elasticsearch.C
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassNamePageCountReleaseDate 根据类别、书名、页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassNamePageCountReleaseDate 根据类别、书名、页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassNamePageCountReleaseDate(es *elasticsearch.Client, class, name string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassNamePageCountReleaseDate(es *elasticsearch.Client, class, name string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9319,18 +9319,18 @@ func StatsPriceInHistPriceOfBooksByClassNamePageCountReleaseDate(es *elasticsear
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassNamePageCountSeq 根据类别、书名、页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassNamePageCountSeq 根据类别、书名、页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassNamePageCountSeq(es *elasticsearch.Client, class, name string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassNamePageCountSeq(es *elasticsearch.Client, class, name string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9340,18 +9340,18 @@ func StatsPriceInHistPriceOfBooksByClassNamePageCountSeq(es *elasticsearch.Clien
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassNamePriceReleaseDate 根据类别、书名、价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassNamePriceReleaseDate 根据类别、书名、价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassNamePriceReleaseDate(es *elasticsearch.Client, class, name string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassNamePriceReleaseDate(es *elasticsearch.Client, class, name string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9361,18 +9361,18 @@ func StatsPageCountInHistPageCountOfBooksByClassNamePriceReleaseDate(es *elastic
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassNamePriceSeq 根据类别、书名、价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassNamePriceSeq 根据类别、书名、价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // name string 书名
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassNamePriceSeq(es *elasticsearch.Client, class, name string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassNamePriceSeq(es *elasticsearch.Client, class, name string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9382,18 +9382,18 @@ func StatsPageCountInHistPageCountOfBooksByClassNamePriceSeq(es *elasticsearch.C
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassNameReleaseDateSeq 根据类别、书名、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassNameReleaseDateSeq 根据类别、书名、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9403,18 +9403,18 @@ func StatsPageCountInHistPageCountOfBooksByClassNameReleaseDateSeq(es *elasticse
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClassNameReleaseDateSeq 根据类别、书名、发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClassNameReleaseDateSeq 根据类别、书名、发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9424,18 +9424,18 @@ func StatsPriceInHistPageCountOfBooksByClassNameReleaseDateSeq(es *elasticsearch
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClassNameReleaseDateSeq 根据类别、书名、发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClassNameReleaseDateSeq 根据类别、书名、发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9445,18 +9445,18 @@ func StatsPageCountInHistPriceOfBooksByClassNameReleaseDateSeq(es *elasticsearch
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassNameReleaseDateSeq 根据类别、书名、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassNameReleaseDateSeq 根据类别、书名、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassNameReleaseDateSeq(es *elasticsearch.Client, class, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9466,18 +9466,18 @@ func StatsPriceInHistPriceOfBooksByClassNameReleaseDateSeq(es *elasticsearch.Cli
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClassPageCountReleaseDateSeq 根据类别、页数、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClassPageCountReleaseDateSeq 根据类别、页数、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // class string 类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClassPageCountReleaseDateSeq(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClassPageCountReleaseDateSeq(es *elasticsearch.Client, class string, pageCount int64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("page_count", pageCount),
@@ -9485,18 +9485,18 @@ func StatsPriceInHistPriceOfBooksByClassPageCountReleaseDateSeq(es *elasticsearc
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClassPriceReleaseDateSeq 根据类别、价格、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClassPriceReleaseDateSeq 根据类别、价格、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // class string 类别
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClassPriceReleaseDateSeq(es *elasticsearch.Client, class string, price float64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClassPriceReleaseDateSeq(es *elasticsearch.Client, class string, price float64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class", class),
 		eq.Term("price", price),
@@ -9504,18 +9504,18 @@ func StatsPageCountInHistPageCountOfBooksByClassPriceReleaseDateSeq(es *elastics
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass2NamePageCountReleaseDate 根据子类别、书名、页数、发布日期检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass2NamePageCountReleaseDate 根据子类别、书名、页数、发布日期检索books表，并按价格区间分桶统计价格的平均值
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass2NamePageCountReleaseDate(es *elasticsearch.Client, class2, name string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass2NamePageCountReleaseDate(es *elasticsearch.Client, class2, name string, pageCount int64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9525,18 +9525,18 @@ func StatsPriceInHistPriceOfBooksByClass2NamePageCountReleaseDate(es *elasticsea
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass2NamePageCountSeq 根据子类别、书名、页数、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass2NamePageCountSeq 根据子类别、书名、页数、编号检索books表，并按价格区间分桶统计价格的平均值
 // class2 string 子类别
 // name string 书名
 // pageCount int64 页数
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass2NamePageCountSeq(es *elasticsearch.Client, class2, name string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass2NamePageCountSeq(es *elasticsearch.Client, class2, name string, pageCount int64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9546,18 +9546,18 @@ func StatsPriceInHistPriceOfBooksByClass2NamePageCountSeq(es *elasticsearch.Clie
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass2NamePriceReleaseDate 根据子类别、书名、价格、发布日期检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass2NamePriceReleaseDate 根据子类别、书名、价格、发布日期检索books表，并按页数区间分桶统计页数的平均值
 // class2 string 子类别
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass2NamePriceReleaseDate(es *elasticsearch.Client, class2, name string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass2NamePriceReleaseDate(es *elasticsearch.Client, class2, name string, price float64, releaseDate time.Time, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9567,18 +9567,18 @@ func StatsPageCountInHistPageCountOfBooksByClass2NamePriceReleaseDate(es *elasti
 		eq.Term("release_date", releaseDate),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass2NamePriceSeq 根据子类别、书名、价格、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass2NamePriceSeq 根据子类别、书名、价格、编号检索books表，并按页数区间分桶统计页数的平均值
 // class2 string 子类别
 // name string 书名
 // price float64 价格
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass2NamePriceSeq(es *elasticsearch.Client, class2, name string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass2NamePriceSeq(es *elasticsearch.Client, class2, name string, price float64, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9588,18 +9588,18 @@ func StatsPageCountInHistPageCountOfBooksByClass2NamePriceSeq(es *elasticsearch.
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass2NameReleaseDateSeq 根据子类别、书名、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass2NameReleaseDateSeq 根据子类别、书名、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, class2, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, class2, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9609,18 +9609,18 @@ func StatsPageCountInHistPageCountOfBooksByClass2NameReleaseDateSeq(es *elastics
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPageCountOfBooksByClass2NameReleaseDateSeq 根据子类别、书名、发布日期、编号检索books表，并按页数区间分桶统计价格的统计信息
+// AvgPriceInHistPageCountOfBooksByClass2NameReleaseDateSeq 根据子类别、书名、发布日期、编号检索books表，并按页数区间分桶统计价格的平均值
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPriceInHistPageCountOfBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, class2, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPageCountOfBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, class2, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9630,18 +9630,18 @@ func StatsPriceInHistPageCountOfBooksByClass2NameReleaseDateSeq(es *elasticsearc
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPriceOfBooksByClass2NameReleaseDateSeq 根据子类别、书名、发布日期、编号检索books表，并按价格区间分桶统计页数的统计信息
+// AvgPageCountInHistPriceOfBooksByClass2NameReleaseDateSeq 根据子类别、书名、发布日期、编号检索books表，并按价格区间分桶统计页数的平均值
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPageCountInHistPriceOfBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, class2, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPriceOfBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, class2, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9651,18 +9651,18 @@ func StatsPageCountInHistPriceOfBooksByClass2NameReleaseDateSeq(es *elasticsearc
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass2NameReleaseDateSeq 根据子类别、书名、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass2NameReleaseDateSeq 根据子类别、书名、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // class2 string 子类别
 // name string 书名
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, class2, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass2NameReleaseDateSeq(es *elasticsearch.Client, class2, name string, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9672,18 +9672,18 @@ func StatsPriceInHistPriceOfBooksByClass2NameReleaseDateSeq(es *elasticsearch.Cl
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByClass2PageCountReleaseDateSeq 根据子类别、页数、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByClass2PageCountReleaseDateSeq 根据子类别、页数、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // class2 string 子类别
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByClass2PageCountReleaseDateSeq(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByClass2PageCountReleaseDateSeq(es *elasticsearch.Client, class2 string, pageCount int64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("page_count", pageCount),
@@ -9691,18 +9691,18 @@ func StatsPriceInHistPriceOfBooksByClass2PageCountReleaseDateSeq(es *elasticsear
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByClass2PriceReleaseDateSeq 根据子类别、价格、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByClass2PriceReleaseDateSeq 根据子类别、价格、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // class2 string 子类别
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByClass2PriceReleaseDateSeq(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByClass2PriceReleaseDateSeq(es *elasticsearch.Client, class2 string, price float64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	terms := []eq.Map{
 		eq.Term("class2", class2),
 		eq.Term("price", price),
@@ -9710,18 +9710,18 @@ func StatsPageCountInHistPageCountOfBooksByClass2PriceReleaseDateSeq(es *elastic
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPriceInHistPriceOfBooksByNamePageCountReleaseDateSeq 根据书名、页数、发布日期、编号检索books表，并按价格区间分桶统计价格的统计信息
+// AvgPriceInHistPriceOfBooksByNamePageCountReleaseDateSeq 根据书名、页数、发布日期、编号检索books表，并按价格区间分桶统计价格的平均值
 // name string 书名
 // pageCount int64 页数
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的价格区间间隔
-func StatsPriceInHistPriceOfBooksByNamePageCountReleaseDateSeq(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPriceInHistPriceOfBooksByNamePageCountReleaseDateSeq(es *elasticsearch.Client, name string, pageCount int64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9731,18 +9731,18 @@ func StatsPriceInHistPriceOfBooksByNamePageCountReleaseDateSeq(es *elasticsearch
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("price", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("price"))
+	aggs = aggs.Nested(eq.AvgAgg("price"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
 
-// StatsPageCountInHistPageCountOfBooksByNamePriceReleaseDateSeq 根据书名、价格、发布日期、编号检索books表，并按页数区间分桶统计页数的统计信息
+// AvgPageCountInHistPageCountOfBooksByNamePriceReleaseDateSeq 根据书名、价格、发布日期、编号检索books表，并按页数区间分桶统计页数的平均值
 // name string 书名
 // price float64 价格
 // releaseDate time.Time 发布日期
 // seq string 编号
 // histInterval float64 分桶聚合的页数区间间隔
-func StatsPageCountInHistPageCountOfBooksByNamePriceReleaseDateSeq(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
+func AvgPageCountInHistPageCountOfBooksByNamePriceReleaseDateSeq(es *elasticsearch.Client, name string, price float64, releaseDate time.Time, seq string, histInterval float64) (*eq.Data, *eq.Query, error) {
 	matches := []eq.Map{
 		eq.Match("name", name),
 	}
@@ -9752,7 +9752,7 @@ func StatsPageCountInHistPageCountOfBooksByNamePriceReleaseDateSeq(es *elasticse
 		eq.Term("seq", seq),
 	}
 	aggs := eq.HistogramAgg("page_count", eq.WithInterval(histInterval))
-	aggs = aggs.Nested(eq.StatsAgg("page_count"))
+	aggs = aggs.Nested(eq.AvgAgg("page_count"))
 	esQuery := &eq.ESQuery{Query: eq.Bool(eq.WithMust(matches), eq.WithFilter(terms)), Agg: aggs}
 	return queryBooksList(es, esQuery)
 }
