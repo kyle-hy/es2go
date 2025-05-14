@@ -111,6 +111,7 @@ func main() {
 		gen.GenEsAggRecentStats,
 		gen.GenEsAggRecentHist,
 		gen.GenEsAggRecentDateHist,
+		gen.GenEsAggRecentHistStats,
 	}
 
 	// 并发执行各种代码生成函数
