@@ -61,8 +61,8 @@ func PreAggMatchDateHistStatsCond(mappingPath string, esInfo *EsModelInfo, dhtyp
 }
 
 // getAggMatchDateHistStatsFuncName 获取函数名称
-func getAggMatchDateHistStatsFuncName(structName string, condFields, histFields, statFields []*FieldInfo, dhtype, stype string) string {
-	fn := stype + GenFieldsName(statFields) + "In" + dhtype + "Hist" + GenFieldsName(histFields) + "Of" + structName + "By" + GenFieldsName(condFields)
+func getAggMatchDateHistStatsFuncName(structName string, condFields, histFields, statsFields []*FieldInfo, dhtype, stype string) string {
+	fn := stype + GenFieldsName(statsFields) + "In" + dhtype + "Hist" + GenFieldsName(histFields) + "Of" + structName + "By" + GenFieldsName(condFields)
 	return fn
 }
 
