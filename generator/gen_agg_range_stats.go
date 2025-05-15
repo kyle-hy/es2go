@@ -188,6 +188,7 @@ func GenEsAggRangeStats(mappingPath, outputPath string, esInfo *EsModelInfo) err
 		// 预处理渲染所需的内容
 		funcData := PreAggRangeStatsCond(mappingPath, esInfo, stype)
 		detailData := DetailTplData{
+			GenFileName:   CurrentFileName(),
 			PackageName:   esInfo.PackageName,
 			StructName:    esInfo.StructName,
 			StructComment: esInfo.StructComment,

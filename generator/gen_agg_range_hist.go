@@ -183,6 +183,7 @@ func GenEsAggRangeHist(mappingPath, outputPath string, esInfo *EsModelInfo) erro
 	// 预处理渲染所需的内容
 	funcData := PreAggRangeHistCond(mappingPath, esInfo)
 	detailData := DetailTplData{
+		GenFileName:   CurrentFileName(),
 		PackageName:   esInfo.PackageName,
 		StructName:    esInfo.StructName,
 		StructComment: esInfo.StructComment,

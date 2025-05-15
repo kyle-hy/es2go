@@ -203,6 +203,7 @@ func GenEsAggRecentTerms(mappingPath, outputPath string, esInfo *EsModelInfo) er
 		// 预处理渲染所需的内容
 		funcData := PreAggRecentTermsCond(mappingPath, esInfo, rtype)
 		detailData := DetailTplData{
+			GenFileName:   CurrentFileName(),
 			PackageName:   esInfo.PackageName,
 			StructName:    esInfo.StructName,
 			StructComment: esInfo.StructComment,

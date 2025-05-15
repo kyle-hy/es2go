@@ -179,6 +179,7 @@ func GenEsDetailRecentTopN(mappingPath, outputPath string, esInfo *EsModelInfo) 
 		// 预处理渲染所需的内容
 		funcData := PreDetailRecentTopNCond(mappingPath, esInfo, rtype)
 		detailData := DetailTplData{
+			GenFileName:   CurrentFileName(),
 			PackageName:   esInfo.PackageName,
 			StructName:    esInfo.StructName,
 			StructComment: esInfo.StructComment,

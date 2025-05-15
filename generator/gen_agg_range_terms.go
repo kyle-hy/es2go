@@ -186,6 +186,7 @@ func GenEsAggRangeTerms(mappingPath, outputPath string, esInfo *EsModelInfo) err
 	// 预处理渲染所需的内容
 	funcData := PreAggRangeTermsCond(mappingPath, esInfo)
 	detailData := DetailTplData{
+		GenFileName:   CurrentFileName(),
 		PackageName:   esInfo.PackageName,
 		StructName:    esInfo.StructName,
 		StructComment: esInfo.StructComment,

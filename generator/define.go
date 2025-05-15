@@ -19,6 +19,7 @@ type FuncTplData struct {
 
 // DetailTplData 生成详情的模板数据
 type DetailTplData struct {
+	GenFileName   string         // 生成代码的go文件
 	PackageName   string         // 代码包名
 	StructName    string         // 模型结构体名称
 	StructComment string         // 模型结构体注释

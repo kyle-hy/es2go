@@ -111,6 +111,7 @@ func GenEsAggMatchDateHistStats(mappingPath, outputPath string, esInfo *EsModelI
 			// 预处理渲染所需的内容
 			funcData := PreAggMatchDateHistStatsCond(mappingPath, esInfo, dhtype, stype)
 			detailData := DetailTplData{
+				GenFileName:   CurrentFileName(),
 				PackageName:   esInfo.PackageName,
 				StructName:    esInfo.StructName,
 				StructComment: esInfo.StructComment,

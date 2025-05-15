@@ -204,6 +204,7 @@ func GenEsAggRecentStats(mappingPath, outputPath string, esInfo *EsModelInfo) er
 			// 预处理渲染所需的内容
 			funcData := PreAggRecentStatsCond(mappingPath, esInfo, rtype, stype)
 			detailData := DetailTplData{
+				GenFileName:   CurrentFileName(),
 				PackageName:   esInfo.PackageName,
 				StructName:    esInfo.StructName,
 				StructComment: esInfo.StructComment,

@@ -2,7 +2,9 @@ package generator
 
 import (
 	"fmt"
+	"path/filepath"
 	"reflect"
+	"runtime"
 	"slices"
 	"sort"
 	"strings"
@@ -704,4 +706,16 @@ func eqRecents(fields []*FieldInfo, rtype string, limitTypes []string) [][]strin
 		ranges = append(ranges, tmps)
 	}
 	return ranges
+}
+
+// CurrentFileName 获取当前文件名
+func CurrentFileName() string {
+	_, file, _, _ := runtime.Caller(1)
+	return filepath.Base(file)
+}
+
+// CurrentFilePath 获取当前文件路径
+func CurrentFilePath() string {
+	_, file, _, _ := runtime.Caller(1)
+	return file
 }

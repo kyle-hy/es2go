@@ -191,6 +191,7 @@ func GenEsAggRangeHistStats(mappingPath, outputPath string, esInfo *EsModelInfo)
 		// 预处理渲染所需的内容
 		funcData := PreAggRangeHistStatsCond(mappingPath, esInfo, stype)
 		detailData := DetailTplData{
+			GenFileName:   CurrentFileName(),
 			PackageName:   esInfo.PackageName,
 			StructName:    esInfo.StructName,
 			StructComment: esInfo.StructComment,

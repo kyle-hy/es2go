@@ -200,6 +200,7 @@ func GenEsAggRecentHist(mappingPath, outputPath string, esInfo *EsModelInfo) err
 		// 预处理渲染所需的内容
 		funcData := PreAggRecentHistCond(mappingPath, esInfo, rtype)
 		detailData := DetailTplData{
+			GenFileName:   CurrentFileName(),
 			PackageName:   esInfo.PackageName,
 			StructName:    esInfo.StructName,
 			StructComment: esInfo.StructComment,

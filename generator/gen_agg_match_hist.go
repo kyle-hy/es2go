@@ -101,6 +101,7 @@ func GenEsAggMatchHist(mappingPath, outputPath string, esInfo *EsModelInfo) erro
 	// 预处理渲染所需的内容
 	funcData := PreAggMatchHistCond(mappingPath, esInfo)
 	detailData := DetailTplData{
+		GenFileName:   CurrentFileName(),
 		PackageName:   esInfo.PackageName,
 		StructName:    esInfo.StructName,
 		StructComment: esInfo.StructComment,
