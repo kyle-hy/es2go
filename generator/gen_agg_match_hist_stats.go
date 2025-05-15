@@ -90,7 +90,7 @@ func getAggMatchHistStatsQuery(condFields, histFields, statsFields []*FieldInfo,
 
 	// agg部分参数
 	aq := GenAggWithCondOpt(histFields, AggFuncHist, AggOptInterval)
-	aq += GenAddNestedAgg(statsFields, HistStatsFuncs[stype])
+	aq += AddSubAggCond(statsFields, HistStatsFuncs[stype])
 
 	// bool部分参数
 	bq := GenBoolCond(mq, tq, false)

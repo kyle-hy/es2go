@@ -167,7 +167,7 @@ func getAggRangeDateHistStatsQuery(condFields, histFields, statsFields []*FieldI
 
 	// agg部分参数
 	aq := GenAggWithCondOpt(histFields, AggFuncDateHist, fmt.Sprintf(AggOptCalendarInterval, DateHistInterval[dhtype]))
-	aq += GenAddNestedAgg(statsFields, HistStatsFuncs[stype])
+	aq += AddSubAggCond(statsFields, HistStatsFuncs[stype])
 
 	// term部分和range部分组合
 	termRanges := GenTermRangeCond(other, types, optList)

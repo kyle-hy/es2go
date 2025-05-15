@@ -465,8 +465,8 @@ func GenAggNestedCond(fields []*FieldInfo, aggFunc string) string {
 	return ""
 }
 
-// GenAddNestedAgg 生成追加一级的嵌套聚合条件
-func GenAddNestedAgg(fields []*FieldInfo, aggFunc string) string {
+// AddSubAggCond 对aggs变量添加子聚合条件
+func AddSubAggCond(fields []*FieldInfo, aggFunc string) string {
 	aq := ""
 	prefix := "aggs.Nested(" + aggFunc
 	for idx, f := range fields {

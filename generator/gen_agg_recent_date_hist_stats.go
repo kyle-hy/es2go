@@ -13,8 +13,8 @@ import (
 
 // 生成对时间字段近期查找的代码,数值字段范围查找
 
-// PreAggRecentHistStatsCond 使用go代码预处理渲染需要的一些逻辑，template脚本调试困难
-func PreAggRecentHistStatsCond(mappingPath string, esInfo *EsModelInfo, rtype, stype string) []*FuncTplData {
+// PreAggRecentDateHistStatsCond 使用go代码预处理渲染需要的一些逻辑，template脚本调试困难
+func PreAggRecentDateHistStatsCond(mappingPath string, esInfo *EsModelInfo, rtype, stype string) []*FuncTplData {
 	funcDatas := []*FuncTplData{}
 
 	// 尝试加载自定义生成配置
@@ -31,29 +31,26 @@ func PreAggRecentHistStatsCond(mappingPath string, esInfo *EsModelInfo, rtype, s
 	limitCmbs := LimitCombineFilter(cmbFields, cmbLimit)
 
 	// 过滤出最少包含指定类型之一的组合
-	rangeTypes := []string{TypeNumber, TypeDate}
 	mustFileds := MustCombineFilter(limitCmbs, []string{TypeDate})
 
 	// 字段随机组合
+	rangeTypes := []string{TypeNumber, TypeDate}
 	for _, condCmb := range mustFileds {
 		// 筛选出做聚合分析的类型的字段
 		numFields := FilterOutByTypes(fields, condCmb, []string{TypeNumber}, nil)
 
-		// 过滤出配置文件指定的聚合字段
-		histFields := FilterOutByName(numFields, condCmb, genCfg.HistFields, genCfg.NotHistFields)
-
 		// 过滤出配置文件指定的分桶后再嵌套统计的字段
 		histStatsFields := FilterOutByName(numFields, condCmb, genCfg.HistStatsFields, genCfg.NotHistStatsFields)
-
-		// histogram的聚合分析
-		histCmbs := utils.Combinations(histFields, 1)
 		statsCmbs := utils.Combinations(histStatsFields, 1)
-		for _, histCmb := range histCmbs {
+
+		// 筛选出做日期桶聚合的单位维度
+		dhtypes := FindPreElem(DateHistTypes, rtype, 2)
+		for _, dhtype := range dhtypes {
 			for _, statsCmb := range statsCmbs {
-				names := getAggRecentHistStatsFuncName(esInfo.StructName, condCmb, histCmb, statsCmb, rangeTypes, rtype, stype, genCfg.CmpOptList)
-				comments := getAggRecentHistStatsFuncComment(esInfo.StructComment, condCmb, histCmb, statsCmb, rangeTypes, rtype, stype, genCfg.CmpOptList)
-				params := getAggRecentHistStatsFuncParams(condCmb, rangeTypes, rtype, genCfg.CmpOptList)
-				queries := getAggRecentHistStatsQuery(condCmb, histCmb, statsCmb, rangeTypes, genCfg.TermInShould, rtype, stype, genCfg.CmpOptList)
+				names := getAggRecentDateHistStatsFuncName(esInfo.StructName, condCmb, statsCmb, rangeTypes, rtype, genCfg.CmpOptList, dhtype, stype)
+				comments := getAggRecentDateHistStatsFuncComment(esInfo.StructComment, condCmb, statsCmb, rangeTypes, rtype, genCfg.CmpOptList, dhtype, stype)
+				params := getAggRecentDateHistStatsFuncParams(condCmb, rangeTypes, rtype, genCfg.CmpOptList)
+				queries := getAggRecentDateHistStatsQuery(condCmb, statsCmb, rangeTypes, genCfg.TermInShould, rtype, genCfg.CmpOptList, dhtype, stype)
 				for idx := range len(names) {
 					ftd := &FuncTplData{
 						Name:    names[idx],
@@ -70,8 +67,8 @@ func PreAggRecentHistStatsCond(mappingPath string, esInfo *EsModelInfo, rtype, s
 	return funcDatas
 }
 
-// getAggRecentHistStatsFuncName 获取函数名称
-func getAggRecentHistStatsFuncName(structName string, condFields, histFields, statsFields []*FieldInfo, rangeTypes []string, rtype, stype string, optList [][]string) []string {
+// getAggRecentDateHistStatsFuncName 获取函数名称
+func getAggRecentDateHistStatsFuncName(structName string, condFields, statsFields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string, dhtype, stype string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
@@ -89,7 +86,8 @@ func getAggRecentHistStatsFuncName(structName string, condFields, histFields, st
 	fieldOpts = append(fieldOpts, GenRangeFieldName(types, [][]string{{GTE}}, []string{TypeDate})...)
 
 	names := []string{}
-	fn := stype + GenFieldsName(statsFields) + "InHist" + GenFieldsName(histFields) + "Of" + rtype + structName + "By" + otherName
+	fn := stype + GenFieldsName(statsFields) + "In" + dhtype + "HistOf" + rtype + structName + "By" + otherName
+
 	// 多字段之间的两两组合
 	fopts := utils.Cartesian(fieldOpts)
 	for _, fopt := range fopts {
@@ -100,8 +98,8 @@ func getAggRecentHistStatsFuncName(structName string, condFields, histFields, st
 
 // 根据发布日期大于等于和小于等于检索books表并分组统计类别的分布情况
 
-// getAggRecentHistStatsFuncComment 获取函数注释
-func getAggRecentHistStatsFuncComment(structComment string, condFields, histFields, statsFields []*FieldInfo, rangeTypes []string, rtype, stype string, optList [][]string) []string {
+// getAggRecentDateHistStatsFuncComment 获取函数注释
+func getAggRecentDateHistStatsFuncComment(structComment string, condFields, statsFields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string, dhtype, stype string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
@@ -120,7 +118,7 @@ func getAggRecentHistStatsFuncComment(structComment string, condFields, histFiel
 	fopts := utils.Cartesian(fieldCmts)
 	for _, fopt := range fopts {
 		fopt = strings.TrimSuffix(fopt, "、")
-		funcCmts = append(funcCmts, otherComment+fopt+"检索"+structComment+"，并按"+GenFieldsCmt(histFields, true)+"区间分桶统计"+GenFieldsCmt(statsFields, true)+"的"+HistStatNames[stype]+"\n")
+		funcCmts = append(funcCmts, otherComment+fopt+"检索"+structComment+"并分桶统计"+DateHistNames[dhtype]+GenFieldsCmt(statsFields, true)+"的"+HistStatNames[stype]+"\n")
 	}
 
 	// 参数注释部分
@@ -135,16 +133,15 @@ func getAggRecentHistStatsFuncComment(structComment string, condFields, histFiel
 	if len(funcCmts) == len(paramOpts) {
 		for idx, fc := range funcCmts {
 			pcmt := fc + filterParam + paramOpts[idx]
-			pcmt += "// histInterval float64 分桶聚合的" + GenFieldsCmt(histFields, true) + "区间间隔"
-			funcCmts[idx] = pcmt
+			funcCmts[idx] = strings.TrimSuffix(pcmt, "\n")
 		}
 	}
 
 	return funcCmts
 }
 
-// getAggRecentHistStatsFuncParams 获取函数参数列表
-func getAggRecentHistStatsFuncParams(condFields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
+// getAggRecentDateHistStatsFuncParams 获取函数参数列表
+func getAggRecentDateHistStatsFuncParams(condFields []*FieldInfo, rangeTypes []string, rtype string, optList [][]string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
@@ -158,13 +155,13 @@ func getAggRecentHistStatsFuncParams(condFields []*FieldInfo, rangeTypes []strin
 
 	funcParams := utils.Cartesian(params)
 	for idx, fp := range funcParams {
-		funcParams[idx] = simplifyParams(cfp + fp + "histInterval float64")
+		funcParams[idx] = simplifyParams(cfp + fp)
 	}
 	return funcParams
 }
 
-// getAggRecentHistStatsQuery 获取函数的查找条件
-func getAggRecentHistStatsQuery(condFields, histFields, statsFields []*FieldInfo, rangeTypes []string, termInShould bool, rtype, stype string, optList [][]string) []string {
+// getAggRecentDateHistStatsQuery 获取函数的查找条件
+func getAggRecentDateHistStatsQuery(condFields, statsFields []*FieldInfo, rangeTypes []string, termInShould bool, rtype string, optList [][]string, dhtype, stype string) []string {
 	if len(optList) == 0 {
 		optList = CmpOptList
 	}
@@ -174,7 +171,8 @@ func getAggRecentHistStatsQuery(condFields, histFields, statsFields []*FieldInfo
 	mq := GenMatchCond(other)
 
 	// agg部分参数
-	aq := GenAggWithCondOpt(histFields, AggFuncHist, AggOptInterval)
+	dateFields, _ := FieldFilterByTypes(condFields, []string{TypeDate})
+	aq := GenAggWithCondOpt(dateFields, AggFuncDateHist, fmt.Sprintf(AggOptCalendarInterval, DateHistInterval[dhtype]))
 	aq += AddSubAggCond(statsFields, HistStatsFuncs[stype])
 
 	// term部分参数
@@ -201,12 +199,12 @@ func getAggRecentHistStatsQuery(condFields, histFields, statsFields []*FieldInfo
 	return funcRanges
 }
 
-// GenEsAggRecentHistStats 生成es检索详情
-func GenEsAggRecentHistStats(mappingPath, outputPath string, esInfo *EsModelInfo) error {
+// GenEsAggRecentDateHistStats 生成es检索详情
+func GenEsAggRecentDateHistStats(mappingPath, outputPath string, esInfo *EsModelInfo) error {
 	for _, rtype := range RecentTypes {
 		for _, stype := range HistStatsTypes {
 			// 预处理渲染所需的内容
-			funcData := PreAggRecentHistStatsCond(mappingPath, esInfo, rtype, stype)
+			funcData := PreAggRecentDateHistStatsCond(mappingPath, esInfo, rtype, stype)
 			detailData := DetailTplData{
 				PackageName:   esInfo.PackageName,
 				StructName:    esInfo.StructName,
@@ -230,7 +228,7 @@ func GenEsAggRecentHistStats(mappingPath, outputPath string, esInfo *EsModelInfo
 			}
 
 			// 写入文件
-			suffix := fmt.Sprintf("_agg_%s_hist_%s.go", strings.ToLower(rtype), strings.ToLower(stype))
+			suffix := fmt.Sprintf("_agg_%s_date_hist_%s.go", strings.ToLower(rtype), strings.ToLower(stype))
 			output := strings.Replace(outputPath, ".go", suffix, -1)
 			err = os.WriteFile(output, buf.Bytes(), 0644)
 			if err != nil {
